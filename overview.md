@@ -105,8 +105,27 @@ audience; the consultancy is where the commercial conversation happens.
 ## State
 
 - **2026-06-30:** Project scaffolded via `scripts/new-project.sh`. Strategy decisions
-  above settled. Nothing built yet. Current production site is still the old Vercel
-  build (DNS `nmajor.com` → `76.76.21.21`, Vercel).
+  above settled. Current production site is still the old Vercel build (DNS
+  `nmajor.com` → Vercel; code now archived, see below).
+- **2026-06-30 — repos consolidated into one canonical repo.** This project now
+  pushes to **`github.com/nmajor/nmajor.com`** (`origin`, default branch `main` = this
+  rebuild). The old sites are preserved losslessly as archive branches and the
+  redundant repos were archived read-only on GitHub:
+  - `archive/jekyll-2020` — the old 2020 Jekyll/Forestry nmajor.com.
+  - `archive/next-vercel` — the **live** Next.js/Vercel site (was `nmajor/nmajor-site`,
+    now archived read-only). Holds the 5 Home-Lab-K8s posts to migrate. One 2018
+    example Facebook token was scrubbed from this branch's history to pass GitHub push
+    protection (literal replaced with `EAA_EXAMPLE_TOKEN_REDACTED`; full commit history
+    otherwise intact, and the untouched original remains in the archived
+    `nmajor-site` repo).
+    - `archive/portfolio-2017` — the 2017 static portfolio (was `nmajor/nmajor-portfolio`,
+    now archived read-only).
+  - Pre-existing `legacy` (2019 Jekyll) and `gh-pages` (built output) branches left in
+    place, untouched.
+- **Deploy path verified.** Cloudflare creds (shared account `Nick@nmajor.com`) reused
+  from the sister project into this project's gitignored `.env`; `wrangler whoami`
+  authenticates. No localhost in this workspace — we iterate against a live Worker
+  (a `nmajor` Worker on its `workers.dev` preview URL until cutover).
 
 ## Plans
 

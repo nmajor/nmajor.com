@@ -1,0 +1,17 @@
+{
+  "name": "nmajor",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "build": "astro build",
+    "deploy": "bash deploy.sh",
+    "deploy:only": "wrangler deploy"
+  },
+  "dependencies": {
+    "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

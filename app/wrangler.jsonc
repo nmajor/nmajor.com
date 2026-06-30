@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nmajor",
+  "compatibility_date": "2026-06-30",
+  // Prototype phase: serve the static Astro build directly as Worker assets and
+  // keep the workers.dev preview URL ON so we can iterate on a live URL (there is
+  // no localhost in this workspace). Custom domain (nmajor.com) is NOT bound here
+  // yet — cutover happens later, deliberately, off the old Vercel site.
+  "assets": {
+    "directory": "./dist"
+  },
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  }
+}

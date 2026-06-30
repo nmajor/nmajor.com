@@ -1,0 +1,160 @@
+---
+import '../styles/global.css';
+
+// Nick's hot takes — the hero IS the thesis. Anti-hype, specific, opinionated.
+const takes = [
+  { topic: 'AI strategy',  text: "Most 'AI strategy' decks are procurement with extra steps." },
+  { topic: 'pilots',       text: "If your AI pilot can't survive a real user, it was a demo." },
+  { topic: 'buying',       text: "Nobody gets fired for buying the platform. That's the problem." },
+  { topic: 'your data',    text: "Your data isn't 'AI-ready.' Nobody's is. Start anyway — smaller." },
+  { topic: 'agents',       text: "An agent that needs a human watching it isn't automation. It's an intern." },
+];
+
+// Placeholder post list for the prototype — real posts come from the content
+// collection later (incl. the migrated Home-Lab-Kubernetes series in /archive).
+const posts = [
+  { title: 'The "AI readiness assessment" is a stall tactic', meta: 'Jun 2026 · 6 min' },
+  { title: 'I rebuilt my whole stack on a $40/mo cluster',     meta: 'May 2026 · 9 min' },
+  { title: 'Stop measuring AI pilots by demos. Measure escapes.', meta: 'May 2026 · 5 min' },
+];
+
+const first = takes[0];
+const pad = (n) => String(n).padStart(2, '0');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nick Major — anti-hype takes on actually deploying AI</title>
+    <meta name="description" content="Nick Major's personal channel: no-BS, anti-hype takes on actually deploying AI in real companies, from an engineer who ships." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="ticker">
+      <span>Nick Major · personal channel</span>
+      <span>No hype. No decks. What I'd actually do.</span>
+    </div>
+
+    <header class="nav">
+      <a class="nav__mark" href="/">NICK<b>·</b>MAJOR</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#takes">Takes</a>
+        <a href="#writing">Writing</a>
+        <a href="#who">Who</a>
+        <a href="#newsletter">Newsletter</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="takes" aria-label="Hot take">
+        <p class="hero__eyebrow">
+          <span>Hot take <span class="hero__num" data-num>№{pad(1)}</span></span>
+          <span class="hero__rule">/</span>
+          <span data-topic>on {first.topic}</span>
+        </p>
+        <h1 class="hero__take" data-take>{first.text}</h1>
+
+        <div class="hero__controls">
+          <button class="flip" type="button" data-prev aria-label="Previous take">← prev</button>
+          <button class="flip" type="button" data-next aria-label="Next take">next →</button>
+          <span class="hero__count"><span data-count>1</span> / {takes.length}</span>
+        </div>
+
+        <div class="hero__ctas">
+          <a class="btn btn--solid" href="#newsletter">Get the takes →</a>
+          <a class="btn btn--ghost" href="#writing">Read the long version</a>
+        </div>
+      </section>
+
+      <section class="section" id="who">
+        <p class="section__label">Who's talking</p>
+        <p class="who__lead">An engineer who <b>ships</b>, not a guy with a hype deck.</p>
+        <div class="who__body">
+          <p>
+            I'm Nick. I spent a career building and running software before I started
+            helping companies actually put AI into production — the unglamorous part
+            where it meets real users, real data, and a real budget.
+          </p>
+          <p>
+            I've run the infrastructure, not just advised on it. So when I tell you
+            something's hype, it's because I've watched it break. This is where I say
+            what I think, plainly.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="writing">
+        <p class="section__label">Latest writing</p>
+        <div class="posts">
+          {posts.map((p) => (
+            <a class="post" href="#">
+              <span class="post__title">{p.title}</span>
+              <span class="post__meta">{p.meta}</span>
+              <span class="post__arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="section news" id="newsletter">
+        <p class="section__label">The newsletter</p>
+        <h2 class="news__head">The takes, in your inbox.</h2>
+        <p class="news__sub">
+          What I'd tell you if you cornered me at a conference and asked what's real.
+          No hype, no "thought leadership," no spam. Unsubscribe whenever.
+        </p>
+        <form class="news__form" onsubmit="return false">
+          <input class="news__input" type="email" placeholder="you@company.com" aria-label="Email address" required />
+          <button class="btn btn--solid" type="submit">Subscribe</button>
+        </form>
+        <p class="news__note">// prototype — not wired up yet</p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>© 2026 Nick Major · nmajor.com</span>
+      <span class="foot__orgs">
+        <a href="https://appliedartificialintelligence.org">Institute ↗</a>
+        <a href="https://executiveaileadership.org">Association ↗</a>
+      </span>
+    </footer>
+
+    <script is:inline define:vars={{ takes }}>
+      const takeEl = document.querySelector('[data-take]');
+      const numEl = document.querySelector('[data-num]');
+      const topicEl = document.querySelector('[data-topic]');
+      const countEl = document.querySelector('[data-count]');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let i = 0;
+
+      function render() {
+        const t = takes[i];
+        numEl.textContent = '№' + String(i + 1).padStart(2, '0');
+        topicEl.textContent = 'on ' + t.topic;
+        countEl.textContent = String(i + 1);
+        if (!reduce) {
+          takeEl.style.animation = 'none';
+          void takeEl.offsetWidth; // reflow to restart the reveal
+          takeEl.style.animation = '';
+        }
+        takeEl.textContent = t.text;
+      }
+
+      document.querySelector('[data-next]').addEventListener('click', () => {
+        i = (i + 1) % takes.length;
+        render();
+      });
+      document.querySelector('[data-prev]').addEventListener('click', () => {
+        i = (i - 1 + takes.length) % takes.length;
+        render();
+      });
+    </script>
+  </body>
+</html>

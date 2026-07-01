@@ -1,0 +1,120 @@
+---
+import '../styles/terminal.css';
+
+const takes = [
+  { topic: 'AI strategy',  text: "Most 'AI strategy' decks are procurement with extra steps." },
+  { topic: 'pilots',       text: "If your AI pilot can't survive a real user, it was a demo." },
+  { topic: 'buying',       text: "Nobody gets fired for buying the platform. That's the problem." },
+  { topic: 'your data',    text: "Your data isn't 'AI-ready.' Nobody's is. Start anyway — smaller." },
+  { topic: 'agents',       text: "An agent that needs a human watching it isn't automation. It's an intern." },
+];
+
+// The changelog = takes as dated entries (structure encodes real content).
+const log = [
+  { date: '2026-06', topic: 'pilots',  line: 'measure pilots by escapes, not demos' },
+  { date: '2026-05', topic: 'buying',  line: 'the safe vendor choice is the risky one' },
+  { date: '2026-05', topic: 'data',    line: "stop waiting to be 'AI-ready'" },
+  { date: '2026-04', topic: 'agents',  line: 'your "agent" is an intern with a login' },
+];
+
+const posts = [
+  { date: '2026-06', title: 'The "AI readiness assessment" is a stall tactic' },
+  { date: '2026-05', title: 'I rebuilt my whole stack on a $40/mo cluster' },
+  { date: '2026-05', title: 'Stop measuring AI pilots by demos' },
+];
+
+const first = takes[0];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nick@nmajor — anti-hype takes on actually deploying AI</title>
+    <meta name="description" content="Nick Major's personal channel, terminal edition: no-BS, anti-hype takes on actually deploying AI, from an engineer who ships." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="chrome">
+      <span class="dots" aria-hidden="true">
+        <span class="dot dot--1"></span><span class="dot dot--2"></span><span class="dot dot--3"></span>
+      </span>
+      <span class="chrome__path"><b>nick@nmajor</b>:~/takes</span>
+      <span class="chrome__spacer"></span>
+      <span>zsh · no hype loaded</span>
+    </header>
+
+    <main class="wrap">
+      <p class="cmd cmd--tight">whoami</p>
+      <p class="whoami out">
+        <b>nick major</b> — an engineer who ships, not a guy with a hype deck.
+        I put AI into production where it meets real users, real data, and a real budget.
+      </p>
+
+      <p class="cmd">cat todays-take.md</p>
+      <section class="take" aria-label="Hot take">
+        <p class="take__tag" data-tag>hot take · on {first.topic}</p>
+        <h1 class="take__body"><span data-take>{first.text}</span><span class="cursor" aria-hidden="true"></span></h1>
+        <div class="take__nav">
+          <button class="runbtn" type="button" data-next>next ▸</button>
+          <span class="take__count"><span data-count>1</span>/{takes.length}</span>
+        </div>
+      </section>
+
+      <p class="cmd">ls -lt ./the-changelog</p>
+      <div class="log">
+        {log.map((e) => (
+          <a class="row" href="#">
+            <span class="row__date">{e.date}</span>
+            <span class="row__text"><b>{e.topic}</b> — {e.line}</span>
+          </a>
+        ))}
+      </div>
+
+      <p class="cmd">ls -lt ./writing</p>
+      <div class="log">
+        {posts.map((p) => (
+          <a class="row" href="#">
+            <span class="row__date">{p.date}</span>
+            <span class="row__text">{p.title}</span>
+          </a>
+        ))}
+      </div>
+
+      <p class="cmd">subscribe --no-hype</p>
+      <p class="out--dim">The takes, in your inbox. What I'd tell you if you asked what's real.</p>
+      <form class="sub" onsubmit="return false">
+        <span class="sub__prompt">email:</span>
+        <input class="sub__input" type="email" placeholder="you@company.com" aria-label="Email address" required />
+        <button class="sub__btn" type="submit">run ▸</button>
+      </form>
+      <p class="comment">prototype — not wired up yet</p>
+
+      <footer class="eof">
+        <span># eof · © 2026 nick major · nmajor.com</span>
+        <a href="https://appliedartificialintelligence.org">./institute</a>
+        <a href="https://executiveaileadership.org">./association</a>
+      </footer>
+    </main>
+
+    <script is:inline define:vars={{ takes }}>
+      const takeEl = document.querySelector('[data-take]');
+      const tagEl = document.querySelector('[data-tag]');
+      const countEl = document.querySelector('[data-count]');
+      let i = 0;
+      document.querySelector('[data-next]').addEventListener('click', () => {
+        i = (i + 1) % takes.length;
+        const t = takes[i];
+        takeEl.textContent = t.text;
+        tagEl.textContent = 'hot take · on ' + t.topic;
+        countEl.textContent = String(i + 1);
+      });
+    </script>
+  </body>
+</html>

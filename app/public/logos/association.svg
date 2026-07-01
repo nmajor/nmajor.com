@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="EAIL — Association for Executive AI Leadership">
+  <rect width="32" height="32" fill="#15213b" />
+  <text x="16" y="19.5" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', 'Noto Serif', serif"
+        font-size="12" font-weight="600" letter-spacing="-0.4"
+        textLength="23" lengthAdjust="spacingAndGlyphs"
+        fill="#f1ece2">EAIL</text>
+  <rect x="9" y="23" width="14" height="1.7" fill="#8c7a52" />
+</svg>

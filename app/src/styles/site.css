@@ -97,6 +97,8 @@ a { color: inherit; }
 .foot__h { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
 .foot__col a { text-decoration: none; color: var(--body); font-size: 14px; }
 .foot__col a:hover { color: var(--accent); }
+.foot__org { display: inline-flex; align-items: center; gap: 8px; }
+.foot__orglogo { width: 18px; height: 18px; border-radius: 3px; flex: none; display: block; }
 .foot__bottom { border-top: 1px solid var(--line2); padding-top: 20px; }
 .foot__meta { font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted); }
 

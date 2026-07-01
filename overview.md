@@ -148,6 +148,25 @@ audience; the consultancy is where the commercial conversation happens.
   signup. Open: how commercial the "Work with me" page is at launch (consultancy still
   has no name/site).
 
+## Build progress
+
+- **2026-07-01.** Home page live (direction 4a). **Publications structure done:**
+  `essays` + `takes` content collections, `/writing` (index + per-essay pages),
+  `/takes`, and `/rss.xml` (the feed Buttondown will consume). **Engineering archive
+  migrated:** all 20 old posts (5 home-lab-Kubernetes + 15 2018 dev tutorials) copied
+  from the archived Vercel site into an `engineering` collection, rendered at their
+  ORIGINAL `/posts/<date-slug>` URLs so old links/SEO keep working (`/uploads` images
+  came too; old `/posts` index 301s to `/engineering`). **Footer expanded** to three
+  columns (Writing / Elsewhere / Site); the Institute + Association links live here,
+  which is the firewall-safe home for org links (an ICP focus group showed a co-founder
+  credential in the bio read as contrived and lowered subscribe-intent, so it was pulled
+  from the About block). **Logo** (monogram mark `n-e`, red rounded tile + white N) and
+  favicon wired via the shared `Base` layout. **Bio** finalized through the Institute's
+  `writing-voice` skill + a 3-provider ICP focus group.
+- **Still TODO:** `/about` page (where the co-founder credential gets real context),
+  wire the newsletter form to Buttondown (own list, scoped key), a real first essay
+  (the panel's "proof" lever), then DNS cutover off Vercel.
+
 ## Plans
 
 Build order (reusing the Institute blueprint where it fits):

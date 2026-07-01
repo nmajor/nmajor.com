@@ -43,4 +43,21 @@ const takes = defineCollection({
   }),
 });
 
-export const collections = { essays, takes };
+// The engineering archive: Nick's pre-AI-advisory technical writing (home-lab
+// Kubernetes, 2018 dev tutorials), migrated from the old Vercel site. Kept in its
+// own collection so it never mixes into the AI essays or the newsletter feed, but
+// stays visible as proof he actually builds. Rendered at the ORIGINAL /posts/<slug>
+// URLs (the file id includes the date prefix) so old links and SEO keep working.
+const engineering = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/engineering' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    description: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    hero: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { essays, takes, engineering };

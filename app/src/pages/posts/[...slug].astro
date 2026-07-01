@@ -1,0 +1,32 @@
+---
+// Engineering posts rendered at their ORIGINAL URLs: /posts/<date-slug>. The
+// collection entry id is the old filename minus .md (which includes the date),
+// so these paths are identical to the old Vercel site — old links keep working.
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { longDate, readingMinutes } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('engineering', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const mins = readingMinutes(post.body);
+---
+<Base title={`${post.data.title} · Nicholas Major`} description={post.data.description ?? post.data.title} ogImage={post.data.hero ?? '/nicholas-major.jpg'}>
+  <article class="article">
+    <p class="article__meta">Engineering · {longDate(post.data.date)} · {mins} min read</p>
+    <h1 class="article__title">{post.data.title}</h1>
+    {post.data.hero && <img class="article__hero" src={post.data.hero} alt="" loading="lazy" />}
+    <div class="prose">
+      <Content />
+    </div>
+    <a href="/engineering" class="article__back">← All engineering</a>
+  </article>
+
+  <style>
+    .article__hero { display: block; width: 100%; height: auto; border-radius: 12px; margin-top: clamp(20px,3vw,28px); border: 1px solid var(--line2); }
+  </style>
+</Base>

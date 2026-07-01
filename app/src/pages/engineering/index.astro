@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { monthYear } from '../../lib/format';
+
+const posts = (await getCollection('engineering', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+<Base
+  title="Engineering · Nicholas Major"
+  description="Nicholas Major's technical writing: home-lab Kubernetes, serverless, and years of building the systems underneath. The engineer behind the AI takes."
+>
+  <header class="phead">
+    <div class="eyebrow">Engineering</div>
+    <h1 class="phead__title">Engineering</h1>
+    <p class="phead__sub">The building, not the advising. Home-lab Kubernetes, serverless, and older dev notes from years of shipping software. Kept here because the AI takes come from someone who has actually run the systems.</p>
+  </header>
+
+  <section class="block" style="padding-top: 0;">
+    <div class="rows">
+      {posts.map((p) => (
+        <a href={`/posts/${p.id}/`} class="erow">
+          <span class="erow__meta">{monthYear(p.data.date)}</span>
+          <span class="erow__main">
+            <span class="erow__title">{p.data.title}</span>
+            {p.data.description && <span class="erow__blurb">{p.data.description}</span>}
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

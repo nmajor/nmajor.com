@@ -60,7 +60,31 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
     <footer id="work" class="foot">
       <div class="foot__inner">
         <a href="/#work" class="foot__work">I also help companies actually do this. <span class="accent">How I help →</span></a>
-        <span class="foot__meta">© 2026 Nicholas Major · Lisbon</span>
+
+        <nav class="foot__cols" aria-label="Footer">
+          <div class="foot__col">
+            <span class="foot__h">Writing</span>
+            <a href="/writing">Essays</a>
+            <a href="/takes">Takes</a>
+            <a href="/engineering">Engineering</a>
+            <a href="/rss.xml">RSS</a>
+          </div>
+          <div class="foot__col">
+            <span class="foot__h">Elsewhere</span>
+            <a href="https://appliedartificialintelligence.org">Institute of Applied AI ↗</a>
+            <a href="https://executiveaileadership.org">Association for Executive AI Leadership ↗</a>
+          </div>
+          <div class="foot__col">
+            <span class="foot__h">Site</span>
+            <a href="/#about">About</a>
+            <a href="/#work">Work with me</a>
+            <a href="/#subscribe">Subscribe</a>
+          </div>
+        </nav>
+
+        <div class="foot__bottom">
+          <span class="foot__meta">© 2026 Nicholas Major · Lisbon</span>
+        </div>
       </div>
     </footer>
   </body>

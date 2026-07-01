@@ -1,5 +1,6 @@
 ---
 import '../styles/terminal.css';
+import VersionBar from '../components/VersionBar.astro';
 
 const takes = [
   { topic: 'AI strategy',  text: "Most 'AI strategy' decks are procurement with extra steps." },
@@ -41,6 +42,7 @@ const first = takes[0];
     />
   </head>
   <body>
+    <VersionBar current={2} />
     <header class="chrome">
       <span class="dots" aria-hidden="true">
         <span class="dot dot--1"></span><span class="dot dot--2"></span><span class="dot dot--3"></span>

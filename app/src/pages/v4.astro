@@ -1,5 +1,6 @@
 ---
 import '../styles/grid.css';
+import VersionBar from '../components/VersionBar.astro';
 
 const takes = [
   "Most 'AI strategy' decks are procurement with extra steps.",
@@ -32,6 +33,7 @@ const writing = [
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <VersionBar current={4} />
     <div class="frame">
       <div class="gridrow g-3">
         <div class="cell cell--mark">

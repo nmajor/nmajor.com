@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import VersionBar from '../components/VersionBar.astro';
 
 // Nick's hot takes — the hero IS the thesis. Anti-hype, specific, opinionated.
 const takes = [
@@ -37,6 +38,7 @@ const pad = (n) => String(n).padStart(2, '0');
     />
   </head>
   <body>
+    <VersionBar current={1} />
     <div class="ticker">
       <span>Nick Major · personal channel</span>
       <span>No hype. No decks. What I'd actually do.</span>

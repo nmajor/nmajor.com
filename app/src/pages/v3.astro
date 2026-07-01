@@ -1,5 +1,6 @@
 ---
 import '../styles/cover.css';
+import VersionBar from '../components/VersionBar.astro';
 
 const lines = [
   { text: "'AI strategy' is procurement in a trenchcoat", pg: '01' },
@@ -25,6 +26,7 @@ const toc = [
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <VersionBar current={3} />
     <div class="cover">
       <header class="masthead">
         <h1 class="masthead__name">Major</h1>

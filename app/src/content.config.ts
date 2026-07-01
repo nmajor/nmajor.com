@@ -43,13 +43,14 @@ const takes = defineCollection({
   }),
 });
 
-// The engineering archive: Nick's pre-AI-advisory technical writing (home-lab
-// Kubernetes, 2018 dev tutorials), migrated from the old Vercel site. Kept in its
-// own collection so it never mixes into the AI essays or the newsletter feed, but
-// stays visible as proof he actually builds. Rendered at the ORIGINAL /posts/<slug>
-// URLs (the file id includes the date prefix) so old links and SEO keep working.
-const engineering = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/engineering' }),
+// "Building": Nick's build-in-public log and engineering blog. Started as the
+// migrated back catalogue (home-lab Kubernetes, 2018 dev tutorials) from the old
+// Vercel site, and grows as he ships new things. Kept in its own collection so it
+// never mixes into the AI essays or the newsletter feed, but stays visible as proof
+// he actually builds. Rendered at the ORIGINAL /posts/<slug> URLs (the file id
+// includes the date prefix) so old links and SEO keep working.
+const building = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/building' }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
@@ -60,4 +61,4 @@ const engineering = defineCollection({
   }),
 });
 
-export const collections = { essays, takes, engineering };
+export const collections = { essays, takes, building };

@@ -3,18 +3,18 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { monthYear } from '../../lib/format';
 
-const posts = (await getCollection('engineering', ({ data }) => !data.draft)).sort(
+const posts = (await getCollection('building', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 ---
 <Base
-  title="Engineering · Nicholas Major"
-  description="Nicholas Major's technical writing: home-lab Kubernetes, serverless, and years of building the systems underneath. The engineer behind the AI takes."
+  title="Building · Nicholas Major"
+  description="Nicholas Major's build log: home-lab Kubernetes, the systems he actually runs, and whatever he's making now. The engineer behind the AI takes, building in the open."
 >
   <header class="phead">
-    <div class="eyebrow">Engineering</div>
-    <h1 class="phead__title">Engineering</h1>
-    <p class="phead__sub">The building, not the advising. Home-lab Kubernetes, serverless, and older dev notes from years of shipping software. Kept here because the AI takes come from someone who has actually run the systems.</p>
+    <div class="eyebrow">Building</div>
+    <h1 class="phead__title">Building</h1>
+    <p class="phead__sub">Where I build in the open. Home-lab Kubernetes, the systems I actually run, and whatever I'm making now. Rougher than the essays, and added to as I go. The AI takes come from someone who still ships.</p>
   </header>
 
   <section class="block" style="padding-top: 0;">

@@ -5,9 +5,10 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://nmajor.com',
   // The old site's article index lived at /posts; individual posts stay at their
-  // original /posts/<slug> URLs (handled by src/pages/posts/[...slug].astro). Only
-  // the bare index moves to the new /engineering home.
+  // original /posts/<slug> URLs (handled by src/pages/posts/[...slug].astro). The
+  // section index lives at /building (the build-in-public log).
   redirects: {
-    '/posts': '/engineering',
+    '/posts': '/building',
+    '/engineering': '/building',
   },
 });

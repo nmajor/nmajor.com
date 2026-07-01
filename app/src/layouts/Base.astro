@@ -64,7 +64,11 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
             <a href="/" class="foot__mark">
               <img class="foot__marklogo" src="/logo.svg" width="26" height="26" alt="" />Nicholas Major
             </a>
-            <a href="/#work" class="foot__work">I also help a few companies implement what I write about. <span class="accent">How I help →</span></a>
+            <div class="foot__cta">
+              <span class="foot__ctalabel">Work with me</span>
+              <p class="foot__ctatext">I help a few companies implement what I write about.</p>
+              <a href="/#work" class="foot__ctalink">How I help <span class="foot__arr" aria-hidden="true">→</span></a>
+            </div>
           </div>
 
           <nav class="foot__cols" aria-label="Footer">

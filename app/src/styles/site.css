@@ -94,8 +94,14 @@ a { color: inherit; }
 .foot__brand { display: flex; flex-direction: column; gap: 16px; max-width: 34ch; }
 .foot__mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; font-size: 19px; letter-spacing: -.02em; text-decoration: none; color: inherit; }
 .foot__marklogo { width: 26px; height: 26px; border-radius: 6px; display: block; flex: none; }
-.foot__work { display: inline-block; color: #3a352e; text-decoration: none; font-weight: 600; font-size: clamp(15px, 1.9vw, 18px); letter-spacing: -.01em; }
-.foot__work:hover { color: var(--accent); }
+.foot__cta { display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
+.foot__ctalabel { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.foot__ctatext { margin: 0; font-size: clamp(16px, 1.9vw, 19px); line-height: 1.35; font-weight: 600; letter-spacing: -.01em; color: #3a352e; max-width: 30ch; }
+.foot__ctalink { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 700; font-size: 15px; text-decoration: none; }
+.foot__ctalink:hover { opacity: .85; }
+.foot__arr { transition: transform .15s ease; }
+.foot__ctalink:hover .foot__arr { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .foot__arr { transition: none; } }
 .foot__cols { display: flex; flex-wrap: wrap; gap: 28px clamp(36px, 5vw, 72px); }
 .foot__col { display: flex; flex-direction: column; gap: 9px; }
 .foot__h { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }

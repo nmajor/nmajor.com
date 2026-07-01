@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#e5391f"/>
+  <!-- "AI" monogram (sibling of the N mark). Scaled to 0.88 about the tile centre
+       for breathing room to match the N's margins; the group is centred exactly. -->
+  <g fill="#ffffff" transform="translate(32 32) scale(0.88) translate(-32 -32)">
+    <polygon points="17,17 24,17 13,47 6,47"/>
+    <polygon points="17,17 24,17 37,47 30,47"/>
+    <rect x="16" y="32" width="10" height="5"/>
+    <rect x="47" y="17" width="7" height="30"/>
+    <rect x="43" y="17" width="15" height="6"/>
+    <rect x="43" y="41" width="15" height="6"/>
+  </g>
+</svg>

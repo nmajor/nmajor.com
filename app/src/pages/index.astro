@@ -86,7 +86,10 @@ const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
     <div class="sub__card">
       <div class="sub__left">
         <div class="eyebrow">The newsletter</div>
-        <h2 class="sub__h2">Actual Intelligence</h2>
+        <div class="sub__namerow">
+          <img class="sub__mark" src="/actual-intelligence.svg" width="52" height="52" alt="Actual Intelligence" />
+          <h2 class="sub__h2">Actual Intelligence</h2>
+        </div>
         <p class="sub__p">Plain-English AI for the people who run things. The actual kind, not the hype. One email when there's something worth sending.</p>
       </div>
       <div class="sub__right">
@@ -123,7 +126,9 @@ const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
     .sub__card { background: var(--ink); color: var(--paper); border-radius: 24px; padding: clamp(38px,5vw,56px) clamp(28px,4vw,48px); display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; }
     .sub__left { flex: 1; min-width: 280px; }
     .sub__left .eyebrow { display: block; margin-bottom: 14px; }
-    .sub__h2 { margin: 0; font-size: clamp(30px,4vw,42px); font-weight: 900; letter-spacing: -.03em; line-height: 1; max-width: 16ch; }
+    .sub__namerow { display: flex; align-items: center; gap: 14px; }
+    .sub__mark { width: 50px; height: 50px; flex: none; display: block; border-radius: 12px; }
+    .sub__h2 { margin: 0; font-size: clamp(28px,3.4vw,38px); font-weight: 900; letter-spacing: -.03em; line-height: 1.02; }
     .sub__p { margin: 16px 0 0; font-size: 16px; line-height: 1.55; color: #a9a396; max-width: 46ch; }
     .sub__right { flex: none; width: min(360px, 100%); }
     .sub__form { display: flex; flex-direction: column; gap: 10px; }

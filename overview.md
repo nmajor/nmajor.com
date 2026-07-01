@@ -95,6 +95,17 @@ audience; the consultancy is where the commercial conversation happens.
   research cadence. Likely a separate Buttondown newsletter on the existing account.
   **Note: the Buttondown account has several newsletters — never reuse the
   Institute-scoped API key; create/scope a key for this one.**
+  - **Name (settled 2026-07-01): "Actual Intelligence."** The A.I. wordplay flipped
+    from *artificial* to *actual* — it winks at "AI" while meaning the real, honest,
+    non-hype thing, so the name reinforces the brand instead of fighting it. It is a
+    **title under Nick's personal brand** ("Actual Intelligence, by Nicholas Major"),
+    **not a separate brand or its own domain.** Rationale (decided after weighing the
+    Camp-A personal-name vs Camp-B publication-brand split): the whole strategy bets on
+    the *person* as the reach engine, so the newsletter is a named product under
+    `nmajor.com`, visually identical to the site, always with Nick's byline. The one
+    distinct brandable name in the system belongs to the *consultancy*, not the
+    newsletter. Optional cheap hedge: own a vanity domain and 301 it to nmajor.com;
+    never make it the canonical home.
 - **Stack: rebuild fresh, do not port Vercel.** Reuse the sister projects' proven
   blueprint: **Astro → Cloudflare Workers** (static build served by a custom
   `worker.js`), Buttondown + Cloudflare Turnstile for the newsletter, the

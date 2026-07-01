@@ -1,0 +1,83 @@
+---
+import '../styles/cover.css';
+
+const lines = [
+  { text: "'AI strategy' is procurement in a trenchcoat", pg: '01' },
+  { text: 'Your data was never AI-ready', pg: '04' },
+  { text: 'The safe vendor is the risky bet', pg: '07' },
+  { text: 'Your agent is an intern with a login', pg: '11' },
+];
+const toc = [
+  { no: '01', title: 'The "AI readiness assessment" is a stall tactic', date: 'Jun 2026' },
+  { no: '02', title: 'I rebuilt my whole stack on a $40/mo cluster', date: 'May 2026' },
+  { no: '03', title: 'Stop measuring AI pilots by demos', date: 'May 2026' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAJOR — the anti-hype dispatch on shipping AI</title>
+    <meta name="description" content="Nick Major's personal channel: anti-hype takes on actually shipping AI." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="cover">
+      <header class="masthead">
+        <h1 class="masthead__name">Major</h1>
+        <p class="masthead__issue">Issue 01 · 2026<br />nmajor.com</p>
+      </header>
+      <p class="strapline">The anti-hype dispatch on actually shipping AI — by an engineer who does.</p>
+
+      <div class="cover__grid">
+        <figure class="portrait">
+          <span class="portrait__mono" aria-hidden="true">NM</span>
+          <figcaption class="portrait__cap">// drop a real portrait here</figcaption>
+        </figure>
+
+        <div class="lines">
+          <p class="lines__label">Inside this issue</p>
+          {lines.map((l) => (
+            <a class="line" href="#contents">
+              <span class="line__text">{l.text}</span>
+              <span class="line__pg">p.<b>{l.pg}</b></span>
+            </a>
+          ))}
+          <div class="cover__cta">
+            <a class="btn" href="#sub">Subscribe — free →</a>
+          </div>
+        </div>
+      </div>
+
+      <section class="contents" id="contents">
+        <p class="contents__label">Contents · latest writing</p>
+        <div class="toc">
+          {toc.map((t) => (
+            <a class="toc__item" href="#">
+              <span class="toc__no">{t.no}</span>
+              <span class="toc__title">{t.title}</span>
+              <span class="toc__date">{t.date}</span>
+            </a>
+          ))}
+        </div>
+
+        <form class="sub" id="sub" onsubmit="return false">
+          <span class="sub__q">Get it</span>
+          <input class="sub__input" type="email" placeholder="you@company.com" aria-label="Email address" required />
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+
+        <footer class="cover__foot">
+          <span>© 2026 Nick Major</span>
+          <span>
+            <a href="https://appliedartificialintelligence.org">Institute</a> ·
+            <a href="https://executiveaileadership.org">Association</a>
+          </span>
+        </footer>
+      </section>
+    </div>
+  </body>
+</html>

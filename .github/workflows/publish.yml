@@ -14,9 +14,15 @@ name: Publish
 # a guaranteed red ping on ANY step failure, and pings the healthcheck on every
 # run (success or fail) so a stopped cron is detected independently.
 
+# PAUSED: the daily `schedule:` trigger is disabled until nmajor's own
+# Buttondown/Postiz (and Cloudflare deploy) secrets are wired — running the full
+# build/deploy/email pipeline before then would fail every day and spam red
+# Discord alerts. The lightweight queue-empty alarm lives in queue-status.yml.
+# Re-enable by uncommenting the `schedule:` block below. Until then this workflow
+# is manual-only (workflow_dispatch).
 on:
-  schedule:
-    - cron: '0 14 * * *'
+  # schedule:
+  #   - cron: '0 14 * * *'
   workflow_dispatch:
     inputs:
       force:

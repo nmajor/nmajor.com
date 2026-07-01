@@ -1,0 +1,38 @@
+name: Queue status
+
+# Lightweight daily healthcheck for the publishing queue.
+#
+# Read-only. Runs `scripts/preview-next.mjs`, which posts an amber Discord embed
+# when the queue is empty or at/below `lowQueueThreshold` (default 1). It builds
+# nothing, deploys nothing, and emails nothing, so it can never fail-spam — it is
+# the standalone "queue empty -> Discord alert" alarm, decoupled from the full
+# publish pipeline (which stays paused until nmajor's own Buttondown/Postiz
+# secrets are wired; see publish.yml).
+
+on:
+  schedule:
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  queue-status:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    env:
+      DISCORD_PUBLISH_WEBHOOK_URL: ${{ secrets.DISCORD_PUBLISH_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - run: npm ci
+
+      # Daily empty/low-queue alert. Read-only and best-effort.
+      - name: Queue status
+        run: node scripts/preview-next.mjs

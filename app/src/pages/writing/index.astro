@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { monthYear, readingMinutes } from '../../lib/format';
+
+const essays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+---
+<Base
+  title="Writing · Nicholas Major"
+  description="Essays on where AI actually fits in a business, and where it doesn't. Plain, honest, and specific, by Nicholas Major."
+>
+  <header class="phead">
+    <div class="eyebrow">Writing</div>
+    <h1 class="phead__title">Essays</h1>
+    <p class="phead__sub">Where AI actually fits in a business, and where it doesn't. One argument at a time. Each of these also goes out to the newsletter.</p>
+  </header>
+
+  <section class="block" style="padding-top: 0;">
+    <div class="rows">
+      {essays.map((e) => (
+        <a href={`/writing/${e.id}/`} class="erow">
+          <span class="erow__meta">{monthYear(e.data.pubDate)}<br />{readingMinutes(e.body, e.data.readingMinutes)} min read</span>
+          <span class="erow__main">
+            <span class="erow__title">{e.data.title}</span>
+            <span class="erow__blurb">{e.data.summary}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

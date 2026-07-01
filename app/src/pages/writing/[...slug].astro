@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { longDate, readingMinutes } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays', ({ data }) => !data.draft);
+  return essays.map((essay) => ({ params: { slug: essay.id }, props: { essay } }));
+}
+
+const { essay } = Astro.props;
+const { Content } = await render(essay);
+const mins = readingMinutes(essay.body, essay.data.readingMinutes);
+---
+<Base title={`${essay.data.title} · Nicholas Major`} description={essay.data.summary}>
+  <article class="article">
+    <p class="article__meta">{longDate(essay.data.pubDate)} · {mins} min read · {essay.data.author}</p>
+    <h1 class="article__title">{essay.data.title}</h1>
+    <div class="prose">
+      <Content />
+    </div>
+    <a href="/writing" class="article__back">← All writing</a>
+  </article>
+</Base>

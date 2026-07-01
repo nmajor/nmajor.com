@@ -1,0 +1,73 @@
+---
+// Shared shell for every page: <head>, the nav lockup (logo mark + wordmark),
+// and the footer. Page content goes in the slot. Keeps the home page and the
+// publication pages on one visual system (styles in ../styles/site.css).
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+const { title, description, ogImage = '/nicholas-major.jpg' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://nmajor.com');
+const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <meta name="theme-color" content="#faf9f5" />
+
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/logo.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="nav__inner">
+        <a href="/" class="nav__mark">
+          <img class="nav__logo" src="/logo.svg" width="26" height="26" alt="" />
+          <span>Nicholas Major</span>
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="/writing" class="nlink">Writing</a>
+          <a href="/takes" class="nlink">Takes</a>
+          <a href="/#about" class="nlink">About</a>
+          <a href="/#work" class="nlink nlink--muted">Work with me</a>
+          <a href="/#subscribe" class="pill">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer id="work" class="foot">
+      <div class="foot__inner">
+        <a href="/#work" class="foot__work">I also help companies actually do this. <span class="accent">How I help →</span></a>
+        <span class="foot__meta">© 2026 Nicholas Major · Lisbon</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* nav lockup: logo mark + wordmark */
+  .nav__mark { display: inline-flex; align-items: center; gap: 10px; }
+  .nav__logo { display: block; border-radius: 6px; flex: none; }
+</style>

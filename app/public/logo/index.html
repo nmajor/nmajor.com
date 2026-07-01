@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nmajor.com — logo mark candidates</title>
+<style>
+  :root { --paper: #faf9f5; --red: #e5391f; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #1c1d21;
+    color: #e8e8ea;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 40px;
+  }
+  h1 { font-size: 20px; font-weight: 800; margin: 0 0 4px; }
+  p.sub { margin: 0 0 32px; color: #9a9aa2; font-size: 13px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #26272c;
+    border: 1px solid #34353b;
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .name {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffb3a6;
+    margin: 0 0 16px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 18px;
+  }
+  .sizes { display: flex; align-items: flex-end; gap: 20px; }
+  .swatch { text-align: center; }
+  .swatch img { display: block; image-rendering: auto; }
+  .swatch .cap { font-size: 10px; color: #8a8a92; margin-top: 6px; }
+  .s128 img { width: 128px; height: 128px; }
+  .s64 img { width: 64px; height: 64px; }
+  .s32 img { width: 32px; height: 32px; }
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .lockup img { width: 40px; height: 40px; display: block; }
+  .lockup .wm {
+    color: #1a1a1a;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+  .favrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: fit-content;
+    margin-top: 12px;
+  }
+  .favrow img { width: 16px; height: 16px; }
+  .favrow span { color:#555; font-size: 11px; }
+</style>
+</head>
+<body>
+  <h1>nmajor.com — monogram mark candidates</h1>
+  <p class="sub">Brand red #e5391f · white N · rounded-square tile · vector geometry (no fonts). Judge favicon-size (32px &amp; 16px) legibility.</p>
+  <div class="grid" id="grid"></div>
+
+  <script>
+    const cands = ["n-a","n-b","n-c","n-d","n-e","n-f"];
+    const grid = document.getElementById("grid");
+    for (const c of cands) {
+      const src = c + ".svg";
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <p class="name">${src}</p>
+        <div class="row sizes">
+          <div class="swatch s128"><img src="${src}" alt="${c}"><div class="cap">128px</div></div>
+          <div class="swatch s64"><img src="${src}" alt="${c}"><div class="cap">64px</div></div>
+          <div class="swatch s32"><img src="${src}" alt="${c}"><div class="cap">32px favicon</div></div>
+        </div>
+        <div class="lockup">
+          <img src="${src}" alt="${c}">
+          <span class="wm">Nicholas Major</span>
+        </div>
+        <div class="favrow">
+          <img src="${src}" alt="${c}">
+          <span>16px browser-tab size</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  </script>
+</body>
+</html>

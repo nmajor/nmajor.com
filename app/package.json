@@ -9,7 +9,10 @@
     "deploy:only": "wrangler deploy"
   },
   "dependencies": {
-    "astro": "^5.7.0"
+    "@astrojs/rss": "^4.0.19",
+    "astro": "^5.7.0",
+    "markdown-it": "^14.2.0",
+    "sanitize-html": "^2.17.5"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"

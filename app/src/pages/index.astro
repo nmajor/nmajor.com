@@ -1,278 +1,152 @@
 ---
-// nmajor.com home — direction 4a ("Clean paper + black block · Archivo"),
-// designed by Nick in Claude Design (project "AI Profile Redesign") and
-// implemented here 1:1. Max contrast: paper hero, black subscribe block,
-// vermillion (#e5391f) as the sharp accent.
+// nmajor.com home — direction 4a. Nav/footer/head come from Base; this page owns
+// the hero, about, listing blocks, and the subscribe card. Content (essays, takes)
+// is pulled from the collections — the home page shows the latest of each.
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { monthYear, readingMinutes, relativeShort } from '../lib/format';
 
-const essays = [
-  {
-    date: 'Jun 2026', read: '6 min read',
-    title: 'Banning AI is the risk, not the safeguard',
-    blurb: 'Forbid the official tool and people just use it in the dark — on personal accounts, with no rules and no record. Here’s the version that actually keeps data safe.',
-  },
-  {
-    date: 'May 2026', read: '5 min read',
-    title: 'Build-versus-buy broke, and AI broke it',
-    blurb: 'The two costs that made building irrational — money and time — just fell to near zero, even for people who don’t write code. The least controversial question in enterprise IT no longer has a settled answer.',
-  },
-  {
-    date: 'Apr 2026', read: '4 min read',
-    title: 'The single most useful limit you can put on an AI',
-    blurb: 'It isn’t what the model can see. It’s where it’s allowed to send what it sees — the line between a bad afternoon and a breach.',
-  },
-];
+const allEssays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+const featured = allEssays.find((e) => e.data.featured) ?? allEssays[0];
+const latestEssays = allEssays.slice(0, 3);
 
-const takes = [
-  { when: '2d ago', text: 'Agentifying a bad process just burns tokens — you’ve built a faster, more expensive way to make slop.' },
-  { when: '4d ago', text: 'If a new hire can’t run the process from the page, neither can an AI.' },
-  { when: '1w ago', text: '“Just add AI to what we already do” is why AI disappoints. The return shows up when you redesign the work.' },
-  { when: '1w ago', text: 'The dangerous breach isn’t the clever break-in. It’s the door left open by accident.' },
-  { when: '2w ago', text: 'Better models make a vague process worse, not better — the small losses compound into slop.' },
-];
+const takes = (await getCollection('takes', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 5);
 
-const readers = 650;
+const heroMinutes = readingMinutes(featured.body, featured.data.readingMinutes);
+const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nicholas Major — plain-English AI for people who run things</title>
-    <meta name="description" content="Nicholas Major writes plain-English, honest takes on where AI actually fits in a business — and where it doesn’t. Eleven years building software; now helping non-technical leaders." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="page">
-      <!-- ===== NAV ===== -->
-      <header class="nav">
-        <div class="nav__inner">
-          <a href="/" class="nav__mark">Nicholas Major</a>
-          <nav class="nav__links" aria-label="Primary">
-            <a href="#writing" class="nlink">Writing</a>
-            <a href="#takes" class="nlink">Takes</a>
-            <a href="#about" class="nlink">About</a>
-            <a href="#work" class="nlink nlink--muted">Work with me</a>
-            <a href="#subscribe" class="pill">Subscribe</a>
-          </nav>
-        </div>
-      </header>
-
-      <!-- ===== HERO ===== -->
-      <section class="hero">
-        <div class="eyebrow">This week I’m arguing</div>
-        <h1 class="hero__h1">Banning AI is the risk, <span class="accent">not the safeguard.</span></h1>
-        <p class="hero__p">Forbid the official tool and people just use it in the dark — on personal accounts, no rules, no record. I’ll show you the version that actually keeps data safe.</p>
-        <div class="hero__cta">
-          <a href="#writing" class="btn">Read the argument →</a>
-          <span class="hero__meta">6 min · Jun 2026</span>
-        </div>
-      </section>
-
-      <!-- ===== WHO ===== -->
-      <section id="about" class="who">
-        <div class="who__inner">
-          <img class="photo" src="/nicholas-major.jpg" width="112" height="112" alt="Nicholas Major" />
-          <p class="who__bio">I’m Nicholas — eleven years building software, from Bluehost’s data center to StreamYard and Carebit, plus four years teaching Rails. Now I help people who <span class="accent accent--strong">don’t write code</span> figure out where AI actually fits, and where it very much doesn’t. I write about what I find, honestly — including the parts I’m still unsure about.</p>
-        </div>
-      </section>
-
-      <!-- ===== ESSAYS ===== -->
-      <section id="writing" class="block">
-        <div class="block__head">
-          <h2 class="block__title">Latest essays</h2>
-          <a href="#" class="block__all">All writing →</a>
-        </div>
-        <div class="rows">
-          {essays.map((e) => (
-            <a href="#" class="erow">
-              <span class="erow__meta">{e.date}<br />{e.read}</span>
-              <span class="erow__main">
-                <span class="erow__title">{e.title}</span>
-                <span class="erow__blurb">{e.blurb}</span>
-              </span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <!-- ===== TAKES ===== -->
-      <section id="takes" class="block block--takes">
-        <div class="block__head">
-          <h2 class="block__title">Latest takes</h2>
-          <a href="#" class="block__all">All takes →</a>
-        </div>
-        <div class="rows">
-          {takes.map((t) => (
-            <a href="#" class="trow">
-              <span class="trow__text">{t.text}</span>
-              <span class="trow__when">{t.when}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <!-- ===== SUBSCRIBE ===== -->
-      <section id="subscribe" class="sub">
-        <div class="sub__card">
-          <div class="sub__left">
-            <div class="eyebrow">The newsletter</div>
-            <h2 class="sub__h2">Get the essays in your inbox.</h2>
-            <p class="sub__p">Plain-English AI for people who run things. One email, only when there’s something worth your time.</p>
-          </div>
-          <div class="sub__right">
-            <form class="sub__form" id="subForm">
-              <input class="sub__input" name="email" type="email" required placeholder="you@company.com" aria-label="Email address" />
-              <button class="sub__btn" type="submit">Subscribe</button>
-            </form>
-            <div class="sub__done" id="subDone" hidden>
-              <div class="sub__doneTitle">You’re on the list.</div>
-              <div class="sub__doneSub">Check your inbox to confirm — talk soon.</div>
-            </div>
-            <div class="sub__count">Join {readers}+ readers. Unsubscribe anytime.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== WORK + FOOTER ===== -->
-      <footer id="work" class="foot">
-        <div class="foot__inner">
-          <a href="#" class="foot__work">I also help teams make this transition — <span class="accent">how I help →</span></a>
-          <span class="foot__meta">© 2026 Nicholas Major · Lisbon</span>
-        </div>
-      </footer>
+<Base
+  title="Nicholas Major · plain-English AI for people who run things"
+  description="Nicholas Major writes plain, honest takes on where AI actually fits in a business, and where it doesn't. Eleven years building software, now helping people who don't write code."
+>
+  <!-- ===== HERO (the featured essay) ===== -->
+  <section class="hero">
+    <div class="eyebrow">This week I'm arguing</div>
+    <h1 class="hero__h1">
+      {featured.data.heroTitleLead
+        ? (<>{featured.data.heroTitleLead}<span class="accent">{featured.data.heroTitleAccent}</span></>)
+        : featured.data.title}
+    </h1>
+    <p class="hero__p">{featured.data.heroLede ?? featured.data.summary}</p>
+    <div class="hero__cta">
+      <a href={`/writing/${featured.id}/`} class="btn">Read the argument →</a>
+      <span class="hero__meta">{heroMeta}</span>
     </div>
+  </section>
 
-    <style is:global>
-      html, body { margin: 0; }
-      ::selection { background: #e5391f; color: #fff; }
-    </style>
+  <!-- ===== WHO ===== -->
+  <section id="about" class="who">
+    <div class="who__inner">
+      <img class="photo" src="/nicholas-major.jpg" width="112" height="112" alt="Nicholas Major" />
+      <p class="who__bio">I'm Nicholas. Eleven years building software, from Bluehost's data center to StreamYard and Carebit, plus four years teaching Rails. Now I help people who <span class="accent accent--strong">don't write code</span> figure out where AI actually fits, and where it very much doesn't. I write about what I find, honestly, including the parts I'm still unsure about.</p>
+    </div>
+  </section>
 
-    <style>
-      .page {
-        --paper:#faf9f5; --ink:#14120f; --panel:#f2f0e8;
-        --line:rgba(20,18,15,.1); --line2:rgba(20,18,15,.12);
-        --muted:#9a9284; --muted2:#6d685e; --body:#4a453c; --accent:#e5391f;
-        background: var(--paper);
-        color: var(--ink);
-        font-family: 'Archivo', system-ui, sans-serif;
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
-      }
-      .accent { color: var(--accent); }
-      .accent--strong { font-weight: 700; }
-      .eyebrow {
-        font-family: ui-monospace, Menlo, monospace;
-        font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
-        color: var(--accent);
-      }
+  <!-- ===== ESSAYS ===== -->
+  <section id="writing" class="block">
+    <div class="block__head">
+      <h2 class="block__title">Latest essays</h2>
+      <a href="/writing" class="block__all">All writing →</a>
+    </div>
+    <div class="rows">
+      {latestEssays.map((e) => (
+        <a href={`/writing/${e.id}/`} class="erow">
+          <span class="erow__meta">{monthYear(e.data.pubDate)}<br />{readingMinutes(e.body, e.data.readingMinutes)} min read</span>
+          <span class="erow__main">
+            <span class="erow__title">{e.data.title}</span>
+            <span class="erow__blurb">{e.data.summary}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
 
-      /* nav */
-      .nav {
-        position: sticky; top: 0; z-index: 50;
-        background: rgba(250,249,245,.9);
-        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--line);
-      }
-      .nav__inner {
-        max-width: 1120px; margin: 0 auto;
-        padding: 16px clamp(20px, 5vw, 48px);
-        display: flex; align-items: center; justify-content: space-between;
-        gap: 20px; flex-wrap: wrap;
-      }
-      .nav__mark { font-weight: 900; font-size: 20px; letter-spacing: -.02em; text-decoration: none; color: inherit; }
-      .nav__links { display: flex; align-items: center; gap: clamp(18px, 3vw, 30px); font-size: 14px; font-weight: 500; }
-      .nlink { text-decoration: none; color: var(--body); }
-      .nlink--muted { color: var(--muted); }
-      .nlink:hover { color: var(--accent); }
-      .pill { background: var(--accent); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 13px; }
-      .pill:hover { opacity: .9; }
+  <!-- ===== TAKES ===== -->
+  <section id="takes" class="block block--takes">
+    <div class="block__head">
+      <h2 class="block__title">Latest takes</h2>
+      <a href="/takes" class="block__all">All takes →</a>
+    </div>
+    <div class="rows">
+      {takes.map((t) => (
+        <div class="trow">
+          <span class="trow__text">{t.data.text}</span>
+          <span class="trow__when">{relativeShort(t.data.pubDate)}</span>
+        </div>
+      ))}
+    </div>
+  </section>
 
-      /* hero */
-      .hero { max-width: 1120px; margin: 0 auto; padding: clamp(56px,9vw,96px) clamp(20px,5vw,48px) clamp(52px,7vw,72px); }
-      .hero .eyebrow { display: block; margin-bottom: 24px; }
-      .hero__h1 { margin: 0; font-size: clamp(44px,7.6vw,82px); line-height: .95; letter-spacing: -.04em; font-weight: 900; max-width: 15ch; }
-      .hero__p { margin: 28px 0 0; max-width: 56ch; font-size: clamp(17px,1.6vw,19px); line-height: 1.55; color: var(--body); }
-      .hero__cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 36px; }
-      .btn { background: var(--accent); color: #fff; text-decoration: none; padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; }
-      .btn:hover { opacity: .9; }
-      .hero__meta { font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted); }
+  <!-- ===== SUBSCRIBE ===== -->
+  <section id="subscribe" class="sub">
+    <div class="sub__card">
+      <div class="sub__left">
+        <div class="eyebrow">The newsletter</div>
+        <h2 class="sub__h2">Get the essays in your inbox.</h2>
+        <p class="sub__p">Plain-English AI for people who run things. One email, only when there's something worth your time.</p>
+      </div>
+      <div class="sub__right">
+        <form class="sub__form" id="subForm">
+          <input class="sub__input" name="email" type="email" required placeholder="you@company.com" aria-label="Email address" />
+          <button class="sub__btn" type="submit">Subscribe</button>
+        </form>
+        <div class="sub__done" id="subDone" hidden>
+          <div class="sub__doneTitle">You're on the list.</div>
+          <div class="sub__doneSub">Check your inbox to confirm. Talk soon.</div>
+        </div>
+        <div class="sub__count">Unsubscribe anytime. No spam, no hype.</div>
+      </div>
+    </div>
+  </section>
 
-      /* who */
-      .who { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-      .who__inner { max-width: 1120px; margin: 0 auto; padding: clamp(32px,4vw,40px) clamp(20px,5vw,48px); display: flex; gap: clamp(20px,3vw,28px); align-items: center; flex-wrap: wrap; }
-      .photo {
-        flex: none; width: 112px; height: 112px; border-radius: 16px;
-        border: 1px solid rgba(229,57,31,.35);
-        object-fit: cover; display: block;
-      }
-      .who__bio { margin: 0; font-size: clamp(16px,1.55vw,17.5px); line-height: 1.6; flex: 1; min-width: 280px; color: #3a352e; font-weight: 500; }
+  <style>
+    /* hero */
+    .hero { max-width: var(--wrap); margin: 0 auto; padding: clamp(56px,9vw,96px) clamp(20px,5vw,48px) clamp(52px,7vw,72px); }
+    .hero .eyebrow { display: block; margin-bottom: 24px; }
+    .hero__h1 { margin: 0; font-size: clamp(44px,7.6vw,82px); line-height: .95; letter-spacing: -.04em; font-weight: 900; max-width: 15ch; }
+    .hero__p { margin: 28px 0 0; max-width: 56ch; font-size: clamp(17px,1.6vw,19px); line-height: 1.55; color: var(--body); }
+    .hero__cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 36px; }
+    .hero__meta { font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted); }
 
-      /* blocks (essays / takes) */
-      .block { max-width: 1120px; margin: 0 auto; padding: clamp(48px,6vw,64px) clamp(20px,5vw,48px) clamp(36px,4vw,44px); }
-      .block--takes { padding-top: clamp(12px,2vw,16px); padding-bottom: clamp(48px,6vw,60px); }
-      .block__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
-      .block--takes .block__head { margin-bottom: 8px; }
-      .block__title { margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -.02em; }
-      .block__all { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 700; }
-      .block__all:hover { opacity: .8; }
-      .rows { display: flex; flex-direction: column; }
+    /* who */
+    .who { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .who__inner { max-width: var(--wrap); margin: 0 auto; padding: clamp(32px,4vw,40px) clamp(20px,5vw,48px); display: flex; gap: clamp(20px,3vw,28px); align-items: center; flex-wrap: wrap; }
+    .photo { flex: none; width: 112px; height: 112px; border-radius: 16px; border: 1px solid rgba(229,57,31,.35); object-fit: cover; display: block; }
+    .who__bio { margin: 0; font-size: clamp(16px,1.55vw,17.5px); line-height: 1.6; flex: 1; min-width: 280px; color: #3a352e; font-weight: 500; }
 
-      .erow { display: flex; gap: clamp(20px,3vw,34px); padding: 26px 0; border-top: 1px solid var(--line2); text-decoration: none; color: inherit; flex-wrap: wrap; }
-      .rows .erow:last-child { border-bottom: 1px solid var(--line2); }
-      .erow__meta { flex: none; width: 104px; font-family: ui-monospace, monospace; font-size: 11.5px; color: var(--muted); padding-top: 6px; line-height: 1.5; }
-      .erow__main { flex: 1; min-width: 260px; }
-      .erow__title { display: block; font-size: clamp(22px,2.4vw,27px); font-weight: 800; line-height: 1.12; letter-spacing: -.025em; }
-      .erow__blurb { display: block; margin-top: 9px; font-size: 15.5px; line-height: 1.55; color: var(--muted2); max-width: 64ch; }
-      .erow:hover .erow__title { color: var(--accent); }
+    /* subscribe */
+    .sub { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px,5vw,48px) clamp(44px,5vw,52px); }
+    .sub__card { background: var(--ink); color: var(--paper); border-radius: 24px; padding: clamp(38px,5vw,56px) clamp(28px,4vw,48px); display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; }
+    .sub__left { flex: 1; min-width: 280px; }
+    .sub__left .eyebrow { display: block; margin-bottom: 14px; }
+    .sub__h2 { margin: 0; font-size: clamp(30px,4vw,42px); font-weight: 900; letter-spacing: -.03em; line-height: 1; max-width: 16ch; }
+    .sub__p { margin: 16px 0 0; font-size: 16px; line-height: 1.55; color: #a9a396; max-width: 46ch; }
+    .sub__right { flex: none; width: min(360px, 100%); }
+    .sub__form { display: flex; flex-direction: column; gap: 10px; }
+    .sub__form[hidden] { display: none; }
+    .sub__input { background: #221f1a; border: 1px solid rgba(255,255,255,.18); border-radius: 11px; padding: 15px 16px; color: var(--paper); font-family: inherit; font-size: 15px; outline: none; }
+    .sub__input:focus-visible { border-color: var(--accent); }
+    .sub__btn { background: var(--accent); color: #fff; border: none; border-radius: 11px; padding: 15px 26px; font-family: inherit; font-weight: 800; font-size: 15px; cursor: pointer; }
+    .sub__btn:hover { opacity: .9; }
+    .sub__done { border: 1px solid rgba(229,57,31,.5); border-radius: 11px; padding: 20px; background: rgba(229,57,31,.08); }
+    .sub__doneTitle { font-weight: 800; font-size: 16px; color: var(--accent); }
+    .sub__doneSub { margin-top: 6px; font-size: 14px; color: #a9a396; }
+    .sub__count { margin-top: 14px; font-size: 13px; color: #8f887a; }
+  </style>
 
-      .trow { display: flex; gap: 20px; align-items: baseline; justify-content: space-between; padding: 19px 0; border-top: 1px solid var(--line2); text-decoration: none; color: inherit; }
-      .rows .trow:last-child { border-bottom: 1px solid var(--line2); }
-      .trow__text { flex: 1; font-size: clamp(17px,1.8vw,19px); font-weight: 600; line-height: 1.4; letter-spacing: -.01em; }
-      .trow__when { flex: none; font-family: ui-monospace, monospace; font-size: 12px; color: var(--accent); }
-      .trow:hover .trow__text { color: var(--accent); }
-
-      /* subscribe */
-      .sub { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px) clamp(44px,5vw,52px); }
-      .sub__card { background: var(--ink); color: var(--paper); border-radius: 24px; padding: clamp(38px,5vw,56px) clamp(28px,4vw,48px); }
-      .sub__card > * { }
-      .sub__card { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; }
-      .sub__left { flex: 1; min-width: 280px; }
-      .sub__left .eyebrow { display: block; margin-bottom: 14px; }
-      .sub__h2 { margin: 0; font-size: clamp(30px,4vw,42px); font-weight: 900; letter-spacing: -.03em; line-height: 1; max-width: 16ch; }
-      .sub__p { margin: 16px 0 0; font-size: 16px; line-height: 1.55; color: #a9a396; max-width: 46ch; }
-      .sub__right { flex: none; width: min(360px, 100%); }
-      .sub__form { display: flex; flex-direction: column; gap: 10px; }
-      .sub__form[hidden] { display: none; }
-      .sub__input { background: #221f1a; border: 1px solid rgba(255,255,255,.18); border-radius: 11px; padding: 15px 16px; color: var(--paper); font-family: inherit; font-size: 15px; outline: none; }
-      .sub__input:focus-visible { border-color: var(--accent); }
-      .sub__btn { background: var(--accent); color: #fff; border: none; border-radius: 11px; padding: 15px 26px; font-family: inherit; font-weight: 800; font-size: 15px; cursor: pointer; }
-      .sub__btn:hover { opacity: .9; }
-      .sub__done { border: 1px solid rgba(229,57,31,.5); border-radius: 11px; padding: 20px; background: rgba(229,57,31,.08); }
-      .sub__doneTitle { font-weight: 800; font-size: 16px; color: var(--accent); }
-      .sub__doneSub { margin-top: 6px; font-size: 14px; color: #a9a396; }
-      .sub__count { margin-top: 14px; font-size: 13px; color: #8f887a; }
-
-      /* footer */
-      .foot { border-top: 1px solid var(--line); }
-      .foot__inner { max-width: 1120px; margin: 0 auto; padding: 24px clamp(20px,5vw,48px); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
-      .foot__work { color: #3a352e; text-decoration: none; font-weight: 600; }
-      .foot__work:hover { color: var(--accent); }
-      .foot__meta { font-family: ui-monospace, monospace; font-size: 12px; }
-    </style>
-
-    <script is:inline>
-      // Prototype subscribe: mirror the design's success state. Not wired to
-      // Buttondown yet — that's the next build step (own newsletter + scoped key).
-      const f = document.getElementById('subForm');
-      if (f) f.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = f.email.value.trim();
-        if (!email) return;
-        f.hidden = true;
-        document.getElementById('subDone').hidden = false;
-      });
-    </script>
-  </body>
-</html>
+  <script is:inline>
+    // Prototype subscribe: mirror the design's success state. Not wired to
+    // Buttondown yet (that's the next build step: own newsletter + scoped key).
+    const f = document.getElementById('subForm');
+    if (f) f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!f.email.value.trim()) return;
+      f.hidden = true;
+      document.getElementById('subDone').hidden = false;
+    });
+  </script>
+</Base>

@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { relativeShort } from '../../lib/format';
+
+const takes = (await getCollection('takes', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+---
+<Base
+  title="Takes · Nicholas Major"
+  description="Short, opinionated takes on shipping AI in real companies. No hype, by Nicholas Major."
+>
+  <header class="phead">
+    <div class="eyebrow">Takes</div>
+    <h1 class="phead__title">Takes</h1>
+    <p class="phead__sub">Shorter than an essay, sharper than a tweet. What I think, in one line, before it grows into a piece.</p>
+  </header>
+
+  <section class="block" style="padding-top: 0;">
+    <div class="rows">
+      {takes.map((t) => (
+        <div class="trow">
+          <span class="trow__text">{t.data.text}</span>
+          <span class="trow__when">{relativeShort(t.data.pubDate)}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

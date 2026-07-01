@@ -1,23 +1,23 @@
 ---
 title: The bottleneck didn't disappear. It moved to you.
-summary: "AI made producing the work cheap, so the constraint moved to the part it can't do: a person understanding and owning what ships. That shift is most of what \"AI budgets up, returns flat\" really is."
+summary: "AI made producing the work cheap, so the bottleneck moved to the one step it can't do: a person checking the output and standing behind it. Skip that step to go faster and all you get is work nobody owns."
 pubDate: 2026-07-14
 author: Nicholas Major
 draft: true
 readingMinutes: 4
 ---
 
-Last year a group of experienced programmers did real work on their own projects, half of it with AI tools and half without. With the AI, they took 19% longer. The part that stays with me: they were sure the AI had sped them up by about 20%. [METR ran it as a controlled study](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/), and the distance between what the developers felt and what the stopwatch said is the most useful thing I've read about AI all year.
+More than [1,600 court filings](https://www.damiencharlotin.com/hallucinations/) have been caught citing cases the AI invented, and the lawyers who filed them are getting fined and thrown off their cases. The tool wrote the brief in seconds. Checking it and standing behind it was still the job, and that part never got faster. Even the people best equipped to catch AI's mistakes miss them: tested on their own code, [experienced developers came out 19% slower with AI](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) while being sure they were about 20% faster.
 
-I write software with these tools every day, and even I was surprised. The AI produces the code in seconds. But I still have to read it, understand it, decide whether it's right, and put my name on it. That part didn't get faster. It got heavier, because now there's more output to check. The typing was never my bottleneck. Owning what I ship is.
+There's a rule from the factory floor that explains both, and most of the disappointing AI numbers with them. Eli Goldratt built a theory of management on it in *The Goal*, and *The Phoenix Project* later carried the same idea to teams that run everything except factories: any improvement you make somewhere other than the bottleneck is an illusion. Speed up a step that wasn't the constraint and the system as a whole doesn't get faster. The work just piles up in front of whatever the real bottleneck is.
+
+AI is very good at speeding up one part of almost any job: producing the work. It turns a blank page into a draft, or a stack of data into a first-pass answer, in seconds. It is much weaker at the step that comes next, where a person has to check the output and own it. So in most companies the bottleneck didn't disappear. It moved onto whoever signs off on the result, and that step didn't get faster. It got heavier, because now there is more to check.
 
 That's most of the story behind the "AI budgets are up but returns are flat" headlines. The fix follows from it.
 
-## Automating a step doesn't remove the bottleneck
+## Automation always did this
 
-It moves it. In 1983, before any of this, the researcher Lisanne Bainbridge wrote up what she called the [ironies of automation](https://humanfactors101.com/2020/05/24/the-ironies-of-automation/): automate the easy parts of a job and the human is left with the hard part, the judgment about whether the machine got it right and what to do when it didn't. Automation doesn't delete the difficult work. It concentrates it.
-
-Operations people know the same idea as the theory of constraints. Speed up a step that wasn't your constraint and the system doesn't get faster; the work just stacks up in front of whatever the real bottleneck is. AI is good at speeding up the making of things. So the constraint slides to the next step, and that step is almost always a person deciding whether the output is good and being accountable for it.
+None of this is new. In 1983, the researcher Lisanne Bainbridge described the [ironies of automation](https://humanfactors101.com/2020/05/24/the-ironies-of-automation/): automate the easy parts of a job and you leave the person with the hard part, the judgment about whether the machine got it right and what to do when it didn't. The difficult work doesn't disappear. It concentrates. That is Goldratt's rule wearing different clothes. AI automates the making of things, so the constraint slides to the one step it can't do, a person being accountable for the result.
 
 ## Why the numbers look flat
 
@@ -31,6 +31,10 @@ This isn't a software problem. Watch where the bottleneck goes in any operation.
 
 A radiology AI flags more possible findings, faster. In one real deployment it put a [median of 239 alerts in front of each radiologist](https://arxiv.org/html/2601.13379v1), and the alert almost always arrived after the doctor had already opened the case. The reading still ends with a human signature. More flags, same number of people who can stand behind a diagnosis. The same shape holds anywhere a decision carries weight: an AI can draft the underwriting call or the loan decision, but someone still has to own it, and that capacity is the ceiling, not the drafting.
 
+## The tempting shortcut
+
+There is a way to make AI genuinely faster: stop checking its work. Skip the reading and the sign-off, and ship whatever it produces. That is the one move that truly clears the new bottleneck, and it is the exact move behind those 1,600 sanctioned briefs and most of the workslop. But that checking is the quality itself. It is the step where a person makes the output true and takes responsibility for it, and those two turn out to be the same act. Remove the person who owns the result and all you have sped up is the production of work nobody stands behind, which costs more downstream than it ever saved.
+
 ## What the companies with returns actually did
 
 Here's the part that should change what you do Monday. The companies getting real value aren't the ones with a better model. McKinsey's surveys keep finding the strongest predictor of AI reaching the bottom line is whether a company [redesigned the workflow](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai) instead of bolting AI onto the old one. And when Gartner studied 350 companies, the ones chasing returns purely through headcount cuts got [limited returns; the value came from making people more productive](https://fortune.com/2026/05/11/ai-automation-layoffs-gartner-study-roi/), not replacing them.
@@ -39,4 +43,4 @@ The boring version works. Allianz's UK arm gave its underwriters an assistant tr
 
 So before you write off an AI project, find where your bottleneck went. If you sped up how fast the work gets produced and left the person who has to check it and sign off just as buried, you don't have a failed pilot. You have a faster machine feeding the same jam.
 
-The programmers in that study weren't wrong that the AI was quick. They were wrong about what the job was. It was never the typing. It's owning what ships, and no model does that part for you.
+The way out runs through that person. Point AI at the work in front of the bottleneck, and give whoever owns the result more room to do the one thing a model can't: judge whether the work is right and put their name on it. That judgment is the job now. The drafting AI sped up was never really the point.

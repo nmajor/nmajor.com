@@ -73,7 +73,7 @@ const readers = 650;
       <!-- ===== WHO ===== -->
       <section id="about" class="who">
         <div class="who__inner">
-          <div class="photo" role="img" aria-label="Portrait of Nicholas Major — placeholder">Drop your photo</div>
+          <img class="photo" src="/nicholas-major.jpg" width="112" height="112" alt="Nicholas Major" />
           <p class="who__bio">I’m Nicholas — eleven years building software, from Bluehost’s data center to StreamYard and Carebit, plus four years teaching Rails. Now I help people who <span class="accent accent--strong">don’t write code</span> figure out where AI actually fits, and where it very much doesn’t. I write about what I find, honestly — including the parts I’m still unsure about.</p>
         </div>
       </section>
@@ -204,9 +204,8 @@ const readers = 650;
       .who__inner { max-width: 1120px; margin: 0 auto; padding: clamp(32px,4vw,40px) clamp(20px,5vw,48px); display: flex; gap: clamp(20px,3vw,28px); align-items: center; flex-wrap: wrap; }
       .photo {
         flex: none; width: 112px; height: 112px; border-radius: 16px;
-        border: 1px solid rgba(229,57,31,.35); background: var(--paper);
-        display: grid; place-items: center; text-align: center;
-        font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .04em; color: var(--muted);
+        border: 1px solid rgba(229,57,31,.35);
+        object-fit: cover; display: block;
       }
       .who__bio { margin: 0; font-size: clamp(16px,1.55vw,17.5px); line-height: 1.6; flex: 1; min-width: 280px; color: #3a352e; font-weight: 500; }
 

@@ -1,0 +1,891 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/sdWzshPN0kvAHJQb1J2P/NKHPjE</id>
+  <title>arXiv Query: search_query=cat:cs.SE OR cat:cs.HC OR cat:cs.IR OR cat:cs.MA&amp;id_list=&amp;start=0&amp;max_results=30</title>
+  <updated>2026-06-30T13:14:21Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.SE+OR+(cat:cs.HC+OR+(cat:cs.IR+OR+cat:cs.MA))&amp;start=0&amp;max_results=30&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:totalResults>94561</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30610v1</id>
+    <title>PyMETA: A Benchmark Dataset for Hierarchical Student Code Error Classification with Python-Interpreter-Based Labels</title>
+    <updated>2026-06-29T17:45:36Z</updated>
+    <link href="https://arxiv.org/abs/2606.30610v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30610v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>With the advancement of Large Language Models (LLMs), code error detection has extended beyond traditional IDE diagnostics to context-sensitive debugging in educational scenarios. However, existing approaches lack large-scale datasets, multi-error analysis, and unified error taxonomies. To address this, we introduce PyMETA, a large-scale Python code error classification dataset of 48,646 student submissions, with single-error labels for all samples and a diagnostic subset of 97 expert-annotated multi-error samples. The dataset uses a three-level hierarchical taxonomy, from a binary error/no-error split down to 14 fine-grained error types grounded in Python's official exception hierarchy. We evaluate multi-level classification tasks on two finetuned models and four LLMs with prompting, comparing their classification performance and runtime cost. For multi-error prompting, the best model, Gemini 2.5 Pro, achieves 81.8% macro F1 under the "contains" criterion. We observe that: 1) prompted LLMs still underperform finetuned smaller models; 2) models exhibit significant disparities across error types; 3) most LLMs over-classify code as Logic Error, with GPT-3.5 showing the highest Logic Error Overprediction Rate and Gemini 2.5 Pro the lowest. Our work establishes a data foundation and provides insights for LLM-based code error research.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T17:45:36Z</published>
+    <arxiv:comment>23 pages, 15 figures, 23 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Chuyue Li</name>
+    </author>
+    <author>
+      <name>Ziqi Tang</name>
+    </author>
+    <author>
+      <name>Jingyi Wang</name>
+    </author>
+    <author>
+      <name>Yu Wu</name>
+    </author>
+    <author>
+      <name>Kazuma Hashimoto</name>
+    </author>
+    <author>
+      <name>Lingyu Gao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30590v1</id>
+    <title>Concept Catalyst: Exploring Scrutable Interfaces to Structure K-12 Teacher Interactions with Generative AI</title>
+    <updated>2026-06-29T17:33:28Z</updated>
+    <link href="https://arxiv.org/abs/2606.30590v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30590v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Purpose: This paper explores how to align AI-based tools with teachers' classroom needs by using scrutable interfaces -- interfaces that link an easily manipulable knowledge representation to an underlying AI model, so users can change the system's outputs without understanding its details. It provides an in-depth discussion and example of a scrutable interface that structures teachers' interactions with generative AI. This study aims to expand how and where scrutable interfaces are used in AI-based tools to support teachers, who have not been historically targeted in the design of scrutable systems.
+  Design/Methodology/Approach: This paper presents the design and evaluation of Concept Catalyst, an AI-based tool with a scrutable interface, created to support teachers' reflection while using generative AI for curriculum development. It presents the findings from an exploratory study using Wizard-of-Oz testing with middle and high school engineering teachers, resulting in 10 depth interviews lasting 55 minutes on average. Screen/audio recordings and the classroom content teachers produced during the session were also collected.
+  Findings: The paper provides empirical insights about how scrutable interfaces can positively structure teachers' interactions with generative AI models when creating classroom content. Findings suggest that scrutable interfaces can help teachers reflect on their teaching practices while improving efficacy, efficiency, and motivation when using AI.
+  What is original/value of the paper: This paper explores an identified need to support teachers' classroom practices and needs when using generative AI. It extends the consideration of scrutable interfaces in two ways: to support teachers as users (not just students) and to structure interactions with generative AI models.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T17:33:28Z</published>
+    <arxiv:comment>11 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Gennie Mansi</name>
+    </author>
+    <author>
+      <name>Sunni Newton</name>
+    </author>
+    <author>
+      <name>Roxanne Moore</name>
+    </author>
+    <author>
+      <name>Meltem Alemdar</name>
+    </author>
+    <author>
+      <name>Mark Riedl</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30561v1</id>
+    <title>The Human Creativity Benchmark</title>
+    <updated>2026-06-29T16:59:46Z</updated>
+    <link href="https://arxiv.org/abs/2606.30561v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30561v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern AI evaluation frameworks treat evaluator disagreement as noise to be resolved. In creative domains, professional disagreement reflects genuine differences in taste, not measurement error. We argue that evaluating creative AI requires preserving two distinct signals: convergence, where professionals align around shared best practices, and divergence, where individual taste legitimately varies. We present the Human Creativity Benchmark (HCB), a benchmark that operationalizes this separation by collecting pairwise preferences, scalar ratings on prompt adherence, usability, and visual appeal, and qualitative rationale from domain professionals. Across 15,000 professional judgments spanning five creative domains and three workflow phases (ideation, mockup, refinement), we find that convergence concentrates on verifiable dimensions like technical correctness and visual hierarchy, while divergence concentrates on taste-driven dimensions like aesthetic direction and conceptual risk. No model excels uniformly across all phases. Collapsing these signals into a single quality metric discards the most actionable information: where models must be correct versus where they should remain steerable.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T16:59:46Z</published>
+    <arxiv:comment>30 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Aspen Hopkins</name>
+    </author>
+    <author>
+      <name>Allison Nulty</name>
+    </author>
+    <author>
+      <name>Alexandria Minetti</name>
+    </author>
+    <author>
+      <name>Anoop Pakki</name>
+    </author>
+    <author>
+      <name>Angad Singh</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30555v1</id>
+    <title>Linguistic Firewall: Geometry as Defense in Multi-Agent Systems Routing</title>
+    <updated>2026-06-29T16:51:06Z</updated>
+    <link href="https://arxiv.org/abs/2606.30555v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30555v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The rapid integration of Large Language Models (LLMs) has driven the evolution of Multi-Agent Systems (MAS), where specialized agents collaborate to execute complex workflows. Effective orchestration in these environments requires robust routing mechanisms to efficiently allocate tasks to the most suitable agent. However, existing routers fundamentally rely on unverified proxies, ranging from textual self-descriptions to static surrogate representations, to gauge an agent's competence. This reliance on non-empirical data creates a critical gap between an agent's projected profile and its actual operational capabilities, introducing severe security vulnerabilities. Malicious agents can easily misrepresent their proficiencies or harbor covert backdoors that evade both standard external analysis and static representation-learning techniques. In this work, we introduce ANTAP (Automatic Non-Textual Agent Picker), an evaluation-driven routing architecture that discards indirect proxies in favor of active capability testing. By dynamically querying agents to ascertain their true competencies empirically, ANTAP distills performance into fixed behavioral operators within a shared semantic space. At inference time, routing is performed via a purely non-textual algebraic projection, establishing a "linguistic firewall" that renders metadata-based attacks inexpressible. In our experiments, ANTAP achieves near-zero ASR against description-based injection attacks, compared to 67.3\% and above for the description-based router baseline. Against adaptive embedding attacks, ANTAP achieves substantially lower ASR than the embedding-based baseline, with a 20\% reduction, while remaining resilient to description manipulation by design.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T16:51:06Z</published>
+    <arxiv:comment>8 pages (9 more for appendix), 3 figures. Published at the Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Dvir Alsheich</name>
+    </author>
+    <author>
+      <name>Adar Peleg</name>
+    </author>
+    <author>
+      <name>Ben Hagag</name>
+    </author>
+    <author>
+      <name>Rom Himelstein</name>
+    </author>
+    <author>
+      <name>Amit Levi</name>
+    </author>
+    <author>
+      <name>Avi Mendelson</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30549v1</id>
+    <title>To Tab or Not to Tab: Measuring Critical Engagement in AI Code Completion Tools Using Behavioral Signals and Attention Checks</title>
+    <updated>2026-06-29T16:47:46Z</updated>
+    <link href="https://arxiv.org/abs/2606.30549v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30549v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>AI code completion tools, such as Github Copilot, provide students with code suggestions to help them write programs. However, recent qualitative studies suggest that students fail to critically evaluate these suggestions. We present Clover, a code completion tool that logs students' interactions with code suggestions and additionally offers attention checks to probe reflective engagement during programming tasks. We also develop a taxonomy of behavioral interaction metrics for AI-assisted programming, informed by literature. We analyzed relationships between interaction patterns, engagement with attention checks, and task performance. We observed that higher rates of tab accept were associated with lower attention check performance, while increased dwell time was associated with higher attention check performance. We conclude by discussing how programming process data and attention checks might support reflective engagement in AI-assisted programming.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T16:47:46Z</published>
+    <arxiv:comment>7 pages. Accepted for publication in the Proceedings of the 31st ACM Conference on Innovation and Technology in Computer Science Education (ITiCSE 2026), Madrid, Spain, July 10-15, 2026. Author's accepted manuscript</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>Proceedings of the 31st ACM Conference on Innovation and Technology in Computer Science Education (ITiCSE 2026), Madrid, Spain, July 10-15, 2026</arxiv:journal_ref>
+    <author>
+      <name>Jessica Hutchison</name>
+    </author>
+    <author>
+      <name>Ian Tyler Applebaum</name>
+    </author>
+    <author>
+      <name>Kenneth Angelikas</name>
+    </author>
+    <author>
+      <name>Kush Rakesh Patel</name>
+    </author>
+    <author>
+      <name>Phuoc Nguyen</name>
+    </author>
+    <author>
+      <name>Antonio Lazaro</name>
+    </author>
+    <author>
+      <name>Nicholas Rucinski</name>
+    </author>
+    <author>
+      <name>Rahad Arman Nabid</name>
+    </author>
+    <author>
+      <name>Stephen MacNeil</name>
+    </author>
+    <arxiv:doi>10.1145/3803400.3809394</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3803400.3809394" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30546v1</id>
+    <title>MAS-Lab: A Specification-Driven Validation Framework for Reliable Multi-Agent Systems</title>
+    <updated>2026-06-29T16:46:28Z</updated>
+    <link href="https://arxiv.org/abs/2606.30546v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30546v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The rapid emergence of LLM-based agentic frameworks has significantly reduced the cost of assembling multi-agent systems (MAS), enabling fast prototyping and exploration of agentic behaviors. However, systems built with current tooling remain ill-suited for reliable, evolvable, and production-grade deployment. In practice, MAS are often developed in an ad-hoc and imperative manner, with agent logic, orchestration, observability, and control tightly interwoven, little to no explicit system-level validation, and development workflows optimized for demonstrations rather than long-lived, governed operation. As a result, behavior observed during experimentation rarely constitutes reliable evidence of behavior in production.
+  In this paper, we introduce MAS-Lab, a specification-driven framework for principled development and experimental validation of multi-agent systems properties. MAS-Lab is designed to transform MAS from collections of scripts into engineered distributed systems by separating semantic intent from operational concerns, making behavior and control explicit, supporting reproducible experimentation, and preserving continuity across lifecycle stages. MAS-Lab consists of three layers: a declarative, framework-agnostic agentic specification layer (Spec); a stateful MAS Operating System that provides execution and control primitives plugged-in by design (MAS-OS); and a set of lab overlays with integrated observability and evaluation tools (Labs). Together, these components enable intent-based validation, principled system evolution, and a seamless transition to production-grade MAS.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T16:46:28Z</published>
+    <arxiv:comment>16 pages, 12 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Jordan Augé</name>
+    </author>
+    <author>
+      <name>Giovanna Carofiglio</name>
+    </author>
+    <author>
+      <name>Giulio Grassi</name>
+    </author>
+    <author>
+      <name>Jacques Samain</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30524v1</id>
+    <title>The Illusion of Agentic Complexity in README.md Generation: Evaluating Single-Agent vs. Multi-Agent RAG Systems</title>
+    <updated>2026-06-29T16:29:31Z</updated>
+    <link href="https://arxiv.org/abs/2606.30524v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30524v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) are increasingly utilized to automate several software engineering tasks, including code completion, code summarization, testing, and the generation of repository-level documentation. While Multi-Agent Systems (MAS) are often adopted to support such tasks under the premise that task decomposition improves performance, the impact of architectural complexity on practical efficiency remains under-examined. This study empirically evaluates Retrieval-Augmented Generation (RAG) dependent architectures for the generation of README files for GitHub repositories. In this work, we conducted a systematic comparison between a Single-Agent pipeline, a specialized MAS, and a developer-guided planning (DevPlan) variant, benchmarked against LARCH -- a state-of-the-art baseline -- and the original ground truth. Results indicate a critical architectural trade-off: the Single-Agent pipeline achieves lexical quality comparable to MAS while reducing token consumption by 86% and operating at twice the speed. In contrast, manual taxonomy analysis demonstrates that MAS achieves high structural consistency (98%), resolving formatting issues observed in single-agent approaches. Autonomous planning is identified as the primary pipeline bottleneck; incorporating lightweight developer-guided plans produces the highest overall documentation quality, surpassing all the analyzed configurations.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T16:29:31Z</published>
+    <arxiv:comment>The paper has been peer-reviewed and accepted to the 42nd International Conference on Software Maintenance and Evolution (ICSME 2026)</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Abu Saleh</name>
+    </author>
+    <author>
+      <name>Tesfay Welegebreal Tesfay</name>
+    </author>
+    <author>
+      <name>Phuong T. Nguyen</name>
+    </author>
+    <author>
+      <name>Juri Di Rocco</name>
+    </author>
+    <author>
+      <name>Muhammad Umar Zeshan</name>
+    </author>
+    <author>
+      <name>Davide Di Ruscio</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30479v1</id>
+    <title>COHORT: Collaborative Orchestration for Hardening via Offensive Replay on Emulated Topologies</title>
+    <updated>2026-06-29T15:39:05Z</updated>
+    <link href="https://arxiv.org/abs/2606.30479v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30479v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Mitigating an observed adversary in an enterprise network typically takes weeks of expert work: an analyst derives a mitigation tailored to that adversary, validates it without breaking production, and verifies it disrupts the specific attack. The procedure relies on expert judgment and cannot safely be exercised against the production network. COHORT is the first end-to-end framework to automate this procedure for deployable mitigations. A role-decomposed multi-agent LLM workflow proposes candidates, implements them as real device commands, and refines them through a critique loop, all on a high-fidelity GNS3 emulator running real vendor firmware (firewall, switch, router). Each candidate is evaluated by offensive replay: re-executing the original adversary on the mitigated network for a paired comparison against the unmitigated baseline, rather than the reward-signal or expert-judgment proxies used in prior simulation, hybrid, and configuration-generation work. Two further checks complement replay: a connectivity-regression check (LAN ping and internet HTTP probe) rejects mitigations that disrupt legitimate LAN or internet connectivity, and a cumulative evaluation stacks approved mitigations onto a persistent state to surface compound effects. Across three topologies and four attack scenarios (ransomware, lateral movement, DNS exfiltration, data theft), 46.7% of generated mitigations both disrupt the attack and preserve connectivity under replay, 4.4 times the rate of a single-agent baseline using the same model and tool access. A demo video walking through the framework is available with our released artifacts.</summary>
+    <category term="cs.NI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T15:39:05Z</published>
+    <arxiv:comment>Submitted to Journal of Network and Computer Applications</arxiv:comment>
+    <arxiv:primary_category term="cs.NI"/>
+    <author>
+      <name>Chen Frydman</name>
+    </author>
+    <author>
+      <name>Aviram Zilberman</name>
+    </author>
+    <author>
+      <name>Rubin Krief</name>
+    </author>
+    <author>
+      <name>Abed Showgan</name>
+    </author>
+    <author>
+      <name>Andres Murillo</name>
+    </author>
+    <author>
+      <name>Sekiya Motoyoshi</name>
+    </author>
+    <author>
+      <name>Asaf Shabtai</name>
+    </author>
+    <author>
+      <name>Yuval Elovici</name>
+    </author>
+    <author>
+      <name>Rami Puzis</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30473v1</id>
+    <title>Field Order Should Not Matter: Permutation-Invariant Embedding Model Fine-Tuning for Structured Metadata Retrieval</title>
+    <updated>2026-06-29T15:33:04Z</updated>
+    <link href="https://arxiv.org/abs/2606.30473v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30473v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study retrieval over catalogs of structured metadata, where each record is a small schema whose fields answer different kinds of query. Embedding a record with a text encoder first serializes its fields into a string, which forces a choice of field order. We show this choice, usually treated as an implementation detail, silently controls retrieval quality once the encoder is fine-tuned. A standard fine-tune loses 7.4 nDCG@10 points when the index is rebuilt under a different field order, because it reads absolute position instead of the field labels. We propose permutation-invariant fine-tuning ($\textbf{PI-FT}$), which serializes each record under a freshly sampled field order with random field dropout, so meaning binds to the labels rather than to position. The change is about two lines in the data loader; it costs negligible in-distribution accuracy and cuts the order-change penalty to 0.2 points. We study this in the discovery of development statistics, a catalog of nearly 10,000 indicators that should be searchable in many languages by a model small enough to self-host. As AI assistants and agents increasingly mediate access to public data and statistics, this retrieval step decides whether an answer is grounded in the right indicator or series, making discoverability a precondition for disseminating data through AI. Because usage logs cannot provide training signal for indicators no one has searched, we generate the queries instead. $\textbf{DevDataBench}$ is a fully LLM-generated benchmark of grounded, facet-targeted queries across 15 languages, covering every indicator for both training and evaluation. A fine-tuned 118M-parameter CPU encoder outperforms every zero-shot baseline, including $\texttt{text-embedding-3-large}$ (0.707 vs.\ 0.556 nDCG@10), with the largest gains in low-resource languages. We release the benchmark, pipeline, models, and a reusable PI-FT framework.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="econ.GN" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T15:33:04Z</published>
+    <arxiv:comment>26 pages, 7 figures, 12 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Aivin V. Solatorio</name>
+    </author>
+    <author>
+      <name>Olivier Dupriez</name>
+    </author>
+    <author>
+      <name>Rafael Macalaba</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30450v1</id>
+    <title>Minimal MMAO: A Resource-Closed-Loop Framework for Adaptive Metaheuristic Search</title>
+    <updated>2026-06-29T15:20:36Z</updated>
+    <link href="https://arxiv.org/abs/2606.30450v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30450v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents the Metabolic Multi-Agent Optimizer (MMAO) as an adaptive metaheuristic built around endogenous resource circulation. The central premise is that search intensity, exploration--exploitation balance, and lifecycle turnover should be induced by a shared metabolic controller rather than by separately attached schedules. We formulate MMAO through bounded private energy, a communal budget, normalized reward, continuous role adaptation, and resource-financed branching and pruning. The method is then instantiated in both continuous and discrete domains and evaluated on a matched small-scale suite including Sphere, Rastrigin, a synthetic Euclidean TSP, and two TSPLIB instances. The results show a consistent pattern: the same metabolic loop remains workable across domains, the discrete realization remains relatively stable under a compact design, and continuous refinement quality is the main cost of keeping the method lean. Taken together, these findings position MMAO as a coherent framework for adaptive heuristic design rather than a loose collection of operators.</summary>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T15:20:36Z</published>
+    <arxiv:primary_category term="cs.NE"/>
+    <author>
+      <name>Jinliang Xu</name>
+    </author>
+    <author>
+      <name>Liping Ma</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30441v1</id>
+    <title>Translating Natural Language to Strategic Temporal Specifications via LLMs</title>
+    <updated>2026-06-29T15:15:40Z</updated>
+    <link href="https://arxiv.org/abs/2606.30441v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30441v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A rigorous formalization of system requirements is a fundamental prerequisite for the verification of Multi-Agent Systems (MAS). However, writing correct formal specifications is well known as an error-prone, time-consuming, and expertise-intensive task. This difficulty is further accentuated in MAS, where requirements must capture strategic abilities and temporal objectives. At present, there is no established methodology for deriving MAS specifications from natural language. We present a framework for translating Natural Language descriptions of strategic requirements into well-formed ATL/ATL* formulas using Large Language Models (LLMs). Since no available dataset supports supervised learning for the NL-to-ATL/ATL* translation task, we create and curate a novel expert-validated dataset, employed for training and evaluating fine-tuned models. On a held-out test set, evaluated under the LLM judge that best agrees with expert annotations, in-domain fine-tuning of small open-weight models (3 - 7B parameters) matches strong few-shot proprietary API baselines. Our best fine-tuned system reaches 0.84 semantic accuracy, statistically on par with 0.86 for the strongest few-shot proprietary baseline, while keeping requirements on-premises. We further find that judge reliability is inverse to generator strength. The open-weight Llama-3.3-70B tracks human verdicts most closely, whereas the strongest proprietary models are the least reliable judges, over-rejecting faithful paraphrases of the reference. To assess the practical applicability of the generated specifications, we embed our tool to an existing strategic logics model checker, enabling non-expert users to specify strategic properties in natural language.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T15:15:40Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Marco Aruta</name>
+    </author>
+    <author>
+      <name>Francesco Improta</name>
+    </author>
+    <author>
+      <name>Vadim Malvone</name>
+    </author>
+    <author>
+      <name>Aniello Murano</name>
+    </author>
+    <author>
+      <name>Vladana Perlic</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30398v1</id>
+    <title>ENC-ODE: Event-level Neurodegenerative Modeling in Continuous Time with Neural ODEs</title>
+    <updated>2026-06-29T14:47:02Z</updated>
+    <link href="https://arxiv.org/abs/2606.30398v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30398v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Accurately predicting the temporal evolution of clinical biomarkers is crucial for the early diagnosis and management of neurodegenerative diseases such as Alzheimer's disease. However, this relies on longitudinal data to capture biomarker changes over time, which is often sparse and irregular due to the high cost, labor-intensive nature, and patient burden. To address these challenges, we propose ENC-ODE, an Event-level Neurodegenerative modeling in Continuous time with neural Ordinary Differential Equations. ENC-ODE predicts future biomarker evolution by modeling clinical events through diagnosis-conditioned continuous dynamics. A target-conditioned attention mechanism weights and aggregates event-level predictions for the target time and modality without history compression. Extensive experiments on Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset demonstrate that ENC-ODE outperforms representative sequence models while offering a scalable and neuroscientifically grounded solution for clinical support. The code is available at https://github.com/JardinDelSol/enc-ode.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T14:47:02Z</published>
+    <arxiv:comment>MICCAI 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yujee Song</name>
+    </author>
+    <author>
+      <name>Seunghun Baek</name>
+    </author>
+    <author>
+      <name>Guorong Wu</name>
+    </author>
+    <author>
+      <name>Won Hwa Kim</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30372v1</id>
+    <title>Using Large Language Models as Low-Cost Statistical Estimators for Human-Response Data</title>
+    <updated>2026-06-29T14:34:28Z</updated>
+    <link href="https://arxiv.org/abs/2606.30372v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30372v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Quantitative research across the social and behavioral sciences depends on human subject experiments that are expensive, slow, and subject to sampling bias. Here we show that pretrained large language models induce risk-equivalent estimators of conditional expectations under squared loss, establishing restricted functional risk equivalence: under squared loss, the LLM induces an estimator whose risk matches the Bayes optimal risk for squared-loss prediction of conditional expectations for any inference that depends on the data only through the conditional mean. We formalize the LLM as a misspecified functional estimator $T(\hat{P}_n)$ trained on i.i.d.\ data, decompose the estimation error into representation bias $ε_{\mathrm{rep}}$ and optimization error, and prove that under mild regularity conditions the LLM's expected error converges to the irreducible population variance plus the squared representation bias, with the representation bias bounded by the Pinsker inequality. The identifiability error $δ$ propagates into the effective bias, inflating the asymptotic risk floor. We establish restricted functional risk equivalence via a bidirectional Le Cam deficiency analysis: the forward deficiency vanishes asymptotically while the reverse deficiency is exactly zero. We provide finite-sample concentration bounds and a calibration protocol with explicit decision rules. The result is a precise, provable statement: a well-calibrated LLM achieves the Bayes-optimal risk for conditional-mean-dependent inference, bounded by explicit scope conditions. In practical applications, this means that under satisfied conditions and well-calibrated models, large language models can be used in many prediction and decision-making tasks that originally relied on human experiments, approximating near-optimal statistical inference at lower cost.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T14:34:28Z</published>
+    <arxiv:comment>37 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Haobo Yang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30324v1</id>
+    <title>How do Execution Features Improve Statistical Fault Localization? An Empirical Study</title>
+    <updated>2026-06-29T14:07:47Z</updated>
+    <link href="https://arxiv.org/abs/2606.30324v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30324v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Automated fault localization helps developers find faults in large code bases. Statistical fault localization (SFL) ranks suspicious lines from pass/fail spectra, but line execution alone misses information like data-flow, values, or branch conditions that explain why a failure occurs.
+  This study evaluates whether augmenting SFL with execution features improves localization accuracy and developer-oriented inspection effort. We extract execution features with EFDD for all Tests4Py subjects, train per-subject random forests, map importances to source lines, and combine the resulting weights with established SFL formulas. The evaluation measures reference-patch accuracy, line- and function-level effort, robustness, and feasibility using a confounder-adjusted mixed-effects model, corroborated by paired statistical tests and outcome-neutral quality checks.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T14:07:47Z</published>
+    <arxiv:comment>7 pages, 1 figure, 1 table, ICSME Registered Report</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Marius Smytzek</name>
+    </author>
+    <author>
+      <name>Andreas Zeller</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30317v1</id>
+    <title>MCP Server Architecture Patterns for LLM-Integrated Applications</title>
+    <updated>2026-06-29T13:59:41Z</updated>
+    <link href="https://arxiv.org/abs/2606.30317v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30317v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The Model Context Protocol (MCP), introduced by Anthropic in November 2024, defines a standardized interface for connecting large language models (LLMs) to external tools, data sources, and services. Within months of release, hundreds of community-built MCP servers appeared on GitHub, but no software-maintenance literature has yet described how the ecosystem is being structured in production. This industry experience paper catalogues five recurring MCP server architectural patterns observed across an enumerated corpus of fifteen independently developed servers (five production servers from the ANSYR voice AI platform plus ten public servers from the official MCP registry): Resource Gateway, Tool Orchestrator, Stateful Session Server, Proxy Aggregator, and Domain-Specific Adapter. Each pattern is described in the structured form of Gamma et al.: context, problem, solution, and consequences. We also document four anti-patterns and a set of cross-cutting concerns around authentication, versioning, and observability. The quantitative evaluation contributes three measurements: inter-rater reliability of the taxonomy across two independent LLM raters on 54 held-out servers (Cohen's kappa = 0.76), which also localizes three pattern-boundary ambiguities; transport overhead measured end-to-end on loopback and modeled for cross-host paths; and a tool-count study showing tool-selection accuracy drops below 90% between 10 and 15 tools per context for Claude Haiku 4.5 and between 20 and 30 tools for Sonnet 4. Code, corpus, and prompts are released as a replication package.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T13:59:41Z</published>
+    <arxiv:comment>9 pages, IEEEtran conference format, 2 figures. Extended version; a condensed version is under review at IEEE Software. Replication package: https://github.com/rodriguescarson/mcp-patterns-icsme2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Carson Rodrigues</name>
+    </author>
+    <author>
+      <name>Oysturn Vas</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30306v1</id>
+    <title>Always-OnAgents:A Survey of Persistent Memory, State, and Governance in LLMAgents</title>
+    <updated>2026-06-29T13:47:42Z</updated>
+    <link href="https://arxiv.org/abs/2606.30306v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30306v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Always-on agents are systems whose future behavior depends on durable state accumulated across earlier interactions. We treat them as persistent-state systems: the operative system includes retrievable memories, but also task ledgers, permissions, credentials, commitments, provenance and audit records, shared state, trigger conditions, and externally committed effects linked to those records. The survey reads the literature through six diagnostic axes for each state item, authority, scope, mutability, provenance, recoverability, and actionability, and through a lifecycle in which state is written, validated, organized, retrieved, acted upon, updated, forgotten, audited, and sometimes rolled back. Across a 435-work coded corpus, treated as a scoped map rather than an exhaustive census, the literature concentrates more heavily on accumulating and retrieving state than on governing, recovering, or relinquishing it. We therefore introduce the Always-On Evaluation Protocol (AOEP-v0), a pilot evaluation contract that makes these governance requirements concrete by scoring state mutation and recovery obligations rather than answer quality alone. The resulting agenda connects always-on agents to databases, distributed systems, formal methods, capability security, and machine unlearning.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T13:47:42Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Tianyu Ding</name>
+    </author>
+    <author>
+      <name>Aditya Nannapaneni</name>
+    </author>
+    <author>
+      <name>Bingfan Liu</name>
+    </author>
+    <author>
+      <name>Ling Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30304v1</id>
+    <title>Research Entity Extraction and Topic Detection from UKRI Grant Proposals</title>
+    <updated>2026-06-29T13:45:28Z</updated>
+    <link href="https://arxiv.org/abs/2606.30304v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30304v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents preliminary findings from a UKRI-funded Metascience project comparing three LLM-based approaches, GPT-4o, Mistral, and a bespoke algorithm, DSIT-Taxonomies, for extracting and classifying research entities from funding proposals. Our project "Tracking Stars and Unicorns" aims to identify early signals of emerging research areas to inform public investment. Our methodology employed a three-stage pipeline, leveraging Mistral for primary entity extraction and mapping against the OpenAlex Topics taxonomy. We evaluated our approach across 42 proposals' abstracts from different areas and observed that Mistral and GPT-4o produce comparable, high-quality entity sets with significant semantic overlap, outperforming the fragmented DSIT-Taxonomies approach. Crucially, the Mistral-based approach achieved superior topic classification accuracy (90.5%) compared to the full DSIT-Taxonomies pipeline (71.4%). We conclude that Mistral offers a high-performance, operationally efficient, and secure solution for large-scale analysis of sensitive grant data.</summary>
+    <category term="cs.DL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T13:45:28Z</published>
+    <arxiv:comment>Accepted at the STI-ENID Conference. Will be presented in September 2026 in Antwerp (Belgium)</arxiv:comment>
+    <arxiv:primary_category term="cs.DL"/>
+    <author>
+      <name>Xingran Ruan</name>
+    </author>
+    <author>
+      <name>Angelo Salatino</name>
+    </author>
+    <author>
+      <name>Rosa Filgueira</name>
+    </author>
+    <author>
+      <name>Kara Moraw</name>
+    </author>
+    <author>
+      <name>Alexandru Marcoci</name>
+    </author>
+    <author>
+      <name>Gemma Derrick</name>
+    </author>
+    <author>
+      <name>Sarah Callaghan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30294v1</id>
+    <title>Rehearsed Multi-Agent Live Product Demonstrations with Real-Time Voice Question Answering</title>
+    <updated>2026-06-29T13:36:51Z</updated>
+    <link href="https://arxiv.org/abs/2606.30294v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30294v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Live product demonstrations are a recurring, high-cost activity in software organizations: a human presenter must select features, dispatch the corresponding interactions on a running application, narrate them coherently, and answer questions in real time. Existing automation addresses only fragments -- generalist browser agents target instruction-conditioned task completion, and demo-video tools produce fixed MP4 artifacts that cannot be questioned and silently break under interface drift. We propose Rhetor, a multi-agent system that takes a running web application and its source-code repository as input and produces a rehearsed live demonstration with segment-synchronized narration and real-time voice question answering. The architectural contributions are a cross-modal feature representation that merges UI exploration with source-code analysis into features tagged with discrete focus tiers, a grounded scripter constrained to UI elements observed during exploration and dispatched through multi-strategy semantic locators, a pre-presentation rehearsal loop with explicit convergence and graceful degradation to narration-only segments, and a runtime synchronization invariant that ties each browser action to the audio-end event of its narration segment. Across six pipeline sessions on four deployed applications -- including the public-domain whiteboard application Excalidraw -- the rehearser's internal locator-firing rate (sigma-bar) spans 0.31-1.00 over 147 scripted actions; on the substantial workload (53 actions, full tier differentiation), sigma-bar is approximately 0.92, and on the public-domain reference point the locator-repair step drives convergence to sigma-bar = 1.00 at iteration 2. We additionally define a benchmark protocol of ten metrics across six application categories that would establish, beyond the case study, whether each design choice contributes positively.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T13:36:51Z</published>
+    <arxiv:comment>Preprint. 4 figures, 1 algorithm, 5 tables. Systems paper with a preliminary six-session case study on four deployed applications; full benchmark protocol proposed, corpus run to appear in a later revision</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Rahul Khedar</name>
+    </author>
+    <author>
+      <name>Mayank Malhotra</name>
+    </author>
+    <author>
+      <name>Avinash Karn</name>
+    </author>
+    <author>
+      <name>Mouli V</name>
+    </author>
+    <author>
+      <name>Prakhar Mehrotra</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30251v1</id>
+    <title>TACO: Tool-Augmented Credit Optimization for Agentic Tool Use</title>
+    <updated>2026-06-29T13:01:05Z</updated>
+    <link href="https://arxiv.org/abs/2606.30251v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30251v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Agentic multimodal models perform diverse operations on an image via code and reason over the returned view, an effective paradigm for fine-grained visual question answering. However, code operations can be useful, redundant, or misleading. Outcome-only rewards cannot precisely distinguish these cases, and existing process rewards either fail to attribute final correctness to individual tool calls, or require an external judge model. To address this, we introduce Tool-Augmented Credit Optimization (TACO), a GRPO variant for code-tool agents built on two coupled advantage channels. The first, Differential Answer-Probe Reward (DAPR), is a self-supervised, judge-free tool-contribution advantage that credits each tool call by its own effect on answering correctly. Probe tokens inserted into the model's reasoning elicit its predictions with and without the tool, and the difference in outcome reward is taken as the call's value: positive for a useful call, negative for a misleading one, and zero for one that changes nothing. This reuses the existing answer checker with no auxiliary judge, and, being a difference rather than an absolute probe score, is naturally robust to probe-hacking. The second is the outcome advantage from the final answer, distributed by Outcome-Gated Advantage Routing (OGAR): a parameter-free rule that, conditioned on the call's outcome, delivers this credit only to the responsible segments, suppressing wasted tool calls without any cost term. We train TACO through a two-stage SFT+RL pipeline. Extensive experiments across perception, reasoning, and general multimodal benchmarks show that it yields consistent accuracy gains and learns to invoke its tools only when they help.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T13:01:05Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Mingkuan Feng</name>
+    </author>
+    <author>
+      <name>Jinyang Wu</name>
+    </author>
+    <author>
+      <name>Hao Gu</name>
+    </author>
+    <author>
+      <name>Fangrui Lv</name>
+    </author>
+    <author>
+      <name>Ruihan Jin</name>
+    </author>
+    <author>
+      <name>Chuyuan Zhang</name>
+    </author>
+    <author>
+      <name>Zhengqi Wen</name>
+    </author>
+    <author>
+      <name>Jianhua Tao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30246v1</id>
+    <title>Clarus: Coordinating Autonomous Research Agents toward Web-Scale Scientific Collaboration</title>
+    <updated>2026-06-29T12:56:08Z</updated>
+    <link href="https://arxiv.org/abs/2606.30246v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30246v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Existing autonomous research agents can support parts of the research process, but most systems still treat research as either an isolated assistant task or a closed workflow. Therefore, autonomous science needs a collaboration infrastructure that coordinates projects, agents, and digital and physical resources. We identify this as a shift from code-centered execution loops to research-oriented collaboration processes, where questions, evidence, participants, and resources must be coordinated under uncertainty. In this framing, an agent may be an AI system, a human researcher, a team, a laboratory, or an organization-backed participant. To this end, we present Clarus, a collaboration infrastructure for coordinating autonomous research agents toward web-scale scientific collaboration. Clarus reformulates research as an open, auditable, attributable, and resource-aware multi-phase collaboration process. It defines a minimal project-agent-resource object model and organizes scientific collaboration through four layers including Research Application, Digital Collaboration, Physical Substrate, and Physical World. Core modules are implemented as pluggable mechanisms, allowing Clarus to adapt to task risk, collaboration structure, and resource constraints. Through a controlled paper-generation case study, we show that Clarus can organize a research goal into a traceable, reviewable, attributable, and accumulative collaboration network across phases, tasks, and participants. Together, the object model, collaboration protocol, trust mechanisms, and prototype validation provide an initial foundation for open research networks. Clarus is now available at clarus.holosai.io.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T12:56:08Z</published>
+    <arxiv:comment>28 pages, 7 figures, 1 table</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Zihan Guo</name>
+    </author>
+    <author>
+      <name>Zeyi Chen</name>
+    </author>
+    <author>
+      <name>Zhiyu Chen</name>
+    </author>
+    <author>
+      <name>Zicai Cui</name>
+    </author>
+    <author>
+      <name>Shuai Shao</name>
+    </author>
+    <author>
+      <name>Bo Huang</name>
+    </author>
+    <author>
+      <name>Zhi Han</name>
+    </author>
+    <author>
+      <name>Yuanyi Song</name>
+    </author>
+    <author>
+      <name>Yuan Yuan</name>
+    </author>
+    <author>
+      <name>Chenxi Zeng</name>
+    </author>
+    <author>
+      <name>Xiaohang Nie</name>
+    </author>
+    <author>
+      <name>Zhengxi Yu</name>
+    </author>
+    <author>
+      <name>Hanwen Zhu</name>
+    </author>
+    <author>
+      <name>Junwei Liao</name>
+    </author>
+    <author>
+      <name>Ming Zhou</name>
+    </author>
+    <author>
+      <name>Yang Li</name>
+    </author>
+    <author>
+      <name>Yuanjian Zhou</name>
+    </author>
+    <author>
+      <name>Weinan Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30238v1</id>
+    <title>Sparse Sensor Placement in Multi-Agent Reinforcement Learning Control of Rayleigh-Bénard Convection</title>
+    <updated>2026-06-29T12:49:35Z</updated>
+    <link href="https://arxiv.org/abs/2606.30238v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30238v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper studies sparse sensor placement for control of Rayleigh-Bénard convection with multi-agent reinforcement learning. We train dense expert policies with windowed observations and distill sparse apprentice policies by supervised learning with grouped regularization on encoder input weights. The framework combines ordered non-convex grouped regularization and iterative reweighted grouped regularization, and uses a grouping construction that enforces consistent pruning across overlapping observation windows. Experiments with fixed and varying initial conditions show that Multi-Agent Transformer policies train more stably than proximal policy optimization baselines, while sparse apprentices retain control behavior comparable to dense experts. Sparsity results are strong for the proposed grouped methods across settings, including maximal sparsity in all fixed-initial-condition setting variants and maximal or near-maximal sparsity in varying-initial-condition setting variants. As an additional proof of concept, training from learned minimal sensor sets reduces per-agent observation size from 360 to 12 and preserves the overall training trend in simulation while reducing data throughput. The results provide both an interpretable basis for identifying control-relevant spatial regions and state components, and a practical pathway toward sensor-efficient control under realistic hardware constraints.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T12:49:35Z</published>
+    <arxiv:comment>22 pages, 11 figures, 1 table</arxiv:comment>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Jan Stenner</name>
+    </author>
+    <author>
+      <name>Hans Harder</name>
+    </author>
+    <author>
+      <name>Sebastian Peitz</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30219v1</id>
+    <title>EvalSafetyGap: A Hybrid Survey and Conceptual Framework for LLM Evaluation-Safety Failures</title>
+    <updated>2026-06-29T12:33:06Z</updated>
+    <link href="https://arxiv.org/abs/2606.30219v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30219v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLM evaluation and AI safety face a shared measurement problem: benchmark scores, reward-model signals, and reported safety metrics can improve while the latent properties they are meant to represent remain difficult to verify. This paper combines a hybrid survey - a systematic search paired with narrative synthesis and separately tracked grey evidence - with a conceptual framework and a structured ten-model audit. The synthesis spans eight evidence streams: benchmark validity, dynamic evaluation, LLM-as-judge reliability, safety evaluation, jailbreak/refusal robustness, reward hacking, mechanistic interpretability, and governance/auditability, covering 2018-2026 evaluation-safety measurement work. We introduce EvalSafetyGap as an organizing hypothesis for comparing evaluation-side and alignment-side proxy failures under optimization pressure, using Goodhart's Law together with two constructs we develop here - an Instability Decomposition and an Alignment Trilemma - as tools for generating testable comparisons. The audit shows how conclusions shift when capability, behavioral safety, and governance are measured separately. In this sample (n = 10), the association between capability and sustained adversarial robustness is statistically indeterminate using the displayed Table 3 inputs (Pearson r = +0.232, p = 0.520), and the apparent open-closed safety gap is modest, driven mainly by governance and disclosure rather than behavioral robustness, and sensitive to how a single borderline model is classified; attempt-budget results are protocol dependent. Because the public evidence uses heterogeneous protocols, the audit is diagnostic rather than rank-generating. The contribution is a shared vocabulary and evidence map to support dynamic evaluation, transparent source reporting, multi-attempt safety measurement, and auditable alignment practice.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T12:33:06Z</published>
+    <arxiv:comment>67 pages, 8 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Buğra Alperen Uluırmak</name>
+    </author>
+    <author>
+      <name>Rifat Kurban</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30133v1</id>
+    <title>Query-Aware Spreading Activation for Multi-Hop Retrieval over Knowledge Graphs</title>
+    <updated>2026-06-29T11:10:19Z</updated>
+    <link href="https://arxiv.org/abs/2606.30133v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30133v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Retrieval-augmented generation built on knowledge graphs (Graph RAG) outperforms flat passage retrieval on multi-hop question answering by leveraging graph structure. In most existing systems, however, the question only sets the seed nodes; the subsequent traversal becomes "query-blind", depending solely on the graph structure. The exception is QAFD-RAG, which implements query-aware traversal via a flow-diffusion solver with combined edge re-weighting. This architecture requires loading the full graph into Python memory and an iterative solver with a variable number of iterations complicating integration with the graph database. We propose a spreading-activation method that achieves the same query-aware traversal with a single per-step semantic gate: the step weight is the cosine similarity between the candidate entity's description and the question, and the number of iterations is fixed. The whole retrieval procedure - seed mapping, propagation, top-K selection and context assembly - is expressed as a single Cypher query executed in one round-trip to Neo4j; the graph never leaves the database. On MuSiQue our method matches QAFD-RAG by exact match (32.80 vs 33.50) and outperforms the strongest purely-structural baseline in our comparison, HippoRAG, by 5.3 EM and 3.4 F1; on 2WikiMultiHopQA HippoRAG and QAFD-RAG retain an advantage due to their phrase-node architectures. An ablation with the gate disabled confirms that the gate is the source of a simultaneous F1 gain of 3.6 to 7.4 points and a retrieval-latency reduction by a factor of 1.5 to 4.9.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T11:10:19Z</published>
+    <arxiv:comment>Accepted for publication in Cybernetics and Systems Analysis (Springer). Not yet published</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Illia Makarov</name>
+    </author>
+    <author>
+      <name>Mykola Glybovets</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30093v1</id>
+    <title>Efficient Retrieval-Augmented Generation via Token Co-occurrence Graphs</title>
+    <updated>2026-06-29T10:29:51Z</updated>
+    <link href="https://arxiv.org/abs/2606.30093v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30093v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Retrieval-Augmented Generation (RAG) mitigates hallucinations in Large Language Models (LLMs) by grounding the generation process on external knowledge. However, standard RAG approaches struggle with multi-hop reasoning. While recent graph-based RAG methods improve the retrieval of interconnected chunks, they often rely on computationally expensive and error-prone LLM-based extraction pipelines. To address these issues, we propose TIGRAG (Token-Induced GraphRAG), an efficient graph-augmented RAG framework based on a token co-occurrence Knowledge Graph. TIGRAG directly models topological relationships between tokens using sliding-window co-occurrence statistics, thus enabling scalable graph construction. During inference, it combines graph-based semantic expansion and neural reranking to retrieve interconnected evidence for multi-hop reasoning. Specifically, it introduces an iterative entity-driven retrieval strategy that progressively expands the query using bridging entities extracted from previously retrieved contexts. We evaluated TIGRAG on three widely adopted multi-hop Question Answering (QA) benchmarks. Experimental results demonstrated that our framework consistently outperforms dense retrieval and graph-based RAG methods in both retrieval and downstream QA tasks, while substantially reducing indexing time, inference latency, and prompt footprint.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T10:29:51Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Gianluca Bonifazi</name>
+    </author>
+    <author>
+      <name>Christopher Buratti</name>
+    </author>
+    <author>
+      <name>Michele Marchetti</name>
+    </author>
+    <author>
+      <name>Federica Parlapiano</name>
+    </author>
+    <author>
+      <name>Giulia Quaglieri</name>
+    </author>
+    <author>
+      <name>Davide Traini</name>
+    </author>
+    <author>
+      <name>Domenico Ursino</name>
+    </author>
+    <author>
+      <name>Luca Virgili</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30035v1</id>
+    <title>Consensus Clustering of Free-Viewing Gaze Data: New Insights into Human-Information Interaction</title>
+    <updated>2026-06-29T09:33:16Z</updated>
+    <link href="https://arxiv.org/abs/2606.30035v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30035v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Free-viewing gaze data provides a rich, task-free window into human visual attention. Conventional exploratory data analysis of the data provides user attention patterns through fixations and areas of interest. However, despite the richness of this gaze data, its human-information interaction (HII) patterns are understudied. We address this gap using consensus clustering of gaze data with respect to users and stimulus characteristics. We present a novel end-to-end unsupervised ensemble learning system for consensus clustering of free-viewing gaze datasets, EnsembleGaze. With a goal of characterizing the user behavior and stimulus type, we propose a feature engineering step based on statistical descriptors of fixation-based distributions. EnsembleGaze involves consensus voting of selected clustering methods implemented on the feature vector to compute the co-association matrix. Using the separate consensus clustering of users and stimuli as a baseline, we further propose two high-dimensional clustering strategies for determining gaze clusters based on joint user and image characterization. They are consensus subspace clustering and spectral biclustering. Clustering performance is evaluated using selected standard metrics and is further interpreted through image-level properties. Our system provides a replicable method for the unsupervised analysis of fixation behavior in scene perception research. Our results show that image stimuli groupings are highly consistent across methods, reflecting a robust ambient-versus-focal viewing mode distinction, whereas user groupings are image-context-dependent, a structure that only biclustering and the two-step conditional approaches are architecturally capable of recovering. Testing on the publicly available datasets revealed dataset-specific patterns, with each offering complementary insights through distinct clustering strategies.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T09:33:16Z</published>
+    <arxiv:comment>31 pages, 10 figures, 8 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Beryl Gnanaraj</name>
+    </author>
+    <author>
+      <name>Jaya Sreevalsan-Nair</name>
+    </author>
+    <author>
+      <name>Saqib Alam Ansari</name>
+    </author>
+    <author>
+      <name>Maanasa Rajaraman</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.30001v1</id>
+    <title>SICAGE: Speaker-Independent Culture-Aware Gesture Generation using TED4C-L Dataset</title>
+    <updated>2026-06-29T09:11:15Z</updated>
+    <link href="https://arxiv.org/abs/2606.30001v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.30001v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent co-speech gesture generation methods often overlook cultural differences, limiting their effectiveness in human-agent interaction. Moreover, culture-conditioned models are rarely evaluated under speaker-disjoint splits, so apparent "cultural" behavior may be confounded with speaker-specific gesturing style. We introduce SICAGE, a modular framework for culture-aware co-speech gesture generation that conditions motion synthesis models on speaker-independent cultural representations. SICAGE learns these representations from audio and text by treating each speaker as a separate domain while imposing invariance across speakers. This encourages representations to remain culture-discriminative while reducing dependence on speaker identity. The resulting cultural embeddings condition a multimodal generator to produce culturally appropriate gestures. We instantiate this idea with two domain generalization approaches: adversarial learning and Fishr regularization. We further introduce ALaDiT, a real-time diffusion-based gesture generator designed to efficiently incorporate the learned cultural embeddings. To validate our method, we built TED4C-L, a 106-hour multimodal dataset of 764 TED speakers from four cultural groups. Experiments show that SICAGE improves motion realism, diversity, beat synchronization, semantic relevance, and cultural consistency.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T09:11:15Z</published>
+    <arxiv:comment>Accepted at ECCV 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Ariel Gjaci</name>
+    </author>
+    <author>
+      <name>Antonio Sgorbissa</name>
+    </author>
+    <author>
+      <name>Vittorio Murino</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.29991v1</id>
+    <title>Behind the Content: Wikipedia Mobile Views and Tourism Activity</title>
+    <updated>2026-06-29T09:03:03Z</updated>
+    <link href="https://arxiv.org/abs/2606.29991v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.29991v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This study examines whether open digital traces can provide interpretable, high-frequency indicators of local tourism activity. We argue that the device composition of Wikipedia attention helps distinguish situated information use from remote planning: mobile pageviews are more likely to reflect on-site, contemporaneous information needs, whereas desktop pageviews capture temporally diffuse interest. Linking daily Accor hotel room-nights to Wikipedia city-page traffic for 704 French communes from 2018 to 2025, we find that mobile pageviews are positively associated with same-day hotel demand and dominate desktop traffic in joint specifications. The relationship is stronger in leisure-oriented destinations and in places with higher Wikipedia visibility. A micro-validation using daily attendance at six cultural attractions in Orl{é}ans shows the same pattern: mobile pageviews predict same-day gate counts, while surrounding leads and lags are close to zero. The findings position mobile Wikipedia traffic as a transparent, replicable nowcasting signal for tourism activity.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T09:03:03Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <arxiv:journal_ref>31e Conf{é}rence de l'Association Information et Management, Association Information et Management, May 2026, Neuch{â}tel, Switzerland</arxiv:journal_ref>
+    <author>
+      <name>Lucas Eustache</name>
+    </author>
+    <author>
+      <name>Paul Favier</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.29970v1</id>
+    <title>From Extraction to Navigation: Progressive Retrieval with Indirectly Infinite Depth</title>
+    <updated>2026-06-29T08:47:17Z</updated>
+    <link href="https://arxiv.org/abs/2606.29970v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.29970v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern large-scale recommender retrieval is shifting from static similarity matching to dynamic item space navigation, framing retrieval as iterative goal-driven graph traversal. Conventional item-to-item (i2i) methods fall into the "interest tunnel" and fail to excavate deep user interests, while existing index-based retrieval suffers from persistent "search drift", caused by static entry nodes and fixed graph topologies unable to track shifting real-time user intent. To resolve the above defects, we present IID-Nav, a framework modeling retrieval as stateful autonomous graph exploration with three core contributions: (1) A goal-aware navigation policy substituting passive neighborhood expansion with active intent routing supervised by a target discriminator; (2) A recursive state evolution mechanism supporting Indirectly Infinite Depth (IID) via cross-request state reuse, which enables logical unlimited-depth graph traversal without linearly rising inference latency; (3) A trajectory-aligned training paradigm equipped with graph hard negative sampling to stabilize optimization over full navigation paths. Evaluations on billion-level industrial datasets show IID-Nav surpasses mainstream retrieval baselines under strict latency budgets. Empirical results verify that our method alleviates search drift remarkably and retains high precision for deep retrieval paths, offering an efficient, robust retrieval solution for industrial recommendation systems.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T08:47:17Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Linxiao Che</name>
+    </author>
+    <author>
+      <name>Shanshan Huang</name>
+    </author>
+    <author>
+      <name>Haitao Lu</name>
+    </author>
+    <author>
+      <name>Yijia Sun</name>
+    </author>
+    <author>
+      <name>Qiang Luo</name>
+    </author>
+    <author>
+      <name>Ruiming Tang</name>
+    </author>
+    <author>
+      <name>Han Li</name>
+    </author>
+    <author>
+      <name>Kun Gai</name>
+    </author>
+    <author>
+      <name>Guorui Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.29959v1</id>
+    <title>Know Before You Fetch: Calibrated Retrieval-Budget Allocation for Retrieval-Augmented Generation</title>
+    <updated>2026-06-29T08:36:33Z</updated>
+    <link href="https://arxiv.org/abs/2606.29959v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.29959v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Retrieval-augmented generation (RAG) typically retrieves a fixed number of passages for every query. This is wasteful when the reader already knows the answer, and it can be harmful when irrelevant or partially relevant passages distract the reader. We formulate adaptive RAG as calibrated retrieval-budget allocation: given a query, decide whether to answer closed-book, retrieve a compact context (k=1), retrieve a full context (k=5), or abstain. The contribution is a probability interface rather than a new raw uncertainty signal. We calibrate sequence log-probability and prefix-logit uncertainty signals into probabilities of correctness, then use these probabilities for graded context selection, selective abstention, and explicit latency/token trade-offs. Across core QA experiments on TriviaQA, Natural Questions, and MS MARCO, with auxiliary PopQA motivation and Qwen/Llama family checks, diagnostic out-of-fold calibration improves probability quality dramatically: for sequence log-probability, ECE drops from 0.275 to 0.062 on TriviaQA, 0.643 to 0.009 on NQ, and 0.711 to 0.031 on MS MARCO. Graded retrieval improves full-context and passage-budget frontiers for both our signal and TARG-style prefix entropy/margin, while retrieval-call AUC remains essentially tied with binary gating because k=1 is still a retrieval call. Held-out train/validation/test threshold experiments report deployable operating points. At matched-accuracy frontier operating points, a measured cost model reveals that gating is not universally faster: it increases latency by about 27% on Qwen3-8B but saves about 8% on Qwen3-32B. These results support a nuanced view of adaptive RAG: calibrated confidence is best understood as a reusable interface for allocating retrieval budget under task and system constraints.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T08:36:33Z</published>
+    <arxiv:comment>17 pages, 9 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Zhe Dong</name>
+      <arxiv:affiliation>University of Maine at Presque Isle</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Fang Qin</name>
+      <arxiv:affiliation>Stanford University</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Manish Shah</name>
+      <arxiv:affiliation>Independent Researcher</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Yicheng Wang</name>
+      <arxiv:affiliation>Independent Researcher</arxiv:affiliation>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.29957v1</id>
+    <title>SWE-Together: Evaluating Coding Agents in Interactive User Sessions</title>
+    <updated>2026-06-29T08:35:15Z</updated>
+    <link href="https://arxiv.org/abs/2606.29957v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.29957v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Most coding-agent benchmarks are static: an agent receives a complete task description up front and is judged only by its final code. Real coding assistance is interactive, with users clarifying goals, adding constraints, and correcting mistakes over multiple turns. We introduce SWE-Together, a multi-turn benchmark reconstructed from real user-agent coding sessions. To make real interactions verifiable, we curate 109 repository-level tasks from 11,260 recorded sessions, selecting sessions with recoverable repository states, clear user goals, and observable outcomes. To replay these interactions across agents, we build a reactive LLM-based user simulator that preserves the original users' intents and provides feedback when the coding agent's progress requires it. To evaluate agents as collaborators, we measure both final repository correctness and the number of corrective feedback turns required during the interaction. Experiments with frontier coding agents show that stronger agents generally achieve higher final success rates while requiring fewer interventions, suggesting an improved user experience.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-29T08:35:15Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yifan Wu</name>
+    </author>
+    <author>
+      <name>Zhuokai Zhao</name>
+    </author>
+    <author>
+      <name>Songlin Li</name>
+    </author>
+    <author>
+      <name>Ho Hin Lee</name>
+    </author>
+    <author>
+      <name>Jiacheng Zhu</name>
+    </author>
+    <author>
+      <name>Shirley Wu</name>
+    </author>
+    <author>
+      <name>Tianhe Yu</name>
+    </author>
+    <author>
+      <name>Serena Li</name>
+    </author>
+    <author>
+      <name>Lizhu Zhang</name>
+    </author>
+    <author>
+      <name>Xiangjun Fan</name>
+    </author>
+    <author>
+      <name>Shengzhi Li</name>
+    </author>
+  </entry>
+</feed>

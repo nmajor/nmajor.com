@@ -1,0 +1,17 @@
+{
+  "enabled": false,
+  "postingHourUTC": 15,
+  "channels": {
+    "personal": {
+      "integrationId": "cmnqcgkhk0001fb6tnkpl5bw8",
+      "settingsType": "linkedin",
+      "note": "Nick's OWN personal LinkedIn profile (Nicholas Major) — nmajor.com's reach + selling engine; every atomized repurposing post goes here. This integrationId is Nick's personal profile and is correct for nmajor."
+    },
+    "business": {
+      "integrationId": "",
+      "settingsType": "linkedin-page",
+      "autoApprovePreview": false,
+      "note": "PENDING — nmajor.com has no company page yet. The consultancy (the only commercial entity) is still TBD, so there is no business LinkedIn page to post to. integrationId is intentionally empty: the scheduler skips any channel with no integrationId, so nothing is ever posted here. When the consultancy page exists, set its integrationId (and decide on autoApprovePreview) to enable it."
+    }
+  }
+}

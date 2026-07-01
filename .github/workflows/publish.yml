@@ -1,0 +1,124 @@
+name: Publish
+
+# Scheduled publishing for nmajor.com (the "Actual Intelligence" newsletter).
+#
+# Runs daily at 14:00 UTC. The queue only promotes on the cadence weekday
+# (app/publishing.config.json -> cadence.weekday); the daily cadence exists so that
+# manually pinned future-dated essays also go live + get emailed on their day.
+#
+# Flow: promote top of queue -> build -> deploy to Cloudflare (the site updates with
+# the new article) -> email any live+approved+unsent essay via Buttondown ->
+# schedule that issue's approved LinkedIn posts -> commit the result back to the repo.
+#
+# Notifications: the scripts post green/amber/red to Discord; this workflow adds
+# a guaranteed red ping on ANY step failure, and pings the healthcheck on every
+# run (success or fail) so a stopped cron is detected independently.
+
+on:
+  schedule:
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Publish the top of the queue now, ignoring the cadence day'
+        type: boolean
+        default: false
+
+# Never let two publish runs overlap.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    env:
+      DISCORD_PUBLISH_WEBHOOK_URL: ${{ secrets.DISCORD_PUBLISH_WEBHOOK_URL }}
+      HEALTHCHECK_PING_URL: ${{ secrets.HEALTHCHECK_PING_URL }}
+      BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      POSTIZ_BASE_URL: ${{ secrets.POSTIZ_BASE_URL }}
+      POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Healthcheck start
+        if: ${{ env.HEALTHCHECK_PING_URL != '' }}
+        working-directory: .
+        run: curl -fsS -m 10 --retry 3 "${HEALTHCHECK_PING_URL%/}/start" || true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - run: npm ci
+
+      # Read-only: daily empty/low-queue alerts + a ~24h pre-publish heads-up.
+      # Never blocks a publish, so a hiccup here can't stop the real run.
+      - name: Queue status (alerts + ~24h preview)
+        continue-on-error: true
+        run: node scripts/preview-next.mjs
+
+      - name: Promote top of queue
+        id: promote
+        run: node scripts/publish-queue.mjs ${{ (github.event_name == 'workflow_dispatch' && inputs.force) && '--force' || '' }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Cloudflare
+        run: npx wrangler deploy
+
+      - name: Send newsletter
+        run: node scripts/send-newsletter.mjs
+
+      # Schedule LinkedIn posts for any newly-live issue. Live mode
+      # (linkedin.config.json enabled:true) pushes each approved post to Postiz
+      # as a scheduled post and stamps pushedAt (the idempotency lock). Only acts
+      # on posts Nick has approved; unmapped channels are skipped. continue-on-error
+      # so it can never affect the newsletter publish/deploy path. Stamps committed below.
+      - name: Schedule LinkedIn
+        continue-on-error: true
+        run: node scripts/schedule-linkedin.mjs
+
+      - name: Commit publish result
+        working-directory: .
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "publishing-bot"
+            git config user.email "publishing-bot@users.noreply.github.com"
+            git add -A
+            SLUG="${{ steps.promote.outputs.published_slug }}"
+            git commit -m "publish: ${SLUG:-scheduled run} [skip ci]"
+            git push
+          else
+            echo "No repo changes to commit."
+          fi
+
+      - name: Healthcheck success
+        if: ${{ success() && env.HEALTHCHECK_PING_URL != '' }}
+        working-directory: .
+        run: curl -fsS -m 10 --retry 3 "${HEALTHCHECK_PING_URL%/}" || true
+
+      - name: Notify failure
+        if: ${{ failure() }}
+        working-directory: .
+        run: |
+          if [ -n "${HEALTHCHECK_PING_URL}" ]; then
+            curl -fsS -m 10 "${HEALTHCHECK_PING_URL%/}/fail" || true
+          fi
+          if [ -n "${DISCORD_PUBLISH_WEBHOOK_URL}" ]; then
+            RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            curl -fsS -m 10 -H 'Content-Type: application/json' \
+              -d "{\"username\":\"Publishing\",\"embeds\":[{\"title\":\"Publish workflow failed\",\"description\":\"A step failed before publishing completed. Check the logs.\",\"color\":12131395,\"fields\":[{\"name\":\"Run\",\"value\":\"[workflow logs](${RUN_URL})\"}]}]}" \
+              "${DISCORD_PUBLISH_WEBHOOK_URL}" || true
+          fi

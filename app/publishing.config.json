@@ -1,0 +1,9 @@
+{
+  "cadence": {
+    "weekday": 2,
+    "hourUTC": 14
+  },
+  "queue": [],
+  "lowQueueThreshold": 1,
+  "lastPublishedAt": null
+}

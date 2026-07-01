@@ -4,9 +4,23 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
+    "dev": "astro dev",
     "build": "astro build",
+    "preview": "wrangler dev",
     "deploy": "bash deploy.sh",
-    "deploy:only": "wrangler deploy"
+    "deploy:only": "wrangler deploy",
+    "queue:lint": "node scripts/queue-lint.mjs",
+    "preview:next": "node scripts/preview-next.mjs",
+    "preview:next:dry": "node scripts/preview-next.mjs --dry-run",
+    "publish:queue": "node scripts/publish-queue.mjs",
+    "publish:queue:dry": "node scripts/publish-queue.mjs --dry-run",
+    "newsletter:send": "node scripts/send-newsletter.mjs",
+    "newsletter:send:dry": "node scripts/send-newsletter.mjs --dry-run",
+    "linkedin:lint": "node scripts/linkedin-lint.mjs",
+    "linkedin:schedule": "node scripts/schedule-linkedin.mjs",
+    "linkedin:schedule:dry": "node scripts/schedule-linkedin.mjs --dry-run",
+    "test": "node --test \"scripts/**/*.test.mjs\"",
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

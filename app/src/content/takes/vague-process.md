@@ -1,4 +1,4 @@
 ---
-text: "Better models make a vague process worse, not better — the small losses compound into slop."
-pubDate: 2026-06-17
+text: "Better models make this worse, not better. A strong model papers over a vague step until the small losses compound and the result quietly turns to slop."
+pubDate: 2026-06-26
 ---

@@ -174,9 +174,27 @@ audience; the consultancy is where the commercial conversation happens.
   from the About block). **Logo** (monogram mark `n-e`, red rounded tile + white N) and
   favicon wired via the shared `Base` layout. **Bio** finalized through the Institute's
   `writing-voice` skill + a 3-provider ICP focus group.
-- **Still TODO:** `/about` page (where the co-founder credential gets real context),
-  wire the newsletter form to Buttondown (own list, scoped key), a real first essay
-  (the panel's "proof" lever), then DNS cutover off Vercel.
+- **2026-07-01 — content + workflow moved over from the Institute.** Three articles that
+  were really Nick's own opinionated takes (mis-published on the neutral Institute, whose
+  newsletter had 0 subscribers) were **relocated here as real essays**: *Build-versus-buy
+  broke, and AI broke it*, *Banning AI is the risk, not the safeguard* (the featured hero
+  essay), and *Fix the process first. The AI is the last step.* — rendering at
+  `/writing/<slug>/`, byline Nicholas Major, real publish dates. The three earlier design
+  stubs were replaced/removed. **Takes expanded to 14**, atomized from those essays and
+  spaced one per day (2026-06-18 → 07-01). The **personal-brand content-creation workflow was
+  copied from the Institute and adapted** to nmajor's personal, opinionated, commercial-pull
+  positioning (dropping the Institute's neutral/firewall framing): the `content-discovery`,
+  `content-builder`, `content-repurposing`, `writing-voice`, `hooks`, and `icp-focus-group`
+  skills in `.skills/`, their backing `research/` reports, and the **publishing pipeline**
+  (`app/scripts/`: newsletter send, scheduled-publish queue, LinkedIn scheduler; `npm test`
+  16/16 green). The LinkedIn atomizations for two of the essays came along in `app/linkedin/`.
+  Pipeline is in **shadow mode** and needs env wiring before it can send (see below).
+- **Still TODO:** `/about` page (where the co-founder credential gets real context);
+  wire the newsletter form to Buttondown on **nmajor's own scoped key** (`.env` needs
+  `BUTTONDOWN_API_KEY_NMAJOR` — never the Institute's key; the send script and content-builder
+  already expect it); optionally take the LinkedIn pipeline out of shadow mode (needs
+  `POSTIZ_*` + a consultancy company-page integration for the currently-disabled `business`
+  channel); then DNS cutover off Vercel.
 
 ## Plans
 
@@ -210,10 +228,15 @@ Build order (reusing the Institute blueprint where it fits):
   has its own domain yet, or whether nmajor.com temporarily hosts a light "work with
   me" page until it does. (We chose "personal brand pulls to a separate consultancy" as
   the model; revisit the interim if the consultancy site isn't ready at cutover.)
-- **Voice/style:** does the Institute's `writing-voice` skill apply verbatim here, or a
-  looser personal variant? The personal channel is meant to be *more* opinionated than
-  the neutral orgs, so likely a personal adaptation (keep the anti-hype core, allow a
-  stronger first-person POV). Decide before drafting.
+- **Voice/style (decided 2026-07-01):** nmajor.com runs its **own personal adaptation** of
+  the `writing-voice` skill (copied from the Institute and reframed): Nick's first-person,
+  more-opinionated voice with tasteful commercial pull, keeping the anti-hype core and the
+  blacklist. `voice-nick.md` (built from Nick's blog) is the target voice.
+- **Retire the content machinery on the Institute?** The personal-brand workflow (skills +
+  LinkedIn pipeline) was **copied** here, not deleted from the Institute. Open whether to now
+  strip it from the Institute or keep a neutral-research variant there. Also: the 3 removed
+  Institute URLs currently 404 — decide whether to 301 them to their new `nmajor.com/writing/`
+  homes (they had 0 subscribers and little/no external reach, so low urgency).
 
 ## Notes
 

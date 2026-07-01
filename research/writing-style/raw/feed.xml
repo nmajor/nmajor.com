@@ -1,0 +1,4149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Nick Major</title>
+        <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app</link>
+        <description>Your blog description</description>
+        <lastBuildDate>Sun, 19 Apr 2026 11:28:37 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Nick Major</title>
+            <url>nmajor-site-lpp6q6c6a-tekomics.vercel.app/favicon.ico</url>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app</link>
+        </image>
+        <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[Home Lab Kubernetes Cluster: PostgreSQL with CloudNativePG]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg</guid>
+            <pubDate>Tue, 22 Apr 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+This is the fifth post in my home lab Kubernetes series. With [Longhorn providing persistent storage](/posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage), I can finally run databases. And since pretty much every web app I build uses PostgreSQL, I wanted a solid way to run Postgres on the cluster.
+
+Enter [CloudNativePG](https://cloudnative-pg.io/) — a Kubernetes operator that manages the full lifecycle of PostgreSQL clusters. It handles provisioning, high availability, failover, connection pooling, monitoring, and more. Instead of manually setting up Postgres in a container and hoping for the best, you just define a `Cluster` resource in YAML and the operator takes care of the rest.
+
+## Installing the Operator
+
+Since I'm using [Flux CD](/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd) for GitOps, installing CloudNativePG is just adding some YAML files to the repo.
+
+First, the Helm repository source:
+
+```yaml
+# infrastructure/sources/cloudnativepg.yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: cloudnativepg
+  namespace: flux-system
+spec:
+  interval: 1h
+  url: https://cloudnative-pg.github.io/charts
+```
+
+Then the HelmRelease:
+
+```yaml
+# infrastructure/cloudnativepg/release.yaml
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudnativepg
+  namespace: cloudnativepg-system
+spec:
+  interval: 1h
+  timeout: 5m
+  chart:
+    spec:
+      chart: cloudnative-pg
+      version: "0.23.2"
+      sourceRef:
+        kind: HelmRepository
+        name: cloudnativepg
+        namespace: flux-system
+  values:
+    monitoring:
+      enablePodMonitor: true
+      enableServiceMonitor: true
+```
+
+Add the namespace, reference everything in the kustomization files, commit, push, and Flux takes care of the rest. The operator is now running in the cluster and ready to manage PostgreSQL instances.
+
+## The 9x Replication Discovery
+
+Here's where things got interesting.
+
+I had my default Longhorn storage class configured with 3 replicas — which makes sense for general use. Longhorn replicates each volume across 3 nodes so if one node goes down, your data is safe.
+
+Then I created a CloudNativePG cluster with 3 instances (1 primary + 2 replicas) as a test. CloudNativePG handles its own replication at the PostgreSQL level — streaming replication from the primary to the replicas, each with their own persistent volume.
+
+When I was looking at the Grafana dashboard that shows Longhorn volumes, I noticed there was a separate volume for each PostgreSQL instance. And each of those volumes had 3 Longhorn replicas.
+
+So my data was being replicated **9 times**. 3 Longhorn replicas x 3 PostgreSQL instances.
+
+That's... a lot. Especially on a home lab with 6TB of total storage across 3 nodes.
+
+## The Fix: Single-Replica Storage Class
+
+The solution was simple — create a separate Longhorn storage class specifically for database workloads that only keeps 1 replica:
+
+```yaml
+# infrastructure/longhorn/storageclass-single-replica.yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: longhorn-single-replica
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+parameters:
+  numberOfReplicas: "1"
+  staleReplicaTimeout: "2880"
+  fromBackup: ""
+  fsType: "ext4"
+```
+
+The reasoning: CloudNativePG already handles replication for high availability at the database level. If a node goes down, PostgreSQL fails over to a replica on a different node. Having Longhorn _also_ replicate each volume across nodes is redundant — it's just burning through disk space for no real benefit.
+
+I kept the default 3-replica storage class for everything else (general workloads, apps that don't have their own replication), but all database clusters now use `longhorn-single-replica`.
+
+## Deploying a PostgreSQL Cluster
+
+Here's what a real CloudNativePG cluster definition looks like. This is from one of the apps I'm running:
+
+```yaml
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: nocodb-postgres
+  namespace: nocodb
+spec:
+  instances: 2
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 5Gi
+    storageClass: longhorn-single-replica
+  monitoring:
+    enablePodMonitor: true
+  postgresql:
+    parameters:
+      max_connections: "100"
+      shared_buffers: "128MB"
+      work_mem: "4MB"
+      maintenance_work_mem: "32MB"
+      effective_cache_size: "512MB"
+  replicationSlots:
+    highAvailability:
+      enabled: true
+  bootstrap:
+    initdb:
+      database: nocodb
+      owner: nocodb
+      secret:
+        name: nocodb-postgres-credentials
+```
+
+A few things to highlight:
+
+- **`instances: 2`** — one primary, one replica. For a home lab this gives me high availability without going overboard.
+- **`storageClass: longhorn-single-replica`** — using our single-replica class so we don't double up on replication.
+- **`replicationSlots.highAvailability.enabled: true`** — ensures the replica stays in sync even if it temporarily falls behind.
+- **`bootstrap.initdb`** — creates the database and user on first boot, using credentials from a Kubernetes Secret.
+
+Commit this to the Flux repo and within a few minutes you have a running PostgreSQL cluster with streaming replication.
+
+## Connection Pooling with PgBouncer
+
+CloudNativePG also supports connection pooling through PgBouncer, which is great for web applications that might open a lot of short-lived database connections:
+
+```yaml
+apiVersion: postgresql.cnpg.io/v1
+kind: Pooler
+metadata:
+  name: nocodb-postgres-pooler
+  namespace: nocodb
+spec:
+  cluster:
+    name: nocodb-postgres
+  type: rw
+  instances: 2
+  monitoring:
+    enablePodMonitor: true
+  pgbouncer:
+    poolMode: session
+    parameters:
+      default_pool_size: "20"
+      max_client_conn: "100"
+```
+
+Your app connects to the pooler service instead of directly to PostgreSQL, and PgBouncer handles connection multiplexing.
+
+## Monitoring
+
+Since I have Prometheus and Grafana set up on the cluster, CloudNativePG integrates nicely with both via the `enablePodMonitor: true` and `enableServiceMonitor: true` settings. This gives me dashboards showing replication lag, connection counts, query throughput, and storage usage — which is how I discovered the 9x replication issue in the first place.
+
+## Current State
+
+I now have about 9 PostgreSQL databases running via CloudNativePG across various apps — NocoDB, Postiz, n8n, Coder, and a few of my own projects. All using `longhorn-single-replica` for storage. The operator handles failover, and Flux handles deployment. It's been rock solid.
+
+## Wrapping Up the Series
+
+This was the last major piece of infrastructure for my home lab cluster. Looking back at the whole journey — from unboxing HP EliteDesk minis to running production databases on Kubernetes — it's been a fantastic learning experience. The cluster is now running real applications, accessible from the internet through Cloudflare Tunnel, with GitOps managing the entire state.
+
+Was it overkill? Absolutely. Was it worth it? Also absolutely.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Home Lab Kubernetes Cluster: The Longhorn Storage Saga]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage</guid>
+            <pubDate>Fri, 18 Apr 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+This is the fourth post in my home lab Kubernetes series. With [Talos installed](/posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal) and [Flux CD managing the cluster](/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd), the next big piece is persistent storage. Without it, any data your apps create disappears when a pod restarts. Not great for databases.
+
+This post is a bit of a saga. I tried Longhorn, hit a wall, gave up, tried OpenEBS Mayastor, hit a different wall, realized my original problem was embarrassingly simple, and crawled back to Longhorn. If you want to skip the drama, jump to the [solution](#the-actual-fix). But I think the journey is worth sharing because debugging Kubernetes storage issues can feel like this sometimes.
+
+## Why Longhorn
+
+Each of my 3 worker nodes has a dedicated 2TB WD Blue SN580 NVMe drive for storage. With 3 nodes I can satisfy Longhorn's recommended 3 replicas for redundancy.
+
+I chose [Longhorn](https://longhorn.io/) with the v1 storage engine because v2 is still experimental and has some [steep resource requirements](https://documentation.suse.com/cloudnative/virtualization/v1.4/en/storage/longhorn-v2-data-engine.html) that don't make sense for a home lab.
+
+## First Problem: Missing iSCSI Tools
+
+After deploying Longhorn via Flux CD, the Longhorn manager pods immediately went into `CrashLoopBackOff`. The issue was that Longhorn requires the `iscsiadm` utility, which isn't included in Talos OS by default.
+
+The fix is to apply Talos [system extensions](https://www.talos.dev/v1.9/talos-guides/configuration/system-extensions/). I created an extensions config file:
+
+```yaml
+# extensions/longhorn.yaml
+customization:
+  systemExtensions:
+    officialExtensions:
+      - siderolabs/iscsi-tools
+      - siderolabs/util-linux-tools
+```
+
+Then submitted it to the Talos factory to get a custom installer image:
+
+```bash
+curl -X POST --data-binary @extensions/longhorn.yaml https://factory.talos.dev/schematics
+```
+
+Which returns an ID:
+
+```json
+{"id":"613e1592..."}
+```
+
+Then use that ID to upgrade each node:
+
+```bash
+talosctl upgrade --preserve \
+  --image factory.talos.dev/installer/613e1592...:v1.9.5 \
+  --nodes 192.168.10.51 \
+  --talosconfig talosconfig \
+  --endpoints 192.168.10.10
+```
+
+I ran this for every node, including the control plane nodes. I did have one upgrade command hang for about 20 minutes, but when I checked the node in a new terminal it was up and running with the extensions installed, so I just cancelled the command.
+
+Confirmed the extensions were installed:
+
+```bash
+❯ kubectl get node w1 --show-labels
+NAME   STATUS   ROLES    AGE   VERSION   LABELS
+w1     Ready    <none>   5d    v1.32.3   ...extensions.talos.dev/iscsi-tools=v0.1.6,extensions.talos.dev/util-linux-tools=2.40.4...
+```
+
+## Second Problem: Mounting the Storage Disks
+
+With the iSCSI tools in place, I needed to configure Talos to actually mount the 2TB storage drives. I added this to my worker patch files:
+
+```yaml
+machine:
+  kubelet:
+    extraMounts:
+      - destination: /data/volumes
+        type: bind
+        source: /data/volumes
+        options:
+          - bind
+          - rshared
+          - rw
+  disks:
+    - device: /dev/nvme1n1
+      partitions:
+        - mountpoint: /data/volumes
+```
+
+Applied it, and... the workers got stuck in `NotReady`:
+
+```bash
+❯ kubectl get node -A
+NAME   STATUS     ROLES           AGE     VERSION
+cp1    Ready      control-plane   6d22h   v1.32.3
+w1     NotReady   <none>          5d1h    v1.32.3
+w2     NotReady   <none>          4d19h   v1.32.3
+w3     Ready      <none>          4d17h   v1.32.3
+```
+
+The kubelet was stuck waiting for the container runtime:
+
+```
+EVENTS   [Waiting]: Waiting for service "cri" to be registered
+```
+
+I tried using stable disk IDs instead of `/dev/nvme1n1`:
+
+```yaml
+machine:
+  disks:
+    - device: /dev/disk/by-id/nvme-WD_Blue_SN580_2TB_245105803152
+      partitions:
+        - mountpoint: /data/volumes
+```
+
+Same result. I couldn't get a single worker to come up with the disk config applied.
+
+## Giving Up on Longhorn
+
+After days of troubleshooting, I gave up. I reverted the Talos extensions:
+
+```bash
+talosctl upgrade --preserve \
+  --image ghcr.io/siderolabs/installer:v1.9.5 \
+  --nodes 192.168.10.51 \
+  --talosconfig talosconfig \
+  --endpoints 192.168.10.10
+```
+
+Removing Longhorn itself was easy with Flux — just delete the Longhorn files and any references in the kustomization files, commit, and push. Then I cleaned up any leftovers:
+
+1. Check namespaces: `kubectl get ns` — make sure `longhorn-system` is gone
+2. Check CRDs: `kubectl get crd | grep longhorn.io` — should return nothing
+3. Check StorageClass: `kubectl get sc` — make sure `longhorn` is gone
+
+I also used `talosctl wipe disk` to clear any leftover formatting on the storage drives.
+
+## Trying OpenEBS Mayastor
+
+I pivoted to [OpenEBS Mayastor](https://openebs.io/) since Talos mentions it directly in [their storage documentation](https://www.talos.dev/v1.9/kubernetes-guides/configuration/storage/). It seemed like it would work better with Talos since it doesn't need iSCSI tools.
+
+I added the required config to my worker patches:
+
+```yaml
+machine:
+  sysctls:
+    vm.nr_hugepages: "1024"
+  nodeLabels:
+    openebs.io/engine: "mayastor"
+  kubelet:
+    extraMounts:
+      - destination: /var/local
+        type: bind
+        source: /var/local
+        options:
+          - bind
+          - rshared
+          - rw
+```
+
+And added `openebs` to the PodSecurity namespace exemptions in `controlplane.yaml`.
+
+But then the `openebs-io-engine` pods kept crashing with:
+
+```
+EAL: alloc_pages_on_heap(): couldn't allocate memory due to IOVA exceeding limits of current DMA mask
+EAL: alloc_pages_on_heap(): Please try initializing EAL with --iova-mode=pa parameter
+```
+
+After more troubleshooting, I started Googling what people were actually using for storage on their home labs. Longhorn kept coming up over and over. Which made me rethink what had actually gone wrong with Longhorn in the first place.
+
+The disk _mounting_ was the problem, not Longhorn itself. If I could solve that, Longhorn should work fine.
+
+## Crawling Back to Longhorn
+
+I pulled out a monitor and connected it directly to one of the stuck worker nodes. First, I noticed the boot order had changed — it was trying to network boot, then boot from the 2TB storage drive, then the OS drive. I fixed the boot order in the BIOS.
+
+Then in the Talos logs I saw this:
+
+```
+Error creating mount point directory /data/volumes: mkdir /data: read-only file system.
+```
+
+**Bingo.**
+
+## The Actual Fix
+
+The whole problem was that I'd chosen `/data/volumes` as the mount path, but `/data` is a read-only path in Talos. Talos is an immutable OS — most of the filesystem is read-only by design. The `/var` directory is one of the few writable areas.
+
+I changed the mount path to `/var/mnt/volumes`:
+
+```yaml
+machine:
+  kubelet:
+    extraMounts:
+      - destination: /var/mnt/volumes
+        type: bind
+        source: /var/mnt/volumes
+        options:
+          - bind
+          - rshared
+          - rw
+  disks:
+    - device: /dev/disk/by-id/nvme-WD_Blue_SN580_2TB_245105803152
+      partitions:
+        - mountpoint: /var/mnt/volumes
+```
+
+Applied it with a reboot:
+
+```bash
+talosctl apply-config --talosconfig talosconfig \
+  --nodes 192.168.10.51 --file worker.yaml \
+  --config-patch @patches/w1-patch.yaml \
+  --mode reboot --endpoints 192.168.10.10
+```
+
+And it worked:
+
+```bash
+❯ kubectl get nodes -o wide
+NAME   STATUS   ROLES           AGE     VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE         KERNEL-VERSION   CONTAINER-RUNTIME
+cp1    Ready    control-plane   8d      v1.32.3   192.168.10.11   <none>        Talos (v1.9.5)   6.12.18-talos    containerd://2.0.3
+cp2    Ready    control-plane   6d18h   v1.32.3   192.168.10.12   <none>        Talos (v1.9.5)   6.12.18-talos    containerd://2.0.3
+cp3    Ready    control-plane   6d18h   v1.32.3   192.168.10.13   <none>        Talos (v1.9.5)   6.12.18-talos    containerd://2.0.3
+w1     Ready    <none>          18h     v1.32.3   192.168.10.51   <none>        Talos (v1.9.5)   6.12.18-talos    containerd://2.0.3
+w2     Ready    <none>          3h31m   v1.32.3   192.168.10.52   <none>        Talos (v1.9.5)   6.12.18-talos    containerd://2.0.3
+w3     Ready    <none>          6d18h   v1.32.3   192.168.10.53   <none>        Talos (v1.9.5)   6.12.18-talos    containerd://2.0.3
+```
+
+All `Ready`. After days of frustration, the fix was changing one path. I can't overstate how annoying it was to realize the issue was this simple.
+
+## Configuring Longhorn
+
+With the disks properly mounted, I set up Longhorn through the UI. For each worker node:
+
+1. Go to Nodes, select the dropdown on a node, and click "Edit node and disks"
+2. Click "Add Disk" with these settings:
+   - **Name:** `nvme-disk`
+   - **Disk Type:** File System
+   - **Path:** `/var/mnt/volumes`
+   - **Storage Reserved:** `100Gi`
+   - **Scheduling:** Enable
+3. Remove the default drive that Longhorn auto-adds (mounted to `/var/lib/longhorn/`) so only the dedicated storage drive is used
+
+## One More Issue: exec format error on w2
+
+Just when I thought things were smooth, the `kube-proxy` pods started failing with "exec format error" on worker node 2 only. This usually means trying to run a binary compiled for a different architecture, which was weird since all my nodes are x86_64.
+
+I solved it by doing a clean slate — wiping the drives in BIOS and reinstalling Talos from scratch on w2. After that, everything came up clean.
+
+## What's Next
+
+With Longhorn providing persistent storage across the cluster, I can finally run stateful workloads. In the [next post](/posts/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg) I'll cover setting up CloudNativePG for managed PostgreSQL — including an interesting discovery about how Longhorn's replication interacts with database-level replication that was causing my data to be replicated 9 times.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Home Lab Kubernetes Cluster: GitOps with Flux CD]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd</guid>
+            <pubDate>Tue, 15 Apr 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+This is the third post in my home lab Kubernetes series. In the [previous post](/posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal) I got Talos Linux installed on all six nodes. Now I have a running cluster, but it's empty — and I don't want to manage it by running `kubectl apply` commands by hand every time I want to change something.
+
+Enter GitOps.
+
+## Why Flux CD
+
+The idea behind GitOps is simple: your Git repository is the single source of truth for your cluster's desired state. You commit YAML files to a repo, and a controller running inside the cluster watches that repo and automatically applies changes. Want to install something? Commit a file. Want to remove it? Delete the file and push.
+
+I looked at both [Flux CD](https://fluxcd.io/) and [ArgoCD](https://argo-cd.readthedocs.io/) — the two most popular GitOps tools for Kubernetes. I went with Flux because it seemed a bit more lightweight and also a popular choice that a lot of people have had a good experience with. ArgoCD has a nice UI, but I didn't feel like I needed one for a home lab, and Flux felt more "Kubernetes-native" in how it works.
+
+I also wanted the GitHub repo defining my infrastructure to be manageable with minimal permissions — I wanted Flux to have as limited access as possible and not touch my other private repos.
+
+## Setting Up the GitHub Repo
+
+First, I created a new repo on GitHub called `hlkube`. Then I cloned it locally inside the folder I use for everything related to my cluster:
+
+```bash
+git clone git@github.com:nmajor/hlkube.git
+cd hlkube
+```
+
+## Creating a GitHub Personal Access Token
+
+Flux needs a way to authenticate with GitHub. I created a fine-grained Personal Access Token:
+
+1. Go to GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens
+2. Click "Generate new token"
+3. Give it a name (e.g., `hlkube-flux`)
+4. Set an expiration date
+5. Under "Repository access," select "Only select repositories" and choose your repo
+6. Under "Permissions":
+   - **Contents:** Read and write
+   - **Administration:** Read and write (required for image automation)
+   - **Metadata:** Read-only (default)
+7. Generate and copy the token immediately — you won't see it again
+
+## Installing the Flux CLI
+
+```bash
+brew install fluxcd/tap/flux
+```
+
+## Bootstrapping Flux
+
+This is where the magic happens. The `flux bootstrap` command does a lot in one shot — it installs the Flux controllers into your cluster and sets up the Git repository with the initial structure:
+
+```bash
+export GITHUB_TOKEN=<your-pat>
+export GITHUB_USER=nmajor
+export GITHUB_REPO=hlkube
+
+flux bootstrap github \
+  --components-extra=image-reflector-controller,image-automation-controller \
+  --owner=$GITHUB_USER \
+  --repository=$GITHUB_REPO \
+  --branch=main \
+  --path=clusters/hlkube \
+  --read-write-key \
+  --personal \
+  --kubeconfig ../kubeconfig
+
+# Unset the token when done
+unset GITHUB_TOKEN
+```
+
+A few things to note:
+- The `--components-extra` flag adds the image automation controllers, which I want for automatically updating container image tags later
+- The `--path=clusters/hlkube` tells Flux where in the repo to look for its configuration
+- The GitHub PAT gets stored in the cluster as a Kubernetes Secret named `flux-system` in the `flux-system` namespace
+
+After a minute or so, everything was up:
+
+```bash
+❯ kubectl get pods -n flux-system
+NAME                                           READY   STATUS    RESTARTS   AGE
+helm-controller-b6767d66-jdtk2                 1/1     Running   0          3m36s
+kustomize-controller-57c7ff5596-ttbnm          1/1     Running   0          3m36s
+notification-controller-58ffd586f7-dgbdk       1/1     Running   0          3m36s
+source-controller-6ff87cb475-4cxtx             1/1     Running   0          3m36s
+```
+
+### Mistake: Forgetting Image Automation
+
+Actually, I initially forgot to include the `--components-extra` flag for image automation. No big deal — you can safely re-run the `flux bootstrap` command. I just had to delete the existing secret first:
+
+```bash
+kubectl delete secret flux-system -n flux-system
+```
+
+Then re-run the bootstrap with the extra components. It's nice that this is idempotent.
+
+## Repository Structure
+
+After bootstrapping, Flux creates some initial files in `clusters/hlkube/flux-system/`. But the real power comes from how you organize the rest of the repo. After a lot of iteration, I ended up with a three-layer structure with explicit dependencies:
+
+```
+hlkube/
+├── clusters/hlkube/           # Cluster-specific Flux entry point
+│   ├── flux-system/           # Flux components (managed by bootstrap)
+│   ├── sources.yaml           # Layer 1: Helm repository sources
+│   ├── infrastructure.yaml    # Layer 2: Infrastructure (depends on sources)
+│   └── apps.yaml              # Layer 3: Applications (depends on infrastructure)
+├── infrastructure/
+│   ├── sources/               # HelmRepository definitions
+│   ├── cert-manager/          # TLS certificate management
+│   ├── traefik/               # Ingress controller
+│   ├── longhorn/              # Persistent storage
+│   ├── cloudnativepg/         # PostgreSQL operator
+│   ├── monitoring/            # Prometheus + Grafana
+│   ├── sealed-secrets/        # Encrypted secrets in Git
+│   ├── cloudflared/           # Cloudflare Tunnel
+│   └── ...
+└── apps/
+    ├── custom/                # My own applications
+    └── third-party/           # Apps built by others (NocoDB, n8n, etc.)
+```
+
+### The Dependency Chain
+
+The key insight is the `dependsOn` field. Each layer waits for the previous one to be ready:
+
+**Layer 1 — Sources** (`clusters/hlkube/sources.yaml`):
+
+```yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: sources
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./infrastructure/sources
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+```
+
+This deploys all the Helm repository definitions first. For example, here's the Longhorn source:
+
+```yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: longhorn
+  namespace: flux-system
+spec:
+  interval: 1h
+  url: https://charts.longhorn.io
+```
+
+**Layer 2 — Infrastructure** (`clusters/hlkube/infrastructure.yaml`):
+
+```yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infrastructure
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./infrastructure
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: sources
+```
+
+Infrastructure depends on sources being ready — because you can't install a Helm chart if the repository definition doesn't exist yet.
+
+**Layer 3 — Apps** (`clusters/hlkube/apps.yaml`):
+
+```yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./apps
+  prune: true
+  wait: true
+  timeout: 5m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: infrastructure
+```
+
+Apps depend on infrastructure — because your app needs Longhorn for storage, Traefik for ingress, CloudNativePG for databases, etc.
+
+## How Adding New Things Works
+
+This is the part I really love. Want to add a new piece of infrastructure? Create a folder, add the YAML files, reference it in the infrastructure `kustomization.yaml`, commit, and push. Flux picks it up within minutes and applies it to the cluster.
+
+Want to remove something? Delete the files and push. Flux sees the resources are gone from Git and removes them from the cluster (that's what `prune: true` does).
+
+No more SSH-ing into machines. No more running `kubectl apply` and hoping you remember what you changed last time. Everything is in Git, everything is versioned, and you can always see the full state of your cluster by looking at the repo.
+
+## What's Next
+
+With Flux CD in place, I can now manage my entire cluster through Git commits. In the [next post](/posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage) I'll cover setting up Longhorn for persistent storage — which turned out to be quite the adventure involving a detour through OpenEBS Mayastor and a humbling lesson about read-only filesystems in Talos.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Home Lab Kubernetes Cluster: Installing Talos Linux on Bare Metal]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal</guid>
+            <pubDate>Sun, 13 Apr 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+This is the second post in my home lab Kubernetes series. In the [previous post](/posts/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions) I went over the project overview, hardware, and network planning. Now it's time to actually install an operating system on these machines.
+
+I went with [Talos Linux](https://www.talos.dev/) — a minimal, immutable, API-driven OS purpose-built for Kubernetes. One of the things that makes Talos interesting is that it's so API-driven that even the installation is done by pushing a configuration to it through the API. There's no SSH, no shell, no package manager. You configure everything through YAML and `talosctl`.
+
+I'm on a MacBook Pro (Intel) and decided to [install Talos with an ISO](https://www.talos.dev/v1.9/talos-guides/install/bare-metal-platforms/iso/) for simplicity.
+
+## Downloading the ISO
+
+I downloaded the `metal-amd64.iso` (Talos 1.9.5) from the [Talos releases](https://github.com/siderolabs/talos/releases) page.
+
+## Creating the Bootable USB Drive
+
+I mostly followed Ubuntu's guide [Create a bootable USB stick on macOS](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#3-prepare-the-usb-stick) but used the Talos `metal-amd64.iso` instead. This is a pretty standardized process and there are lots of ways to do it, so I'm not going to go into detail.
+
+I flashed it with [Etcher](https://etcher.balena.io/) and it was a pretty easy process. Now on to the nodes.
+
+## Preparing the First Control Plane Node
+
+### BIOS Configuration
+
+For the HP EliteDesk Mini, you press `Esc` to enter the BIOS.
+
+**Reset BIOS to Factory Settings**
+
+- Select "BIOS Setup"
+- Select "Apply Factory Default and Exit"
+
+After restart, enter the BIOS again...
+
+**Confirm USB boot is enabled and set to first option**
+
+- Go to "Advanced" → "Boot Options"
+- Make sure "USB Storage Boot" is checked
+- Make sure USB is the top option in the UEFI Boot Order
+- Disable "Fast Boot" if available
+
+**Enable Virtualization Settings**
+
+- Go to "Advanced" → "System Options"
+- Make sure "Virtualization Technology (VTx)" is checked
+- Make sure "Virtualization Technology for Directed I/O (VTd)" is checked
+
+**Disable Secure Boot**
+
+- Go to "Security" → "Secure Boot Configuration"
+- Change "Configure Legacy Support and Secure Boot" to "Legacy Support Disable and Secure Boot Disable" OR make sure "Secure Boot" is unchecked
+
+Then go back to main, "Save changes and exit." You'll have to enter an authorization code to accept the Secure Boot change.
+
+## Installing Talos on the First Control Plane Node
+
+### Boot the Machine
+
+Plug in the boot drive and boot the machine. When it boots from the USB drive it goes directly into a running Talos OS and you see a terminal dashboard.
+
+![Talos running for the first time on the first control plane node](/uploads/2025/04/talos-first-boot-monitor.jpg)
+
+On the dashboard you'll see the IP address and gateway. When I first booted, I'd forgotten to set the switch port to the correct VLAN, so I had to set that up on the switch and reboot the machine. After that I saw the IP and gateway were in the correct range for my VLAN.
+
+Make note of the IP — `192.168.10.187` in my case. My MacBook also needs to be on the same VLAN.
+
+### Setting Up `talosctl`
+
+With the Talos machine running and the IP address in hand, [install talosctl](https://www.talos.dev/v1.9/talos-guides/install/talosctl/).
+
+Then create a folder for the Talos config files:
+
+```bash
+mkdir hlkube
+mkdir hlkube/talos-cluster
+cd hlkube/talos-cluster
+```
+
+Generate the Talos config:
+
+```bash
+talosctl gen config hlkube-cluster https://192.168.10.10:6443
+mkdir patches
+touch patches/cp1-patch.yaml
+```
+
+`https://192.168.10.10:6443` is the control plane VIP (Virtual IP). I chose `192.168.10.10` because I thought it would be easy to remember.
+
+Let's get a list of the available disks on the machine:
+
+```bash
+❯ talosctl -n 192.168.10.187 get disks --insecure
+NODE   NAMESPACE   TYPE   ID        VERSION   SIZE     READ ONLY   TRANSPORT   ROTATIONAL   WWID                                   MODEL                     SERIAL
+       runtime     Disk   loop0     1         74 MB    true
+       runtime     Disk   nvme0n1   1         256 GB   false       nvme                     eui.e8238fa6bf530001001b444a467afefc   PC SN530 NVMe WDC 256GB   21061M447620
+       runtime     Disk   sda       1         64 GB    false       usb         true                                                Flash Drive
+```
+
+And get the network interfaces:
+
+```bash
+❯ talosctl -n 192.168.10.187 get addresses --insecure
+NODE   NAMESPACE   TYPE            ID                                  VERSION   ADDRESS                        LINK
+       network     AddressStatus   eno1/192.168.10.187/24              1         192.168.10.187/24              eno1
+       network     AddressStatus   eno1/fe80::1a60:24ff:fe26:88e5/64   2         fe80::1a60:24ff:fe26:88e5/64   eno1
+       network     AddressStatus   lo/127.0.0.1/8                      1         127.0.0.1/8                    lo
+       network     AddressStatus   lo/::1/128                          1         ::1/128                        lo
+```
+
+Since all the control plane nodes are identical, I can keep the disk configuration the same for all of them. I left `controlplane.yaml` unchanged but created a `patches/cp1-patch.yaml` with the correct disk, network, hostname, and IP:
+
+```yaml
+machine:
+  install:
+    disk: /dev/nvme0n1
+  network:
+    hostname: cp1
+    interfaces:
+      - interface: eno1
+        vip:
+          ip: 192.168.10.10
+        addresses:
+          - 192.168.10.11/24
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 192.168.10.1
+    nameservers:
+      - 192.168.10.1
+```
+
+Then apply the config to the first machine:
+
+```bash
+talosctl apply-config \
+  --insecure \
+  --nodes 192.168.10.187 \
+  --file controlplane.yaml \
+  --config-patch @patches/cp1-patch.yaml
+```
+
+### First Issue: Wrong IP in the Patch File
+
+After a bunch of copy and pasting I forgot to update the IP right before applying. Classic.
+
+I updated the patch file and tried to apply again to the new IP:
+
+```bash
+❯ talosctl apply-config \
+  --insecure \
+  --nodes 192.168.10.99 \
+  --file controlplane.yaml \
+  --config-patch @patches/cp1-patch.yaml
+error applying new configuration: rpc error: code = Unavailable desc = connection error: desc = "error reading server preface: remote error: tls: certificate required"
+```
+
+Tried without the `--insecure` flag too:
+
+```bash
+❯ talosctl apply-config \
+  --nodes 192.168.10.10 \
+  --file controlplane.yaml \
+  --config-patch @patches/cp1-patch.yaml
+error constructing client: failed to determine endpoints
+```
+
+I thought the best way to handle this was to reboot into the USB installer and try again. But that didn't work either:
+
+```bash
+❯ talosctl apply-config \
+  --insecure \
+  --nodes 192.168.10.187 \
+  --file controlplane.yaml \
+  --config-patch @patches/cp1-patch.yaml
+error applying new configuration: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 192.168.10.187:50000: connect: connection refused"
+```
+
+And on the monitor I saw: "Talos is already installed to disk but booted from another media and talos.halt_if_installed kernel parameter is set. Please boot from disk."
+
+So I kind of messed things up a bit. But when I rebooted, the bootloader had two options: "Talos OS" and "Reset Talos Installation." I selected the reset, and it started fresh. After that I was able to re-apply the config with the correct IP.
+
+### Bootstrapping the `cp1` Node
+
+After the `apply-config`, the monitor showed:
+
+> "etcd is waiting to join the cluster, if this node is the first node in the cluster, please run `talosctl bootstrap` against one of the following IPs: [192.168.10.11]"
+
+So I did:
+
+```bash
+talosctl bootstrap --talosconfig talosconfig --nodes 192.168.10.11 --endpoints 192.168.10.11
+```
+
+The command was successful but didn't return anything. I saw a bunch of things happen on the monitor and eventually the green checkbox for "Ready" appeared.
+
+I powered down, took out the USB, and powered on just to make sure it loaded OK. But then I noticed an issue...
+
+### Second Issue: Ghost Machine
+
+On the monitor I saw: "CLUSTER hlkube-cluster (2 machines)"
+
+There was only 1 machine. My best guess is that it had some leftover config from the IP address mistake, because that same mistake had set the hostname to something different too.
+
+I tried resetting the etcd state:
+
+```bash
+talosctl reset --talosconfig talosconfig --nodes 192.168.10.11 --endpoints 192.168.10.11 \
+  --graceful=false --reboot --system-labels-to-wipe=STATE
+```
+
+This command seemed to do something initially but then hung for a long time. After about 5 minutes I gave up and pressed the power button. Re-inserted the USB, selected "Reset Talos Installation," then re-ran the `apply-config` and `bootstrap` commands.
+
+After all of that, everything looked good. I powered down, took out the USB, and powered on. All clear.
+
+### First Control Plane Node is Installed!
+
+```bash
+❯ talosctl --talosconfig talosconfig --endpoints 192.168.10.10 --nodes 192.168.10.10 health
+
+discovered nodes: ["192.168.10.10"]
+waiting for etcd to be healthy: ...
+waiting for etcd to be healthy: OK
+waiting for etcd members to be consistent across nodes: ...
+waiting for etcd members to be consistent across nodes: OK
+waiting for etcd members to be control plane nodes: ...
+waiting for etcd members to be control plane nodes: OK
+waiting for apid to be ready: ...
+waiting for apid to be ready: OK
+waiting for all nodes memory sizes: ...
+waiting for all nodes memory sizes: OK
+waiting for all nodes disk sizes: ...
+waiting for all nodes disk sizes: OK
+waiting for no diagnostics: ...
+waiting for no diagnostics: OK
+waiting for kubelet to be healthy: ...
+waiting for kubelet to be healthy: OK
+waiting for all nodes to finish boot sequence: ...
+waiting for all nodes to finish boot sequence: OK
+waiting for all k8s nodes to report: ...
+waiting for all k8s nodes to report: OK
+waiting for all control plane static pods to be running: ...
+waiting for all control plane static pods to be running: OK
+waiting for all control plane components to be ready: ...
+waiting for all control plane components to be ready: OK
+waiting for all k8s nodes to report ready: ...
+waiting for all k8s nodes to report ready: OK
+waiting for kube-proxy to report ready: ...
+waiting for kube-proxy to report ready: OK
+waiting for coredns to report ready: ...
+waiting for coredns to report ready: OK
+waiting for all k8s nodes to report schedulable: ...
+waiting for all k8s nodes to report schedulable: OK
+```
+
+That wall of green OKs felt really good.
+
+## Installing Talos on the First Worker Node
+
+I followed the same BIOS setup as above. Then grabbed the disk info:
+
+```bash
+❯ talosctl -n 192.168.10.251 get disks --insecure
+NODE   NAMESPACE   TYPE   ID        VERSION   SIZE     READ ONLY   TRANSPORT   ROTATIONAL   WWID                                   MODEL                     SERIAL
+       runtime     Disk   loop0     1         74 MB    true
+       runtime     Disk   nvme0n1   1         256 GB   false       nvme                     eui.a0329953d5030359                   LENSE20256GMSP34MEAT2TA   1188050100359
+       runtime     Disk   nvme1n1   1         2.0 TB   false       nvme                     eui.e8238fa6bf530001001b448b4d9029e5   WD Blue SN580 2TB         245105803152
+       runtime     Disk   sda       1         64 GB    false       usb         true                                                Flash Drive
+```
+
+I created a worker patch file with the same structure as the control plane patch, just with the worker's hostname and IP, and applied it:
+
+```bash
+talosctl apply-config \
+  --insecure \
+  --nodes 192.168.10.251 \
+  --file worker.yaml \
+  --config-patch @patches/w1-patch.yaml
+```
+
+And that worked without a hitch. Now we had a control plane node and a worker node:
+
+```bash
+❯ talosctl --talosconfig talosconfig --endpoints 192.168.10.10 --nodes 192.168.10.10 get members
+NODE            NAMESPACE   TYPE     ID    VERSION   HOSTNAME   MACHINE TYPE   OS               ADDRESSES
+192.168.10.10   cluster     Member   cp1   3         cp1        controlplane   Talos (v1.9.5)   ["192.168.10.10","192.168.10.11"]
+192.168.10.10   cluster     Member   w1    1         w1         worker         Talos (v1.9.5)   ["192.168.10.51"]
+```
+
+## Setting Up the Remaining Nodes
+
+I set up the rest of the worker nodes first. I duplicated all the patch files, one for each remaining node, and only changed the IP address and hostname. But of course, things didn't go entirely smoothly.
+
+### Issue 3: Stripped Screw on Flex IO Card
+
+I'd bought 3 [2.5GbE Flex IO V2 NICs](https://www.servethehome.com/hp-elitedesk-mini-2-5gbe-flex-io-v2-nic-intel-i225-m74416-001/), one for each worker node. But when trying to remove the existing Flex IO card on `w1`, one of the screws was on so tight. I tried everything — the rubber band trick, pliers — but eventually completely stripped that tiny little screw. It's about the same size as an M.2 screw. So small.
+
+I eventually admitted defeat and installed with the existing onboard 1GbE NIC. I think I'll take it to an electronics repair shop and see if they can help me remove it.
+
+### Issue 4: Password-Protected BIOS on w2
+
+On worker node 2, I had to manually reset the BIOS password, which was a real pain. I had to create a jumper wire by sacrificing a Cat5 cable and manually short out the second pin of the HP Sure Boot flash chip, following [these instructions](https://blog.rhysgoodwin.com/it/hp-elite-800-bios-password-removal/).
+
+Then after that I had this strange issue where the Talos boot would get stuck on an "Adjusting time" step and just hang there.
+
+I pressed `e` during the bootloader (the screen where you see "Talos OS" or "Reset Talos Installation"), which brought me into an Emacs-like config editor. I tried enabling debug mode but the setting didn't stick. However, something about re-entering the boot process from that editor caused it to actually load. I rebooted one more time, pressed `e`, immediately exited without making changes (`Ctrl` + `X`), and that worked. I have no idea why.
+
+### All Nodes Online
+
+Once I got past those few issues, things went smoothly. Just applying the config to each new node.
+
+![The full cluster stack of HP EliteDesk minis](/uploads/2025/04/hp-elitedesk-mini-cluster-stack.jpg)
+
+All nodes online:
+
+```bash
+❯ talosctl --talosconfig talosconfig --endpoints 192.168.10.10 --nodes 192.168.10.10 get members
+NODE            NAMESPACE   TYPE     ID    VERSION   HOSTNAME   MACHINE TYPE   OS               ADDRESSES
+192.168.10.10   cluster     Member   cp1   9         cp1        controlplane   Talos (v1.9.5)   ["192.168.10.10","192.168.10.11"]
+192.168.10.10   cluster     Member   cp2   1         cp2        controlplane   Talos (v1.9.5)   ["192.168.10.12"]
+192.168.10.10   cluster     Member   cp3   1         cp3        controlplane   Talos (v1.9.5)   ["192.168.10.13"]
+192.168.10.10   cluster     Member   w1    1         w1         worker         Talos (v1.9.5)   ["192.168.10.51"]
+192.168.10.10   cluster     Member   w2    1         w2         worker         Talos (v1.9.5)   ["192.168.10.52"]
+192.168.10.10   cluster     Member   w3    1         w3         worker         Talos (v1.9.5)   ["192.168.10.53"]
+```
+
+Six nodes, all reporting in. That felt like a real milestone.
+
+## Adding Worker Labels
+
+Later I went back and edited `worker.yaml` to give all the workers a `node-type: worker` label. This was to help Longhorn (our storage solution) filter which nodes to target for storage:
+
+```yaml
+machine:
+  nodeLabels:
+    node-type: worker
+```
+
+Then applied to each worker with a reboot:
+
+```bash
+talosctl apply-config --talosconfig talosconfig --nodes 192.168.10.51 \
+  --file worker.yaml --config-patch @patches/w1-patch.yaml \
+  --mode reboot --endpoints 192.168.10.10
+```
+
+## What's Next
+
+With Talos installed on all six nodes, the cluster is running but it's basically empty. In the next post I'll cover setting up [Flux CD for GitOps](/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd), so we can manage the cluster state through a Git repository instead of running `kubectl` commands by hand.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Home Lab Kubernetes Cluster: Project Overview, Network Setup, and Naming Conventions]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions</guid>
+            <pubDate>Fri, 11 Apr 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+The goal of this project is to build a Kubernetes cluster in my home lab out of HP EliteDesk mini machines.
+
+I have a 1Gbps symmetrical fiber connection, so I figured it could be cool to host small projects and websites from home. Most of the side project web apps I've built throughout the years haven't had many users, but I still like having them online. I also think it could be cool to wire up my own home lab to run GitHub Actions for my projects.
+
+Let me say right off the bat — I know this is overkill. This whole project is wildly unnecessary, but if "girl math" is a thing then definitely "home-lab math" should also be a thing, and my home lab math for this project is that I can host my own web apps for free! (After paying tons of money up front for hardware and paying $10-20 or more for electricity each month.) It feels free. It's not free. But it _feels_ free.
+
+![My stack of HP EliteDesk minis running the cluster](/uploads/2025/04/hp-elitedesk-mini-cluster-stack.jpg)
+
+I do plan on hosting personal projects here. My thinking is that I can just launch whatever I want at home and then if anything grows and gets traction I can move it to the cloud.
+
+I also have always had an interest in system administration ever since one of my first tech jobs as a L3 support engineer at [Bluehost](https://www.bluehost.com/). Although I wasn't technically a sysadmin, I did have sudo access on all the user boxes.
+
+Kubernetes seems to have won the container orchestration war and I think there's a lot of interesting things to be learned that could help my career. I'm still at the beginning of this project but already I've found it very interesting to try to think through the concepts of high availability, and also connecting all the dots for how to configure a cluster and connect it to the internet safely. It's already been really fun and a good learning experience, especially for someone who mostly writes code and doesn't have to think about infrastructure day to day.
+
+Also home-labbing is just fun.
+
+## Hardware
+
+### Control Plane Nodes
+
+3 identical HP EliteDesk 800 G3 minis:
+
+- **CPU:** Intel Core i5-7500T (4 cores, 4 threads)
+- **RAM:** 2 x 4GB SODIMMs
+- **Networking:** Built-in 1GbE NIC
+- **OS drive:** 256GB NVMe drive (pre-installed)
+
+### Worker Nodes
+
+3 identical HP EliteDesk 800 G6 minis:
+
+- **CPU:** Core i7-10700T (8 cores, 16 threads)
+- **RAM:** 1 x 32GB SODIMM (can add another 32GB later if I ever need to)
+- **Networking:** [2.5GbE Flex IO V2 NIC](https://www.servethehome.com/hp-elitedesk-mini-2-5gbe-flex-io-v2-nic-intel-i225-m74416-001/)
+- **Storage:** 2TB WD Blue SN580 NVMe SSD
+- **OS drive:** Misc 128GB or 256GB NVMe SSD I bought used
+
+The control plane nodes are a little overkill for my setup but they'll do the job with some compute to spare.
+
+I plan to use something like Longhorn for redundant block storage spread across the 3 worker nodes, so I know the networking will be a bottleneck when replicating between nodes. It'll be interesting to see if this produces noticeable latency for something like a web app, but I thought upgrading the NICs on the worker nodes to 2.5GbE would help a bit for big IO operations.
+
+## Networking
+
+I'm by no means a networking expert, but I wanted to have some basic setup and isolation for the cluster. Since the plan is to serve real applications, I want to make sure there is some basic network isolation — even though I will be connecting the cluster to the open internet through Cloudflare Tunnel.
+
+I have a separate 8-port 2.5GbE managed switch that I'll plug only the Kubernetes cluster into. I created a new VLAN for the cluster to live on and specified that all the ports on the managed switch belong to that VLAN.
+
+I also mapped out which IP addresses and hostnames I'll be using for each node ahead of time.
+
+### Control Plane Nodes
+
+Starting the control plane node IPs at `192.168.10.11` and incrementing from there.
+
+| Node | Hostname | Static IP | Gateway | Subnet Mask | DNS Server |
+|---|---|---|---|---|---|
+| Control 1 | `HLKubeCP01` | `192.168.10.11` | `192.168.10.1` | `255.255.255.0` | `192.168.10.1` |
+| Control 2 | `HLKubeCP02` | `192.168.10.12` | `192.168.10.1` | `255.255.255.0` | `192.168.10.1` |
+| Control 3 | `HLKubeCP03` | `192.168.10.13` | `192.168.10.1` | `255.255.255.0` | `192.168.10.1` |
+
+### Worker Nodes
+
+Starting the worker node IPs at `192.168.10.51` and incrementing from there.
+
+| Node | Hostname | Static IP | Gateway | Subnet Mask | DNS Server |
+|---|---|---|---|---|---|
+| Worker 1 | `HLKubeW01` | `192.168.10.51` | `192.168.10.1` | `255.255.255.0` | `192.168.10.1` |
+| Worker 2 | `HLKubeW02` | `192.168.10.52` | `192.168.10.1` | `255.255.255.0` | `192.168.10.1` |
+| Worker 3 | `HLKubeW03` | `192.168.10.53` | `192.168.10.1` | `255.255.255.0` | `192.168.10.1` |
+
+And I'll be careful to add a sticker label on the chassis of each machine once I've configured them so I don't get them mixed up.
+
+## Benefits of This Setup
+
+- **Low power draw.** Each node draws around 11-12W idle. That's the whole 6-node cluster running on roughly what a single light bulb uses.
+- **Small form factor.** The EliteDesk minis are tiny. The whole cluster stacks up neatly and doesn't take up much space.
+- **Quiet.** These machines are nearly silent, which matters when it's sitting in your house.
+
+## Drawbacks of This Setup
+
+- **No ECC RAM.** These consumer-grade machines don't support ECC memory, so there's no hardware-level protection against memory bit flips. For a home lab running side projects this is totally fine, but it's worth noting if you're thinking about running anything mission-critical.
+- **Consumer-grade hardware.** These are refurbished office desktops, not servers. No redundant power supplies, no hot-swappable drives. But for the price point and the use case, I think it's a great trade-off.
+
+## What's Next
+
+In the next posts in this series, I'll cover installing Talos Linux on bare metal, setting up Flux CD for GitOps, configuring Longhorn for persistent storage, and running PostgreSQL with CloudNativePG. It's been a journey with plenty of mistakes along the way — I'll share all of them.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Simple Object Storage in Redis (Node.js)]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-09-20-simple-object-storage-in-redis-and-node</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-09-20-simple-object-storage-in-redis-and-node</guid>
+            <pubDate>Fri, 05 Oct 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[**First** it was important for our use case to have some basic kind of indexing and sorting based on when the document was created.
+
+**Second**, since we do a lot of logging, we needed to make sure that all documents clean up after themselves and expire nicely so we don't run out of space in redis, and we don't really care about keeping these logs indefinitely.
+
+**Third**, our logs are javascript objects, so we needed some kind of customizable serialization/deserialization.
+
+**Fourth**, I wanted to have a nice abstraction with predictable model-like behavior like `findOne`, `create`, `update`, and `fromIndex`.
+
+So here is a basic solution I came up with.
+
+The plan:
+
+* **Schema** - Add a schema for `redisModels`
+* **Finding, Creating and Updating** - Use [redis hashes]() to store our objects and have functions for adding, finding, and updating.
+* **Indexing and Sorting** - Use [redis lists](https://redis.io/topics/data-types#lists "https://redis.io/topics/data-types#lists") (aka ranges) to maintain a sorted list of object keys.
+
+I'll be using the main [redis node](https://www.npmjs.com/package/redis "https://www.npmjs.com/package/redis") library for this.
+
+### Schema
+
+Here is what our basic schema will look like:
+
+```javascript
+const logSchema = {
+  namespace: 'logs',
+  indexes: [
+    {
+      getName: () => 'createdAt',
+      shouldIndex: () => true,
+      addNonTenantIndex: () => true,
+      getValue: data => new Date(data.createdAt).getTime(),
+    },
+  ],
+  attributes: {
+    source: { kind: 'string' },
+    user: { kind: 'object' },
+    body: { kind: 'object' },
+    createdAt: { kind: 'time' },
+  },
+};
+```
+
+As you can see we set information about our `attributes`, `indexes` and a `namespace` that we will use for our redis keys. The `namespace` is mostly useful if you plan on storing multiple kinds of objects in redis.
+
+### Creating
+
+We'll start by creating a new class and constructor inside of a new file called `lib/redis.js`. I know this is a bunch of code to dump in all at once, but I'll break it down afterwards:
+
+```javascript
+import shortid from 'shortid';
+import _ from 'lodash';
+
+function getRedisClient() {
+  // IMPLEMENT YOUR OWN METHOD OF GETTING THE REDIS CLIENT,
+}
+
+function expSeconds(days = 30) {
+  const secondsPerDay = 86400;
+  return days * secondsPerDay;
+}
+
+function buildId() { return shortid.generate(); }
+
+const stringify = {
+  string: data => data,
+  number: data => data.toString(),
+  date: data => new Date(data).toISOString(),
+  time: data => new Date(data).toISOString(),
+  object: data => JSON.stringify(data),
+};
+
+export default class RedisModel {
+  constructor(schema) {
+    this.props = {
+      schema,
+      client: getRedisClient(),
+    };
+  }
+
+  _buildHashValues(data) {
+    const { schema: { attributes } } = this.props;
+    const hashValues = [];
+
+    _.each(data, (value, key) => {
+      const type = (attributes[key] || {}).kind;
+      const stringValue = stringify[type] ? stringify[type](value) : undefined;
+      if (!type || !stringValue) return null;
+
+      return hashValues.push(key, stringValue);
+    });
+
+    return _.isEmpty(hashValues) ? undefined : hashValues;
+  }
+
+  _buildRedisKey(id) {
+    const { schema } = this.props;
+    return `${schema.namespace}:${id}`;
+  }
+
+  create(data) {
+    const { client } = this.props;
+
+    return new Promise((resolve, reject) => {
+      const multi = client.multi();
+      const id = buildId();
+      const redisKey = this._buildRedisKey(id);
+
+      // Handle the hash values
+      const hashValues = this._buildHashValues(data);
+      if (hashValues) {
+        multi.hmset(redisKey, hashValues);
+        multi.hmset(redisKey, 'EX', expSeconds());
+        multi.exec((err) => {
+          if (err) return reject(err);
+
+          return resolve({ key: redisKey, _id: id, ...data });
+        });
+      } else {
+        reject(new Error('Empty redis hash data'));
+      }
+    });
+  }
+}
+```
+
+First of all you'll notice I'm using the [lodash]() for its useful helper methods, and [shortid](https://www.npmjs.com/package/shortid "https://www.npmjs.com/package/shortid") to help generate unique ids for our redis keys.
+
+We are using the `multi` redis behavior.
+
+```javascript
+const multi = client.multi();
+// ...
+multi.hmset(redisKey, hashValues);
+multi.hmset(redisKey, 'EX', expSeconds());
+multi.exec((err) => {
+// ...
+```
+
+This allows us to do multiple calls in one redis transaction, and if one of the calls fails, the whole transaction will fail. This reduces the chances that we'll have stray data being stored in the database.
+
+We're also using our schema namespace to build a unique redis key for our object.
+
+```javascript
+const redisKey = this._buildRedisKey(id);
+
+  _buildRedisKey(id) {
+    const { schema } = this.props;
+    return `${schema.namespace}:${id}`;
+  }
+```
+
+This isn't totally necessary, and really only useful if you are storing multiple types of objects in redis, but it does give us the ability to do basic fetching redis for all items with the namespace prefix later if we want.
+
+You can see that we're using a [redis hash](https://redis.io/topics/data-types#hashes "https://redis.io/topics/data-types#hashes") to store all our object data.
+
+    multi.hmset(redisKey, hashValues);
+
+The [hmset](https://redis.io/commands/hmset "https://redis.io/commands/hmset") function takes an array of key value pairs. Redis hashes require the values to be strings, so our `_buildHashValues` function takes our data and converts it to an array of strings based on the key/value pairs and attribute types in the schema.
+
+```javascript
+_buildHashValues(data) {
+  const { schema: { attributes } } = this.props;
+  const hashValues = [];
+
+  _.each(data, (value, key) => {
+    const type = (attributes[key] || {}).kind;
+    const stringValue = stringify[type] ? stringify[type](value) : undefined;
+    if (!type || !stringValue) return null;
+
+    return hashValues.push(key, stringValue);
+  });
+
+  return _.isEmpty(hashValues) ? undefined : hashValues;
+}
+```
+
+And it uses our `stringify` object as a map for how to convert the different attributes to strings based on the schema. This gives us some granular control over the serialization of each attribute of our objects.
+
+And we're also setting an expiration for our keys so they dont last forever in our database.
+
+```javascript
+multi.hmset(redisKey, 'EX', expSeconds());
+```
+
+And that handles our ability to create new objects in our redis model.
+
+### Updating
+
+Our update function is very similar to our create:
+
+```javascript
+export default class RedisModel {
+  // ...
+  update(id, data) {
+    const { client } = this.props;
+
+    return new Promise((resolve, reject) => {
+      const redisKey = this._buildRedisKey(id);
+
+      // Handle the hash values
+      const hashValues = this._buildHashValues(data);
+      if (hashValues) {
+        client.hmset(redisKey, hashValues, (err) => {
+          if (err) return reject(err);
+
+          return resolve();
+        });
+      } else resolve();
+    });
+  }
+}
+```
+
+Basically it uses the same `_buildRedisKey` function so we only have to deal with the id of the object. Then it basically just does the same `hmset` function. Redis will keep any attributes in the hash that are not overwritten.
+
+### Finding
+
+Here's our find method. This lets us find any object by id and deserialize all the values into their original datatypes based on the schema:
+
+```javascript
+const parsify = {
+  string: data => data,
+  number: data => parseInt(data, 10),
+  date: data => new Date(data),
+  time: data => new Date(data),
+  object: data => JSON.parse(data),
+};
+
+export default class RedisModel {
+  // ...
+  _unpackHashValues(data) {
+    const { schema: { attributes } } = this.props;
+    const obj = {};
+
+    _.each(data, (value, key) => {
+      const type = (attributes[key] || {}).kind;
+      if (!type) return null;
+
+      obj[key] = parsify[type](value);
+      return null;
+    });
+
+    return _.isEmpty(obj) ? undefined : obj;
+  }
+
+  findOne(id) {
+    const { client } = this.props;
+
+    return new Promise((resolve, reject) => {
+      const redisKey = this._buildRedisKey(id);
+      client.hgetall(redisKey, (err, data) => {
+        if (err) return reject(err);
+
+        return resolve({
+          key: redisKey,
+          _id: id,
+          ...this._unpackHashValues(data),
+        });
+      });
+    });
+  }
+}
+```
+
+Here is where we use a `parsify` method to convert our attribute strings into their original data type.
+
+And that handles our finding and deserialization.
+
+### Indexing and Sorting
+
+Here is the tricky part. Redis, as a key/value store doesnt have any real sense of ordering when it comes to its keys. But its important for our use case to be able to see the most recent logs, and maybe later be able to query date ranges of when the logs were created.
+
+So what we're going to do is use the redis function `zadd` to add the redis key and timestamp for each object into a sorted redis list.
+
+Remember from our schema, indexes look like this:
+
+```javascript
+{
+  getName: () => 'createdAt',
+  shouldIndex: () => true,
+  getValue: data => new Date(data.createdAt).getTime(),
+}
+```
+
+`getName` is a function because I've found it useful to be able to create some indexes that are isolated in different ways. For example I've sometimes added indexes that are based on the ID of the user who created the log, this lets me easily get a list of all the user's most recent indexes. And in that case the `getName` looks like this `getName: data => ('user:'+data.user._id+':createdAt')`.
+
+`shouldIndex` lets us not index any object we want, and `getValue` gives us the actual value of the index, so this actually lets us create sorted lists using any different attribute not just createdAt. Just remember that `getValue` has to return a number.
+
+Now we modify our `create` function to include a `zadd` for each index in our schema:
+
+```javascript
+_buildIndexName(indexName) {
+    const { schema } = this.props;
+    return `${schema.namespace}:${indexName}`;
+  }
+
+  create(data) {
+    const { schema, client } = this.props;
+
+    return new Promise((resolve, reject) => {
+      const multi = client.multi();
+      const id = buildId();
+      const redisKey = this._buildRedisKey(id);
+
+      // Handle the hash values
+      const hashValues = this._buildHashValues(data);
+      if (hashValues) {
+        multi.hmset(redisKey, hashValues);
+        multi.hmset(redisKey, 'EX', expSeconds());
+
+        // Handle indexes
+        if (schema.indexes) {
+          _.each(schema.indexes, (index) => {
+            if (index.shouldIndex(data)) {
+              multi.zadd(this._buildIndexName(index.getName(data)), index.getValue(data), redisKey);
+            }
+          });
+        }
+
+        multi.exec((err) => {
+          if (err) return reject(err);
+
+          return resolve({ key: redisKey, _id: id, ...data });
+        });
+      } else {
+        reject(new Error('Empty redis hash data'));
+      }
+    });
+  }
+```
+
+This inserts the `redisKey` of each object into a sorted list based on the createdAt timestamp of the object.
+
+Now we can easily retrieve the top objects from any index with a function like this:
+
+```javascript
+export default class RedisModel {
+  // ...
+  _clearOldIndexes(indexName) {
+    const { client, schema } = this.props;
+    return new Promise((resolve, reject) => {
+      const now = new Date().getTime();
+      const secondsPerDay = 86400;
+      const args = [
+        this._buildIndexName(schema, indexName),
+        (now + (expSeconds() - secondsPerDay) * 1000),
+        '-inf',
+      ];
+
+      client.zremrangebyscore(args, (err, results) => {
+        if (err) return reject(err);
+
+        return resolve(results);
+      });
+    });
+  }
+
+  _getIndexedIds(indexName, offset, limit) {
+    const { client } = this.props;
+
+    return this._clearOldIndexes(indexName)
+      .then(() => new Promise((resolve, reject) => {
+        const args = [indexName, '+inf', '-inf', 'LIMIT', offset || 0, limit || 20];
+
+        client.zrevrangebyscore(args, (err, results) => {
+          if (err) return reject(err);
+
+          return resolve(results);
+        });
+      }));
+  }
+
+  fromIndex(indexName) {
+    return this._getIndexedIds(indexName, undefined, 250)
+      .then(results => Promise.all(results.map(result => this.findOne(result))));
+  }
+}
+```
+
+Notice that inside `_getIndexedIds` we first `_clearOldIndexes`. This is because redis does not allow us to set expiration times for entries inside of a list so I get around this by first removing all entries that are expired before actually getting a list of all the entries in the list.
+
+Then it gets a list of all the ids using the [zrangebyscore]() function. Then it converts each one into its full object using the `findOne` function that we already made.
+
+### Usage
+
+Now that we have our basic `RedisModel` class we can create new models by just exporting an instance with our schema. For example we could have a `models/log.js` file that looks like this:
+
+```javascript
+// models/log.js
+import RedisModel from '../lib/redis';
+
+const logSchema = {
+  namespace: 'logs',
+  indexes: [
+    {
+      getName: () => 'createdAt',
+      shouldIndex: () => true,
+      addNonTenantIndex: () => true,
+      getValue: data => new Date(data.createdAt).getTime(),
+    },
+  ],
+  attributes: {
+    source: { kind: 'string' },
+    user: { kind: 'object' },
+    body: { kind: 'object' },
+    createdAt: { kind: 'time' },
+  },
+};
+
+export default new RedisModel(schema);
+```
+
+Then in other parts of our program we can do things like this:
+
+```javascript
+import Log from '../models/log';
+
+// Get a list of logs
+const logList = Log.fromIndex('createdAt');
+
+// Find a specific log
+Log.findOne('123456');
+
+// Create a new log
+Log.create({
+  source: 'Web',
+  body: 'An error happened',
+  user: { email: 'joe@cool.com',  },
+  createdAt: new Date(),
+});
+```
+
+And based on how we built it, we think about our individual objects in terms of `ids` and not keys.
+
+### Conclusion
+
+You can see a [gist with the full RedisModel class here](https://gist.github.com/nmajor/e772d0dd166c8c3bbffb2bee00faa8a2 "https://gist.github.com/nmajor/e772d0dd166c8c3bbffb2bee00faa8a2"). Keep in mind this is mostly just to give a possible starting point. Its possible there are some bugs in here since I had to water down my implementation a bit to keep this post concise.
+
+As always, please let me know if you see any issues with the code, or possible problems with my implementation or design choices. I'm always learning.
+
+Thanks for reading!]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Multi Tenancy with Express/Mongoose]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-09-28-multi-tenancy-with-expressmongoose</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-09-28-multi-tenancy-with-expressmongoose</guid>
+            <pubDate>Wed, 03 Oct 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Adding this kind of layer to apps is really useful and powerful and can really level up some apps.
+
+The most important thing with multi tenant apps is that the data isolation must be perfect. If a user ever sees data not related to their tenant, it can result it a huge loss of customer trust especially these days when user data is such a hot issue.
+
+We should NOT rely on developers writing queries and logic to keep this data isolation, so the best thing to do is to tackle this at a high level with powerful patterns.
+
+Here's a possible implementation:
+
+The plan:
+
+* **Continuation-Local Storage** - Use [this library]() to easily give every function access to the current tenant at all times.
+* **Express Middleware** - Add express middleware that will tell set the current tenent for every request.
+* **Mongoose Discriminator** - For every tenant create an on-the-fly discriminator model, so all actions performed by the model are in the context of the current tenant.
+* **Model Wrapper** - Add a wrapper around Mongoose models so that every time that model is used it actually gets a different version of the model specific to the current tenant.
+
+I'm assuming you have a basic understanding of express and mongoose.
+
+### Continuation-Local Storage
+
+I recently found this great library called [node-continuation-local-storage](https://github.com/othiym23/node-continuation-local-storage "https://github.com/othiym23/node-continuation-local-storage"). Basically you can think of most things in javascript as a chain of functions calling functions. What this library does is lets you define variables at the beginning of the function chain, and then every function further down the chain has access to those variables.
+
+The first thing we'll do is set this library up with express. We do that by first binding the context using an express middleware function, this gives continuous-local-storage a namespace and context to store our variables.
+
+Lets create a file called `lib/storage.js` and create an express middleware function to bind the storage context as well as a few exportable getter and setter functions for our `tenantId` variable.
+
+```js
+    // lib/storage.js
+    import { createNamespace } from 'continuation-local-storage';
+    
+    const namespaceName = 'request';
+    const ns = createNamespace(namespaceName);
+    
+    export function bindCurrentNamespace(req, res, next) {
+      ns.bindEmitter(req);
+      ns.bindEmitter(res);
+    
+      ns.run(() => {
+        next();
+      });
+    }
+    
+    export function setCurrentTenantId(tenantId) {
+      return ns.set('tenantId', tenantId);
+    }
+    
+    export function getCurrentTenantId() {
+      return ns.get('tenantId');
+    }
+```
+
+Now inside your express bootstrap file, usually called `app.js` we add the `bindCurrentNamespace` middleware.
+
+```js
+    // app.js
+    
+    import { bindCurrentNamespace } from 'lib/storage';
+    
+    app.use(bindCurrentNamespace);
+```
+
+This creates a context that every express request can use.
+
+Next we'll add another middleware function that will use our `setCurrentTenantId` function to set that data for every other function in the chain.
+
+### Express Middleware
+
+No here is where you'll probably want to tie into any existing authentication system you have. Basically we need to someone figure out which user each request comes from.
+
+Some of the most common approaches here is to connect it with a session or use a bearer token with each request. But this is one area where many people will have different implementations.
+
+We nee to figure out which user the request is connected to, and once we have the user, you should be able to tell which tenant the user belongs to:
+
+```js
+    // app.js
+    
+    import { bindCurrentNamespace, setCurrentTenantId } from 'lib/storage';
+    
+    app.use(bindCurrentNamespace);
+    app.use((req, res, next) => {
+      // Get current user from session or token
+      const user = req.user
+      
+      // Get current tenant from user here
+      // Make sure its a string
+      const tenantId = user.organization._id.toString()
+      
+      setCurrentTenantId('tenantId', tenantId);
+      next();
+    });
+```
+
+There you have it. Now every function for every request will have access to the current tenant of the user making the request. We'll next use this behavior to bind our models to the tenant context.
+
+### Mongoose Discriminator
+
+So here is where the magic happens. Lets create a new file called `lib/multiTenant.js` this file is going to export some higher order functions that will wrap every model with a discriminator based on the tenant id.
+
+```js
+    // lib/multiTenant.js
+    
+    import mongoose, { Schema } from 'mongoose';
+    import { getCurrentTenantId } from './storage';
+    
+    export function tenantModel(name, schema, options) {
+      return (props = {}) => {
+        schema.add({ tenantId: String });
+        const Model = mongoose.model(name, schema, options);
+    
+        const { skipTenant } = props;
+        if (skipTenant) return Model;
+    
+        Model.schema.set('discriminatorKey', 'tenantId');
+    
+        const tenantId = getCurrentTenantId();
+        const discriminatorName = `${Model.modelName}-${tenantId}`;
+        const existingDiscriminator = (Model.discriminators || {})[discriminatorName];
+        return existingDiscriminator || Model.discriminator(discriminatorName, new Schema({}));
+      };
+    }
+    
+    export function tenantlessModel(name, schema, options) {
+      return () => mongoose.model(name, schema, options);
+    }
+```
+
+You'll notice we have two exported higher order functions. If you're unfamiliar with [higher order functions](https://eloquentjavascript.net/05_higher_order.html "https://eloquentjavascript.net/05_higher_order.html"), they are basically just functions that return other functions. Its a very powerful and often used pattern in javascript.
+
+The function `tenantlessModel` is basically just a passthrough function. We can use this function on any model that should not be tenant-isolated. One of the main examples of this is our tenant model itself which we have been calling `organization`. So our `organization` model will use this function.
+
+The other function is where all the magic happens. `tenantModel` exports another function. And that function returns a modified mongoose model or discriminator.
+
+Lets break down the code section by section:
+
+```js
+    schema.add({ [tenantKey]: String });
+    const Model = mongoose.model(name, schema, options);
+```
+
+In this line we're just adding a new attribute to the model schema to hold our `tenantId`.
+
+```js
+    const { skipTenant } = props;
+    if (skipTenant) return Model;
+```
+
+This is just a useful feature. This allows us to easily bypass our tenant isolation whenever we want. I've found this particularly useful in testing. But also for things like looking up the user during authentication when its important to be able to search for all users in the database.
+
+But this makes it so the norm is the tenant isolation, and we have to explicitly override it if we want access to all the models in the database.
+
+```js
+    Model.schema.set('discriminatorKey', 'tenantId');
+```
+
+This is pretty basic, we're just telling the model to use the field `'tenantId'` as the discriminator key.
+
+```js
+    const tenantId = getCurrentTenantId();
+    const discriminatorName = `${Model.modelName}-${tenantId}`;
+    const existingDiscriminator = (Model.discriminators || {})[discriminatorName];
+    return existingDiscriminator || Model.discriminator(discriminatorName, new Schema({}));
+```
+
+Here is where we actually build a new discriminator based on the current tenant.
+
+Remember discriminators are basically just augmented mongoose models. The common use case is when you want to simulate model inheritance and basically have one model be the same as another but with extra behavior. The discriminator name is the name of the new augmented model. We're sort of hacking this feature for its built in data isolation.
+
+We're basically telling mongoose that there will be a different version of each model for each tenant. So if a user belongs to the tenant with the id of `123456` and we want to find all the documents in a model called `page` then we're not looking up all the `page`s we're looking up all the `page-123456`s.
+
+That is why we have to set the model name to `${Model.modelName}-${tenantId}` because we cant have multiple models with the same name.
+
+Then its important to check if the model name already exists so we don't end up creating multiple versions of the same discriminator. Also mongoose will yell at you if you try. So that is what this line is about:
+
+```js
+    const existingDiscriminator = (Model.discriminators || {})[discriminatorName];
+```
+
+### Model Wrapper
+
+So now that we have these higher order functions we have to user them to wrap our existing mongoose models. This is actually pretty easy. Here are a couple examples:
+
+```js
+    // models/page.js
+    import { tenantModel } from '../lib/multiTenant';
+    
+    const PageSchema = new Schema({
+      title: String,
+      body: String,
+    });
+    
+    export default tenantModel('page', PageSchema);
+```
+
+And:
+
+```js
+    // models/user.js
+    import { tenantModel } from '../lib/multiTenant';
+    
+    const UserSchema = new Schema({
+      name: String,
+      email: String,
+    });
+    
+    export default tenantModel('user', UserSchema);
+```
+
+You'll notice that its exactly the same as making and exporting a regular mongoose model except instead of exporting `mongoose.model` we are exporting our own `tenantModel` function.
+
+Then for models that you want to live outside the tenant isolation you can do this:
+
+```js
+    // models/organization.js
+    
+    import { tenantlessModel } from '../lib/multiTenant';
+    
+    const OrganizationSchema = new Schema({
+      name: String,
+    });
+    
+    export default tenantlessModel('organization', OrganizationSchema);
+```
+
+Since the `tenantlessModel` is just a passthrough, its not totally necessary. But I chose to do it because as you will see below, our usage of higher order functions changes how we actually use our models in the rest of our code. So the `tenantlessModel` function makes the usage standardized for all our models regardless of if they are isolated based on the current tenant.
+
+### Usage
+
+Now this does change how we actually use our models in the rest of our code. Because our default export in our models are higher order functions, we have to execute the returned function before we use each model.
+
+For example we can NO LONGER DO THIS:
+
+```js
+    Page.find({})
+```
+
+Instead we have to do this:
+
+```js
+    Page().find({})
+```
+
+But this actually turns out to be pretty useful. Remember that `skipTenant` thing before? We can actually pass options into our model function like `skipTenant` to customize our access to the model even further.
+
+For example to search EVERY user in our database, not just the ones associated with our current tenant we can do this:
+
+```js
+    User({ skipTenant: true }).find({ _id: '123456' })
+```
+
+### Benefits
+
+You'll notice that this implementation really doesn't require a lot of code.
+
+It also gives us a lot of useful abstraction layers to add extra behavior to our models. 
+
+But, whats really great about this approach is that because we are always dealing with tenant isolated versions of every model, then any model that is created by a logged in user is **automatically** assigned to the correct tenant.
+
+And all queries and lookups are **automatically** isolated to the tenant.
+
+And it is basically nearly impossible for a user to view, list, update, create, or delete any model outside their own tenant because any mongoose function used to perform those actions is isolated to the users tenant from the get go.
+
+We don't have to rely on developers coding correct logic. And we can easily add other authentication logic on top of it and be confident our tenant isolation is secure.
+
+### Extra Customization
+
+Because our higher order functions have access to the schema of each model, we can do lots of things to our models. For example we can add new middleware to any model that has a tenant. Here's just one simple example of making sure every `tenantModel` has a tenant using the before save mongoose middleware:
+
+```js
+    export function tenantModel(name, schema, options) {
+      return (props = {}) => {
+        schema.add({ tenantId: String });
+    
+        schema.pre('save', function (next) {
+          if (!this.tenantId) {
+            const defaultTenantId = // find tenant
+            this.tenantId = defaultTenantId;
+          }
+        });
+      
+        const Model = mongoose.model(name, schema, options);
+    
+        // ...
+      };
+    }
+```
+
+You can also insert some authorization logic in here. For example you could set the current user using Continuation-Local Storage and then if the user is an admin, return the unmodified model, like this:
+
+```js
+    import { getCurrentTenantId, getCurrentUser } from './storage';
+    
+    export function tenantModel(name, schema, options) {
+      return (props = {}) => {
+        schema.add({ tenantId: String });
+        const Model = mongoose.model(name, schema, options);
+    
+        if (getCurrentUser().isAdmin()) return Model;
+    
+    	// ...
+      };
+    }
+```
+
+### Conclusion
+
+I hope this at least gives you some ideas of how to add a solid multi-tenant layer in your express/mongoose app.
+
+As always, if you notice any problems in my code or flaws in my approach, please let me know. I'm always looking to learn and improve.
+
+Thanks for reading!
+
+Thanks to these libraries for inspiration:
+
+* [https://www.npmjs.com/package/mongoose-multitenant](https://www.npmjs.com/package/mongoose-multitenant "https://www.npmjs.com/package/mongoose-multitenant")
+* [https://www.npmjs.com/package/mongoose-multitenancy](https://www.npmjs.com/package/mongoose-multitenant "https://www.npmjs.com/package/mongoose-multitenant")]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Serverless Framework S3 Permissions (Serverless IAM Permissions)]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-28-serverless-framework-s3-file-uploads</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-28-serverless-framework-s3-file-uploads</guid>
+            <pubDate>Thu, 13 Sep 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[But I do a lot of PDF generation with one of my projects so I need to be able to put S3 objects from the serverless function, so I need a bit of setup to do that.
+
+I created a new bucket in S3.
+
+Then the main thing is find the simplest way to grant the serverless project access to the S3 bucket.
+
+In the past I've spent time creating new users and roles and connecting to aws services using the using the secret keys of the user. But one of the main benefits of serverless is the easy integration of other aws services.
+
+According to [this post](https://serverless.com/framework/docs/providers/aws/guide/iam/ "https://serverless.com/framework/docs/providers/aws/guide/iam/") the serverless framework automatically creates a IAM user for the serverless project. Of course there are ways to customize this access, but for my purposes its really easy to use the default user and role.
+
+Then you can give the default user/role access to a service like S3 by simply adding this to the `serverless.yml` file:
+
+```yml
+    provider:
+      ...
+      iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+           - "s3:*"
+          Resource: { "Fn::Join": ["", ["arn:aws:s3:::BUCKET_NAME", "/*" ] ] }
+```
+
+Just be sure to replace `BUCKET_NAME` with the name of your bucket. This gives the lambda function full access to this bucket.
+
+[This stackoverflow question](https://stackoverflow.com/questions/46098173/how-to-add-iamrolestatements-to-s3-trigger-bucket-in-serverless-framework "https://stackoverflow.com/questions/46098173/how-to-add-iamrolestatements-to-s3-trigger-bucket-in-serverless-framework") was helpful in figuring this out. Also it probably would help if I understood cloudformation and aws IAM users more.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Executable Binary Files with Serverless Framework and Webpack - AWS Lambda]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-09-01-serverless-framework-executable-binaries-aws-lambda</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-09-01-serverless-framework-executable-binaries-aws-lambda</guid>
+            <pubDate>Sat, 01 Sep 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[### The Approach
+
+Basically we need to:
+
+* Upload the executable binaries with the aws lambda deployment package.
+* Make sure our executable binaries maintain the correct executable permissions.
+* Change the `$PATH` env variable to include the location of our executables.
+
+And then we should be good to go.
+
+### Upload
+
+##### Without Webpack
+
+If you're not using the `serverless-webpack` plugin, then this is actually pretty easy.
+
+I like to just create a folder in my project called `bin` and put them all in there. I did this in my [Serverless Backend for React](http://nmajor.com/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture "http://nmajor.com/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture") post.
+
+After you put the executables in the `bin` folder, put this in your `serverless.yml` file:
+
+```yml
+    package:
+      include:
+        - bin/*
+```
+
+Your files should maintain their permissions.
+
+##### With Webpack:
+
+Here is where it gets tricky. The package includes are not honored by the `serverless-webpack` plugin, so we have have webpack include the files in our bundle. We're going to use the official [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/ "https://webpack.js.org/plugins/copy-webpack-plugin/") to do this, but here's the kicker. The [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/ "https://webpack.js.org/plugins/copy-webpack-plugin/") does NOT preserve file permission, so we then have to write a custom plugin to set the file permissions of all the files in our `bin` folder to `755` so they can be executed by lambda.
+
+But first lets copy our files with [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/ "https://webpack.js.org/plugins/copy-webpack-plugin/"). Do do this you can checkout the [documentation here](), or you can add this to your webpack config:
+
+```yml
+      plugins: [
+        new CopyWebpackPlugin([{
+          from: 'bin/',
+          to: 'bin/'
+        }]),
+      ]
+```
+
+Pretty easy.
+
+### Permissions
+
+I did find a plugin called [webpack-permissions-plugin ](https://www.npmjs.com/package/webpack-permissions-plugin "https://www.npmjs.com/package/webpack-permissions-plugin") that helped me solve the issue with the permissions, but I couldn't get the feature to change all the permissions in the directory to work. So I decided to make my own simplified version of that plugin to simply handle changing the permissions of the files in the bin folder.
+
+So here's the simple plugin I whipped up:
+
+```js
+    const fs = require('fs');
+    
+    function WebpackBinPermission(options) {
+      this.options = options || {};
+    }
+    
+    WebpackBinPermission.prototype.apply = function (compiler) {
+      compiler.plugin('done', () => {
+        const permissions = this.options.permissions || '755';
+        const binPath = `${compiler.outputPath}/bin`;
+        fs.readdir(binPath, (err, items) => {
+          if (items && items.length > 0) {
+            for (let i = 0; i < items.length; i += 1) {
+              fs.chmodSync(`${binPath}/${items[i]}`, permissions);
+            }
+          }
+        });
+      });
+    };
+    
+    module.exports = WebpackBinPermission;
+```
+
+As you can see, its pretty simple and all it does it changes the permissions of everything in the `/bin` folder to `755`. And for me it works like a charm.
+
+Put that plugin code in a new file called `webpack-bin-permissions.js`.Then at the top of your webpack config file, import it like this: 
+
+```js
+    const WebpackBinPermission = require('webpack-bin-permissions')
+```
+
+To then to use it, you just have to pair it with the [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/ "https://webpack.js.org/plugins/copy-webpack-plugin/") in your webpack config like this:
+
+```js
+      plugins: [
+        new CopyWebpackPlugin([{
+          from: 'bin/',
+          to: 'bin/'
+        }]),
+        new WebpackBinPermission(),
+      ]
+```
+
+And then when [serverless-webpack]() builds it will automatically copy everything in the bin folder and set the executable permissions correctly.
+
+### Executable Path
+
+According to the [aws lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html "https://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html"), lambda functions run in a linux environment. And libraries are used to having access to ready to run executables. That means that in a terminal you can just type in the name of the program without referencing the whole path. If you're not familiar with how this works take a look at [this page by linfo.org](http://www.linfo.org/path_env_var.html "http://www.linfo.org/path_env_var.html").
+
+To make an executable ready-to-run without referencing its path, we have to set the `$PATH` environmental variable and tell linux to look inside our own `bin` folder when searching for valid ready-to-run executables.
+
+Thats actually really easy. According to [this official aws post]() we can do it by just putting this line at the top of our handler code:
+
+```js
+    process.env.PATH = `${process.env.PATH}:${process.env.LAMBDA_TASK_ROOT}/bin`;
+```
+
+But I like to also wrap it around some logic so it doesnt interfere with testing:
+
+```js
+    if (process.env.LAMBDA_TASK_ROOT) {
+      process.env.PATH = `${process.env.PATH}:${process.env.LAMBDA_TASK_ROOT}/bin`;
+    }
+```
+
+### Wrap it up
+
+That is the approach that worked for me. I'm currently doing a lot of stuff with executables, and so I needed a solution that allowed me to possibly put many many files in the bin folder that reference each other, and this approach seems to work well.
+
+As always, please comment below if you see any room for improvement in my code, approach, or writing.
+
+Thanks for reading!]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Robust Serverless API Boilerplate with ES6, Folder Structure, Testing (Mocha + Chai), and ESLint]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-25-serverless-my-initial-setup-with-es6-testing-and-ci-deployment</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-25-serverless-my-initial-setup-with-es6-testing-and-ci-deployment</guid>
+            <pubDate>Sat, 25 Aug 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Basically before I start any serious project I like to have a few things setup:
+
+* ES6/ES7 Webpack and Babel (From Starter)
+* A good offline dev workflow (From Starter)
+* ESLint
+* Folder structure
+* Testing
+
+I hope this isn't too obscure of a topic, but I'm not actually going to cover how to build a CRUD API, this is just an example starting boilerplate before you begin coding your project.
+
+I'm assuming you've at least tried using the serverless framework before. If you are new to serverless, I have an article that breaks it down from the beginning here:
+
+[Serverless Back-End for React - Your Introduction to Serverless Architecture](/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture "/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture")
+
+### The Starter
+
+Lets start with the great [Serverless Node.js Starter](https://serverless-stack.com/chapters/serverless-nodejs-starter.html "https://serverless-stack.com/chapters/serverless-nodejs-starter.html") ([github](https://github.com/AnomalyInnovations/serverless-nodejs-starter "https://github.com/AnomalyInnovations/serverless-nodejs-starter")) from the awesome [Serverless Stack](https://serverless-stack.com/ "https://serverless-stack.com/") project. If you're not familiar with that project be sure to check it out.
+
+The starter basically includes all this stuff (From the the [starter description page](https://serverless-stack.com/chapters/serverless-nodejs-starter.html "https://serverless-stack.com/chapters/serverless-nodejs-starter.html")):
+
+* **Use ES7 syntax in your handler functions**
+* **Package your functions using Webpack**
+* **Run API Gateway locally**
+  * Use `serverless offline start`
+* **Support for unit tests**
+  * Run `npm test` to run your tests
+* **Sourcemaps for proper error messages**
+  * Error message show the correct line numbers
+  * Works in production with CloudWatch
+* **Automatic support for multiple handler files**
+  * No need to add a new entry to your `webpack.config.js`
+* **Add environment variables for your stages**
+
+If you dont use this starter, you have to add a lot of this stuff one by one by including and configuring the right packages and plugins. So this gives us a great place to start.
+
+### Create a New Project
+
+First make sure you have the `serverless` module installed globally
+
+```bash
+    yarn global add serverless
+    # or
+    npm install serverless -g
+```
+
+And then run this command to create a new serverless project using the starter:
+
+```bash
+    $ serverless install --url https://github.com/AnomalyInnovations/serverless-nodejs-starter --name my-project
+```
+
+It gives us a `serverless.yml` file that looks like this:
+
+```yml
+    service: my-project
+    
+    plugins:
+      - serverless-webpack
+      - serverless-offline
+    
+    custom:
+      webpack:
+        webpackConfig: ./webpack.config.js
+        includeModules: true
+    
+    provider:
+      name: aws
+      runtime: nodejs8.10
+      stage: dev
+      region: us-east-1
+    
+    functions:
+      hello:
+        handler: handler.hello
+        events:
+          - http:
+              path: hello
+              method: get
+```
+
+And a handler.js file that looks like this:
+
+```js
+    export const hello = async (event, context, callback) => {
+      const response = {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: `Go Serverless v1.0! ${(await message({ time: 1, copy: 'Your function executed successfully!'}))}`,
+        }),
+      };
+    
+      callback(null, response);
+    };
+    
+    const message = ({ time, ...rest }) => new Promise((resolve, reject) => 
+      setTimeout(() => {
+        resolve(`${rest.copy} (with a delay)`);
+      }, time * 1000)
+    );
+```
+
+It also gives us a test folder with an example test.
+
+```js
+    // tests/handler.test.js
+    
+    import * as handler from '../handler';
+    
+    test('hello', async () => {
+      const event = 'event';
+      const context = 'context';
+      const callback = (error, response) => {
+        expect(response.statusCode).toEqual(200);
+        expect(typeof response.body).toBe("string");
+      };
+    
+      await handler.hello(event, context, callback);
+    });
+
+We can run this command to start the offline server for a good development workflow:
+
+```bash
+    serverless offline start
+```
+
+This will start an offline server that you can use to make API requests and test all the endpoints.
+
+I also like to add a script in the `package.json` file to make this easy to launch:
+
+```json
+      "scripts": {
+      	"start": "serverless offline start",
+        "lint": "node_modules/.bin/eslint .",
+        "test": "NODE_ENV=test node_modules/.bin/mocha --recursive --require babel-core/register"
+      },
+```
+
+### Add ESLint
+
+I always work with a linter these days, there's no better way to keep clean code and enforce best practices with a language like javascript where its so easy to write messy and ugly code.
+
+Lets add `eslint` and some plugins:
+
+```bash
+    yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-mocha eslint-plugin-promise
+```
+
+And then make a new `.eslintrc.json` file in the root of our project.
+
+```bash
+    touch .eslintrc.json
+```
+
+And add this to the new file:
+
+```json
+    {
+      "extends": ["airbnb/base", "plugin:promise/recommended"],
+      "plugins": ["promise"],
+      "rules": {}
+    }
+```
+
+Add a `.eslintignore` file:.
+
+```bash
+    touch .eslintignore
+```
+
+And ignore the webpack config:
+
+```bash
+    # .eslintignore
+    
+    webpack.config.js
+```
+
+And then add a `lint` script to our `package.json`:
+
+```json
+      "scripts": {
+      	"start": "serverless offline start",
+        "lint": "node_modules/.bin/eslint .",
+      },
+```
+
+Then you can run the linter with this command:
+
+```bash
+    yarn lint
+    # or 
+    npm run lint
+```
+
+### API Folder Structure
+
+When I'm building a serverless api I like to give my functions, paths, and folder a api-like structure. So I'll create some directories to organize my handlers. This may be a bit overkill for small projects, but I dont think there are any downsides of having this kind of extra organization right off the bat.
+
+```bash
+    mkdir -p handlers/api/v1/todos
+```
+
+I think you can think of these handlers as controllers, and so if you're building CRUD endpoints for a model, you can add a different file for each of the 5 main API actions:
+
+```bash
+    touch handlers/api/v1/todos/index.js
+    touch handlers/api/v1/todos/show.js
+    touch handlers/api/v1/todos/create.js
+    touch handlers/api/v1/todos/update.js
+    touch handlers/api/v1/todos/delete.js
+```
+
+Then the functions part of your `serverless.yml` file would look something like this:
+
+```yml
+    functions:
+      api/v1/todos/index:
+        handler: handlers/api/v1/todos/index.default
+        events:
+          - http:
+              path: api/v1/todos
+              method: get
+      api/v1/todos/show:
+        handler: handlers/api/v1/todos/show.default
+        events:
+          - http:
+              path: api/v1/todos/{id}
+              method: get
+      api/v1/todos/create:
+        handler: handlers/api/v1/todos/create.default
+        events:
+          - http:
+              path: api/v1/todos
+              method: post
+      api/v1/todos/update:
+        handler: handlers/api/v1/todos/update.default
+        events:
+          - http:
+              path: api/v1/todos/{id}
+              method: put
+      api/v1/todos/delete:
+        handler: handlers/api/v1/todos/delete.default
+        events:
+          - http:
+              path: api/v1/todos/{id}
+              method: delete
+```
+
+As you can see this is a pretty typical REST setup.
+
+We can now remove our original handler.js file since we dont need it anymore:
+
+```bash
+    rm handler.js
+```
+
+We wont be using this today, but lets also create a `models` folder where I can put our models:
+
+```bash
+    mkdir models
+    touch models/todo.js
+```
+
+Then the individual handlers will include the models to handle the crud operations.
+
+Now I'm going to add a basic handler for `todos/index.js` so we have something to test:
+
+```js
+    # handlers/api/v1/index.js
+    
+    export default (event, context, callback) => {
+      const response = {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: 'Hello from todos/index',
+        }),
+      };
+    
+      callback(null, response);
+    };
+```
+
+And if you are following along, you'll have to add an export to all the handler files in order to run the offline server.
+
+### Setup Testing
+
+By default the starter comes with `jest` but I prefer `mocha` so lets swap `jest` for `mocha` and add a bit of `chai` for the assertions.
+
+```bash
+    mv tests test
+    rm test/handler.test.js
+    yarn remove --dev jest
+    yarn add --dev mocha chai
+    touch test/test_helper.js
+```
+
+Now lets add some test files for our endpoints:
+
+```bash
+    mkdir -p test/api/v1/todos/
+    touch test/api/v1/todos/index.test.js
+    touch test/api/v1/todos/show.test.js
+    touch test/api/v1/todos/create.test.js
+    touch test/api/v1/todos/update.test.js
+    touch test/api/v1/todos/delete.test.js
+```
+
+And we'll only add 1 test for now for our `todos/index` handler:
+
+```js
+    import { expect } from 'chai';
+    
+    import todosIndex from '../../../../handlers/api/v1/todos';
+    
+    describe('Fetching list of todos', () => {
+      it('returns a valid response', (done) => {
+        const event = 'event';
+        const context = 'context';
+        const callback = (error, response) => {
+          expect(response.statusCode).to.equal(200);
+          expect(typeof response.body).to.equal('string');
+          expect(response.body).to.contain('Hello from todos/index');
+          done();
+        };
+    
+        todosIndex(event, context, callback);
+      });
+    });
+```
+
+Then we can run it by first adding this script to our `package.json` file:
+
+```json
+      "scripts": {
+      	"start": "serverless offline start",
+        "lint": "node_modules/.bin/eslint .",
+        "test": "NODE_ENV=test node_modules/.bin/mocha --recursive --require babel-core/register"
+      },
+```
+
+We have to add the `--recursive` tag so it will find the tests in our subfolders, and the `--require babel-core/register` tag to make ES7 work with our tests.
+
+Then we can run our tests with the command:
+
+```bash
+    yarn test
+    # or
+    npm test
+```
+
+Now we also need a different `.eslintrc.json` file for our testing so if we put a new one in our test tile the tests will play by different eslint rules.
+
+```bash
+    touch test/.eslintrc.json
+```
+
+With these contents so it will ignore mocha keywords:
+
+```json
+    {
+      "extends": ["airbnb/base", "plugin:promise/recommended"],
+      "plugins": ["promise", "mocha"],
+      "env": {
+        "mocha": true
+      },
+      "rules": {}
+    }
+```
+
+### Wrap it up
+
+Now we can start our offline server:
+
+```bash
+    serverless offline start
+```
+
+We can test our code:
+
+```bash
+    yarn test
+    # or
+    npm test
+```
+
+...and we can lint our code:
+
+```bash
+    yarn lint
+    # or
+    npm run lint
+```
+
+And we have some good folder structure to start building our API.
+
+Thanks for reading, I hope this can be of help to someone.
+
+As always if you notice anything I did that could be improved, please reach out. I'm always looking to improve.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Access Token Handling (Automatic Refresh) with React + Redux]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-23-access-and-refresh-token-handling-with-redux</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-23-access-and-refresh-token-handling-with-redux</guid>
+            <pubDate>Thu, 23 Aug 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Here is the approach I've used recently and it seems to work out pretty well. Its very similar to the approach I found [here](https://michaelwashburnjr.com/best-way-to-store-tokens-redux/ "https://michaelwashburnjr.com/best-way-to-store-tokens-redux/"). In this example I'm dealing with accessToken + refreshToken, but this could easily be adapted to different kinds of tokens (a JWT auth for example).
+
+### Break it down
+
+First we'll make sure that redux has gets the token. In my case this means passing it from the server after the authentication callback.
+
+Then we will use a simple redux subscriber to store our auth tokens in the browser localStorage. Using a subscriber will keep it synced so that anytime the auth token in the redux state changes it updates it in the localStorage.
+
+Then we'll make sure that anytime we refresh the page, we load in the auth tokens from localStorage when creating the store.
+
+Then we'll add some middleware that happens before each outgoing HTTP request that will refresh the token if needed, and update the redux state with the new tokens, and our subscriber will automatically update the token in localStorage.
+
+### Get the Token from the Server to Redux
+
+You can probably skip this part if you are already getting your auth tokens to redux some other way.
+
+In my case, I'm authenticating with Microsofts Oauth2 service. and the tokens are being sent to the server via a RedirectURI callback, that means I need to pass the tokens from the server to the client. I don't store it in the session or database, Instead I pass it back to the client using the `window.__PRELOADED_STATE__` demonstrated in the [Redux server rendering documentation](https://redux.js.org/recipes/serverrendering).
+
+I've decided to store my auth tokens in redux under `state.auth.tokens`, so my preloadedState object will look like this:
+
+```js
+    const preloadedState = {
+      auth: {
+        tokens: { /* Auth token data goes here */ }
+      }
+    }
+```
+
+Then we set that as the value of the `window.__PRELOADED_STATE__`, in the server rendered html like this (Making sure to include these lines BEFORE loading in the client js bundle):
+
+```html
+    <script>
+      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+      
+      /* The string replace is to prevent injections into our preloaded state. Check the redux server rendering docs for more info */
+    </script>
+```
+
+Then when loading the store, load in the `window.__PRELOADED_STATE__` as the initial state when creating the redux store:
+
+```js
+    const store = createStore(reducer, window.__PRELOADED_STATE__)
+```
+
+### Sync Auth State to localStorage
+
+Thanks again to [this post](https://michaelwashburnjr.com/best-way-to-store-tokens-redux/) for the idea of using a simple redux store subscriber to keep localStorage synced with out auth section of the redux store.
+
+I made a function that will serialize and set the localStorage variables, and then call that function from `store.subscribe`
+
+```js
+    function setAuthState(state) {
+      try {
+        localStorage.setItem('state.auth.tokens', JSON.stringify((state.auth || {}).tokens));
+      } catch (err) { return undefined; }
+    }
+    
+    store.subscribe(() => {
+      setAuthState(store.getState())
+    });
+```
+
+Be sure to checkout the [documentation for store.subscribe](https://redux.js.org/api/store#subscribe). You can also checkout [this video](https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage) by Dan Abramov on how to use subscribe to store the state into localStorage.
+
+Some other libraries for watching the state for mutations are [redux-watch](https://github.com/jprichardson/redux-watch) and [redux-subscribe](https://github.com/ashaffer/redux-subscribe). They may be a better option later, but for now I'm going with this simple subscribe approach.
+
+### Load Auth From localStorage on Refresh
+
+Then I made a function to get and deserialize the state from localStorage:
+
+```js
+    function getAuthState() {
+      try {
+        const tokens = JSON.parse(localStorage.getItem('state.auth.tokens')) || undefined;
+        const user = JSON.parse(localStorage.getItem('state.auth.user')) || undefined;
+    
+        return { auth: { tokens, user } }
+      } catch (err) { return undefined; }
+    }
+```
+
+Then change our create store to something like this:
+
+```js
+    const store = createStore(
+      reducer,
+      { ...getAuthState(), ...window.__PRELOADED_STATE__ }
+     )
+```
+
+And I was able to refresh the page and the auth tokens persist. So it works!
+
+### Automatic Token Refreshing
+
+I debated whether or not to include this part, because there's so many different ways to implement it, but the ways I think are truly nice and elegant can be a bit complex for a blog post. But I'll try anyway. Hopefully people can get a few good ideas from this.
+
+Now this step is going to vary a lot depending on your implementation. I was greatly inspired by [this library (erikras/react-redux-universal-hot-example)](https://github.com/erikras/react-redux-universal-hot-example) which has a really nice middleware setup for making API requests by dispatching redux actions.
+
+Although my final implementation looks much more like that the middleware found in the [erikras/react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example) mentioned above, here is an exmample of how you might do a simplified version of some API request middleware with the refresh token.
+
+I'm assuming you are using a function dispatcher middleware like [redux-thunk](https://github.com/reduxjs/redux-thunk) and [superagent](https://github.com/visionmedia/superagent) as the request library.
+
+You'll also notice that I loaded my tokens with an `expires_at` attribute to help calculate when a refresh is needed.
+
+The middleware is in a file called `requestMiddleware.js` and looks something like this like this:
+
+```js
+    export default function requestMiddleware() {
+      return ({ dispatch, getState }) => next => (action) => {
+        const {
+          request,
+        } = action;
+    
+        if (!request) {
+          return next(action);
+        }
+    
+        const { tokens } = getState().auth;
+    
+        // 5 minutes from now
+        const refreshThreshold = (new Date.getTime() + 300000);
+    
+        if (tokens.refresh_token && refreshThreshold > tokens.expires_at) {
+          return superagent.post('/path/to/renew')
+            .send({ refresh_token: tokens.refresh_token })
+            .end((err, { body } = {}) => {
+              dispatch({ type: 'SET_TOKENS', payload: body });
+              request(body);
+            });
+        }
+        return request(tokens);
+      };
+    }
+```
+
+Dont forget to apply the middleware:
+
+```js
+    import { createStore, applyMiddleware } from 'redux';
+    import requestMiddleware from './middleware/requestMiddleware';
+    import rootReducer from './reducers/index';
+    
+    const store = createStore(
+      rootReducer,
+      applyMiddleware(requestMiddleware())
+    );
+```
+
+Add a reducer to capture the `SET_TOKEN` action:
+
+```js
+    export default function reducer(state = initialState, action = {}) {
+      switch (action.type) {
+        case SET_TOKENS:
+          return {
+            ...state,
+            auth: { tokens: action.payload },
+          };
+        default:
+          return state;
+      }
+    }
+```
+
+And now we can dispatch actions like this:
+
+```js
+    export default function sendAnyRequest() {
+      return (dispatch) => {
+        return {
+          request: (tokens) => superagent.post('/some/random/request')
+            .send({ foo: 'bar' })
+            .end((err, { body } = {}) => {
+              dispatch({ type: 'SOME_EVENT', payload: body });
+            });
+        }
+      }
+    }
+```
+
+### Wrap it up
+
+And before making any request it will first check the validity of the refresh token and refresh it if needed. And if a refresh does occur it will set the new token in the redux store, which will be automatically written to the localStorage by the subscriber.
+
+Noice!
+
+I highly recommend you read through the code of this project [erikras/react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example), specifically the `ApiClient.js`, `clientMiddleware.js`, and see how the request actions are dispatched.
+
+As I said, I used that example heavily when setting up my redux store. Here is what my middleware file looks like:
+
+```js
+    import { SIGN_OUT, SET_TOKENS } from '../modules/auth';
+    
+    export default function clientMiddleware(client) {
+      return ({ dispatch, getState }) => next => (action) => {
+        if (typeof action === 'function') {
+          return action(dispatch, getState);
+        }
+    
+        const {
+          promise, types, ...rest
+        } = action;
+        if (!promise) {
+          return next(action);
+        }
+    
+        // eslint-disable-next-line no-param-reassign
+        client.token = (getState().auth.tokens || {}).access_token;
+    
+        const [REQUEST, SUCCESS, FAILURE] = types;
+        next({ ...rest, type: REQUEST });
+    
+        let actionPromise = Promise.resolve();
+        const { tokens } = getState().auth;
+    
+        const refreshThreshold = (new Date().getTime() + 300000); // 5 minutes from now
+    
+        if (tokens.refresh_token && refreshThreshold > tokens.expires_at) {
+          actionPromise = client.post('/my-server/renew', { data: { refresh_token: tokens.refresh_token } })
+            .then(
+              (result) => {
+                client.token = result.access_token;
+                return next({
+                  ...rest, result, type: SET_TOKENS,
+                });
+              },
+              errors => next({
+                ...rest, errors, type: SIGN_OUT,
+              }),
+            )
+            .then(() => promise(client));
+        } else {
+          actionPromise = promise(client);
+        }
+    
+        actionPromise.then(
+          result => next({ ...rest, result, type: SUCCESS }),
+          errors => next({ ...rest, errors, type: FAILURE }),
+        ).catch((error) => {
+          console.error('MIDDLEWARE ERROR:', error);
+          next({ ...rest, error, type: FAILURE });
+        });
+    
+        return actionPromise;
+      };
+    }
+```
+
+And I can dispatch really clean actions that look like this:
+
+```js
+    export function loadOne(_id) {
+      return {
+        types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+        promise: client => client.get('/items/'),
+      };
+    }
+```
+
+And the tokens are automatically refreshed and persisted.
+
+I still have some cleaning up to do with my setup. I'd like to modularize that refresh token bit. I first tried to put it into its own middleware, but the existing client middleware dispatches an initial action (LOAD in the example above) that triggers the loading state and adds spinners. Having the refresh token part in its own middleware delayed the loading state until after the refresh so it made for a bad user experience.
+
+It seems to be pretty functional and reliable so far. I'll be sure to update this article if I discover any problems or brittleness with this implementation.
+
+If you notice any mistakes in here, or if you have any ideas on how to improve this setup, please let me know in the comments. I'm always looking for better patterns to follow.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Node Env Variables - dotenv Workaround]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-22-node-env-variables-solving-the-nightmare</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-08-22-node-env-variables-solving-the-nightmare</guid>
+            <pubDate>Wed, 22 Aug 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[The library that everyone uses to manage environmental variables in node is [dotenv](https://www.npmjs.com/package/dotenv "https://www.npmjs.com/package/dotenv"). I don't think I've ever had so much trouble with such a popular module.
+
+What I want is to have my development environment run with the one set of environment variables and my tests run with a different set of environment variables.
+
+
+The instructions say to put this line in your code as early as possible.
+
+```js
+    require('dotenv').config()
+```
+
+But that didnt work for me.
+
+I think it might be a problem related to webpack. I could never get `dotenv` to work reliably, any env variables I referenced would be `undefined`, but then I finally found the solution in [this github issue](https://github.com/motdotla/dotenv/issues/133#issuecomment-255298822 "https://github.com/motdotla/dotenv/issues/133#issuecomment-255298822").
+
+What you have to do is create a file called `.env.js` that looks like this:
+
+```js
+    import dotenv from 'dotenv';
+    dotenv.config({ silent: true });
+```
+
+And import it into your program as early as possible, like this:
+
+```js
+    import {} from './env';
+```
+
+For some reason that makes it work.
+
+# Testing
+
+I also had trouble using env variables in my testing environment. What I found was that the `test_helper.js` file actually loads after some of my tests so I couldn't use the trick above.
+
+What I did was create a new `env.js` file that looks like this:
+
+```js
+    import dotenv from 'dotenv';
+    dotenv.config({ path: '.env.test' });
+```
+
+...and load it as a setup script in the mocha command like this:
+
+```bash
+     NODE_ENV=test node_modules/.bin/mocha --recursive --require babel-core/register --require ./test/env.js --exit
+```
+
+And thats the only way I have been able to get dotenv to work predictably. I hope this helps someone.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Using Socket.io with Redux - Websocket Redux Middleware]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware</guid>
+            <pubDate>Tue, 21 Aug 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[This article uses socket.io as the websocket library. If you want to see a version of this article using Rails' ActionCable library, [click here](/posts/making-redux-middleware-for-websockets "/posts/making-redux-middleware-for-websockets")
+
+***
+
+Middleware is one of the most powerful and useful features of redux. If you're unfamiliar with redux middleware, it is a way to insert extra behavior into dispatched redux actions.
+
+Today we're going to use it to make a clean and powerful way to manage our socket.io events. Basically we want to subscribe to specific events and then dispatch specific redux actions anytime those events are broadcast to us from the socket.io server.
+
+Check out the [redux middleware documentation here](https://redux.js.org/advanced/middleware "https://redux.js.org/advanced/middleware") The code below is inspired by reading through the source of [this example redux app](https://github.com/erikras/react-redux-universal-hot-example "https://github.com/erikras/react-redux-universal-hot-example"), specifically [this middleware](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js "https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js"), so you may also want to check that out as well.
+
+### Typical Redux Actions
+
+Redux actions, by default, looks like this:
+
+```js
+    { type: 'MY_ACTION_TYPE' ...some_data }
+```
+
+Redux actions have 1 required attribute, `type`. Anything else is just extra and is usually meant to be used by the reducer to mutate the state.
+
+By using redux middleware we can define our own action patterns and structures. The middleware will check if the action has other specific attributes and handle that action differently than the others. That way all we have to do to trigger some custom redux behavior is dispatch an action with our specific attributes and it will automatically be handled differently.
+
+Specifically we are going to create a new kind of action that will start listening for specific socket.io events and dispatch a new redux action anytime that event comes through from the server. We'll also be able to stop listening for any specific event.
+
+### Middleware Function
+
+First lets make a middleware function, you'll want to export this function from a file. I called my file \`socketMiddleware.js\`:
+
+```js
+    import io from 'socket.io-client';
+    
+    export default function socketMiddleware() {
+      const socket = io();
+    
+      return ({ dispatch }) => next => (action) => {
+        if (typeof action === 'function') {
+          return next(action);
+        }
+    
+        const {
+          event,
+          leave,
+          handle,
+          ...rest
+        } = action;
+    
+        if (!event) {
+          return next(action);
+        }
+    
+        if (leave) {
+          socket.removeListener(event);
+        }
+    
+        let handleEvent = handle;
+        if (typeof handleEvent === 'string') {
+          handleEvent = result => dispatch({ type: handle, result, ...rest });
+        }
+        return socket.on(event, handleEvent);
+      };
+    }
+```
+
+Lets break down this code:
+
+Basically we first skip our middleware if the action is a function or if there is no `event` attribute in our action.
+
+Then if there is a `leave` attribute, then we remove the event listener
+
+Else we create a new event listener.
+
+But you will notice that we are doing some quick logic to check if the `handle` attribute is a string. And if it is, we are changing its value to a function that dispatches a new action with the received data. So basically our `received` attribute can take both an action type string or an actual function. This gives us an extra level of control over how we handle the data coming in from the socket.io server.
+
+And any data that is sent from the socket.io server is included in the `result` attribute of the action. So the reducer can have easy access to any data the server sent. Also any extra action attributes (`...rest`) are just passed directly through to the dispatched action.
+
+Also notice that the function that we are exporting is returning another function. This is an example of a [Higher-order function](https://en.wikipedia.org/wiki/Higher-order_function "https://en.wikipedia.org/wiki/Higher-order_function") and is a very useful pattern in Javascript. We will execute the outside function when we apply the middleware to redux which will create the socket.io connection only once and give the inner function access to that connection going forward.
+
+### Add Middleware to Redux
+
+Then we have to apply our new middlware. Check the [redux documentation](https://redux.js.org/advanced/middleware#attempt-6-naively-applying-the-middleware "https://redux.js.org/advanced/middleware#attempt-6-naively-applying-the-middleware") for how to do this. But you will probably need to do something like this when setting up your store:
+
+```js
+    import { createStore, applyMiddleware } from 'redux';
+    import socketMiddleware from './middleware/socketMiddleware';
+    import rootReducer from './reducers/index';
+    
+    const store = createStore(
+      rootReducer,
+      applyMiddleware(socketMiddleware())
+    );
+```
+
+Since other file is actually exporting a higher-order function, don't forget to execute the socketMiddleware function when applying it to redux. This will also create the socket.io connection only once when the store loads so we don't have to worry about creating a new connection every time.
+
+### Our New Action Creators
+
+We now have access to a new type of action that has new required attributes. If we dispatch an action with a `event` attribute it will trigger our socket middleware.
+
+Here are some example action creators using our new middleware.
+
+```js
+    export function subscribeMessages() {
+      return {
+        event: 'message',
+        handle: NEW_MESSAGE,
+      }
+    }
+    
+    export function unsubscribeMessages() {
+      return {
+        event: 'message',
+        leave: true,
+      }
+    }
+    
+    // Action creator with received function:
+    export function subscribeConversation() {
+      return dispatch => dispatch({
+        event: 'message',
+        handle: data => dispatch({
+          type: NEW_MESSAGE,
+          payload: data.message,
+        }),
+      });
+    }
+```
+
+You'll notice these actions don't even have the required `type` attribute, this is because when they are dispatched we hijack the action and do out own thing, so these particular actions never makes it to the reducer.
+
+Instead we have an `event`, and `handle` attribute required to start listening for an event, and `event` and `leave`, attributes to stop listening.
+
+The important part here is that `handle` is either an action string to dispatch when new data comes in, or a function to run when new data comes in, but since that function can be another call to dispatch, we have the convenience of a useful default and the flexibility to do whatever we want.
+
+### Conclusion
+
+I'm now a huge fan of redux middleware, I love how it cleans up and simplifies doing complex repetitive things in our action creators.
+
+Now we've set this up we can subscribe and unsubscribe to socket.io events really easily just by dispatching one of our new action creators.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Using Action Cable with Redux - Websocket Redux Middleware]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-25-making-redux-middleware-for-websockets</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-25-making-redux-middleware-for-websockets</guid>
+            <pubDate>Wed, 25 Jul 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[This article uses ActionCable as the websocket library. If you want to see a version of this article using socket.io, [click here.](/posts/using-socket-io-with-redux-websocket-redux-middleware "/posts/using-socket-io-with-redux-websocket-redux-middleware")
+
+***
+
+Middleware is one of the most powerful and useful features of redux. If you're unfamiliar with redux middleware, it is a way to insert extra behavior into dispatched redux actions.
+
+Today we're going to use it to make a clean and powerful way to manage our subscriptions to different Action Cable channels+rooms. This also means taking the data sent to use through action cable and dispatching the appropriate redux actions to mutate the state.
+
+If you are unfamiliar with redux middleware, check out the [documentation here](https://redux.js.org/advanced/middleware "https://redux.js.org/advanced/middleware"). The code below is inspired by reading through the source of [this example redux app](https://github.com/erikras/react-redux-universal-hot-example "https://github.com/erikras/react-redux-universal-hot-example"), specifically [this middleware](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js "https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js"), so you may also want to check that out as well.
+
+### Typical Redux Actions
+
+Basically redux action, by default, looks like this:
+
+```json
+    { type: 'MY_ACTION_TYPE' ...some_data }
+```
+Redux actions have 1 required attribute, `type`. Anything else is just extra and is usually meant to be used by the reducer to mutate the state.
+
+By using redux middleware we can define our own action patterns and structures. The middleware will check if the action has other specific attributes and handle that action differently than the others. That way all we have to do to trigger some custom redux behavior is dispatch an action with our specific attributes and it will automatically be handled differently.
+
+Specifically we are going to create a new kind of action that will subscribe or unsubscribe to specific Action Cable channels+rooms.
+
+### Middleware Function
+
+First lets make a middleware function, you'll want to export this function from a file. I called my file \`cableMiddleware.js\`:
+
+```js
+    import ActionCable from 'actioncable';
+    
+    export default function cableMiddleware() {
+      const cable = ActionCable.createConsumer('/cable');
+    
+      return ({ dispatch, getState }) => next => (action) => {
+        if (typeof(action) === 'function') {
+          return next(action)
+        }
+    
+        const {
+          channel,
+          room,
+          leave,
+        } = action;
+        let { received } = action;
+    
+        if (!channel) {
+          return next(action);
+        }
+    
+        if (leave) {
+          const subscription = _.find(
+            cable.subscriptions.subscriptions,
+            sub => sub.identifier === JSON.stringify({ channel, room }),
+          );
+    
+          return cable.subscriptions.remove(subscription);
+        }
+    
+        if (typeof(received) === 'string') {
+          received = result => dispatch({ type: received, result })
+        }
+    
+        return cable.subscriptions.create({ channel, room }, { received });
+      };
+    }
+```
+
+Lets break down this code:
+
+Basically we first skip our middleware if the action is a function or if there is no `channel` attribute in our action.
+
+Then if there is a `leave` attribute, then we remove the action cable subscription to the channel+room.
+
+Else we create a subscription to the channel+room.
+
+But you will notice that we are doing some quick logic to check if the `received` attribute is a string. And if it is, we are changing its value to a function that dispatches a new action with the received data. So basically our `received` attribute can take both an action type string or an actual function. This gives us an extra level of control over how we handle the data coming in from Action Cable.
+
+And any data that is sent from the ActionCable server is included in the `result` attribute of the action. So the reducer can have easy access to any data the server sent. Also any extra action attributes (`...rest`) are just passed directly through to the dispatched action.
+
+Also notice that the function that we are exporting is returning another function. This is an example of a [Higher-order function](https://en.wikipedia.org/wiki/Higher-order_function "https://en.wikipedia.org/wiki/Higher-order_function") and is a very useful pattern in Javascript. We will execute the outside function when we apply the middleware to redux which will create the ActionCable connection only once and give the inner function access to that cable connection going forward.
+
+### Add Middleware to Redux
+
+Then we have to apply our new middlware. Check the [redux documentation](https://redux.js.org/advanced/middleware#attempt-6-naively-applying-the-middleware "https://redux.js.org/advanced/middleware#attempt-6-naively-applying-the-middleware") for how to do this. But you will probably need to do something like this when setting up your store:
+
+```js
+    import { createStore, applyMiddleware } from 'redux';
+    import cableMiddleware from './middleware/cableMiddleware';
+    import rootReducer from './reducers/index';
+    
+    const store = createStore(
+      rootReducer,
+      applyMiddleware(cableMiddleware())
+    );
+```
+
+Since other file is actually exporting a higher-order function, don't forget to execute the cableMiddleware function when applying it to redux. This will also create the Action Cable connection only once when the store loads so we don't have to worry about creating a new connection every time.
+
+### Our New Action Creators
+
+We now have access to a new type of action that has new required attributes. Basically if we dispatch an action with a `channel` attribute it will trigger our cable middleware.
+
+Here are some example action creators using our new middleware.
+
+```js
+    export function subscribeConversation(conversationId) {
+      return {
+        channel: 'conversations',
+        room: `conversation_${conversationId}`,
+        received: NEW_MESSAGE,
+      }
+    }
+    
+    export function unsubscribeConversation(conversationId) {
+      return {
+        channel: 'conversations',
+        room: `conversation_${conversationId}`,
+        leave: true,
+      }
+    }
+    
+    // Action creator with received function:
+    export function subscribeConversation(conversationId) {
+      return dispatch => dispatch({
+        channel: 'conversations',
+        room: `conversation_${conversationId}`,
+        received: data => dispatch({
+          type: NEW_MESSAGE,
+          payload: data.conversation,
+        }),
+      });
+    }
+```
+
+You'll notice these actions don't even have the required `type` attribute, this is because when they are dispatched we hijack the action and do out own thing, so these particular actions never makes it to the reducer.
+
+Instead we have a `channel`, `room`, and `received` attributes required to subscribe to a channel+room, and `channel`, `room`, and `leave`, attributes required to unsubscribe from a channel+room.
+
+The important part here is that `received` is either an action string to dispatch when new data comes in, or a function to run when new data comes in.
+
+### Conclusion
+
+I'm now a huge fan of redux middleware, I love how it cleans up and simplifies doing complex repetative things in our action creators.
+
+Now we've set this up we can subscribe and unsubscribe to rooms and channels very easily, as well as handle the data from the server in very robust and dynamic ways.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Adding ESLint to Your Project with a Git Hook]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-17-adding-eslint-to-your-project</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-17-adding-eslint-to-your-project</guid>
+            <pubDate>Tue, 17 Jul 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Linters can be annoying at first, but I feel like they really help me write better code. Plus they are great for working in teams to make sure everyone is following the same conventions.
+
+We're going to walk through how to setup ESLint and add it to our project using a git pre-commit hook.
+
+## Installation
+
+First install the package eslint:
+
+```bash
+yarn add eslint --only=dev
+```
+
+Then initialize init and it will walk you through a typical setup:
+
+```bash
+yarn eslint --init
+```
+
+These are the options I selected. I like to start with the AirBnB template:
+
+```bash
+? How would you like to configure ESLint? Use a popular style guide
+? Which style guide do you want to follow? Airbnb
+? Do you use React? Yes
+? What format do you want your config file to be in? JSON
+```
+
+The airbnb template is already set up to use react and it will install all sorts of nice dependencies for you.
+
+And thats basically it!
+
+## Configuration
+
+It creates a file called `eslintrc.json` (the file will be different depending on which format you chose). And in this file will be your configuration.
+
+If you open that file it will look like this:
+
+```json
+{
+  "extends": "airbnb"
+}
+```
+
+So it is basically just copying all of airbnb's rules. So if we want to now change the rules we are using we need to manually add them. We can turn off or change any rule and any rule we specify in our file will override the airbnb rule.
+
+Here is an example of how to disable a rule called `no-underscore-dangle` and change the rule called `react/jsx-filename-extension` which requires all javascript files what use jsx to have the extension `.jsx`. This rule change also allows you to have `.js` extension.
+
+```json
+{
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-underscore-dangle": 0
+  }
+}
+```
+
+To disable eslint totally on a specific line, you can add this at the end of the line:
+
+```js
+var foo = "bar" // eslint-disable-line
+```
+
+And to disable 1 rule on that line you can add the rule like this:
+
+```js
+var foo = "bar" // eslint-disable-line no-alert
+```
+
+You can also do it this way:
+
+```js
+// eslint-disable-next-line
+var foo = "bar"
+
+// eslint-disable-next-line no-alert
+var foo = "bar"
+```
+
+You can lint any file by running `yarn eslint path/to/file.js`.
+
+You can also configure your editor to display any lint issues inline for you.
+
+You can also set up a git pre-commit script to run before each commit which will enforce the lint rules in a very strong way.
+
+## Setting up a ESLint pre-commit git hook
+
+I'm assuming you already have a git repo setup.
+
+Create a new file:
+
+```bash
+touch .git/hooks/pre-commit
+```
+
+Make the file executable:
+
+```bash
+chmod +x .git/hooks/pre-commit
+```
+
+Then paste in this code here into that file:
+
+```bash
+#!/bin/sh
+
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep ".jsx\{0,1\}$")
+ESLINT="$(git rev-parse --show-toplevel)/node_modules/.bin/eslint"
+
+if [[ "$STAGED_FILES" = "" ]]; then
+  exit 0
+fi
+
+PASS=true
+
+printf "\nValidating Javascript:\n"
+
+# Check for eslint
+if [[ ! -x "$ESLINT" ]]; then
+  printf "\t\033[41mPlease install ESlint\033[0m (npm i --save-dev eslint)"
+  exit 1
+fi
+
+for FILE in $STAGED_FILES
+do
+  "$ESLINT" "$FILE"
+
+  if [[ "$?" == 0 ]]; then
+    printf "\t\033[32mESLint Passed: $FILE\033[0m"
+  else
+    printf "\t\033[41mESLint Failed: $FILE\033[0m"
+    PASS=false
+  fi
+done
+
+printf "\nJavascript validation completed!\n"
+
+if ! $PASS; then
+  printf "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
+  exit 1
+else
+  printf "\033[42mCOMMIT SUCCEEDED\033[0m\n"
+fi
+
+exit $?
+```
+
+This code is from \[this article\]([https://medium.com/@shettyrahul8june/how-to-run-eslint-using-pre-commit-hook-25984fbce17e](https://medium.com/@shettyrahul8june/how-to-run-eslint-using-pre-commit-hook-25984fbce17e "https://medium.com/@shettyrahul8june/how-to-run-eslint-using-pre-commit-hook-25984fbce17e")) which references \[this gist\]([https://gist.github.com/rashtay/328da46a99a9d7c746636df1cf769675](https://gist.github.com/rashtay/328da46a99a9d7c746636df1cf769675 "https://gist.github.com/rashtay/328da46a99a9d7c746636df1cf769675")).
+
+Now anytime someone commits, any javascript files included in the commit will have to pass the lint test!]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[React CSS - Styled Components]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-16-react-css-styled-components</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-07-16-react-css-styled-components</guid>
+            <pubDate>Mon, 16 Jul 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[I prefer Styled Components because I feel like it is more inline with the core component philosophy of react. React is all about creating reusable components, and really pushed the idea of bundling the templating (HTML) and behavior (JS) together into components. So it always felt a bit wonky to me to still put my CSS in a separate file and connect my styling using regular CSS `class` and `id` targeting.
+
+Styled Components allow us to bundle the templating (HTML), behavior (JS), and styling (CSS) all together. And similar to how JSX lets us write HTML in with our Javascript, Styled Components let us write classic CSS, but it has many classic JS ways for us to manage our styling logic.
+
+From the \[documentation\]([https://www.styled-components.com/](https://www.styled-components.com/ "https://www.styled-components.com/")): Styled components combine the html element and the rules that style it.
+
+## Installation and basic use of Styled Components
+
+Styled Component are quite easy to use. First install the module:
+
+```bash
+yarn add styled-components
+```
+
+And here is a basic example of how to use it:
+
+```javascript
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const Header = styled.header`
+  width: 100%;
+  height: 70px;
+  background-color: #333;
+  border-bottom: 1px solid #333;
+  display: flex;
+`;
+
+const Body = styled.div`
+  background-color: #fff;
+  color: #333;
+`;
+
+export default function App(props) {
+  return (
+    <Wrapper>
+      <Header/>
+      <Body>
+        <p>Hello Styled Components</p>
+      </Body>
+    </Wrapper>
+  );
+}
+```
+
+As you can see, you just create a new `const` using the `styled` object we imported. That new `const` is now a component we can use when we render. So no more dealing with classNames, the connection from the component to its styling is made directly.
+
+Because its CSS we can use all the classic CSS features like media queries, nesting, and psudo-selectors.
+
+We can also simple interpolate, like this example from \[the documentation\]([https://www.styled-components.com/](https://www.styled-components.com/ "https://www.styled-components.com/")).
+
+```js
+const Button = styled.button`
+  border-radius: 3px;
+  padding: 0.25em 1em;
+  margin: 0 1em;
+  background: transparent;
+  color: palevioletred;
+  border: 2px solid palevioletred;
+
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
+`;
+```
+
+When you interpolate a function in the CSS string definition like this, that function automatically has access to the props from the component it is being used in. Thats pretty neat.
+
+You can also attach props to the Styled Component and then add interpolated logic based on those props. For example:
+
+```js
+// In the render:
+<Header size="3em"></Header>
+
+// In the Styled Component definition
+const Header = styled.div`
+  size: ${props => props.size || '1em'}
+`
+```
+
+Or if we are trying to just extend an existing styled component without any logic we can do this:
+
+```js
+const Button = styled.button`
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+// We're extending Button with some extra styles
+const TomatoButton = Button.extend`
+  color: tomato;
+  border-color: tomato;
+`;
+```
+
+You can also wrap any existing component.
+
+```js
+const HelloComponent = props => <div>Hello Styled Components!</div>
+const StyledComponent = styled(HelloComponent)`
+  color: blue;
+`
+```
+
+This is particularly useful when working with libraries like `react-router` because they give you components like `Link` to use.
+
+```js
+// Link component from react-router
+const StyledLink = styled(Link)`
+  color: pink;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+```
+
+There are a few more tricks available. Checkout the \[full documentation\]([https://www.styled-components.com/docs](https://www.styled-components.com/docs "https://www.styled-components.com/docs")) for more.
+
+Styled Components, allow us to really simplify our display logic while still being able to customize our styling in complex ways. Oh yeah, it also works with React Native.
+
+So give Styled Components a try!
+
+I don't really go into some of the other options for CSS with React, so for a nice outline of some of the other approaches check \[this article\]([https://blog.logrocket.com/the-best-styling-in-react-tutorial-youve-ever-seen-676f1284b945](https://blog.logrocket.com/the-best-styling-in-react-tutorial-youve-ever-seen-676f1284b945 "https://blog.logrocket.com/the-best-styling-in-react-tutorial-youve-ever-seen-676f1284b945")) out.
+
+You can also see the Official Documentation for Styled Components \[here\]([https://www.styled-components.com/](https://www.styled-components.com/ "https://www.styled-components.com/")).]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Get a Facebook Page Access Token That Never Expires]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-03-21-get-a-facebook-page-access-token-that-never-expires</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-03-21-get-a-facebook-page-access-token-that-never-expires</guid>
+            <pubDate>Wed, 21 Mar 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[With the facebook API, page tokens can often be used in place of user tokens. This is very useful because if you are doing something with a business, its not ideal to have to use your own user token for everything. However, if you don't want to have to recreate a new token all the time, you have to go through the process of getting a long-lived page access token.
+
+**IMPORTANT! -** Make sure that your user has permissions to access both the Facebook page and the Facebook groups, and make sure that the Facebook groups are linked to the Facebook page!
+
+Now lets talk about some definitions:
+
+**short-lived user access token**: This is the regular user_access_token, and it typically lasts about 2 hours.
+
+**long-lived user access token**: This user access token last about 60 days and you get it by extending a short-lived user access token
+
+**page access token**: These are similar to user access tokens and are created using a user access token.
+
+If you create a page access token using a short-lived user access token, it is also short-lived and expires in about 2 hours.
+
+But if you create a page access token using a long-lived user access token, then it does not have an expiration date. It lasts until its access is revoked.
+
+Bingo!
+
+To get a user access token you first have to have a facebook app, and then the user (in this case, you) has to grant permissions to your app. Specifically your app needs the permission called `manage_pages`.
+
+The easiest way to do this is to use [Facebook's Graph API Explorer](https://developers.facebook.com/tools/explorer).
+
+Open up the page, then select your app Application dropdown and select "Get User Access Token" from the other dropdown:
+
+![](/uploads/2018/03/21/Graph_API_Explorer_-_Facebook_for_Developers-1.png)
+
+Then in the popup, make sure you check the box for `manage_pages` and click "Get Access Token"
+
+![](/uploads/2018/03/21/Graph_API_Explorer_-_Facebook_for_Developers2.png)
+
+Then your access token will be populated in the Access Token field:
+
+![](/uploads/2018/03/21/Graph_API_Explorer_-_Facebook_for_Developers3.png)
+
+Ok, then we need to exchange that short-lived token for a long-lived token, and we can do it with this same Facebook Graph API Explorer tool.
+
+We need to make a GET request to the Facebook Graph API to the path `/oauth/access_token` with the following parameters:
+
+```javascript
+/oauth/access_token?  
+    grant_type=fb_exchange_token&           
+    client_id={app-id}&
+    client_secret={app-secret}&
+    fb_exchange_token={short-lived-token-we-just-made} 
+```
+
+So make a string that looks like this:
+
+```javascript
+/oauth/access_token?grant_type=fb_exchange_token&client_id=9382767696389008&client_secret=1aac234d48ce90uu57c1b579faa92f00ufa&fb_exchange_token=EAAcZBbBDPXSwBACfeRskLz5LJJCigZBZBDyr4pmZCcVsrpFaoDUDSXthSDzdq4bqO75iEE17TBbpxIyQ1eTR3OIfGq2KPZBloF4xJ0I1GU1hxOnCGJmZBVg0DXU4IrDgcURm4ceKE4M1ZAFdGNmt5y2shsETLxAEKwZD
+```
+
+And paste it into here and you'll get your long-lived access token in the response:
+
+![](/uploads/2018/03/21/Graph_API_Explorer_-_Facebook_for_Developers4-1.png)
+
+Now that you have your long-lived user access token, we can exchange it by making a GET request in the Facebook Graph API Explorer to get the long-lived page access token.
+
+You need to take that long-lived user access token and paste it into the Access Token field then put this in the path field:
+
+```javascript
+{fb-page-id}]/?fields=access_token
+```
+
+Then you will get your long-lived page access token in the response!
+
+![](/uploads/2018/03/21/Graph_API_Explorer_-_Facebook_for_Developers5.png)
+
+Facebook Documentation:
+
+* Access Tokens: [https://developers.facebook.com/docs/facebook-login/access-tokens](https://developers.facebook.com/docs/facebook-login/access-tokens "https://developers.facebook.com/docs/facebook-login/access-tokens")
+* Extending Tokens: [https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension "https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension")]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Express.js With ES6 and Babel]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-02-16-express-js-with-es6-and-babel</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-02-16-express-js-with-es6-and-babel</guid>
+            <pubDate>Fri, 16 Feb 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Express.js doesn't come with es6 out of the box. But its actually not that hard to add.
+
+I'm going to go over how to easily add ES6 support to your project using the [babel-cli](https://www.npmjs.com/package/babel-cli "babel-cli"), as well as show you some of the things you need to do so your app will be ready for production later.
+
+The `babel-cli` gives us a command line tool called `babel-node` that wraps around node and converts our ES6 code to basic javascript that node can read.
+
+**However it is not recommended to use babel-node in production**
+
+### New Express App
+
+First lets use the [express-generator](http://expressjs.com/en/starter/generator.html) to make a new Express.js app.
+
+```bash
+$ express --view pug --css sass new-app
+$ cd new-app
+$ npm install
+```
+
+This generates a new express app in a new folder called new-app. And as you can see, I've told express to use sass for css and pug for the html templating.
+
+### Rearrange Files
+
+We are going to need to rearrange things a bit. This is because of the production build. We want all the javascript files isolated in a subfolder of our app because later we are going to tell babel to compile all the files and things get really messy if all our code is in at the same level as our dot files, node_modules folder, etc...
+
+So lets make a new folder called `app` and move all our express stuff into it.
+
+```bash
+$ mkdir app
+$ mv bin public routes views app.js app/
+```
+
+### Install Babel
+
+First we need to add 2 babel packages to our apps dev-dependencies.
+
+```bash
+$ npm install babel-cli --save-dev
+$ npm install babel-preset-env --save-dev
+```
+
+[babel-preset-env]() by default behaves like [babel-preset-latest](). Basically it includes all the new features of ECMAScript that are standardized each year. But it also allows you to specify specific environments to build for such as specific browsers you want to support.
+
+Next we need to add the babel configuration file `.babelrc` to our app folder. Make it look like this:
+
+```json
+{
+    "presets": ["env"]
+}
+```
+
+This just tells babel to use [babel-preset-env]() that we just installed but take a look as some of the other configuration settings you can specify [here](https://babeljs.io/docs/usage/babelrc/).
+
+### Try it Out
+
+To try it out lets open our `app.js` file and replace this line
+
+```javascript
+var express = require('express');
+```
+
+with this:
+
+```javascript
+import express from 'express';
+```
+
+And then we run express with babel with this command:
+
+```bash
+$ babel-node app/bin/www
+```
+
+It works!
+
+And you will notice that if you just run `node app/bin/www` you get an error which is expected.
+
+Now lets add a npm script to make running this easier. Open up your `package.json` file and lets add a new line in the scripts section so it looks like this:
+
+```json
+...
+    "scripts": {
+    "start": "node ./bin/www",
+    "start:dev": "babel-node ./app/bin/www"
+    }
+...
+```
+
+Now we can run our babelized app with the command:
+
+npm run start:dev
+
+You might be asking, "Why don't we just use the existing start script". We need to save that for production because many production environments use the start script to run the app, but obviously we need to change it since we know `node ./bin/www` doesn't work.
+
+### Preparing for Production
+
+So to prepare our app for production we need a build step that will take our ES6 code and generate node-friendly ES5 code in a file somewhere that node can run.
+
+To do this I like to another npm script:
+
+```json
+...
+    "scripts": {
+    "start": "node ./bin/www",
+    "start:dev": "babel-node ./app/bin/www",
+    "build": "rm -rf ./build && mkdir build && babel --out-dir ./build --source-maps --copy-files ./app"
+    }
+...
+```
+
+As you can see this build script removes and recreates any existing `build` folder, and then runs the command `babel --out-dir ./build --source-maps --copy-files ./app` which compiles all the javascript files and copies any other files  into the `build` folder. Checkout [this page](https://babeljs.io/docs/usage/cli/) for more info on how the babel command works.
+
+You may want to add the `build` folder to your `.gitignore`.
+
+Then the last thing to do is to change the start script to look like this:
+
+```json
+"start": "node ./app/bin/www"
+```
+
+And we are good to go.
+
+Just make sure you run `npm run build` as part of any deployment into production.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Deploying Node.js on Azure App Services]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-02-14-deploying-a-node-js-app-on-azure-app-services</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-02-14-deploying-a-node-js-app-on-azure-app-services</guid>
+            <pubDate>Wed, 14 Feb 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[In this post I'm going to go over how to deploy a Node.js app to Azure App Services and also mention some of the things I learned from working with Azure.
+
+# Your Azure Account
+
+### Azure account
+
+First of all, you need to make sure you have an Azure account. If you don't have one you can sign up for Azure [here](https://azure.microsoft.com/free/ "Azure Signup").
+
+### Azure Subscription
+
+Azure requires you to have something called a subscription before you can start using Azure services. This subscription is basically a billing program.
+
+Double check that you have a subscription by going to this page in your Azure portal:
+
+[https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade "https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade")
+
+If you don't see a subscription listed, then add one.
+
+If you have just signed up you'll notice that one of the subscription options is "Free Trial" so you can use that and then later change to a "Pay as You Go" option later if you run out of free resources.
+
+### Azure Command Line Tool
+
+We are going to be doing this entire setup using the Azure command line tool.
+
+You can download and install the command line tool by following the \[instructions here\]([https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest "https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest"))
+
+Once you have that installed and working, we are ready to get started deploying the app.
+
+### Create a deployment user
+
+This deployment user will be used when deploying your code. Basically we are going to configure the app to be deployed with git so when you do a `git push azure master` it will ask you for the password that you set here.
+
+Run this in the command line:
+
+```bash
+az webapp deployment user set --user-name <username> --password <password>
+```
+
+### Create a resource group
+
+Resource groups are basically just a way to group together resources so you can easily monitor them together, track costs, and stuff.
+
+Replace `<my-resource-group>` with a resource group name you want.
+
+```bash
+az group create --name <my-resource-group> --location westeurope
+```
+
+### Create a service plan
+
+This is where you will set the how many resources your app will use.
+
+The command below will create a `FREE` tier app that has about 1 GB of RAM. You could also set the `--sku` tag to `BASIC` or `SHARED` or any of the other \[service plans here\]([https://azure.microsoft.com/en-us/pricing/details/app-service/](https://azure.microsoft.com/en-us/pricing/details/app-service/ "https://azure.microsoft.com/en-us/pricing/details/app-service/")).
+
+Also be sure to set your `<my-app-service-plan>` and also make sure you set `<my-resource-group>` to your resource group name from earlier.
+
+```bash
+az appservice plan create --name <my-app-service-plan> --resource-group <my-resource-group> --sku FREE
+```
+
+### Create the app
+
+Now we actually create the app, you have to give your app an `<app-name>` and then make sure you paste in all the other options from things you've created previously.
+
+```bash
+az webapp create --name <app-name> --resource-group <my-resource-group> --plan <my-app-service-plan>
+```
+
+### Configure git for deployment
+
+This command sill set up you app to be deployed using git. The response you get from this command will be a git url you can use as the git remote to deploy.
+
+```bash
+az webapp deployment source config-local-git --name <app-name> --resource-group <my-resource-group> --query url --output tsv
+```
+
+### Configure startup script
+
+If you are coding in ES6 you probably have a build step. For that you may want to set up a custom deploy script. \[Here is the documentation for how to do that\]([https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script "https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script")).
+
+However I've noticed a bug here. Sometimes the order of commands in the deploy script appears to not be honored. According to \[this github issue\]([https://github.com/projectkudu/kudu/issues/2699](https://github.com/projectkudu/kudu/issues/2699 "https://github.com/projectkudu/kudu/issues/2699")), it may be related to the Always On setting in your app. But regardless the app tries to start up before the my deploy script is finished, which means it tries to run code that isnt built from webpacker yet.
+
+So, in an effort to find a quick fix I just committed my built files which sucks. I'm still trying to figure out a better workaround here because there hasn't been a lot of movement on that particular github issue.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Serverless Back-End for React - Your Introduction to Serverless Architecture]]></title>
+            <link>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture</link>
+            <guid>nmajor-site-lpp6q6c6a-tekomics.vercel.app/posts/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture</guid>
+            <pubDate>Mon, 29 Jan 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[What's the opposite of the boy who cried wolf? The boy who cried that something amazing was coming? The boy who cried free pizza?
+
+Serverless architecture might be the free pizza equivalent of web technologies in terms of how amazing it is. It's still very new tech, but the more I learn about it and use it, the more I am convinced that it's the future of web development.
+
+In this post:
+
+I'm going to go over what serverless architecture is and how using it differs from working with a traditional web framework. I'll also go over the benefits of serverless.
+
+Then, I'll show you how you can make and deploy a simple serverless back-end for a React app using [AWS Lambda](https://aws.amazon.com/lambda/) (Amazons's serverless platform).
+
+And finally, to wrap it up, I'll go over some of the drawbacks of the serverless architecture.
+
+_Side note: I'm going to be using Amazon's platform for all of the examples in this post, but be aware that there are other serverless providers out there. The implementation details are going to be different depending on which one you use._
+
+Let's get started!
+
+## What is serverless?
+
+Okay, okay, technically the term serverless is a little misleading. The term serverless refers to FaaS or Function as a Service. We call it serverless because, although these functions still run on a server somewhere, you don't have to pay for, set up, or maintain a server yourself.
+
+FaaS is a form of [event based computing](https://www.avantica.net/blog/event-based-computing-aws-lambda). Basically, you configure functions to be triggered by specific events. These functions are executed in little (or big) containers containing all of the dependencies they need to run.
+
+Here is the cool part — these functions can be triggered by [all sorts of events](http://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-function.html).
+
+Here are a few of the events AWS Lambda can be triggered by:
+
+* Amazon S3 Events — like when an object is added or deleted from S3.
+* Amazon Simple Email Service — when you receive an email.
+* Amazon Alexa — yes, you can trigger functions by talking to Alexa.
+* Amazon DynamoDB — trigger when data changes in your database.
+* Scheduled Events — self explanatory.
+* Amazon API Gateway — the Holy Grail!
+
+Amazon API Gateway! You can trigger these events using an API. Aaaaand, not only can you trigger a function with an API request, that function can send back a response! That's a back-end!
+
+When you break down any web framework, even big ones like Rails, they all boil down each request to the execution and return value of one function. In the case of Rails, each request is mapped to one controller action, and all of the rest of the code is just helping the controller build the response.
+
+It seems a little strange at first to think about web apps in terms of individual functions, but all of the other parts of the framework are there, they are just being handled by the infastructure.
+
+A good example of this is the routing. In serverless you use a configuration file to tell the infastructure which API events to connect to which functions, so none of your actual code gets involved in the routing.
+
+## Why Serverless
+
+**Cost**  
+One of the biggest benefits of serverless is cost. You only pay for the request and runtime of the function. This means no more paying for idle servers. This ends up saving some companies a lot of money.
+
+**Scalability**  
+Serverless solves most scaling problems because each function is its own little microservice that can scale automatically by the provider.
+
+_Some of these other benefits are pretty subjective, but they come up frequently in discussions of serverless online._
+
+**Time to Market**  
+One claimed benefit is a faster time to market. This actually makes sense. You save a lot of time not having to worry about dev ops, and some of the things you used to have to write code for are handled by the infastructure, leaving you more time to develop the important parts of your application.
+
+**Decreased Software Complexity**  
+Of course it's still possible to write bad, tightly coupled code in serverless, but splitting your application into distinct functions helps you write better, loosely coupled code, leading to less complex software.
+
+**Shorter Release Cycles**  
+If everything is loosely coupled, it can mean shorter release cycles.
+
+**Industry Direction**  
+Another **why** is the fact that this seems to be the way the industry is heading. For a while now, the industry has been trending hard towards bigger front-ends. As front-end frameworks like Angular and React have been doing more and more of the heavy lifting for the client, the back-ends for web apps have been shrinking. Serverless seems to be testing just how small a back-end can be.
+
+## How
+
+Here is the moment you've been waiting for!
+
+In preparation for this post, I built a little React app called Business Cardistry. The app lets people design colorful business cards.
+
+[Demo](http://cardistry.nmajor.com) | [Source](https://github.com/nmajor/business-cardistry-client)
+
+Now, I want this app to let users actually download PDFs of their business card design. To do that, I am going to need a little back-end processing. Specifically, I want one endpoint that will receive the HTML of the business card design and return a URL the user can use to download a PDF of the design.
+
+Before we begin, let's take a moment to appreciate the fact that we are going to be sending HTML _from the client_ to the back-end. lol.
+
+Here is our roadmap:
+
+* Set up and create a new project
+* Deploy and send a test request
+* Set up an S3 Bucket
+* Code our function
+* Testing and final deployment
+
+Let's get started...
+
+### Set up and Create a New Project
+
+The Serverless Toolkit over at [serverless.com](https://serverless.com) has an amazing framework with incredible documentation, and that is what we are going to be using today.
+
+You should already have `node v6.5.0` or higher installed.
+
+First, install the serverless CLI: `npm install -g serverless`.
+
+Then, follow [these instructions](https://serverless.com/framework/docs/providers/aws/guide/credentials/) to set up your AWS account and credentials.
+
+After following those instructions, you should have an Access Key ID, and a Secret Access Key, and both should be added to your shell environment under the variable names `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. This is where the serverless CLI looks for credentials when deploying.
+
+Now that you have everything set up, let's create our back-end by running this command:
+
+    serverless create --template aws-nodejs --path business-cardistry
+
+This should create a new folder for us called `business-cardistry`. Let's go into that folder and have a look around.
+
+```bash
+$ cd business-cardistry
+$ ls -lah
+total 24
+drwxr-xr-x    5 nmajor  staff   160B Dec 27 13:37 .
+drwxr-xr-x  110 nmajor  staff   3.4K Dec 27 13:37 ..
+-rw-r--r--    1 nmajor  staff    86B Dec 27 13:37 .gitignore
+-rw-r--r--    1 nmajor  staff   466B Dec 27 13:37 handler.js
+-rw-r--r--    1 nmajor  staff   2.8K Dec 27 13:37 serverless.yml
+```
+
+As you can see, aside from `.gitignore`, we only have two files, `handler.js` and `serverless.yml`. Later, this file structure can grow into any structure we need to keep our code organized, but everything comes back to these two files.
+
+The best way to learn how these files work is to dive in and change them a bit to see how they work.
+
+I opened up `serverless.yml` and removed all of the comments, so now we have something like this (I added some annotations):
+
+```yaml
+# serverless.yml
+
+service: business-cardistry # Name of our service
+
+provider:
+  name: aws # AWS is our FaaS provider
+  runtime: nodejs6.10 # The language our functions are using
+
+functions:  # This is our list of functions
+  hello:  # We have a function named hello
+    handler: handler.hello  # references a function called hello in handler.js
+```
+
+Let's modify our `hello` function by renaming it to `pdf` and connecting it to an API event. We do that by modifying our `functions` section to look like this:
+
+```yaml
+functions:
+  pdf:
+    handler: handler.pdf
+    events:
+      - http:
+          path: pdf
+          method: post
+```
+
+As you can see, we added an `events` level to our `hello` section. We set the path to `pdf` and the method to `post`. This means we can trigger this event by sending a post request to _some-url-goes-here/pdf_. It looks a lot like a routing system in a traditional web framework, but again, it's being handled at the infrastructure level.
+
+Now, let's take a look at `handler.js`.
+
+```javascript
+# handler.js
+'use strict';
+
+module.exports.hello = (event, context, callback) => {
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: 'Go Serverless v1.0! Your function executed successfully!',
+      input: event,
+    }),
+  };
+
+  callback(null, response);
+};
+```
+
+Again, let's modify it by changing `hello` to `pdf`. Let's also change the body to only return the message. Now, the file should look like this:
+
+```javascript
+'use strict';
+
+module.exports.pdf = (event, context, callback) => {
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: 'Go Serverless v1.0! Your function executed successfully!',
+    }),
+  };
+
+  callback(null, response);
+};
+```
+
+Alright, now `serverless.yml` defines a function called `pdf`, which is connected to the `pdf` function in `handler.js`. We now should have everything we need to deploy and send a request.
+
+### Deploy and Send a Test Request
+
+There actually isn't any straightforward way to run your serverless script locally, so we actually need to deploy it to test it out.
+
+You can deploy it with the command:
+
+```bash
+serverless deploy -s dev
+```
+
+The `-s dev` part tells it to set the stage to dev. The stage is how we differentiate production code from development code. We will deploy it to the production stage when everything is working.
+
+You should see something like this when you deploy:
+
+```bash
+$ serverless deploy -s dev
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service .zip file to S3 (327 B)...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+...............................
+Serverless: Stack update finished...
+Service Information
+service: business-cardistry
+stage: dev
+region: us-east-1
+stack: business-cardistry-dev
+api keys:
+  None
+endpoints:
+  POST - https://o20pczjzbl.execute-api.us-east-1.amazonaws.com/dev/pdf
+functions:
+  pdf: business-cardistry-dev-pdf
+```
+
+There is the URL for our endpoint. Let's try it out!
+
+```bash
+$ curl -X POST https://o20pczjzbl.execute-api.us-east-1.amazonaws.com/dev/pdf
+{"message":"Go Serverless v1.0! Your function executed successfully!"}
+```
+
+It works! I'm still blown away by how easy that is.
+
+### Set Up an S3 Bucket
+
+Because we are going to be sending back a link that the user can use to download their business card, we need to upload the PDFs to S3. Let's quickly set up an S3 bucket with the proper permissions.
+
+First, let's talk about permissions. Lambdas have an execution role that they assume when they run. The permissions the execution role has will determine which AWS services (like S3) our Lambda function can access.
+
+By default, every new Lambda function gets its own new role, we need to first get the Role ARN of the new role that was created for our function. The Role ARN is the ID of the role that we will use to give that role access to S3.
+
+Later, when we deploy a production function, we will change the execution role of the production function to match dev role which will give the production function the same access that the dev function has.
+
+But first, we need that Role ARN.
+
+Log in to your AWS console and go to the Lambda service.
+
+You should see our function on the list. Go ahead and click it.
+
+![skitch.png](https://cdn.filestackcontent.com/HjebSOAcRXqJCPhLBkmo)
+
+Scroll down to the section that says "Execution Role" and you should see the role that is currently selected. Don't change it — we just needed to see the name of the role.
+
+![skitch.png](https://cdn.filestackcontent.com/C5ZeY2CVTzGROwYIuVnQ)
+
+Now, get the Role ARN by going to the IAM service in the AWS console, click on "Roles" in the sidebar, and select the role for the function. You should see the "Role ARN" at the top of the role page.
+
+Or, if you have the AWS CLI installed, you can get the Role ARN by running this command:
+
+    aws iam get-role --role-name name-of-role
+
+The Role ARN should look something like this:
+
+`arn:aws:iam::525814828111:role/business-cardistry-dev-us-east-1-lambdaRole`
+
+Now, go to the S3 service.
+
+Click "Create Bucket."
+
+![skitch.png](https://cdn.filestackcontent.com/nJLo9YqTFmVxKwzAlIrA)
+
+Give the bucket a name but leave everything else at its default value by clicking "Next," "Next," "Next," "Create Bucket."
+
+![skitch.png](https://cdn.filestackcontent.com/3PGjDW4tTFedF6jGQQQM)
+
+Then, click on your newly created bucket.
+
+Select the Permissions tab, then Bucket Policy.
+
+![skitch.png](https://cdn.filestackcontent.com/tMCgzh96Tv2Y6TsODsZv)
+
+Paste this into the editor. Be sure to replace _role-goes-here_ with the Role ARN.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPutForAllS3TestfilesLambda",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "role-goes-here"
+            },
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::business-cardistry/*"
+        }
+    ]
+}
+```
+
+Alright, this policy allows our custom role to perform all S3 actions on our new S3 bucket. S3 should be good to go!
+
+### Code Our Function
+
+Okay, now we can get to coding. Let's make our `pdf` function. It needs to receive some HTML, process it into a PDF file buffer, then then upload that buffer to S3.
+
+Let's initialize npm and add some dependencies.
+
+```bash
+$ npm init -y
+$ npm install --save html-pdf aws-sdk shortid
+```
+
+The `html-pdf` library we are using requires the program `phantomjs` to be available as an executable binary. Normally, if we were running this script on a server, we would just install `phantomjs` on the server. Because this is serverless, we need to make sure that the runtime context has access to the `phantomjs` executable binary.
+
+The way I handled this was to [download the binary](http://phantomjs.org/download.html) and put it into a `bin` folder in the project root.
+
+Then, I made sure to add this to the serverless.yml file:
+
+```bash
+package:
+  include:
+    - bin/phantomjs
+```
+
+Now, when the function is deployed, it grabs that binary and uploads it while preserving its permissions and making it available in the runtime environment of the function.
+
+Okay. Let's get to the code. Here is what my `pdf` function looks like:
+
+```javascript
+'use strict';
+
+const pdf = require('html-pdf');
+const path = require('path');
+const AWS = require('aws-sdk');
+const shortid = require('shortid');
+
+module.exports.pdf = (event, context, callback) => {
+  const html = event.body;
+  pdf.create(html, {
+    height: '200px',
+    width: '350px',
+    phantomPath: path.resolve(process.env.LAMBDA_TASK_ROOT, 'bin/phantomjs'),
+  }).toBuffer((err, buffer) => {
+    if (err) return console.log(err);
+
+    const fileKey = `cards/${shortid.generate()}.pdf`;
+    const bucket = 'business-cardistry';
+
+    const s3 = new AWS.S3();
+    s3.putObject({
+      Bucket: bucket,
+      Key: fileKey,
+      Body: buffer,
+      ACL: 'public-read'
+    },function (resp) {
+      const fileUrl = s3.getSignedUrl('getObject', {
+        Bucket: bucket,
+        Key: fileKey,
+        Expires: 60,
+      });
+
+      callback(null, {
+        statusCode: 200,
+        headers: {
+          'Content-Type' : 'application/json',
+          'Access-Control-Allow-Origin' : '*',
+        },
+        body: JSON.stringify({ fileUrl }),
+      });
+    });
+  });
+};
+```
+
+I'm not going to go into the code too deeply, but it takes the body of the request and uses it to generate a PDF buffer. It then uploads the buffer to S3 and returns a signed URL for the uploaded object.
+
+You see the line that says `path.resolve(process.env.LAMBDA_TASK_ROOT, 'bin/phantomjs')`? This is how we reference that phantomjs executable binary.
+
+You'll notice that we don't need to specify any AWS credentials. It automatically gets the credentials from the execution role.
+
+### Testing and Final Deployment
+
+Since this endpoint simply receives HTML and returns a filepath, we should still be able to test it with a curl command. First, let's deploy to dev again.
+
+```bash
+serverless deploy -s dev
+```
+
+The above deploy command will deploy the whole project. To deploy only one function, you can use the command:
+
+```bash
+serverless deploy function -f pdf -s dev
+```
+
+If you run into any errors, you can check the logs for the `pdf` function with this command:
+
+```bash
+logs -f pdf -s dev
+```
+
+Now we can test it by sending another curl request with a string of HTML
+
+```bash
+$ curl -d '<h1>Hello PDF!</h1>' -X POST https://o20pczjzbl.execute-api.us-east-1.amazonaws.com/dev/pdf
+{"fileUrl":"https://business-cardis...j2hJHSBQ%3D%3D"}
+```
+
+It works! When I paste in the fileUrl link into a browser, it downloads a PDF that looks like this:
+
+![SJ5Orpb7M-1.jpg](https://cdn.filestackcontent.com/VKbRNpBATGGvLVGmV9W7)
+
+Which is exactly what we expect.
+
+So now, let's deploy in production!
+
+```bash
+$ serverless deploy -s production
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Creating Stack...
+Serverless: Checking Stack create progress...
+.....
+Serverless: Stack create finished...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service .zip file to S3 (35.56 MB)...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+..............................
+Serverless: Stack update finished...
+Service Information
+service: business-cardistry
+stage: production
+region: us-east-1
+stack: business-cardistry-production
+api keys:
+  None
+endpoints:
+  POST - https://8103v1xvqk.execute-api.us-east-1.amazonaws.com/production/pdf
+functions:
+  pdf: business-cardistry-production-pdf
+```
+
+Now, this created a whole new function in Lambda, so remember all of that talk about execution roles? We need to change the execution role of the production function to match the role of the dev function. That way the production function will have access to S3 as well..
+
+So go back to the Lambda page in AWS, click on the new production function that was just created, and change the Execution Role to the dev role:
+
+![skitch.png](https://cdn.filestackcontent.com/xji2HYMZQySyeb74aIL7)
+
+Once that's done, we can double check the production endpoint.
+
+```bash
+    $ curl -d '<h1>Hello PDF!</h1>' -X POST https://8103v1xvqk.execute-api.us-east-1.amazonaws.com/production/pdf
+    {"fileUrl":"https://business-cardis...j2hJHSBQ%3D%3D"}
+```
+
+Aaaaaand it works! Now after modifying the request URL in my React code, my app is complete!
+
+Be sure to check out [cardistry.nmajor.com](http://cardistry.nmajor.com/) to see it in action.
+
+I know this was just a simple example with one endpoint, but this same process could be used to build dozens of endpoints for almost any app. I hope this gives you a good idea of what's possible with serverless, and how easy and powerful it can be!
+
+## Limitations and Drawbacks of Serverless
+
+As awesome as serverless is, there are some limitations and drawbacks:
+
+**Latency**  
+Although AWS Lambda is designed to execute functions in milliseconds, you do have some added latency when using serverless. However, we are talking about a few hundred added milliseconds. For most web applications, it's not going to be an issue, but if latency is really important for your project, it's something you are going to want to consider.
+
+**Vendor Lock-in**
+Because serverless relies so heavily on the infrastructure and the supporting services, but you may need to re-write large parts of your application to move it to a different provider.
+
+**Black Box**  
+Many of the parts of your application are out of your control, so when things go wrong or if you hit an edge use-case with your app, you have little control over your ability to resolve it yourself.
+
+**New Tech**  
+Serverless is still in its infancy, so, as with any new technology, great care should be used when deciding whether or not to jump on the bandwagon early.
+
+## Conclusion
+
+I believe serverless is the next big thing in web development. So much in web development is the same. Every framework solves many of the same problems in the same way. Serverless is solving those problems at the infrastructural level, leaving you free to work on the important and different parts of your App.
+
+Combine that with cost and scalability benefits, and the fact that there are so many amazing front-end frameworks like React, and the days of traditional back-end frameworks are numbered.
+
+## Other Resources:
+
+* [serverless-stack.com](https://serverless-stack.com/) — A comprehensive tutorial on building and deploying full-stack apps using Serverless and React on AWS.
+* [serverless.com](https://serverless.com/) — Great documentation, community, and other resources.]]></content:encoded>
+        </item>
+    </channel>
+</rss>

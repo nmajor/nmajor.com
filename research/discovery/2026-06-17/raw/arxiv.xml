@@ -1,0 +1,1415 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/c4cz/aiQkrw9dnNVm26puyh7j1s</id>
+  <title>arXiv Query: search_query=cat:cs.SE OR cat:cs.HC OR cat:cs.IR OR cat:cs.MA&amp;id_list=&amp;start=0&amp;max_results=50</title>
+  <updated>2026-06-17T14:51:49Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.SE+OR+(cat:cs.HC+OR+(cat:cs.IR+OR+cat:cs.MA))&amp;start=0&amp;max_results=50&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>50</opensearch:itemsPerPage>
+  <opensearch:totalResults>93770</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18228v1</id>
+    <title>MAJIC: Leveraging Articulatory Motion for Speech-based Emotion Recognition</title>
+    <updated>2026-06-16T17:53:34Z</updated>
+    <link href="https://arxiv.org/abs/2606.18228v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18228v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce MAJIC, a multimodal emotion recognition system that leverages articulatory motion of the jaw and facial muscles for speech-based emotion recognition (SER). While most SER systems perform well on datasets with strongly expressed emotional speech of trained actors, their performance often degrades when emotional expressions become more subtle. We explore this challenge by engineering features from articulatory motion and integrating them with audio features using a multi-task learning framework. Our key insight is that emotion in speech manifests not only through vocal characteristics but also through distinct articulatory motions: jaw movements, facial muscle vibrations, and speech-induced vibrations. While audio captures features such as pitch and prosody, articulatory motion contains complementary information that is not present in audio alone. We evaluate our system on data collected from 20 participants across multiple sessions, 10 languages, and diverse scenarios, including prompted and conversational speech, showing its robustness across users and settings. MAJIC achieves 93% accuracy and 91% F1 score for emotion classification, outperforming strong audio-based baselines on our dataset.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:53:34Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Tanmay Srivastava</name>
+    </author>
+    <author>
+      <name>Paras Bhavnani</name>
+    </author>
+    <author>
+      <name>Benjir Alvee Islam</name>
+    </author>
+    <author>
+      <name>Shubham Jain</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18191v1</id>
+    <title>DRFLOW: A Deep Research Benchmark for Personalized Workflow Prediction</title>
+    <updated>2026-06-16T17:22:07Z</updated>
+    <link href="https://arxiv.org/abs/2606.18191v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18191v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Deep research (DR) systems are increasingly used for complex information-seeking tasks, but existing works mainly focus on generating reports and summaries. In contrast, many enterprise tasks instead require an agent to identify concrete workflows which is a sequence of action-steps. For example, rather than summarizing budgeting policies, an agent should be able to determine the steps needed to answer a question such as: "How do I request new headcount given a fixed budget?". Therefore, we introduce DRFLOW, a benchmark for evaluating personalized workflows predicted by agents from heterogeneous sources. Each task requires the agent to identify relevant evidence from scattered sources, then use that evidence to predict the correct action-step sequence for the user's task. DRFLOW contains 100 tasks across five domains, with 1,246 reference workflow steps grounded in more than 3,900 sources. We define seven diagnostic metrics covering factual grounding, step recovery, structural ordering, condition resolution, and personalization. We further present DRFLOW-Agent (DRFA), a workflow-oriented reference agent to predict personalized workflow. We show that although DRFA improves over strong baseline agents (upto 10.02% average F1 score), there is substantial room for improvement remains across these workflow metrics, indicating that predicting complete and correct personalized workflows remains a challenging frontier for deep research.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:22:07Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Md Tawkat Islam Khondaker</name>
+    </author>
+    <author>
+      <name>Raymond Li</name>
+    </author>
+    <author>
+      <name>Muhammad Abdul-Mageed</name>
+    </author>
+    <author>
+      <name>Laks V. S. Lakshmanan</name>
+    </author>
+    <author>
+      <name>Issam H. Laradji</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18181v1</id>
+    <title>IUU+DB: Tracking Illegal, Unreported, and Unregulated Fishing, Seafood Fraud, and Labor Abuse through LLM-driven Information Extraction</title>
+    <updated>2026-06-16T17:16:05Z</updated>
+    <link href="https://arxiv.org/abs/2606.18181v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18181v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Illegal, unreported, and unregulated fishing (IUU) traditionally refers to fishing activities that violate applicable laws or occur in areas that lack applicable laws. We propose the term IUU+ to capture a broader suite of fisheries sector environmental and associated supply chain trade-related crimes and behaviors. Although IUU+ activity is widely recognized as a serious threat to marine ecosystems, markets, and livelihoods, a quantitative understanding of these incidents, e.g., their frequency, geography, species, actors, and patterns in the type of illicit activity, remains difficult to obtain. We propose IUU+DB, a large language model driven system for building a global incident database of IUU+ activity. The system ingests heterogeneous documents, classifies whether they describe relevant incidents, extracts key data elements such as actors, locations, species, vessels, violations, and enforcement outcomes, and supports deduplication and trend analysis. Case studies and validation results show that IUU+DB can help organize fragmented evidence, surface geographic and behavioral hotspots, support fisheries-domain specific research in academia and non-government organizations, assist source and species risk assessments for industry, and provide support for policy implementation and targeted enforcement efforts to government agencies.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:16:05Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Henry Bodwell</name>
+    </author>
+    <author>
+      <name>Hong Yang</name>
+    </author>
+    <author>
+      <name>John C. Simeone</name>
+    </author>
+    <author>
+      <name>Kelvin Gorospe</name>
+    </author>
+    <author>
+      <name>Bella Sullivan</name>
+    </author>
+    <author>
+      <name>Lana Huang</name>
+    </author>
+    <author>
+      <name>Jessica Gephart</name>
+    </author>
+    <author>
+      <name>Sandy Aylesworth</name>
+    </author>
+    <author>
+      <name>Molly Masterton</name>
+    </author>
+    <author>
+      <name>Naren Ramakrishnan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18168v1</id>
+    <title>All Smoke, No Alarm: Oracle Signals in Agent-Authored Test Code</title>
+    <updated>2026-06-16T17:06:51Z</updated>
+    <link href="https://arxiv.org/abs/2606.18168v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18168v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Software practitioners increasingly use AI coding agents that generate test code alongside production code in open source pull requests (PRs). Recent studies report more than 932,000 agent-authored PRs across more than 116,000 repositories, yet whether their test files contain meaningful verification logic remains underexplored. Test files lacking explicit assertions execute code without verifying behavior, so quality gates based on test-file presence overestimate verification strength. The goal of this paper is to help practitioners assess the verification strength of agent-authored patches by characterizing oracle signals and their link to merge outcomes and review effort. We conduct an empirical study of 86,156 test-file patches from 33,596 agent-authored PRs across 2,807 GitHub repositories produced by five coding agents: OpenAI Codex, GitHub Copilot, Devin, Cursor, and Claude Code. A qualitative analysis of 384 stratified patches informs a syntactic taxonomy of eight oracle signal categories. Applied at scale, 80.2% of test patches contain weak or no explicit oracle signals. While raw merge rates are lower for strong-oracle PRs, a regression analysis adjusting for agent, PR size, repository popularity, task type, and language shows strong oracles significantly improve merge likelihood (OR = 1.28, p &lt; 0.001). Our findings suggest that test file counts substantially overestimate verification strength and that practitioners can adopt oracle-aware quality checks to more accurately evaluate agent-authored contributions.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:06:51Z</published>
+    <arxiv:comment>Accepted at the 8th IEEE International Conference on Artificial Intelligence Testing, 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Dipayan Banik</name>
+    </author>
+    <author>
+      <name>Kowshik Chowdhury</name>
+    </author>
+    <author>
+      <name>Shazibul Islam Shamim</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18129v1</id>
+    <title>Towards Understanding and Measuring COGNITIVE ATROPHY in LLM Behaviour</title>
+    <updated>2026-06-16T16:26:12Z</updated>
+    <link href="https://arxiv.org/abs/2606.18129v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18129v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent incidents involving LLMs used for mental-health support reveal a critical evaluation gap: surface-level safety scores do not capture how models behave across realistic, emotionally sensitive interactions over time. Existing benchmarks measure knowledge, safety, or static response quality, but miss whether LLM interactions help users keep reflecting, coping, and making decisions themselves. We formalize this missing dimension as COGNITIVE ATROPHY, a process-level behavioural measure in AI-mediated mental-health support distinct from safety and helpfulness. To measure it, we introduce COGNITIVE ATROPHY BENCH, a clinically grounded benchmark built from 1,576 fully human-generated counseling conversations, 15,680 turns, and 42,230 responses from five LLMs. Three clinical and neuropsychology experts developed a 20-attribute schema spanning user context, response behaviour, and global risk flags; six trained clinical reviewers applied it with span-grounded evidence, producing 5,324 reviewer judgments. We further introduce the User-Input Risk Index (UIRI), the Cognitive Atrophy Risk Index (ARI), and trajectory summaries. Across five LLMs, models show a consistent moderate-to-high level of atrophy-aligned behaviour across single and multi-turn settings. While models generally respond to overt safety cues, they adapt less reliably when users seek solutions or decisions. The dominant recurring patterns are directive advice, problem-solving, recommendation responses, topic shifts, and forms of validation that may reinforce dependence rather than reflection. Our work makes COGNITIVE ATROPHY measurable and provides a foundation for auditing model behaviour in sensitive LLM conversations.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T16:26:12Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Abeer Badawi</name>
+    </author>
+    <author>
+      <name>Moyosoreoluwa Olatosi</name>
+    </author>
+    <author>
+      <name>Negin Baghbanzadeh</name>
+    </author>
+    <author>
+      <name>Laleh Seyyed-Kalantari</name>
+    </author>
+    <author>
+      <name>Frank Rudzicz</name>
+    </author>
+    <author>
+      <name>R. Shayna Rosenbaum</name>
+    </author>
+    <author>
+      <name>Sara Pishdadian</name>
+    </author>
+    <author>
+      <name>Elham Dolatabadi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18121v1</id>
+    <title>On the Reliability of Networks of AI Agents: Density Evolution, Stopping Sets, and Architecture Optimization</title>
+    <updated>2026-06-16T16:21:52Z</updated>
+    <link href="https://arxiv.org/abs/2606.18121v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18121v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern AI systems increasingly solve a task not with a single model call but with several imperfect agents working together: some propose pieces of a solution, others verify them, and the results are combined. These systems often outperform any single model, yet it is rarely clear why they succeed or when they will fail. We model such a system as message passing on a sparse graph, the structure that underlies low-density parity-check (LDPC) codes, and extend the density-evolution machinery of coding theory to this richer setting. In our model a task is a set of coupled binary subclaims, and an agent architecture is a sparse, role-typed factor graph whose check nodes are noisy Boolean verifier nodes, each computing a local Boolean function of the subclaims it touches. Three distinct failure modes, all modeled as erasures (an agent abstaining, a verifier returning no usable output, and a message lost between two agents), propagate as the agents exchange set-valued messages. The check agents combine these messages by a single logical-forcing rule that specializes to XOR, AND, OR, implication, and Horn constraints. This is more than a relabeling of LDPC theory: the verifier functions are nonlinear and value-asymmetric, and the three failure modes do not reduce to a single effective channel, so they require new threshold, finite-length, and converse results rather than a direct reuse of parity-check density evolution. We prove a density-evolution theorem that predicts the asymptotic fraction of unresolved subclaims on random role-typed architectures, with an extension to deterministic, locally tree-like graph sequences. The XOR case recovers the classical LDPC recursion on the binary erasure channel (BEC); the AND case exposes an asymmetry between positive and negative verifier certificates.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T16:21:52Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Ehsan Aghazadeh</name>
+    </author>
+    <author>
+      <name>Hossein Pishro-Nik</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18103v1</id>
+    <title>HistoRAG: Embedding Historical Methodology in Retrieval-Augmented Generation Through Critical Technical Practice</title>
+    <updated>2026-06-16T16:03:37Z</updated>
+    <link href="https://arxiv.org/abs/2606.18103v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18103v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Retrieval-Augmented Generation (RAG) is the prevailing architecture for grounding language model outputs in external evidence, yet its dominant evaluation paradigms and default configurations remain oriented toward factual question-answering. For interpretive disciplines such as historical studies, RAG embeds assumptions that conflict with scholarly practice. We introduce HistoRAG, a framework that translates historiographical principles into concrete architectural interventions. Separated retrieval and generation decouples source discovery from interpretation, temporal windowing enforces balanced source representation across the research period as a methodological requirement of historical inquiry, and LLM-as-judge evaluation makes relevance judgments transparent and contestable. We evaluate these interventions using SPIEGELragged, applied to 102,189 articles from Der Spiegel (1950-1979). Each intervention addresses a measurable deficiency in standard RAG: era-specific vocabulary retrieves zero chunks from the 1950s when using 1970s terminology, evidence of the temporal skew that motivates windowing; vector similarity and LLM-assessed relevance correlate only weakly (Spearman rho = 0.275), motivating post-retrieval evaluation; and keyword-based and semantic retrieval surface largely disjoint source pools, motivating an architecture in which both operate as complementary retrieval layers under a shared LLM evaluation filter. We also introduce the concept of Zwischentexte (intermediate texts that function as interpretive proposals rather than findings) as a framework for responsible integration of LLM-generated text into scholarly practice. The architecture offers a model for how domain-specific epistemological commitments can be translated into RAG design decisions, and may transfer to other interpretive disciplines working with large corpora.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T16:03:37Z</published>
+    <arxiv:comment>25 pages, 6 figures. Companion preprint to a Journal of Digital History notebook article (under review)</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Noah J. Kim-Baumann</name>
+    </author>
+    <author>
+      <name>Torsten Hiltmann</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18065v1</id>
+    <title>Intelligence Entropy Principle and the ADE Stability Engineering Framework</title>
+    <updated>2026-06-16T15:38:29Z</updated>
+    <link href="https://arxiv.org/abs/2606.18065v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18065v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As LLM-driven multi-agent systems (MAS) transition from lab to production, system behavior exhibits nonlinear degradation. We introduce the Intelligence Entropy Principle: probability-driven systems spontaneously drift toward disorder, formalized as S(t) = S0 * exp(alpha*t/Cm), where Cm is a model capability coefficient we propose. Lyapunov analysis yields the stabilization condition lambda &gt; alpha/Cm. We construct the ADE (Agent Delivery Engineering) four-layer framework (L1 Physical Laws through L4 User Adaptation) with 23 core components. Validation spans 100K-scale experiments and 33.6 days of production monitoring. We propose a Five-Layer Disorder Taxonomy unifying failures under structural collapse, and present Elastic Organization as an original MAS morphology. Results: channel fracture reduced from 69-98% to near 0%; system death probability below 0.02%.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T15:38:29Z</published>
+    <arxiv:comment>32 pages, 18 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Dexing Liu</name>
+      <arxiv:affiliation>Shanghai Qijing Digital Technology</arxiv:affiliation>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18062v1</id>
+    <title>Security and Privacy Prompts in the Wild: What Users Ask LLMs and How LLMs Respond</title>
+    <updated>2026-06-16T15:37:25Z</updated>
+    <link href="https://arxiv.org/abs/2606.18062v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18062v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) are widely used to fulfill users' information needs; users ask LLMs about the weather, pose educational questions, and consult them for legal assistance. One particularly understudied area is digital security and privacy (S&amp;P), where users may seek LLMs' help on how to secure their online accounts or protect their computers from cyber attacks. To the best of our knowledge, no prior study has collected or analyzed the S&amp;P questions users ask LLMs; prior research on LLM response quality relied on expert-authored S&amp;P misconceptions or FAQs rather than user queries. Drawing from WildChat, a dataset of 3.2M user-LLM conversations collected in the wild, our study identifies 14,727 S&amp;P prompts and categorizes them into nine categories covering a wide range of S&amp;P topics. From the S&amp;P prompts, we sampled 450 and performed a thematic analysis to characterize the S&amp;P questions users ask LLMs. Separate from the thematic analysis, we curated 270 advice-seeking S&amp;P prompts, where users ask for recommendations, guidance, or specific S&amp;P information. We measured LLM response quality and consistency when posing the prompt to LLMs 10 times. We found that commercial LLMs outperform open-weight models (GPT 5.5 provided "good enough" responses on 98% of prompts; Llama 4 on 47%). However, among prompts that received high-quality responses on average, commercial models sometimes produce contradictory responses across runs, risking confusing or misleading users.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T15:37:25Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Hobin Kim</name>
+    </author>
+    <author>
+      <name>Xiaoyuan Wu</name>
+    </author>
+    <author>
+      <name>Omer Akgul</name>
+    </author>
+    <author>
+      <name>Lujo Bauer</name>
+    </author>
+    <author>
+      <name>Nicolas Christin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18057v1</id>
+    <title>When AI Says "I have been in similar situations": Synthetic Lived Experience in Peer-Like Caregiver Support</title>
+    <updated>2026-06-16T15:34:23Z</updated>
+    <link href="https://arxiv.org/abs/2606.18057v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18057v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Caregivers often turn to online communities for informational and emotional support. In these spaces, peer supporters frequently draw on personal narratives to respond to emotionally complex caregiving situations. As LLMs are increasingly designed as peer-like sources of support, they introduce a critical tension: AI can provide immediate, private, and nonjudgmental support, but it cannot authentically possess the lived experiences that make human peer support meaningful. Yet, when prompted to sound peer-like, LLMs may generate language that implies lived experience. This creates a synthetic lived experience paradox: the same experiential language that may make AI support feel warm, relatable, and peer-like can also falsely position the system as someone with lived experience. We examine this paradox in the context of family caregivers of people living with Alzheimer's Disease and Related Dementias (ADRD). Drawing on caregiver support exchanges from online communities and prompted peer-like responses from three LLMs -- LLaMA, GPT-4o-mini, and MedGemma -- we analyze how human peers use personal narratives and how AI incorporates similar narrative forms. Psycholinguistic analysis shows that peer responses used significantly more first-person and past-focused language than peer-like AI responses. Qualitatively, we identify seven types of personal narratives in human peer support and show that AI often captures their emotional work, but can fabricate experiential grounding. These findings reveal a narrative authenticity gap: peer-like AI can generate synthetic lived experience without the real experience that makes peer support meaningful. We argue that caregiver-support AI systems need mechanisms to distinguish supportive peer-like framing from fabricated lived experience, ensuring that models can offer warmth and validation without falsely positioning themselves as experiential peers.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T15:34:23Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Drishti Goel</name>
+    </author>
+    <author>
+      <name>Violeta J. Rodriguez</name>
+    </author>
+    <author>
+      <name>Daniel S. Brown</name>
+    </author>
+    <author>
+      <name>Ravi Karkar</name>
+    </author>
+    <author>
+      <name>Dong Whi Yoo</name>
+    </author>
+    <author>
+      <name>Koustuv Saha</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18037v1</id>
+    <title>ProvenanceGuard: Source-Aware Factuality Verification for MCP-Based LLM Agents</title>
+    <updated>2026-06-16T15:10:29Z</updated>
+    <link href="https://arxiv.org/abs/2606.18037v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18037v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Tool-using LLM agents increasingly use the Model Context Protocol (MCP) to answer from heterogeneous evidence sources, including search, APIs, databases, clinical records, and formulary tools. Standard factuality metrics usually test whether an answer is supported by pooled evidence, missing a provenance-sensitive failure mode: a claim may be supported somewhere while being attributed to the wrong source. We call this cross-source conflation.
+  We introduce ProvenanceGuard, a source-aware verifier for MCP-grounded answers. It consumes captured MCP traces with stable tool IDs, source IDs, and raw outputs; decomposes answers into atomic claims; routes claims to source-specific evidence; checks support with NLI and a token-alignment proxy; compares stated attribution with the routed source; and returns per-claim verdicts plus an answer-level allow/block decision. Blocked answers can be repaired with retrieval-augmented answer revision and re-verified.
+  We evaluate on 281 medical-domain MCP-agent traces. A 266-trace adjudicated subset yields 2,325 LLM-assisted claim labels split by trace; 361 held-out labels are human-verified. On the 40-trace held-out split, ProvenanceGuard achieves block F1 0.802 and source accuracy 0.858 over 260 source-eligible claims, outperforming source-blind baselines that do not emit claim-to-source IDs. On a harder multi-source benchmark it reaches block F1 0.846, while source-plus-relation accuracy drops to 0.229, showing that exact source ownership remains difficult with semantically close sources. Repair-and-reverify resolves all blocked answers in the full trace set, often via conservative fallback. In 50 controlled clinical conflation probes, ProvenanceGuard detects all injected attribution swaps with no retained wrong attribution. These results show that source attribution is an independent axis for factuality verification in MCP-based agents.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T15:10:29Z</published>
+    <arxiv:comment>20 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Ander Alvarez</name>
+    </author>
+    <author>
+      <name>Santhiya Rajan</name>
+    </author>
+    <author>
+      <name>Samuel Mugel</name>
+    </author>
+    <author>
+      <name>Román Orús</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18030v1</id>
+    <title>ParaTutor: LLM Mediated Parent Child Tutoring through Role Separated Scaffolding Interface in Real Time</title>
+    <updated>2026-06-16T15:06:05Z</updated>
+    <link href="https://arxiv.org/abs/2606.18030v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18030v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Parent child tutoring is a collaborative learning setting with asymmetric roles, where parents guide children s problem solving while children engage in understanding and reasoning. However, most LLM based learning systems are designed for either single users or symmetric collaboration, leaving parent child tutoring with distinct instructional roles underexplored. Through a formative study, we find that effective parent child tutoring depends on preserving these distinct roles, with parents guiding the learning process and children remaining actively engaged in reasoning. We also identify recurring challenges when parents struggle to understand problem structure, lack sufficient knowledge to provide support, or encounter communication difficulties that disrupt shared understanding. To address these challenges, we present ParaTutor, a scaffolding system that provides different forms of support to parents and children. ParaTutor supports parents with guidance for tutoring and provides children with visual grounding for problem solving. We evaluate ParaTutor with 23 parent child dyads (children aged 10 to 12) under four tutoring conditions that vary how LLM assistance is delivered. Results show that generic LLM assistance tends to reduce the parent s role in tutoring, whereas ParaTutor better preserves parent led support and sustains children s participation in reasoning. These findings suggest that in multi users learning, the value of LLM support depends not only on model capability but also on how support is distributed across users with different roles. Our work contributes design implications for LLM systems that support family learning.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T15:06:05Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Lan Luo</name>
+    </author>
+    <author>
+      <name>Anqi Wang</name>
+    </author>
+    <author>
+      <name>Muzhi Zhou</name>
+    </author>
+    <author>
+      <name>Junhua Zhu</name>
+    </author>
+    <author>
+      <name>Jie Cai</name>
+    </author>
+    <author>
+      <name>Ao Yu</name>
+    </author>
+    <author>
+      <name>Hui Pan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18021v1</id>
+    <title>LegalHalluLens: Typed Hallucination Auditing and Calibrated Multi-Agent Debate for Trustworthy Legal AI</title>
+    <updated>2026-06-16T15:02:37Z</updated>
+    <link href="https://arxiv.org/abs/2606.18021v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18021v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>AI systems deployed in legal workflows hallucinate at rates that aggregate metrics report at ~52%, but this average conceals where errors concentrate and in which direction they run, leaving compliance officers without an actionable signal for trustworthy deployment. We present LegalHalluLens, an auditing framework with three components: typed hallucination profiles across four legally-motivated claim categories (numeric, temporal, obligation/entitlement, factual) over CUAD (Hendrycks et al., 2021); a Risk Direction Index (RDI) that reduces omission-versus-invention bias to a single deployment-comparable scalar; and a typed debate pipeline calibrated to both magnitudes and directions. Across 510 contracts and 249,252 clause-level instances we measure a within-model gap of approximately 38-40 pp between obligation/numeric and temporal claims that aggregate reporting hides, and show that two systems with matched 52% rates can carry opposite RDIs. The debate pipeline reduces fabricated detections by 45% with per-category gains tracking the diagnosis, matching commercial APIs with a substantially smaller backbone (4B active parameters). Typed profiles and RDI surface failure modes that aggregate metrics hide; we further show these diagnostics serve as calibration inputs for multi-agent debate pipelines, where Skeptic challenges and asymmetric gates targeted at measured failure modes outperform generically-tuned debate. The framework supports direction-aware procurement, accountability, and agent design for legal AI deployed in the wild.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T15:02:37Z</published>
+    <arxiv:comment>15 pages, 5 figures; Published at the Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Lalit Yadav</name>
+    </author>
+    <author>
+      <name>Akshaj Gurugubelli</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18010v1</id>
+    <title>Co-Creativity at the Table: A Qualitative Analysis of Creative Interactions in the Podcast "Adventure AI"</title>
+    <updated>2026-06-16T14:54:57Z</updated>
+    <link href="https://arxiv.org/abs/2606.18010v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18010v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Tabletop role-playing games provide a unique environment for interaction with artificial intelligence (AI) due to their complex and collaborative nature. We analyze Adventure AI, a podcast featuring human-AI interactions in Dungeons &amp; Dragons play, to examine how AI is and can be used in tabletop role-playing gaming and how players perceive this use. We complete a qualitative analysis of three seasons of this podcast, from 2023 to 2025, reporting on the overarching themes of roles of AI, roles of humans, the evaluations and failures of AI, and its treatment as a person and character at the table. There are many aspects of the game where artificial intelligence succeeds, while there are others where it is less appropriate. This analysis gives a basis for future work on where artificial intelligence should and should not be used in gaming spaces.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T14:54:57Z</published>
+    <arxiv:comment>11 pages, 3 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Hanna Dodd</name>
+    </author>
+    <author>
+      <name>Daniel G. Brown</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17981v1</id>
+    <title>Planning to Hammer: Difficulty-Aware Decomposition for Automating Rocq Proofs</title>
+    <updated>2026-06-16T14:33:15Z</updated>
+    <link href="https://arxiv.org/abs/2606.17981v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17981v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As AI-generated code proliferates, formal verification, particularly through interactive theorem provers such as Rocq and Isabelle, becomes increasingly important for ensuring software correctness. However, producing machine-checked proofs in such provers remains a bottleneck. Existing solutions bring complementary strengths to proof automation: large language models (LLMs) can propose high-level proof strategies but lack local rigor, while automated tactics such as CoqHammer can reliably discharge many local goals but lack long-range planning capabilities. To combine the best of both worlds, we present Quarry, a planning-based proof synthesis framework that separates proof planning from proof execution. Specifically, Quarry asks an LLM to actively propose multiple proof decompositions with arbitrary sublemmas, type-checks them in Rocq under temporarily admitted sublemmas, and ranks candidates using a proof-state-based difficulty model that estimates hammer solvability. It then recursively proves sublemmas within a bounded budget, effectively turning long proofs into sequences of hammer-solvable obligations. We implement Quarry on top of SerAPI and CoqHammer and evaluate it using multiple frontier LLMs across multiple benchmarks. The experimental results show that planning-based decomposition with solvability-aware ranking substantially improves automation while maintaining predictable cost. Under a uniform 10-minute wall-clock budget, Quarry improves over the strongest baseline by 7% to 13% in success rate across three Rocq benchmarks. These results demonstrate that reliable proof automation can be achieved by coordinating neural planning with symbolic execution rather than replacing either.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T14:33:15Z</published>
+    <arxiv:comment>26 pages, 8 figures; submitted to OOPSLA 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Ning Zhang</name>
+    </author>
+    <author>
+      <name>Nongyu Di</name>
+    </author>
+    <author>
+      <name>Zenan Li</name>
+    </author>
+    <author>
+      <name>Yuan Yao</name>
+    </author>
+    <author>
+      <name>Xiaoxing Ma</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17962v1</id>
+    <title>A Neuro-Symbolic Approach to Strategy Synthesis for Strategic Logics</title>
+    <updated>2026-06-16T14:13:48Z</updated>
+    <link href="https://arxiv.org/abs/2606.17962v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17962v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reasoning about what agents can achieve through strategic interaction is a core challenge in Multi-Agent Systems (MAS). Logics for strategic ability, such as ATL, provide rigorous methods, but their adoption is often hindered by the computational cost of strategy synthesis. We introduce a neuro-symbolic framework that integrates large language models (LLMs) into the model-checking pipeline for MAS. The LLM acts as a strategy-generation oracle, proposing candidate strategies that are then formally validated by a standard MAS model checker. This generate-and-certify architecture uses LLM guidance to navigate large combinatorial strategy spaces while preserving formal soundness: generated strategies are accepted only when certified by the verifier. We instantiate the framework for bounded strategic reasoning in NatATL and introduce the first NatATL strategy-synthesis dataset, consisting of 4211 instances. Experiments with an open-weight Qwen3-32B model show that our certified pipeline achieves 92\% accuracy on strategy-synthesis outcomes.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T14:13:48Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Marco Aruta</name>
+    </author>
+    <author>
+      <name>Vadim Malvone</name>
+    </author>
+    <author>
+      <name>Aniello Murano</name>
+    </author>
+    <author>
+      <name>Domenico Parente</name>
+    </author>
+    <author>
+      <name>Luca Rizzuti</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17957v1</id>
+    <title>Children Are Not the Enemy: Child-Fit Security as an Alternative to Bans and Surveillance</title>
+    <updated>2026-06-16T14:09:56Z</updated>
+    <link href="https://arxiv.org/abs/2606.17957v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17957v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Digital technologies are now central to children's learning, play, communication, identity formation, and social participation. Yet dominant approaches to children's online safety often rely on containment mechanisms, including bans, age gates, parental controls, monitoring, and screen-time restrictions. These approaches can be useful in specific contexts, but they often frame child protection primarily as a problem of restricting access to systems designed for adults. In this paper, we argue that this framing is inadequate for children's digital lives and insufficient as a security paradigm. We propose Child-fit security, a design paradigm in which technologies likely to be used by children treat a child as legitimate users, not attackers to be excluded, vulnerabilities to be patched, or risks to be managed. In this paradigm, children's wellbeing, development, privacy, safety, agency, and rights become core security requirements. This shifts the focus of protection from apps, accounts, and data to the child-system relationship, which means protecting both the child and their participation. We conceptualise child-fit security, contrast it with containment-oriented approaches, define its core principles, and discuss its implications for security design. We conclude by presenting a research agenda for making child-fit security operational.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T14:09:56Z</published>
+    <arxiv:comment>14 pages, 2 figures, Paper Under review</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Kopo M. Ramokapane</name>
+    </author>
+    <author>
+      <name>Rui Huan</name>
+    </author>
+    <author>
+      <name>Zaina Dkaidek</name>
+    </author>
+    <author>
+      <name>Awais Rashid</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17915v1</id>
+    <title>Trustworthy Self-Composable Big-Data-as-a-Service: An LLM-Orchestrated Multi-Agent Framework for Automated Data Engineering, AutoML, MLOps Deployment, and Drift-Aware Lifecycle Optimization</title>
+    <updated>2026-06-16T13:34:27Z</updated>
+    <link href="https://arxiv.org/abs/2606.17915v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17915v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Big-Data-as-a-Service (BDaaS) platforms require re liable automation across data ingestion, cleaning, feature engi neering, model development, deployment, and post-deployment monitoring. However, existing LLM-based data science agents and AutoML systems mainly focus on isolated workflow stages, leaving limited support for lifecycle-level orchestration, artifact governance, human oversight, and drift-aware adaptation. This paper proposes a trustworthy self-composable BDaaS frame work based on LLM-orchestrated multi-agent collaboration. The proposed architecture decomposes the BDaaS lifecycle into specialized agents for data ingestion, data cleaning, feature engineering, AutoML training, model evaluation, MLOps de ployment, monitoring, and drift detection. A central LLM or chestration layer coordinates agent execution, validates interme diate outputs, manages workflow context, and enables dynamic workflow composition. The framework also incorporates shared artifact governance, reproducibility support, human-in-the-loop checkpoints, and drift-aware feedback loops. A prototype-based evaluation is conducted using controlled tabular benchmark datasets with missing values, categorical variables, outliers, class imbalance, and simulated covariate drift. Compared with manual ML, AutoML-only, and single-agent LLM baselines, the pro posed multi-agent BDaaS pipeline achieves competitive predictive performance while improving lifecycle-level reliability, including workflow completion, artifact traceability, deployment readiness, reproducibility, and drift recovery. The results suggest that LLM-orchestrated multi-agent systems can extend conventional AutoML toward trustworthy, adaptive, and production-oriented BDaaS lifecycle automation.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DB" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T13:34:27Z</published>
+    <arxiv:comment>7 pages, 3 figures, 5 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Aueaphum Aueawatthanaphisut</name>
+    </author>
+    <author>
+      <name>Badri Raj Lamichhane</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17910v1</id>
+    <title>Non-negative Elastic Net Decoding for Information Retrieval</title>
+    <updated>2026-06-16T13:32:54Z</updated>
+    <link href="https://arxiv.org/abs/2606.17910v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17910v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Dense retrieval has become the dominant paradigm in information retrieval, in which each document is scored against a query by the inner product of their vector embeddings, and the top-$k$ documents by score are retrieved for this query. However, since each document's score depends solely on the embedding of the query and itself, the retrieval process is oblivious to the content of the entire corpus. Therefore, dense retrieval cannot avoid selecting semantically similar documents from the corpus, which may result in a non-diverse, redundant set of retrieved documents. To this end, we approach retrieval as a joint decoding problem, in which documents are selected as a set with regard to the context of the rest of the corpus. To achieve this, we propose Non-Negative elastic Net (NNN) decoding, which selects documents whose embeddings jointly reconstruct the query embedding as a sparse non-negative linear combination.
+  Our main theoretical result establishes a strict separation between dense retrieval and NNN decoding. For any corpus, every query correctly handled by dense retrieval is also handled by NNN decoding, while on corpora containing correlated documents, NNN decoding additionally handles queries that dense retrieval cannot. Experimental results indicate that applying NNN decoding to frozen embeddings trained for inner-product scoring yields consistent improvements across several benchmarks. Moreover, we introduce an end-to-end training procedure which optimizes the embeddings for NNN decoding, producing significant performance gains surpassing in all metrics and benchmarks compared to dense retrieval. Our work establishes a new paradigm for leveraging dense embeddings in information retrieval, beyond the standard practice of inner-product scoring.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T13:32:54Z</published>
+    <arxiv:comment>19 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Koki Okajima</name>
+    </author>
+    <author>
+      <name>Yasutoshi Ida</name>
+    </author>
+    <author>
+      <name>Tsukasa Yoshida</name>
+    </author>
+    <author>
+      <name>Yasuaki Nakamura</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17887v1</id>
+    <title>AI Adoption Across a Multinational Workforce: Sociotechnical Conditions for GenAI Acceptance in Human Resources</title>
+    <updated>2026-06-16T13:08:27Z</updated>
+    <link href="https://arxiv.org/abs/2606.17887v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17887v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI (GenAI) deployment in the workplace is accelerating rapidly. Nevertheless, questions of who adopts, who benefits, and who is left behind and why are still understudied. In this paper, we investigate these dynamics in the context of a multinational tech company transitioning from a legacy Human Resources (HR) search system to a GenAI-supported system, analyzing search log data, survey data (n=25), and ten semi-structured interviews. Our findings show that adoption depended on the fit between the GenAI system's design assumptions and employees' work positionalities (role, spoken language, tenure). Further, we find that employees' trust in GenAI answers was built through source-checking, comparison among systems, and seeking input from colleagues or HR when in doubt. Our contribution is twofold. First, we provide empirical evidence of workplace GenAI adoption during a live organizational transition, showing that adoption is influenced by factors such as situational fit, search literacy, and trust calibration. It is also further shaped by knowledge conditions such as the system's content quality, employee training, and guidance. Second, we translate these findings into design considerations for inclusive deployment and adoption in high-stakes environments such as HR. We argue that organizations should design systems considering the role and context-sensitive benefits they yield to different social groups. They also need to treat the organizational knowledge infrastructure as AI infrastructure to improve the accountability and usability of GenAI systems</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T13:08:27Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Dalia Ali</name>
+    </author>
+    <author>
+      <name>Maria José Rodríguez Velázquez</name>
+    </author>
+    <author>
+      <name>Manoel Horta Ribeiro</name>
+    </author>
+    <author>
+      <name>Vera Liao</name>
+    </author>
+    <author>
+      <name>Orestis Papakyriakopoulos</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17839v1</id>
+    <title>From Ad Hoc Pilots to Repeatable Patterns: Structuring Drone Collaboration in Emergency Services with DroneLets</title>
+    <updated>2026-06-16T12:08:07Z</updated>
+    <link href="https://arxiv.org/abs/2606.17839v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17839v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Drones hold promise for supporting emergency services, but their integration into workflows remains ad hoc and coordination-intensive. This paper addresses two research questions: how emergency teams want to collaborate with drones, and how to formalize these collaborations into repeatable processes. Based on four field trials and 95 interviews, we derive 44 interaction patterns grouped into 10 meta-patterns reflecting operational needs such as reconnaissance, communication, and logistical support. To structure these practices, we introduce DroneLets - a new class of design artifacts that extend Collaboration Engineering to embodied agents. DroneLets capture setup requirements, drone capabilities, environmental constraints, and coordinated actions across human and drone actors. They offer a modular framework for designing repeatable, scalable collaboration processes in emergency services, illustrated through patterns such as broadcasting to bystanders and post-fire monitoring. This work expands the scope of CE and provides a structured foundation for integrating autonomous drones into high-stakes field operations.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T12:08:07Z</published>
+    <arxiv:comment>Presented at International Conference on Information Systems (ICIS) 2025: https://aisel.aisnet.org/icis2025/is_transformwork/is_transformwork/19/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>International Conference on Information Systems 2025: ICIS2025-2217</arxiv:journal_ref>
+    <author>
+      <name>Dzmitry Katsiuba</name>
+    </author>
+    <author>
+      <name>Samuel Brander</name>
+    </author>
+    <author>
+      <name>Mateusz Dolata</name>
+    </author>
+    <author>
+      <name>Gerhard Schwabe</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17831v1</id>
+    <title>Accountability in Autonomous Drone-Based Firefighting: Insights From a Field Trial</title>
+    <updated>2026-06-16T12:01:24Z</updated>
+    <link href="https://arxiv.org/abs/2606.17831v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17831v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>There is a growing research field exploring how autonomous drones can enhance emergency response effectiveness. Integrating these (artificial) agents into existing emergency teams and workflows may significantly impact established accountability relationships. This paper examines how autonomous drones affect accountability attribution within complex socio-technical systems. Drawing on two real-life field trials in firefighting, the study reveals substantial uncertainty around accountability when drones are organizationally deployed. Using Bovens' accountability framework, two challenges are identified: (1) uncertainty about the role of drones within hierarchical structures, leading to confused accountability ascriptions; and (2) new forms of human-drone interactions introducing additional accountability-relevant issues. Based on these insights, the paper proposes actionable recommendations to support the responsible integration of autonomous drones into firefighting operations without undermining accountability. These findings offer practical guidance for policymakers and contribute to further research on accountability in autonomous systems.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T12:01:24Z</published>
+    <arxiv:comment>Accepted for Publication at International Conference on Information Systems (ICIS) 2025: https://aisel.aisnet.org/icis2025/ethical_is/ethical_is/10/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>International Conference on Information Systems, 2025, ICIS2025-2162</arxiv:journal_ref>
+    <author>
+      <name>Dzmitry Katsiuba</name>
+    </author>
+    <author>
+      <name>Anna Katharina Boos</name>
+    </author>
+    <author>
+      <name>Robin Hany</name>
+    </author>
+    <author>
+      <name>Mateusz Dolata</name>
+    </author>
+    <author>
+      <name>Gerhard Schwabe</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17819v1</id>
+    <title>A Framework for Evaluating Agentic Skills at Scale</title>
+    <updated>2026-06-16T11:46:56Z</updated>
+    <link href="https://arxiv.org/abs/2606.17819v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17819v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Agent skills -- structured, reusable knowledge artifacts that augment LLM agent capabilities -- have been rapidly adopted in industry, yet their cross-domain impact and use across commercial and open-source models remain under-studied, and no reusable methodology exists for evaluating an individual skill. In this work, we present an evaluation framework that lets a skill author construct realistic tasks to rigorously assess the aspects of a skill that matter most to them, and that estimates skill utility by solving those tasks. Further, we apply our evaluation approach at scale to 500 real-world skills, generating 1,000 tasks derived from the skills' content, along with instruction-following and goal-completion scoring rubrics. Using these metrics, we evaluate how 19 agent-model configurations, both proprietary and open-source, perform on the tasks. Our results show that models vary widely in how closely they adhere to the instructions encoded in skills, leading to substantial differences in their performance gains. Furthermore, we show that access to a skill significantly changes model behavior compared to the no-skill setup, providing an essential mechanism for encoding opinionated workflows into LLM agents. We release our evaluation dataset to support future work on agent skills.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T11:46:56Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Maksim Shaposhnikov</name>
+    </author>
+    <author>
+      <name>Nicolas Fortuin</name>
+    </author>
+    <author>
+      <name>Simon Stipcich</name>
+    </author>
+    <author>
+      <name>Maria I. Gorinova</name>
+    </author>
+    <author>
+      <name>Amy Heineike</name>
+    </author>
+    <author>
+      <name>Rob Willoughby</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17799v1</id>
+    <title>Position: Coding Benchmarks Are Misaligned with Agentic Software Engineering</title>
+    <updated>2026-06-16T11:21:01Z</updated>
+    <link href="https://arxiv.org/abs/2606.17799v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17799v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Coding agents have become a major mode of software engineering, but the benchmarks we use to compare them were designed in a pre-agent era: they collapse model, harness, and environment into a single end-to-end score, typically computed against one reference solution, with no component-level signal for iteration. We argue that current coding benchmarks are misaligned with agentic software engineering. A coding agent in practice is not a model: it is a system harness -- a composite of models, harnesses, contexts, environments, and feedback signals, any one of which can move the benchmark score by margins comparable to those between adjacent model generations. We discuss three symptoms: (i) benchmark scores conflate the model with the rest of the harness; (ii) grading against a single reference solution penalises equally valid alternatives; and (iii) the absence of signal at the level of individual harness components makes the end-to-end system score difficult to iterate on.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T11:21:01Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Maria I. Gorinova</name>
+    </author>
+    <author>
+      <name>Macey Baker</name>
+    </author>
+    <author>
+      <name>Amy Heineike</name>
+    </author>
+    <author>
+      <name>Maksim Shaposhnikov</name>
+    </author>
+    <author>
+      <name>Rob Willoughby</name>
+    </author>
+    <author>
+      <name>Dru Knox</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17793v1</id>
+    <title>ARES: A Platform for Adaptive Role-Based Evaluation of Social Engineering Risks in Human--AI Games</title>
+    <updated>2026-06-16T11:11:58Z</updated>
+    <link href="https://arxiv.org/abs/2606.17793v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17793v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This work introduces ARES, a platform and open pilot dataset for auditing adaptive social engineering risks in LLM-mediated social decision-making through controlled social games. ARES supports human--human, human--AI, and AI--AI settings, combining configurable game templates, role-conditioned LLM agents, psychology-informed participant profiling, structured interaction trees, and synchronised behavioural and biometric acquisition, filtering, and deep-learning-based feature extraction. The pilot dataset was collected from 15 participants interacting with a role-conditioned GPT-5.4 agent in two concatenated games: an adapted Prisoner's Dilemma and an Ultimatum Game. It comprises 340 GB of raw and processed multimodal data across six streams: interaction logs, video, screen recordings, gaze logs, smartwatch signals, and game/questionnaire metadata. These data include interaction paths, written justifications, psychological profiles, subjective feedback, perceived counterpart identity, game outcomes, and derived behavioural, facial, and gaze features. Alongside the dataset, we provide descriptive analyses to characterise the pilot release. Rigorous risk evaluation is essential for the deployment of secure AI systems, as it enables the identification and mitigation of vulnerabilities, ensures the protection of sensitive data, and supports compliance with evolving regulatory and ethical standards in society.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DB" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T11:11:58Z</published>
+    <arxiv:comment>6 pages, 2 figures. Accepted at the International Carnahan Conference on Security Technology (ICCST 2026)</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Roberto Daza</name>
+    </author>
+    <author>
+      <name>Javier Irigoyen</name>
+    </author>
+    <author>
+      <name>Ivan Lopez</name>
+    </author>
+    <author>
+      <name>Raquel Rodriguez-Carvajal</name>
+    </author>
+    <author>
+      <name>Laura Gomez</name>
+    </author>
+    <author>
+      <name>Julian Fierrez</name>
+    </author>
+    <author>
+      <name>Ruben Tolosana</name>
+    </author>
+    <author>
+      <name>Aythami Morales</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17789v1</id>
+    <title>Mind Companion: An Embodied Conversational Agent for Process-Based Psychotherapy</title>
+    <updated>2026-06-16T11:05:43Z</updated>
+    <link href="https://arxiv.org/abs/2606.17789v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17789v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Access to evidence-based psychotherapy remains limited worldwide, with long waitlists even in high-income regions. Recent advances in large language models (LLMs) offer potential for scalable mental health support when designed with clinical oversight and safety mechanisms. We present Mind Companion, an LLM-based embodied conversational agent integrating multi-layered psychological analysis with process-based therapy principles. The system performs real-time analysis of client statements across fact extraction, psychological flexibility process detection, emotion recognition, and safety monitoring. Analysis results are stored for supervising clinicians to inform therapeutic planning. Response generation incorporates retrieval-augmented generation from evidence-based therapeutic literature and context-aware prompting. Responses are delivered through an embodied avatar with synchronized speech synthesis and animation. We evaluated three LLM configurations (GPT-4.1-mini, GPT-5.2, Claude Sonnet 4.5) against therapist responses from real therapy sessions using automated LLM-judge assessment and expert evaluation with 11 professional psychotherapists. GPT-5.2 achieved higher ratings than human therapist responses across understanding, interpersonal effectiveness, collaboration, and therapeutic alignment in both evaluations, demonstrating the feasibility of LLM-based conversational agents as tools to complement clinical care.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T11:05:43Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>2026 IEEE 14th International Conference on Healthcare Informatics (ICHI), Minneapolis, MN, June 1-3, 2026, pp. 980-989</arxiv:journal_ref>
+    <author>
+      <name>Sofie Kamber</name>
+    </author>
+    <author>
+      <name>Lukas Diebold</name>
+    </author>
+    <author>
+      <name>Pascal Riachi</name>
+    </author>
+    <author>
+      <name>Stella Brogna</name>
+    </author>
+    <author>
+      <name>Andrew Gloster</name>
+    </author>
+    <author>
+      <name>Rafael Wampfler</name>
+    </author>
+    <arxiv:doi>10.1109/ICHI69079.2026.00123</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICHI69079.2026.00123" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17786v1</id>
+    <title>Toward Accessible Psychotherapy Training Using AI-Driven Interactive Patient Avatars</title>
+    <updated>2026-06-16T11:02:00Z</updated>
+    <link href="https://arxiv.org/abs/2606.17786v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17786v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training psychotherapists in evidence-based interventions such as Acceptance and Commitment Therapy (ACT) requires repeated practice with meaningful feedback, yet opportunities for safe, standardized training are limited by ethical, logistical, and resource constraints. We introduce a system designed to support ACT-oriented psychotherapy training through spoken dialogue with an embodied virtual patient. The system uses large language models to simulate patient behavior conditioned on profiles derived from real therapy sessions and configurable clinical scenarios, while a separate automated evaluator provides turn-by-turn feedback on therapist responses based on established ACT fidelity criteria. Rather than aiming to replace supervision, the system is intended to support deliberate practice by enabling experimentation, reflection, and immediate feedback in low-risk settings. Expert evaluation with practicing psychologists confirmed high realism in patient behavior and demonstrated that immediate turn-by-turn ACT feedback increased therapists' awareness of intervention choices and enabled effective experimentation with alternative responses. Quantitative evaluation across 49 therapy transcripts identified GPT-4o-mini as the optimal feedback model, achieving the lowest mean absolute error (MAE = 6.12) in replicating human supervisor ACT fidelity ratings with statistically significant agreement. This work demonstrates the potential of fidelity-aware simulated patients as a scalable complement to psychotherapy training.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T11:02:00Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>2026 IEEE 14th International Conference on Healthcare Informatics (ICHI), Minneapolis, MN, June 1-3, 2026, pp. 990-995</arxiv:journal_ref>
+    <author>
+      <name>Pascal Riachi</name>
+    </author>
+    <author>
+      <name>Sofie Kamber</name>
+    </author>
+    <author>
+      <name>Stella Brogna</name>
+    </author>
+    <author>
+      <name>Andrew Gloster</name>
+    </author>
+    <author>
+      <name>Rafael Wampfler</name>
+    </author>
+    <arxiv:doi>10.1109/ICHI69079.2026.00124</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICHI69079.2026.00124" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17783v1</id>
+    <title>Is It Real? Exploiting Virtual-Physical Discrimination Vulnerability in Mixed Reality</title>
+    <updated>2026-06-16T10:59:12Z</updated>
+    <link href="https://arxiv.org/abs/2606.17783v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17783v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Consumer mixed reality (MR) headsets seamlessly blend virtual content into physical environments with sufficient fidelity that users may be unable to distinguish virtual objects from physical ones. We identify this virtual-physical discrimination vulnerability as an exploitable security primitive. Through speculative design workshops with 12 experts from cybersecurity and MR/HCI, we develop a taxonomy of virtual-physical confusion attacks and implement four proof-of-concept attacks on Apple Vision Pro, evaluating them with 26 participants in realistic MR tasks. All four attacks altered user behavior, with success rates ranging from 85% to 100%, producing misdirected interactions, misjudged object identities, biased purchasing decisions, and altered navigation paths. Notably, the most successful attacks were also the hardest to detect according to participants' subjective ratings. Even participants who recognized virtual content still complied behaviorally, and no participant attributed anomalous events to adversarial causes. We propose platform-level provenance, interaction gating, and user education as countermeasures.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T10:59:12Z</published>
+    <arxiv:comment>Accepted at the 2026 USENIX Symposium on Usable Privacy and Security (SOUPS 2026)</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Xueyang Wang</name>
+    </author>
+    <author>
+      <name>Xihuan Yao</name>
+    </author>
+    <author>
+      <name>Yanming Xiu</name>
+    </author>
+    <author>
+      <name>Xin Yi</name>
+    </author>
+    <author>
+      <name>Maria Gorlatova</name>
+    </author>
+    <author>
+      <name>Hewu Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17767v1</id>
+    <title>Talking to Your Data: Exploring Embodied Conversation as an Interface for Personal Health Reflection</title>
+    <updated>2026-06-16T10:34:27Z</updated>
+    <link href="https://arxiv.org/abs/2606.17767v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17767v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Personal health data from wearables are typically presented through dashboards of charts and summary statistics, requiring users to actively interpret patterns and implications. We explore an alternative interaction paradigm: engaging with personal health data through an embodied conversational agent that facilitates objective data reflection in dialogue with the user. We present a system that combines lightweight preprocessing of wearable data with a Unity-based embodied character. Internally, the system follows a dual-agent design in which an Observer agent extracts descriptive statistics and temporal trends, and a Presenter agent communicates these findings through "spoken statistics," intentionally refraining from clinical advice to isolate the impact of the interaction modality. We evaluate this approach through a simulated-self user study (N=5) using a within-subject design. Participants adopted health personas and goals derived from the LifeSnaps dataset to compare traditional dashboard exploration with embodied conversational reflection. Our evaluation focuses on perceived understanding, the specificity of generated actions, and the cognitive shift from passive viewing to active sensemaking. The paper contributes a functional prototype, a design pattern for objective health data narrative generation, and early empirical insights into how embodiment affects the interpretation of personal health metrics.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T10:34:27Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>Joint Proceedings of the ACM Intelligent User Interfaces (IUI) Workshops 2026, Paphos, Cyprus, July 13-16, 2026</arxiv:journal_ref>
+    <author>
+      <name>Nikola Kovacevic</name>
+    </author>
+    <author>
+      <name>Bastien Husler</name>
+    </author>
+    <author>
+      <name>Di Zhuang</name>
+    </author>
+    <author>
+      <name>Rafael Wampfler</name>
+    </author>
+    <author>
+      <name>Barbara Solenthaler</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17741v1</id>
+    <title>A Wearable Multimodal Ultrasound+Inertial System for Real-Time Virtual Reality Interaction</title>
+    <updated>2026-06-16T10:03:19Z</updated>
+    <link href="https://arxiv.org/abs/2606.17741v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17741v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A-mode ultrasound (US) is a promising sensing modality for Virtual Reality (VR) interaction, as it enables the mapping of muscular activity into control commands while retaining the benefits of wearable sensing. However, existing approaches still face limitations in terms of wearability and interaction complexity, often relying on external hardware such as cameras. In this work, we propose a fully wearable multimodal interface for real-time VR-interaction, based on concurrent US and inertial (accelerometry) sensing from the forearm and upper arm. The system is built on the WULPUS platform and integrates an end-to-end software framework for real-time acquisition, visualization, and communication with a Unity-based VR environment. A multimodal learning pipeline is introduced for concurrent hand pose and forearm position estimation in 2D space. The interface is evaluated through offline and online experiments with five subjects, during the execution of three functional tasks: cylinder grasping (gross motor) and relocation, marble pinching (fine motor) and relocation, and liquid pouring. For offline experiments, we collect 5 acquisition sessions across multiple days, achieving an average inter-session accuracy across subjects of 80$\pm$6\% for hand pose estimation and 77$\pm$7\% for forearm position estimation. Online validation with minimal fine-tuning (5 min) demonstrates success rates of 92.0$\pm$16.0\%, 88.0$\pm$9.8\%, and 96.0$\pm$8.0\% for the three tasks, respectively. With a power consumption of only 19.9~mW, our system enables more than 2.5 days of continuous use on a small 350 mAh LiPo battery without the need for recharge, enabling truly wearable, multimodal, and functionally meaningful VR interaction.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T10:03:19Z</published>
+    <arxiv:comment>8 pages, 8 figures, 3 tables</arxiv:comment>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Giusy Spacone</name>
+    </author>
+    <author>
+      <name>Sebastian Frey</name>
+    </author>
+    <author>
+      <name>Enzo Baraldi</name>
+    </author>
+    <author>
+      <name>Mattia Orlandi</name>
+    </author>
+    <author>
+      <name>Luca Benini</name>
+    </author>
+    <author>
+      <name>Andrea Cossettini</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17739v1</id>
+    <title>ED3R: Energy-Aware Distributed Disaster Detection Enabled by Cooperative Robotic Agents</title>
+    <updated>2026-06-16T09:59:03Z</updated>
+    <link href="https://arxiv.org/abs/2606.17739v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17739v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robotics are expected to support environmental monitoring and natural disaster management, where decisions must be made under uncertainty, resource limitations, and strict operational constraints. In critical missions, such as wildfires, robotic agents must not only identify hazardous events with sufficient confidence, but also manage the energy cost and time until detection. This paper introduces ED3R, an energy-aware distributed framework for wildfire detection under uncertainty. ED3R enables hierarchical cooperative decision-making between a robot and a remote controller. The remote controller decides upon the robot's motion, while the robot senses the environment and decides where to execute the wildfire detection (onboard or remotely) and how. The common goal is to detect wildfires with a required confidence while minimizing the energy consumed by any robot operation. ED3R further integrates mechanisms to avoid nearby obstacles, prevent redundant exploration, enable adaptive early mission completion, and ensure feasibility through a custom penalty function. ED3R also introduces a forward-looking capability, enabled through distributed neural regression models that allow the agents to anticipate the future by evaluating candidate strategies before execution. The framework is evaluated through realistic robotics simulations, ablation studies, and baseline comparisons. Overall, ED3R achieves a mission success rate of up to 97.18%. Especially in the most demanding missions, it reduces energy consumption by up to 36.4% and detects wildfires up to 41% faster than baselines.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T09:59:03Z</published>
+    <arxiv:comment>14 pages, 9 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Lina Magoula</name>
+    </author>
+    <author>
+      <name>Nikolaos Koursioumpas</name>
+    </author>
+    <author>
+      <name>Nancy Alonistioti</name>
+    </author>
+    <author>
+      <name>Ramin Khalili</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17721v1</id>
+    <title>Understanding and Debugging Failures in N-Gram-Based Generative Retrieval</title>
+    <updated>2026-06-16T09:35:36Z</updated>
+    <link href="https://arxiv.org/abs/2606.17721v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17721v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative Retrieval (GR) is an emerging Information Retrieval (IR) paradigm that is motivated by increasingly capable language models. In GR, a model directly generates identifiers for relevant documents. While these systems offer unique advantages, they also introduce distinct failure mechanisms. We explore these failure modes in three contributions: (1) We present a taxonomy of GR failure modes based on GR literature. (2) We empirically investigate failure in a subset of GR: ngram-based methods, more specifically, SEAL and MINDER. Our analysis reveals common issues, such as ambiguous docids, low identifier diversity, and the disproportionate impact of specific identifiers. (3) We introduce a new web-based tool that helps the IR community analyze generated ngrams and their respective contribution to the final ranking, providing an intuitive interface to identify where such GR methods go wrong.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T09:35:36Z</published>
+    <arxiv:comment>Work in progress</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Richard Takacs</name>
+    </author>
+    <author>
+      <name>Adrian Bracher</name>
+    </author>
+    <author>
+      <name>Svitlana Vakulenko</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17707v1</id>
+    <title>Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators</title>
+    <updated>2026-06-16T09:17:46Z</updated>
+    <link href="https://arxiv.org/abs/2606.17707v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17707v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recommender systems alleviate information overload, yet repeated feedback between recommendations and user interactions can reinforce existing preferences and narrow users' exposure, forming information cocoons. While this phenomenon has been widely studied in traditional sequential recommendation, its impact on generative recommendation remains unclear. By replacing atomic item IDs with Semantic ID (SID) sequences, generative recommenders introduce a different recommendation mechanism whose role in information cocoon formation is not yet understood. To investigate whether generative recommenders deepen information cocoons, we propose \textsc{RecLoop}, a closed-loop simulation framework with LLM-driven user agents. We compare two generative recommenders and two traditional sequential baselines on two Amazon datasets across multiple feedback cycles. In addition to standard exposure-level metrics, we introduce \emph{Code-Space Structural Cocoon}, a model-level metric that measures concentration in the generated SID space. Experimental results show that generative recommenders are generally less prone to exposure-level cocoon formation than traditional baselines, preserving broader exposure diversity and slowing cross-user homogenization. However, feedback loops can still induce concentration within the generated SID space. We further find that cocoon severity depends strongly on tokenization strategy and model scale: collaborative-signal tokenization produces stronger cocoon effects than semantic tokenization, whereas larger models maintain greater code-space diversity and better retain access to niche content. These findings suggest that information cocoons in generative recommendation are shaped not only by recommendation behavior, but also by item tokenization and model capacity. Our code is available at https://github.com/Dregen-Yor/RecLoop.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T09:17:46Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Jiyuan Yang</name>
+    </author>
+    <author>
+      <name>Gengxin Sun</name>
+    </author>
+    <author>
+      <name>Mengqi Zhang</name>
+    </author>
+    <author>
+      <name>Lingjie Wang</name>
+    </author>
+    <author>
+      <name>Yuanzi Li</name>
+    </author>
+    <author>
+      <name>Hongxi Cui</name>
+    </author>
+    <author>
+      <name>Xin Xin</name>
+    </author>
+    <author>
+      <name>Pengjie Ren</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17666v1</id>
+    <title>FacProcessTwin: An LLM-Based System for Process Twin Development</title>
+    <updated>2026-06-16T08:27:43Z</updated>
+    <link href="https://arxiv.org/abs/2606.17666v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17666v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Process twins provide real-time representations of entire production processes. By capturing how process steps interact, rather than monitoring a single machine in isolation as an asset-based digital twin does, they have the potential to drive efficiency gains across the whole process. However, developing a process twin is costly. It requires accurately modelling the entire production process: its process steps, the equipment and product-specific settings each step uses, and its process variations. The resulting model must then be bound to live operational data. We present FacProcessTwin, a system that leverages a large language model (LLM) to reduce this development time, building a process twin from a plant's process documentation and natural-language input from an operator. FacProcessTwin generates this complete process model and then automatically binds its process steps to live operational data. The generated model and its data bindings are rendered as an interactive process diagram through which manufacturing personnel can monitor and correct the system's autonomous decisions, such as resolving uncertainty at safety-critical binding steps. We evaluate FacProcessTwin through a real-world case study of an Australian food manufacturer, covering 16 production process flows that span chilled, frozen, and aseptic shelf-stable product categories and include process variations within the same product. The results show that FacProcessTwin generates these process models accurately (a mean F1 of 95.2% against ground truth) and builds each twin in roughly a sixth of the manual time. Its human-in-the-loop governance then keeps the safety-critical bindings correct: at ambiguous tags where a single-pass baseline silently mis-binds 75.0% of the time, FacProcessTwin defers to the operator and mis-binds none.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T08:27:43Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yash Pulse</name>
+    </author>
+    <author>
+      <name>Yong-Bin Kang</name>
+    </author>
+    <author>
+      <name>Abhik Banerjee</name>
+    </author>
+    <author>
+      <name>Prem Prakash Jayaraman</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17664v1</id>
+    <title>Temporal Preference Optimization for Unsupervised Retrieval</title>
+    <updated>2026-06-16T08:27:22Z</updated>
+    <link href="https://arxiv.org/abs/2606.17664v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17664v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Unsupervised dense retrievers offer scalability by learning semantic similarity from unlabeled documents via contrastive learning, but they struggle to capture the temporal relevance, retrieving semantically related but temporally misaligned documents-an important aspect when a document collection spans multiple time periods (e.g., retrieving documents from 2018-2025 for "Who is the president in 2019?" introduces temporal ambiguity). Existing methods rely on supervised training with explicit timestamps, which are not always feasible. We propose TPOUR (Temporal Preference Optimization for Unsupervised Retriever), which uses our novel training method Temporal Retrieval Preference Optimization (TRPO). TRPO reinterprets preference learning in the temporal dimension, guiding the retriever to favor temporally aligned documents. TPOUR further generalizes to unseen time periods via interpolation in a learned time embedding, enabling continuous temporal alignment. Experiments on temporal information retrieval (T-IR), TPOUR outperforms both unsupervised and supervised baselines. Compared to Qwen-Embedding-8B, despite being about 72.7x smaller, TPOUR Contriever improves average nDCG@5 by +4.04 (+12.15%) on explicit and +4.98 (+15.21%) on implicit queries. We provide our code at https://github.com/agwaBom/TPOUR.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T08:27:22Z</published>
+    <arxiv:comment>Accepted to ICML 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>HyunJin Kim</name>
+    </author>
+    <author>
+      <name>Jaejun Shim</name>
+    </author>
+    <author>
+      <name>Young Jin Kim</name>
+    </author>
+    <author>
+      <name>JinYeong Bak</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17646v1</id>
+    <title>SketchXplain: Intuitive Visual Explanations of Image Classifiers with Sketches</title>
+    <updated>2026-06-16T08:05:26Z</updated>
+    <link href="https://arxiv.org/abs/2606.17646v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17646v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Saliency map visualizations explain image-based AI predictions by pointing to regions, but these are often unintuitive and semantically unclear, leaving an interpretability gap. We argue that AI explanations should be intuitive -- coherent to user knowledge, yet simple and selective to accelerate interpretation. Inspired by artistic drawings, we propose SketchXplain to generate sketch-based visual explanations for intuitive image-based explainable AI (XAI). Combining techniques in saliency maps, concept-bottleneck models, and sketch optimization, SketchXplain integrates saliency to select coherent observation artifacts, concepts for knowledge coherence, cues to represent them, and abstraction for simplicity. Evaluating on face expression recognition, modeling and user studies showed that SketchXplain supported quicker interpretation with more aligned visualizations than saliency maps or simple drawings. Further evaluation on skin lesion diagnosis found that SketchXplain more coherently visualized disease symptoms, better supporting lay diagnosis. Thus, this work illustrates the value of sketches for intuitive, simple, coherent, and quick image-based XAI visualizations.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T08:05:26Z</published>
+    <arxiv:comment>14 pages, 6 figures, 4 tables. Submitted to TVCG</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Wencan Zhang</name>
+    </author>
+    <author>
+      <name>Mario Michelessa</name>
+    </author>
+    <author>
+      <name>Xuejun Zhao</name>
+    </author>
+    <author>
+      <name>Brian Y. Lim</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17633v1</id>
+    <title>AdaPT: Adaptive Lesson Plan Transformer for Cross-Regional and Differentiated Instruction</title>
+    <updated>2026-06-16T07:43:57Z</updated>
+    <link href="https://arxiv.org/abs/2606.17633v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17633v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Due to educational inequality, high-quality lesson plans often mismatch the needs of disparate educational contexts. Teachers typically modify existing lesson plans to fit new contexts, but current tools instead focus on generating content from scratch, creating additional workload. Moreover, a critical gap remains in supporting teachers to quickly adapt to new learning profiles. To bridge these gaps, we present AdaPT, a system leverages LLMs to support transformation of existing lesson plans for cross-regional and differentiated instruction. AdaPT features an interactive interface that allows teachers to input student profiles, offers structured lesson representation, provides explanations for lesson-plan transformations, automatically adapts lesson content for new contexts, and supports iterative, teacher-in-the-loop refinement. We evaluated AdaPT through a user study with 9 teachers and an expert evaluation with 3 specialists. Results show that AdaPT supports workflows of teachers and offers a promising pathway toward promoting educational equity.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T07:43:57Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Yanjie Zhang</name>
+    </author>
+    <author>
+      <name>Jiajun Zhu</name>
+    </author>
+    <author>
+      <name>Minyu Wu</name>
+    </author>
+    <author>
+      <name>Huamin Qu</name>
+    </author>
+    <author>
+      <name>Sicheng Song</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17616v1</id>
+    <title>Towards Speech Impairment Prediction in German-Speaking Individuals with Amyotrophic Lateral Sclerosis</title>
+    <updated>2026-06-16T07:22:49Z</updated>
+    <link href="https://arxiv.org/abs/2606.17616v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17616v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Amyotrophic Lateral Sclerosis (ALS) is a neurodegenerative disease, often affecting speech due to bulbar dysfunction. In this study, we predict speech impairment in people with ALS (pwALS) using two clinical speech-related scores. We evaluate cross-sectional (across speakers) and personalised (within-speaker) modelling paradigms and analyse the utility of common speech tasks to contribute to the standardisation of speech data collection for pwALS. Experiments on a German-speaking cohort of 66 pwALS show that repetition tasks (/da/-/da/, /da/-/ba/) achieved the best cross-sectional performance (Concordance Correlation Coefficient (CCC) = 0.62) for predicting the Quality of Life in the Dysarthric Speaker questionnaire, while the within-speaker setting reached a CCC of 0.86. This study represents an initial step towards speech impairment prediction in German-speaking pwALS and highlights the potential of automated speech analysis as a supportive tool for speech impairment assessment.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T07:22:49Z</published>
+    <arxiv:comment>Paper accepted at Interspeech 2026, Sydney, Australia</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Monica Gonzalez-Machorro</name>
+    </author>
+    <author>
+      <name>Ricarda von Heynitz</name>
+    </author>
+    <author>
+      <name>Justine Hanslmeier</name>
+    </author>
+    <author>
+      <name>Finja Grimm</name>
+    </author>
+    <author>
+      <name>Alexandra-Iulia Deac</name>
+    </author>
+    <author>
+      <name>Anne Gründel</name>
+    </author>
+    <author>
+      <name>Isabell Cordts</name>
+    </author>
+    <author>
+      <name>Björn Schuller</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17612v1</id>
+    <title>PracRepair: LLM-Empowered Automated Program Repair Inspired by Human-Like Debugging Practices</title>
+    <updated>2026-06-16T07:18:37Z</updated>
+    <link href="https://arxiv.org/abs/2606.17612v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17612v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As software systems grow in scale and complexity, debugging and repair remain costly and time-consuming. Large language models (LLMs) have advanced automated program repair (APR), but existing LLM-based APR approaches still largely rely on static or retrieved context, error messages, and coarse-grained validation outcomes. As a result, they underutilize dynamic information for failure understanding and repair, including failure-execution dynamics and patch-validation dynamics. Effectively leveraging such information, however, is challenging: failure-execution traces are large and noisy, raw static-dynamic context is not self-explanatory, and patch-validation dynamics are often reduced to coarse feedback. To address these challenges, we propose \textsc{PracRepair}, a fully automated LLM-based APR framework inspired by human-like debugging practices. \textsc{PracRepair} constructs an on-demand static-dynamic context from buggy programs and failure executions, performs question-driven failure diagnosis to formulate explicit repair hypotheses, and iteratively refines candidate patches using validation diagnostics and trace-level behavioral changes. Experimental results on Defects4J V1.2 and V2.0 show that \textsc{PracRepair} consistently outperforms state-of-the-art baselines. Specifically, under GPT-3.5, \textsc{PracRepair} correctly fixes 139/136 bugs on Defects4J V1.2/V2.0, while under GPT-4o it further improves to 162/171. Moreover, \textsc{PracRepair} generalizes effectively to RWB (Real-World Bugs), achieving the best performance across multiple foundation models.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T07:18:37Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yu Cheng</name>
+    </author>
+    <author>
+      <name>Zhongxin Liu</name>
+    </author>
+    <author>
+      <name>Zhenchang Xing</name>
+    </author>
+    <author>
+      <name>Chao Ni</name>
+    </author>
+    <author>
+      <name>Qing Huang</name>
+    </author>
+    <author>
+      <name>Xiaoxue Ren</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17593v1</id>
+    <title>Why Model Credibility Isn't Enough: -Rethinking Trust in Simulation Architectures</title>
+    <updated>2026-06-16T06:56:30Z</updated>
+    <link href="https://arxiv.org/abs/2606.17593v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17593v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Credibility of a simulation model is an important topic. Several approaches try to quantify the credibility of simulation. However, models are mostly assembled within a simulation architecture. Can the credibility of a simulation architecture be assessed based on the credibility of the models that comprise it? This paper aims to address this issue by providing an overview of the current state of the art in the field of assembly credibility. It will compare sensitivity analysis techniques, qualitative analysis by experts, explainability in AI, and networks. Finally, an assessment of the proposed approaches, based on criteria such as rigor, generalization, and resource requirements, will reveal the strengths and weaknesses of each approach.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T06:56:30Z</published>
+    <arxiv:comment>Annual Congress of Japan Society of Automotive Engineers (JSAE), May 2026, Yokohama, Japan</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Romain Barbedienne</name>
+    </author>
+    <author>
+      <name>Adeline Lanugue</name>
+    </author>
+    <author>
+      <name>Rim Kaddah</name>
+    </author>
+    <author>
+      <name>Julien Silande</name>
+    </author>
+    <author>
+      <name>Anthony Levillain</name>
+    </author>
+    <author>
+      <name>Cedric Leclerc</name>
+    </author>
+    <author>
+      <name>Maxime Hayet</name>
+    </author>
+    <author>
+      <name>Boussaad Soualmi</name>
+    </author>
+    <author>
+      <name>Cristian Maxim</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17588v1</id>
+    <title>Understanding LLMs in Title-Abstract Screening: From Disagreements to Recommendations</title>
+    <updated>2026-06-16T06:51:04Z</updated>
+    <link href="https://arxiv.org/abs/2606.17588v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17588v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Several studies have examined the use of large language models (LLMs) for title-abstract screening in systematic reviews (SRs), reporting mixed accuracy. However, questions of reliability remain largely unaddressed. In this study, we go beyond quantitative LLM-human agreement metrics and qualitatively investigate how and why LLMs fail. We also propose actionable recommendations. We analyzed disagreements between LLMs and researchers across six software engineering SRs and over 1,000 primary study papers. For each SR, papers were screened independently by human experts and LLMs in zero-shot mode, resulting in Kappa values ranging from 0.52 to 0.77. Qualitative analysis suggests that human-LLM disagreement results from recurring, identifiable causes, such as boundary ambiguity in key terms, keyword overemphasization, and incorrect topic inference. Based on these findings, we propose recommendations such as validating semantic understanding before deployment, running multiple LLMs, and focusing validation efforts on borderline cases. Future studies are needed to validate the impact of our recommendations, and community efforts are needed to develop normative guidelines on LLM usage in SRs.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T06:51:04Z</published>
+    <arxiv:comment>14 pages + references. Accepted for publication in the 52nd Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2026)</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Mika Mäntylä</name>
+    </author>
+    <author>
+      <name>Patricia Matsubara</name>
+    </author>
+    <author>
+      <name>Katia Romero Felizardo</name>
+    </author>
+    <author>
+      <name>Miikka Kuutila</name>
+    </author>
+    <author>
+      <name>Marco Gerosa</name>
+    </author>
+    <author>
+      <name>Savio de Sousa Sampaio</name>
+    </author>
+    <author>
+      <name>Tayana Conte</name>
+    </author>
+    <author>
+      <name>Igor Steinmacher</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17514v1</id>
+    <title>Unlocking LLM Code Correction with Iterative Feedback Loops</title>
+    <updated>2026-06-16T04:47:42Z</updated>
+    <link href="https://arxiv.org/abs/2606.17514v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17514v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models have shown remarkable capabilities in code generation. However, most existing evaluations focus only on single-attempt accuracy and overlook the iterative refinement process that is central to real-world programming. This study presents a systematic investigation of LLMs' ability to rectify their own code through execution feedback. Using real-world programming problems across four models and two major programming languages, this study evaluates performance using iterative refinement framework where LLMs receive compiler error messages and testcase feedback after each attempt. This study introduces metrics to evaluate code failures, analyze rectification patterns, and compare the effectiveness of reasoning and non-reasoning models, offering actionable insights into both the understanding and practical application of feedback loops in LLM-driven code generation systems. Results show that reasoning models consistently improve over iterations, substantially outperforming non-reasoning models in leveraging feedback, while syntactic and runtime errors are far more tractable than logical or algorithmic failures.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T04:47:42Z</published>
+    <arxiv:comment>22 pages, 14th Computing Conference 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Le Zhang</name>
+    </author>
+    <author>
+      <name>Suresh Kothari</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17512v1</id>
+    <title>MedEasy: Designing AI Standardized Patients for Clinical Consultation Training</title>
+    <updated>2026-06-16T04:43:47Z</updated>
+    <link href="https://arxiv.org/abs/2606.17512v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17512v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>AI standardized patients are becoming a setting for professional training in clinical consultation. This paper presents MedEasy, a multi-agent system that organizes virtual-patient practice through patient dialogue, clinical actions, decision submission, documentation, and feedback. We first conducted a formative study with 12 clinical-year medical students through interviews and three co-design workshops. The findings informed a staged workflow, structured case records, action-contingent findings, and trajectory-based review. We then conducted an evaluative user study with a separate cohort of 12 clinical-year medical students, with each participant completing two counterbalanced cases. Learners interpreted MedEasy as a connected consultation environment. They used patient responses, examination findings, available actions, and feedback together to judge whether the represented case remained coherent. They valued repeatable practice and recorded review, while questioning missing actions and feedback criteria. The paper contributes design implications for AI-supported professional training systems that use case-specific standards to connect situated practice.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T04:43:47Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Zhiqi Gao</name>
+    </author>
+    <author>
+      <name>Huarui Luo</name>
+    </author>
+    <author>
+      <name>Guo Zhu</name>
+    </author>
+    <author>
+      <name>Bingquan Zhang</name>
+    </author>
+    <author>
+      <name>Dongyijie Primo Pan</name>
+    </author>
+    <author>
+      <name>Yizhan Feng</name>
+    </author>
+    <author>
+      <name>Jiahuan Pei</name>
+    </author>
+    <author>
+      <name>Jie Li</name>
+    </author>
+    <author>
+      <name>Benyou Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17510v1</id>
+    <title>OmniDroneX: An LLM-Assisted Holistic Drone-as-a-Service Ecosystem</title>
+    <updated>2026-06-16T04:40:58Z</updated>
+    <link href="https://arxiv.org/abs/2606.17510v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17510v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Despite rapid advances in UAV technologies, current deployments remain limited due to several gaps in UAV systems research. To address these challenges, we propose OmniDroneX, a unified Drone-as-a-Service ecosystem, in which drones are transitioned from fixed function platforms into dynamically composable entities that can be integrated with external infrastructures to offer omni-capabilities. OmniDroneX bridges low-level physical primitives with high-level mission intent through a unified vendor-agnostic interface (libUAV) and a formal physical-service abstraction model (PT-SOA). A core innovation is the diverse application of large language models (LLMs) across multiple layers of the OmniDroneX architecture. LLMs are used to assist in identifying and formalizing primitive device functions and abstract service definitions, supporting automated service composition and workflow generation, and enabling interactive, natural-language mission specification and refinement. OmniDroneX also incorporates important categories of composition techniques that are essential in dynamic UAV systems, including physical layer composition for drone capability augmentation, as well as spatiotemporal, functional, collaborative, exception-aware, and QoS-based service compositions. Collectively, these features allow OmniDroneX to serve as a foundation for scalable, resilient, and self-evolving UAV ecosystems operating in complex and dynamic environments.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T04:40:58Z</published>
+    <arxiv:comment>Ongoing project paper that is going to be submitted to JointCloud Computing</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>I-Ling Yen</name>
+    </author>
+    <author>
+      <name>Akeem Mohammed</name>
+    </author>
+    <author>
+      <name>Farokh Bastani</name>
+    </author>
+    <author>
+      <name>San-Yih Hwang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17508v1</id>
+    <title>When the Next Step Is Not One Step: Distribution-Aware Execution Modeling for Concurrent Go Programs</title>
+    <updated>2026-06-16T04:40:04Z</updated>
+    <link href="https://arxiv.org/abs/2606.17508v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17508v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training a model to predict the next step in a concurrent program is harder than it looks: two runs of the same program from the same trace prefix can produce different next events, both valid, because the scheduler is nondeterministic. A model trained against a single label is learning to guess one outcome of a random process. We turn this around and use the nondeterminism as a training signal. We run each program many times, aggregate the observed next events into an empirical distribution, and fine-tune a 7B model to match that distribution with a KL objective. On 798 held-out predictions drawn from real production Go bugs (CockroachDB, Kubernetes, gRPC, etcd), fine-tuning on fewer than a thousand traces reaches 36.2% accuracy, ahead of Gemini 3.5 Flash used zero-shot (34.8%) and the same model without fine-tuning (28.6%). Distribution training matches cross-entropy on accuracy (35.8% vs. 36.2%) while reducing Expected Calibration Error from 0.205 to 0.169. We also derive a formal goroutine-leak signature for a class of select-blocked goroutines where P(GoUnblock)=0 holds by scheduler semantics, not by learning. We release the dataset, trained adapters, and all tooling.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T04:40:04Z</published>
+    <arxiv:comment>10 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Kaviru Hapuarachchi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17507v1</id>
+    <title>LLM-as-Judge in Education: A Curriculum-Grounded Marking Pipeline</title>
+    <updated>2026-06-16T04:33:20Z</updated>
+    <link href="https://arxiv.org/abs/2606.17507v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17507v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI and large language models (LLMs) are increasingly applied to question generation and automated assessment. However, deploying LLMs in preparation for high-stakes exams requires more than prompt engineering; it demands software pipelines that systematically ground model outputs in authorised curriculum artefacts and marking guidelines issued by education authorities. This paper presents a curriculum-grounded, configurable LLM-as-Judge pipeline for question-level marking, co-developed with an industrial partner, to support exam preparation for university admission. The pipeline identifies the relevant topics, subtopics, and cognitive demand of a question, and assembles verifiable and authorised context to support LLM judgement. Curriculum intent is operationalised through concrete syllabus artefacts, including prescribed verbs and outcomes, performance band descriptors, glossary definitions, and marking-guideline principles. A staged LLM workflow is employed to first generate question-specific rubrics, capturing structured expectations of performance, and then derive and evaluate marking criteria used to allocate marks to student responses. This design improves consistency, transparency, and alignment with official marking practices. Preliminary evaluation shows that the proposed LLM-as-Judge pipeline delivers marking outcomes comparable to human tutors, while yielding justifications that are more traceable to authorised curriculum artefacts and marking standards. The pipeline has also been integrated into an online study platform, where early deployment data provide initial insights into operational usage and manual overrides.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T04:33:20Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Xiwei Xu</name>
+    </author>
+    <author>
+      <name>Chen Wang</name>
+    </author>
+    <author>
+      <name>Jacky Jiang</name>
+    </author>
+    <author>
+      <name>Phil Yang</name>
+    </author>
+    <author>
+      <name>Qian Fu</name>
+    </author>
+    <author>
+      <name>Mohan Dhall</name>
+    </author>
+    <author>
+      <name>Wenjie Zhang</name>
+    </author>
+    <author>
+      <name>Liming Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17470v1</id>
+    <title>Self-Efficacy and Favorability Shape Learning from Tutoring Systems and Paper Practice</title>
+    <updated>2026-06-16T03:29:49Z</updated>
+    <link href="https://arxiv.org/abs/2606.17470v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17470v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Motivational factors such as self-efficacy and how favorably students feel toward practice play a crucial role in shaping learning, particularly in technology-supported environments. Yet, educational interventions often overlook how these factors interact with practice format. This paper examines the influence of self-efficacy and favorability on learning outcomes across two common practice formats: paper-based and system-based tutoring practice. Using a counterbalanced within-subject design with matched problem sets, we isolate the effect of practice format while modeling motivational differences. Results indicate that students with lower baseline self-efficacy achieved greater learning gains regardless of practice format. Among students with lower baseline self-efficacy, greater favorability toward the tutor was associated with greater learning gains during tutor practice, whereas the pattern differed in paper-based practice. Intelligent Tutoring System (ITS)-based practice did not significantly improve post-training self-efficacy relative to paper-based methods. These findings underscore the potential value of tailoring practice format to students' motivational profiles, as the benefits of tutor- and paper-based practice varied with baseline self-efficacy and favorability. They lay the groundwork for future research on how instructional formats can be aligned more effectively with learners' motivational needs.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T03:29:49Z</published>
+    <arxiv:comment>Full research paper accepted at EC-TEL 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CY"/>
+    <author>
+      <name>Xinfei Cen</name>
+    </author>
+    <author>
+      <name>Vincent Aleven</name>
+    </author>
+    <author>
+      <name>Kenneth R. Koedinger</name>
+    </author>
+    <author>
+      <name>Conrad Borchers</name>
+    </author>
+    <author>
+      <name>Paulo F. Carvalho</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17468v1</id>
+    <title>RSRank: Learning Relevance from Representational Shifts</title>
+    <updated>2026-06-16T03:29:23Z</updated>
+    <link href="https://arxiv.org/abs/2606.17468v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17468v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As enterprises deploy RAG-based systems to provide grounded responses to user queries, reranking has become a critical component for the final filtering step that separates relevant from distracting or irrelevant documents. Existing rerankers often rely on heuristic thresholds to achieve optimal filtering. Moreover, for relevance scoring, state-of-the-art methods use a language model's logit signals, which are designed for next-token prediction, not for assessing relevance. To address these limitations, we identify a principled signal for relevance: the representational shift (RS) induced in a query's internal state when conditioned on a document. We observe that the alignment between (a) RS induced by a candidate document and (b) RS induced by an oracle document-set provides a robust indicator of relevance. Building on this insight, we introduce a lightweight training framework that learns projections mapping RS to calibrated relevance scores. Our training objectives naturally filter irrelevant content at a zero threshold, reducing dependence on heuristic tuning. Across diverse retrieval datasets, our method delivers gains over SOTA rerankers.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T03:29:23Z</published>
+    <arxiv:comment>Under Peer Review</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Archit Gupta</name>
+    </author>
+    <author>
+      <name>Sai Sundaresan</name>
+    </author>
+    <author>
+      <name>Debabrata Mahapatra</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17427v1</id>
+    <title>Impact of Hand Impairment and Occlusions on Hand Pose Estimation Accuracy in Augmented Reality Applications</title>
+    <updated>2026-06-16T02:20:30Z</updated>
+    <link href="https://arxiv.org/abs/2606.17427v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17427v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Mixed reality applications can be designed for hand rehabilitation. Augmented reality (AR) head mounted displays (HMDs) specifically allow for ecologically valid tasks because individuals can see their real environment and interact with real objects while receiving additional cues on the HMD. While these applications rely on accurate hand pose estimation, there is a gap in investigating the influence of hand impairment or occlusion from real-object interactions on pose estimation accuracy. Further, comparisons between AR HMD predictions and state-of-the-art pose estimation methods have not been established. The current study assessed pose estimation accuracy of the HoloLens 2 HMD and state-of-the-art pose estimation algorithms (WiLoR, HaMeR, WildHands, and MediaPipe) while individuals with cervical spinal cord injury (cSCI; n = 13, Neurological Level of Injury: C3-C6; American Spinal Injury Association Impairment Scale: A-D) and 15 uninjured controls interacted with clear and opaque objects. Ground truth estimates of 3D joint positions were generated via triangulation from a multi-camera setup. Pose estimation accuracy did not differ between the cSCI and uninjured control groups suggesting that 3D joint predictions from the HoloLens 2 and pose estimation algorithms can generalize to populations with hand impairment. Further, clear objects provided a small accuracy advantage over opaque objects (0.1 mm) and predictions from both WiLoR and HaMeR were slightly more accurate than the HoloLens 2 (2 mm). Overall, these results suggest that the HoloLens 2 may be viable for hand rehabilitation applications and the dataset generated can be used to refine pose estimation methods for hand-impaired populations.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T02:20:30Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Damian M. Manzone</name>
+    </author>
+    <author>
+      <name>Mathew Szymanowski</name>
+    </author>
+    <author>
+      <name>Olga Taran</name>
+    </author>
+    <author>
+      <name>Shuo Cai</name>
+    </author>
+    <author>
+      <name>Melissa Marquez-Chin</name>
+    </author>
+    <author>
+      <name>Tammy Zeng</name>
+    </author>
+    <author>
+      <name>Hardeep Singh</name>
+    </author>
+    <author>
+      <name>Cesar Marquez-Chin</name>
+    </author>
+    <author>
+      <name>José Zariffa</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17398v1</id>
+    <title>SoK: AI-Augmented Binary Reversing</title>
+    <updated>2026-06-16T01:14:49Z</updated>
+    <link href="https://arxiv.org/abs/2606.17398v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17398v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Binary reversing is fundamental to software understanding, vulnerability discovery, malware investigation, and firmware auditing. However, it remains inherently challenging due to the irreversible loss of semantic information during compilation. Recent advances in machine learning, large language models (LLMs), and agentic AI systems have accelerated the adoption of AI-augmented binary reversing. Yet, the resulting body of work has become increasingly fragmented across reversing domains, artifact representations, learning approaches, and evaluation practices. This paper presents the first comprehensive systematization of knowledge on AI-augmented binary reversing. We analyze 144 research papers published since 2015, and organize them into 22 binary reversing domains according to the inference tasks. We further introduce a unified taxonomy spanning conventional and AI-augmented reversing pipelines. Our taxonomy connects traditional analysis techniques, binary-derived artifacts, representation strategies, learning paradigms, and downstream inference tasks, while clarifying the emerging roles of LLMs and agentic AI systems. By establishing a common vocabulary and structured framework, we provide a holistic view of the field's evolution over the past decade. Our study reveals common structures underlying seemingly disparate approaches, highlights persistent technical challenges and evaluation gaps, and identifies promising opportunities for future research. Collectively, these insights clarify the current state of the field and provide a foundation for the next generation of reliable and scalable AI-augmented binary reversing systems.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T01:14:49Z</published>
+    <arxiv:comment>20 pages, 7 tables, 3 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Yujeong Kwon</name>
+    </author>
+    <author>
+      <name>Yiyue Zhang</name>
+    </author>
+    <author>
+      <name>Shakhzod Yuldoshkhujaev</name>
+    </author>
+    <author>
+      <name>Kexin Pei</name>
+    </author>
+    <author>
+      <name>Dokyung Song</name>
+    </author>
+    <author>
+      <name>Hyungjoon Koo</name>
+    </author>
+  </entry>
+</feed>

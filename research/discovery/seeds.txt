@@ -1,0 +1,30 @@
+# Exa findSimilar seed URLs — the "more deep cuts like this" list.
+#
+# How this works: the discovery skill calls Exa /findSimilar on these URLs to pull
+# pages semantically similar to stuff we already like. This is our lightweight taste
+# loop: every time the founder accepts or writes about a story, ADD its URL here. Over
+# time findSimilar pulls harder toward our demonstrated taste.
+#
+# Best seeds are SPECIFIC article URLs (a single great post), not landing pages or
+# archives — a specific post gives sharp similars, a homepage gives noisy ones.
+# One URL per line. Lines starting with # are ignored.
+
+# --- Starter seeds: high-signal applied-AI sources (replace with specific posts as we find them) ---
+https://www.anthropic.com/engineering
+https://simonwillison.net
+https://hamel.dev
+https://www.eugeneyan.com
+https://huyenchip.com
+https://www.interconnects.ai
+
+# --- Accepted picks (add specific article URLs here as the founder writes about them) ---
+https://www.thebigwhale.io/article/su-yang-bnp-paribas-agentifying-a-bad-process-just-burns-tokens
+
+# --- Case-study seeds (added 2026-06-19 case-study run) ---
+https://www.k12dive.com/news/vibe-coding-helped-a-washington-district-save-250k-in-ed-tech-costs/816993/
+https://www.netlify.com/blog/the-year-of-vibe-coding-people-team/
+https://imobisoft.co.uk/ai-crm-claude-code-internal-automation/
+https://www.tbpndigest.com/story/2026-06-04/aig-ceo-peter-zaffino-on-using-palantir-to-rebuild-underwriting-and-cut-portfolio-analysis-from-months-to-days
+https://www.williams.com/2026/06/17/how-ai-helped-williams-cut-field-work-from-days-to-hours-and-speed-software-delivery/
+https://diginomica.com/buy-build-how-franklincovey-cio-blaine-carter-replacing-packaged-apps-low-code-and-ai
+https://martinfowler.com/articles/vibesec-reckoning.html

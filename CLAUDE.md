@@ -7,6 +7,64 @@ stale parts, add what's missing; never let it drift.
 `AGENTS.md` is a symlink to this file, so Claude Code and Codex share these
 instructions.
 
+## Publishing essays (the content pipeline)
+
+The repo is the **single source of truth** for all writing. Author essays ONLY here,
+never in Buttondown. An **essay is also the newsletter issue** ("Actual Intelligence, by
+Nicholas Major") **and the source for LinkedIn atomization** — the same body is what gets
+emailed and repurposed, so there is no separate "newsletter content."
+
+**Where essays live:** `app/src/content/essays/<slug>.md`. The filename is the URL slug
+(`/writing/<slug>/`). Schema is in `app/src/content.config.ts`. (`takes` and `building`
+are separate collections and do **not** go through this pipeline or the newsletter.)
+
+**An essay is "live" only when `draft: false` AND `pubDate <= now`** (`src/lib/publish.js`
+`isLive`). A `draft: false` essay with a future `pubDate` is *scheduled* and stays hidden
+until its time — which makes every deploy safe.
+
+**The day-to-day flow (this is the whole loop Nick wants):**
+
+1. **Discover / brainstorm** with the `content-discovery` skill → Nick picks an idea.
+2. **Write** it with the `content-builder` skill as `app/src/content/essays/<slug>.md`,
+   `draft: true`, following the **`writing-voice` skill for every word**. Leave `pubDate`
+   as a placeholder.
+3. **Nick reviews, tweaks, and signs off** by adding `approved: "Nicholas Major <date>"`
+   and **adds the slug to `queue` in `app/publishing.config.json`** (order = publish order;
+   reorder anytime). `npm --prefix app run queue:lint` checks the queue is all finished,
+   approved drafts.
+4. **Marking it ready also triggers repurposing:** run the `content-repurposing` skill to
+   atomize the approved essay into LinkedIn posts under `app/linkedin/<slug>/`. Nick
+   reviews and **approves each LinkedIn post** (its own `approved:` field). See
+   `app/linkedin/README.md`.
+5. Each cadence slot (default **Tuesday 14:00 UTC**), the `.github/workflows/publish.yml`
+   workflow promotes the top of the queue: stamps `pubDate`, flips `draft: false`,
+   **builds + deploys the site** (the website updates with the new article),
+   **auto-sends the newsletter** via the Buttondown "Actual Intelligence" list, and
+   **schedules that issue's approved LinkedIn posts** for the week — then commits the
+   result back.
+
+To publish on a **specific date** instead of the queue: set a future `pubDate` +
+`draft: false` + `approved`, and leave it out of the queue. It goes live and emails on
+that date.
+
+> **HARD RULE for agents (Claude Code, Codex):** never set `approved` (on an essay **or**
+> a LinkedIn post) and never add a slug to the queue. These are Nick's personal sign-off —
+> the human gate that makes fully-automatic sending safe. An agent may draft, refine, and
+> leave content `draft: true` / unapproved; **only Nick approves and queues.** Likewise
+> never set or clear `emailedAt` (the send idempotency lock) or `pushedAt` (the LinkedIn
+> idempotency lock) by hand.
+
+**Buttondown:** the essay body is the email. `BUTTONDOWN_API_KEY` in `.env` is scoped to
+the **"Actual Intelligence"** newsletter — never the Institute's or any other list on the
+account. Sending is driven by `scripts/send-newsletter.mjs`; Buttondown's own
+RSS-to-email automation must stay **off** or it would double-send.
+
+**LinkedIn:** posts live in `app/linkedin/<slug>/<channel>-<angle>.md`, scheduled relative
+to the issue's real publish date. The pipeline runs in **shadow mode** by default
+(`app/linkedin.config.json` `enabled: false`) — same as the Institute; flip to live only
+once Postiz creds + a company-page integration exist. The `business` channel is disabled
+pending the future consultancy company page.
+
 ## Layout
 
 - `app/` — the application. A Cloudflare Worker unless this project is something else.

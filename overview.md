@@ -127,6 +127,27 @@ audience; the consultancy is where the commercial conversation happens.
   authenticates. No localhost in this workspace — we iterate against a live Worker
   (a `nmajor` Worker on its `workers.dev` preview URL until cutover).
 
+## Design (settled 2026-07-01)
+
+- **Home page = direction "4a"**, designed by Nick in his Claude Design project
+  *AI Profile Redesign* and implemented 1:1 in `app/` at `/`. Look: **clean paper
+  hero + black newsletter block, Archivo, vermillion `#e5391f` accent** — a distinct
+  personal brand, deliberately *not* a sibling of the Institute's Newsreader/navy.
+  Byline uses **"Nicholas Major"**, tagline *"plain-English AI for people who run
+  things."* Five earlier prototype directions live at `/v1`–`/v5` (v1 = the "billboard"
+  Nick first liked) with a temporary version switcher across them; these are scratch
+  and can be deleted once 4a is locked.
+- **Photo: yes.** The About block has a portrait slot (currently a "Drop your photo"
+  placeholder). Nick to provide a strong high-contrast portrait; also feed it into the
+  build-time OG/social cards (the face is the reach engine). Design must not block on it.
+- **Content model = newsletter-first, one body of writing.** Three content types:
+  **Takes** (short, frequent, billboard/social fuel), **Essays** (the substantive
+  spine — *each essay IS the blog post AND the newsletter issue AND the source for
+  LinkedIn atomization*; do not run a separate blog and newsletter), and **Pages**
+  (About, Work-with-me, engineering archive). Every page's #1 job is to earn an email
+  signup. Open: how commercial the "Work with me" page is at launch (consultancy still
+  has no name/site).
+
 ## Plans
 
 Build order (reusing the Institute blueprint where it fits):

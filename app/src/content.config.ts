@@ -26,8 +26,9 @@ const essays = defineCollection({
     heroLede: z.string().optional(),
     // Reading time. Optional override; otherwise computed from the body word count.
     readingMinutes: z.number().optional(),
-    // Personal sign-off. Reserved for Nick; agents never set this. Presence gates
-    // eligibility to publish/email once that pipeline exists (mirrors the Institute).
+    // Personal sign-off. Set by Nick, or by an agent when Nick explicitly says he
+    // approves a specific post in the conversation — never on an agent's own judgment.
+    // Presence gates eligibility to publish/email once that pipeline exists.
     approved: z.string().optional(),
     emailedAt: z.coerce.date().optional(),
   }),

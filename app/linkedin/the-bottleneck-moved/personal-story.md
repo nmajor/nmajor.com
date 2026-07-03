@@ -3,7 +3,7 @@ newsletter: the-bottleneck-moved
 channel: personal
 offsetDays: 1
 angle: story
-# approved:   # Nick's sign-off, leave unset
+approved: "Nicholas Major 2026-07-02"
 ---
 More than 1,600 court filings have now been caught citing cases AI invented.
 
@@ -17,4 +17,4 @@ So the bottleneck in your operation didn't disappear when you added AI. It moved
 
 Before you write off an AI project, look at where the finished-looking work is piling up. If you sped up production and left the person who signs off just as buried, you built a faster machine feeding the same jam.
 
-I get into what the companies seeing real returns do instead in this week's Actual Intelligence.
+I break down what the companies seeing real returns do instead in Actual Intelligence, my newsletter on plain-English AI for people who run things. It's linked in my profile.

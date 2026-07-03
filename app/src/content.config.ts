@@ -41,6 +41,22 @@ const takes = defineCollection({
     pubDate: z.coerce.date(),
     author: z.string().default('Nicholas Major'),
     draft: z.boolean().default(false),
+    // Auto-generated takes (atomized from an approved essay by the
+    // content-repurposing skill) carry these. Hand-authored takes may omit them.
+    //   source     — parent essay slug; couples the take to its issue and is how
+    //                schedule-takes.mjs finds which takes to stamp when that essay
+    //                goes live. Also the provenance link.
+    //   offsetDays — schedule = the parent essay's real pubDate + N days. Like
+    //                LinkedIn posts, a take stores an OFFSET, never a date, so a
+    //                reordered/delayed issue carries its takes with it. Resolved to
+    //                a real pubDate only at publish (the take starts draft:true with
+    //                a placeholder pubDate; schedule-takes stamps it and flips draft).
+    //   idea       — the canonical, framing-independent claim. The dedup fingerprint:
+    //                the repurposing skill never generates a take whose idea repeats
+    //                one already in the corpus, so /takes never shows near-duplicates.
+    source: z.string().optional(),
+    offsetDays: z.number().int().optional(),
+    idea: z.string().optional(),
   }),
 });
 

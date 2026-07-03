@@ -5,14 +5,19 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { monthYear, readingMinutes, relativeShort } from '../lib/format';
+import { isLive } from '../lib/publish.js';
 
-const allEssays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
+const allEssays = (await getCollection('essays', ({ data }) => isLive(data))).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
+// Hero auto-tracks the newest live essay; `featured: true` is an optional manual
+// pin that overrides (used to hold one essay up longer than a week).
 const featured = allEssays.find((e) => e.data.featured) ?? allEssays[0];
 const latestEssays = allEssays.slice(0, 3);
 
-const takes = (await getCollection('takes', ({ data }) => !data.draft))
+// isLive (not just !draft): scheduled takes carry a future pubDate and must stay
+// hidden until their day; each daily build reveals the ones now due.
+const takes = (await getCollection('takes', ({ data }) => isLive(data)))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 5);
 
@@ -90,18 +95,20 @@ const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
           <img class="sub__mark" src="/actual-intelligence.svg" width="52" height="52" alt="Actual Intelligence" />
           <h2 class="sub__h2">Actual Intelligence</h2>
         </div>
-        <p class="sub__p">Plain-English AI for the people who run things. The actual kind, not the hype. One email when there's something worth sending.</p>
+        <p class="sub__p">Plain-English AI for the people who run things. The actual kind, not the hype. One email a week.</p>
       </div>
       <div class="sub__right">
         <form class="sub__form" id="subForm">
-          <input class="sub__input" name="email" type="email" required placeholder="you@company.com" aria-label="Email address" />
+          <input class="sub__input" name="email" type="email" required placeholder="you@company.com" aria-label="Email address" autocomplete="email" />
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADuku3pIVO1zcaoN" data-theme="dark" data-size="flexible"></div>
           <button class="sub__btn" type="submit">Subscribe</button>
         </form>
+        <p class="sub__msg" id="subMsg" role="status" aria-live="polite"></p>
         <div class="sub__done" id="subDone" hidden>
-          <div class="sub__doneTitle">You're on the list.</div>
-          <div class="sub__doneSub">Check your inbox to confirm. Talk soon.</div>
+          <div class="sub__doneTitle">Almost there.</div>
+          <div class="sub__doneSub">Check your inbox for a confirmation link.</div>
         </div>
-        <div class="sub__count">Unsubscribe anytime. No spam, no hype.</div>
+        <div class="sub__count">Unsubscribe in one click. I'll never share your email.</div>
       </div>
     </div>
   </section>
@@ -141,17 +148,70 @@ const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
     .sub__doneTitle { font-weight: 800; font-size: 16px; color: var(--accent); }
     .sub__doneSub { margin-top: 6px; font-size: 14px; color: #a9a396; }
     .sub__count { margin-top: 14px; font-size: 13px; color: #8f887a; }
+    .cf-turnstile { min-height: 1px; }
+    .sub__msg { margin: 12px 0 0; font-size: 13.5px; line-height: 1.5; color: #ffb4a8; font-weight: 600; }
+    .sub__msg:empty { display: none; }
+    .sub__btn:disabled { opacity: .6; cursor: default; }
   </style>
 
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script is:inline>
-    // Prototype subscribe: mirror the design's success state. Not wired to
-    // Buttondown yet (that's the next build step: own newsletter + scoped key).
-    const f = document.getElementById('subForm');
-    if (f) f.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!f.email.value.trim()) return;
-      f.hidden = true;
-      document.getElementById('subDone').hidden = false;
-    });
+    // Real subscribe: Turnstile is verified server-side by the Worker's
+    // /api/subscribe (worker.js), which then creates the Buttondown subscriber
+    // (double opt-in on). The dedicated landing page /subscribe uses the same
+    // endpoint. Same sitekey/widget as /subscribe.
+    (function () {
+      var f = document.getElementById('subForm');
+      var msg = document.getElementById('subMsg');
+      if (!f) return;
+      var btn = f.querySelector('button[type="submit"]');
+      var widget = f.querySelector('.cf-turnstile');
+      f.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        msg.className = 'sub__msg';
+        msg.textContent = '';
+        var email = (f.email.value || '').trim();
+        if (!email) { msg.textContent = 'Please enter your email address.'; return; }
+        var tokenEl = f.querySelector('[name="cf-turnstile-response"]');
+        var token = tokenEl ? tokenEl.value : '';
+        if (!token) { msg.textContent = 'Please complete the anti-spam check, then try again.'; return; }
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Subscribing...';
+        try {
+          var res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email: email, 'cf-turnstile-response': token }),
+          });
+          var data = await res.json();
+          if (data.ok) {
+            // Rybbit: record the newsletter conversion (new vs already-subscribed).
+            if (window.rybbit && window.rybbit.event) {
+              window.rybbit.event('newsletter_subscribe', {
+                source: 'homepage',
+                status: data.already ? 'already' : 'new',
+              });
+            }
+            f.hidden = true;
+            document.getElementById('subDone').hidden = false;
+            if (data.already) {
+              document.querySelector('.sub__doneTitle').textContent = "You're already on the list.";
+              document.querySelector('.sub__doneSub').textContent = 'Good to have you.';
+            }
+          } else {
+            msg.textContent = data.error || 'Something went wrong. Please try again.';
+            btn.disabled = false;
+            btn.textContent = label;
+            if (window.turnstile && widget) window.turnstile.reset(widget);
+          }
+        } catch (err) {
+          msg.textContent = 'Network error. Please try again.';
+          btn.disabled = false;
+          btn.textContent = label;
+          if (window.turnstile && widget) window.turnstile.reset(widget);
+        }
+      });
+    })();
   </script>
 </Base>

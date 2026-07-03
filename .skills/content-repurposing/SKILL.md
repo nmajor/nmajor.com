@@ -1,6 +1,6 @@
 ---
 name: content-repurposing
-description: Turn one finished/approved newsletter post into a small batch of standalone LinkedIn posts (default 3) for Nick to approve and schedule in Postiz. The minimum-viable LinkedIn motion that hangs off the weekly newsletter. Use right after a post is drafted and approved (going into the publish queue), or any time you want to atomize an existing post for LinkedIn. Always refines each post through a few rounds of the icp-focus-group panel before showing Nick, so he only ever sees a polished version. Composes with writing-voice, hooks, icp-focus-group, and content-builder. Backed by research/audience-strategy/report.md.
+description: Turn one finished/approved newsletter post into a small batch of standalone LinkedIn posts (default 3) for Nick to approve and schedule in Postiz, AND auto-generate 1-3 short site "takes" that drip out after the issue (no approval, deduplicated against every past take). The minimum-viable distribution motion that hangs off the weekly newsletter. Use right after a post is drafted and approved (going into the publish queue), or any time you want to atomize an existing post. Always refines each LinkedIn post through a few rounds of the icp-focus-group panel before showing Nick, so he only ever sees a polished version. Composes with writing-voice, hooks, icp-focus-group, and content-builder. Backed by research/audience-strategy/report.md.
 ---
 
 # Content repurposing: newsletter to LinkedIn
@@ -128,9 +128,19 @@ post** rendered as swipeable slides.
 
 - **The always-on CTA is the profile, not the post:** Nick's Featured section pins the lead
   magnet / newsletter as a 1-click link. Most posts need no link at all.
-- **Soft footer CTA only, on 1-2 posts per batch:** "If you want the full breakdown, it's in
-  this week's issue." Don't put a CTA on every post; aggressive CTAs on cold content tank
-  reach and trust.
+- **Soft footer CTA only, on 1-2 posts per batch:** Don't put a CTA on every post; aggressive
+  CTAs on cold content tank reach and trust. In a 3-post batch, one or two carry the reference
+  and the rest end on their own value.
+- **Always self-identify the newsletter — assume the reader has never heard of it.** A cold
+  LinkedIn reader does not know "Actual Intelligence" is a newsletter, so a bare "in this
+  week's Actual Intelligence" reads as gibberish. Every mention must teach the stranger three
+  things in the sentence itself: that it is **a newsletter**, its **name**, and **what it's
+  about**. Pattern: "[value I gave] ... I go deeper on this in **Actual Intelligence, my
+  newsletter on plain-English AI for people who run things**. Link's in my profile." Never a
+  cadence claim the newsletter can't keep (say "my newsletter," not "my weekly newsletter,"
+  unless it truly ships weekly). **Vary the wording** across posts and batches — the same
+  self-ID sentence copy-pasted every time is an AI tell. Point to the profile/Featured for the
+  subscribe link, never a raw URL in the body (reach penalty).
 - **Link placement is genuinely contested (a real source conflict, not settled):** external
   links in the post body reduce reach (van der Blom: ~18.8%; some blogs claim more), and the
   old "link in first comment" workaround is now weakened/penalized. Until we have Nick's own
@@ -254,6 +264,90 @@ and is always looking at the best version, not the first one.
 
 The human gate is unchanged: an agent may draft, revise, and re-test, but only Nick sets
 `approved`.
+
+## Also: auto-generate the /takes drip (no approval, deduplicated, skip when nothing's fresh)
+
+Every repurposing run has a **second output** alongside the LinkedIn batch: **0-3 short
+"takes"** — one-line, opinionated site content atomized from the same essay — written as
+real files in the `takes` collection and scheduled to drip onto `/takes` in the days after
+the issue. This is the steady, always-on pulse on the site between weekly essays.
+
+**These are different from LinkedIn posts in one crucial way: takes need NO approval.** They
+auto-generate and auto-schedule. There is no `approved` field on a take (unlike essays and
+LinkedIn posts, takes are exempt from the human gate by design — Nick asked for this). You
+still never touch `approved`/`emailedAt`/`pushedAt`/`pubDate` on essays or LinkedIn posts;
+takes simply don't have that gate. Write them to ship.
+
+### The rules (this is the whole spec — follow it exactly)
+
+- **1-3 per issue, and 0 is allowed and correct.** Aim for a steady drip, but never pad.
+  If the essay yields only one genuinely fresh take, ship one. If it yields none that aren't
+  already covered, **ship zero and say so** — the cadence is regular, not forced. Skipping an
+  issue is fine; a later issue with fresh material picks the drip back up.
+- **Never a duplicate idea. Different framing of the same claim IS a duplicate.** The whole
+  point: someone scrolling `/takes` must never think "these five are basically the same." A
+  reworded, re-angled, or narrowed version of a claim already in the corpus does **not** count
+  as new. Only a genuinely distinct claim does.
+- **Consistent with the essay's real takeaways.** Every take is a sharp, standalone one-liner
+  drawn from a point the essay actually makes (use the spine in `research/<topic>/`). Never
+  invent a claim the essay doesn't support. Same honesty guardrail as the LinkedIn posts.
+- **Each take stands alone and follows `writing-voice` to the letter.** A take is a complete
+  thought in one or two sentences — no link, no teaser, no "read more." Look at the existing
+  takes in `app/src/content/takes/*.md` for the exact register.
+
+### The procedure
+
+1. **List candidate takeaways.** From the essay + its spine, pull the sharpest standalone
+   one-liners it could yield (usually 3-6 candidates before dedup).
+2. **Load the dedup ledger.** Read the `idea:` line of **every** existing take in
+   `app/src/content/takes/*.md`. That set of canonical claims is the memory — no separate
+   ledger file exists, and none is needed.
+3. **Write each candidate's `idea`** — a canonical, framing-independent statement of its claim
+   (e.g. "Banning AI drives it into unmonitored shadow use, which is riskier than allowing
+   it."). This is the fingerprint the dedup compares on.
+4. **Drop duplicates.** Remove any candidate whose `idea` is basically the same as one already
+   in the corpus, or as another candidate in this same batch. Judge on the *claim*, not the
+   wording. Be strict: when in doubt, it's a duplicate — drop it.
+5. **Keep 1-3 survivors (or 0).** If nothing survives, generate no files and note "no fresh
+   takes this issue — all takeaways are already covered" when you report to Nick. Otherwise
+   take the 1-3 sharpest, most distinct survivors.
+6. **Write the files** (see frontmatter below), sharpest take at the shortest offset.
+7. **Validate:** run `npm run takes:lint`. It enforces the structure and a hard exact-duplicate
+   backstop; fix anything it flags. (Your step-4 judgment is the real dedup — the lint only
+   catches a literal repeat that slipped through.)
+
+### Output: schedulable take files
+
+One file per take at `app/src/content/takes/<short-descriptive-kebab-slug>.md` (name it like
+the existing ones — a memorable slug from the claim, e.g. `shadow-use-is-the-risk.md` — unique
+across the dir; `source` carries the provenance, not the filename). The body is empty; the
+`text` field IS the take.
+
+```yaml
+---
+text: "The take itself, one or two sentences, full writing-voice."
+draft: true                 # the lock: unscheduled until the source essay publishes.
+source: <essay-slug>        # the parent essay; how schedule-takes finds & stamps it.
+offsetDays: 2               # drip cadence: A=+2, B=+4, C=+6 days after the issue.
+idea: "Canonical, framing-independent claim — the dedup fingerprint."
+pubDate: 2099-01-01         # PLACEHOLDER. schedule-takes stamps the real date at publish.
+# no `approved` — takes have no human gate.
+---
+```
+
+**Storing `draft: true` + `offsetDays` + a placeholder `pubDate` is the whole trick** (same as
+LinkedIn's offsets). When the source essay actually goes live, `scripts/schedule-takes.mjs`
+stamps `pubDate = essay pubDate + offsetDays` (at 00:00 UTC) and flips `draft: false`; the
+site's `isLive` gate then reveals each take on its day as the daily build runs. You never pick
+a calendar date, and a delayed or reordered issue carries its takes with it automatically. Nick
+approves nothing here — it just happens.
+
+### When you report to Nick
+
+Mention the takes briefly under the LinkedIn batch: how many you generated (or that you skipped
+because nothing was fresh), each take's text, and one line on what made it distinct from the
+existing corpus. He doesn't approve them — this is an FYI so he can see the drip is honest and
+non-repetitive, and delete or tweak any file if he ever wants to (they're just files).
 
 ## Isaac later
 

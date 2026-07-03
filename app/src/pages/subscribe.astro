@@ -1,0 +1,295 @@
+---
+// nmajor.com/subscribe — the dedicated newsletter landing page linked from
+// LinkedIn. One job: convince a cold visitor to subscribe to Actual Intelligence.
+// The form posts to the Worker's /api/subscribe (worker.js): Turnstile is verified
+// server-side, then the subscriber is created in Buttondown (double opt-in on).
+// Design system + voice: site.css tokens, writing-voice skill (no em dashes, no
+// hype, sentence-case headings). Structure follows the conversion research brief.
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isLive } from '../lib/publish.js';
+
+const TURNSTILE_SITEKEY = '0x4AAAAAADuku3pIVO1zcaoN';
+
+// Pull the three most recent live essays for the "what you get" + "read one first"
+// proof. Real titles are the strongest social proof this page has while the list is
+// young, so they come from the collection, not hardcoded.
+const essays = (await getCollection('essays', ({ data }) => isLive(data)))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const recent = essays.slice(0, 3);
+const samples = essays.slice(0, 2);
+---
+<Base
+  title="Subscribe to Actual Intelligence · Nicholas Major"
+  description="Actual Intelligence is my plain-English newsletter on where AI actually fits in a business, and where it doesn't. One essay, roughly weekly, free. By Nicholas Major."
+  ogImage="/og/subscribe.png"
+>
+  <!-- ===== HERO + PRIMARY FORM ===== -->
+  <section class="shero">
+    <div class="shero__inner">
+      <div class="eyebrow">The newsletter</div>
+      <h1 class="shero__h1">Actual <span class="accent">Intelligence</span></h1>
+      <p class="shero__lede">
+        Plain-English AI for people who run things. I write about where AI actually
+        fits in a business, and where it doesn't. One essay in your inbox, only when
+        there's something worth sending. Usually that's about once a week. It's free.
+      </p>
+
+      <form class="sigform" id="form-top" novalidate>
+        <div class="sigform__row">
+          <input type="email" name="email" required placeholder="you@company.com"
+            aria-label="Email address" autocomplete="email" />
+          <button type="submit" class="btn">Send me the next essay</button>
+        </div>
+        <div class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-theme="light" data-size="flexible"></div>
+        <p class="sigform__micro">Unsubscribe in one click. I'll never share your email.</p>
+        <p class="sigform__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== WHAT YOU GET ===== -->
+  <section class="sblock">
+    <h2 class="sblock__h">What shows up in your inbox</h2>
+    <p class="sblock__p">
+      Every issue is a single essay. One argument about putting AI to work in a real
+      business, made in plain English, with my reasoning on the page including the
+      parts I'm still unsure about. I'd rather send you one thing worth reading than a
+      roundup of links you won't open.
+    </p>
+    <p class="sblock__p sblock__p--sm">Recent issues:</p>
+    <ul class="titlelist">
+      {recent.map((e) => (
+        <li><a href={`/writing/${e.id}/`}>{e.data.title}</a></li>
+      ))}
+    </ul>
+    <p class="sblock__p">
+      If a week goes by without something worth your time, nothing shows up. That's
+      the deal.
+    </p>
+  </section>
+
+  <!-- ===== WHO IT'S FOR ===== -->
+  <section class="sblock sblock--panel">
+    <h2 class="sblock__h">Who it's for</h2>
+    <p class="sblock__p">
+      Owners, CEOs, COOs, and CIOs. The people who have to decide whether AI is worth
+      real money and real change, usually without a research team to lean on. If
+      you've sat in a meeting where someone said "we need an AI strategy" and nobody
+      could say what that actually meant, you're who I write for.
+    </p>
+    <p class="sblock__p">
+      It's probably not for you if you want prompt tips, engineering deep dives, or
+      someone to promise that AI will 10x your business. It won't, and I won't tell
+      you it does.
+    </p>
+  </section>
+
+  <!-- ===== WHO'S WRITING ===== -->
+  <section class="sblock">
+    <h2 class="sblock__h">Who's writing this</h2>
+    <div class="swho">
+      <img class="swho__photo" src="/nicholas-major.jpg" width="96" height="96" alt="Nicholas Major" />
+      <p class="sblock__p swho__bio">
+        I'm Nicholas Major. Fifteen years building software, four of them teaching it.
+        These days I help operators find where AI belongs in their business, and talk
+        them out of the places it doesn't. This newsletter is where I write down what
+        I'm learning as I go. When I'm not sure about something, I say so.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== READ ONE FIRST ===== -->
+  <section class="sblock sblock--panel">
+    <h2 class="sblock__h">Read one before you decide</h2>
+    <p class="sblock__p">
+      Every issue is published in the open at nmajor.com. Read one first. If it
+      doesn't earn your email, the rest won't either.
+    </p>
+    <div class="rows">
+      {samples.map((e) => (
+        <a href={`/writing/${e.id}/`} class="erow">
+          <span class="erow__main">
+            <span class="erow__title">{e.data.title}</span>
+            <span class="erow__blurb">{e.data.summary}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== FINE PRINT ===== -->
+  <section class="sblock">
+    <h2 class="sblock__h">The fine print</h2>
+    <dl class="faq">
+      <div class="faq__item">
+        <dt>How often?</dt>
+        <dd>Usually about once a week, but honestly it's whenever there's something worth sending. I'd rather skip a week than waste yours.</dd>
+      </div>
+      <div class="faq__item">
+        <dt>What does it cost?</dt>
+        <dd>Nothing. There's no paid tier and no upsell waiting a few issues in.</dd>
+      </div>
+      <div class="faq__item">
+        <dt>Will you pitch me?</dt>
+        <dd>If I find something genuinely useful to you, whether it's a tool, a resource, or my own work, I'll share it and be plain about what it is.</dd>
+      </div>
+      <div class="faq__item">
+        <dt>Can I reply?</dt>
+        <dd>Yes, and it comes straight to me. It's a small list and a real inbox, so I read what you send.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ===== FINAL CTA + SECOND FORM ===== -->
+  <section class="scta">
+    <div class="scta__inner">
+      <h2 class="scta__h">Start with the next essay</h2>
+      <p class="scta__p">The next one goes out when it's ready. Decide with better information than a feed gives you.</p>
+      <form class="sigform sigform--dark" id="form-end" novalidate>
+        <div class="sigform__row">
+          <input type="email" name="email" required placeholder="you@company.com"
+            aria-label="Email address" autocomplete="email" />
+          <button type="submit" class="btn">Send me the next essay</button>
+        </div>
+        <div class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-theme="dark" data-size="flexible"></div>
+        <p class="sigform__micro">Unsubscribe in one click. I'll never share your email.</p>
+        <p class="sigform__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script is:inline>
+    // Wire every subscribe form on the page. Each form has its own Turnstile widget
+    // (its own token in a hidden cf-turnstile-response input) and posts to the
+    // Worker's /api/subscribe, which verifies the token server-side before touching
+    // Buttondown. On success the form is replaced with a confirmation line.
+    document.querySelectorAll('form.sigform').forEach(function (form) {
+      var msg = form.querySelector('.sigform__msg');
+      var emailEl = form.querySelector('input[type="email"]');
+      var btn = form.querySelector('button[type="submit"]');
+      var widget = form.querySelector('.cf-turnstile');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        msg.className = 'sigform__msg';
+        msg.textContent = '';
+
+        var email = (emailEl.value || '').trim();
+        if (!email) { msg.textContent = 'Please enter your email address.'; return; }
+        var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+        var token = tokenEl ? tokenEl.value : '';
+        if (!token) { msg.textContent = 'Please complete the anti-spam check, then try again.'; return; }
+
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Subscribing...';
+        try {
+          var res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email: email, 'cf-turnstile-response': token }),
+          });
+          var data = await res.json();
+          if (data.ok) {
+            // Rybbit: record the newsletter conversion, tagged by which form on
+            // the landing page converted (hero #form-top vs final CTA #form-end).
+            if (window.rybbit && window.rybbit.event) {
+              window.rybbit.event('newsletter_subscribe', {
+                source: 'subscribe_page',
+                form: form.id || 'unknown',
+                status: data.already ? 'already' : 'new',
+              });
+            }
+            form.classList.add('is-done');
+            msg.className = 'sigform__msg sigform__msg--ok';
+            msg.textContent = data.already
+              ? "You're already on the list. Good to have you."
+              : 'Almost there. Check your inbox for a confirmation link.';
+          } else {
+            msg.textContent = data.error || 'Something went wrong. Please try again.';
+            btn.disabled = false;
+            btn.textContent = label;
+            if (window.turnstile && widget) window.turnstile.reset(widget);
+          }
+        } catch (err) {
+          msg.textContent = 'Network error. Please try again.';
+          btn.disabled = false;
+          btn.textContent = label;
+          if (window.turnstile && widget) window.turnstile.reset(widget);
+        }
+      });
+    });
+  </script>
+
+  <style>
+    /* hero */
+    /* ONE content column, shared by every section so the width never changes as
+       you scroll. Full-bleed panels + the dark CTA card keep their backgrounds but
+       align their inner content to this exact measure. Matches the essay page width. */
+    .shero__inner,
+    .sblock,
+    .sblock--panel > *,
+    .scta__inner {
+      width: min(720px, calc(100% - 2 * clamp(20px, 5vw, 48px)));
+      margin-inline: auto;
+    }
+
+    .shero { border-bottom: 1px solid var(--line); }
+    .shero__inner { padding-block: clamp(48px,8vw,88px) clamp(40px,6vw,64px); }
+    .shero .eyebrow { display: block; margin-bottom: 20px; }
+    .shero__h1 { margin: 0; font-size: clamp(44px,8vw,88px); line-height: .92; letter-spacing: -.04em; font-weight: 900; }
+    .shero__lede { margin: 24px 0 0; font-size: clamp(17px,1.9vw,20px); line-height: 1.55; color: var(--body); }
+
+    /* form */
+    .sigform { margin-top: 30px; }
+    .sigform__row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .sigform__row input { flex: 1; min-width: 240px; background: #fff; border: 1px solid var(--line2); border-radius: 12px; padding: 15px 16px; font-family: inherit; font-size: 16px; color: var(--ink); outline: none; }
+    .sigform__row input:focus-visible { border-color: var(--accent); }
+    .sigform .btn { border: none; cursor: pointer; font-family: inherit; }
+    .sigform .btn:disabled { opacity: .6; cursor: default; }
+    .cf-turnstile { margin-top: 14px; }
+    .sigform__micro { margin: 14px 0 0; font-size: 13px; color: var(--muted2); }
+    .sigform__msg { margin: 12px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--accent); font-weight: 600; }
+    .sigform__msg--ok { color: #1f7a4d; }
+    /* on success, hide the inputs + widget + microcopy, keep only the confirmation */
+    .sigform.is-done .sigform__row,
+    .sigform.is-done .cf-turnstile,
+    .sigform.is-done .sigform__micro { display: none; }
+
+    /* content blocks */
+    .sblock { padding-block: clamp(40px,6vw,60px); }
+    /* full-bleed background band; its inner content still uses the shared column */
+    .sblock--panel { width: auto; background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .sblock__h { margin: 0 0 16px; font-size: clamp(24px,3.2vw,32px); font-weight: 900; letter-spacing: -.025em; }
+    .sblock__p { margin: 0 0 14px; font-size: clamp(16px,1.7vw,18px); line-height: 1.6; color: var(--body); }
+    .sblock__p--sm { margin-bottom: 8px; font-size: 14px; color: var(--muted2); text-transform: uppercase; letter-spacing: .08em; font-family: ui-monospace, monospace; }
+
+    .titlelist { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-direction: column; gap: 2px; }
+    .titlelist a { display: block; padding: 12px 0; border-top: 1px solid var(--line2); font-size: clamp(18px,2vw,21px); font-weight: 700; letter-spacing: -.02em; text-decoration: none; color: var(--ink); }
+    .titlelist li:last-child a { border-bottom: 1px solid var(--line2); }
+    .titlelist a:hover { color: var(--accent); }
+
+    /* who */
+    .swho { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .swho__photo { flex: none; width: 96px; height: 96px; border-radius: 14px; border: 1px solid rgba(229,57,31,.35); object-fit: cover; }
+    .swho__bio { flex: 1; min-width: 280px; margin: 0; }
+
+    /* faq */
+    .faq { margin: 0; }
+    .faq__item { padding: 18px 0; border-top: 1px solid var(--line2); }
+    .faq__item:last-child { border-bottom: 1px solid var(--line2); }
+    .faq dt { font-weight: 800; font-size: 17px; letter-spacing: -.01em; }
+    .faq dd { margin: 7px 0 0; font-size: 16px; line-height: 1.6; color: var(--body); }
+
+    /* final cta (dark card) — the card itself is the shared column width */
+    .scta { margin-top: clamp(20px,3vw,32px); padding-bottom: clamp(48px,6vw,64px); }
+    .scta__inner { background: var(--ink); color: var(--paper); border-radius: 24px; padding: clamp(36px,5vw,56px) clamp(24px,4vw,48px); }
+    .scta__h { margin: 0; font-size: clamp(26px,3.4vw,38px); font-weight: 900; letter-spacing: -.03em; }
+    .scta__p { margin: 14px 0 0; font-size: 16.5px; line-height: 1.55; color: #a9a396; }
+    .sigform--dark { margin-top: 24px; }
+    .sigform--dark .sigform__row input { background: #221f1a; border-color: rgba(255,255,255,.18); color: var(--paper); }
+    .sigform--dark .sigform__micro { color: #8f887a; }
+  </style>
+</Base>

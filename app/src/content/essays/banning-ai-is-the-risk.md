@@ -4,7 +4,6 @@ summary: "An employee's AI shortcut just became the first SEC filing of its kind
 pubDate: 2026-06-30
 author: Nicholas Major
 draft: false
-featured: true
 heroTitleLead: "Banning AI is the risk, "
 heroTitleAccent: "not the safeguard."
 heroLede: "An employee's AI shortcut just became the first SEC filing of its kind. The lesson isn't to lock AI out — it's to give it the least access the job needs, and contain the rest."

@@ -19,14 +19,19 @@
     "linkedin:lint": "node scripts/linkedin-lint.mjs",
     "linkedin:schedule": "node scripts/schedule-linkedin.mjs",
     "linkedin:schedule:dry": "node scripts/schedule-linkedin.mjs --dry-run",
+    "takes:lint": "node scripts/takes-lint.mjs",
+    "takes:schedule": "node scripts/schedule-takes.mjs",
+    "takes:schedule:dry": "node scripts/schedule-takes.mjs --dry-run",
     "test": "node --test \"scripts/**/*.test.mjs\"",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
+    "@resvg/resvg-js": "^2.6.2",
     "astro": "^5.7.0",
     "markdown-it": "^14.2.0",
-    "sanitize-html": "^2.17.5"
+    "sanitize-html": "^2.17.5",
+    "satori": "^0.26.0"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"

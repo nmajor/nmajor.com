@@ -4,6 +4,19 @@ Reference companion to `SKILL.md`. How to run each juror, host-agnostic, read-on
 fallbacks. The skill runs inside whatever agent reads it (the **host**); the host's own
 provider is judged with a **native subagent**, the other two via **their CLI**.
 
+> **HARD RULE — subscriptions only, never API keys (all three providers).** Every seat runs on
+> its provider's **interactive subscription login**, never on an API key or metered API credits.
+> We have weekly subscription usage to spend; API keys bill real money and have been burned
+> before. This overrides any older per-provider note below.
+> - **claude:** the host is authed via the Claude subscription/OAuth. Never rely on `ANTHROPIC_API_KEY`.
+> - **codex:** `codex login status` must show "Logged in using ChatGPT". Never run
+>   `codex login --with-api-key` and never authenticate with `OPENAI_API_KEY`.
+> - **gemini:** must use the logged-in Google account (subscription/OAuth). Never authenticate with
+>   `GEMINI_API_KEY` or `GOOGLE_API_KEY`; keep them unset so the CLI uses the login.
+>
+> If a provider is not logged in via its subscription, treat that seat as **unavailable** and tell
+> Nick to log in interactively. Never silently fall back to an API key.
+
 ## Host-agnostic seat mapping
 
 There are three providers: **anthropic** (`claude`), **openai** (`codex`), **google**
@@ -69,12 +82,14 @@ cat prompt.txt | timeout 240 codex exec - \
 - The model may wrap JSON in ```json fences or a preamble — strip fences before parsing.
 - **Failure** = non-zero exit, OR stderr/output containing `usage_limit_reached` / `429` /
   `insufficient_quota`. Fallback chain: `gpt-5.5` → `gpt-5.4` → `gpt-5` / `gpt-5-codex`.
-- **Auth gotcha (verified here):** codex 0.121 does **not** read `OPENAI_API_KEY` from the env
-  for `exec`, even with `-c preferred_auth_method=apikey` — it returns `401 Missing bearer`. You
-  must log in once to write `~/.codex/auth.json`:
-  `printenv OPENAI_API_KEY | codex login --with-api-key` (check with `codex login status`). This
-  repo is already logged in. In preflight, detect this: codex is usable only if `codex login
-  status` shows logged-in, not merely if `OPENAI_API_KEY` is set.
+- **Auth — HARD RULE: always use the logged-in ChatGPT plan, NEVER the API key.** codex must
+  be authed via the subscription: `codex login` (interactive OAuth, done once by Nick). **Do NOT
+  run `codex login --with-api-key`, and do NOT `codex login` with an API key** — that meters
+  against paid API credits and has burned them before. If `codex login status` shows "Logged in
+  using ChatGPT", you are good. If it shows an API key, or shows logged-out, **do not silently
+  re-login with a key** — stop and tell Nick to run `codex login` on his ChatGPT plan. Detect
+  availability via `codex login status` (not the presence of `OPENAI_API_KEY`); `OPENAI_API_KEY`
+  in the env is irrelevant and must not be used to authenticate codex.
 
 ### google — `gemini`  (best: `gemini-3.1-pro-preview`, fallbacks `gemini-3-pro-preview` → `gemini-2.5-pro`)
 
@@ -90,8 +105,12 @@ cat prompt.txt | timeout 240 gemini \
   parse.
 - **Failure** = non-zero exit (1 = API/rate failure, 42 = bad input, 53 = turn limit), OR
   `.error != null` / `.response == null`.
-- **Tier gating:** Gemini 3 / 3.1 Pro access is gated by API tier; if the preview id is
-  rejected for the key, fall back. Chain: `gemini-3.1-pro-preview` → `gemini-3-pro-preview` →
+- **Auth — HARD RULE: use the logged-in Google account (subscription), NEVER an API key.** Keep
+  `GEMINI_API_KEY` and `GOOGLE_API_KEY` **unset** so the CLI uses the interactive login; if gemini
+  is not logged in, treat it as unavailable and tell Nick to run `gemini` and sign in. Never
+  authenticate gemini with a key.
+- **Access / model gating:** Gemini 3 / 3.1 Pro access depends on the logged-in account; if the
+  preview id is rejected, fall back. Chain: `gemini-3.1-pro-preview` → `gemini-3-pro-preview` →
   `gemini-2.5-pro` (broadly available).
 
 ## Preflight (before building the lineup)
@@ -99,7 +118,7 @@ cat prompt.txt | timeout 240 gemini \
 1. **Identify the host** (its provider's seat goes native).
 2. **For each non-host provider, check availability:**
    - CLI present: `command -v claude` / `codex` / `gemini`.
-   - Authed: `claude` host is already authed. For **gemini**, `GEMINI_API_KEY` set is enough.
+   - Authed: `claude` host is already authed. For **gemini**, confirm it is logged in via the Google subscription (`GEMINI_API_KEY` and `GOOGLE_API_KEY` must be unset).
      For **codex**, `OPENAI_API_KEY` being set is **not** enough — confirm `codex login status`
      shows logged-in (see the codex auth gotcha above). If unsure, the one-line smoke prompt
      (below) is the real test: it confirms reachability, auth, and the model id at once.

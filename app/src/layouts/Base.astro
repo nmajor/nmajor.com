@@ -9,9 +9,9 @@ interface Props {
   description: string;
   ogImage?: string;
 }
-const { title, description, ogImage = '/nicholas-major.jpg' } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://nmajor.com');
-const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
+const { title, description, ogImage = '/og/default.png' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.nmajor.com');
+const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://www.nmajor.com');
 ---
 <!doctype html>
 <html lang="en">
@@ -30,11 +30,21 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl.href} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Rybbit analytics (self-hosted, cookieless). Site id 17. -->
+    <script
+      is:inline
+      src="https://rybbit.nmajor.net/api/script.js"
+      data-site-id="17"
+      defer></script>
   </head>
   <body>
     <header class="nav">
@@ -48,7 +58,7 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
           <a href="/takes" class="nlink">Takes</a>
           <a href="/#about" class="nlink">About</a>
           <a href="/#work" class="nlink nlink--muted">Work with me</a>
-          <a href="/#subscribe" class="pill">Subscribe</a>
+          <a href="/subscribe" class="pill">Subscribe</a>
         </nav>
       </div>
     </header>
@@ -92,7 +102,8 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://nmajor.com');
               <span class="foot__h">Site</span>
               <a href="/#about">About</a>
               <a href="/#work">Work with me</a>
-              <a href="/#subscribe">Subscribe</a>
+              <a href="/subscribe">Subscribe</a>
+              <a href="https://www.linkedin.com/in/nmajor" target="_blank" rel="me noopener">LinkedIn ↗</a>
             </div>
           </nav>
         </div>

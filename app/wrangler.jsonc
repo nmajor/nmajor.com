@@ -2,12 +2,28 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "nmajor",
   "compatibility_date": "2026-06-30",
-  // Prototype phase: serve the static Astro build directly as Worker assets and
-  // keep the workers.dev preview URL ON so we can iterate on a live URL (there is
-  // no localhost in this workspace). Custom domain (nmajor.com) is NOT bound here
-  // yet — cutover happens later, deliberately, off the old Vercel site.
+  // Serve the static Astro build directly as Worker assets. workers.dev preview URL
+  // kept ON as a debug/fallback surface (there is no localhost in this workspace).
+  //
+  // LIVE: nmajor.com + www.nmajor.com are bound to this Worker as Cloudflare Custom
+  // Domains (cutover from Vercel done 2026-07-02). They are intentionally NOT declared
+  // as `routes` here: the shared deploy token lacks the zone "Workers Routes" scope, so
+  // re-declaring them forces a routes reconciliation that 401s on every deploy (same as
+  // the appliedartificialintelligence sibling). The custom domains persist independently
+  // of `wrangler deploy`; manage them in the Cloudflare dashboard (Workers > Domains &
+  // Routes) or via the /accounts/{id}/workers/domains API, or add Workers Routes:Edit to
+  // the token to manage them as code. www currently serves the same content as the apex
+  // (no redirect yet); the canonical <link> on every page points to the apex.
+  // worker.js handles POST /api/subscribe (Turnstile verify → Buttondown); all
+  // other requests fall through to the static assets. run_worker_first ensures the
+  // Worker sees /api/subscribe even though it's not a static asset. Secrets
+  // (TURNSTILE_SECRET_KEY, BUTTONDOWN_API_KEY) are Worker secrets, set via
+  // `wrangler secret put`, never in the repo.
+  "main": "worker.js",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
   },
   "workers_dev": true,
   "observability": {

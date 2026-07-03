@@ -3,13 +3,13 @@ newsletter: the-bottleneck-moved
 channel: personal
 offsetDays: 3
 angle: framework
-# approved:   # Nick's sign-off, leave unset
+approved: "Nicholas Major 2026-07-02"
 ---
+Allianz's UK arm gave its underwriters an AI assistant and saved about 135 days of document-hunting in a year. It worked because the assistant did the grunt work in front of the decision. The underwriter still owns the call.
+
 Most failed AI rollouts share the same problem, and a better model won't fix it: the tool is pointed at the wrong step.
 
 AI is fast at producing work. The slow, expensive step is a person checking that output and signing off on it, and that's where your real constraint sits now. Speed up production and you just pile more work in front of the person who has to own it.
-
-Allianz's UK arm gave its underwriters an AI assistant and saved about 135 days of document-hunting in a year. It worked because the assistant did the grunt work in front of the decision. The underwriter still owns the call.
 
 Here's what the companies actually getting returns do differently:
 
@@ -23,4 +23,4 @@ Here's what the companies actually getting returns do differently:
 
 The pattern across the big consulting surveys is boring and consistent: the returns come from redesigning the work around the tool. A better model doesn't get you there, and neither does cutting the people who own the output.
 
-Full breakdown in this week's Actual Intelligence.
+If you want the full playbook, that's what I write about in Actual Intelligence, my newsletter on applying AI without the hype. Link's in my profile.

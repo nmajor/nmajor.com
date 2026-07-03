@@ -3,7 +3,7 @@ newsletter: the-bottleneck-moved
 channel: personal
 offsetDays: 5
 angle: perception-gap
-# approved:   # Nick's sign-off, leave unset
+approved: "Nicholas Major 2026-07-02"
 ---
 Your team telling you AI saves them time isn't evidence that it does.
 
@@ -12,5 +12,3 @@ Researchers timed experienced developers doing real work with AI and without it.
 It's one study, and there's more going on than any single cause. But the gap runs through any desk job: the claims summary that looks finished, the report that reads clean, until someone downstream actually leans on it. Producing output feels like progress, even when the extra checking eats the gain.
 
 So "the team says it's helping" isn't a measurement. Before you roll a tool out wider because it feels fast, measure something real: how long the work takes end to end, including the checking and the rework. If you can't point to that number, you're scaling on a feeling.
-
-I break down where the time actually goes in this week's Actual Intelligence.

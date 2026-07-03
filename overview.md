@@ -106,6 +106,31 @@ audience; the consultancy is where the commercial conversation happens.
     distinct brandable name in the system belongs to the *consultancy*, not the
     newsletter. Optional cheap hedge: own a vanity domain and 301 it to nmajor.com;
     never make it the canonical home.
+  - **Sending domain (settled 2026-07-01): `newsletter.nmajor.com`, from `nick@newsletter.nmajor.com`.**
+    A dedicated sub-domain isolates bulk-send reputation from Nick's real Google
+    Workspace mail on the `nmajor.com` root (which we never touch). Rejected a longer
+    `actual-intelligence.nmajor.com` (clunky in-inbox) and Buttondown's shared domain.
+    From-name **"Nicholas Major"** (personal, matches the byline); **reply-to
+    `nick@nmajor.com`** so replies land in Nick's monitored inbox — the funnel converts
+    on conversations, so a human sender + real reply target is deliberate. **No Buttondown
+    managed-DNS / NS delegation** (explicit: never delegate the sub-domain to Buttondown).
+    DNS is **manual records** in Cloudflare (Buttondown → Postmark under the hood):
+    `pm-bounces.newsletter…` CNAME → `pm.mtasv.net` (Return-Path/SPF alignment),
+    `track.newsletter…` CNAME → `webhook-consumer.buttondown.email`, `_dmarc.newsletter…`
+    TXT (Buttondown's recommended `p=quarantine; rua=…@inbound.postmarkapp.com` — reports
+    feed Buttondown's deliverability monitoring; safe since the sub-domain sends only
+    Buttondown mail with aligned DKIM+SPF), plus the domain-specific **DKIM TXT**
+    (`…pm._domainkey.newsletter`). **All records live in Cloudflare and resolving.** The
+    DKIM key exists only in the Buttondown dashboard (no API), so it was pasted in once
+    by hand; everything else was set programmatically. Final step: click **Verify** in
+    Buttondown once DNS propagates.
+  - **Buttondown branding set via API** to match the site (Direction 4a): tint
+    `#e5391f`, the "AI" monogram as icon/avatar, a generated 1200×630 OG card (Archivo
+    Black, vermillion accent), socials → nmajor.com + LinkedIn.
+  - **Buttondown does not publish publicly.** Public archive disabled (`enabled_features`
+    = `api` + `portal` only); the canonical home for every issue is `nmajor.com/writing`.
+    No RSS-to-email automation (0 automations) — sending stays script-driven so it can't
+    double-send.
 - **Stack: rebuild fresh, do not port Vercel.** Reuse the sister projects' proven
   blueprint: **Astro → Cloudflare Workers** (static build served by a custom
   `worker.js`), Buttondown + Cloudflare Turnstile for the newsletter, the
@@ -115,9 +140,21 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
+- **2026-07-02 — Analytics live (self-hosted Rybbit).** Registered as **site id 17** in
+  the shared Rybbit instance (`rybbit.nmajor.net`, org "Critical AI test" —
+  `eHFGe7uW6m7ljg9u3BmzrGFuvKuarNZj`, same org/host/key as the Institute). Cookieless
+  (salted user ids, bot-blocking), with pageviews, outbound-link, URL-param, Web Vitals
+  and JS-error tracking on. Script loaded site-wide in `app/src/layouts/Base.astro`
+  (`data-site-id="17"`). **Newsletter conversion is tracked as a custom event
+  `newsletter_subscribe`** fired on a successful subscribe (props: `source` =
+  `homepage`/`subscribe_page`, `form` = which form, `status` = `new`/`already`) — wired in
+  `index.astro` and `subscribe.astro` on the `/api/subscribe` success branch. `RYBBIT_*`
+  creds + `RYBBIT_SITE_ID` in `.env`. (A Rybbit "goal" for the event must be created in the
+  dashboard — the org API key can't create goals; the events themselves already flow.)
 - **2026-06-30:** Project scaffolded via `scripts/new-project.sh`. Strategy decisions
-  above settled. Current production site is still the old Vercel build (DNS
-  `nmajor.com` → Vercel; code now archived, see below).
+  above settled. Production was still the old Vercel build at this point (DNS
+  `nmajor.com` → Vercel; code now archived, see below). **Superseded 2026-07-02: DNS
+  cut over to the Cloudflare Worker — see Build progress.**
 - **2026-06-30 — repos consolidated into one canonical repo.** This project now
   pushes to **`github.com/nmajor/nmajor.com`** (`origin`, default branch `main` = this
   rebuild). The old sites are preserved losslessly as archive branches and the
@@ -152,12 +189,17 @@ audience; the consultancy is where the commercial conversation happens.
   placeholder). Nick to provide a strong high-contrast portrait; also feed it into the
   build-time OG/social cards (the face is the reach engine). Design must not block on it.
 - **Content model = newsletter-first, one body of writing.** Three content types:
-  **Takes** (short, frequent, billboard/social fuel), **Essays** (the substantive
-  spine — *each essay IS the blog post AND the newsletter issue AND the source for
-  LinkedIn atomization*; do not run a separate blog and newsletter), and **Pages**
-  (About, Work-with-me, engineering archive). Every page's #1 job is to earn an email
-  signup. Open: how commercial the "Work with me" page is at launch (consultancy still
+  **Takes** (short, frequent, billboard/social fuel — now **auto-generated and
+  auto-scheduled** from each approved essay by `content-repurposing`; see build progress
+  below), **Essays** (the substantive spine — *each essay IS the blog post AND the newsletter
+  issue AND the source for LinkedIn atomization*; do not run a separate blog and newsletter),
+  and **Pages** (About, Work-with-me, engineering archive). Every page's #1 job is to earn an
+  email signup. Open: how commercial the "Work with me" page is at launch (consultancy still
   has no name/site).
+- **Home hero auto-tracks the latest live essay** (`featured: true` is an optional manual pin
+  that overrides). No per-issue upkeep — the hero advances on its own as issues publish. New
+  essays should set `heroTitleLead`/`heroTitleAccent`/`heroLede` so the hero reads punchy when
+  it advances to them.
 
 ## Build progress
 
@@ -189,12 +231,88 @@ audience; the consultancy is where the commercial conversation happens.
   (`app/scripts/`: newsletter send, scheduled-publish queue, LinkedIn scheduler; `npm test`
   16/16 green). The LinkedIn atomizations for two of the essays came along in `app/linkedin/`.
   Pipeline is in **shadow mode** and needs env wiring before it can send (see below).
+- **2026-07-02 — takes automation baked into the pipeline + hero made self-updating.**
+  The `takes` collection is now an auto-generated drip that hangs off each approved essay, so
+  the site keeps a steady pulse between weekly issues with zero manual work. `content-repurposing`
+  now writes 1-3 short takes per issue (atomized from the essay's real takeaways, every word on
+  `writing-voice`), **deduplicated against every past take by a canonical `idea` fingerprint** —
+  a reframing of an existing claim counts as a repeat, and an essay with nothing fresh generates
+  **zero** takes and picks the drip up on a later issue. Takes need **no approval** (the one
+  content type an agent writes and ships). Mechanics mirror LinkedIn exactly: a take couples to
+  its essay by `source` + `offsetDays` (never a date), starts `draft:true`, and
+  `scripts/schedule-takes.mjs` (new workflow step) stamps `pubDate = essay date + offset` and
+  flips `draft:false` when the essay goes live; the render now gates on `isLive` (not just
+  `!draft`) so each take reveals on its day via the daily build. Backed by `scripts/lib/takes.mjs`
+  + `takes-lint.mjs` + unit tests (`npm test` green), `npm run takes:lint`. The 14 existing takes
+  were backfilled with `source`/`idea` to seed the dedup ledger. Separately, the **home hero now
+  auto-tracks the latest live essay** (unpinned `banning-ai`'s `featured` flag; the flag stays as
+  an optional override), and the home page's essay/takes lists now use `isLive` too (which also
+  stops a pinned future-dated essay from leaking onto the home page before its date).
+- **2026-07-02 — LAUNCHED: DNS cutover off Vercel is done. nmajor.com is live on the
+  Cloudflare Worker.** The `nmajor` Worker (static Astro assets) is bound to **`nmajor.com`
+  and `www.nmajor.com`** as Cloudflare **Custom Domains**. The two Vercel records (apex
+  `A → 76.76.21.21`, `www CNAME → cname.vercel-dns.com`) were deleted and replaced; the zone
+  was already on Cloudflare nameservers, so this was a record-level swap, not an NS migration.
+  **Mail and newsletter DNS were deliberately left untouched** (5× Google MX; the newsletter
+  `pm-bounces`/`track`/DKIM/DMARC records; google-site-verification). Verified live: apex +
+  www + `/writing` + `/takes` + `/rss.xml` + a per-essay page + a migrated `/posts/...` K8s URL
+  all return 200 over HTTPS, `server: cloudflare`. The custom domains are managed outside
+  `wrangler deploy` (the deploy token lacks Workers Routes scope; see `app/wrangler.jsonc`).
+  **Follow-ups (non-blocking):** (1) optionally turn `workers_dev` off to drop the duplicate
+  `*.workers.dev` host; (2) the old Vercel project can be decommissioned now that no traffic
+  points to it; (3) the daily `publish.yml` cron is still paused — un-pausing it (with the
+  GitHub secrets) is what turns on automatic weekly publishing + newsletter send + LinkedIn/takes
+  scheduling.
+- **2026-07-02 — canonical host is now `www.nmajor.com`; naked `nmajor.com` 301s to www,
+  always.** The redirect lives in `app/worker.js` (apex → www, path + query preserved), mirroring
+  the Institute. Astro `site` flipped to `https://www.nmajor.com`, so every canonical tag, OG
+  image URL, and the RSS feed point at www and match the redirect target. The subscribe form only
+  ever loads on www after the redirect, so `/api/subscribe` posts stay same-origin (no POST is
+  redirected); the Turnstile widget already lists www. Verified: apex + `/subscribe` + `/writing/*`
+  + `/og/*` all 301 to the www equivalent, www serves 200, no redirect loop. (The `nmajor.com`
+  *domain* is still canonical vs other domains per the Decisions section; this is only the
+  www-vs-apex host choice for the website.)
+- **2026-07-02 — subscribe landing page + the newsletter form is now wired for real
+  (Turnstile-gated).** New conversion-focused landing page at **`/subscribe`**
+  (`app/src/pages/subscribe.astro`), the page Nick links from LinkedIn: value-prop hero,
+  "what you get" with real essay titles, who-it's-for (including who it isn't), credibility
+  (no fake subscriber counts, honest for an early list), sample essays, an expectations FAQ,
+  and a repeated CTA. Structure came from a Fable-5 research pass over real conversion-focused
+  newsletter pages (Ben Evans, Pragmatic Engineer, The Diff, Lenny, etc.); copy follows
+  `writing-voice`. **The form actually subscribes now, with real anti-spam:** a small Worker
+  endpoint **`POST /api/subscribe`** (`app/worker.js`, mirroring the Institute's blueprint)
+  verifies a **Cloudflare Turnstile** token *server-side* (secret `TURNSTILE_SECRET_KEY`), then
+  creates the subscriber in Buttondown's "Actual Intelligence" list (`BUTTONDOWN_API_KEY`, double
+  opt-in on). Both secrets are Worker secrets, never in the repo. The Turnstile widget is a new
+  managed widget scoped to nmajor.com/www/workers.dev (sitekey `0x4AAAAAADuku3pIVO1zcaoN`, public).
+  wrangler.jsonc gained `main: worker.js` + a named `ASSETS` binding with `run_worker_first` so the
+  Worker sees `/api/subscribe` and everything else falls through to the static build. The **home
+  page subscribe form was also wired** to the same endpoint (it was a fake-success prototype
+  before), and nav/footer "Subscribe" now point to `/subscribe`. Verified: site still serves,
+  server-side gate rejects missing/invalid emails and bogus Turnstile tokens, and Buttondown accepts
+  the worker's exact payload (201, then cleaned up). The one step automation can't cover is a real
+  human solving the managed Turnstile challenge, so the final positive click-test is Nick's.
+- **2026-07-02 — real OG (social share) images, generated at build, on brand.** Every page
+  now has a proper 1200x630 OpenGraph/Twitter card instead of the old fallback photo. Built with
+  **satori + @resvg/resvg-js** as prerendered Astro endpoints under `app/src/pages/og/` (the
+  Institute's proven pattern; native resvg runs only at build, never in the Worker). Shared
+  renderer `app/src/og/card.ts`, direction-4a design: the red "N" mark, an Archivo Black title, a
+  vermillion IBM Plex Mono eyebrow + subtitle, and a `Nicholas Major / nmajor.com` footer. Two
+  themes: paper (brand + essays) and ink/black (the newsletter card, echoing the home black
+  block). Cards: `/og/default.png` (home + site-wide fallback, wired as the Base default),
+  `/og/subscribe.png` (ink), and per-essay `/og/writing/<slug>.png` (title + summary, gated on
+  `!draft` to match the essay page so no card is ever missing). Base emits `og:image` +
+  `og:image:width/height` + `twitter:image`. Fonts live in `app/src/og/fonts/` (ArchivoBlack +
+  IBMPlexMono; the variable Archivo was dropped because satori's parser can't read `fvar`).
+  Verified live: all cards serve 200 `image/png` and the right card is referenced per page. Note:
+  LinkedIn/Twitter cache OG images, so use their post inspectors to force a refresh on already-shared URLs.
 - **Still TODO:** `/about` page (where the co-founder credential gets real context);
-  wire the newsletter form to Buttondown on **nmajor's own scoped key** (`.env` needs
-  `BUTTONDOWN_API_KEY_NMAJOR` — never the Institute's key; the send script and content-builder
-  already expect it); optionally take the LinkedIn pipeline out of shadow mode (needs
-  `POSTIZ_*` + a consultancy company-page integration for the currently-disabled `business`
-  channel); then DNS cutover off Vercel.
+  optionally take the LinkedIn pipeline out of shadow mode (needs `POSTIZ_*` + a consultancy
+  company-page integration for the currently-disabled `business` channel); un-pause the daily
+  `publish.yml` cron to turn on automatic weekly publishing. (Done since the earlier plan: DNS
+  cutover off Vercel, and the newsletter form is wired to Buttondown via the Turnstile-gated
+  Worker endpoint using `BUTTONDOWN_API_KEY` — the send script uses the same key. Now that a
+  `worker.js` exists, the optional `www → apex` 301 is a few lines away if wanted.)
 
 ## Plans
 

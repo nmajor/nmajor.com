@@ -96,6 +96,15 @@ jobs:
         continue-on-error: true
         run: node scripts/schedule-linkedin.mjs
 
+      # Schedule the auto-generated takes for any newly-live essay: stamp each
+      # take's real pubDate (essay pubDate + offsetDays) and flip draft:false, so
+      # the daily build drips them onto /takes over the following days. Idempotent
+      # (draft is the lock); continue-on-error so it can never affect the publish
+      # path. Stamps committed below.
+      - name: Schedule takes
+        continue-on-error: true
+        run: node scripts/schedule-takes.mjs
+
       - name: Commit publish result
         working-directory: .
         run: |

@@ -20,6 +20,14 @@ https://www.interconnects.ai
 # --- Accepted picks (add specific article URLs here as the founder writes about them) ---
 https://www.thebigwhale.io/article/su-yang-bnp-paribas-agentifying-a-bad-process-just-burns-tokens
 
+# --- Strong seeds (added 2026-07-07 discovery run) ---
+https://www.ciodive.com/news/mainframe-exit-plan-risk-leaders-overestimate-ai-gartner/823437
+https://www.americanbar.org/groups/health_law/resources/esource/2026/from-discretion-to-automation
+https://www.gspann.com/insights/blog/ai-agent-governance-customer-experience
+https://www.economist.com/business/2026/06/14/companies-are-scrambling-to-curtail-soaring-ai-costs
+https://cloud.google.com/blog/topics/financial-services/assembling-a-team-of-ai-agents-to-handle-complex-mortgage-questions-at-mr-cooper
+https://www.fsb.org/uploads/P100626.pdf
+
 # --- Case-study seeds (added 2026-06-19 case-study run) ---
 https://www.k12dive.com/news/vibe-coding-helped-a-washington-district-save-250k-in-ed-tech-costs/816993/
 https://www.netlify.com/blog/the-year-of-vibe-coding-people-team/

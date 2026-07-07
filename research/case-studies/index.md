@@ -12,6 +12,10 @@ primary source.
 | Added | Company | Sector | Cat | The one-line story | Numbers | Verified | Entry |
 |-------|---------|--------|-----|--------------------|---------|----------|-------|
 <!-- new rows go here, newest first -->
+| 2026-07-07 | UnitedHealth Group | Health insurance | gov | $3B AI push automating claims/coverage while a federal suit over its nH Predict denial algorithm advances | ~$1B 2026 cost cut, 2:1 ROI claimed; denials 8.7%→22.7% (2019-22) | xchk | [unitedhealth-ai-claims-denials](entries/unitedhealth-ai-claims-denials.md) |
+| 2026-07-07 | Mr. Cooper | Mortgage servicing | proc | Multi-agent CIERA on Vertex AI assists (not replaces) call-center agents on complex mortgage questions, human-in-the-loop | ~500k calls/mo; ~28k agent-hours/yr freed (analyst-reported) | read | [mr-cooper-ciera-mortgage-cx](entries/mr-cooper-ciera-mortgage-cx.md) |
+| 2026-07-07 | Microsoft (Experiences & Devices) | Software / technology | cost | Cancelled Claude Code for thousands of engineers, moved to flat-priced GitHub Copilot after token bills spiked | $500-$2,000/engineer/mo (reported); consolidated by Jun 30 | xchk | [microsoft-claude-code-copilot-cost](entries/microsoft-claude-code-copilot-cost.md) |
+| 2026-07-07 | Commerzbank | Banking | proc | Regulated German bank runs AI service agents ("Ava"/"Bene") resolving most routine inquiries autonomously | 70-75% autonomous resolution (vendor-reported, unreconciled) | read | [commerzbank-ai-service-agents](entries/commerzbank-ai-service-agents.md) |
 | 2026-06-19 | FranklinCovey | Training / leadership development | saas | CIO Blaine Carter replacing packaged SaaS with low-code/AI builds; a ~$50k/yr finance app and RFP software rebuilt in-house | RFP completion 85-90% faster; ~$100k spend avoided | read | [franklincovey-buy-to-build](entries/franklincovey-buy-to-build.md) |
 | 2026-06-19 | Brivo | Physical security / access control | saas | COO Hans Kahler built an internal HR objectives tool himself instead of buying | "Close to $100K" HR software avoided (self-reported) | read | [brivo-hr-tool-vibe-coding](entries/brivo-hr-tool-vibe-coding.md) |
 | 2026-06-19 | Grupo Tecnon ("Miguel") | Construction | saas | Non-technical CEO built a web+iOS+Android ERP on Rork, zero developers, replacing Procore-class SaaS | "$50k-$150k+" custom-dev avoided (vendor-reported) | read | [grupo-tecnon-construction-erp](entries/grupo-tecnon-construction-erp.md) |
@@ -36,11 +40,11 @@ primary source.
 
 _Update as the list grows — a quick read on where the corpus is thick or thin._
 
-- process-integration: 8
+- process-integration: 10
 - saas-replacement: 9
-- cost-reckoning: 0
+- cost-reckoning: 1
 - failure: 1
 - build-vs-buy: 1
-- governance: 0
+- governance: 1
 
-_Total: 19. Thin spots to fill next run: cost-reckoning, governance, and verified (vs vendor-reported) numbers across the board._
+_Total: 23. Thin spots to fill next run: more failure and build-vs-buy cases, manufacturing/logistics deployments, and independently-verified (vs vendor-reported) numbers across the board._

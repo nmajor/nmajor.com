@@ -1,0 +1,1168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Iqza3LUNzZkgfH3LGyMvgi8NGbg</id>
+  <title>arXiv Query: search_query=cat:cs.SE OR cat:cs.HC OR cat:cs.IR OR cat:cs.MA&amp;id_list=&amp;start=0&amp;max_results=40</title>
+  <updated>2026-07-07T12:24:15Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.SE+OR+(cat:cs.HC+OR+(cat:cs.IR+OR+cat:cs.MA))&amp;start=0&amp;max_results=40&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>40</opensearch:itemsPerPage>
+  <opensearch:totalResults>95025</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05391v1</id>
+    <title>LLM-as-a-Verifier: A General-Purpose Verification Framework</title>
+    <updated>2026-07-06T17:59:35Z</updated>
+    <link href="https://arxiv.org/abs/2607.05391v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05391v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scaling pre-training, post-training, and test-time compute have become the central paradigms for improving the capabilities of LLMs. In this work, we identify verification, the ability to determine the correctness of a solution, as a new scaling axis. To unlock this and demonstrate its effectiveness, we introduce LLM-as-a-Verifier, a general-purpose verification framework that provides fine-grained feedback for agentic tasks without requiring additional training. Unlike standard LM judges that prompt LLMs to produce discrete scores for candidate solutions, LLM-as-a-Verifier computes the expectation over the distribution of scoring token logits to generate continuous scores. This probabilistic formulation enables verification to scale along multiple dimensions: (1) score granularity, (2) repeated evaluation, and (3) criteria decomposition. In particular, we show that scaling the scoring granularity leads to better separation between positive and negative solutions, resulting in more calibrated comparisons. Moreover, scaling repeated evaluation and criteria decomposition consistently lead to additional gains in verification accuracy through variance and complexity reduction. We further introduce a cost-efficient ranking algorithm for selecting the best solution among candidates using the verifier's continuous scores. LLM-as-a-Verifier achieves state-of-the-art performance on Terminal-Bench V2 (86.5%), SWE-Bench Verified (78.2%), RoboRewardBench (87.4%), and MedAgentBench (73.3%). Beyond verification, the fine-grained signals from LLM-as-a-Verifier can also serve as a proxy for estimating task progress. We build an extension for Claude Code, enabling developers to monitor and improve their own agentic systems. Finally, we show that LLM-as-a-Verifier can provide dense feedback for RL, improving the sample efficiency of SAC and GRPO on robotics and mathematical reasoning benchmarks.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T17:59:35Z</published>
+    <arxiv:comment>Code: https://github.com/llm-as-a-verifier/llm-as-a-verifier Website: https://llm-as-a-verifier.com</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Jacky Kwok</name>
+    </author>
+    <author>
+      <name>Shulu Li</name>
+    </author>
+    <author>
+      <name>Pranav Atreya</name>
+    </author>
+    <author>
+      <name>Yuejiang Liu</name>
+    </author>
+    <author>
+      <name>Yixing Jiang</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+    <author>
+      <name>Marco Pavone</name>
+    </author>
+    <author>
+      <name>Ion Stoica</name>
+    </author>
+    <author>
+      <name>Azalia Mirhoseini</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05346v1</id>
+    <title>OptiAgent: End-to-End Optimization Modeling via Multi-Agent Iterative Refinement</title>
+    <updated>2026-07-06T17:27:16Z</updated>
+    <link href="https://arxiv.org/abs/2607.05346v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05346v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We propose OptiAgent, a multi-agent framework that, given a natural language description of an Operations Research problem, is able to output a solver-ready mathematical formulation as well as executable code. Our architecture prioritizes the mathematical modeling step, where dedicated agents extract structures, such as decision variables and constraints, enabling iterative self-correction. We introduce a novel multi-loop validation architecture with four specialized feedback mechanisms, each targeting a distinct failure mode such as misinterpretation, structural defects, mathematical inconsistencies, validation failures, and code errors. Alongside accuracy, our modular design improves the process of solving optimization problems by improving transparency, as each agent exposes its reasoning and feedback, making the full modeling process auditable. Our framework achieves state-of-the-art performance on 3 out of 4 benchmarks across LP, MILP, and Nonlinear Programming tasks, while remaining highly competitive on the remaining dataset.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T17:27:16Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Adriana Laurindo Monteiro</name>
+    </author>
+    <author>
+      <name>Nayse Fagundes</name>
+    </author>
+    <author>
+      <name>Gabriel Mattos Langeloh</name>
+    </author>
+    <author>
+      <name>Gustavo de Oliveira Kanno</name>
+    </author>
+    <author>
+      <name>Priscila Louise Aguirre</name>
+    </author>
+    <author>
+      <name>Thiago Costa Rizuti da Rocha</name>
+    </author>
+    <author>
+      <name>Victor Leme Beltran</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05318v1</id>
+    <title>PiSAs: Benchmarking Contextual Integrity in Multi-User Agentic Systems</title>
+    <updated>2026-07-06T16:57:24Z</updated>
+    <link href="https://arxiv.org/abs/2607.05318v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05318v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As LLM agents evolve from single-user assistants into shared organizational infrastructure, new privacy risks emerge: inappropriate information may not only be exposed through outputs for external recipients, but also internally across users through inter-agent messages, shared memory and agents. These data spillage risks are not captured by existing privacy benchmarks grounded in contextual integrity (CI) as they focus primarily on either single-user settings or interactions between independently owned agents. We introducePiSAs (Privacy in Shared Agentic systems), a benchmark for assessing unintentional leaks with dual CI annotations: whether an information is appropriate for the task, and which users may legitimately access it. This enables direct measurement of cross-user spillage across agentic system components and interfaces, such as outputs, inter-agent communication, and memory. PiSAsis system-agnostic and supports evaluation across different agent topologies and memory regimes. We find that, although system design improves CI compliance, results are bottlenecked by incorrect LLM judgment calls: even state-of-the-art models fail to reliably filter inappropriate content or restrict transmission to authorized users. Our findings underscore the need for privacy-preserving strategies, beyond those studied in this work.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T16:57:24Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Shubham Gupta</name>
+    </author>
+    <author>
+      <name>Nazanin Mohammadi Sepahvand</name>
+    </author>
+    <author>
+      <name>Abhinav Kumar</name>
+    </author>
+    <author>
+      <name>Cem Subakan</name>
+    </author>
+    <author>
+      <name>Spandana Gella</name>
+    </author>
+    <author>
+      <name>Pierre-André Noël</name>
+    </author>
+    <author>
+      <name>Perouz Taslakian</name>
+    </author>
+    <author>
+      <name>Eugene Bagdasarian</name>
+    </author>
+    <author>
+      <name>Valentina Zantedeschi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05242v1</id>
+    <title>CanniUplift: A Holistic Framework for Mitigating Seller and Incentive Cannibalization in E-commerce Uplift Modeling</title>
+    <updated>2026-07-06T15:52:38Z</updated>
+    <link href="https://arxiv.org/abs/2607.05242v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05242v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Personalized incentive allocation is vital for e-commerce, where uplift modeling is the standard for estimating Individual Treatment Effects (ITE). However, traditional models often fail in complex multi-seller environments with violations of the Stable Unit Treatment Value Assumption (SUTVA). We identify two critical challenges: Seller-level Cannibalization, where incentives shift expenditure between shops without growing the platform, and Incentive-level Cannibalization, where organic conversions or alternative rewards introduce significant noise into incrementality estimation. In this paper, we propose CanniUplift, a unified framework to mitigate these dual-source cannibalization effects. Specifically, we design Platform-level Global Alignment (PGA) to capture cross-shop substitution through global GMV consistency constraints. To tackle incentive-driven noise, we introduce Redemption-based Decomposition Denoising (RDD), which uses redemption behavior to decompose treated outcomes and reduce attribution noise within an entire-space framework. Furthermore, a Treat-Attention mechanism is designed to model intricate interactions between users' historical behaviors and current treatment options. Extensive experiments on both synthetic and large-scale industrial datasets demonstrate that CanniUplift significantly outperforms state-of-the-art baselines. Ablation studies confirm that the integration of PGA and RDD consistently improves wAUUC and wQINI. Successfully deployed online, our framework achieved a 4.08% relative increase in platform-wide incremental GMV (Delta GMV) over the production baseline and improved ROI in online A/B tests, proving effective in driving global platform growth.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T15:52:38Z</published>
+    <arxiv:comment>Accepted to KDD 2026, 12 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Zuwang He</name>
+    </author>
+    <author>
+      <name>Shihao Shu</name>
+    </author>
+    <author>
+      <name>Yuli Qu</name>
+    </author>
+    <author>
+      <name>Hanyu Gao</name>
+    </author>
+    <author>
+      <name>Ziliang Zhang</name>
+    </author>
+    <author>
+      <name>Diwei Chen</name>
+    </author>
+    <author>
+      <name>Xiangda Yan</name>
+    </author>
+    <author>
+      <name>Buyu Gao</name>
+    </author>
+    <author>
+      <name>Tanchao Zhu</name>
+    </author>
+    <author>
+      <name>Yumeng Li</name>
+    </author>
+    <author>
+      <name>Junxiong Zhu</name>
+    </author>
+    <arxiv:doi>10.1145/3770855.3818334</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3770855.3818334" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05227v1</id>
+    <title>An Investigation of the AUTOSAR Adaptive Platform from an Industry Perspective</title>
+    <updated>2026-07-06T15:41:04Z</updated>
+    <link href="https://arxiv.org/abs/2607.05227v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05227v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The reliance on software as a distinguishing factor in the automotive industry is increasing. With a combined reliance on vendor-supplied software and cost-effective implementation, the AUTOSAR consortium was initialized to provide standardized platform specifications that enable re-use. Specifically, the AUTOSAR Adaptive Platform (AP) specification aims to provide a high-performance service-oriented architecture.
+  Objective: The goal of this study is to investigate what pain-points emerge when developing AUTOSAR Adaptive applications and whether they originate from the platform specification, its vendor-implementation, or its local usage. Methods: We conduct a Design Science Research study, developing a minimal AP that serves as an experimental prototype for our investigation.
+  Results: We find that a combination of specification-inherent, implementation-based, and local practices contributes to the emergence of pain-points.
+  Conclusions: We conclude that there are AUTOSAR specification-inherent reasons for pain-points, resulting from architectural choices and re-use goals. The implication for development organizations is the need to mitigate these effects through tooling that better supports configuration file management and reduces developer training time to properly understand the adaptive application runtime life-cycle.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T15:41:04Z</published>
+    <arxiv:comment>Presented at International Conference on Software Architecture (ICSA) 2026, Amsterdam, Netherlands</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Bengt Haraldsson</name>
+    </author>
+    <author>
+      <name>Srijita Basu</name>
+    </author>
+    <author>
+      <name>Miroslaw Staron</name>
+    </author>
+    <author>
+      <name>Erika Mayer</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05217v1</id>
+    <title>Curated retrieval versus open web search in public AI information services: a coverage-trust trade-off</title>
+    <updated>2026-07-06T15:32:46Z</updated>
+    <link href="https://arxiv.org/abs/2607.05217v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05217v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Public institutions increasingly use large language models (LLMs) to answer citizens' questions, often pairing a curated knowledge base with live web search, yet whether the sources behind these answers can be trusted has received little empirical scrutiny. We report a pre-launch expert evaluation of Evrópuvefur, an independent, government-funded service run by the University of Iceland that answers questions about the European Union, conducted as Iceland prepared for its referendum of 29 August 2026 on whether to resume EU accession talks. Five domain experts produced 551 evaluations of 449 AI-generated answers, scoring each against a seven-criterion quality rubric and, separately, flagging individual cited sources. We compared two retrieval paths: a curated local corpus (RAG) and open web search. In more than a third of the reviewed web-search answers (35%, 65 of 187), at least one cited source was flagged, almost always as untrustworthy or irrelevant; curated sources were flagged far less often and only for being out of date. Web search answered more questions, but at the cost of source quality; the curated corpus was trustworthy yet limited in coverage, and the model declined to respond when it fell short. The citation mix also passed over strong sources: across all 287 web-search answers, the system never cited RÚV, the public broadcaster and the country's most widely used news source. A companion prompt ablation shows how weak prompt-level steering is: a trusted-domain list in the system prompt raised the share of citations to listed domains only from 12% to 21%. Fluency and topical fit did not predict source trustworthiness. We argue that source trustworthiness is a measurable yet largely invisible dimension of information quality in public AI services, and we discuss transparency-oriented responses and their trade-offs.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T15:32:46Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <author>
+      <name>Hafsteinn Einarsson</name>
+    </author>
+    <author>
+      <name>Hafsteinn Birgir Einarsson</name>
+    </author>
+    <author>
+      <name>Jón Gunnar Ólafsson</name>
+    </author>
+    <author>
+      <name>Jón Gunnar Þorsteinsson</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05197v1</id>
+    <title>Is Three the Magic Number? An Empirical Evaluation of LLM-Based Repair Loops</title>
+    <updated>2026-07-06T15:14:10Z</updated>
+    <link href="https://arxiv.org/abs/2607.05197v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05197v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Iterative repair loops have become a core design pattern in LLM-based software engineering systems. These workflows repeatedly generate, validate, and repair artifacts using feedback such as compiler errors or test failures. Despite their widespread use, the impact of repair-loop iteration limits remains poorly understood, as most prior work adopts fixed, often arbitrary, repair budgets. We study repair-loop effectiveness across multiple software engineering tasks, including code generation, test generation, and code translation. Across several representative workflows, datasets, and contemporary low-cost LLMs, we observe a consistent pattern of diminishing returns: the first three to four repair iterations account for most achievable gains, while later iterations contribute only marginal improvements. We further find that repair behavior is influenced more strongly by workflow orchestration and feedback design than by the underlying model itself. These results suggest that repair budgets should be treated as an explicit experimental variable, as they directly affect evaluation outcomes, computational cost, runtime, and reproducibility in LLM-based software engineering research.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T15:14:10Z</published>
+    <arxiv:comment>4 Pages (+1 for references), NIER Paper</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Tobias Kiecker</name>
+    </author>
+    <author>
+      <name>Eik Reichmann</name>
+    </author>
+    <author>
+      <name>Hosung Kang</name>
+    </author>
+    <author>
+      <name>Gabin An</name>
+    </author>
+    <author>
+      <name>Lars Grunske</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05188v1</id>
+    <title>Latent Programming Horizons in Coding Agents</title>
+    <updated>2026-07-06T15:08:26Z</updated>
+    <link href="https://arxiv.org/abs/2607.05188v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05188v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A coding agent solving a software-engineering task spends dozens of steps reasoning, editing code, and running tests, yet little is known about what the underlying language model internally represents about the program it is working on. We show that the residual streams of language models under coding agents linearly encode properties of the evolving program: a logistic-regression probe on hidden states is able to decode whether the current code parses, passes its test suite, reduces the number of failing tests, and introduces regressions, reaching AUC up to 0.83 for correctness across two models and two benchmarks. Our second finding is more surprising: these representations run ahead of the agent's own edits. Probes trained to predict the outcome of future edits (before they are materialized and written on disk) achieve performance above chance up to roughly 25 steps in advance. We call this the agent's latent programming horizon. As a proof of external validity, we show that the probes transfer across benchmarks without retraining. Our positive results open calls for more research in mechanistic interpretability of coding agents.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T15:08:26Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>André Silva</name>
+    </author>
+    <author>
+      <name>Han Tu</name>
+    </author>
+    <author>
+      <name>Martin Monperrus</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05179v1</id>
+    <title>Relational Multi-Agent Reinforcement Learning for Dynamic Pricing in High-Speed Railway Markets</title>
+    <updated>2026-07-06T14:58:26Z</updated>
+    <link href="https://arxiv.org/abs/2607.05179v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05179v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In liberalised railway systems, operators must set prices dynamically in an environment with partial observability, as they retain private information about their objectives and performance, where regulatory constraints prohibit communication or direct information exchange between competitors to prevent explicit collusion. Consequently, agents must learn to infer strategic interactions only from observable market data which presents a significant challenge for multi-agent reinforcement learning, where standard approaches typically treat observations as unstructured vectors, ignoring the underlying market topology that governs strategic interactions. To address this, an entity graph modelling approach is proposed, which represents the environment as a graph of operational units, rather than decision-making agents or static infrastructure, encoding competition, coordination, and connectivity relations between entities. Then, an extension of the multi-agent twin delayed deep deterministic policy gradient algorithm with graph-based representation learning processes the features of the entities through a multi-layer relational graph convolutional network and aggregates them via a learnt attention mechanism. Experimental results in a rail pricing reinforcement learning environment show that this novel framework achieves higher revenue and stability in two different settings of increasing market complexity compared to a representative selection of relational and non-relational baselines. The code is publicly available at: https://github.com/Kinrre/RelationalRailPricing-RL</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:58:26Z</published>
+    <arxiv:comment>46 pages, 14 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Enrique Adrian Villarrubia-Martin</name>
+    </author>
+    <author>
+      <name>David Muñoz-Valero</name>
+    </author>
+    <author>
+      <name>Luis Rodriguez-Benitez</name>
+    </author>
+    <author>
+      <name>Giovanni Montana</name>
+    </author>
+    <author>
+      <name>Luis Jimenez-Linares</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05149v1</id>
+    <title>Intent-Based Mutation Testing: From Naturally Written Programming Intents to Mutants</title>
+    <updated>2026-07-06T14:30:02Z</updated>
+    <link href="https://arxiv.org/abs/2607.05149v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05149v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents intent-based mutation testing, a testing approach that generates mutations by changing the programming intents that are implemented in the programs under test. In contrast to traditional mutation testing, which changes (mutates) the way programs are written, intent mutation changes (mutates) the behavior of the programs by producing mutations that implement (slightly) different intents than those implemented in the original program. The mutations of the programming intents represent possible corner cases and misunderstandings of the program behavior, i.e., program specifications, and thus can capture different classes of faults than traditional (syntax-based) mutation. Moreover, since programming intents can be implemented in different ways, intent-based mutation testing can generate diverse and complex mutations that are close to the original programming intents (specifications) and thus direct testing towards the intent variants of the program behavior/specifications. We implement intent-based mutation testing using Large Language Models (LLMs) that mutate programming intents and transform them into mutants. We evaluate intent-based mutation on 29 programs and show that it generates mutations that are syntactically complex, semantically diverse, and quite different (semantically) from the traditional ones. We also show that 55% of the intent-based mutations are not subsumed by traditional mutations. Overall, our analysis shows that intent-based mutation testing can be a powerful complement to traditional (syntax-based) mutation testing.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:30:02Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Asma Hamidi</name>
+    </author>
+    <author>
+      <name>Ahmed Khanfir</name>
+    </author>
+    <author>
+      <name>Mike Papadakis</name>
+    </author>
+    <arxiv:doi>10.1109/ICSTW64639.2025.10962508</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICSTW64639.2025.10962508" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05139v1</id>
+    <title>On the risk of coding before testing: An empirical study on LLM-based test generation workflow</title>
+    <updated>2026-07-06T14:23:30Z</updated>
+    <link href="https://arxiv.org/abs/2607.05139v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05139v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) are increasingly used in software engineering workflows to generate both source code and test suites. This dual capability has enabled emerging development paradigms, including test-first and agentic workflows, where a single model is producing and validating implementations. However, these approaches assume that generated tests act as independent and reliable oracles - a fundamental requirement for effective software testing. In this paper, we challenge this assumption and investigate whether LLM-generated code biases the generation of subsequent tests. We introduce and empirically study the phenomenon of error propagation, where faults in generated code are systematically replicated in associated test artifacts. This leads to cases where incorrect implementations and tests are mutually consistent, masking defects rather than revealing them. We evaluate this effect across a range of programming tasks and agentic workflows, analyzing the consistency between generated code and test assertions, with particular focus on scenarios of aligned failures. Our study examines (i) whether erroneous code artifacts bias test generation, (ii) whether such bias persists under different prompting strategies, including chain-of-thought reasoning, and (iii) how errors propagate across multi-step workflows in which intermediate outputs are reused as context. The results show that error propagation is prevalent and impactful: generating tests after faulty code significantly reduces fault detection effectiveness compared to generating tests independently (14% vs. 25%). These findings highlight a fundamental limitation of current workflows, where lack of independence between generated artifacts undermines the reliability of automated testing. Furthermore, our results expose a previously underexplored threat to validity in empirical studies relying on coupled generation pipelines.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:23:30Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Michael Konstantinou</name>
+    </author>
+    <author>
+      <name>Florian Tambon</name>
+    </author>
+    <author>
+      <name>Mike Papadakis</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05125v1</id>
+    <title>Three-Phase Evaluation of AI-Assisted Software Development Life Cycle</title>
+    <updated>2026-07-06T14:13:25Z</updated>
+    <link href="https://arxiv.org/abs/2607.05125v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05125v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents an exploratory evaluation of how increasing levels of AI autonomy affect software development productivity, requirement adherence, and developer cognitive workload. A team of four developers reimplemented the same full-stack web application across three sequential phases: partial AI-assisted development using GitHub Copilot, an AI-exclusive workflow using GitHub Copilot, and an AI-exclusive workflow using AWS Kiro. Evaluation metrics included development effort (hours), requirement adherence (RITM score), AI-interaction efficiency, and NASA-TLX workload measures. Across phases, higher levels of AI autonomy were associated with reduced development effort, improved requirement adherence, and lower self-reported mental workload, while developer frustration increased modestly. The AWS Kiro phase achieved the strongest overall performance on most measured dimensions, suggesting that tooling architecture may influence outcomes independently of AI autonomy level.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:13:25Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Joshua Strubel</name>
+    </author>
+    <author>
+      <name>Professor Carrie Russell</name>
+    </author>
+    <author>
+      <name>Carson Crockett</name>
+    </author>
+    <author>
+      <name>Jason Ferraro</name>
+    </author>
+    <author>
+      <name>Nathan Londhe</name>
+    </author>
+    <author>
+      <name>Uzayr Syed</name>
+    </author>
+    <author>
+      <name>Jacob Viehe</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05121v1</id>
+    <title>From Failing to Passing: Evolving Natural Language Prompt Optimization Rules for LLM Code Generation</title>
+    <updated>2026-07-06T14:10:56Z</updated>
+    <link href="https://arxiv.org/abs/2607.05121v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05121v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models are known to be sensitive to prompt formulation. Even minor variations in wording can substantially degrade performance. This sensitivity reveals an opportunity: if prompt phrasing can harm performance, can it be used to improve it? To investigate this question, we introduce a search-based approach that identifies and evolves a set of natural language transformation rules with strong downstream effects on coding performance. We then propose DUALFIX, a staged repair pipeline that combines the evolved transformation rules with execution-feedback repair, addressing both specification-level and implementation-level failures. A key strength of our approach lies in its generality: the evolved rules are error-agnostic, reusable across problems, and transferable across models. We evaluate DUALFIX against execution-feedback repair baselines across three models on two challenging benchmarks, LiveCodeBench and APPS. Our results show that the evolved transformations fix from 10-30% of failing cases, including 12-17% of failures that execution-based repair alone cannot resolve. Overall, DualFix recovers up to 30% of baseline failures and fixes 3-5 times more failing cases than Self-Fix across all evaluated settings. Furthermore, we also show that rules evolved on one model transfer zero-shot to other models, outperforming execution-feedback repair without any re-optimization.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:10:56Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Amal Akli</name>
+    </author>
+    <author>
+      <name>Melissa Akli</name>
+    </author>
+    <author>
+      <name>Cedric Richter</name>
+    </author>
+    <author>
+      <name>Mike Papadakis</name>
+    </author>
+    <author>
+      <name>Yves Le Traon</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05113v1</id>
+    <title>Rating the Pitch, Not the Product: User Evaluations of LLMs Reflect Expectations More Than Performance</title>
+    <updated>2026-07-06T14:05:41Z</updated>
+    <link href="https://arxiv.org/abs/2607.05113v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05113v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Imagine two users interact with the same LLM. One has been told it is the cutting-edge flagship model; the other, an older, weaker model. They walk away with markedly different ratings of its usefulness and intelligence, yet they used the same model. In a controlled study, 162 participants each used one of six LLMs from two families across three collaborative tasks, after first viewing a landing page that matched, overstated, or understated their model's true capability. This pre-interaction framing shifted user opinions and interaction behavior while task performance did not. Oversold users rated the model more favorably and used more directive prompting, while Undersold users wrote longer, more collaborative prompts. The quality of what users and the model produced together depended only on the model's true capability, not on what users were told. Participants' change in model impressions after use, measured across two impression measures, was not predicted by task performance ($β= -0.01$ and $0.11$, both n.s.), but by whether the model met users' expectations ($β= 0.47$ and $0.50$, both $p &lt; .001$) and how confident they felt working with it ($β= 0.47$ and $0.36$, both $p &lt; .001$). After interaction, users are still rating the pitch, not the product: user-elicited LLM evaluations, including the preference data driving public leaderboards, measure expectation management at least as much as the model itself.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:05:41Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Robert Morabito</name>
+    </author>
+    <author>
+      <name>Tyler McDonald</name>
+    </author>
+    <author>
+      <name>Charitra Viswanath</name>
+    </author>
+    <author>
+      <name>Angel Hsing-Chi Hwang</name>
+    </author>
+    <author>
+      <name>Susanne Gaube</name>
+    </author>
+    <author>
+      <name>Jad Kabbara</name>
+    </author>
+    <author>
+      <name>Ali Emami</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05110v1</id>
+    <title>Toward Personalized Social Robots for Child Well-being: Data Requirement Principles from a Recommender-System Perspective</title>
+    <updated>2026-07-06T14:04:24Z</updated>
+    <link href="https://arxiv.org/abs/2607.05110v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05110v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Social robots are increasingly deployed in clinical settings to support the well-being of children, where effective support must be personalized to each child. Personalization, choosing the robot action best suited to each child, can be framed as a recommendation problem, and a recently proposed recommender-system framework for social robots offers a principled approach through user profiling, ranking, and responsible computing. Instantiating it, however, is blocked not by the model but by the data, which is hard to gather. A child's state shifts within and across visits, so no fixed description of the user holds. Within a session, the few signals of whether the robot's actions helped are weak and indirect. Across sessions, children are rarely seen more than once, and anonymization breaks the identity needed to link visits. Because care cannot be randomized, existing data is observational, biased toward whatever was already done. Each is a familiar recommender-system problem, and we propose four data principles in response: an integrated profile, effectiveness signals, linkable coverage, and an exposure record logged at collection time. We identify which of these principles each capability requires, and frame them as concrete guidelines for data collection.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:04:24Z</published>
+    <arxiv:comment>Accepted as a Late Breaking Report (LBR) at IEEE RO-MAN 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Jin Huang</name>
+    </author>
+    <author>
+      <name>Eric Nichols</name>
+    </author>
+    <author>
+      <name>Fethiye Irmak Dogan</name>
+    </author>
+    <author>
+      <name>Hatice Gunes</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05106v1</id>
+    <title>RepoTrace: Browser-Assisted Evidence Collection for GitHub Research Datasets</title>
+    <updated>2026-07-06T14:00:49Z</updated>
+    <link href="https://arxiv.org/abs/2607.05106v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05106v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Empirical software engineering studies frequently build datasets from GitHub issues and pull requests. In many projects, researchers inspect pages in a browser, copy selected fields into spreadsheets, keep side notes in separate documents, and later run scripts to normalize or export the data. This workflow is flexible, but the page evidence, the research codes, and the rationale behind each decision end up spread across tabs and files, which leaves provenance, update tracking, and multi-reviewer labeling hard to audit.
+  RepoTrace is a browser-assisted research tool that collects GitHub issue and pull-request evidence into a local SQLite-backed workspace. It combines a Chrome side-panel extension, an Express backend, and a React dashboard to capture page snapshots, comments, labels, notes, screening and labeling decisions, refresh history, and scoped exports, keeping the source evidence and the research interpretation linked together.
+  A validation pass collected and checked 20 Matplotlib issues across two study projects. The resulting dataset preserves 22 snapshots, 38 comments, 20 research notes, 98 annotations, 20 screening reviews, 20 fix-evidence entries, and 4 simulated unresolved consensus conflicts. The results show that RepoTrace can support a complete local evidence-collection workflow for manually constructed GitHub issue and pull-request datasets.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T14:00:49Z</published>
+    <arxiv:comment>4 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Xue Yao</name>
+    </author>
+    <author>
+      <name>Zehua Zhang</name>
+    </author>
+    <author>
+      <name>Jiatong Liu</name>
+    </author>
+    <author>
+      <name>Yongqiang Tian</name>
+    </author>
+    <arxiv:doi>10.5281/zenodo.20954131</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.5281/zenodo.20954131" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05076v1</id>
+    <title>Can Code Specify a System Precisely Enough to Formally Verify It?</title>
+    <updated>2026-07-06T13:39:00Z</updated>
+    <link href="https://arxiv.org/abs/2607.05076v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05076v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Formal verification is seldom applied to production software, because writing and maintaining a model has historically cost more than it returns. A companion study [1] extended SysMoBench [4] with a lower-cost alternative: specifications are graded against traces captured from the running system. It found that when large language models write the specifications, reliability is governed by the structure of the specification contract, not the language. This paper evaluates both on production software: the payment workflow of an operational restaurant point-of-sale system, which must keep the register, payment terminal, and payment processor in agreement. We report three results. First, the core protocol is correct relative to a hand-built, line-cited model under a precisely stated failure model. The audit found seven failure-handling gaps, nearly all with a common root cause; three were reproduced as real executions, and a patch closing them was re-checked with all failure gates enabled, after which a follow-up patch closed a defect the re-check itself exposed. Systematic extensions of the failure model (crash-restart, stale reads, two attempts) each found the windows they were designed to probe. Second, a single probe of the production payment sandbox exposed a response-shape divergence that makes an entire recovery ladder unreachable against the live API. The emulator-based audit could not detect it, because code and emulator share the same misreading: a correlated-oracle failure. Third, the companion study's central finding replicates across seven models from two vendors: contract structure, not language, governs what LLMs specify reliably. The replication concerns the ordering of contracts and the failure taxonomy, not the absolute level: only the strongest models reached the corpus ceiling, and the harder task restores discriminating power the benchmark had lost.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.FL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T13:39:00Z</published>
+    <arxiv:comment>25 pages, 3 figures, 5 tables. Artifacts and reference models at https://github.com/jdubray/SysMoBench-1</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jean-Jacques Dubray</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05068v1</id>
+    <title>When AI Is Wrong on Purpose: How Students Respond to Buggy GenAI Code</title>
+    <updated>2026-07-06T13:36:05Z</updated>
+    <link href="https://arxiv.org/abs/2607.05068v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05068v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As Generative AI (GenAI) becomes increasingly central to software development, CS education is integrating prompt-centered workflows where students describe intended program behavior in natural language to elicit code. However, professional practice requires careful review and verification of GenAI-generated code that may appear correct while containing subtle faults. This creates a challenge for CS1-level activities, where current models often solve tasks correctly and reduce students' incentive to closely inspect generated outputs. We investigate how prompt-centered programming activities can be adapted to better foster these practices. Specifically, we explore an approach where realistic, runnable bugs are injected into otherwise correct solutions, thus requiring students to read and repair generated outputs. We analyzed 2,636 sessions from 917 students, and examined behavior across instances of naturally occurring prompt-related failures and deliberately injected bugs within each session. Our findings show that students responded differently across bug sources. Deliberately injected bugs more often led to direct code edits and higher next-attempt success, suggesting localized repair of near-miss solutions. Prompt-related failures instead more often led students to refine prompts by clarifying constraints, updating function signatures, adding edge cases, or reframing the task. Student reflections reinforce the emphasis on review and repair, describing useful practice in code understanding, code review, and debugging, as well as a more careful verification mindset and greater awareness of GenAI limitations. Ultimately, prompt-related failures and injected bugs together support a pedagogically useful GenAI workflow, where students practice both specification refinement through prompts and debugging through code editing.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T13:36:05Z</published>
+    <arxiv:comment>ICER'26 paper</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Victor-Alexandru Pădurean</name>
+    </author>
+    <author>
+      <name>Kaitlin Riegel</name>
+    </author>
+    <author>
+      <name>Alkis Gotovos</name>
+    </author>
+    <author>
+      <name>Jyotika Mahapatra</name>
+    </author>
+    <author>
+      <name>Ahana Ghosh</name>
+    </author>
+    <author>
+      <name>Paul Denny</name>
+    </author>
+    <author>
+      <name>Juho Leinonen</name>
+    </author>
+    <author>
+      <name>James Prather</name>
+    </author>
+    <author>
+      <name>Adish Singla</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05031v1</id>
+    <title>LLM-Based Test Oracles: Source-of-Authority Taxonomy -- A Systematic Literature Review</title>
+    <updated>2026-07-06T13:13:11Z</updated>
+    <link href="https://arxiv.org/abs/2607.05031v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05031v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) are increasingly used to produce test oracles, the part of a test that decides whether observed behavior is correct. Yet a clear account of where these oracles draw their authority is missing. Prior secondary studies organize the area by oracle form or by LLM technique. None organizes it by the source of the verdict's authority, the property that governs how far a verdict can be trusted. This article presents a systematic literature review, conducted and reported under the PRISMA 2020 guidelines. From 2,436 records, an LLM pre-filter followed by independent dual human screening (reviewer agreement, a Cohen's kappa of 0.79) and full-text assessment yielded 54 included studies. We analyze these along three axes: the source of an oracle's authority, the form it takes, and the mechanism that adjudicates it. We characterize the landscape of domains, languages, models, and adaptation strategies. Specification-derived authority, though the most common single source, covers about half of the studies (28 of 54). The remaining 26 reach a verdict with no specification at all. The source of authority and the adjudication mechanism cross-cut: the same source is checked by several mechanisms and one mechanism serves several sources, so a label such as LLM-as-a-judge names a mechanism rather than a basis for trust. We further report how these oracles are evaluated and how they fail, and read the sparse and empty regions of the taxonomy as a research agenda. The protocol, search query, and per-study coding sheet are released as supplementary material.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T13:13:11Z</published>
+    <arxiv:comment>15 pages, 10 figures, 7 tables. Systematic literature review. Submitted to IEEE Access</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Ali Hassaan Mughal</name>
+    </author>
+    <author>
+      <name>Muhammad Bilal</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05001v1</id>
+    <title>TACTIC-KG: Toward Small Agent Teams for Cyber Threat Intelligence Knowledge Graph Construction</title>
+    <updated>2026-07-06T12:41:11Z</updated>
+    <link href="https://arxiv.org/abs/2607.05001v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05001v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Cyber Threat Intelligence (CTI) reports are predominantly unstructured, heterogeneous, and noisy, which limits their direct usability for automated analysis and reasoning. Cybersecurity Knowledge Graphs (CSKGs) provide a structured representation of adversarial entities, actions, and relations, but constructing such graphs from free-text CTI remains a challenge. Recent approaches rely on monolithic Large Language Models (LLMs) to perform end-to-end extraction and completion, leading to high cost, limited controllability, and unstable performance. This paper introduces TACTIC-KG, an agentic framework for CSKG construction that decomposes the task into modular, specialized LLM agents responsible for extraction, typing, verification, and curation. Using lightweight models (3B--8B), TACTIC-KG improves stability, recall, and graph consistency while reducing deployment cost. We implement and evaluate TACTIC-KG against recent state-of-the-art systems. Experiments on human-annotated CTI reports show that agent specialization consistently outperforms larger monolithic in-context-learning (ICL) baselines in extraction F1-score, typing accuracy, and structural graph similarity.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T12:41:11Z</published>
+    <arxiv:comment>20 pages, 2 figures, 10 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Mouhamed Amine Bouchiha</name>
+    </author>
+    <author>
+      <name>Gregory Blanc</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04974v1</id>
+    <title>A Comprehensive Study of Implementation Bugs in Multi-modal Agents</title>
+    <updated>2026-07-06T12:04:49Z</updated>
+    <link href="https://arxiv.org/abs/2607.04974v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04974v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Multi-Modal Agents (M-agents), empowered by Large Language Models (LLMs), excel in various complex, open-world scenarios such as autonomous driving and robotics. However, their unique requirements to interact with dynamic and diverse multi-modal environments introduce novel implementation challenges beyond those faced by traditional agents. Outdated perception, untrustworthy planning and inapplicable execution could cause traffic accident and financial loss. Despite growing study on agent issues, there has not been a systematic study focusing on M-agent-specific implementation bugs. To address this gap, we conducted the first systematic study of implementation bugs in M-agents. We collected 34 representative M-agents from diverse sources and, through meticulous filtering,identified 158 M-agent-specific bugs from 1,268 issue reports. Using a top-down strategy, we developed a comprehensive taxonomy that classifies bugs by global symptoms, functionality component-level symptoms, and root causes. We then implemented MATester, an automatic proof-of-concept bug identifier by analyzing runtime inter-component outputs. When applied to 12 extra M-agents, MATester successfully covered 61.4% of known open issues and discovered 31 additional bugs, demonstrating the practical usefulness of our study. Our work provides a comprehensive reference and guideline for classification, prevention and fix of M-agent bugs.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T12:04:49Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Suwan Li</name>
+    </author>
+    <author>
+      <name>Lei Bu</name>
+    </author>
+    <author>
+      <name>Shangqing Liu</name>
+    </author>
+    <author>
+      <name>Yile Wang</name>
+    </author>
+    <author>
+      <name>Guangdong Bai</name>
+    </author>
+    <author>
+      <name>Fuman Xie</name>
+    </author>
+    <author>
+      <name>Kai Chen</name>
+    </author>
+    <author>
+      <name>Chang Yue</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04958v1</id>
+    <title>Look-Ahead-Freedom as Temporal Non-Interference: A Verifiable Correctness Property for Backtesting and Agentic Trading Pipelines</title>
+    <updated>2026-07-06T11:42:26Z</updated>
+    <link href="https://arxiv.org/abs/2607.04958v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04958v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Look-ahead bias (using information from after a decision epoch to make the decision at that epoch) is the dominant way a backtest or a machine-learning evaluation flatters a system that will disappoint in deployment. The field manages it with construct-specific recipes and empirical detectors, which are sound only channel by channel and certify nothing by their silence. We show that look-ahead-freedom is a formal property in disguise: fixing an epoch, the demand that the future not influence the present is temporal non-interference over a time-indexed information lattice. From this identification we develop a pipeline calculus separating a datum's availability from its reference time, and settle the problem's boundary. Where availability may depend on data values, look-ahead-freedom is undecidable (indeed Pi-0-1-hard): leakage is recursively enumerable but freedom is not. On the value-independent fragment (covering windowing, resampling, joins, point-in-time and vintage reads, and agentic retrieval) we give a type-and-effect system that is sound and decidable in linear time. An artifact confirms the theory: the check scales linearly, an independent oracle witnesses no leak in any accepted pipeline, and the checker catches every planted leak that differential and tiling detectors miss.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-fin.PM" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T11:42:26Z</published>
+    <arxiv:comment>Submitted to ACM Transactions on Software Engineering and Methodology</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Xavier Fonseca</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04953v1</id>
+    <title>Real-World Perturbation Testing of Autonomous Driving Systems</title>
+    <updated>2026-07-06T11:34:31Z</updated>
+    <link href="https://arxiv.org/abs/2607.04953v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04953v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous Driving Systems (ADS) must operate reliably under diverse conditions, yet representative data for rare or adverse scenarios is difficult to obtain. Perturbation-based testing is widely used to assess robustness, but most studies focus on offline datasets or simulation, leaving open questions about how such results translate to real-world driving. We present a large-scale study of 72 camera and LiDAR perturbations, evaluated across three testing modalities: offline model-level analysis, hardware-in-the-loop execution, and closed-loop system-level testing on a full-scale autonomous vehicle. The study covers both an end-to-end vision-based driving model and a modular LiDAR-based perception and planning stack. Our results reveal a clear gap between testing levels. For camera-based systems, perturbations with limited offline impact can still induce unstable control and failures in real-world driving. For LiDAR-based systems, degradation is more consistent at the perception level but weakly predictive of system-level failures. Across both modalities, model-level metrics alone are insufficient to identify the most harmful perturbations. We further show that real-time feasibility is a key constraint in real-world testing, and that robustness observations obtained from recorded data do not consistently transfer to closed-loop behavior on a physical vehicle, highlighting the importance of complementary real-world, system-level evaluation.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T11:34:31Z</published>
+    <arxiv:comment>In proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering (ASE '26)</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Stefano Carlo Lambertenghi</name>
+    </author>
+    <author>
+      <name>Matthias Weil</name>
+    </author>
+    <author>
+      <name>Andrea Stocco</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04948v1</id>
+    <title>Using Process Mining to Generate AI Agents from Software Engineering Process Records</title>
+    <updated>2026-07-06T11:22:25Z</updated>
+    <link href="https://arxiv.org/abs/2607.04948v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04948v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Integrating AI agents into Software Engineering (SE) raises an important challenge: how can we specify and realize AI agents that work effectively alongside humans in hybrid SE teams? Determining the right granularity and separation of concerns for such agents is non-trivial. Coarse-grained agents may introduce unmanageable complexity, whereas micro-agents may create severe coordination overhead. Moreover, existing multi-agent SE frameworks typically rely on predefined role structures and do not account for project-specific characteristics or process adaptations. We address this by combining object-centric, imperative, and declarative process mining. Using event logs extracted from software repositories, our approach discovers project-specific agent roles using a predefined SE role vocabulary grounded in repository behavior and generates matching agent specifications and implementations. As proof-of-concept, we applied our approach to a well-established open-source project. We performed functional tests and an exploratory user study to determine how well the generated AI agent specifications are aligned with human expectations.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T11:22:25Z</published>
+    <arxiv:comment>To be published at the 24th International Conference on Business Process Management (BPM 2026), Process Technology Forum</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Saimir Bala</name>
+    </author>
+    <author>
+      <name>Fabiana Fournier</name>
+    </author>
+    <author>
+      <name>Lior Limonad</name>
+    </author>
+    <author>
+      <name>Andreas Metzger</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04939v1</id>
+    <title>Teaching LLMs a Low-Resource Language: Enhancing Code Completion in Pharo</title>
+    <updated>2026-07-06T11:11:18Z</updated>
+    <link href="https://arxiv.org/abs/2607.04939v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04939v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) unlocked new possibilities in automated code writing, becoming the backbone of most code completion tools. While LLMs excel in mainstream languages, they often lack support for the so-called low-resource languages where training data is scarce. As a result, these languages lag behind in the quality of code completion tooling available to their communities. A concrete example is Pharo, a Smalltalk-inspired language whose IDE currently offers only single-token completion. In this work, we report on our experience bringing LLM-based code completion to Pharo. First, we describe an end-to-end pipeline that combines Pharo-specific data curation, continued pre-training and fine-tuning of open code LLMs. Second, we introduce a set of Pharo code completion benchmarks designed to evaluate whether models (i) learn Pharo's syntax and (ii) accurately complete masked Pharo code from real-world GitHub repositories. Third, we show empirically that Pharo-specialized models substantially outperform their original base checkpoints and also exceed the accuracy of substantially larger code LLMs on Pharo completion. Overall, our case study demonstrates the feasibility of bringing strong LLM-based code completion to low-resource programming languages, with models small enough to provide ``real-time'' in-IDE support.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T11:11:18Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Kilian Kier</name>
+    </author>
+    <author>
+      <name>Alessandro Giagnorio</name>
+    </author>
+    <author>
+      <name>Omar AbedelKader</name>
+    </author>
+    <author>
+      <name>Oleksandr Zaitsev</name>
+    </author>
+    <author>
+      <name>Robert Peharz</name>
+    </author>
+    <author>
+      <name>Romain Robbes</name>
+    </author>
+    <author>
+      <name>Gabriele Bavota</name>
+    </author>
+    <author>
+      <name>Stéphane Ducasse</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04875v1</id>
+    <title>On the Complexity of Entrywise Power Matrix Factorization</title>
+    <updated>2026-07-06T09:50:20Z</updated>
+    <link href="https://arxiv.org/abs/2607.04875v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04875v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Given a nonnegative matrix $X$, a factorization rank $r$ and a real parameter $p$, entrywise power matrix factorization (EPMF) looks for a low-rank matrix $X_r$ such that $X = |X_r|^{\circ p}$ (exact case) or $X \approx |X_r|^{\circ p}$ (approximate case), where $(\cdot)^{\circ p}$ denotes the component-wise exponent. EPMF includes the modulus model ($p=1$) and component-wise square factorization ($p=2$) as special cases, the latter being closely related to the square root rank. We analyze the computational complexity of the exact decision problem and the Frobenius-norm approximation problem, and establish a complete complexity landscape. In the exact case, we show that EPMF is equivalent to the combinatorial problem of flipping the signs of the entries of a given matrix $X$ to obtain a rank-$r$ matrix, which we refer to as the signing problem. We first show that the signing problem, and hence exact EPMF, is strongly NP-hard, improving a weak NP-hardness result for the square-root-rank of Fawzi et al. (Math. Prog., 2015). We then show that the signing problem can be solved in polynomial-time when $r$ is fixed. Moreover, when the rank $r$ is part of the input, we show that for generic matrices the algorithm is fixed-parameter tractable (FPT) in the parameter $r$; in fact, the running time is linear in the input size $X$. In the approximate case using the Frobenius norm as an error measure, we show that EPMF is NP-hard, already when $r=2$, the smallest nontrivial case.</summary>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.CO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T09:50:20Z</published>
+    <arxiv:comment>27 pages, code available from https://gitlab.com/ngillis/rank-r_signing/</arxiv:comment>
+    <arxiv:primary_category term="cs.CC"/>
+    <author>
+      <name>Nicolas Gillis</name>
+    </author>
+    <author>
+      <name>Subhayan Saha</name>
+    </author>
+    <author>
+      <name>Stefano Sicilia</name>
+    </author>
+    <author>
+      <name>Arnaud Vandaele</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04860v1</id>
+    <title>PAGE: Towards Practical Human-level Gaze Target Estimation</title>
+    <updated>2026-07-06T09:33:52Z</updated>
+    <link href="https://arxiv.org/abs/2607.04860v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04860v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Gaze target estimation, the task of predicting where a person is looking in a scene, is crucial to understanding human attention and intent. It is a challenging task that combines high-level understanding of global scene semantics and precise spatial reasoning using human appearance (e.g. pose, eye orientation). As a result, human-level performance remains elusive for existing models, limiting their practical application. To this end, we propose PaGE (Practical Gaze Estimator), a gaze estimation model that explicitly models the complex interaction between scene and head features. Using a PaGE model with a large ViT-H+ backbone as the teacher, we further distill student models with lighter backbones on a much larger and more diverse unlabeled dataset. The architectural improvements and novel training recipe allow PaGE to achieve state-of-the-art performance on several gaze estimation tasks, outperforming humans in 7 out of 9 metrics while reducing the human-AI gap by at least 60% in the remaining 2. The distilled student models retain most of the teacher's performance while being lightweight enough for practical deployment on robots and consumer devices. The code and model checkpoints are available at our project page.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T09:33:52Z</published>
+    <arxiv:comment>Project page: https://PaGE-26.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Zhoutong Ye</name>
+    </author>
+    <author>
+      <name>Chengwen Zhang</name>
+    </author>
+    <author>
+      <name>Zhaibin Cui</name>
+    </author>
+    <author>
+      <name>Mingze Sun</name>
+    </author>
+    <author>
+      <name>Jiaqi Liu</name>
+    </author>
+    <author>
+      <name>Xiangwu Li</name>
+    </author>
+    <author>
+      <name>Qingyang Wan</name>
+    </author>
+    <author>
+      <name>Chang Liu</name>
+    </author>
+    <author>
+      <name>Xutong Wang</name>
+    </author>
+    <author>
+      <name>Huan-ang Gao</name>
+    </author>
+    <author>
+      <name>Yu Mei</name>
+    </author>
+    <author>
+      <name>Chun Yu</name>
+    </author>
+    <author>
+      <name>Yuanchun Shi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04825v1</id>
+    <title>Dynamic Airspace Management for UAVs in Evolving Urban Environments: Collaborative Coordination and Human Safety</title>
+    <updated>2026-07-06T08:58:58Z</updated>
+    <link href="https://arxiv.org/abs/2607.04825v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04825v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The low-altitude economy is an emerging industry with significant development potential, in which the safety of unmanned aerial vehicle (UAV) operations is a critical challenge. Particularly within complex urban topographies and human-populated environments, UAV airspace management must prioritize collision avoidance and human safety. We propose Pharos, a collaborative multi-UAV airspace management system. Pharos lies between the distributed local perception paradigm and the centralized fine-grained control paradigm. Pharos coordinates the safe parallel execution of UAVs in shared airspace while innovatively accounting for the impact of human fear. Pharos is implemented using the MAPPO algorithm due to its faster convergence and higher rewards than other typical MARL algorithms (HAPPO and HATRPO). To evaluate Pharos, we developed a 3D simulation system using real urban data. Visualization results demonstrate its effective airspace coordination capability. Regarding performance verification, Pharos reduced human fear by 52.72% compared to the benchmark Ipopt. Moreover, we designed spatial entropy as a system evaluation metric to quantify space utilization, which improved performance by 70.82% and 2.03% compared to the benchmarks Ipopt and A-star, respectively. The source code is available at an anonymized repository: https://github.com/pharos-anonymized/source-code.git.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T08:58:58Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Lin Sun</name>
+    </author>
+    <author>
+      <name>Yuhang Wang</name>
+    </author>
+    <author>
+      <name>Fan Meng Hong</name>
+    </author>
+    <author>
+      <name>Haopeng Chen</name>
+    </author>
+    <author>
+      <name>Yan Jiao</name>
+    </author>
+    <author>
+      <name>Yongming Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04803v1</id>
+    <title>E-CoDrive: A Co-Simulation Framework for Testing Energy-Critical Driving Scenarios</title>
+    <updated>2026-07-06T08:35:37Z</updated>
+    <link href="https://arxiv.org/abs/2607.04803v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04803v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous driving research has largely focused on safety while giving limited attention to non-functional aspects such as energy consumption and sustainability. As Autonomous Electric Vehicles (AEVs) become increasingly common in urban traffic, understanding how complex traffic dynamics influence their energy consumption is paramount to test whether AEVs can complete trips before battery depletion. To support energy-aware scenario-based testing of AEVs, we present E-CoDrive, a framework for reproducible closed-loop driving co-simulations that integrates an energy consumption model, a micro-traffic simulator, and a high-fidelity driving simulator to test AEV software stacks in urban scenarios. This tool paper describes the architecture of E-CoDrive and demonstrates its applicability by testing an Autoware-based AEV stack. Our evaluation shows that varying traffic conditions produce substantial differences in vehicle energy consumption. The artifact is publicly available at https://doi.org/10.6084/m9.figshare.32244783, and a screencast showing the tool is available at https://youtu.be/yX9fWHqCvgc.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T08:35:37Z</published>
+    <arxiv:comment>In proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering (ASE '26) - Tools and Datasets track</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Manfredi Napolitano</name>
+    </author>
+    <author>
+      <name>Alessandra Somma</name>
+    </author>
+    <author>
+      <name>Alessio Gambi</name>
+    </author>
+    <author>
+      <name>Andrea Stocco</name>
+    </author>
+    <author>
+      <name>Nicola Mazzocca</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04786v1</id>
+    <title>An Exploration of Agentic Information Fusion for Test Maintenance Prediction</title>
+    <updated>2026-07-06T08:20:04Z</updated>
+    <link href="https://arxiv.org/abs/2607.04786v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04786v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Test maintenance is a critical, yet costly, activity - particularly as codebases rapidly evolve. To assist, we present MAST, a multi-agent framework that predicts which test cases require maintenance following changes to the production code. This identification task is necessary as a precondition to any subsequent maintenance activities, but remains challenging due to the complex relationships between production and test code. MAST advances the state-of-the-art by integrating multiple analyses -- including static, lexical, and semantic analyses - through an intelligent fusion and post-check procedure and by focusing on a realistic use and evaluation setting - i.e., standardized input formats, repository-level analyses, and the ability to infer relations between test and production artifacts rather than assuming a pre-existing mapping.
+  We evaluated MAST on 21 industrial Java repositories from Ericsson AB, considering situations where test maintenance both was and was not required in the ground truth. MAST yielded superior precision to a state-of-the-art baseline - resulting in a higher accuracy, F1, and F2 score - with only some loss in recall. Our ablation study demonstrates the value of each analysis in producing the final recommendations. MAST illustrates the potential of multi-agent systems that can fuse multiple information sources when performing software testing tasks.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T08:20:04Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jingxiong Liu</name>
+    </author>
+    <author>
+      <name>Nasser Mohammadiha</name>
+    </author>
+    <author>
+      <name>Gregory Gay</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04784v1</id>
+    <title>A Temporal Reasoning Benchmarking Framework for LRMs via Difficulty-controlled and Dynamic Test Generation</title>
+    <updated>2026-07-06T08:14:53Z</updated>
+    <link href="https://arxiv.org/abs/2607.04784v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04784v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Defining the reasoning boundaries and ensuring the reliability of Large Reasoning Models (LRMs) remains a critical challenge. Current benchmarks primarily rely on static datasets susceptible to data contamination or synthetic tasks lacking fine-grained difficulty control. Furthermore, standard outcome-based evaluations often conceal reasoning flaws by neglecting the reasoning process.
+  To address these limitations, we introduce TRACE, a testing framework that models temporal reasoning as constraint satisfaction problems via Allen's Interval Algebra. This approach enables precise regulation of logical complexity and incorporates a Trace-Based Verification Oracle to validate reasoning faithfulness. Using this framework, we construct TRACEBench, an extensive benchmark comprising 1,200 synthesized test instances across graded difficulty levels. We employ TRACE to evaluate eight widely used LRMs on TRACEBench. The results confirm a strong negative correlation between model performance and our difficulty metric (Pearson's r approximately -0.96), validating the effectiveness of our difficulty control mechanism. Moreover, our trace-based analysis exposes significant discrepancies between reasoning validity and final answers, revealing a high spurious guessing rate of approximately 28% in mid-sized models. In addition, we diagnose scale-dependent failure modes, ranging from Degenerative Loops in small models to Reasoning Explosion in advanced architectures. TRACE thus provides a robust, automated platform for benchmarking the true temporal reasoning capabilities of LRMs.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T08:14:53Z</published>
+    <arxiv:comment>Accepted to ISSTA 2026. 23 pages including references, 3 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Shide Zhou</name>
+    </author>
+    <author>
+      <name>Kailong Wang</name>
+    </author>
+    <author>
+      <name>Ling Shi</name>
+    </author>
+    <author>
+      <name>Haoyu Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04770v1</id>
+    <title>Cam2Sim: Neural Scenario Reconstruction for Closed-Loop Autonomous Driving Simulation</title>
+    <updated>2026-07-06T08:03:31Z</updated>
+    <link href="https://arxiv.org/abs/2607.04770v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04770v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Simulation-based testing enables safe and repeatable evaluation of autonomous driving systems, but its effectiveness is limited by the gap between synthetic simulator outputs and real-world camera observations. To address this problem, we present Cam2Sim, a tool that transforms real-world driving recordings into playable CARLA simulation scenarios. Starting from camera images and poses, Cam2Sim reconstructs road geometry, ego trajectories, parked vehicles, and simulation assets, and augments the reconstructed environment with Gaussian Splatting to render camera observations that resemble the original recording. The framework supports ROS-based data extraction, parked-vehicle detection, OpenStreetMap-based map generation, CARLA scenario construction, Gaussian Splatting training, trajectory replay, and closed-loop execution with a system under test. We validate Cam2Sim on a real-world urban-driving scenario with a camera-based end-to-end driving model, comparing reconstruction quality, image-generation quality, and closed-loop behavior against both a simulation-only baseline and the real-world target. Results show that Gaussian-Splatting-based rendering reduces the visual gap with respect to standard simulator rendering and improves behavioral similarity to the real-world reference runs. The artifact is publicly available at https: //github.com/ast-fortiss-tum/cam2sim, and a screencast showing the tool is available at https://youtu.be/KmZ74l1__lI</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T08:03:31Z</published>
+    <arxiv:comment>In proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering (ASE '26) - Tools and Datasets track</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Davide Jannussi</name>
+    </author>
+    <author>
+      <name>Stefano Carlo Lambertenghi</name>
+    </author>
+    <author>
+      <name>Constantin Carste</name>
+    </author>
+    <author>
+      <name>Andrea Stocco</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04729v1</id>
+    <title>RustMizan: A Compilable, Contamination-Aware Benchmarking Framework for Rust Vulnerabilities</title>
+    <updated>2026-07-06T07:02:56Z</updated>
+    <link href="https://arxiv.org/abs/2607.04729v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04729v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLM agents are increasingly applied to vulnerability analysis, but existing benchmarks have not kept pace. They typically rely on small non-compilable snippets, focus on binary classification (vulnerable or not), and do not account for the risk that publicly-released datasets are part of model training corpora. We introduce RustMizan, a benchmarking framework for Rust vulnerability analysis that addresses these gaps. RustMizan contains compilable code variants at the crate, file, and function levels, with annotations for binary vulnerability detection, CWE classification, and function- and line-level localization. A paired mutation framework produces semantics-preserving code mutants for contamination testing and robustness probing. Across four frontier models in an agentic setup with command-line access, binary classification sits in the 56-65% range, but line localization F1 stays near 20%, and adversarial cues drop line F1 by about 27%.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T07:02:56Z</published>
+    <arxiv:comment>36 pages, 7 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Tarek Elsayed</name>
+    </author>
+    <author>
+      <name>Shiping Yang</name>
+    </author>
+    <author>
+      <name>Eunsong Koh</name>
+    </author>
+    <author>
+      <name>Sanika Goyal</name>
+    </author>
+    <author>
+      <name>Vincent Huang</name>
+    </author>
+    <author>
+      <name>Paul Ngo</name>
+    </author>
+    <author>
+      <name>Nathan Young</name>
+    </author>
+    <author>
+      <name>Mohammad Omidvar Tehrani</name>
+    </author>
+    <author>
+      <name>Alvyn Kang</name>
+    </author>
+    <author>
+      <name>Arnell Kang</name>
+    </author>
+    <author>
+      <name>Zeyu Chen</name>
+    </author>
+    <author>
+      <name>Angélica Moreira</name>
+    </author>
+    <author>
+      <name>Xuan Feng</name>
+    </author>
+    <author>
+      <name>Angel X. Chang</name>
+    </author>
+    <author>
+      <name>Nick Sumner</name>
+    </author>
+    <author>
+      <name>Steven Y. Ko</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04727v1</id>
+    <title>Dashboard2Code: Evaluating Multimodal Models on Reconstructing Interactive Dashboards</title>
+    <updated>2026-07-06T06:58:43Z</updated>
+    <link href="https://arxiv.org/abs/2607.04727v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04727v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Automatic data visualization generation has advanced rapidly with multi-modal large language models, yet existing efforts largely focus on static charts and overlook the interactive dashboards commonly used for real-world data exploration. We introduce Dashboard2Code, a novel task that requires a model to proactively explore an interactive dashboard, acquire and integrate feedback from its own interactions (e.g., clicking and filtering), and generate code that reproduces the target dashboard. To support comprehensive evaluation, we present DashboardMimic, the first Plotly+Dash benchmark for Dashboard2Code, comprising 180 carefully designed and manually verified dashboard-code pairs spanning three difficulty levels and covering eight common real-world interaction patterns. We further propose an automated evaluation framework tailored to dashboards that combines code semantic analysis with dynamic interaction-based testing to assess visual and interaction consistency, showing strong agreement with human judgments. Experiments across a range of open- and closed-source multi-modal models reveal that even the strongest systems struggle on high-complexity dashboards and that a substantial performance gap remains between open-source and closed-source models on the Dashboard2Code task.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T06:58:43Z</published>
+    <arxiv:comment>Accepted to ACL2026 Main Conference</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Tianhao Niu</name>
+    </author>
+    <author>
+      <name>Ziyu Han</name>
+    </author>
+    <author>
+      <name>Qiguang Chen</name>
+    </author>
+    <author>
+      <name>Shiqi Zhou</name>
+    </author>
+    <author>
+      <name>Baocai Shan</name>
+    </author>
+    <author>
+      <name>Hengjie Fang</name>
+    </author>
+    <author>
+      <name>Qingfu Zhu</name>
+    </author>
+    <author>
+      <name>Wanxiang Che</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04708v1</id>
+    <title>Strategic Buying Agents</title>
+    <updated>2026-07-06T06:24:17Z</updated>
+    <link href="https://arxiv.org/abs/2607.04708v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04708v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Agentic AI is shifting online shopping from search toward delegated purchasing, where autonomous buying agents monitor markets and decide when to buy on a consumer's behalf. We study the design of such strategic buying agents, which must decide when to purchase within a finite shopping window, translating price observations, the remaining time horizon, and beliefs about future price changes into a purchase policy. We formulate this problem across three information regimes: stationary, Bayesian, and robust, and treat the resulting optimal policies as a policy menu for implementation. In the stationary regime, price adjustments follow a Poisson arrival process with a known post-adjustment price distribution; the optimal policy is a dynamic purchase-threshold rule, with the threshold governed by an ordinary differential equation. In the Bayesian regime, the adjustment intensity is known, but the price-adjustment distribution is uncertain; the optimal rule remains threshold-based, now depending on posterior beliefs, and we bound the value of knowing the true distribution. In the robust regime, the agent has only price bounds and seeks worst-case protection; randomized threshold policies achieve optimal competitive-ratio and minimax-regret guarantees. We evaluate the proposed policies on Amazon price histories from Keepa (367 items, 48,933 timestamped observations) and examine their integration into language-model buying agents. The stationary and Bayesian policies perform competitively on mean normalized consumer surplus despite their stylized assumptions, while the robust policy performs best at the distribution's 10th percentile. Results suggest language models are better suited to selecting among regimes and calibration samples than to making buy-or-wait decisions directly.</summary>
+    <category term="econ.TH" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T06:24:17Z</published>
+    <arxiv:primary_category term="econ.TH"/>
+    <author>
+      <name>Mingyang Fu</name>
+    </author>
+    <author>
+      <name>Ming Hu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04697v1</id>
+    <title>AI Agent Pull Requests on GitHub: Frequency, Structure, and Merge Conflict Rates</title>
+    <updated>2026-07-06T05:58:12Z</updated>
+    <link href="https://arxiv.org/abs/2607.04697v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04697v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>AI coding agents can create and submit pull requests (PRs) to a common repository at the same time; however, there is little research on the frequency of such concurrent submissions or the cost associated with them. In this study, we use the AIDev-pop dataset (33,596 PRs across 2,807 repositories) to perform the first large-scale empirical analysis of concurrency among agent-authored PRs. We find that under exact temporal overlap, 40.2% of repositories have co-active agent-authored PR pairs, and these co-active pairs account for 79.4% of all PRs submitted by an AI agent. When examining co-activity within a conventional one-week collaboration period, these percentages increase to 53.4% and 95.0%, respectively. For the vast majority of co-active PR pairs, both PRs were authored by the same agent (intra-agent), whereas only 0.5% of co-active pairs were cross-agent, and these were located in only 122 of the 2,807 total repositories examined (approximately 4.3%). Furthermore, we replayed actual three-way git merge operations on 747 unique co-active pairs (one per repository) to determine the rate of textual conflict when merging the two PRs in each pair. We found that the rate of textual conflict was significantly greater for cross-agent pairs than for intra-agent pairs: 41.7% versus 19.8%, respectively, with non-overlapping 95% confidence intervals. Finally, we developed a classification system based upon the output of git's conflict detection, and determined that the majority of conflicts result from changes to source code files (84.4% of conflicted files) rather than dependency manifest files, and that nearly 42% of the conflicts we observed were structural (modify/delete or add/add). Because these metrics capture only the textual layer, they represent a conservative lower bound on the cost associated with uncoordinated AI teammates working together.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T05:58:12Z</published>
+    <arxiv:comment>7 pages, 4 figures, 2 tables. Replication package: https://doi.org/10.5281/zenodo.21186464</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>George Xu</name>
+    </author>
+    <author>
+      <name>Arjun Subramanian</name>
+    </author>
+    <author>
+      <name>Nithilan Karthik</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04686v1</id>
+    <title>ToolFailBench: Diagnosing Tool-Use Failures in LLM Agents</title>
+    <updated>2026-07-06T05:25:21Z</updated>
+    <link href="https://arxiv.org/abs/2607.04686v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04686v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Tool calling is central to modern language model agents, but aggregate benchmark scores often hide where tool use fails. A model that never calls a needed tool and a model that calls the tool but ignores the result can look similar under final task accuracy. We introduce ToolFailBench, a diagnostic benchmark for measuring tool-use failures across 1,000 tasks in finance, medicine, law, cybersecurity, and real estate. Tool-required tasks return values the model wouldn't guess, forcing it to trust the tool while control tasks attach the same tools but should be answered directly. We label each trace with Tool-Skip, Result-Ignore, Output-Fabrication, and Unnecessary-Tool-Use, using a rule classifier and two LLM judges aggregated by majority vote. Across 19 headline models, the best reaches 86.33% Clean Tool-Use Rate, showing that faithful tool use is not saturated. More importantly, models with similar aggregate scores fail in different ways: most stay disciplined on no-tool controls, while Llama-3.1 models show an Always-Call pattern, and at the same parameter scale Llama-3.1-70B and Qwen2.5-72B differ by 89 percentage points on control-task accuracy. Tool-use evaluation should measure not only whether agents call tools, but whether they use tool outputs correctly and avoid tools when none is needed.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T05:25:21Z</published>
+    <arxiv:comment>18 pages, 3 figures. Published at the Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) and the Workshop on Failure Modes of Agentic AI (FAGEN) at ICML 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Harsh Soni</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04670v1</id>
+    <title>Who Responds When the Driver Is Gone? A Framework for Human Intent Understanding</title>
+    <updated>2026-07-06T04:53:56Z</updated>
+    <link href="https://arxiv.org/abs/2607.04670v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04670v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As autonomous vehicles progress toward fully driverless mobility, a critical question emerges: who understands and responds to passengers when the human driver is absent? Existing autonomous driving systems primarily optimize predefined navigation and control objectives from external scene observations, but they remain limited in perceiving and reasoning about in-cabin human intent. In this paper, we propose Intent2Drive, a unified framework for holistic human intent understanding and human-aligned planning. Instead of treating passenger intent as explicit commands alone, Intent2Drive models intent as a latent cognitive state shaped by language, personal attributes, emotional and physical conditions, behavioral signals, and situational context. To support this formulation, we construct a Holistic Intent Dataset (HID) that provides structured supervision over both explicit and implicit intent cues. Built upon HID, our Theory-of-Mind-inspired Human Intent Reasoner (HIR) infers a Latent Human State (LHS) and further translates it into a planner-compatible Human Intent Objective (HIO). We then introduce a Hierarchical Intent-Conditioned Planner (HICP) that incorporates HIO into route-level and trajectory-level planning, enabling driving behaviors to remain aligned with passenger needs across different planning horizons. Extensive experiments show that Intent2Drive improves structured human intent inference and HIO construction while preserving competitive closed-loop planning performance. These results demonstrate a promising step toward passenger-responsive autonomous driving systems that can reason about, interpret, and act upon human intent in driverless mobility.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T04:53:56Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Xuewen Luo</name>
+    </author>
+    <author>
+      <name>Ding Fan</name>
+    </author>
+    <author>
+      <name>Ruiqi Chen</name>
+    </author>
+    <author>
+      <name>Ye Cao</name>
+    </author>
+    <author>
+      <name>Xiujin Liu</name>
+    </author>
+    <author>
+      <name>Bo Yu</name>
+    </author>
+    <author>
+      <name>Fengze Yang</name>
+    </author>
+    <author>
+      <name>Chenxi Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04667v1</id>
+    <title>Correctness, confidence, and context: Framing software assurance in the AI age</title>
+    <updated>2026-07-06T04:49:51Z</updated>
+    <link href="https://arxiv.org/abs/2607.04667v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04667v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Software engineering has a complicated relationship with "correctness". We recognize the challenges of full formal rigor as well as many required properties beyond functional correctness. Although we satisfice in practice, we are still stuck in the mindset that we could reason our way to correctness, if only we had enough information.
+  Generative AI has introduced a new dimension to assurances: its foundation is statistical rather than formal. Traditional software engineering establishes confidence through rigorous reasoning, domain knowledge and expert judgment. In contrast, generative AI's results are sophisticated predictions, in Valiant's words "probably approximately correct". This inherently limits assurances about the results are to probabilistic assertions. Further, the nuances and implicit associations that guide human judgment are not accessible to its training sets, so that tacit knowledge cannot be incorporated in its models.
+  We have many approaches for developing assurances that a software system does what it's expected to do, though most of them focus on the specification of the code rather than the requirements for the system, let alone fitness for purpose. We have failed to develop a systematic understanding of the relative merits of the various approaches. I hope that generative AI will finally force us to tackle this.
+  To that end, I will challenge us to think systematically about our assurance techniques. We need ways to make informed, reasoned choices about cost-effective combinations of approaches to devel-oping confidence in our systems.
+  We call ourselves software engineers. Let's act like engineers.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T04:49:51Z</published>
+    <arxiv:comment>9 pages, 11 figures, text for invited keynote at FSE 2026 in Montreal</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Mary Shaw</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04634v1</id>
+    <title>Governed Caste Reassignment in Heterogeneous Swarms: An Asymmetric-Trust Protocol with Audited Operator Countersignature</title>
+    <updated>2026-07-06T03:34:07Z</updated>
+    <link href="https://arxiv.org/abs/2607.04634v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04634v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In heterogeneous robot swarms, caste reassignment (rebinding a robot to a new capability-bound role) is a high-frequency runtime event driven by battery, payload, and priority changes. Existing approaches treat it as an internal allocation algorithm and do not expose the reassignment to external authority. We argue that for regulated embodied deployments a caste change that elevates a robot's privilege envelope is a governance event that must be auditable and externally authorised. We propose an asymmetric-trust protocol: auto-tightening reassignments (to safer, lower-privilege castes) are admitted automatically, while bounded relaxation (to higher-privilege castes) requires an operator countersignature against a per-axis budget. Each transition carries a signed cause-chain, committed to a hash-chained Merkle audit log that an offline auditor verifies from an operator-signed identity manifest alone. We evaluate a reference implementation with real Ed25519 signatures over fleets up to 100 robots: auto-tightening completes in single-digit to low-double-digit milliseconds, and the governed protocol refuses four explicit attacks (caste laundering, repeated-relaxation escalation, operator impersonation, cause-chain forgery) by construction, with a partially-governed baseline isolating which gate stops which attack and a randomized fuzz adversary finding no admission. A distributed audit layer replicates the log across N per-member replicas with quorum-committed total order and cryptographic fork exclusion; we prove agreement and fork exclusion and validate them both in simulation and as a real multi-process deployment over TCP sockets (up to 100 real processes) with a Byzantine equivocator, on which every honest replica agrees, detects the equivocation, and commits no fork. The construction generalises a single-agent persona-mutation governance gate to swarm-level caste governance.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-06T03:34:07Z</published>
+    <arxiv:comment>28 pages, 3 figures, 5 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xue Qin</name>
+    </author>
+    <author>
+      <name>Simin Luan</name>
+    </author>
+    <author>
+      <name>Cong Yang</name>
+    </author>
+    <author>
+      <name>Zhijun Li</name>
+    </author>
+  </entry>
+</feed>

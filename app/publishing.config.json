@@ -3,9 +3,7 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": [
-    "the-bottleneck-moved"
-  ],
+  "queue": [],
   "lowQueueThreshold": 1,
-  "lastPublishedAt": null
+  "lastPublishedAt": "2026-07-07T23:25:22.208Z"
 }

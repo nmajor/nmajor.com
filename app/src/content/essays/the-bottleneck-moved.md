@@ -1,9 +1,9 @@
 ---
 title: Drafting got cheap. Sign-off didn't.
 summary: "AI made producing work close to free, so the slow, expensive step is now the person who checks the output and signs their name to it. The companies seeing real returns point AI at the work in front of that person instead of trying to skip them."
-pubDate: 2026-07-14
+pubDate: "2026-07-07T14:00:00.000Z"
 author: Nicholas Major
-draft: true
+draft: false
 readingMinutes: 3
 approved: "Nicholas Major 2026-07-02"
 ---

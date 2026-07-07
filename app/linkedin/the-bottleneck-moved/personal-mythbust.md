@@ -4,6 +4,7 @@ channel: personal
 offsetDays: 5
 angle: perception-gap
 approved: "Nicholas Major 2026-07-02"
+shadowedAt: "2026-07-07T23:28:41.817Z"
 ---
 The developers were sure AI made them 20% faster. The stopwatch said 19% slower.
 

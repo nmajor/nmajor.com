@@ -5,7 +5,9 @@ offsetDays: 3
 angle: framework
 approved: "Nicholas Major 2026-07-02"
 ---
-Allianz's UK arm gave its underwriters an AI assistant and saved about 135 days of document-hunting in a year. It worked because the assistant did the grunt work in front of the decision. The underwriter still owns the call.
+Allianz's underwriters got an AI assistant and saved 135 days' worth of time last year. They didn't let it make any decisions.
+
+It did the grunt work in front of the decision. The underwriter still owns the call.
 
 Most failed AI rollouts share the same problem, and a better model won't fix it: the tool is pointed at the wrong step.
 
@@ -22,5 +24,7 @@ Here's what the companies actually getting returns do differently:
 4. Protect the person who signs off. Their capacity to judge is the ceiling on your throughput, so don't bury them.
 
 The pattern across the big consulting surveys is boring and consistent: the returns come from redesigning the work around the tool. A better model doesn't get you there, and neither does cutting the people who own the output.
+
+Which step is your AI pointed at right now, the grunt work in front of the decision, or the decision itself?
 
 If you want the full playbook, that's what I write about in Actual Intelligence, my newsletter on applying AI without the hype. Link's in my profile.

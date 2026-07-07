@@ -5,10 +5,12 @@ offsetDays: 5
 angle: perception-gap
 approved: "Nicholas Major 2026-07-02"
 ---
-Your team telling you AI saves them time isn't evidence that it does.
+The developers were sure AI made them 20% faster. The stopwatch said 19% slower.
 
-Researchers timed experienced developers doing real work with AI and without it. With AI they came out about 19% slower, and were sure they were about 20% faster. The feeling and the stopwatch pointed opposite ways.
+Researchers timed experienced developers doing real work with AI and without it, and the feeling and the clock pointed opposite ways. Which is why your team saying AI saves them time isn't evidence that it does.
 
 It's one study, and there's more going on than any single cause. But the gap runs through any desk job: the claims summary that looks finished, the report that reads clean, until someone downstream actually leans on it. Producing output feels like progress, even when the extra checking eats the gain.
 
-So "the team says it's helping" isn't a measurement. Before you roll a tool out wider because it feels fast, measure something real: how long the work takes end to end, including the checking and the rework. If you can't point to that number, you're scaling on a feeling.
+So before you roll a tool out wider because it feels fast, measure something real: how long the work takes end to end, including the checking and the rework.
+
+Have you actually clocked that number, or are you going on how it feels?

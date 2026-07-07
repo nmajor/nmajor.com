@@ -1,6 +1,6 @@
 ---
 name: content-discovery
-description: Find fresh, deep-cut applied-AI story candidates and hand Nick a ranked digest to review. Use when Nick wants ideas to write about, a weekly scan of what's worth covering, a "what's happening in applied AI right now" sweep, or a hunt for named-company AI case studies (process integration, or replacing an expensive SaaS bill with an in-house vibecoded tool) to stock the running case-study library at research/case-studies/. Pulls free sources (Hacker News, Lobsters, arXiv, GitHub, Hugging Face papers, web search) plus Exa neural search and findSimilar for the deep cuts keyword sources miss, plus vendor customer-story indexes, industry trade press, conference recaps and earnings calls. Ranks for relevance, non-obviousness, and how strong an opinionated first-person take Nick could hang on it, writes a digest, and accretes verified case studies into a permanent library. Nick picks one and brain-dumps into the content-builder skill.
+description: Find fresh, deep-cut applied-AI story candidates and hand Nick a ranked digest to review. Use when Nick wants ideas to write about, a weekly scan of what's worth covering, a "what's happening in applied AI right now" sweep, or a hunt for named-company AI case studies (process integration, or replacing an expensive SaaS bill with an in-house vibecoded tool) to stock the running case-study library at research/case-studies/. Pulls free sources (Hacker News, Lobsters, arXiv, GitHub, Hugging Face papers, web search) plus Exa neural search and findSimilar for the deep cuts keyword sources miss, plus vendor customer-story indexes, industry trade press, conference recaps and earnings calls. Ranks for relevance, non-obviousness, breakout potential (whether a story can feed a LinkedIn post that escapes Nick's network — see research/linkedin-breakout/report.md), and how strong an opinionated first-person take Nick could hang on it, writes a digest, and accretes verified case studies into a permanent library. Nick picks one and brain-dumps into the content-builder skill.
 ---
 
 # Content discovery: surface deep-cut story candidates
@@ -258,6 +258,45 @@ curl -sS -X POST "https://api.perplexity.ai/chat/completions" \
 Its real home is the `content-builder` research stage, where you go deep on the one topic
 Nick picked. Mine the `citations` / `search_results` it returns for primary sources.
 
+## Breakout potential: score every candidate for it (this feeds the LinkedIn reach engine)
+
+The essay is also the newsletter issue AND the source for LinkedIn atomization (project
+`CLAUDE.md`), so a story's shape at discovery time decides whether it can later feed a
+**breakout** LinkedIn post (one that escapes Nick's immediate network) or only a solid
+in-network one. **`research/linkedin-breakout/report.md` is the evidence base — read it.**
+The short version, grounded in Nick's own natural experiment (four posts about one story:
+171,633 impressions vs ~135-234 for the others): breakout reach comes from a **large
+"could-be-us" pool × high-arousal but honest emotion (anxiety/awe/surprise) × a live,
+novel news peg**, told as a **story** with a **safe, answerable question** and a **mild
+moral frame**. Deep, useful analysis pieces make excellent *baseline* essays but rarely
+break out — and that is fine; you cannot force it, and only ~1 of every 4 posts should even
+try (report §4).
+
+So score every candidate on **breakout potential** alongside relevance and deep-cut, and
+tag its natural shape. A candidate hitting most of the following is a **spike** candidate
+(write it fast, news-shaped, while the wave is cresting); one that is deep and useful but
+hits few is a **baseline** candidate (a strong save-worthy essay — do not force a breakout
+frame onto it):
+
+- **First-of-kind / genuinely novel?** (first SEC filing / lawsuit / fine / regulation /
+  board resignation caused by AI). True novelty is the honest substitute for bait and the
+  single highest-value breakout peg. **Actively hunt these:** SEC EDGAR 8-Ks (Item 1.05),
+  regulator actions (FTC, state AGs, banking/insurance regulators), court dockets, law-firm
+  client alerts (e.g. WSGR), and governance trade press — exactly where the CB Financial
+  shadow-AI story surfaced.
+- **Named, concrete, verifiable?** A real company, real stakes, checkable facts.
+- **High-arousal but honest stakes?** Anxiety, awe, or surprise from real events — never
+  manufactured fear.
+- **Broadly addressable?** A wide pool can think "this could be us," then the ICP
+  self-selects.
+- **A mild moral / accountability frame?** (who's accountable, protecting customers) —
+  never partisan outrage.
+- **Timely right now?** A news wave still cresting decays fast — flag spike candidates for
+  **fast-track** (the specific-date publish path in `CLAUDE.md`); do not let them sit in the
+  queue behind evergreen essays.
+- **Honest substance underneath?** A candidate that scores only on fear but is thin on real,
+  checkable substance is a **reject**, not a spike. Honesty filter first.
+
 ## The procedure
 
 1. **Set up the run.** Use today's date. Create
@@ -277,6 +316,13 @@ Nick picked. Mine the `citations` / `search_results` it returns for primary sour
    - **Relevance** (0-5): how squarely applied-AI / enterprise-integration it is.
    - **Deep-cut** (0-5): how non-obvious and early it is. High for a practitioner writeup,
      a fast-rising small repo, a sharp niche paper. Low for something already everywhere.
+   - **Breakout** (0-5): can it feed a LinkedIn post that escapes Nick's network? Score on
+     the ingredients above (first-of-kind/novel, named, high-arousal-but-honest, broadly
+     addressable, moral frame, timely). See `research/linkedin-breakout/report.md`. Also
+     tag the natural shape: `[incident/named-case/first-of-kind]` (tellable as a story — a
+     spike candidate) or `[framework/analysis/trend]` (an explainer — a baseline candidate).
+     A low breakout score is not a reject; a deep, useful baseline story is exactly what most
+     issues should be. It is a routing signal, not a quality bar.
    - Drop everything below a relevance floor. A model launch with relevance 5 but
      deep-cut 0 is usually a skip for us; say why in one line if you keep it.
 5. **Rank and select.** Sort by relevance plus deep-cut. Cap any single source so the
@@ -302,7 +348,7 @@ before filtering.>
 
 ### 1. <Title> — [source link](url)
 **Source(s):** Hacker News (180 pts, 90 comments) · Lobsters
-**Relevance 5 · Deep-cut 4**
+**Relevance 5 · Deep-cut 4 · Breakout 4 — spike** · `[incident/named-case/first-of-kind]`
 One plain, factual line on what it is and why it might matter for our beat. State the story; leave the take to Nick.
 **Read:** [article](url) · [HN thread](url)
 

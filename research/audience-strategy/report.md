@@ -20,6 +20,12 @@ directly usable, not an academic survey.
 > regenerable from those raw files per the repo research pattern. Stats are kept with their
 > sources; where sources conflict or a number is folklore/unsourced, it is flagged inline.
 
+> **Companion report.** This report treats high-performing posts as built for *saves, not
+> virality* (§2) — correct for the weekly baseline. `research/linkedin-breakout/report.md`
+> covers the *other* game: breakout reach (how a post escapes the network to 100k+, via
+> stranger reshares and comments), the ingredient list behind it, and how the two games
+> reconcile. Read it alongside §2 here.
+
 ---
 
 ## 1. Core strategy in brief

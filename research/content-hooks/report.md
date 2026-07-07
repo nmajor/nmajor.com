@@ -18,6 +18,11 @@ separate durable hook craft from the clickbait that dominates most "hook" advice
 > of them and is fully re-readable against and regenerable from those raw inputs, per the
 > repo's research pattern.
 
+> **Reach vs. the hook (companion report).** A great hook earns the *next sentence* — but
+> whether a post reaches 200 people or 170,000 is mostly its *shareability shape* (story vs.
+> checklist, broad vs. niche, news-pegged vs. evergreen), not its first line. For that second
+> question — breakout reach vs. in-network engagement — see `research/linkedin-breakout/report.md`.
+
 ---
 
 ## 1. The big picture: what actually makes a hook work

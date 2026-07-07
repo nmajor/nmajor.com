@@ -20,6 +20,12 @@ It covers three surfaces:
 The full evidence and examples live in `research/content-hooks/report.md` (raw in
 `research/content-hooks/raw/`). Read it when you want depth; this skill is the procedure.
 
+For a **LinkedIn** hook specifically, remember the hook earns the *click*, not the *reach*:
+whether a post travels beyond Nick's network is mostly its shareability shape, covered in
+`research/linkedin-breakout/report.md`. On a **spike** (news-pegged, breakout-shaped) post,
+lead the hook with the *event* itself, not the lesson — see that report and the "Two reach
+games" section of the `content-repurposing` skill.
+
 ## The one principle that governs everything
 
 **For our audience, the honest hook and the effective hook are the same hook.** Our

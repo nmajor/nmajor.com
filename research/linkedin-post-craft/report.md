@@ -21,12 +21,13 @@ work?"
 
 ## How this relates to the other reports (read all three, don't duplicate)
 
-Three reports, three jobs. Don't repeat across them.
+Four reports, four jobs. Don't repeat across them.
 
 | Report | Owns | Use it for |
 |---|---|---|
 | `audience-strategy/report.md` | The funnel, cadence, algorithm, formats, CTAs, the consulting motion | Why we post at all; how often; where links go; how reach works; the 30/60/90 |
 | `content-hooks/report.md` | Hook theory and the hook-generation pipeline | The psychology of a hook; the 10-category taxonomy; prompting a model for hooks |
+| `linkedin-breakout/report.md` | Breakout vs. in-network reach; the two-games model | Why the same story reached 200 vs 170,000; the breakout ingredient list; when to build a post as a spike vs a save; how discovery should score breakout potential |
 | **this report** | **Post craft + repurposing craft** | Expand vs atomize; the anatomy of a whole post; formatting mechanics; what good looks like vs lazy; the issue-to-batch procedure |
 
 The `content-repurposing` skill is the operational checklist that executes all of this (where

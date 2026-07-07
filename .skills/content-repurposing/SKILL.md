@@ -1,6 +1,6 @@
 ---
 name: content-repurposing
-description: Turn one finished/approved newsletter post into a small batch of standalone LinkedIn posts (default 3) for Nick to approve and schedule in Postiz, AND auto-generate 1-3 short site "takes" that drip out after the issue (no approval, deduplicated against every past take). The minimum-viable distribution motion that hangs off the weekly newsletter. Use right after a post is drafted and approved (going into the publish queue), or any time you want to atomize an existing post. Always refines each LinkedIn post through a few rounds of the icp-focus-group panel before showing Nick, so he only ever sees a polished version. Composes with writing-voice, hooks, icp-focus-group, and content-builder. Backed by research/audience-strategy/report.md.
+description: Turn one finished/approved newsletter post into a small batch of standalone LinkedIn posts (default 3) for Nick to approve and schedule in Postiz, AND auto-generate 1-3 short site "takes" that drip out after the issue (no approval, deduplicated against every past take). The minimum-viable distribution motion that hangs off the weekly newsletter. Use right after a post is drafted and approved (going into the publish queue), or any time you want to atomize an existing post. Always refines each LinkedIn post through a few rounds of the icp-focus-group panel before showing Nick, so he only ever sees a polished version. Composes with writing-voice, hooks, icp-focus-group, and content-builder. Backed by research/audience-strategy/report.md, research/linkedin-post-craft/report.md, and research/linkedin-breakout/report.md (the two-reach-games model: baseline saves vs the breakout spike, and why one of Nick's posts hit 171k while its siblings sat at ~200).
 ---
 
 # Content repurposing: newsletter to LinkedIn
@@ -24,13 +24,18 @@ It sits on top of three authorities and does not duplicate them:
 - **`content-builder`** produced the source post and its provenance in `research/<topic>/`.
   This skill is its distribution arm.
 
-Two research reports back this skill, read both:
+Three research reports back this skill, read all three:
 - `research/audience-strategy/report.md` — the funnel, cadence, algorithm, formats, CTAs, the
   consulting motion (the *why we post* and *how reach works*).
 - `research/linkedin-post-craft/report.md` — the **craft layer**: expand-vs-atomize, the anatomy
   of a great standalone post, formatting mechanics, the 12-template hook swipe file, and a
   step-by-step issue-to-batch procedure (the *how to make the post actually good*). Its §7
   procedure and §4 swipe file are the working method; follow them when drafting a batch.
+- `research/linkedin-breakout/report.md` — the **reach-games layer**: why in-network engagement
+  (saves) and breakout reach (stranger reshares/comments) are *different games*, the breakout
+  ingredient list, and the four-post diagnosis (171k vs ~200 on the same story). Read it to
+  judge which post in a batch is the breakout spike and to build that post to the breakout
+  shape. Summarized in "Two reach games" below.
 
 > **This is the commercial-pull channel.** Unlike the Institute (neutral, firewalled), nmajor.com
 > *is* Nick's personal + commercial channel. LinkedIn atomization off the "Actual Intelligence"
@@ -123,6 +128,53 @@ post** rendered as swipeable slides.
 > **Postiz gotcha:** document/PDF posts are not supported by every scheduler. Confirm Postiz
 > can natively schedule a document post; if it can't, schedule A and C in Postiz and post the
 > carousel (B) manually. Don't assume.
+
+## Two reach games: baseline (saves) vs the breakout spike
+
+`research/linkedin-breakout/report.md` is required reading for this skill. Its core finding
+changes how you judge a batch: **in-network engagement and breakout reach are different
+games**, and the A/B/C posts above naturally play different ones. Do not score them the same,
+and do not treat a low-impression save-game post as a failure.
+
+- **Baseline (the save game) — the framework (B) and myth-bust (C), ~3 of every 4 posts.**
+  Niche, ICP-specific, save-worthy. They win on saves, dwell, and meaningful comments from
+  the *right* people, not raw impressions. A 234-impression checklist that books a call did
+  its job. Measure by saves + comments + profile clicks. This is the home turf of
+  `linkedin-post-craft` — keep it exactly as is.
+- **Spike (the breakout game) — the story (A), and only when a real news peg exists.** The
+  post that can escape Nick's network. Breakout is powered by stranger reshares and comments
+  (public, identity-signaling acts), which a save can't produce — so a *checklist* is
+  save-able and un-reshare-able, while a *story* is the reverse. Measure by impressions +
+  reshares + stranger-comments.
+
+**You cannot manufacture a breakout every week, and shouldn't try** — a feed of nothing but
+"the latest AI disaster" becomes the fear-merchant the brand rejects. Most weeks the save
+game *is* the job. But when the source essay genuinely rides a novel, named, first-of-kind
+event (the `content-discovery` skill tags these **spike**), build the story post (A) to the
+breakout shape:
+
+1. **Lead with the event, not the lesson.** The news peg goes first.
+2. **Make it a story, not a deliverable.** A narrative carries the reshare; a framework reads
+   like a product and doesn't travel.
+3. **Keep arousal high and honest.** Anxiety/surprise from *real* stakes, never manufactured.
+   ("No hacker. No breach. Just someone trying to move a little faster" is high-arousal *and*
+   true.)
+4. **Maximize addressability.** Frame so the widest honest pool thinks "this could be us,"
+   then let the ICP self-select in the comments.
+5. **Close on a safe, answerable question** a stranger can answer and look thoughtful doing
+   so — this is what drives the stranger-comments that break a post out. Not a flat hot take,
+   never "comment YES." **This is the single cheapest lift on most drafts:** our posts tend to
+   end on a statement or a newsletter CTA instead of a question that invites a reply.
+6. **Carry a mild, universal moral frame** (accountability, protecting customers) — never
+   partisan outrage, even though it would spread further. That line is the brand.
+7. **Post it fast, in the timing window,** and be in the comments in the first hour —
+   stranger-comments are the escape signal.
+
+Everything in `writing-voice`, `hooks`, and `linkedin-post-craft` about honesty, specificity,
+banned hype words, and no engagement-bait still governs. Breakout is an *addition* gated by a
+real news peg, never a license to bait — and LinkedIn's 2026 algorithm demotes cheap virality
+while rewarding the legitimate high-value breakout, so the honest version is also the effective
+one. Full evidence and the four-post diagnosis: `research/linkedin-breakout/report.md`.
 
 ## CTA and link rules
 

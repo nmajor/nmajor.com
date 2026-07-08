@@ -5,6 +5,8 @@ offsetDays: 3
 angle: framework
 approved: "Nicholas Major 2026-07-02"
 shadowedAt: "2026-07-07T23:28:41.817Z"
+pushedAt: "2026-07-08T10:56:37.792Z"
+postizId: cmrbyqd3h0009kc6x2e7atxv3
 ---
 Allianz's underwriters got an AI assistant and saved 135 days' worth of time last year. They didn't let it make any decisions.
 

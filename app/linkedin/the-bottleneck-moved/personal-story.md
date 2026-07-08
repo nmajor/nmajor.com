@@ -5,6 +5,8 @@ offsetDays: 1
 angle: story
 approved: "Nicholas Major 2026-07-02"
 shadowedAt: "2026-07-07T23:28:41.817Z"
+pushedAt: "2026-07-08T10:56:37.792Z"
+postizId: cmrbyqd0i0008kc6xpo761xw5
 ---
 A lawyer trusted AI to write the brief. It invented the case law. That mistake has now shown up in more than 1,600 filings.
 

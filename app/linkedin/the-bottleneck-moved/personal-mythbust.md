@@ -5,6 +5,8 @@ offsetDays: 5
 angle: perception-gap
 approved: "Nicholas Major 2026-07-02"
 shadowedAt: "2026-07-07T23:28:41.817Z"
+pushedAt: "2026-07-08T10:56:37.792Z"
+postizId: cmrbyqd5a000akc6xw2gz8m9q
 ---
 The developers were sure AI made them 20% faster. The stopwatch said 19% slower.
 

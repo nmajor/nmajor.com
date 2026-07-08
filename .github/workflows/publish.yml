@@ -14,15 +14,14 @@ name: Publish
 # a guaranteed red ping on ANY step failure, and pings the healthcheck on every
 # run (success or fail) so a stopped cron is detected independently.
 
-# PAUSED: the daily `schedule:` trigger is disabled until nmajor's own
-# Buttondown/Postiz (and Cloudflare deploy) secrets are wired — running the full
-# build/deploy/email pipeline before then would fail every day and spam red
-# Discord alerts. The lightweight queue-empty alarm lives in queue-status.yml.
-# Re-enable by uncommenting the `schedule:` block below. Until then this workflow
-# is manual-only (workflow_dispatch).
+# ACTIVE: runs daily at 14:00 UTC. Re-enabled 2026-07-08 once the Buttondown,
+# Cloudflare, and Postiz secrets were confirmed wired in GitHub Actions secrets.
+# The queue only promotes on the cadence weekday; the daily run also lets pinned
+# future-dated essays go live and email on their day. The lightweight queue-empty
+# alarm lives in queue-status.yml.
 on:
-  # schedule:
-  #   - cron: '0 14 * * *'
+  schedule:
+    - cron: '0 14 * * *'
   workflow_dispatch:
     inputs:
       force:

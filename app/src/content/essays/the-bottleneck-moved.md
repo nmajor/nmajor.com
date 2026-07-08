@@ -6,6 +6,7 @@ author: Nicholas Major
 draft: false
 readingMinutes: 3
 approved: "Nicholas Major 2026-07-02"
+emailedAt: "2026-07-08T10:55:19.212Z"
 ---
 
 More than [1,600 court filings](https://www.damiencharlotin.com/hallucinations/) have been caught citing cases the AI invented, and the lawyers who filed them are getting fined and thrown off their cases. The tool wrote each brief in seconds. Checking it and signing it was still the lawyer's job, and that part never got faster.

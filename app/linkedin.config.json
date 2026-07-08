@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "postingHourUTC": 15,
   "channels": {
     "personal": {

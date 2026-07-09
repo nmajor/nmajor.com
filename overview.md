@@ -211,8 +211,9 @@ audience; the consultancy is where the commercial conversation happens.
   order: Every City in the USA, National Sites Guide, Sites That Get Calls,
   TangoLango, Calculator Campus, VeilBoard, and SupplierSignal. Project rows use each
   site's published `og:image` where available; SupplierSignal has no exposed OG image
-  yet, so the page uses a local fallback card. Sites That Get Calls includes the Figma
-  hero resource, Linktree, and Cal.com project link. Footer now includes a small `/projects` link
+  yet, so the page uses a local fallback card. Every City in the USA includes Linktree,
+  Figma, and Cal resources; Sites That Get Calls includes Figma, Cal, Linktree, and GitHub.
+  Footer now includes a small `/projects` link
   and an Elsewhere column with Linktree, X, Instagram, LinkedIn, and GitHub.
 - **2026-07-01.** Home page live (direction 4a). **Publications structure done:**
   `essays` + `takes` content collections, `/writing` (index + per-essay pages),

@@ -212,7 +212,7 @@ audience; the consultancy is where the commercial conversation happens.
   TangoLango, Calculator Campus, VeilBoard, and SupplierSignal. Project rows use each
   site's published `og:image` where available; SupplierSignal has no exposed OG image
   yet, so the page uses a local fallback card. Every City in the USA includes Linktree,
-  Figma, and Cal resources; Sites That Get Calls includes Figma, Cal, Linktree, and GitHub.
+  Figma, Cal, and GitHub resources; Sites That Get Calls includes Figma, Cal, Linktree, and GitHub.
   Footer now includes a small `/projects` link
   and an Elsewhere column with Linktree, X, Instagram, LinkedIn, and GitHub.
 - **2026-07-01.** Home page live (direction 4a). **Publications structure done:**

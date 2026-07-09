@@ -140,6 +140,10 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
+- **2026-07-09 — IndexNow configured.** The root key file is
+  `app/public/e70c55cfbfc05af0911a2af8cda5cc21.txt`, served at
+  `https://www.nmajor.com/e70c55cfbfc05af0911a2af8cda5cc21.txt`. Use that key for
+  IndexNow submissions for `www.nmajor.com`.
 - **2026-07-02 — Analytics live (self-hosted Rybbit).** Registered as **site id 17** in
   the shared Rybbit instance (`rybbit.nmajor.net`, org "Critical AI test" —
   `eHFGe7uW6m7ljg9u3BmzrGFuvKuarNZj`, same org/host/key as the Institute). Cookieless

@@ -1,0 +1,254 @@
+---
+import Base from '../layouts/Base.astro';
+
+const projects = [
+  {
+    name: 'Every City in the USA',
+    domain: 'everycityintheusa.com',
+    href: 'https://www.everycityintheusa.com/',
+    description:
+      'A sortable U.S. city database with Census V2025 population, growth, density, and cost-of-living fields.',
+    image: 'https://www.everycityintheusa.com/og/index.png',
+  },
+  {
+    name: 'National Sites Guide',
+    domain: 'nationalsitesguide.com',
+    href: 'https://www.nationalsitesguide.com/',
+    description:
+      'Monthly crowd patterns for U.S. national parks and sites, built from official NPS visitor-use data.',
+    image: 'https://www.nationalsitesguide.com/og/home.png',
+  },
+  {
+    name: 'Sites That Get Calls',
+    domain: 'sitesthatgetcalls.com',
+    href: 'https://www.sitesthatgetcalls.com/',
+    description:
+      'A website generator for local service businesses: paste a Google Business Profile, get a site pointed at phone calls.',
+    image: 'https://www.sitesthatgetcalls.com/brand/og-default.png',
+    resources: [
+      {
+        label: 'Plumber website hero design on Figma',
+        href: 'https://www.figma.com/community/file/1657027349697559315',
+      },
+      {
+        label: "Let's talk about this project",
+        href: 'https://cal.com/sitesthatgetcalls',
+      },
+    ],
+  },
+  {
+    name: 'TangoLango',
+    domain: 'tangolango.com',
+    href: 'https://www.tangolango.com/',
+    description:
+      'Language practice for the dialect around you, with native audio, chat practice, and flashcards from real life.',
+    image: 'https://www.tangolango.com/og-image.png',
+  },
+  {
+    name: 'Calculator Campus',
+    domain: 'calculatorcampus.com',
+    href: 'https://www.calculatorcampus.com/',
+    description:
+      'Free calculators with plain explanations, from mortgage math to BMI to tip splits.',
+    image: 'https://www.calculatorcampus.com/og/site.png',
+  },
+  {
+    name: 'VeilBoard',
+    domain: 'veilboard.com',
+    href: 'https://www.veilboard.com/',
+    description:
+      'A 60-second visual quiz that turns a wedding mood into six Pinterest-ready boards.',
+    image: 'https://www.veilboard.com/og-image.png',
+  },
+  {
+    name: 'SupplierSignal',
+    domain: 'suppliersignal.com',
+    href: 'https://www.suppliersignal.com/',
+    description:
+      'Paste an Amazon ASIN and get a ranked Alibaba supplier shortlist with visual matching, factory-vs-trading estimates, and profitability math.',
+    image: '/projects/suppliersignal-og.svg',
+  },
+];
+---
+<Base
+  title="Projects · Nicholas Major"
+  description="Current projects from Nicholas Major: small sites, tools, and products he is building or running now."
+>
+  <header class="phead">
+    <div class="eyebrow">Projects</div>
+    <h1 class="phead__title">Projects</h1>
+    <p class="phead__sub">Small sites, tools, and products I'm building or running now.</p>
+  </header>
+
+  <section class="projects">
+    <div class="project-list">
+      {projects.map((project) => (
+        <article class="project">
+          <a class="project__imageLink" href={project.href} target="_blank" rel="noopener">
+            <img
+              class="project__image"
+              src={project.image}
+              width="420"
+              height="220"
+              loading="lazy"
+              decoding="async"
+              alt=""
+            />
+          </a>
+
+          <div class="project__main">
+            <div class="project__top">
+              <h2 class="project__name">
+                <a href={project.href} target="_blank" rel="noopener">{project.name}</a>
+              </h2>
+              <a class="project__domain" href={project.href} target="_blank" rel="noopener">{project.domain} ↗</a>
+            </div>
+
+            <p class="project__description">{project.description}</p>
+
+            {project.resources && (
+              <div class="project__resources">
+                <h3 class="project__resourcesTitle">Resources</h3>
+                <ul class="project__resourceList">
+                  {project.resources.map((resource) => (
+                    <li>
+                      <a href={resource.href} target="_blank" rel="noopener">{resource.label} ↗</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .projects {
+      max-width: var(--wrap);
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 48px) clamp(56px, 7vw, 84px);
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--line2);
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+      gap: clamp(20px, 4vw, 42px);
+      padding: clamp(26px, 4vw, 38px) 0;
+      border-bottom: 1px solid var(--line2);
+      align-items: start;
+    }
+
+    .project__imageLink {
+      display: block;
+      aspect-ratio: 1.91 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line2);
+      background: #fff;
+      text-decoration: none;
+    }
+
+    .project__image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .project__main {
+      min-width: 0;
+      padding-top: 2px;
+    }
+
+    .project__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px 20px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .project__name {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      font-weight: 900;
+    }
+
+    .project__name a,
+    .project__domain,
+    .project__resourceList a {
+      text-decoration: none;
+    }
+
+    .project__name a:hover,
+    .project__domain:hover,
+    .project__resourceList a:hover {
+      color: var(--accent);
+    }
+
+    .project__domain {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 12px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .project__description {
+      margin: 12px 0 0;
+      max-width: 62ch;
+      font-size: clamp(16px, 1.7vw, 18px);
+      line-height: 1.55;
+      color: var(--body);
+    }
+
+    .project__resources {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project__resourcesTitle {
+      margin: 0 0 10px;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project__resourceList {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .project__resourceList a {
+      color: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .project__imageLink {
+        max-width: 420px;
+      }
+    }
+  </style>
+</Base>

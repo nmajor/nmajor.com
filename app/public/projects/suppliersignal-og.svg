@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SupplierSignal</title>
+  <desc id="desc">A SupplierSignal fallback project image for nmajor.com.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#d9e1f2" stroke-width="3"/>
+  <circle cx="166" cy="168" r="48" fill="#5e7eff"/>
+  <path d="M143 168h46M166 145v46" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+  <text x="238" y="178" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800">SupplierSignal</text>
+  <text x="238" y="234" fill="#526179" font-family="Arial, Helvetica, sans-serif" font-size="26">Amazon ASIN to ranked Alibaba supplier shortlist</text>
+  <g transform="translate(128 318)">
+    <rect width="214" height="122" rx="18" fill="#eef3ff" stroke="#c6d4ff" stroke-width="2"/>
+    <text x="28" y="52" fill="#5e7eff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">ASIN</text>
+    <text x="28" y="88" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="22">B0C123...</text>
+  </g>
+  <path d="M380 378h116" stroke="#5e7eff" stroke-width="10" stroke-linecap="round"/>
+  <path d="M478 344l44 34-44 34" fill="none" stroke="#5e7eff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(568 298)">
+    <rect width="438" height="166" rx="22" fill="#111827"/>
+    <text x="34" y="56" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Top supplier matches</text>
+    <text x="34" y="98" fill="#b9c7e6" font-family="Arial, Helvetica, sans-serif" font-size="22">Visual match, supplier type, margin math</text>
+    <rect x="34" y="124" width="118" height="20" rx="10" fill="#5e7eff"/>
+    <rect x="170" y="124" width="94" height="20" rx="10" fill="#7dd3fc"/>
+    <rect x="282" y="124" width="76" height="20" rx="10" fill="#34d399"/>
+  </g>
+</svg>

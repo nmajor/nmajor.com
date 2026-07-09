@@ -1,0 +1,3 @@
+# Cloudflare prepends its managed AI-bot content signals to this file automatically.
+# This origin robots.txt exists to advertise the sitemap to crawlers.
+Sitemap: https://www.nmajor.com/sitemap-index.xml

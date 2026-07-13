@@ -1,0 +1,9 @@
+SOURCE: NAIC Model Bulletin on Use of AI Systems by Insurers (adopted Dec 4, 2023) + Colorado
+URLs:
+- https://content.naic.org/article/naic-members-approve-model-bulletin-use-ai-insurers
+- https://content.naic.org/sites/default/files/cmte-h-big-data-artificial-intelligence-wg-ai-model-bulletin.pdf.pdf
+- Colorado SB 24-205 (signed May 17, 2024) / C.R.S. 10-3-1104.9 (Colo. insurers' use of external data & algorithms, Reg 10-1-1)
+Fetched: 2026-07-13
+
+NAIC Model Bulletin requires each insurer to adopt/implement/maintain a written AI Systems (AIS) Program: governance, documented policies, senior management oversight, risk management/internal controls proportional to potential consumer harm, testing/validation for bias & unfair discrimination with documented results, and third-party vendor oversight. Adopted by 24+ jurisdictions.
+Colorado SB 205 (Colorado AI Act) — first US state comprehensive AI law; requires developers/deployers of high-risk AI to protect consumers from algorithmic discrimination (governance + documentation). C.R.S. 10-3-1104.9 = Colorado insurance-specific governance & risk-management framework for AI/external consumer data.

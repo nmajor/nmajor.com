@@ -37,6 +37,12 @@ end of the day," "As we navigate," "As technology continues to evolve," "At the 
 of," "In the realm of," "In this article we will," "Let's dive in," "Let's delve into,"
 "First and foremost," "It goes without saying," "It is no secret that."
 
+Suspense preambles that stall before the point (say the thing directly instead):
+"Here's the part I keep coming back to," "Here's the part that," "The part I keep coming
+back to is," "What I keep coming back to is," "Here's the thing," "Here's where it gets
+interesting," "Here's what gets me," "But here's the kicker." If a line's only job is to
+announce that a good sentence is coming, cut it and write the good sentence.
+
 ## Wrap-up closers (delete)
 
 "In conclusion," "To wrap up," "To summarize," "In summary," "As we've seen," "It is

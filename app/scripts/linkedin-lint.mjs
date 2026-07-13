@@ -14,6 +14,18 @@ import { readAllItems, CHANNELS, resolveParent, readLinkedinConfig, isAutoApprov
 import { ESSAYS_DIR } from './lib/posts.mjs';
 
 const MIN_BODY_CHARS = 120;
+// The hook is the first paragraph, everything above LinkedIn's "see more" fold. Mobile (most
+// traffic) truncates around 140 chars, and a blank line ends the preview even earlier. So every
+// personal reach post must land its whole hook in one paragraph of ≤ 140 chars. Enforced below.
+// (Business/preview posts are exempt: they are link-summaries, not reach hooks.)
+const HOOK_MAX_CHARS = 140;
+
+/** The hook = first paragraph of the body, comments stripped, whitespace collapsed. */
+export function hookLength(body) {
+  const clean = body.replace(/<!--[\s\S]*?-->/g, '').trim();
+  const firstPara = (clean.split(/\n\s*\n/)[0] || '').replace(/\s+/g, ' ').trim();
+  return [...firstPara].length;
+}
 
 /** @returns {{ok: boolean, problems: Array, ready: string[], drafts: string[]}} */
 export function lintLinkedin(items, channels = {}) {
@@ -40,6 +52,14 @@ export function lintLinkedin(items, channels = {}) {
     }
     if (item.body.trim().length < MIN_BODY_CHARS) {
       issues.push(`body looks unfinished (<${MIN_BODY_CHARS} chars)`);
+    }
+    // Hook must clear the mobile "see more" fold. Personal reach posts only; business/preview
+    // posts are link-summaries whose rules invert, so they are exempt.
+    if (d.channel === 'personal') {
+      const len = hookLength(item.body);
+      if (len > HOOK_MAX_CHARS) {
+        issues.push(`hook (first paragraph) is ${len} chars; must be ≤ ${HOOK_MAX_CHARS} to clear the mobile "see more" fold — tighten it or break it into a shorter first paragraph`);
+      }
     }
 
     if (issues.length) {

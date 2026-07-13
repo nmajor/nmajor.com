@@ -74,7 +74,9 @@ audience; the consultancy is where the commercial conversation happens.
   personal presence later (he leads GTM/enterprise — a complementary buyer-side voice).
   Guest posts / cross-posts on nmajor.com are fine; the primary voice and byline stay
   Nick's.
-- **Domain: nmajor.com stays canonical.** Rejected `nickmajor.com` (already owned by a
+- **Domain: nmajor.com stays canonical.** The root brand/domain remains `nmajor.com`
+  even though the website's canonical host is now `www.nmajor.com` and the naked host
+  301s there. Rejected `nickmajor.com` (already owned by a
   *different* Nick Major; it 301-redirects to that person's Linktree, so it is not
   available). Even if it were free, `nmajor` is the established root of the whole
   system: `nick@nmajor.com` is the contact/sender/forwarding address across the
@@ -140,6 +142,14 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
+- **2026-07-09 — Google Search Console management is configured locally.** The repo root
+  has a gitignored `.env.gsc` for the `nick@nmajor.com` Supertools OAuth client (mode 600)
+  and a stdlib-only CLI at `scripts/gsc.py` for token checks, property listing, sitemap
+  submission/listing, domain verification, and generic GSC API calls. Verified scopes:
+  `webmasters` + `siteverification`; `list-sites` shows the expected shared-account
+  properties including `sc-domain:nmajor.com`. Submitted
+  `https://www.nmajor.com/sitemap-index.xml` to `sc-domain:nmajor.com`; GSC downloaded it
+  as a sitemap index with 0 warnings and 0 errors.
 - **2026-07-09 — IndexNow configured.** The root key file is
   `app/public/e70c55cfbfc05af0911a2af8cda5cc21.txt`, served at
   `https://www.nmajor.com/e70c55cfbfc05af0911a2af8cda5cc21.txt`. Use that key for
@@ -266,9 +276,9 @@ audience; the consultancy is where the commercial conversation happens.
   `A → 76.76.21.21`, `www CNAME → cname.vercel-dns.com`) were deleted and replaced; the zone
   was already on Cloudflare nameservers, so this was a record-level swap, not an NS migration.
   **Mail and newsletter DNS were deliberately left untouched** (5× Google MX; the newsletter
-  `pm-bounces`/`track`/DKIM/DMARC records; google-site-verification). Verified live: apex +
-  www + `/writing` + `/takes` + `/rss.xml` + a per-essay page + a migrated `/posts/...` K8s URL
-  all return 200 over HTTPS, `server: cloudflare`. The custom domains are managed outside
+  `pm-bounces`/`track`/DKIM/DMARC records; google-site-verification). Verified live: apex
+  redirects to www; www + `/writing` + `/takes` + `/rss.xml` + a per-essay page + a migrated
+  `/posts/...` K8s URL return 200 over HTTPS, `server: cloudflare`. The custom domains are managed outside
   `wrangler deploy` (the deploy token lacks Workers Routes scope; see `app/wrangler.jsonc`).
   **Follow-ups (non-blocking):** (1) optionally turn `workers_dev` off to drop the duplicate
   `*.workers.dev` host; (2) the old Vercel project can be decommissioned now that no traffic
@@ -293,10 +303,13 @@ audience; the consultancy is where the commercial conversation happens.
   newsletter pages (Ben Evans, Pragmatic Engineer, The Diff, Lenny, etc.); copy follows
   `writing-voice`. **The form actually subscribes now, with real anti-spam:** a small Worker
   endpoint **`POST /api/subscribe`** (`app/worker.js`, mirroring the Institute's blueprint)
-  verifies a **Cloudflare Turnstile** token *server-side* (secret `TURNSTILE_SECRET_KEY`), then
+  verifies a **Cloudflare Turnstile** token *server-side* (secret
+  `PROJECTS_TURNSTILE_SECRET_KEY`), then
   creates the subscriber in Buttondown's "Actual Intelligence" list (`BUTTONDOWN_API_KEY`, double
-  opt-in on). Both secrets are Worker secrets, never in the repo. The Turnstile widget is a new
-  managed widget scoped to nmajor.com/www/workers.dev (sitekey `0x4AAAAAADuku3pIVO1zcaoN`, public).
+  opt-in on). Both secrets are Worker secrets, never in the repo. Turnstile uses the
+  account-wide **Shared projects — website forms** managed widget (sitekey
+  `0x4AAAAAADwCt8xxNYgYoiEK`, public); the Worker enforces action
+  `nmajor_subscribe` and the exact request hostname.
   wrangler.jsonc gained `main: worker.js` + a named `ASSETS` binding with `run_worker_first` so the
   Worker sees `/api/subscribe` and everything else falls through to the static build. The **home
   page subscribe form was also wired** to the same endpoint (it was a fake-success prototype
@@ -324,7 +337,7 @@ audience; the consultancy is where the commercial conversation happens.
   `publish.yml` cron to turn on automatic weekly publishing. (Done since the earlier plan: DNS
   cutover off Vercel, and the newsletter form is wired to Buttondown via the Turnstile-gated
   Worker endpoint using `BUTTONDOWN_API_KEY` — the send script uses the same key. Now that a
-  `worker.js` exists, the optional `www → apex` 301 is a few lines away if wanted.)
+  `worker.js` exists and handles the apex → www 301.)
 
 ## Plans
 

@@ -1,0 +1,10 @@
+SOURCE: Brookings — "An AI fair lending policy agenda for the federal financial regulators"
+URL: https://www.brookings.edu/articles/an-ai-fair-lending-policy-agenda-for-the-federal-financial-regulators/
+Fetched: 2026-07-13
+
+"ECOA prohibits creditors from discriminating in any aspect of a credit transaction..."
+"Disparate impact occurs when a facially neutral policy has a disproportionately adverse effect on a prohibited basis..."
+"Algorithmic systems often have disproportionately negative effects on people and communities of color, particularly with respect to credit..."
+"Third-party credit scores and other third-party models can drive discrimination, and there is no basis for immunizing them from fair lending laws."
+
+2026 NUANCE (from Ballard Spahr / Steptoe / Forbes coverage): CFPB finalized a rewrite of Reg B (effective July 21, 2026) removing disparate-impact theory under ECOA. HOWEVER mortgage lenders remain exposed under the Fair Housing Act (Inclusive Communities SCOTUS decision) and disparate-impact liability persists under numerous state laws. So AI credit models still carry fair-lending/disparate-impact exposure.

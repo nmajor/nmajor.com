@@ -60,6 +60,20 @@ worked example, the template), never the *only* value.
 - **Each post is self-contained.** A reader who never clicks through still got something
   they can use. That is what earns reach (dwell time, saves) and trust.
 
+## Hard rule: the hook clears the fold (≤ 140 characters)
+
+The hook is the first paragraph, everything visible above LinkedIn's "see more" cut. On mobile,
+which is most of the traffic, that cut lands at about **140 characters**, and a blank line ends
+the preview even earlier (`research/content-hooks/report.md`, confirmed 2026). So on **every**
+personal post the first paragraph is **140 characters or fewer**, kept as a single paragraph,
+front-loading the most concrete, true thing. Design for the mobile fold and desktop takes care of
+itself.
+
+This is not a guideline, it is enforced: `npm run linkedin:lint` **fails** any personal post whose
+first paragraph exceeds 140 characters. If the hook you want runs longer, break it so the
+scroll-stopping line stands alone above the fold and the rest falls below. (Business/preview posts
+are exempt, because they are link-summaries, not reach hooks.)
+
 ## The motion: 1 issue → 3 standalone personal posts (+ 1 company-page preview once that page exists)
 
 Every atomized post goes to **Nick's personal profile** — that is the reach + selling
@@ -76,6 +90,47 @@ engine (personal profiles out-reach company pages 5-8x; `research/audience-strat
 - **Post C — myth-bust / reasoned contrarian** (`personal`, +4-5 days). The piece's genuine
   position, argued against the common hype take. This is the natural anti-hype slot. Soft
   newsletter reference.
+
+The A/B/C shapes are the default shapes. What each post is *about* is the next section.
+
+### Source the batch from the whole research effort, not just the published essay (flexible)
+
+A newsletter essay is ~700 words drawn from a research effort that is usually much larger: the
+`research/<topic>/` corpus (braindump, seed, report, raw), the case-study library entries it
+leaned on, and the adjacent findings, angles, and verified sources from the same push that never
+fit the essay. That leftover research is some of the best raw material we have. Slicing only the
+published 700 words wastes it and tends to produce three posts that read like one idea three
+times, which the algorithm and the reader both punish.
+
+So treat the **source pool** for a batch as the whole research effort behind the issue, not just
+the essay. Then decide how far to range, per issue. This is a judgment call, never a hardcoded
+ratio:
+
+- **At least one post ties directly to the issue**, so the newsletter has a natural social
+  companion and the week coheres. Usually that is the story/spike post (A).
+- **The rest may range across angles and research the essay did not cover:** a different named
+  case, a data point that got cut, a second finding from the same effort, a regulatory thread, a
+  counter-example. Each is still its own standalone post with full value.
+- **How far to range depends entirely on the material.** Some weeks the research effort is deep
+  and yields two or three genuinely strong adjacent angles; lean in, and let only one post echo
+  the essay. Other weeks the essay already used the strong material, and the honest move is to
+  atomize the essay as before. Do not manufacture adjacent angles that are not there, and do not
+  force everything back to the essay when better material is sitting unused in the research. Read
+  the corpus first, then decide.
+
+Guardrails, all still binding on an adjacent-research post exactly as on an essay-derived one:
+
+- **Same rigor.** Every claim traces to a verified source in the research corpus. Adjacent does
+  not mean unchecked; open and confirm each source, same as `content-builder`.
+- **On-beat and thematically coherent.** Range across angles within the same broad theme or
+  campaign, not onto an unrelated topic. The week should read as one body of thinking.
+- **Distinct and deduplicated.** No two posts (or takes) make the same point; dedup against the
+  essay, the other posts in the batch, the takes, and past batches.
+- **Still Nick's, still standalone.** First person where it is genuinely his, full value with no
+  newsletter required, on-voice, honest.
+
+The point of doing research raw-first is that one effort should feed a whole week of posts (and
+resurface later), not a single essay. This is how.
 
 ### The company-page channel is PENDING (route everything to personal for now)
 

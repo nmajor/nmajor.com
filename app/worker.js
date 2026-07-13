@@ -6,8 +6,8 @@
 // - POST /api/subscribe: verify a Cloudflare Turnstile token server-side, then
 //   create a Buttondown subscriber on the "Actual Intelligence" list (double
 //   opt-in stays on, so Buttondown sends its own confirmation email). Secrets
-//   (BUTTONDOWN_API_KEY, TURNSTILE_SECRET_KEY) are Worker secrets, never in the
-//   repo. The public Turnstile sitekey lives in the page.
+//   (BUTTONDOWN_API_KEY, PROJECTS_TURNSTILE_SECRET_KEY) are Worker secrets, never
+//   in the repo. The public shared Turnstile sitekey lives in the page.
 // - Everything else falls through to the static assets (the Astro build in dist/).
 //
 // run_worker_first is on (see wrangler.jsonc) so this Worker sees every request,
@@ -25,7 +25,7 @@ export default {
     }
 
     if (url.pathname === '/api/subscribe' && request.method === 'POST') {
-      return handleSubscribe(request, env);
+      return handleSubscribe(request, env, url.hostname);
     }
 
     return env.ASSETS.fetch(request);
@@ -40,7 +40,7 @@ const json = (status, obj) =>
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-async function handleSubscribe(request, env) {
+async function handleSubscribe(request, env, host) {
   let email = '';
   let token = '';
   try {
@@ -69,22 +69,41 @@ async function handleSubscribe(request, env) {
   //    decoration — a bot can post straight to /api/subscribe. This is the check
   //    that actually stops spam.
   const ip = request.headers.get('CF-Connecting-IP') || '';
-  const verifyForm = new FormData();
-  verifyForm.append('secret', env.TURNSTILE_SECRET_KEY);
-  verifyForm.append('response', token);
-  if (ip) verifyForm.append('remoteip', ip);
-
+  if (!env.PROJECTS_TURNSTILE_SECRET_KEY) {
+    return json(500, { ok: false, error: 'The signup form is not configured. Please try again later.' });
+  }
+  const body = new FormData();
+  body.append('secret', env.PROJECTS_TURNSTILE_SECRET_KEY);
+  body.append('response', token);
+  if (ip) body.append('remoteip', ip);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
   let verify;
   try {
     const vres = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      body: verifyForm,
+      body,
+      signal: controller.signal,
     });
     verify = await vres.json();
   } catch {
     return json(502, { ok: false, error: 'Anti-spam check is unavailable. Please try again later.' });
+  } finally {
+    clearTimeout(timeout);
   }
-  if (!verify || !verify.success) {
+  if (
+    !verify ||
+    verify.success !== true ||
+    verify.hostname !== host ||
+    verify.action !== 'nmajor_subscribe'
+  ) {
+    console.warn('turnstile_rejected', {
+      expectedHostname: host,
+      expectedAction: 'nmajor_subscribe',
+      receivedHostname: verify && verify.hostname,
+      receivedAction: verify && verify.action,
+      errorCodes: (verify && verify['error-codes']) || [],
+    });
     return json(400, { ok: false, error: 'Anti-spam check failed. Please try again.' });
   }
 

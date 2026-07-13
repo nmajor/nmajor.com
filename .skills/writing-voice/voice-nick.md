@@ -108,6 +108,27 @@ high signal, him steering his own byline:
 - **Source links woven richly throughout**, at each claim, are a standing expectation, not
   a nice-to-have. More verified inline links make the piece feel richer to him.
 
+## Refinements from Nick's edits (accountability piece, 2026-07-08)
+
+From shaping "A machine can make the call. It can't answer for it." (the UnitedHealth /
+nH Predict essay):
+
+- **No dramatic preambles. Just say the thing.** He cut a windup and told us to state the
+  point directly. Before: "But in my experience the trouble tends to show up in one place:
+  when the tool is left to decide something that lands on a person..." After: "This was not
+  one of them. UnitedHealth pointed a model at how much recovery care a sick person gets, and
+  left no one who really had to answer for the result." Any phrase that builds suspense before
+  a claim ("the trouble shows up in one place:", "here's the thing", "what I keep coming back
+  to is") is writerly throat-clearing to him. Delete it and lead with the claim.
+- **Guard confident claims about what AI can or can't do.** He rejected "the ones that go
+  wrong almost never go wrong on the task. They go wrong at the decision" as too absolute, and
+  does not want a blanket "AI shouldn't make decisions." The move he wanted: concede AI can
+  make plenty of good decisions, then narrow the concern to the specific case (a decision that
+  lands on a person, with no one accountable). Hedge with "plenty of", "in this case", "tends
+  to"; never "always/never" about AI's competence.
+- **Concise by default.** He asked to cut the piece down and the shorter, denser version was
+  right. When in doubt, cut. Drop the second supporting example before the load-bearing one.
+
 ## Seven checkable rules
 
 1. Open on the point or a concrete detail, never a roadmap.

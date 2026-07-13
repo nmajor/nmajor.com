@@ -100,7 +100,7 @@ const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
       <div class="sub__right">
         <form class="sub__form" id="subForm">
           <input class="sub__input" name="email" type="email" required placeholder="you@company.com" aria-label="Email address" autocomplete="email" />
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAADuku3pIVO1zcaoN" data-theme="dark" data-size="flexible"></div>
+          <div id="turnstile-home-subscribe" class="cf-turnstile" data-sitekey="0x4AAAAAADwCt8xxNYgYoiEK" data-action="nmajor_subscribe" data-theme="dark" data-size="flexible"></div>
           <button class="sub__btn" type="submit">Subscribe</button>
         </form>
         <p class="sub__msg" id="subMsg" role="status" aria-live="polite"></p>
@@ -203,13 +203,13 @@ const heroMeta = `${heroMinutes} min · ${monthYear(featured.data.pubDate)}`;
             msg.textContent = data.error || 'Something went wrong. Please try again.';
             btn.disabled = false;
             btn.textContent = label;
-            if (window.turnstile && widget) window.turnstile.reset(widget);
+            if (window.turnstile && widget && widget.id) window.turnstile.reset('#' + widget.id);
           }
         } catch (err) {
           msg.textContent = 'Network error. Please try again.';
           btn.disabled = false;
           btn.textContent = label;
-          if (window.turnstile && widget) window.turnstile.reset(widget);
+          if (window.turnstile && widget && widget.id) window.turnstile.reset('#' + widget.id);
         }
       });
     })();

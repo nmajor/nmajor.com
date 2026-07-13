@@ -74,3 +74,17 @@ https://cloud.google.com/blog/topics/financial-services/assembling-a-team-of-ai-
 https://nationalmortgageprofessional.com/news/mr-cooper-bets-big-ai-expands-tech-better-cx
 https://www.microsoft.com/en/customers/story/25676-commerzbank-ag-azure-ai-foundry-agent-service
 https://www.hypercubic.ai/hopper
+https://www.americanbanker.com/news/how-banks-are-looking-to-tame-their-growing-ai-bills
+https://www.theregister.com/ai-ml/2026/05/13/ai-customer-service-bots-get-rolled-back-at-74-of-firms/
+https://fortune.com/2026/02/13/tech-giant-ibm-tripling-gen-z-entry-level-hiring-according-to-chro-rewriting-jobs-ai-era/
+https://ramp.com/data/heavy-ai-adopters-hire-more
+https://www.axios.com/2026/05/28/ai-spending-roi-enterprise-costs
+https://www.apolloacademy.com/ai-adoption-rates-starting-to-flatten-out/
+https://toot-books.com/blog/glm-5-2-vat-benchmark
+https://www.harvey.ai/blog/how-ai-is-transforming-contract-review-software
+https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos/
+https://promptarmor.substack.com/p/data-exfiltration-from-slack-ai-via
+https://fortune.com/2026/02/17/ai-productivity-paradox-ceo-study-robert-solow-information-technology-age/
+https://www.forbes.com/sites/daraabasiita/2026/06/09/insurers-are-being-sued-over-ai-their-own-filings-dont-mention/
+https://news.ycombinator.com/item?id=46917886
+https://www.extend.ai/

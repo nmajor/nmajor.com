@@ -12,13 +12,14 @@
   // the appliedartificialintelligence sibling). The custom domains persist independently
   // of `wrangler deploy`; manage them in the Cloudflare dashboard (Workers > Domains &
   // Routes) or via the /accounts/{id}/workers/domains API, or add Workers Routes:Edit to
-  // the token to manage them as code. www currently serves the same content as the apex
-  // (no redirect yet); the canonical <link> on every page points to the apex.
+  // the token to manage them as code. worker.js 301s the naked domain to www, preserving
+  // path + query, and astro.config.mjs uses https://www.nmajor.com as the canonical site.
   // worker.js handles POST /api/subscribe (Turnstile verify → Buttondown); all
   // other requests fall through to the static assets. run_worker_first ensures the
   // Worker sees /api/subscribe even though it's not a static asset. Secrets
-  // (TURNSTILE_SECRET_KEY, BUTTONDOWN_API_KEY) are Worker secrets, set via
-  // `wrangler secret put`, never in the repo.
+  // (PROJECTS_TURNSTILE_SECRET_KEY, BUTTONDOWN_API_KEY) are Worker secrets, set
+  // via `wrangler secret put`, never in the repo. The Turnstile action and exact
+  // request hostname are enforced server-side.
   "main": "worker.js",
   "assets": {
     "directory": "./dist",

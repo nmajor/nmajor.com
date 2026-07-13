@@ -1,0 +1,9 @@
+SOURCE: NAIC AI/ML market survey adoption figures
+URLs:
+- https://content.naic.org/article/naic-survey-reveals-majority-health-insurers-embrace-ai (May 20, 2025)
+- https://content.naic.org/sites/default/files/jir-45-3.pdf (Journal of Insurance Regulation)
+Fetched: 2026-07-13
+
+NAIC official article (May 20, 2025): "84% of health insurers report they currently utilize artificial intelligence and machine learning (AI/ML) in some capacity."
+NAIC aggregated survey reporting (per JIR / secondary summaries): 92% health, 88% auto, 70% home, 58% life insurers report current or planned AI usage. (Auto survey Dec 2022; home Aug 2023; life Dec 2023; health May 2025.)
+STRONGEST PRIMARY: 84% of health insurers use AI/ML (NAIC, May 2025).

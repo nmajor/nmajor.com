@@ -3,7 +3,9 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": [],
-  "lowQueueThreshold": 1,
+  "queue": [
+    "a-machine-cant-answer-for-it"
+  ],
+  "lowQueueThreshold": 0,
   "lastPublishedAt": "2026-07-07T23:25:22.208Z"
 }

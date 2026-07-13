@@ -1,0 +1,7 @@
+SOURCE: Tearsheet — "JPMorgan Chase's Gen AI implementation: 450 use cases and lessons learned"
+URL: https://tearsheet.co/artificial-intelligence/jpmorgan-chases-gen-ai-implementation-450-use-cases-and-lessons-learned/
+DATE: May 27, 2025
+Fetched: 2026-07-13
+
+"450 proofs of concepts in the works, a number which is expected to climb to a thousand next year"
+LLM Suite: "200,000 employees onboarded within the first 8 months of its launch"

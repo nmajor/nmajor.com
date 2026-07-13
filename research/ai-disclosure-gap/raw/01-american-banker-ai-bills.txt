@@ -1,0 +1,15 @@
+SOURCE: American Banker — "How banks are looking to tame their growing AI bills"
+URL: https://www.americanbanker.com/news/how-banks-are-looking-to-tame-their-growing-ai-bills
+DATE: June 29, 2026
+Fetched: 2026-07-13
+
+KEY QUOTES:
+1. PNC own GPU compute — Bill Demchak, CEO PNC, at Morgan Stanley U.S. Financials Conference:
+"We will have our own GPU compute. We will not be as reliant on burning external tokens [as] what we will do internally for our own large language models."
+PNC is acquiring its own data centers, buying Nvidia chips, building its own large and small language models.
+
+2. JPMorgan tokens — Zachery Anderson, Chief Data and Analytics Officer, JPMorganChase (via Semafor):
+Some employees are "spending more on tokens than their salary."
+
+3. RBC — Dave McKay, CEO Royal Bank of Canada (reported May 2026):
+"the bank's token usage jumped 500% from last year."

@@ -1,0 +1,9 @@
+SOURCE: Norton Rose Fulbright — "SEC heightens enforcement for AI related disclosures"
+URL: https://www.nortonrosefulbright.com/en/knowledge/publications/9ab5047f/sec-heightens-enforcement-for-ai-related-disclosures
+Fetched: 2026-07-13
+
+"In 2024, the SEC took several enforcement actions against companies that allegedly made false or misleading statements regarding their AI capabilities."
+Charged two investment advisory firms (Delphia, Global Predictions) March 2024 for misrepresenting AI use.
+January 2025: settlement with a consumer-facing tech company (Presto Automation - first AI-washing action vs a public company).
+Gensler: "false claims about AI hurt investors and undermine market integrity."
+SUPPLEMENTARY (Corporate Compliance Insights / Cornerstone): securities class actions alleging AI misrepresentation rose ~100% between 2023 and 2024.

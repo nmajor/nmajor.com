@@ -1,14 +1,15 @@
 ---
 title: A machine can make the call. It can't answer for it.
 summary: "UnitedHealth pointed AI at a decision that lands on a person, and it is costing them in court. Some decisions need a human who can answer for them, no matter how good the AI gets."
-pubDate: 2026-07-14
+pubDate: "2026-07-14T15:24:42.919Z"
 author: Nicholas Major
-draft: true
+draft: false
 approved: "Nicholas Major 2026-07-08"
 readingMinutes: 3
 heroTitleLead: "A machine can make the call. "
 heroTitleAccent: "It can't answer for it."
 heroLede: "UnitedHealth pointed AI at a decision that lands on a person, and it is costing them in court. Some decisions need a human who can answer for them."
+emailedAt: "2026-07-14T15:25:01.656Z"
 ---
 
 UnitedHealth automated the wrong thing, and it is costing them. A class action, a Senate investigation, and a decade of internal files a federal judge has [ordered them to hand over](https://www.afslaw.com/perspectives/alerts/federal-court-orders-broad-discovery-against-uhc-ai-coverage-denial-lawsuit).

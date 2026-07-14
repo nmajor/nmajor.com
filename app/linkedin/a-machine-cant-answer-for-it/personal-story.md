@@ -4,6 +4,8 @@ channel: personal
 offsetDays: 1
 angle: story
 approved: "Nicholas Major 2026-07-10"
+pushedAt: "2026-07-14T15:25:01.958Z"
+postizId: cmrksynec0000j56t9anz1fz6
 ---
 UnitedHealth automated the wrong thing. It wasn't even the fancy kind of AI. Now they're in court and named in a Senate report.
 

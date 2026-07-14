@@ -4,6 +4,8 @@ channel: personal
 offsetDays: 5
 angle: mythbust
 approved: "Nicholas Major 2026-07-10"
+pushedAt: "2026-07-14T15:25:01.958Z"
+postizId: cmrksynru0002j56tztfeo9b6
 ---
 "We keep a human in the loop" is the most oversold phrase in corporate AI right now.
 

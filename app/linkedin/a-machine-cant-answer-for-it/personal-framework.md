@@ -4,6 +4,8 @@ channel: personal
 offsetDays: 3
 angle: framework
 approved: "Nicholas Major 2026-07-10"
+pushedAt: "2026-07-14T15:25:01.958Z"
+postizId: cmrksynls0001j56thyi00f02
 ---
 Amazon's hiring AI taught itself to punish women's resumes.
 

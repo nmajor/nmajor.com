@@ -3,7 +3,9 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": [],
+  "queue": [
+    "your-ai-made-an-offer"
+  ],
   "lowQueueThreshold": 0,
   "lastPublishedAt": "2026-07-14T15:24:42.919Z"
 }

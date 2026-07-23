@@ -7,6 +7,11 @@
       "settingsType": "linkedin",
       "note": "Nick's OWN personal LinkedIn profile (Nicholas Major) — nmajor.com's reach + selling engine; every atomized repurposing post goes here. This integrationId is Nick's personal profile and is correct for nmajor."
     },
+    "facebook": {
+      "integrationId": "cmrko8lbx000lkc6x5f1jxvac",
+      "settingsType": "facebook",
+      "note": "Nick's own Facebook page (Nicholas Major). Different job from LinkedIn: LinkedIn gets the standalone atomized posts with no link (links suppress reach there); Facebook gets ONE preview per issue WITH the link, because links carry fine here and this is the channel that can actually drive traffic to nmajor.com and the newsletter signup. Do NOT cross-post to the CRE Punch, Lisbon Coast Market or Institute of Applied AI integrations also present on this Postiz instance: those are other projects and orgs."
+    },
     "business": {
       "integrationId": "",
       "settingsType": "linkedin-page",

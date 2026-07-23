@@ -19,7 +19,7 @@ import { isLive } from '../../src/lib/publish.js';
 const here = dirname(fileURLToPath(import.meta.url));
 export const LINKEDIN_DIR = join(here, '..', '..', 'linkedin');
 export const CONFIG_PATH = join(here, '..', '..', 'linkedin.config.json');
-export const CHANNELS = ['personal', 'business'];
+export const CHANNELS = ['personal', 'business', 'facebook'];
 
 const FENCE = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
 

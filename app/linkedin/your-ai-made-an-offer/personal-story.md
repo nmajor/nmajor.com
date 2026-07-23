@@ -4,6 +4,8 @@ channel: personal
 offsetDays: 1
 angle: story
 approved: "Nicholas Major 2026-07-20"
+pushedAt: "2026-07-23T14:44:52.799Z"
+postizId: cmrxmho4a0001lv6zzz8y223b
 ---
 BMW Toronto's chatbot quoted a customer $27,162.79. Nobody had authorised that number, and they only paid it after CBC News called.
 

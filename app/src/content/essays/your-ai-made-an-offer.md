@@ -1,14 +1,15 @@
 ---
 title: Your AI made an offer. You're the one who keeps it.
 summary: "A dealership's chatbot quoted a customer $27,162.79, a number nobody at the company had authorised. They only paid it after a reporter called."
-pubDate: 2099-01-01
+pubDate: "2026-07-21T14:00:00.000Z"
 author: Nicholas Major
-draft: true
+draft: false
 readingMinutes: 4
 heroTitleLead: "Your AI made an offer. "
 heroTitleAccent: "You're the one who keeps it."
 heroLede: "A dealership's chatbot quoted a customer $27,162.79, a number nobody at the company had authorised. They only paid it after a reporter called."
 approved: "Nicholas Major 2026-07-20"
+emailedAt: "2026-07-23T14:44:33.710Z"
 ---
 
 Zack Giacomelli's BMW needed major repairs, so he decided to sell it back to the Toronto dealership he'd bought it from three years earlier. Someone called Quinn texted him. "Hi Zachary, this is Quinn from BMW Toronto."

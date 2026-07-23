@@ -142,6 +142,16 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
+- **2026-07-23 — Recovered the missed 2026-07-21 issue and identified the cause.**
+  GitHub Actions did run successfully on Tuesday, but `your-ai-made-an-offer`, its
+  approval, and its queue entry existed only in an uncommitted local worktree. The
+  runner checked out `main`, where the queue was empty, so it correctly published,
+  emailed, and scheduled nothing. The essay has now been published with
+  `pubDate: 2026-07-21T14:00:00Z`, deployed to the site, recorded as sent in
+  Buttondown with the same backdated publish time, and its three approved personal
+  LinkedIn posts have been pushed to Postiz. **Operational rule:** an approval and
+  queue change are not ready for automation until the relevant essay, distribution
+  files, and queue/config changes are committed and pushed to `main`.
 - **2026-07-09 — Google Search Console management is configured locally.** The repo root
   has a gitignored `.env.gsc` for the `nick@nmajor.com` Supertools OAuth client (mode 600)
   and a stdlib-only CLI at `scripts/gsc.py` for token checks, property listing, sitemap
@@ -331,13 +341,10 @@ audience; the consultancy is where the commercial conversation happens.
   IBMPlexMono; the variable Archivo was dropped because satori's parser can't read `fvar`).
   Verified live: all cards serve 200 `image/png` and the right card is referenced per page. Note:
   LinkedIn/Twitter cache OG images, so use their post inspectors to force a refresh on already-shared URLs.
-- **Still TODO:** `/about` page (where the co-founder credential gets real context);
-  optionally take the LinkedIn pipeline out of shadow mode (needs `POSTIZ_*` + a consultancy
-  company-page integration for the currently-disabled `business` channel); un-pause the daily
-  `publish.yml` cron to turn on automatic weekly publishing. (Done since the earlier plan: DNS
-  cutover off Vercel, and the newsletter form is wired to Buttondown via the Turnstile-gated
-  Worker endpoint using `BUTTONDOWN_API_KEY` — the send script uses the same key. Now that a
-  `worker.js` exists and handles the apex → www 301.)
+- **Still TODO:** `/about` page (where the co-founder credential gets real context)
+  and a future consultancy company-page integration for the currently-disabled
+  `business` LinkedIn channel. The personal LinkedIn channel is live in Postiz and
+  the daily `publish.yml` cron is active.
 
 ## Plans
 

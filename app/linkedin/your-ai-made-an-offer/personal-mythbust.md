@@ -11,6 +11,8 @@ angle: myth-bust
 # "small claims, not binding precedent" caveat lands in the first third rather than
 # as a closing qualifier, or the post gets reshared as the myth it corrects.
 approved: "Nicholas Major 2026-07-20"
+pushedAt: "2026-07-23T14:44:52.799Z"
+postizId: cmrxmho8p0003lv6zufopi5um
 ---
 Air Canada told a tribunal it wasn't responsible for what its own chatbot said. It lost.
 

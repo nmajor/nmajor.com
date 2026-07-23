@@ -8,6 +8,8 @@ angle: insight
 # already carried by personal-story.md. This one has its own evidence: the pattern of
 # corporate disclaimers, the model providers' own hedges, and the regulator responses.
 approved: "Nicholas Major 2026-07-20"
+pushedAt: "2026-07-23T14:44:52.799Z"
+postizId: cmrxmho750002lv6z71pulknv
 ---
 Choice Home Warranty refused to pay the $3,000 its chatbot agreed to. The excuse: "we've had this AI up for about a week."
 

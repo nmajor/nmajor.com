@@ -5,6 +5,8 @@ offsetDays: 2
 angle: silence
 platform: LinkedIn
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psam0000wlv6z3xtjm9m3
 ---
 In April a COO posted that he'd built an internal HR tool himself and avoided close to $100,000 in software. Seven weeks later he left the company.
 

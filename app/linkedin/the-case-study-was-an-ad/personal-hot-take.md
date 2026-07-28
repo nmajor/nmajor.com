@@ -5,6 +5,8 @@ offsetDays: 3
 angle: hot-take
 platform: LinkedIn
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psar7000xlv6zweoax1l2
 ---
 I've used two AI case studies in my own newsletter as evidence that building your own was working. Neither has a number in it dated after year one.
 

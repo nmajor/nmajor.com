@@ -6,6 +6,8 @@ angle: carousel
 platform: LinkedIn
 approved: "Nicholas Major 2026-07-28 (via chat)"
 media: carousel-linkedin
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psdqe0011lv6z12fw3vfl
 ---
 I went back and checked the AI savings numbers everyone is quoting, including two I'd quoted myself. Here are the 7 checks I now run before I believe one.
 

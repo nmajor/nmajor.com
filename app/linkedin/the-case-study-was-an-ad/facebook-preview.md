@@ -5,6 +5,8 @@ offsetDays: 0
 angle: preview
 platform: Facebook
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4ps9wm000clv6zmtot8o4n
 ---
 Who wrote the AI case study you're using to decide?
 

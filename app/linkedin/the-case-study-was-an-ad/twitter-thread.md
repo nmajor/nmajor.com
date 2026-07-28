@@ -5,6 +5,8 @@ offsetDays: 0
 angle: thread
 platform: Twitter/X
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psa8h000elv6zjm454c95
 ---
 1/ I went looking for one mid-market company that built its own tool with AI and published what it cost a year later.
 

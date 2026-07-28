@@ -5,6 +5,8 @@ offsetDays: 0
 angle: story
 platform: LinkedIn
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psa2y000dlv6zr6ct81xp
 ---
 I went looking for one honest account of what a homemade AI tool cost a company a year later. The best one I found was written by an agency that sells building them.
 

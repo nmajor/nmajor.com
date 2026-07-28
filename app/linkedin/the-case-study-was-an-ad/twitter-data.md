@@ -5,6 +5,8 @@ offsetDays: 3
 angle: data
 platform: Twitter/X
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psawa000ylv6zn03a0t6g
 ---
 One AI saving, four tellings:
 

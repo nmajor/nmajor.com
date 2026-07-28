@@ -1,14 +1,15 @@
 ---
 title: The best AI failure story I could find was an ad
 summary: "The most-shared cautionary tale about building your own tools was written by an agency that builds tools. Then I went back and checked the success stories, and those didn't hold up either."
-pubDate: 2099-01-01
+pubDate: "2026-07-28T13:51:14.226Z"
 author: Nicholas Major
-draft: true
+draft: false
 approved: "Nicholas Major 2026-07-28 (via chat)"
 readingMinutes: 5
 heroTitleLead: "The best AI failure story I could find "
 heroTitleAccent: "was an ad."
 heroLede: "The most-shared cautionary tale about building your own tools was written by an agency that builds tools. Then I checked the success stories."
+emailedAt: "2026-07-28T13:51:28.992Z"
 ---
 
 I went looking for one thing: a company roughly your size that built its own tool with AI, and an honest account of what it cost a year later. Not the launch post. The bill.

@@ -6,6 +6,8 @@ angle: carousel
 platform: Instagram
 approved: "Nicholas Major 2026-07-28 (via chat)"
 media: carousel-instagram
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psc2r000zlv6zkreg4xaf
 ---
 Read the footer before you quote the number.
 

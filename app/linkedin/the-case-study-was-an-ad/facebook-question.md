@@ -5,6 +5,8 @@ offsetDays: 5
 angle: question
 platform: Facebook
 approved: "Nicholas Major 2026-07-28 (via chat)"
+pushedAt: "2026-07-28T13:51:29.300Z"
+postizId: cms4psc850010lv6zu6cdj7oc
 ---
 Genuine question for anyone who has built software in-house.
 

@@ -4,6 +4,8 @@ channel: instagram
 offsetDays: 4
 angle: carousel
 platform: Instagram
+approved: "Nicholas Major 2026-07-28 (via chat)"
+media: carousel-instagram
 ---
 Read the footer before you quote the number.
 

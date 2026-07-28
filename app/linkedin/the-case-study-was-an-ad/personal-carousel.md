@@ -4,6 +4,8 @@ channel: personal
 offsetDays: 6
 angle: carousel
 platform: LinkedIn
+approved: "Nicholas Major 2026-07-28 (via chat)"
+media: carousel-linkedin
 ---
 I went back and checked the AI savings numbers everyone is quoting, including two I'd quoted myself. Here are the 7 checks I now run before I believe one.
 

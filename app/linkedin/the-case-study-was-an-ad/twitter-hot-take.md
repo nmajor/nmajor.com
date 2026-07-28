@@ -4,6 +4,7 @@ channel: twitter
 offsetDays: 1
 angle: hot-take
 platform: Twitter/X
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 FranklinCovey's CIO is replacing packaged software with in-house builds.
 

@@ -83,6 +83,14 @@ export function readItem(id) {
       channel: typeof fm.channel === 'string' ? fm.channel.trim() : '',
       angle: typeof fm.angle === 'string' ? fm.angle.trim() : '',
       offsetDays: Number.isInteger(fm.offsetDays) ? fm.offsetDays : null,
+      // Optional attachment(s), relative to the post's own batch folder: one
+      // file, a comma-separated list, or a directory (expanded to its sorted
+      // images, which is how a multi-slide carousel is declared). Absent on
+      // text-only posts, which is the overwhelming majority.
+      media:
+        typeof fm.media === 'string' && fm.media.trim()
+          ? fm.media.split(',').map((s) => s.trim()).filter(Boolean)
+          : [],
       approved: typeof fm.approved === 'string' ? fm.approved.trim() : '',
       shadowedAt: fm.shadowedAt ? new Date(fm.shadowedAt) : null,
       pushedAt: fm.pushedAt ? new Date(fm.pushedAt) : null,

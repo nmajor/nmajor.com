@@ -4,6 +4,7 @@ channel: personal
 offsetDays: 3
 angle: hot-take
 platform: LinkedIn
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 I've used two AI case studies in my own newsletter as evidence that building your own was working. Neither has a number in it dated after year one.
 

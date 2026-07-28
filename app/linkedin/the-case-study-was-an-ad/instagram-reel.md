@@ -4,6 +4,7 @@ channel: instagram
 offsetDays: 1
 angle: reel
 platform: Instagram
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 The best AI failure story I could find was an ad. Here's how I worked that out in 30 seconds.
 

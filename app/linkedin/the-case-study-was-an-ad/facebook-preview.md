@@ -4,6 +4,7 @@ channel: facebook
 offsetDays: 0
 angle: preview
 platform: Facebook
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 Who wrote the AI case study you're using to decide?
 

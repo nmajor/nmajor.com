@@ -4,6 +4,7 @@ channel: twitter
 offsetDays: 3
 angle: data
 platform: Twitter/X
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 One AI saving, four tellings:
 

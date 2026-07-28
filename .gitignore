@@ -6,3 +6,6 @@ node_modules/
 .wrangler/
 dist/
 .claude/settings.local.json
+
+# Rendered carousel reference PDFs (slides are the shipped artefact; PDF is proof only)
+app/linkedin/**/carousel-*.pdf

@@ -4,6 +4,7 @@ channel: facebook
 offsetDays: 5
 angle: question
 platform: Facebook
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 Genuine question for anyone who has built software in-house.
 

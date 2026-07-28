@@ -20,8 +20,45 @@
 // Flags: --dry-run logs what it would do and writes/sends nothing (safe to repeat).
 
 import { readAllItems, setItemFields, selectDue, readLinkedinConfig } from './lib/linkedin.mjs';
-import { createScheduledPost, postContent } from './lib/postiz.mjs';
+import { createScheduledPost, postContent, uploadMedia } from './lib/postiz.mjs';
 import { discord } from './lib/notify.mjs';
+import { existsSync, statSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
+import { join, dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const LINKEDIN_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../linkedin');
+
+/**
+ * Resolve a post's `media:` frontmatter to absolute file paths.
+ *
+ * `media` is one path or a list of paths, each relative to the post's own batch
+ * folder (app/linkedin/<slug>/). A directory expands to its sorted image
+ * contents, which is how a multi-slide carousel is declared as one entry.
+ * Returns [] when the post declares no media, so text-only posts behave exactly
+ * as they did before this existed.
+ */
+function resolveMedia(item) {
+  const decl = item.data.media;
+  if (!decl) return [];
+  const list = Array.isArray(decl) ? decl : [decl];
+  const base = join(LINKEDIN_DIR, dirname(item.id));
+  const files = [];
+  for (const entry of list) {
+    const p = join(base, entry);
+    if (!existsSync(p)) throw new Error(`${item.id}: media not found: ${entry}`);
+    if (statSync(p).isDirectory()) {
+      const inner = readdirSync(p)
+        .filter((f) => /\.(png|jpe?g)$/i.test(f))
+        .sort();
+      if (!inner.length) throw new Error(`${item.id}: media dir is empty: ${entry}`);
+      files.push(...inner.map((f) => join(p, f)));
+    } else {
+      files.push(p);
+    }
+  }
+  return files;
+}
 
 const DRY = process.argv.includes('--dry-run');
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -75,12 +112,30 @@ async function main() {
           console.warn(`Skipping ${d.item.id}: no Postiz integration for channel "${channel}".`);
           continue;
         }
+        // Upload any declared media first, so a failed upload aborts this post
+        // before it is created rather than publishing it without its deck.
+        const files = resolveMedia(d.item);
+        const media = [];
+        for (const f of files) media.push(await uploadMedia(f));
+
+        // A multi-image LinkedIn post has to be flagged as a carousel, or the
+        // provider posts the slides as loose images. Postiz then runs its own
+        // convertImagesToPdfCarousel() to produce the native document post.
+        // (Uploading a ready-made PDF is not an option: Postiz's public upload
+        // endpoint rejects application/pdf as "Unsupported file type".)
+        const extraSettings =
+          ch.settingsType === 'linkedin' && media.length > 1
+            ? { post_as_images_carousel: true }
+            : {};
+
         const { postId } = await createScheduledPost({
           content: postContent(d.item),
           integrationId: ch.integrationId,
           settingsType: ch.settingsType,
           at: d.at,
           now,
+          media,
+          extraSettings,
         });
         setItemFields(d.item.id, { pushedAt: now.toISOString(), postizId: postId });
         pushed.push(`• ${channel}/${d.item.data.angle || 'post'} (+${d.item.data.offsetDays}d) → ${when(d.at)}`);

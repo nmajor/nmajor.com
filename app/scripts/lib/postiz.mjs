@@ -41,12 +41,55 @@ export function listIntegrations() {
 }
 
 /**
+ * Upload one media file (PNG/JPG/PDF) and return Postiz's { id, path } reference,
+ * which is what the `image` array on a post expects.
+ *
+ * This is a multipart request, so it deliberately does NOT go through
+ * postizFetch (that one forces application/json). fetch sets its own multipart
+ * boundary when handed a FormData, so Content-Type must be left unset here.
+ */
+export async function uploadMedia(filePath) {
+  const { readFile } = await import('node:fs/promises');
+  const { basename, extname } = await import('node:path');
+  const buf = await readFile(filePath);
+  const ext = extname(filePath).toLowerCase();
+  const mime =
+    ext === '.pdf' ? 'application/pdf'
+    : ext === '.png' ? 'image/png'
+    : ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg'
+    : 'application/octet-stream';
+  const form = new FormData();
+  form.append('file', new Blob([buf], { type: mime }), basename(filePath));
+  const res = await fetch(`${apiRoot()}/public/v1/upload`, {
+    method: 'POST',
+    headers: { Authorization: apiKey() },
+    body: form,
+  });
+  const text = await res.text();
+  if (!res.ok) {
+    throw new Error(`Postiz upload ${basename(filePath)} -> ${res.status}: ${text.slice(0, 300)}`);
+  }
+  const data = text ? JSON.parse(text) : null;
+  const m = Array.isArray(data) ? data[0] : data;
+  if (!m || !m.path) throw new Error(`Postiz upload ${basename(filePath)}: no path in response`);
+  return { id: m.id, path: m.path };
+}
+
+/**
  * Schedule one post to a single channel. `at` is a Date; if it is in the past
  * (a delayed run), the post is sent now rather than rejected. Returns { postId }.
  *
  * @param {{content:string, integrationId:string, settingsType:string, at:Date, now?:Date}} p
  */
-export async function createScheduledPost({ content, integrationId, settingsType, at, now = new Date() }) {
+export async function createScheduledPost({
+  content,
+  integrationId,
+  settingsType,
+  at,
+  now = new Date(),
+  media = [],
+  extraSettings = {},
+}) {
   if (!content || !content.trim()) throw new Error('createScheduledPost: empty content');
   if (!integrationId) throw new Error('createScheduledPost: missing integrationId');
   const future = at.getTime() > now.getTime() + 60_000;
@@ -62,8 +105,8 @@ export async function createScheduledPost({ content, integrationId, settingsType
       posts: [
         {
           integration: { id: integrationId },
-          value: [{ content: content.trim(), image: [] }],
-          settings: { __type: settingsType || 'linkedin' },
+          value: [{ content: content.trim(), image: media }],
+          settings: { __type: settingsType || 'linkedin', ...extraSettings },
         },
       ],
     }),

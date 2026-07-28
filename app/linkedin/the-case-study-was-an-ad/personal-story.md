@@ -4,6 +4,7 @@ channel: personal
 offsetDays: 0
 angle: story
 platform: LinkedIn
+approved: "Nicholas Major 2026-07-28 (via chat)"
 ---
 I went looking for one honest account of what a homemade AI tool cost a company a year later. The best one I found was written by an agency that sells building them.
 

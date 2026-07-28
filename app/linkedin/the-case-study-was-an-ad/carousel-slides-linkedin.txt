@@ -1,0 +1,125 @@
+## LinkedIn document post: slide-by-slide copy
+
+NOT A SCHEDULABLE POST. Slide copy for personal-carousel.md (.txt on purpose).
+Upload as a 9-page PDF. LinkedIn shows a "9 pages" badge, which is why the
+exact-count cover works especially well here.
+
+**Framework:** A, Value-Stack (external skill, carousel-frameworks.md)
+**Why this framework:** the content is a list of checks. Completeness is the
+promise and the count is the hook. Platform note in the skill: "Value-Stack's
+exact-count cover plays especially well" on LinkedIn document posts.
+**Slides:** 9 (framework range 4-14). Cover + 7 checks + close. Exactly 7
+delivered, no filler.
+**Format:** square or 4:5. Same layout, type scale and palette on slides 2-8.
+
+Every check below is one Nick actually ran in the essay, and each names the story
+that failed it. No check is invented; no number appears here that is not in the piece.
+
+---
+
+### Slide 1: Cover
+**7 checks before you believe an AI savings number**
+
+Run these on the next case study someone forwards you.
+
+---
+
+### Slide 2: Check 1: Who published it, and what do they sell?
+The most-quoted cautionary tale about building your own tools:
+
+- Custom support-triage tool replaced a $490-a-month subscription
+- Real six-month cost came out higher
+- Every byline on the site belongs to staff at a low-code and AI development agency
+- The footer on every page advertises that agency
+- The About page says the site has "no vendor deals"
+
+---
+
+### Slide 3: Check 2: Does the post it cites actually exist?
+That piece opens: "Six months ago, we documented what looked like a clean win."
+
+- There is no such post
+- The only earlier piece on the same product quotes completely different numbers
+- Its URL now returns a 404
+- Zero results for the domain on Hacker News, every tag, no date limit
+
+---
+
+### Slide 4: Check 3: Does the number match in every telling?
+One school district's saving, four sources:
+
+- $250k (April)
+- $220k (May)
+- $250k again (late May)
+- No dollar figure at all (a fourth interview)
+
+The same interview puts the tooling spend at about $100 a month, where earlier
+tellings said $200.
+
+---
+
+### Slide 5: Check 4: What is the saving a percentage of?
+Over roughly the same stretch, that board approved a $4.8 million four-year
+Apple lease.
+
+- The saving everyone wrote about is around 4.6% of one hardware contract
+- The district's own follow-up: "The dollars were never the point. The precedent was."
+- I agree with him. It's still worth knowing the denominator.
+
+---
+
+### Slide 6: Check 5: What did it replace, and who built that?
+A CIO replacing packaged software with in-house builds, about $50,000 a year saved
+on a finance app.
+
+- An earlier vendor customer story says $60,000
+- Different department, and "30 days to 2 hours" vs "30 days to a few days"
+- That vendor page also names what was being replaced: a 15-year-old in-house
+  service bus whose original developers are long gone
+- The in-house build replacing the SaaS is replacing an in-house build that rotted
+
+---
+
+### Slide 7: Check 6: Is the person who built it still there?
+A COO posted in April that he'd built an internal HR objectives tool himself and
+avoided close to $100,000 in software.
+
+- A commenter warned about "the long-term maintenance cost, which compounds over time"
+- Seven weeks later he announced he was leaving after 13 years
+- Nobody has said the tool broke
+- Nobody has said anything about it at all, and there's no public record of who has it now
+
+---
+
+### Slide 8: Check 7: Is there a number in it dated after year one?
+Not in a single case I checked. Including the two I'd cited myself.
+
+- Every failure I could verify surfaced because something forced it out
+- A £239m government contract priced on 95% automation, unpicked in front of a
+  parliamentary committee that could compel testimony
+- Under 3% of one office's AI-generated bill summaries met standard, out in
+  congressional testimony
+- Committees, arbitrators, regulators. Without one of those, nobody publishes.
+
+---
+
+### Slide 9: Close
+**One check to keep**
+
+If the number has no date after year one, it isn't evidence yet. It's a launch post.
+
+Save this for your next build-versus-buy meeting.
+
+---
+
+### Production checklist
+- [ ] Slide 1 works as a standalone feed post
+- [ ] One idea per slide
+- [ ] Same visual template on slides 2-8
+- [ ] Cover promises 7, deck delivers exactly 7
+- [ ] Every number here appears in the essay; no rounding, no invented stats
+- [ ] Legible at thumbnail size (min ~28pt at 1080 wide)
+- [ ] Slide 9 has one CTA
+- [ ] Post text above the document is written as its own hook, not "see attached"
+- [ ] Companies and outlets are unnamed on the slides on purpose; the essay names
+      them all with their sourcing, and a swipeable square travels without it.

@@ -1,0 +1,42 @@
+## Video: The best AI failure story I could find was an ad
+
+NOT A SCHEDULABLE POST. Production script for instagram-reel.md (.txt on purpose).
+
+**Platform:** Instagram Reels (cross-post to Shorts if wanted)
+**Length:** 30 seconds
+**Format:** Talking head + screen recording B-roll
+**Aspect:** 9:16
+**Structure:** Problem-Solution (external skill, "Video Structures")
+**Framework note:** the 3-Second Rule: visual hook + verbal hook + text overlay all land inside the first second.
+
+---
+
+### Hook (0-3 sec)
+- Visual: Nick to camera, then a hard cut to a screen recording of the article page scrolling to its footer.
+- Audio: "The best AI failure story I could find was an ad."
+- Text overlay: THE BEST AI FAILURE STORY / WAS AN AD
+
+### Body (3-25 sec)
+
+- **[3-8s] Agitate.** Audio: "I wanted one thing. A company that built its own tool with AI, and an honest account of what it cost a year later. Not the launch post. The bill."
+  - B-roll: cursor scrolling past launch-announcement headlines.
+  - Text overlay: NOT THE LAUNCH POST / THE BILL
+
+- **[8-15s] The find.** Audio: "The piece everyone forwards is about a custom support tool that replaced a $490-a-month subscription and cost more over six months. It's the only one anyone points to that puts a number on the part everybody skips."
+  - B-roll: zoom on the $490 figure.
+  - Text overlay: $490/MO REPLACED / COST MORE
+
+- **[15-25s] The turn.** Audio: "Then I read the footer. Every byline belongs to staff at a low-code and AI development agency. The footer on every page advertises that agency. And it opens by referring back to a post that doesn't exist."
+  - B-roll: three quick cuts, each cropped tight to one piece of evidence: a byline, the footer line, the 404 page.
+  - Text overlay (one per cut): EVERY BYLINE / THE FOOTER / THE POST THAT ISN'T THERE
+
+### CTA (25-30 sec)
+- Verbal: "So the definitive warning about building it yourself was written by people who sell building it yourself. I checked the success stories too. Link in bio."
+- Text: I CHECKED THE WINS TOO
+- Action: Link in bio to the full piece.
+
+### Production notes
+- Music: original audio only. Educational, no trending sound.
+- Subtitles: max 2 lines on screen, 3-5 words per line, bold sans with black outline, key words (AN AD, THE BILL, DOESN'T EXIST) highlighted in a second colour.
+- Crop every screenshot to the action. One arrow max per shot. Must read at thumbnail size.
+- Do not name the agency or the site on screen. The essay names both; the video makes the same point without turning a 30-second clip into an accusation the caption can't qualify.

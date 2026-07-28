@@ -1,0 +1,93 @@
+## Instagram carousel: slide-by-slide copy
+
+NOT A SCHEDULABLE POST. Slide copy for instagram-carousel.md (.txt on purpose).
+
+**Framework:** D, Rant Callout (external skill, carousel-frameworks.md)
+**Why this framework:** the content is a strong opinion about a common practice
+(forwarding vendor-adjacent case studies as neutral evidence). Conviction is the
+content; the structure keeps the heat fair.
+**Slides:** 7 (framework range 4-8)
+**Format:** 1080x1350 (4:5). One visual template on every interior slide. Slide 1
+doubles as the grid thumbnail and must stop the scroll on its own.
+
+---
+
+### Slide 1: Provocative claim (the thumbnail)
+**Headline:** The best AI failure story I could find was an ad.
+**Sub:** And I'd been quoting it.
+
+---
+
+### Slide 2: Escalate: what the piece is
+The most-quoted cautionary tale about building your own tools:
+
+a custom support-triage tool that replaced a $490-a-month subscription,
+whose real six-month cost came out higher.
+
+It's the only piece anyone points to that puts a number on the part everybody skips.
+
+---
+
+### Slide 3: Escalate: the footer
+Then I read the footer.
+
+Every byline on the site belongs to staff at a low-code and AI development agency.
+
+The footer on every page advertises that agency.
+
+The About page says the site has "no vendor deals."
+
+---
+
+### Slide 4: Escalate: the post that isn't there
+It opens: "Six months ago, we documented what looked like a clean win."
+
+There is no such post.
+
+The only earlier piece on that site about the same product quotes completely
+different numbers, and its URL now returns a 404.
+
+---
+
+### Slide 5: Escalate: the pattern
+It sits inside a series.
+
+One post for replacing Mixpanel. One for Klaviyo. One for BambooHR.
+
+A sibling post argues your build method decides whether the replacement
+"holds for years or breaks in 6 months."
+
+---
+
+### Slide 6: Fairness pivot
+Don't get me wrong.
+
+The numbers in it may well be real, and one story I checked cuts against my whole
+argument: a company that dropped Salesforce for a CRM built on Lovable in 2025 is
+still running it nine months on, and says the maintenance worry is overblown.
+
+I've got nothing against agencies. What I object to is a sales asset circulating
+as the neutral warning.
+
+---
+
+### Slide 7: Close
+Read the footer before you quote the number.
+
+Nicholas Major
+
+**CTA (one only):** Save this before your next build-vs-buy meeting.
+
+---
+
+### Production checklist
+- [ ] Slide 1 works alone in the feed with no carousel behind it
+- [ ] One idea per slide
+- [ ] Same layout, type scale and palette on slides 2-6
+- [ ] No invented stats; every number on a slide is in the essay
+- [ ] Legible at thumbnail size (min ~28pt at 1080 wide)
+- [ ] Slide 7 has one CTA, not three
+- [ ] Caption is its own hook, not a repeat of slide 1
+- [ ] Do not put the agency's or the site's name on a slide. The essay names both
+      in context; a square with a company name and the word "ad" on it travels
+      without the context that makes the claim fair.

@@ -8,7 +8,7 @@ I spent a week fact-checking the AI case studies I'd cited myself. Two of them d
 
 Not because anyone lied. Because nobody ever goes back and checks, so small things drift and nothing corrects them.
 
-Here are the five checks I run now. They take about twenty minutes and they've changed what I'm willing to repeat.
+Here are the five checks I run now. They take about twenty minutes. If you're being asked to approve an AI build or a vendor, hand these to whoever brought you the business case and have them run it on every case study in the deck.
 
 1. Find the publisher, not the author.
 
@@ -16,11 +16,11 @@ Read the About page and the footer before the article. The most-cited cautionary
 
 2. Follow the number backwards.
 
-A school district's saving from building its own tools was reported at $250,000 in April, $220,000 in May, and $250,000 again by late May. An earlier interview has no dollar figure at all and a monthly tool spend half what other tellings used. Same story, different arithmetic, and each retelling cites the last one.
+A CIO's much-cited saving from replacing packaged software with things his team built came out at about $50,000 a year. A vendor case study published six months earlier puts it at $60,000, in a different department, with a different speed claim. Thirty days to two hours in one telling, thirty days to a few days in the other. Same company, same story, different arithmetic. Each retelling cites the last one rather than the source.
 
 3. Ask for the denominator.
 
-That $250,000 is real. Over roughly the same period the same board approved a $4.8 million four-year hardware lease. The saving everyone wrote about is around 4.6% of one contract. A saving without the budget it came out of isn't a result, it's a number.
+A school district saved $250,000 building its own tools and the number travelled everywhere. Over roughly the same period, the same board approved a $4.8 million four-year hardware lease. The saving is about 4.6% of one contract. A saving without the budget it came out of isn't a result, it's a number.
 
 4. Look for year two.
 
@@ -30,7 +30,7 @@ This is the one that changed my mind. Nearly every build-your-own success story 
 
 Every failure I could actually verify surfaced because something compelled it. A parliamentary committee that could make a chief executive testify. Congressional testimony. A union arbitration. A regulator's disclosure deadline.
 
-That last one is the real lesson. If a company has no committee, no regulator and no union, nothing makes it publish the bad year. Which means the published record isn't a sample of what happens. It's a sample of what someone was forced to say.
+If a company has no committee, no regulator and no union, nothing makes it publish the bad year. Which means the published record isn't a sample of what happens. It's a sample of what someone was forced to say.
 
 Your own books are the only case study with no publication bias in it.
 

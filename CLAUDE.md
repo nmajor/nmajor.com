@@ -51,12 +51,28 @@ To publish on a **specific date** instead of the queue: set a future `pubDate` +
 `draft: false` + `approved`, and leave it out of the queue. It goes live and emails on
 that date.
 
-> **HARD RULE for agents (Claude Code, Codex):** never set `approved` (on an essay **or**
-> a LinkedIn post) and never add a slug to the queue. These are Nick's personal sign-off —
-> the human gate that makes fully-automatic sending safe. An agent may draft, refine, and
-> leave content `draft: true` / unapproved; **only Nick approves and queues.** Likewise
-> never set or clear `emailedAt` (the send idempotency lock) or `pushedAt` (the LinkedIn
-> idempotency lock) by hand.
+> **HARD RULE for agents (Claude Code, Codex): approval requires Nick's explicit say-so,
+> per item.** `approved` (on an essay **or** a LinkedIn post) and the publish `queue` are
+> the human gate that makes fully-automatic sending safe. An agent may set them **only**
+> after Nick has explicitly approved **that specific item** in conversation. Once he has,
+> the agent should go ahead and set `approved` and add the slug to the queue — he does not
+> have to type the field himself.
+>
+> What counts as explicit approval:
+> - It **names the item** (or is an unambiguous reference to the one item under discussion).
+> - It is **affirmative and unconditional** — "approved", "ship it", "yes, queue it". A
+>   reaction to the content ("nice", "that's a good point"), a request for changes, or
+>   silence is **not** approval.
+> - **It does not carry over.** Approving an essay does not approve its LinkedIn posts, and
+>   approving one post in a batch does not approve the others. Each item needs its own.
+> - **If there is any doubt, ask.** Never infer approval to keep a deadline.
+>
+> Record it as `approved: "Nicholas Major <date> (via chat)"` so the provenance is visible.
+> Never approve on your own judgement that a piece is ready, and never approve an item Nick
+> has not seen.
+>
+> Unchanged: **never set or clear `emailedAt` (the send idempotency lock) or `pushedAt`
+> (the LinkedIn idempotency lock) by hand.** Those are machine state, not sign-off.
 
 **Buttondown:** the essay body is the email. `BUTTONDOWN_API_KEY` in `.env` is scoped to
 the **"Actual Intelligence"** newsletter — never the Institute's or any other list on the

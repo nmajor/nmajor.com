@@ -36,3 +36,7 @@ https://www.tbpndigest.com/story/2026-06-04/aig-ceo-peter-zaffino-on-using-palan
 https://www.williams.com/2026/06/17/how-ai-helped-williams-cut-field-work-from-days-to-hours-and-speed-software-delivery/
 https://diginomica.com/buy-build-how-franklincovey-cio-blaine-carter-replacing-packaged-apps-low-code-and-ai
 https://martinfowler.com/articles/vibesec-reckoning.html
+
+# --- Accepted pick (2026-07-20 run): BMW Toronto "Quinn" + LG München AI Overviews ---
+https://www.cbc.ca/news/business/ai-chatbot-bmw-dealership-9.7230226
+https://www.transparencycoalition.ai/news/german-court-holds-google-liable-for-ai-hallucination-read-the-full-decision-here

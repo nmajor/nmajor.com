@@ -3,7 +3,7 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": [],
+  "queue": ["the-case-study-was-an-ad"],
   "lowQueueThreshold": 0,
   "lastPublishedAt": "2026-07-21T14:00:00.000Z"
 }

@@ -1,0 +1,1158 @@
+<!-- https://export.arxiv.org/api/query?search_query=cat:cs.SE+OR+cat:cs.HC+OR+cat:cs.IR+OR+cat:cs.MA&sortBy=submittedDate&sortOrder=descending&max_results=40 -->
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Iqza3LUNzZkgfH3LGyMvgi8NGbg</id>
+  <title>arXiv Query: search_query=cat:cs.SE OR cat:cs.HC OR cat:cs.IR OR cat:cs.MA&amp;id_list=&amp;start=0&amp;max_results=40</title>
+  <updated>2026-07-20T09:00:32Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.SE+OR+(cat:cs.HC+OR+(cat:cs.IR+OR+cat:cs.MA))&amp;start=0&amp;max_results=40&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>40</opensearch:itemsPerPage>
+  <opensearch:totalResults>95701</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16128v1</id>
+    <title>Toward Semantic Communication for Real-time Mobile 3D Reconstruction</title>
+    <updated>2026-07-17T17:07:40Z</updated>
+    <link href="https://arxiv.org/abs/2607.16128v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16128v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Real-time mobile 3D reconstruction is fundamental to many emerging applications such as autonomous navigation and digital twin construction, where a moving platform continuously captures an image stream and transmit to a computing server for scene understanding. Unlike offline reconstruction, camera poses and scene geometry are estimated on-the-fly during acquisition, making multi-view consistency a real-time requirement and rendering geometric estimation highly sensitive to communication-induced distortions. Semantic communication (SemCom) transmits compact semantic information, offering a promising way to preserve task-critical data over unreliable links. However, existing designs are optimized at the image or single-view level and without providing explicit reliability information for geometric estimation, limiting their applicability to real-time mobile 3D reconstruction. In this context, we propose a SemCom framework for real-time mobile 3D reconstruction. The framework includes a semantic transceiver that outputs a reconstructed image alongside a pixel-wise confidence map, quantifying the reliability of each region. We further introduce a confidence-guided geometric estimation method, incorporating confidence into RANSAC-based pose initialization and bundle adjustment to reduce the influence of unreliable regions and enhance robustness under noisy channels. Simulations show that, compared to existing SemCom and traditional seperate source and channel coding, our framework maintains high image quality while significantly improving pose estimation accuracy and 3D structural consistency.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MM" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T17:07:40Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Fangzhou Zhao</name>
+    </author>
+    <author>
+      <name>Yao Sun</name>
+    </author>
+    <author>
+      <name>Xuesong Liu</name>
+    </author>
+    <author>
+      <name>Runze Cheng</name>
+    </author>
+    <author>
+      <name>Shang Kai</name>
+    </author>
+    <author>
+      <name>Yi Sun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16127v1</id>
+    <title>CADAQUES: A Cost-Aware Dual Architecture for Query-Efficient Autonomous Discovery</title>
+    <updated>2026-07-17T17:04:20Z</updated>
+    <link href="https://arxiv.org/abs/2607.16127v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16127v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous discovery systems couple a resource that answers queries (a simulator, instrument, or analytic model) to an algorithm that selects what to query next. Most software frameworks for this loop inherit the control structure of numerical optimization: campaigns run for a fixed number of iterations, query costs are absent from the programming interface, and decision-making is treated as free. In practice, queries may differ in cost by orders of magnitude, and planners built on large language models or expensive surrogates consume resources of their own. Here we present CADAQUES, an open-source Python framework built on one architectural principle: cost is a first-class primitive of the discovery loop. CADAQUES separates the loop into two structural protocols, an Oracle that answers queries and a Driver that proposes them, and charges both evaluations and decisions against a common vector-valued budget spanning wall time, CPU hours, monetary cost, and language model tokens. An append-only ledger records, for each transaction, the cost declared before execution and the cost settled afterwards, making their discrepancy an observable property of the campaign. We evaluate the architecture by locating the critical temperature of the two-dimensional Ising model from noisy finite-size estimates against the exact thermodynamic-limit reference. In this noisy setting, strategies that concentrate around the best observed result can be misled by noise-induced peaks, whereas a schedule that explores with cheap low-fidelity queries and refines with higher-fidelity ones yields lower and less variable errors than high fidelity throughout, at the studied budget scale. Metering adds tens of microseconds per iteration, three orders of magnitude below the cheapest oracle query. The framework is MIT-licensed and archived at Zenodo (doi:10.5281/zenodo.21293589).</summary>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T17:04:20Z</published>
+    <arxiv:primary_category term="physics.comp-ph"/>
+    <author>
+      <name>Jorge Bravo-Abad</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16121v1</id>
+    <title>Comparison of Energy System Optimization Software and Evaluation of Selected Frameworks</title>
+    <updated>2026-07-17T16:58:00Z</updated>
+    <link href="https://arxiv.org/abs/2607.16121v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16121v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Optimizing energy systems is a crucial step toward achieving a carbon-neutral future, with software tools playing a major role in the process. However, selecting the most suitable tool for specific optimization challenges can be complex, given the diverse objectives and requirements of various energy systems. In this study, we aim to address this issue by evaluating five preselected software tools-REMix, MTRESS, COMANDO, OEMOF, and HOMER PRO-to identify the scenarios for which they are most suitable. To achieve this, we conducted an extensive review of literature, documentation, tutorials, and example models, and developed a set of comparison criteria that were subsequently used to evaluate these tools. Our analysis suggests that REMix is particularly effective for scenarios where investment path optimization is required. COMANDO excels in systems with atypical components. OEMOF is the best-suited open-source tool for standard optimization problems. HOMER PRO is recommended for users seeking rapid synthesis optimization, especially those with limited programming experience. Due to difficulties in obtaining sufficient information on MTRESS, we were unable to complete the analysis for this tool.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T16:58:00Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Pedro Caixeta</name>
+    </author>
+    <author>
+      <name>David Gawron</name>
+    </author>
+    <author>
+      <name>Hüseyin K. Çakmak</name>
+    </author>
+    <author>
+      <name>Haozhen Cheng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16115v1</id>
+    <title>Student Evaluation of Repeated AI Feedback Across a Semester of Writing</title>
+    <updated>2026-07-17T16:53:00Z</updated>
+    <link href="https://arxiv.org/abs/2607.16115v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16115v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI is increasingly used for feedback in higher education, but evidence from repeated classroom use remains limited. This short paper analyses 2988 reflective essay-feedback-appraisal instances from 283 Estonian bachelor students across one semester. Students obtained and assessed feedback from a self-selected AI tool using a uniform prompt. The present analysis of the anonymized text corpus covers essay content, AI feedback, and its perceived helpfulness. Students found feedback helpful and actionable more often than not; about a tenth thought AI unhelpful, more so towards the end of the semester. We also analyzed essay reflection depth, and used a validated AI text classifier to estimate the share of essays that could be treated as likely unaided student writing. The study contributes descriptive classroom evidence on integration of AI feedback - a fast and scalable way to provide immediate writing advice, but not a self-contained route to better reflection. Benefits depend on whether students learn to use AI selectively and critically, without sliding into over-use harmful for the learning process.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T16:53:00Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <author>
+      <name>Andres Karjus</name>
+    </author>
+    <author>
+      <name>Janika Leoste</name>
+    </author>
+    <author>
+      <name>Tiia Õun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16109v1</id>
+    <title>The Honest Quorum Problem: Epistemic Byzantine Fault Tolerance for Agentic Infrastructure</title>
+    <updated>2026-07-17T16:43:00Z</updated>
+    <link href="https://arxiv.org/abs/2607.16109v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16109v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>State machine replication (SMR) and Byzantine fault-tolerant (BFT) consensus guarantee agreement despite a bounded number of arbitrary, colluding faulty participants. However, these guarantees rely on participants outside this set correctly executing the protocol's transition semantics. Agentic validators expose a weaker boundary: an authenticated, responsive, non-equivocating, and protocol-compliant reasoning participant may still endorse a semantically invalid transition due to reasoning errors.
+  We call this failure mode an epistemic fault, and the collective phenomenon the Honest Quorum Problem (where "honest" means protocol-compliant, not semantically correct). Such a quorum can satisfy ordinary checks while forming a certificate for an invalid transition. Thus, agreement alone does not guarantee semantic validity or execution safety. Furthermore, because agentic validators often share model weights, training distributions, prompts, or toolchains, they are highly susceptible to correlated epistemic faults.
+  We define Epistemic Byzantine Fault Tolerance (EBFT), a fault-tolerance model for agentic infrastructure and post-deterministic distributed systems. EBFT augments the conventional Byzantine fault bound with two separate, confidence-indexed quantities: $e_δ$ bounds coherent invalid endorsements outside the Byzantine set, and $u_ε$ bounds unusable validator support that degrades liveness. These quantities characterize semantic safety risk and liveness degradation independently. We derive quorum-threshold conditions for semantic validity, consensus agreement, liveness, and feasible threshold selection, and outline a calibration methodology for estimating these budgets. We show that adding nominally distinct agents improves fault tolerance only when it measurably reduces the upper-tail concentration of invalid endorsements or unusable support.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T16:43:00Z</published>
+    <arxiv:comment>26 pages, 2 figures, 5 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jun He</name>
+    </author>
+    <author>
+      <name>Deying Yu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16105v1</id>
+    <title>Attention-Guided Saliency Maps for Interpreting Visualization Literacy in VLMs</title>
+    <updated>2026-07-17T16:40:23Z</updated>
+    <link href="https://arxiv.org/abs/2607.16105v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16105v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Understanding how vision-language models (VLMs) interpret data visualizations remains an open problem, and is increasingly important as these models are used for analytical tasks where reliable reasoning is essential. We introduce a lightweight, diagnostic saliency map method tailored for text generation over images using transformer models, the current state-of-the-art models in visualization interpretation. Our approach aggregates the language model's attention over the visual tokens across all heads and layers, then maps this attention back onto the vision encoder's patch grid to localise it over the image, producing a direct correspondence between each generated answer token and the image regions it attended to. This yields fast, gradient-free saliency maps that expose how VLMs allocate focus across visual elements during answer generation, enabling inspection of whether model attention aligns with semantically relevant components. We evaluate our approach using a deletion metric which validates the causal faithfulness of our saliency maps to the model's behavior.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T16:40:23Z</published>
+    <arxiv:comment>To be presented at IEEE VIS 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Maeve Hutchinson</name>
+    </author>
+    <author>
+      <name>Abderrahmane Wassim Mehdaoui</name>
+    </author>
+    <author>
+      <name>Pranava Madhyastha</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16083v1</id>
+    <title>What Does It Take to Research with AI? A Rapid Review of Competencies to Train LLM-Literate Researchers</title>
+    <updated>2026-07-17T16:14:14Z</updated>
+    <link href="https://arxiv.org/abs/2607.16083v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16083v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The growing adoption of Large Language Models in scientific research has created a need to understand what competencies researchers and graduate students require to use these tools critically and responsibly. This rapid review analyzed 194 articles retrieved from Elicit and Google Scholar (2022 to 2025), from which 40 were selected for competency extraction and thematic analysis following independent dual screening (Gwet AC1: 0.76 to 0.83). Eight competencies were identified. The most prevalent was domain expertise and oversight of AI outputs (n = 123), encompassing subject matter mastery, systematic skepticism, source verification, and researcher accountability. Other key competencies include metacognition and decision making about AI use (n = 55), ethics and academic integrity (n = 53), prompt engineering for research (n = 38), and reproducibility of AI use (n = 29). AI literacy and technical knowledge (n = 16) was explicitly identified as a risk factor when absent, with domain expertise treated as a prerequisite for meaningful critical evaluation. The findings suggest that preparing researchers to use LLMs goes beyond technical instruction, requiring an integrated set of epistemic, ethical, and methodological competencies centered on human accountability for the knowledge produced. These results have direct implications for the design of graduate programs and AI literacy initiatives.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T16:14:14Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Danilo Monteiro Ribeiro</name>
+    </author>
+    <author>
+      <name>Ronnie de Souza Santos</name>
+    </author>
+    <author>
+      <name>Rodrigo Siqueira</name>
+    </author>
+    <author>
+      <name>Breno Andrade</name>
+    </author>
+    <author>
+      <name>Rafael Batista Duarte</name>
+    </author>
+    <author>
+      <name>Gilberto Hida</name>
+    </author>
+    <author>
+      <name>Julia Alencar</name>
+    </author>
+    <author>
+      <name>Gustavo Pinto</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16074v1</id>
+    <title>JoyNexus: Service-Oriented Multi-Tenant Post-Training for VLA Models</title>
+    <updated>2026-07-17T15:58:20Z</updated>
+    <link href="https://arxiv.org/abs/2607.16074v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16074v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The post-training of Vision-Language-Action (VLA) models is essential due to the diversity of simulators, robot embodiments, and task objectives. Existing compute services, whether offered as direct accelerator rental or batch-workload submission, typically allocate an exclusive set of GPU and CPU resources to a single tenant. While this paradigm maximizes client flexibility, it burdens users with infrastructure adaptation, and the fixed card-hour accounting model renders short or bursty workloads both expensive for tenants and inefficient for the service provider. To address these challenges, we present JoyNexus, a unified service for multi-tenant VLA supervised fine-tuning, reinforcement learning, and evaluation. JoyNexus decouples the Training Model Service, Inference Model Service, and Environment Service, each accessed through APIs and backed by resident shared base models with tenant-specific slots. Tenants can directly invoke high-level semantic APIs for training, rollout, and evaluation, or compose custom algorithms using lower-level APIs and their assigned endpoints. Multiple tenants submit workloads concurrently; their action modules, optimizers, rollout records, and policy versions remain isolated, and the service is scheduled by the global Training Queue and Inference Queue. To further improve multi-tenant training efficiency, JoyNexus introduces group batching for heterogeneous VLA data schemas that share a compatible model-facing prefix, enabling a single shared backbone forward pass over grouped samples. Finally, we evaluate JoyNexus through workload simulation and a group-batching pipeline in a realistic embodied scenario. Results show that, compared with isolated single-tenant execution, JoyNexus reduces aggregate GPU time and improves service utilization via cross-tenant scheduling on shared resources.</summary>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T15:58:20Z</published>
+    <arxiv:comment>23 pages, 12 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.DC"/>
+    <author>
+      <name>Haoran Sun</name>
+    </author>
+    <author>
+      <name>Wentao Zhang</name>
+    </author>
+    <author>
+      <name>Junyang Hua</name>
+    </author>
+    <author>
+      <name>Hedan Yang</name>
+    </author>
+    <author>
+      <name>Yongjian Guo</name>
+    </author>
+    <author>
+      <name>Yifei Zhang</name>
+    </author>
+    <author>
+      <name>Xiaolong Xiang</name>
+    </author>
+    <author>
+      <name>Mingxi Luo</name>
+    </author>
+    <author>
+      <name>Jing Long</name>
+    </author>
+    <author>
+      <name>Chen Zhao</name>
+    </author>
+    <author>
+      <name>Chen Zhou</name>
+    </author>
+    <author>
+      <name>Wanting Xu</name>
+    </author>
+    <author>
+      <name>Qiming Yang</name>
+    </author>
+    <author>
+      <name>Hui Zhang</name>
+    </author>
+    <author>
+      <name>Song Wang</name>
+    </author>
+    <author>
+      <name>Xiaodong Bai</name>
+    </author>
+    <author>
+      <name>Shuai Di</name>
+    </author>
+    <author>
+      <name>Xu Chu</name>
+    </author>
+    <author>
+      <name>Xiaotie Deng</name>
+    </author>
+    <author>
+      <name>Yicheng Gong</name>
+    </author>
+    <author>
+      <name>Junwu Xiong</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.16024v1</id>
+    <title>DiffTestGen: Change-Directed LLM-Based Testing for Exposing Behavioral Differences</title>
+    <updated>2026-07-17T14:57:59Z</updated>
+    <link href="https://arxiv.org/abs/2607.16024v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.16024v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As software evolves over time, it is important to ensure that any behavioral changes occur as intended by developers. A promising approach for this goal is to generate tests that expose behavioral differences between the old and new versions of a program. However, current approaches fail to trigger behavioral differences for many code changes. This paper presents~DiffTestGen, a novel change-directed, LLM-based differential testing approach specifically designed to expose behavioral differences introduced by a code change. The approach is enabled by two key contributions: First, DiffTestGen leverages static call graph analysis and project documentation to identify valid entry points for test generation and to guide the LLM toward reaching the changed code. Second, DiffTestGen iteratively improves our newly introduced union coverage metric, which combines coverage of modified code in the old and the new version, by providing targeted coverage feedback to the LLM. We evaluate DiffTestGen on two datasets comprising a total of 463 PRs. DiffTestGen exposes behavioral differences in 78.2% of the PRs while achieving an average union coverage of 90.7%. Compared with the baselines, DiffTestGen exposes 99 more PRs overall and increases code coverage by 12.5% and 15.6% percentage points, respectively. By integrating DiffTestGen with the Testora regression detector, we show that the identified behavioral differences can be used to detect regression bugs missed by the best existing approaches.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T14:57:59Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Huimin Hu</name>
+    </author>
+    <author>
+      <name>Cristian Cadar</name>
+    </author>
+    <author>
+      <name>Michael Pradel</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15963v1</id>
+    <title>A Human-Centric Evaluation of a Retrieval-Augmented Generation System for Explaining Quebec Insurance Contracts</title>
+    <updated>2026-07-17T13:50:27Z</updated>
+    <link href="https://arxiv.org/abs/2607.15963v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15963v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>With the rise of online insurance sales, consumers face a significant \enquote{advice gap}, requiring them to navigate complex legal contracts without expert guidance. This paper presents a human-centric, extrinsic evaluation of a state-of-the-art Retrieval-Augmented Generation system, designed to make Quebec automobile insurance contracts more understandable. Through a user study with 154 participants from Laval University, we assess the agent's real-world utility by measuring system satisfaction, cognitive effort, perceived autonomy, and risk. Our results show the system is perceived as a \enquote{cognitive equalizer}, receiving high ratings for satisfaction, trust, and clarity. Crucially, users value the sense of autonomy the system provides even more than the knowledge itself, with this effect being most pronounced among participants with lower financial literacy, demonstrating how such an agent can directly empower individuals. However, our study also highlights some limitations: participants expressed a strong preference for human agents in high-stakes or emotionally charged scenarios. This work highlights the importance of human-in-the-loop frameworks in ensuring the responsible implementation of AI in high-stakes consumer finance.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T13:50:27Z</published>
+    <arxiv:comment>Accepter to HCII 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>David Beauchemin</name>
+    </author>
+    <author>
+      <name>Richard Khoury</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15948v1</id>
+    <title>TARS: A Theory-of-Mind Agent for Personalized In-IDE Code Comprehension</title>
+    <updated>2026-07-17T13:32:20Z</updated>
+    <link href="https://arxiv.org/abs/2607.15948v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15948v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Code comprehension is one of the most time-consuming tasks in software engineering, yet most LLM-based assistants produce explanations that ignore who is asking and force developers into a disruptive copy-paste workflow. We present TARS, an LLM-powered agent integrated into Visual Studio Code that supports program comprehension through autonomous explanations anchored directly to the code under analysis. Built around a lightweight Theory of Mind paradigm, TARS profiles a developer's expertise, role, and stylistic preferences, then adapts the depth and tone of its explanations accordingly, grounding them in project documentation via Retrieval-Augmented Generation. To evaluate TARS, we conducted a controlled experiment with 18 participants on non-trivial Java snippets. Participants using TARS completed tasks 26\% faster, reported lower cognitive load, and found the explanations meaningfully adapted to their profiles.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T13:32:20Z</published>
+    <arxiv:comment>Accepted at ICSME 2026, Tool Demonstration and Data Showcase Track</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Leopoldo Todisco</name>
+    </author>
+    <author>
+      <name>Antonio Della Porta</name>
+    </author>
+    <author>
+      <name>Stefano Lambiase</name>
+    </author>
+    <author>
+      <name>Fabio Palomba</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15944v1</id>
+    <title>When Not to Automate: A Formal Protocol for Human Preservation in AI-Optimized Organizations</title>
+    <updated>2026-07-17T13:27:57Z</updated>
+    <link href="https://arxiv.org/abs/2607.15944v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15944v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Standard automation ROI misses four categories of systemic risk -- tacit knowledge erosion, resilience reduction, regulatory exposure, and socio-institutional capital degradation -- that affect long-term organizational performance. PHP-AIO (Protocol for Human Preservation in AI-Optimized Organizations) is a five-gate sequential decision protocol with a final composite check that quantifies these unpriced systemic risks at the role level and produces auditable automation decisions. A closed-form automation-debt measure ($ρ(P)$) formalises how role-level decisions accumulate across multi-step processes; its warning is neutralised only by a regulator-mandated human-in-the-loop anchor. Applied to stylised profiles of representative internal roles, PHP-AIO produces distinct outcomes -- automate, augment, hybrid, and preserve -- for candidates that standard cost-benefit analysis would uniformly automate. Threshold sensitivity analysis confirms the gate decisions are robust to upward perturbations of at least 14% in three of four representative cases.
+  Keywords: AI governance, automation decision, human oversight, tacit knowledge, organizational resilience, financial services</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T13:27:57Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Jose Manuel de la Chica Rodriguez</name>
+    </author>
+    <author>
+      <name>Jairo Rodriguez Arias</name>
+    </author>
+    <author>
+      <name>Spyridon Chouliaras</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15937v1</id>
+    <title>The Language of Security: How Prompt Syntax Shapes Secure Code Generation in Open LLMs</title>
+    <updated>2026-07-17T13:20:21Z</updated>
+    <link href="https://arxiv.org/abs/2607.15937v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15937v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) are increasingly used for source code generation despite their outputs often exhibiting security vulnerabilities. Prior work shows that prompt engineering can mitigate such risks, yet (1) they focused on high-level prompting strategies, neglecting recent evidence that fine-grained syntactic variations can substantially alter model behavior; and (2) predominantly evaluate proprietary LLMs, limiting the applicability of their findings in industrial settings where self-hosted, open models are preferred for privacy, compliance, and deployment control. In this paper, we study how fine-grained syntactic constituents of prompts influence the security of open LLM-generated code. Using a parser-driven approach, we systematically generate syntactic variants of security-relevant code generation prompts and evaluate their impact on code security across multiple open LLMs and programming languages. Our results show that specific syntactic elements, such as constraints, guards, conditions, and concept bindings, and their position within the prompt consistently affect the likelihood of generating insecure code. These findings identify prompt syntax as a concrete security control surface and provide actionable guidance for reducing vulnerability risk in LLM-assisted development.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T13:20:21Z</published>
+    <arxiv:comment>Accepted at ICSME 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Matteo Cicalese</name>
+    </author>
+    <author>
+      <name>Antonio Della Porta</name>
+    </author>
+    <author>
+      <name>Stefano Lambiase</name>
+    </author>
+    <author>
+      <name>Emanuele Iannone</name>
+    </author>
+    <author>
+      <name>Torge Hinrichs</name>
+    </author>
+    <author>
+      <name>Riccardo Scandariato</name>
+    </author>
+    <author>
+      <name>Fabio Palomba</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15932v1</id>
+    <title>A Modular Framework for Stack-Heap and Value Abstractions (Extended Version)</title>
+    <updated>2026-07-17T13:18:18Z</updated>
+    <link href="https://arxiv.org/abs/2607.15932v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15932v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Advanced static program analysis requires reasoning on the semantics of non-trivial program behaviors (e.g., pointers and complex data structures such as lists and sets, functions, and objects) and how they affect the memory. In most programming languages, static and dynamic allocations are typically managed by the stack and the heap, respectively. However, how allocations behave and how the memory is managed at runtime can vary significantly depending on the programming language being analyzed. Proper handling of these aspects is essential, as an accurate memory model enables the detection of critical issues such as buffer overflows and underflows, use-after-free errors, and null pointer exceptions prior to execution, that is, before such erroneous behaviors occur. In this paper, we propose and formalize a generic memory framework to handle stack and heap memory during the analysis, that is able to support various behaviors from different programming languages (e.g., C, C++, Java, and Python), while remaining parametric, allowing different memory and value analyses to be independently chosen and combined. It relies on the Abstract Interpretation theory and enables sound approximation of different memory models and program behaviors. We introduce a split state abstraction that separates value and memory analyses into two modular abstract domains. These domains interact through a set of memory identifiers, along with a set of operations defined by the domains to manipulate them, allowing the framework to capture both value information and structural memory relationships.</summary>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T13:18:18Z</published>
+    <arxiv:primary_category term="cs.PL"/>
+    <author>
+      <name>Giacomo Boldini</name>
+    </author>
+    <author>
+      <name>Luca Negrini</name>
+    </author>
+    <author>
+      <name>Luca Olivieri</name>
+    </author>
+    <author>
+      <name>Pietro Ferrara</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15908v1</id>
+    <title>Trans-Domain Digital Twin: Conceptual Foundations, Architecture, and Research Outlook</title>
+    <updated>2026-07-17T12:32:28Z</updated>
+    <link href="https://arxiv.org/abs/2607.15908v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15908v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Complex systems comprise heterogeneous domains whose states, uncertainties, risks, and control consequences can cross domain boundaries. Existing cross-domain digital twin approaches broadly focus on comparison, reuse, semantic mapping, standardization, and interoperability, but do not inherently require operational connections among domain states, errors, objectives, constraints, decisions, and controls. This article proposes the trans-domain digital twin as an operational formulation along the continuum of Composite/Federated Digital Twin Systems. This approach connects heterogeneous domain twins through an aligned shared state, explicit coupling of data, models, states, errors, objectives, and controls, heterogeneous temporal coordination, joint decision-making, and feedback-based adaptation. The proposed framework presents a seven-layer conceptual architecture, a trans-domain orchestration core, minimum compliance conditions, a general operational formalism, progressive fast-meso-slow loops, and a single-episode offline training mechanism linked to bounded online adaptation. It also describes conceptual validation and evaluation criteria, a maturity model, a reference deployment architecture, and requirements for runtime safety, provenance, versioning, and model lifecycle management. The framework is conceptually mappable to standards for digital twins, model exchange, distributed simulation, and smart transducers; however, its formal compliance and operational effectiveness must be examined through independent benchmarks, uncertainty quantification, ablation testing, and field validation.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T12:32:28Z</published>
+    <arxiv:comment>33 pages, 20 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Mansoorali Amiri</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15888v1</id>
+    <title>Red Light, Grey Zone: A Multi-Perspective Interactive Narrative for Autonomous Driving Ethics</title>
+    <updated>2026-07-17T12:03:46Z</updated>
+    <link href="https://arxiv.org/abs/2607.15888v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15888v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous driving ethics is not only an expert concern, but also a public issue involving risk, responsibility, and governance. However, non-experts often struggle to interpret these issues in concrete incidents, especially when responsibility is distributed across multiple stakeholders. This paper investigates interactive narrative as a public-facing method for eliciting situated ethical reflection on autonomous driving. We present Red Light, Grey Zone, a web-based, multi-perspective interactive narrative prototype inspired by a real-world autonomous-driving incident. The prototype invites participants to compare stakeholder perspectives, examine scene materials, and make responsibility judgments in the face of ethical ambiguity. We report an exploratory user study (N=12) examining how differently non-experts responded to the prototype. Our analysis focuses on three dimensions of reflection: ethical cognition, responsibility-focused critical thinking, and multi-perspective reasoning. Exploratory pre-post results showed the strongest self-reported shift in responsibility-focused critical thinking among participants who completed the intended stakeholder-comparison process, while ethical cognition and multi-perspective reasoning showed positive directional trends. Qualitative findings further show how participants reflected on safety and market trade-offs, responsibility ambiguity, transparency and privacy, and governance gaps. Participants also used stakeholder comparison to corroborate evidence and, in many cases, broaden responsibility judgments from single-actor blame toward more distributed interpretations of accountability. Overall, the study suggests that multi-perspective interactive narratives may support non-expert reflection on accountability, evidence, and governance in AI-enabled systems.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T12:03:46Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <author>
+      <name>Mengyi Wei</name>
+    </author>
+    <author>
+      <name>Nianhua Liu</name>
+    </author>
+    <author>
+      <name>Chenyu Zuo</name>
+    </author>
+    <author>
+      <name>Liqiu Meng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15883v1</id>
+    <title>Perceived AGI: Believability as Dimensional Completeness, Not Capability</title>
+    <updated>2026-07-17T11:57:46Z</updated>
+    <link href="https://arxiv.org/abs/2607.15883v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15883v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models are broadly capable, yet in sustained one-to-one conversation they still read as flat: competent, responsive, and somehow not quite the presence of a mind. We hypothesize that a central missing ingredient is not more capability but dimensional completeness. We propose that the believability of an artificial interlocutor -- the degree to which a user attributes an inner life to it, which we call perceived mind -- is governed by whether the agent expresses a small set of first-person stances that humans use as evidence of mind, and that this is separable from task intelligence. We name four such dimensions -- time, truth, entropy, and love -- each defined as a behavioral stance rather than a benchmark competency, each with a human analog and a concrete emulation path; the time dimension already has an author-reported prototype. We identify an observable behavior layer -- initiative (unprompted action) and cadence (the shape and timing of turns) -- through which the stances surface in conversation, both partially realized as deployed features in a production companion application. We state six falsifiable predictions that a later pre-registered study will test, separating those that are pre-registrable now from those that remain conjectures pending operationalization. This is a conceptual framework: it reports no human-subjects data, and its central comparative claims are predictions, not findings. Throughout we hold a firm boundary -- the object is inferrable interiority, not interiority; this is perception engineering, not a theory of machine consciousness -- and we treat the resulting attachment and manipulation risks as load-bearing rather than incidental.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T11:57:46Z</published>
+    <arxiv:comment>12 pages, 1 figure, 3 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Sebastian Cochinescu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15875v1</id>
+    <title>Scientific Claim-Source Retrieval Revisited: A Comparative Study of Style Transfer and Re-Ranking</title>
+    <updated>2026-07-17T11:43:37Z</updated>
+    <link href="https://arxiv.org/abs/2607.15875v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15875v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scientific claims shared on social media are often difficult to verify and may contribute to the spread of misinformation. To address this challenge, automated fact verification systems require scientific claim-source retrieval, the task of identifying the source publication underlying a given claim. However, claims often differ substantially from their source publications in language, style, and specificity, making retrieval challenging. We present a comparative study of scientific claim-source retrieval on the CheckThat! 2026 benchmark across sparse and dense retrieval models. Our results show that translating claims into English outperforms both original and bilingual claim representations, while incorporating publication metadata provides additional retrieval gains by capturing indirect source references. In addition, we analyze four style transfer approaches and find that they improve retrieval performance for most models, although the optimal style depends on the underlying retrieval objective. Finally, we investigate similarity- and signal-based re-ranking approaches, introducing three novel re-ranking models based on attribution, entity overlap, and verification-based reasoning. Verification-based re-ranking yields additional gains beyond semantic similarity and achieves the best overall performance with an MRR@5 of 0.758.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T11:43:37Z</published>
+    <arxiv:comment>Accepted at CLEF 2026 (Best of Labs)</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Tobias Schreieder</name>
+    </author>
+    <author>
+      <name>Harsh Khandelwal</name>
+    </author>
+    <author>
+      <name>Yu-Ling Zhong</name>
+    </author>
+    <author>
+      <name>Michael Färber</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15868v1</id>
+    <title>EgoExoMoCap: Distributed Ego-Exo Human Motion Capture</title>
+    <updated>2026-07-17T11:31:41Z</updated>
+    <link href="https://arxiv.org/abs/2607.15868v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15868v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Human motion capture from head-mounted devices (HMDs) offers a scalable way to acquire real-world human motion and interaction data, which is crucial for applications in embodied AI and VR/AR. Existing approaches focus on either egocentric body tracking, estimating the motion of the subject wearing the device, or exocentric tracking, capturing the movements of people in the wearer's surroundings. So far, these two paradigms have largely been explored in isolation. In this paper, we propose a novel distributed framework that jointly leverages ego- and exocentric multi-modal signals for human motion estimation from HMDs. Unlike traditional motion capture systems requiring bulky multi-camera setups or obtrusive mocap suits, our approach, EgoExoMoCap, is as simple as two (or more) people, each wearing a pair of smart glasses. The method leverages head (plus potentially wrist) tracking signals for accurate estimation of global motion in the 3D world and combines context-aware image features based on DINOv3 to achieve robustness in the presence of noise and occlusions. Extensive experiments on two in-the-wild datasets show that our approach can robustly reconstruct motion even in challenging scenarios.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T11:31:41Z</published>
+    <arxiv:comment>Accepted by ECCV 2026, Project page and code: https://siplab.org/projects/EgoExoMoCap</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Jiaxi Jiang</name>
+    </author>
+    <author>
+      <name>Bharat Lal Bhatnagar</name>
+    </author>
+    <author>
+      <name>Nan Yang</name>
+    </author>
+    <author>
+      <name>Lingni Ma</name>
+    </author>
+    <author>
+      <name>Sebastian Starke</name>
+    </author>
+    <author>
+      <name>Robin Kips</name>
+    </author>
+    <author>
+      <name>Nadine Bertsch</name>
+    </author>
+    <author>
+      <name>Christian Holz</name>
+    </author>
+    <author>
+      <name>Federica Bogo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15866v1</id>
+    <title>Breakdowns for Human-Machine Creative Reflexivity</title>
+    <updated>2026-07-17T11:25:45Z</updated>
+    <link href="https://arxiv.org/abs/2607.15866v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15866v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI (GenAI) works via goal-directed computation, which differs fundamentally from human creative processes. This poses challenges for the intelligent support of creative experiences. We propose ``breakdowns'' as opportunities for the exchange of perspectives between human and machine. Breakdowns disrupt a flow and force us to consciously evaluate our ``being-in-the-world''. Between human and machine, breakdowns can function as openings for collaborative creative reflection. We are currently studying human-human creative interactions, to identify the markers of these inter-subjective openings, and to understand how they are used in a co-creative process. We present preliminary findings on breakdowns as a design principle for creativity support, prioritising human creative agency and meaningful reflection over automated content generation.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T11:25:45Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Marianne Bossema</name>
+    </author>
+    <author>
+      <name>Somaya Ben Allouch</name>
+    </author>
+    <author>
+      <name>Rob Saunders</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15854v1</id>
+    <title>Agentic Synthesis against Counterexample-Supplemented Sketches</title>
+    <updated>2026-07-17T11:11:13Z</updated>
+    <link href="https://arxiv.org/abs/2607.15854v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15854v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Coding agents can fix a failing example without preserving the domain rule that made it fail, so later generations can repeat the same plausible mistake. We present agentic synthesis against counterexample-supplemented sketches, a repository-native method for systems whose governing policy is discovered during implementation. A human starts with a partial, code-shaped sketch, and a coding agent generates the first implementation. When a concrete failure exposes missing or mistaken policy, an operator explicitly approves the corrected behavior and rule. The agent then revises the sketch and repairs or regenerates code and prompt surfaces for that one counterexample. The full archive preserves provenance; a selected regression set gates each revision before the next candidate is revealed; and periodic clean regeneration tests whether the evolved sketch, rather than prompt history or accumulated examples, carries the learned policy.
+  We demonstrate the method with CatSynth, a synthetic browser application and captured coding-agent experiment. In one open-world run with GPT-5.4-mini, 8 of 14 frozen candidate cases became counterexamples. The rebuild controls inherited that promotion schedule, and all three paths passed the 8 accepted cases. Rebuilding from the evolved sketch passed 19 of 21 withheld cases, compared with 15 of 21 when rebuilding from the initial sketch and replaying all accepted examples. Retaining code across counterexamples required 9 Developer calls and 719 lines of cumulative artifact churn, versus 15 calls and 2,394 lines for replay-all, and passed 18 of 21 withheld cases. These results provide inspectable evidence that the evolved sketch carried reviewed policy and that retaining code reduced rework in this run; with one model and one reveal order, they do not establish general superiority or correctness beyond the encoded checks.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T11:11:13Z</published>
+    <arxiv:comment>32 pages, 5 displayed figures (4 distinct screenshots). Includes the CatSynth artifact supplement. Code and captured experiment artifacts: https://github.com/open-horizon-labs/counterexample-supplemented-sketches</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Muness Castle</name>
+    </author>
+    <author>
+      <name>Eric Rubeck</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15820v1</id>
+    <title>In the Driver's Seat: A Multi-Company Study on the Reality of Autonomous Driving System Testing</title>
+    <updated>2026-07-17T10:28:42Z</updated>
+    <link href="https://arxiv.org/abs/2607.15820v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15820v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous driving systems (ADS) are rapidly advancing and increasingly deployed in real-world applications. This creates growing demands for effective testing to ensure system functionality and safety. However, ADS testing remains complex and lacks well-established standards for scenario selection, performance evaluation, and acceptance criteria. To better understand current ADS testing practices and challenges, we conducted an interview study with experts working on ADS development and testing in nine companies from six different countries. Through thematic analysis, we synthesized industrial testing practices, challenges, potential solutions, future trends, and proposed an evidence-centered closed-loop testing framework for ADS testing. Our findings show that current practices primarily focus on scenario-based and X-in-the-loop testing approaches, supported by diverse tools, metrics, benchmarks, and testing strategies. The participants highlighted major challenges related to scenario realism, scenario coverage, simulation fidelity, and acceptance criteria, while also discussing potential solutions such as the use of AI, world models, and end-to-end approaches. Furthermore, participants envisioned future ADS testing to become more automated, data-driven, and transparent across the industry. Overall, this study provides a comprehensive industry-grounded overview of ADS testing, proposes an evidence-centered closed-loop testing framework to provide actionable guidance for ADS testing, and outlines important directions for future research and practice.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T10:28:42Z</published>
+    <arxiv:comment>34 pages, 6 figures, 3 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Qunying Song</name>
+    </author>
+    <author>
+      <name>Yuan Gao</name>
+    </author>
+    <author>
+      <name>Johannes Betz</name>
+    </author>
+    <author>
+      <name>Dietmar Pfahl</name>
+    </author>
+    <author>
+      <name>Mohammad Reza Mousavi</name>
+    </author>
+    <author>
+      <name>Federica Sarro</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15818v1</id>
+    <title>Can't Stop: How Context and Individual Traits Influence Effectiveness of Different Gradual Interventions for Infinite Scrolling on Short-Form Video Platforms</title>
+    <updated>2026-07-17T10:28:13Z</updated>
+    <link href="https://arxiv.org/abs/2607.15818v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15818v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Infinite scrolling on short-form video platforms like TikTok encourages prolonged engagement and post-usage regret. Interventions aim to mitigate such behavior, but their effectiveness may depend on the interplay between intervention type, contextual factors, and individual traits. In a 7-day within-subject randomized field study (N=104), we compared a baseline pop-up and two gradually intensifying design frictions (visual and haptic). We evaluated behavioral changes and user experience using objective and subjective measures. Results showed that the pop-up was initially effective but quickly lost impact, whereas the visual gradual intervention sustained subjective ratings the longest. Bayesian modeling revealed that self-regulation traits moderate how participants responded to the three intervention types. For participants with low impulsivity, the type of intervention had little influence on its subjective effectiveness. For participants with high impulsivity, however, differences between intervention types were substantial, with the explicit baseline pop-up being most effective compared to the novel gradual interventions. Contextual factors, in contrast, showed little influence. These findings suggest that intervention modality and individual differences in self-regulation shape intervention effectiveness.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T10:28:13Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies 2026</arxiv:journal_ref>
+    <author>
+      <name>Luca-Maxim Meinhardt</name>
+    </author>
+    <author>
+      <name>Manuela Dragic</name>
+    </author>
+    <author>
+      <name>Mark Colley</name>
+    </author>
+    <author>
+      <name>Kai Lukoff</name>
+    </author>
+    <author>
+      <name>Enrico Rukzio</name>
+    </author>
+    <arxiv:doi>10.1145/3831979</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3831979" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15781v1</id>
+    <title>AgentFAIR: A Multi-Agent Collaborative Framework for FAIRness Evaluation of Geospatial Datasets</title>
+    <updated>2026-07-17T09:32:54Z</updated>
+    <link href="https://arxiv.org/abs/2607.15781v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15781v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Geospatial datasets support applications from urban planning to climate modeling, yet consistent assessment of FAIR compliance is difficult. Existing evaluators use different rubrics and evidence sources and may fail on JavaScript-rendered pages or repository-specific identifiers. For 50 datasets from 10 repositories, the standard deviation of normalized scores across available tools averages 15.0 percentage points and reaches 30.3 for one dataset. Because these outputs are not equivalent measurements, we use them to characterize disagreement and failure modes, not comparative accuracy. We present AgentFAIR, a multi-agent framework combining structured metadata extraction with 13 sub-principle-specific LLM evaluators. Each produces a 0-3 maturity score, cited evidence, and recommendations; a critic checks evidence and consistency and can request targeted re-evaluation. Mean Findability, Accessibility, Interoperability, and Reusability scores are 79.7%, 70.4%, 45.3%, and 72.0%. Rank correlations with four baseline tools range from 0.31 to 0.61; the FAIR-enough comparison is not statistically significant. On a 10-dataset repeated-run subset, sub-principle agreement averages 89% (standard deviation: 3 percentage points), versus 71% without the critic. A preliminary 15-dataset expert study yields Fleiss' kappa of 0.71 and 82% alignment with expert consensus. API cost is approximately USD 0.054 per dataset. These results support auditability and feasibility, while the limited benchmark, incomplete ablations, and single-model-family validation constrain claims about accuracy and generalization.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.ET" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T09:32:54Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Ming Chen</name>
+    </author>
+    <author>
+      <name>Pranav Pai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15780v1</id>
+    <title>READU: Inconsistency-Driven Just-in-Time Detection and Repair of README Bugs</title>
+    <updated>2026-07-17T09:29:51Z</updated>
+    <link href="https://arxiv.org/abs/2607.15780v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15780v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Repository-level documentation, such as READMEs, is often the first point of contact between users and a repository. When this documentation is incorrect, users may encounter runtime errors or waste their time debugging. We call such mistakes in repository-level documentation README bugs. Addressing README bugs is challenging because documentation mixes prose with code, its connection to the source of truth is loose, and finding a bug still leaves developers to craft a repair. This paper presents READU, an inconsistency-driven technique for just-in-time detection and repair of README bugs. The key insight behind READU is that README bugs often manifest as inconsistencies between documentation and another source of truth: either repository-internal facts, such as source code, or repository-external facts, such as external dependencies. READU applies a high-recall commit filter, runs internal and external consistency checkers in parallel, uses an alert judge to remove false positives, and automatically synthesizes documentation patches. On 6,000 recent commits from six popular repositories including Linux and Spring Boot, READU detects 244 true positives with 75% precision, while consuming less than $0.01 and less than one minute per commit, on average. Of these true positives, READU correctly repairs 217. We report 66 found README bugs, of which (so far) 44 are confirmed and 26 are fixed.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T09:29:51Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Doehyun Baek</name>
+    </author>
+    <author>
+      <name>Kilian Krampf</name>
+    </author>
+    <author>
+      <name>Michael Pradel</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15771v1</id>
+    <title>What Do Chinese-Language Generative Search Engines Cite and Surface? A Large-Scale Empirical Study</title>
+    <updated>2026-07-17T09:03:12Z</updated>
+    <link href="https://arxiv.org/abs/2607.15771v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15771v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI question-answering systems increasingly mediate information access, shifting content visibility from ranked search results to retrieval, citation, and presentation in generated answers. We conduct a large-scale empirical study of Chinese-language generative search across the Web and App interfaces of four mainstream platforms. The controlled design covers eight platform interfaces, 614 queries, and three replications per query-platform-interface combination. From 214,119 raw records, we construct a cleaned citation-level dataset of 160,860 records and analyze citation behavior, source attribution, entity exposure, and cross-interface consistency. Five findings emerge. First, brands in the citation pool were selectively surfaced in answers: the overall brand-selection rate was 8.3%, and 12.4% of retrieved sources containing contact information contributed contact information to answers. Second, content fit, cross-source occurrence count, and semantic role were relatively important in predictive models, whereas the 5118-Baidu Composite Quality Score was not the leading predictor for any examined outcome. Third, among cited pages with publication dates, fitted half-lives were approximately 39 days for high-timeliness queries and 68 days for low-timeliness queries. Fourth, approximately 13% of brand exposures could not be matched to the contemporaneous citation pool, and approximately 71% of contact-information exposures could not be matched to the crawled body text. Fifth, source sets differed systematically between the App and Web interfaces of the same platform. These results characterize how Chinese-language generative search systems select, attribute, and surface information and show that interface type is an important dimension of analysis.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T09:03:12Z</published>
+    <arxiv:comment>49 pages, 15 figures. Tao Zhen and Yue Liu contributed equally and share first authorship; Gege Zhang and Yixuan Niu contributed equally and share second authorship</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Tao Zhen</name>
+    </author>
+    <author>
+      <name>Yue Liu</name>
+    </author>
+    <author>
+      <name>Gege Zhang</name>
+    </author>
+    <author>
+      <name>Yixuan Niu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15769v1</id>
+    <title>Making Agent-Mediated Contributions Governable: A Project-Level Governance Manifest for Open-Source AI Collaboration</title>
+    <updated>2026-07-17T08:58:54Z</updated>
+    <link href="https://arxiv.org/abs/2607.15769v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15769v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI and coding agents are intensifying a central governance tension in open-source software (OSS): they scale contribution generation faster than maintainers can assess risk, evidence, and accountability. Existing responses improve agent-readability and traceability, but project rules must also organize contribution-specific risk, evidence, accountability, and review-gate states. We theorize this organizational arrangement as project-side governability infrastructure. A diagnostic audit of 50 GitHub repositories finds widespread general governance artifacts, observable agent-readability, and fragmented AI-governance cues, but no project-wide arrangement that coordinates shared rules, preparation obligations, verification rights, and maintainer decision authority across AI-mediated contribution workflows. We develop the Agent Governance Manifest (AGM) as a repository-hosted boundary resource and bidirectional governance contract linking contributor-side evidence preparation with maintainer-side verification. In a controlled reviewer-side evaluation with 15 participants and 75 task-level outputs, AGM-supported materials improved exact risk-label recovery (37/38 vs. 15/37) and perceived review support (6.14 vs. 3.27 on a 1-7 scale). In a contributor-side feasibility check, 15 participants completed 45 tasks; all final packages represented the core governance state correctly, and 41 passed strict structural validation. The study develops a three-layer framework of agent-readability, traceability, and governability, theorizes agent-mediated contributions as governable boundary objects, and advances compliance-enabling digital innovation governance while preserving maintainer decision authority.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T08:58:54Z</published>
+    <arxiv:comment>Preprint. Under journal review</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jinjin Gao</name>
+    </author>
+    <author>
+      <name>Luyang Li</name>
+    </author>
+    <author>
+      <name>Shufen Guo</name>
+    </author>
+    <author>
+      <name>Ligang He</name>
+    </author>
+    <author>
+      <name>Xiaoning Sun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15762v1</id>
+    <title>GapForge: Directed Compiler Fuzzing via Coverage-Gap Analysis</title>
+    <updated>2026-07-17T08:53:19Z</updated>
+    <link href="https://arxiv.org/abs/2607.15762v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15762v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern compiler codebases (e.g., GCC and LLVM) are large and complex, making comprehensive coverage across diverse code regions highly challenging. Most existing test generation techniques ignore characteristics of the target code, producing test programs that exercise only a limited subset of it. Consequently, substantial compiler regions remain insufficiently tested, leaving persistent long-tail coverage gaps that survive across releases. Even existing white-box techniques achieve limited coverage on large-scale compilers. To improve compiler coverage, especially for hard-to-reach edge regions, we present GapForge, a targeted LLM-based test generation technique that reasons about coverage gaps. Unlike program-driven techniques that generate diverse inputs without modeling which regions they exercise, and unlike whole-file summarization that yields coarse guidance, GapForge treats coverage gaps as explicit region-level targets in three steps. First, it prioritizes files via coverage-driven scoring that favors large, undercovered files. Second, it pairs each uncovered line span with its enclosing covered context and performs path-difference analysis to infer fine-grained triggering requirements: the program structures and compilation options needed to reach the uncovered region. Third, it synthesizes prompts from these requirements and previously failed prompts, using coverage feedback to guide next-round selection. On GCC 14.3.0 and LLVM 19.1.0, GapForge significantly outperforms eight state-of-the-art techniques. Within 72 hours, it achieves 68.13% and 69.11% coverage on core compiler modules in GCC and LLVM, surpassing the white-box technique WhiteFox by 24,736 and 19,798 additional lines, respectively. Moreover, GapForge discovers 12 real-world compiler failures (5 in GCC, 7 in LLVM), including 8 crashes and 4 miscompilations, with each component contributing to its performance.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T08:53:19Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Mingxuan Zhu</name>
+    </author>
+    <author>
+      <name>Qingyuan Liang</name>
+    </author>
+    <author>
+      <name>Junjie Chen</name>
+    </author>
+    <author>
+      <name>Zhihong Xue</name>
+    </author>
+    <author>
+      <name>Dan Hao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15750v1</id>
+    <title>Ciphertext- and Polynomial-Level Optimization for Fully Homomorphic Encryption</title>
+    <updated>2026-07-17T08:39:12Z</updated>
+    <link href="https://arxiv.org/abs/2607.15750v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15750v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fully homomorphic encryption (FHE) schemes such as RNS-CKKS enable privacy-preserving services by allowing direct computation on encrypted data. While recent FHE compilers optimize FHE programs, they operate at the coarse-grained ciphertext level, where each ciphertext operation comprises a sequence of polynomial operations. At this granularity, the compilers miss optimization opportunities across ciphertext operations. This work presents Recifhe, a new multi-level compiler that supports not only ciphertext-level but also polynomial-level optimization. At the ciphertext level, Recifhe transforms a non-FHE input program into an FHE program by inserting ciphertext management operations and applies global optimizations. At the polynomial level, Recifhe eliminates redundant polynomial computations across ciphertext operations. Recifhe achieves a 1.25x speedup over ciphertext-level-only optimization.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T08:39:12Z</published>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Seongho Kim</name>
+    </author>
+    <author>
+      <name>Heelim Choi</name>
+    </author>
+    <author>
+      <name>Jaemin Kim</name>
+    </author>
+    <author>
+      <name>Seonyoung Cheon</name>
+    </author>
+    <author>
+      <name>Dongkwan Kim</name>
+    </author>
+    <author>
+      <name>Jaeho Lee</name>
+    </author>
+    <author>
+      <name>Hoyun Youm</name>
+    </author>
+    <author>
+      <name>Dongyoon Lee</name>
+    </author>
+    <author>
+      <name>Hanjun Kim</name>
+    </author>
+    <author>
+      <name>Yongwoo Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15730v1</id>
+    <title>RECAP: Feedback-Driven Streaming Semantic User Profiles for Short-Video Recommendation</title>
+    <updated>2026-07-17T08:10:37Z</updated>
+    <link href="https://arxiv.org/abs/2607.15730v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15730v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Language-based user profiles convert long behavioral histories into explicit semantic representations for recommendation. However, most profile generators are optimized in an open loop: they may summarize past behavior fluently, but are not directly trained to improve future recommendation. We study this problem in real-world short-video recommendation, where user behaviors continuously arrive as streams and profiles must be incrementally updated under limited capacity. This requires maintaining a consistent bounded profile state and constructing profile-targeted semantic feedback from industrial implicit behavior logs. We propose RECAP, an offline closed-loop framework for optimizing streaming structured semantic profiles with historical recommendation feedback. RECAP maintains each profile as a bounded structured memory by combining LLM-based semantic updates with deterministic lifecycle and capacity control. RECAP constructs profile-targeted semantic feedback by filtering label-consistent behavior pairs with an LLM judge and training a dual-tower evaluator whose matching score serves as a GRPO reward. Experiments on Kuaishou short-video data show that RECAP improves uAUC by 0.0084 and Recall@2000 by about 4.9% over the base generator. Further analyses confirm the benefits of feedback construction and policy optimization, and show more grounded refinement and user-level abstraction in profile updates. A seven-day online A/B test further shows a statistically significant 0.139% improvement in average application usage time per user.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T08:10:37Z</published>
+    <arxiv:comment>9 pages, 5 figures, 2 tables. Accepted at RecSys 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Ziyi Zhao</name>
+    </author>
+    <author>
+      <name>Xiaoyou Zhou</name>
+    </author>
+    <author>
+      <name>Xiao Lv</name>
+    </author>
+    <author>
+      <name>Yangyang Li</name>
+    </author>
+    <author>
+      <name>Chubo He</name>
+    </author>
+    <author>
+      <name>Zhao Liu</name>
+    </author>
+    <author>
+      <name>Jiayao Shen</name>
+    </author>
+    <author>
+      <name>Yuqi Liu</name>
+    </author>
+    <author>
+      <name>He Li</name>
+    </author>
+    <author>
+      <name>Chengyi Zhang</name>
+    </author>
+    <author>
+      <name>Jian Liang</name>
+    </author>
+    <author>
+      <name>Ming Li</name>
+    </author>
+    <author>
+      <name>Chongming Gao</name>
+    </author>
+    <author>
+      <name>Fuli Feng</name>
+    </author>
+    <author>
+      <name>Ruiming Tang</name>
+    </author>
+    <author>
+      <name>Han Li</name>
+    </author>
+    <arxiv:doi>10.1145/3773078.3831930</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3773078.3831930" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15718v1</id>
+    <title>Verified LLM-Driven Synthesis for Concept Design</title>
+    <updated>2026-07-17T07:55:00Z</updated>
+    <link href="https://arxiv.org/abs/2607.15718v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15718v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Concept Design structures software systems around concepts: user-facing, self-contained units of functionality with a focused purpose. Concepts are composed into applications using synchronization rules called reactions, which specify how actions in one concept trigger actions in others. This paper first gives a formal semantics for concepts and reactions, enabling automatic verification of safety invariants in applications developed with this methodology. It then presents a CEGIS-style, LLM-driven synthesis procedure for generating reaction designs that satisfy such invariants. Because many different designs can satisfy the same invariant, we study two ways of steering synthesis toward the user's intended design: natural-language prompts and positive/negative scenarios. We also propose an LLM-driven scenario elicitation technique to support early design exploration. In an evaluation on three applications and twelve design variants using one LLM configuration, invariant-only synthesis reached verified designs quickly but often produced inconsistent designs across runs, some of which were implausible, showing that invariants alone underconstrain the design task. Scenario-guided synthesis recovered intended designs more consistently than natural-language prompting, although minimal scenarios can lead to overfitting. LLM-driven scenario elicitation, where the user classifies proposed scenarios rather than authoring them from scratch, recovered the intended designs in most variants when enough scenarios were elicited, but missed behaviors and non-determinism prevented reliable coverage in all cases.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T07:55:00Z</published>
+    <arxiv:comment>27 pages, 3 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Alcino Cunha</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15707v1</id>
+    <title>From Skill Extraction to Multistakeholder Recommendation: A Two-Stage Framework for Bias Governance in Skills-Based Job Matching</title>
+    <updated>2026-07-17T07:37:17Z</updated>
+    <link href="https://arxiv.org/abs/2607.15707v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15707v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>AI-based labor-market systems or platforms can affect access to job opportunities prior to organizational candidate rankings or hiring decisions. Such applications warrant caution, as biases in skill extraction, profile formation, and candidate-job matching may contribute to unfair treatment of candidates. In this paper, we propose a two-stage framework for detecting and governing bias in skills-based job matching. Stage 1, skill extraction and profile formation, addresses how candidates provide skills and preferences to the system, how the system extracts and structures this information, and the bias risks this entails, with a focus on chatbot-based elicitation. Stage 2, multistakeholder candidate-job recommendation, would embed this information in a recommender system in which candidate, company, and regulatory objectives are represented by separate agents, each producing an independent candidate-job ranking; these rankings would be combined through social choice-based aggregation into a single, auditable recommendation. The two stages are connected by a shared distinction between hard constraints, which require correction before processing continues, and soft constraints, which are logged to inform later decisions. Following an AI Act-aligned assessment methodology (based on the Fraunhofer AI Assessment Catalog), we propose using distributional auditing and counterfactual testing to produce a Stage 1 bias inventory sorted into hard and soft constraints, with the latter informing fairness thresholds for Stage 2. The same logic would apply to Stage 2: fairness metrics crossing predefined thresholds would trigger an adapted recommendation process, while smaller deviations would be logged as bias reports and persistent fairness states.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T07:37:17Z</published>
+    <arxiv:comment>Accepted to BIAS Conference 2026 in Leiden, The Netherlands</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Andrea Forster</name>
+    </author>
+    <author>
+      <name>Gregor Autischer</name>
+    </author>
+    <author>
+      <name>Dominik Kowald</name>
+    </author>
+    <author>
+      <name>Simone Kopeinik</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15696v1</id>
+    <title>PCTD: Preference-Guided Counterfactual Task Decomposition for Agent Tool Retrieval</title>
+    <updated>2026-07-17T07:15:41Z</updated>
+    <link href="https://arxiv.org/abs/2607.15696v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15696v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Task decomposition aims to transform ambiguous instructions into executable atomic subtasks, thereby guiding high-precision tool retrieval. However, our analysis reveals that directly adopting tool retrieval metrics, i.e., Recall or NDCG, as rewards for task decomposition can easily induce reward hacking in reinforcement learning-based methods. Specifically, models tend to maximize retrieval matching through strategies such as repetitive decomposition. This spurious correlation between the shallow features of decomposition results and retrieval metric impairs generalization in Out-of-Domain (OOD) scenarios involving unseen tools. To address this issue, we propose PCTD, a Preference-guided Counterfactual Task Decomposition framework. PCTD quantifies the marginal causal gain of decomposition on retrieval ranking through a counterfactual reward, thereby cutting off spurious correlations at their source. Meanwhile, it introduces a preference reward to impose fine-grained structural supervision on logical coherence and atomicity, encouraging the model to generate high-quality decompositions. In addition, we construct MTDTool, the task decomposition benchmark specifically designed for mobile multi-turn interactions. Extensive experiments demonstrate that PCTD alleviates repetitive decomposition and surpasses SOTA methods in retrieval, decomposition quality, and OOD generalization.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T07:15:41Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Chu Zhao</name>
+    </author>
+    <author>
+      <name>Lei Tang</name>
+    </author>
+    <author>
+      <name>Minghang Li</name>
+    </author>
+    <author>
+      <name>Jianzhe Zhao</name>
+    </author>
+    <author>
+      <name>Guibing Guo</name>
+    </author>
+    <author>
+      <name>Zhengzong Chen</name>
+    </author>
+    <author>
+      <name>Yuanyuan Zhao</name>
+    </author>
+    <author>
+      <name>Fei Huang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15684v1</id>
+    <title>Understanding Agent-Reactive Bugs at the Model-Harness Boundary: An Empirical Study of LLM Agent Issue Reports</title>
+    <updated>2026-07-17T06:53:31Z</updated>
+    <link href="https://arxiv.org/abs/2607.15684v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15684v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLM agents span command-line interfaces (e.g., Codex) and agent frameworks (e.g., LangChain), integrating backend LLMs with harness code that parses model outputs, controls agent loops, and manages context. Both the harness and LLM-generated responses jointly shape an agent's execution. This architecture gives rise to bugs that cannot be readily understood by inspecting either component alone, because some bugs occur only when a particular LLM response elicits an abnormal reaction from the agent. Prior empirical studies of agent bugs have largely attributed failures either to limited model capabilities or to harness-side defects, such as outdated APIs and configuration misalignment, without characterizing these AR bugs. We conduct the first empirical study focused on agent-reactive (AR) bugs. Through manual analysis of 255 bug reports from Codex, Gemini-CLI, LangChain, and CrewAI, we construct a two-axis taxonomy covering observable symptoms and the LLM behaviors that trigger them. Our findings show that many AR bugs manifest as silent errors without well-defined test oracles, which makes detection difficult. The stochasticity of LLM responses further complicates bug reproduction. We additionally examine fixes proposed by users and implemented by developers. This analysis exposes a mismatch: users frequently advocate harness-side guardrails, whereas developers may attribute the issue to the LLM or respond slowly to user-proposed fixes. These findings point to the need for mechanisms that help users and developers understand the root causes and resolutions of AR bugs. Overall, the study highlights challenges specific to LLM agents and motivates the design of test oracles, reproduction support, and fault-localization techniques for AR bugs.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T06:53:31Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jingyi Chen</name>
+    </author>
+    <author>
+      <name>Songqiang Chen</name>
+    </author>
+    <author>
+      <name>Hengcheng Zhu</name>
+    </author>
+    <author>
+      <name>Jialun Cao</name>
+    </author>
+    <author>
+      <name>Jiasi Shen</name>
+    </author>
+    <author>
+      <name>Shing-Chi Cheung</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15648v1</id>
+    <title>On the Structure of Address in Multi-Party Dialogue: From Discrete Labels to Continuous Levels</title>
+    <updated>2026-07-17T05:45:58Z</updated>
+    <link href="https://arxiv.org/abs/2607.15648v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15648v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In multi-party dialogues between a dialogue system and multiple users, identifying to whom an utterance is addressed is a key challenge. Prior work has typically treated addressee detection as a multi-class classification task, selecting a single label representing an individual participant or the group. This formulation assumes that address is inherently discrete and has primarily been used for predicting turn-taking. In this paper, we revisit this assumption by analyzing address as a continuous phenomenon. Using a multi-party human dialogue corpus annotated by multiple annotators, we construct both binary address labels derived from majority-vote addressee labels and continuous address levels inferred from annotator judgments using a latent-variable model. We then examine how these representations relate to turn-taking as well as listener behaviors, including gaze and backchannels. Our results show that, in addition to turn-taking, both gaze and backchannels are associated with address. Furthermore, models using continuous address levels achieve better predictive fit than those using discrete labels, suggesting that address may exhibit graded structure. Finally, we discuss the future directions of addressee detection research based on the findings of this study.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T05:45:58Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Taiga Mori</name>
+    </author>
+    <author>
+      <name>Koji Inoue</name>
+    </author>
+    <author>
+      <name>Divesh Lala</name>
+    </author>
+    <author>
+      <name>Tatsuya Kawahara</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15626v1</id>
+    <title>Understanding Fortunetelling with Large Language Models in China: User Practices, Perceptions, and Impacts on Beliefs and Decisions</title>
+    <updated>2026-07-17T04:57:12Z</updated>
+    <link href="https://arxiv.org/abs/2607.15626v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15626v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fortunetelling is a cultural practice for navigating uncertainty, often associated with people's beliefs and decisions. Fortunetelling with recent large language models (LLMs) introduces new opportunities and risks. This paper conducts qualitative studies to understand users' practices, perceptions, and impacts of LLM fortunetelling in China. We first analyze 1,045 posts on Chinese social media, yielding a comprehensive taxonomy of the diverse foretold topics (e.g., career, romance), emotion reactions (e.g., surprise, worry), and perceived credibility (e.g., doubt, trust) of LLM fortunetelling. Then, we conduct interviews with 20 users of LLM fortunetelling. The findings indicate that users treat LLM fortunetelling as a tool less for accurate prediction but more for emotional support. While the fortunetelling results rarely change users' initial beliefs or decisions, they are associated with subtle mindset shifts, with some users reporting small behavioral adjustments. We discuss implications for gaining benefits from LLM fortunetelling.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T04:57:12Z</published>
+    <arxiv:comment>Accepted at ICWSM 2027</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Xueer Lin</name>
+    </author>
+    <author>
+      <name>Chenyu Li</name>
+    </author>
+    <author>
+      <name>Shuai Ma</name>
+    </author>
+    <author>
+      <name>Yuhan Lyu</name>
+    </author>
+    <author>
+      <name>Zhenhui Peng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15608v1</id>
+    <title>Visualization Autocomplete: Visualization Authoring via Stepwise Design Recommendations</title>
+    <updated>2026-07-17T04:09:00Z</updated>
+    <link href="https://arxiv.org/abs/2607.15608v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15608v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>When domain experts create charts, the bottleneck is rarely the data, but knowing the optimal next step in chart design. The visualization design space is vast, and while domain experts can recognize a good design when they see it, it is often challenging to determine the exact path to get there. To address this, we present VISAUTOCOMPLETE, a system inspired by text autocompletion that reconceptualizes visualization design as a sequential process, recommending concrete next steps at each stage of the authoring process based on common practices. Users can intervene at any step, or delegate multiple steps to the system and select one from the design recommendations. To support responsive interaction, we distill the translation logic of a large language model (LLM) into a single function that receives the current chart state and recommended transition as input and returns the updated chart specification as output. We evaluate the system against a LLM vibecoding, Microsoft Excel, and TaskVis, an automated chart recommendation engine, on chart quality and approachability. Our results show that VisAutocomplete outperforms all baselines in the articulacy of complex chart authoring, while remaining on par with LLM in approachability.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T04:09:00Z</published>
+    <arxiv:comment>IEEE VIS 2026 &amp; IEEE Transactions on Visualization and Computer Graphics (TVCG)</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Hyeon Jeon</name>
+    </author>
+    <author>
+      <name>Sungbok Shin</name>
+    </author>
+    <author>
+      <name>Niklas Elmqvist</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15591v1</id>
+    <title>RecGPT-V3 Technical Report</title>
+    <updated>2026-07-17T03:25:43Z</updated>
+    <link href="https://arxiv.org/abs/2607.15591v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15591v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) are transforming recommender systems from matching co-occurrence patterns in historical behavior toward reasoning about the intent that drives it. RecGPT-V1 pioneered this paradigm on Taobao by centering user understanding, and RecGPT-V2 scaled it via coordinated multi-agent reasoning; both are deployed in production with consistent gains in user experience and commercial outcomes. However, operating RecGPT at scale reveals three challenges: (1) stateless behavior modeling, where each request reprocesses full user history, wasting computation and discarding prior analysis; (2) a tag-to-item information bottleneck, where natural-language tags form a lossy channel between user understanding and item grounding; and (3) inefficient explicit reasoning, whose lengthy chain-of-thought incurs untenable latency and compute overhead.
+  We present RecGPT-V3, a stateful, hybrid-modal recommender that reasons over natural language for open-world knowledge and Semantic IDs (SIDs) for concrete item grounding. A Memory Hub maintains structured, continually evolving user memory that distills long-horizon behavior into condensed units, cutting user-modeling computation by 55.8%. A Hybrid-modal Foundation Model allows the LLM jointly reason over text tags and SIDs, opening a high-bandwidth channel into the item space. Latent Intent Reasoning internalizes verbose rationales into compact learnable latent tokens that remain decodable into readable explanations, lowering output token cost by 200x. Deployed in Taobao's "Guess What You Like" feed, RecGPT-V3 achieves consistent gains in large-scale online A/B tests: IPV +1.28%, CTR +1.00%, TC +1.97%, GMV +3.97%, while cutting end-to-end serving resource consumption by 52.4%.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T03:25:43Z</published>
+    <arxiv:comment>Technique Report</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Bowen Zheng</name>
+    </author>
+    <author>
+      <name>Chao Yi</name>
+    </author>
+    <author>
+      <name>Dian Chen</name>
+    </author>
+    <author>
+      <name>Gaoyang Guo</name>
+    </author>
+    <author>
+      <name>Han Zhu</name>
+    </author>
+    <author>
+      <name>Jiakai Tang</name>
+    </author>
+    <author>
+      <name>Jian Wu</name>
+    </author>
+    <author>
+      <name>Mao Zhang</name>
+    </author>
+    <author>
+      <name>Wen Chen</name>
+    </author>
+    <author>
+      <name>Yifan Lu</name>
+    </author>
+    <author>
+      <name>Yujie Luo</name>
+    </author>
+    <author>
+      <name>Yuning Jiang</name>
+    </author>
+    <author>
+      <name>Zhujin Gao</name>
+    </author>
+    <author>
+      <name>Bo Zheng</name>
+    </author>
+    <author>
+      <name>Dixuan Wang</name>
+    </author>
+    <author>
+      <name>Hao Fang</name>
+    </author>
+    <author>
+      <name>Jiancai Liu</name>
+    </author>
+    <author>
+      <name>Jing Yu</name>
+    </author>
+    <author>
+      <name>Ke Chen</name>
+    </author>
+    <author>
+      <name>Kewei Zhu</name>
+    </author>
+    <author>
+      <name>Mingke Xu</name>
+    </author>
+    <author>
+      <name>Wenjun Yang</name>
+    </author>
+    <author>
+      <name>Xunke Xi</name>
+    </author>
+    <author>
+      <name>Zile Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15579v1</id>
+    <title>PACE: Persona Adaptation through Conversational Elicitation in Human-Robot Interaction</title>
+    <updated>2026-07-17T02:45:52Z</updated>
+    <link href="https://arxiv.org/abs/2607.15579v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15579v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Equipping humanoid robots with coherent and adaptable personas is crucial for fostering natural, engaging, and trustworthy human-robot interaction (HRI). However, existing approaches often rely on static, hard-coded identities that lack the flexibility to adapt to individual user contexts. In this paper, we present PACE (Persona Adaptation through Conversational Elicitation), a novel framework for the interactive generation and deployment of structured personas on the Ameca humanoid robot. Our system introduces an Interactive Persona Elicitation Pipeline, enabling the robot to dynamically synthesize a tailored, psychologically grounded identity through user Q&amp;A. This elicitation process feeds into a persona prompt compilation phase, generating a structured persona prompt built upon multi-perspective dimensions. We detail the Embodied System Integration required to translate this structured specification into expressive, multimodal humanoid behaviors. Through a comprehensive empirical HRI evaluation, we assess the impact of dynamically generated personas on user trust, perceived anthropomorphism, persona consistency, personal relevance, and interaction quality compared to a generic baseline. These contributions establish a scalable pathway for deploying personalized, interactive, and reliable identities in embodied humanoid assistants. Video demo is available at: https://lipzh5.github.io/PACE/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T02:45:52Z</published>
+    <arxiv:comment>8 pages, 5 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Peizhen Li</name>
+    </author>
+    <author>
+      <name>Longbing Cao</name>
+    </author>
+    <author>
+      <name>Megani Rajendran</name>
+    </author>
+    <author>
+      <name>Timothy Liu</name>
+    </author>
+    <author>
+      <name>Aik Beng Ng</name>
+    </author>
+    <author>
+      <name>Simon See</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15576v1</id>
+    <title>Efficient and Effective In-place Graph-based Vector Index Updates</title>
+    <updated>2026-07-17T02:40:08Z</updated>
+    <link href="https://arxiv.org/abs/2607.15576v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15576v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In the era of Large Language Models (LLMs), efficient vector updates are critical for capturing real-time information from rapidly evolving data. However, it is not trivial to process frequent vector insert and delete updates and maintain a high recall of the search results simultaneously. Specifically, the cluster-based vector indexing methods have high update throughput but low search result quality. Existing out-of-place graph-based vector indexing update approaches suffer from poor update throughput due to the need to periodically merge update batches into the underlying graph index.
+  Building a vector data system that supports efficient and effective in-place updates is inherently challenging. In this work, we propose Yi to achieve it. In particular, Yi supports in-place graph-based vector indexing updates with consistently high update throughput and good search result quality. The key idea of Yi is decomposition facilitates consolidation. In particular, we introduce a vector-level update mechanism and architect Yi with three core components: (i) a tasklet-based execution engine, (ii) an asynchronous buffer manager, and (iii) a vector file system. Experimental results demonstrate that Yi achieves 1.75x higher update throughput and 1.8x higher concurrent search throughput than the state-of-the-art systems on the 800M dataset, while using only 73% of the peak memory and fewer CPU cores.</summary>
+    <category term="cs.DB" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T02:40:08Z</published>
+    <arxiv:primary_category term="cs.DB"/>
+    <author>
+      <name>Haotian Liu</name>
+    </author>
+    <author>
+      <name>Yujun He</name>
+    </author>
+    <author>
+      <name>Bo Tang</name>
+    </author>
+  </entry>
+</feed>

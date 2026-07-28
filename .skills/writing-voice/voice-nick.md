@@ -113,7 +113,9 @@ high signal, him steering his own byline:
 From shaping "A machine can make the call. It can't answer for it." (the UnitedHealth /
 nH Predict essay):
 
-- **No dramatic preambles. Just say the thing.** He cut a windup and told us to state the
+- **No dramatic preambles. Just say the thing.** (He gave this note again on 2026-07-20 in a
+  quieter form. See the preamble section below, which is now the canonical version of this
+  rule.) He cut a windup and told us to state the
   point directly. Before: "But in my experience the trouble tends to show up in one place:
   when the tool is left to decide something that lands on a person..." After: "This was not
   one of them. UnitedHealth pointed a model at how much recovery care a sick person gets, and
@@ -129,9 +131,47 @@ nH Predict essay):
 - **Concise by default.** He asked to cut the piece down and the shorter, denser version was
   right. When in doubt, cut. Drop the second supporting example before the load-bearing one.
 
+## Refinements from Nick's edits (BMW/liability piece, 2026-07-20)
+
+**This is the second time he has given the preamble note** (see 2026-07-08 above). The rule
+already existed and we broke it anyway, so treat this section as the canonical, mechanical
+version. It is a pattern, not a one-off.
+
+From "Your AI made an offer" (`app/src/content/essays/your-ai-made-an-offer.md`) he deleted
+the opening sentence of a paragraph:
+
+> Before: "That's the bit I'd sit with. You can test a model for accuracy. It's harder to
+> test for what happened here, which is a bad input arriving in a confident voice with a
+> company's name behind it."
+>
+> After: "You can test a model for accuracy. It's harder to test for what happened here,
+> which is a bad input arriving in a confident voice with a company's name behind it."
+
+His words: *"I notice you do that a lot when writing I dont like these like preambles I
+prefer to just get straight into it."*
+
+- **The rule is bigger than "dramatic."** The 2026-07-08 note read as being about theatrical
+  windups. This one is quiet: a short, mild, first-person orienting sentence. Both are the
+  same fault. A sentence whose only job is to tell the reader that the next sentence matters
+  is a preamble, however understated.
+- **It applies at paragraph level, not just the top of the piece.** Every paragraph, not only
+  the lede.
+- **The mechanical test:** delete the first sentence of each paragraph and read it again. If
+  the paragraph is the same or stronger, the sentence was a preamble. Ship it deleted.
+- **Shapes he has struck so far** (from both instances): "That's the bit I'd sit with." /
+  "the trouble tends to show up in one place:" / "Here's the thing" / "What I keep coming back
+  to is" / any "That's / This is + the [part|bit|thing] + that..." / any first-person
+  reaction-to-the-point sentence ("What strikes me is," "The thing I'd flag is," "It's worth
+  sitting with"). Also see the suspense-preamble list in `blacklist.md`.
+- **He wants the reaction shown, not announced.** He is happy being opinionated in the first
+  person; what he cuts is telling the reader he is about to be. State the claim; the emphasis
+  is carried by the claim.
+
 ## Seven checkable rules
 
-1. Open on the point or a concrete detail, never a roadmap.
+1. Open on the point or a concrete detail, never a roadmap. This applies to every paragraph,
+   not just the piece: if a paragraph's first sentence only signals that a point is coming,
+   cut it and start on the point.
 2. Write in first person and commit to one position per piece.
 3. State the why in plain words before any how.
 4. Underclaim and name what's uncertain. Never round up.

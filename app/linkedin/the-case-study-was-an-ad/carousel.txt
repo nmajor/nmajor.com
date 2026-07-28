@@ -1,0 +1,120 @@
+---
+newsletter: the-case-study-was-an-ad
+channel: personal
+offsetDays: 3
+angle: carousel-copy
+---
+Slide-by-slide copy for the PDF document post that accompanies `personal-framework.md`.
+Format: 1080x1350 portrait, mobile-first, big readable type, 8 slides.
+
+---
+
+## Slide 1 — hook
+
+**5 checks before you believe an AI case study**
+
+I fact-checked the ones I'd cited myself.
+Two didn't survive it.
+
+---
+
+## Slide 2 — check 1
+
+**1. Find the publisher, not the author**
+
+Read the About page and the footer first.
+
+The most-cited cautionary tale about building
+your own software is published by a development
+agency. Every byline is its own staff.
+
+Not false. Marketing. Read it differently.
+
+---
+
+## Slide 3 — check 2
+
+**2. Follow the number backwards**
+
+One district's saving was reported as:
+
+$250,000 in April
+$220,000 in May
+$250,000 again by late May
+
+An earlier interview has no figure at all.
+
+Each retelling cites the last one.
+
+---
+
+## Slide 4 — check 3
+
+**3. Ask for the denominator**
+
+The $250,000 saving was real.
+
+The same board approved a $4.8m
+hardware lease over the same period.
+
+The saving is ~4.6% of one contract.
+
+A number without its budget isn't a result.
+
+---
+
+## Slide 5 — check 4
+
+**4. Look for year two**
+
+Nearly every build-your-own success story
+reports the first year.
+
+I could not find one that published the second.
+
+The maintenance reckoning everyone warns about
+is asserted constantly and evidenced almost nowhere.
+
+---
+
+## Slide 6 — check 5
+
+**5. Ask what forced it into the open**
+
+Every failure I could verify surfaced because
+something compelled it:
+
+A parliamentary committee
+Congressional testimony
+A union arbitration
+A regulator's disclosure deadline
+
+No committee, no regulator, no union?
+Nothing makes a company publish the bad year.
+
+---
+
+## Slide 7 — recap
+
+**The five checks**
+
+1. Who published it
+2. Does the number drift
+3. What's the denominator
+4. Is there a year two
+5. What forced it into the open
+
+The published record isn't a sample of what happens.
+It's a sample of what someone was forced to say.
+
+---
+
+## Slide 8 — soft CTA
+
+**Your own books are the only case study
+with no publication bias in it.**
+
+I write Actual Intelligence, a newsletter on
+plain-English AI for people who run things.
+
+Link in my profile.

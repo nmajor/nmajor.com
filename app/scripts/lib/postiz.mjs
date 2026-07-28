@@ -90,7 +90,10 @@ export async function createScheduledPost({
   media = [],
   extraSettings = {},
 }) {
-  if (!content || !content.trim()) throw new Error('createScheduledPost: empty content');
+  const parts = Array.isArray(content) ? content : [content];
+  if (!parts.length || parts.some((c) => !c || !String(c).trim())) {
+    throw new Error('createScheduledPost: empty content');
+  }
   if (!integrationId) throw new Error('createScheduledPost: missing integrationId');
   const future = at.getTime() > now.getTime() + 60_000;
   const type = future ? 'schedule' : 'now';
@@ -105,7 +108,14 @@ export async function createScheduledPost({
       posts: [
         {
           integration: { id: integrationId },
-          value: [{ content: content.trim(), image: media }],
+          // Postiz models a thread as several `value` entries on one post, so
+          // `content` may be a string (single post) or an array (a thread).
+          // Media rides on the first entry only, which is what every provider
+          // expects for a threaded post.
+          value: (Array.isArray(content) ? content : [content]).map((c, i) => ({
+            content: String(c).trim(),
+            image: i === 0 ? media : [],
+          })),
           settings: { __type: settingsType || 'linkedin', ...extraSettings },
         },
       ],

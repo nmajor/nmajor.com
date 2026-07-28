@@ -5,18 +5,34 @@
     "personal": {
       "integrationId": "cmnqcgkhk0001fb6tnkpl5bw8",
       "settingsType": "linkedin",
-      "note": "Nick's OWN personal LinkedIn profile (Nicholas Major) — nmajor.com's reach + selling engine; every atomized repurposing post goes here. This integrationId is Nick's personal profile and is correct for nmajor."
+      "note": "Nick's OWN personal LinkedIn profile (Nicholas Major) \u2014 nmajor.com's reach + selling engine; every atomized repurposing post goes here. This integrationId is Nick's personal profile and is correct for nmajor."
     },
     "facebook": {
       "integrationId": "cmrko8lbx000lkc6x5f1jxvac",
       "settingsType": "facebook",
       "note": "Nick's own Facebook page (Nicholas Major). Different job from LinkedIn: LinkedIn gets the standalone atomized posts with no link (links suppress reach there); Facebook gets ONE preview per issue WITH the link, because links carry fine here and this is the channel that can actually drive traffic to nmajor.com and the newsletter signup. Do NOT cross-post to the CRE Punch, Lisbon Coast Market or Institute of Applied AI integrations also present on this Postiz instance: those are other projects and orgs."
     },
+    "twitter": {
+      "integrationId": "cms4mriqn0005lv6zzhcray21",
+      "settingsType": "x",
+      "note": "Nick's own X/Twitter profile (@thenmajor). Postiz's identifier for this provider is 'x', not 'twitter'; the channel key stays 'twitter' because that is what the post frontmatter says. Threads: a post whose body is split into 1/ 2/ 3/ numbered parts is sent as a real thread (one value entry per tweet), so each part must stay under 280 characters. Postiz requires who_can_reply_post on every X post; it is set in defaultSettings.",
+      "defaultSettings": {
+        "who_can_reply_post": "everyone"
+      }
+    },
+    "instagram": {
+      "integrationId": "cmrks2y5d0001gl7bw2l09den",
+      "settingsType": "instagram",
+      "note": "Nick's own Instagram (realnmajor). Instagram REQUIRES media on every post: the scheduler skips any instagram post with no `media:` frontmatter rather than sending one that would be rejected. Carousels are declared as a directory of slides. Postiz requires post_type (post|story) on every Instagram post; it is set in defaultSettings.",
+      "defaultSettings": {
+        "post_type": "post"
+      }
+    },
     "business": {
       "integrationId": "",
       "settingsType": "linkedin-page",
       "autoApprovePreview": false,
-      "note": "PENDING — nmajor.com has no company page yet. The consultancy (the only commercial entity) is still TBD, so there is no business LinkedIn page to post to. integrationId is intentionally empty: the scheduler skips any channel with no integrationId, so nothing is ever posted here. When the consultancy page exists, set its integrationId (and decide on autoApprovePreview) to enable it."
+      "note": "PENDING \u2014 nmajor.com has no company page yet. The consultancy (the only commercial entity) is still TBD, so there is no business LinkedIn page to post to. integrationId is intentionally empty: the scheduler skips any channel with no integrationId, so nothing is ever posted here. When the consultancy page exists, set its integrationId (and decide on autoApprovePreview) to enable it."
     }
   }
 }

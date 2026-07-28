@@ -30,6 +30,18 @@ import { fileURLToPath } from 'node:url';
 const LINKEDIN_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../linkedin');
 
 /**
+ * Split a body written as a numbered thread ("1/ ...", "2/ ...") into one
+ * string per tweet. Returns a plain string when the body is not a thread, so
+ * every non-thread post is unaffected. X rejects anything over 280 characters,
+ * and a 17-part thread in one field would be exactly that.
+ */
+function splitThread(text) {
+  const parts = text.split(/\n(?=\d{1,2}\/\s)/).map((s) => s.trim()).filter(Boolean);
+  if (parts.length < 2 || !/^1\/\s/.test(parts[0])) return text;
+  return parts.map((p) => p.replace(/^\d{1,2}\/\s*/, ''));
+}
+
+/**
  * Resolve a post's `media:` frontmatter to absolute file paths.
  *
  * `media` is one path or a list of paths, each relative to the post's own batch
@@ -115,6 +127,15 @@ async function main() {
         // Upload any declared media first, so a failed upload aborts this post
         // before it is created rather than publishing it without its deck.
         const files = resolveMedia(d.item);
+
+        // Instagram rejects any post without media, so skip rather than send
+        // one that is guaranteed to fail. Left un-stamped on purpose: it will
+        // schedule itself once the asset (e.g. a Reel video) is added.
+        if (ch.settingsType === 'instagram' && !files.length) {
+          console.warn(`Skipping ${d.item.id}: instagram requires media and none is declared.`);
+          continue;
+        }
+
         const media = [];
         for (const f of files) media.push(await uploadMedia(f));
 
@@ -123,13 +144,18 @@ async function main() {
         // convertImagesToPdfCarousel() to produce the native document post.
         // (Uploading a ready-made PDF is not an option: Postiz's public upload
         // endpoint rejects application/pdf as "Unsupported file type".)
-        const extraSettings =
-          ch.settingsType === 'linkedin' && media.length > 1
+        // Per-channel required settings (X needs who_can_reply_post, Instagram
+        // needs post_type, both rejected by Postiz as 400s if absent) come from
+        // the channel's `defaultSettings` so they stay declarative in config.
+        const extraSettings = {
+          ...(ch.defaultSettings || {}),
+          ...(ch.settingsType === 'linkedin' && media.length > 1
             ? { post_as_images_carousel: true }
-            : {};
+            : {}),
+        };
 
         const { postId } = await createScheduledPost({
-          content: postContent(d.item),
+          content: splitThread(postContent(d.item)),
           integrationId: ch.integrationId,
           settingsType: ch.settingsType,
           at: d.at,

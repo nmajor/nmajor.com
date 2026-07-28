@@ -18,7 +18,13 @@ const MIN_BODY_CHARS = 120;
 // traffic) truncates around 140 chars, and a blank line ends the preview even earlier. So every
 // personal reach post must land its whole hook in one paragraph of ≤ 140 chars. Enforced below.
 // (Business/preview posts are exempt: they are link-summaries, not reach hooks.)
-const HOOK_MAX_CHARS = 140;
+// Raised from 140 to 210 on 2026-07-28 when Nick adopted the external `social`
+// skill's platform limits for the batch pipeline. The two standards measure
+// different things and both are defensible: 140 is where the "see more" fold
+// lands on MOBILE (research/content-hooks/report.md), 210 is the desktop fold
+// the external skill targets. 210 is the looser of the two, so a hook written
+// for mobile still passes. Drop it back to 140 to re-tighten.
+const HOOK_MAX_CHARS = 210;
 
 /** The hook = first paragraph of the body, comments stripped, whitespace collapsed. */
 export function hookLength(body) {

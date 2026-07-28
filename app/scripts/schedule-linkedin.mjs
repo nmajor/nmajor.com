@@ -155,7 +155,12 @@ async function main() {
         };
 
         const { postId } = await createScheduledPost({
-          content: splitThread(postContent(d.item)),
+          // Threading is X-only on purpose. X's provider fans a multi-entry
+          // value array out into a real thread; LinkedIn's post() posts
+          // postDetails[0] and SILENTLY DROPS the rest, so splitting a
+          // LinkedIn body would publish only its first part.
+          content:
+            ch.settingsType === 'x' ? splitThread(postContent(d.item)) : postContent(d.item),
           integrationId: ch.integrationId,
           settingsType: ch.settingsType,
           at: d.at,

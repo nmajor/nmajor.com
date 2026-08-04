@@ -2,18 +2,29 @@
 newsletter: uber-measured-the-bill
 channel: personal
 offsetDays: 0
-angle: scoreboard
+angle: cost-claim
 platform: LinkedIn
+approved: "Nicholas Major 2026-08-04 (via chat)"
+pushedAt: "2026-08-04T16:11:57.366Z"
+postizId: cmseuvvow0012lv6z4hm4hhtf
 ---
-Uber ranked engineers on a leaderboard by how much they used AI coding tools. On metered pricing, that scoreboard was the bill.
+I keep seeing this headline crop up talking about how AI now costs companies more than the developers using it.
 
-The company put Claude Code in front of roughly 5,000 engineers in December and the whole 2026 budget was gone by April. Usage on consumption pricing means tokens, and tokens mean dollars, so the leaderboard ranked people by what they cost the company. Everyone read it as progress. Then the COO said on a podcast that the link between all that spend and anything a customer notices "is not there yet."
+They kind of fall apart when you dig into the sources. Here's what these stories tend to use.
 
-Every number Uber could produce was an input. Tokens burned, share of code touched by AI. Nothing on that list is an output.
+- Uber torched its whole 2026 AI budget in four months, the story goes. Usage got ranked on a leaderboard which incentivized token maxxing.
 
-If you're turning on a metered AI tool this quarter, decide what output you'll judge it by before the meter starts, while you can still pick honestly. And make whoever owns the adoption target own the budget line too. At Uber those were different teams.
+- A leak showed Amazon spent $1.8M on a single AI task. The task failed, and never shipped. It ran for five months only because no budget alert existed.
+
+- Meta reportedly burns $221M a month on AI tokens. Unconfirmed token count at list prices Meta doesn't pay. Also an employee built leaderboard incentivizing token maxxing.
+
+- Microsoft supposedly cancelled Claude Code over cost. The internal memo says it's moving engineers to its own Copilot CLI. there's no dollar figure anywhere.
+
+- Gartner predicts AI coding costs will beat developer salaries by 2028. The baseline is a $2,000-a-month global-average salary, methodology undisclosed.
+
+Maybe I'm missing something. And maybe claude code $200/mo subscriptions will end someday and we'll all have to eat API pricing. No real takeaway I guess.
 
 <!-- First comment:
-I wrote the full story up in this week's issue of Actual Intelligence, my newsletter on plain-English AI for people running traditional, non-tech businesses: https://nmajor.com/writing/uber-measured-the-bill/
+I go deeper on the measurement side of this in this week's issue of Actual Intelligence, my newsletter on plain-English AI for people running traditional, non-tech businesses: https://nmajor.com/writing/uber-measured-the-bill/
 
-Sources: Forbes, 2026-05-17 (https://www.forbes.com/sites/janakirammsv/2026/05/17/uber-burns-its-2026-ai-budget-in-four-months-on-claude-code); Fortune on COO Andrew Macdonald's podcast comments, 2026-05-26 (https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code); Simon Willison on the $1,500 cap, 2026-06-03 (https://simonwillison.net/2026/Jun/3/uber-caps-usage/). -->
+Key sources: Forbes on Uber, 2026-05-17 (https://www.forbes.com/sites/janakirammsv/2026/05/17/uber-burns-its-2026-ai-budget-in-four-months-on-claude-code); the Amazon overruns, leaked documents reviewed by the FT, 2026-07-30, via gHacks 2026-07-31 (https://www.ghacks.net/2026/07/31/leaked-amazon-documents-detail-1-8-million-overrun-on-a-single-claude-ai-task-missed-for-five-months/); Fortune on Meta's token dashboard, 2026-04-09 (https://fortune.com/2026/04/09/meta-killed-employee-ai-token-dashboard/); the Microsoft memo, reported in The Verge's Notepad newsletter, 2026-05-14; Axios's Bryan Catanzaro quote, 2026-04-26 (https://www.axios.com/2026/04/26/ai-cost-human-workers); Gartner press release, 2026-06-24; Ramp AI Index measured-spend data (https://ramp.com/data/ai-index). -->

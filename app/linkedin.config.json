@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "postingHourUTC": 15,
+  "postingHourUTC": 17,
   "channels": {
     "personal": {
       "integrationId": "cmnqcgkhk0001fb6tnkpl5bw8",

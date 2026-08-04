@@ -3,9 +3,7 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": [
-    "uber-measured-the-bill"
-  ],
+  "queue": [],
   "lowQueueThreshold": 0,
-  "lastPublishedAt": "2026-07-28T13:51:14.226Z"
+  "lastPublishedAt": "2026-08-04T14:50:17.569Z"
 }

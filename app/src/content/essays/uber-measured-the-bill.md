@@ -1,14 +1,15 @@
 ---
 title: Uber measured the bill. It couldn't measure the work.
 summary: "Uber burned a full year's budget for AI coding tools in four months. The spend was under one percent of its R&D. The problem was that every number it could produce was an input."
-pubDate: 2026-08-04T14:00:00.000Z
+pubDate: "2026-08-04T14:50:17.569Z"
 author: Nicholas Major
-draft: true
+draft: false
 approved: "Nicholas Major 2026-08-04 (via chat)"
 readingMinutes: 4
 heroTitleLead: "Uber measured the bill. "
 heroTitleAccent: "It couldn't measure the work."
 heroLede: "Uber burned a full year's budget for AI coding tools in four months. The money is the least interesting part of what went wrong."
+emailedAt: "2026-08-04T14:50:37.087Z"
 ---
 
 Uber blew its entire 2026 budget for AI coding tools in four months. Everyone is taking the wrong lesson. 

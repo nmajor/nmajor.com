@@ -5,8 +5,8 @@ offsetDays: 1
 angle: agent-washing
 platform: LinkedIn
 approved: "Nicholas Major 2026-08-04 (via chat)"
-pushedAt: "2026-08-04T16:11:57.366Z"
-postizId: cmseuvvre0013lv6zx2zwykjy
+pushedAt: "2026-08-04T17:45:18.775Z"
+postizId: cmsey7xs6001clv6z97hqv9j6
 ---
 Thousands of vendors now sell "AI agents." Gartner's estimate is that only about 130 are legitimate.
 

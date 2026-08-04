@@ -1,11 +1,11 @@
 {
   "enabled": true,
-  "postingHourUTC": 17,
+  "postingHourUTC": 18,
   "channels": {
     "personal": {
-      "integrationId": "cmnqcgkhk0001fb6tnkpl5bw8",
+      "integrationId": "cmsey6xl3001alv6zvff148mp",
       "settingsType": "linkedin",
-      "note": "Nick's OWN personal LinkedIn profile (Nicholas Major) \u2014 nmajor.com's reach + selling engine; every atomized repurposing post goes here. This integrationId is Nick's personal profile and is correct for nmajor."
+      "note": "Nick's OWN personal LinkedIn profile (Nicholas Major, profile 'nmajor', Postiz customer 'Nicholas Major (Personal)'). Reconnected 2026-08-04 after the previous integration record (cmnqcgkhk0001fb6tnkpl5bw8) was taken over by the Lynchburg Roanoke Concrete company page during a LinkedIn re-auth \u2014 integration IDs are stable but the identity behind them can change on re-auth, so the scheduler must verify identity, never trust the ID alone."
     },
     "facebook": {
       "integrationId": "cmrko8lbx000lkc6x5f1jxvac",

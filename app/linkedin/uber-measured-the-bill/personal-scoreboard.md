@@ -5,8 +5,8 @@ offsetDays: 0
 angle: cost-claim
 platform: LinkedIn
 approved: "Nicholas Major 2026-08-04 (via chat)"
-pushedAt: "2026-08-04T16:11:57.366Z"
-postizId: cmseuvvow0012lv6z4hm4hhtf
+pushedAt: "2026-08-04T17:45:18.775Z"
+postizId: cmsey7xpq001blv6zboxmhjfm
 ---
 I keep seeing this headline crop up talking about how AI now costs companies more than the developers using it.
 

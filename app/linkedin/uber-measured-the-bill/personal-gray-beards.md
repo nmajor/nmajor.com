@@ -5,8 +5,8 @@ offsetDays: 6
 angle: gray-beards
 platform: LinkedIn
 approved: "Nicholas Major 2026-08-04 (via chat)"
-pushedAt: "2026-08-04T16:11:57.366Z"
-postizId: cmseuvvuz0016lv6zbpn83w22
+pushedAt: "2026-08-04T17:45:18.775Z"
+postizId: cmsey7xw4001flv6zzac2bl4q
 ---
 "Mistakenly we thought that by just introducing artificial intelligence... that would produce a high-quality product." That's a Ford VP.
 

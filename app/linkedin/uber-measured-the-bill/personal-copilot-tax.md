@@ -5,8 +5,8 @@ offsetDays: 3
 angle: copilot-tax
 platform: LinkedIn
 approved: "Nicholas Major 2026-08-04 (via chat)"
-pushedAt: "2026-08-04T16:11:57.366Z"
-postizId: cmseuvvtr0015lv6zd0dbns1a
+pushedAt: "2026-08-04T17:45:18.775Z"
+postizId: cmsey7xuv001elv6zjovqanq4
 ---
 On July 1 Microsoft raised 365 prices by up to 43% and folded Copilot Chat into every base plan. There's no opt-out.
 

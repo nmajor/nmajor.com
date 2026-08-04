@@ -5,8 +5,8 @@ offsetDays: 2
 angle: agent-heist
 platform: LinkedIn
 approved: "Nicholas Major 2026-08-04 (via chat)"
-pushedAt: "2026-08-04T16:11:57.366Z"
-postizId: cmseuvvsh0014lv6z0gta4sv7
+pushedAt: "2026-08-04T17:45:18.775Z"
+postizId: cmsey7xtn001dlv6zsk7iy4ys
 ---
 The Open AI/Hugging Face incident reminds me of the old paper clip maximizer analogy.
 

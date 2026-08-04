@@ -7,6 +7,18 @@ posts carry an offset, not a date, so their real schedule is computed only at th
 the issue goes live. Nothing is ever pushed to LinkedIn while the newsletter is still
 queued.
 
+## The batch model (since 2026-08): 5 short posts, one per weekday
+
+Each issue gets a batch of **5 personal posts** planned on publish day, dripped daily with
+`offsetDays` **0, 1, 2, 3, 6** (Tue, Wed, Thu, Fri, the following Monday — weekends off).
+Only 1-2 posts slice the essay itself; the rest are sourced through the newsroom process in
+the `content-repurposing` skill (journalist-persona subagents investigate the essay's concept
+in current news, pitches are scored, the best 5 get drafted). Posts are **short and natural**:
+roughly 100-180 words, a ≤140-char hook line, no hashtags, no AI-slop tics. Lint enforces the
+hook fold, a 1400-char visible-body ceiling, and the hashtag ban on every not-yet-pushed
+personal post (already-pushed history is grandfathered). Batches before 2026-08 used the older
+3-post A/B/C atomization model; they remain here as provenance.
+
 This directory is **not** an Astro content collection on purpose: a malformed file here
 can never break the site build or the newsletter publish path. Validation is the
 dedicated `npm run linkedin:lint` instead.
@@ -25,25 +37,27 @@ must match a real essay slug in `app/src/content/essays/`. One folder = one issu
 ```yaml
 ---
 newsletter: build-versus-buy-broke          # slug of the parent essay (must exist)
-channel: personal                           # personal (all atomized posts) | business (one preview)
-offsetDays: 1                               # schedule = the issue's real pubDate + N days
+channel: personal                           # personal (all weekly posts) | business (one preview)
+offsetDays: 2                               # schedule = the issue's real pubDate + N days;
+                                            # the weekly drip uses 0,1,2,3,6 (Tue-Fri + Mon)
                                             # (business preview is always offsetDays: 0)
-angle: story                                # label only: story | framework | myth-bust | preview | ...
+angle: vendor-bill                          # label only: a short name for the post's story
 # approved: "Nicholas Major 2026-06-30"     # Nick's sign-off — agents NEVER set this
 # shadowedAt: ...                           # set by the scheduler in shadow mode (idempotency)
 # pushedAt: ...                             # set by the scheduler once pushed to Postiz (idempotency)
 ---
-The full LinkedIn post text goes here. It must stand alone and deliver full value with no
-link required. Follows the writing-voice skill, every word.
+The full LinkedIn post text goes here. Short (roughly 100-180 words), standalone, full value,
+no link in the body (a link goes in the first comment if one is needed), no hashtags. Follows
+the writing-voice skill, every word.
 ```
 
 ## Channels
 
 Two channels, two different jobs (see `app/linkedin.config.json`):
 
-- **`personal`** — Nick's own profile (Nicholas Major). The reach + selling engine. **All
-  atomized posts** (story, framework carousel, myth-bust) go here. This is where the craft and
-  the ICP-focus-group refinement effort goes. This is the only channel that posts today.
+- **`personal`** — Nick's own profile (Nicholas Major). The reach + selling engine. **All five
+  weekly posts** go here. This is where the craft and the ICP-focus-group refinement effort
+  goes. This is the only channel that posts today.
 - **`business`** — **PENDING, not wired.** nmajor.com has no company page yet: the consultancy
   (the only commercial entity in the ecosystem) is still TBD, so there is no business LinkedIn
   page to post to. Its `integrationId` in `app/linkedin.config.json` is intentionally empty, so

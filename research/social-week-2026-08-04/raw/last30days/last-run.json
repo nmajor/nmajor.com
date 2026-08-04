@@ -1,0 +1,23 @@
+{
+  "topic": "AI coding tool spend, usage-based pricing, AI ROI, spend caps, Uber Claude Code budget",
+  "timestamp": "2026-08-04T13:02:19.481291+00:00",
+  "sources": {
+    "arxiv": 0,
+    "x": 28,
+    "hackernews": 27,
+    "techmeme": 0,
+    "polymarket": 0,
+    "grounding": 18,
+    "digg": 35,
+    "dripstack": 16,
+    "github": 22,
+    "perplexity": 35,
+    "tiktok": 23,
+    "youtube": 3,
+    "reddit": 24,
+    "instagram": 11
+  },
+  "total": 242,
+  "report_cache": "/home/coder/.config/last30days/last-report.json",
+  "comparison": false
+}

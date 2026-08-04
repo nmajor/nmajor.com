@@ -5,7 +5,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scheduleFor, selectDue } from './linkedin.mjs';
+import { scheduleFor, selectDue, verifyIntegrationIdentity } from './linkedin.mjs';
 
 // --- scheduleFor: the resolver -------------------------------------------------
 
@@ -79,7 +79,7 @@ test('schedules under a live newsletter even if the parent lacks the approved fi
 });
 
 test('skips invalid channel / negative / missing offset', () => {
-  assert.equal(selectDue([item({ channel: 'twitter' })], { resolve: liveApproved }).length, 0);
+  assert.equal(selectDue([item({ channel: 'mastodon' })], { resolve: liveApproved }).length, 0);
   assert.equal(selectDue([item({ offsetDays: -1 })], { resolve: liveApproved }).length, 0);
   assert.equal(selectDue([item({ offsetDays: null })], { resolve: liveApproved }).length, 0);
 });
@@ -119,4 +119,48 @@ test('auto-approve does NOT apply to the personal channel', () => {
 test('without the policy flag, an unapproved preview is still skipped', () => {
   const preview = item({ channel: 'business', angle: 'preview', offsetDays: 0, approved: '' });
   assert.equal(selectDue([preview], { resolve: liveApproved, channels: {} }).length, 0);
+});
+
+// --- verifyIntegrationIdentity: the re-auth incident guard ----------------------
+// A Postiz integration ID is stable, but the account behind it can change on a
+// LinkedIn re-auth (the 2026-08-04 incident). These pin down the fail-closed rules.
+
+const goodExpect = { identifier: 'linkedin', name: 'Nicholas Major', profile: 'nmajor' };
+const goodChannels = { personal: { integrationId: 'int1', expect: { ...goodExpect } } };
+const goodInteg = { id: 'int1', name: 'Nicholas Major', identifier: 'linkedin', profile: 'nmajor', disabled: false };
+
+test('a matching integration passes', () => {
+  assert.deepEqual(verifyIntegrationIdentity(goodChannels, [goodInteg]), []);
+});
+
+test('the incident case: same ID, different account behind it, is caught', () => {
+  const takenOver = { ...goodInteg, name: 'Lynchburg Roanoke Concrete', identifier: 'linkedin-page', profile: 'lynchburg-roanoke-concrete' };
+  const problems = verifyIntegrationIdentity(goodChannels, [takenOver]);
+  assert.deepEqual(problems.map((p) => p.field).sort(), ['identifier', 'name', 'profile']);
+  assert.match(problems.find((p) => p.field === 'name').message, /expected "Nicholas Major" but Postiz reports "Lynchburg Roanoke Concrete"/);
+});
+
+test('a single-field mismatch is enough to fail', () => {
+  const problems = verifyIntegrationIdentity(goodChannels, [{ ...goodInteg, name: 'WRONG' }]);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].field, 'name');
+  assert.equal(problems[0].expected, 'Nicholas Major');
+  assert.equal(problems[0].actual, 'WRONG');
+});
+
+test('a missing or disabled integration fails', () => {
+  assert.equal(verifyIntegrationIdentity(goodChannels, []).length, 1);
+  assert.equal(verifyIntegrationIdentity(goodChannels, [{ ...goodInteg, disabled: true }]).length, 1);
+});
+
+test('fail closed: a wired channel without a complete expect block fails', () => {
+  const noExpect = { personal: { integrationId: 'int1' } };
+  const emptyField = { personal: { integrationId: 'int1', expect: { ...goodExpect, profile: '' } } };
+  assert.match(verifyIntegrationIdentity(noExpect, [goodInteg])[0].message, /no complete `expect` block/);
+  assert.equal(verifyIntegrationIdentity(emptyField, [goodInteg]).length, 1);
+});
+
+test('a pending channel (no integrationId) is skipped, even with an incomplete expect', () => {
+  const pending = { business: { integrationId: '', expect: { identifier: 'linkedin-page', name: '', profile: '' } } };
+  assert.deepEqual(verifyIntegrationIdentity(pending, [goodInteg]), []);
 });

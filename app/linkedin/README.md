@@ -84,6 +84,20 @@ and:
 The two markers are separate so that turning live mode on never skips a post merely because
 it was announced in shadow mode.
 
+## Integration identity is verified at push time
+
+A Postiz integration ID is stable, but the account behind it is not: a LinkedIn re-auth can
+silently rebind an existing ID to a different account. That happened on 2026-08-04 — the
+`personal` integration became a stranger's company page and five posts were scheduled to it
+before being caught by eye. So the scheduler never trusts the ID alone.
+
+Every channel in `app/linkedin.config.json` with an `integrationId` also carries an `expect`
+block (`identifier`, `name`, `profile`). Before pushing anything, the scheduler asks Postiz
+who is actually behind each ID and compares; any mismatch — or a missing `expect` — aborts
+the whole run before a single post goes out (shadow mode warns instead). Run
+`npm run linkedin:doctor` to check the wiring by hand; on a mismatch, reconnect the right
+account in Postiz or update `integrationId` + `expect` together.
+
 ## Hard rule
 
 Only Nick sets `approved`. Agents may draft and refine a post and leave it unapproved, but

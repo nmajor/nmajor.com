@@ -148,6 +148,86 @@ export function isAutoApproved(item, channels = {}) {
 }
 
 /**
+ * Fields of a channel's `expect` block that must match what Postiz reports for
+ * the channel's integrationId. Born from the 2026-08-04 incident: a LinkedIn
+ * re-auth silently swapped the identity behind a stable integration ID from
+ * Nick's personal profile to a stranger's company page, and five posts were
+ * scheduled to the wrong account. IDs are stable; identities are not.
+ */
+export const EXPECT_FIELDS = ['identifier', 'name', 'profile'];
+
+/**
+ * Verify every configured channel's Postiz integration identity against its
+ * `expect` block. Pure: takes the config's channel map and the array returned
+ * by listIntegrations(), returns a list of problems (empty = all OK).
+ *
+ * Rules, per channel that has an integrationId (channels without one are
+ * pending and never pushed to, so they are skipped):
+ *   - `expect` must exist with all of EXPECT_FIELDS non-empty (fail closed);
+ *   - the integration must exist in Postiz and not be disabled;
+ *   - identifier, name, and profile must each match `expect` exactly.
+ *
+ * @param {Record<string, {integrationId?: string, expect?: object}>} channels
+ * @param {Array<{id, name, identifier, profile, disabled}>} integrations
+ * @returns {Array<{channel: string, field?: string, expected?: string, actual?: string, message: string}>}
+ */
+export function verifyIntegrationIdentity(channels, integrations) {
+  const problems = [];
+  const remediation =
+    'the integration identity changed — reconnect the right account in Postiz ' +
+    'or update integrationId + expect in linkedin.config.json';
+  for (const [channel, ch] of Object.entries(channels || {})) {
+    if (!ch || !ch.integrationId) continue; // pending channel: nothing can be pushed
+    const expect = ch.expect;
+    const incomplete =
+      !expect || typeof expect !== 'object' ||
+      EXPECT_FIELDS.some((f) => typeof expect[f] !== 'string' || !expect[f].trim());
+    if (incomplete) {
+      problems.push({
+        channel,
+        message:
+          `channel "${channel}" (integration ${ch.integrationId}) has no complete \`expect\` block ` +
+          `in linkedin.config.json — add {"identifier","name","profile"} matching the intended ` +
+          `account so identity can be verified before pushing (fail closed).`,
+      });
+      continue;
+    }
+    const integ = (integrations || []).find((i) => i && i.id === ch.integrationId);
+    if (!integ) {
+      problems.push({
+        channel,
+        message:
+          `channel "${channel}": integration ${ch.integrationId} does not exist in Postiz — ${remediation}.`,
+      });
+      continue;
+    }
+    if (integ.disabled) {
+      problems.push({
+        channel,
+        message:
+          `channel "${channel}": integration ${ch.integrationId} ("${integ.name}") is disabled in Postiz — ${remediation}.`,
+      });
+      continue;
+    }
+    for (const field of EXPECT_FIELDS) {
+      if (integ[field] !== expect[field]) {
+        problems.push({
+          channel,
+          field,
+          expected: expect[field],
+          actual: integ[field],
+          message:
+            `channel "${channel}" (integration ${ch.integrationId}): ${field} mismatch — ` +
+            `expected ${JSON.stringify(expect[field])} but Postiz reports ${JSON.stringify(integ[field] ?? null)} ` +
+            `("${integ.name}", identifier "${integ.identifier}") — ${remediation}.`,
+        });
+      }
+    }
+  }
+  return problems;
+}
+
+/**
  * The heart of the system: a pure function from (offset, newsletter pubDate) to
  * an absolute schedule. schedule = the issue's pubDate calendar day + offsetDays,
  * at postingHourUTC. Because it derives from the real pubDate, reordering or

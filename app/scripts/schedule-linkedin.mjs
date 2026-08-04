@@ -19,8 +19,8 @@
 //
 // Flags: --dry-run logs what it would do and writes/sends nothing (safe to repeat).
 
-import { readAllItems, setItemFields, selectDue, readLinkedinConfig } from './lib/linkedin.mjs';
-import { createScheduledPost, postContent, uploadMedia } from './lib/postiz.mjs';
+import { readAllItems, setItemFields, selectDue, readLinkedinConfig, verifyIntegrationIdentity } from './lib/linkedin.mjs';
+import { createScheduledPost, postContent, uploadMedia, listIntegrations } from './lib/postiz.mjs';
 import { discord } from './lib/notify.mjs';
 import { existsSync, statSync } from 'node:fs';
 import { readdirSync } from 'node:fs';
@@ -79,8 +79,38 @@ function when(date) {
   return `${DAYS[date.getUTCDay()]} ${date.toISOString().slice(0, 16).replace('T', ' ')} UTC`;
 }
 
+/**
+ * Identity preflight (the 2026-08-04 incident guard): before ANY push, ask
+ * Postiz who is actually behind each configured integrationId and compare
+ * against the channel's `expect` block. A LinkedIn re-auth can silently swap
+ * the account behind a stable integration ID, so the ID alone is never
+ * trusted. Live mode: any problem aborts the whole run before a single post
+ * is pushed. Shadow mode: same check, warn only.
+ */
+async function identityPreflight(cfg) {
+  let integrations;
+  try {
+    integrations = await listIntegrations();
+  } catch (err) {
+    const msg = `identity preflight could not list Postiz integrations: ${err instanceof Error ? err.message : err}`;
+    if (cfg.enabled) throw new Error(`${msg} — refusing to push without verifying who is behind each integration ID.`);
+    console.warn(`[shadow] ${msg} (would abort in live mode)`);
+    return;
+  }
+  const problems = verifyIntegrationIdentity(cfg.channels, integrations);
+  if (problems.length === 0) {
+    console.log('Integration identity preflight: all configured channels match their expect blocks.');
+    return;
+  }
+  const report = problems.map((p) => `  • ${p.message}`).join('\n');
+  const msg = `INTEGRATION IDENTITY PREFLIGHT FAILED — nothing was pushed:\n${report}`;
+  if (cfg.enabled) throw new Error(msg);
+  console.warn(`[shadow] ${msg}\n(would abort in live mode)`);
+}
+
 async function main() {
   const cfg = readLinkedinConfig();
+  await identityPreflight(cfg);
   const now = new Date();
   const due = selectDue(readAllItems(), { now, enabled: cfg.enabled, postingHourUTC: cfg.postingHourUTC, channels: cfg.channels });
 

@@ -17,6 +17,7 @@
     "newsletter:send": "node scripts/send-newsletter.mjs",
     "newsletter:send:dry": "node scripts/send-newsletter.mjs --dry-run",
     "linkedin:lint": "node scripts/linkedin-lint.mjs",
+    "linkedin:doctor": "node scripts/linkedin-doctor.mjs",
     "linkedin:schedule": "node scripts/schedule-linkedin.mjs",
     "linkedin:schedule:dry": "node scripts/schedule-linkedin.mjs --dry-run",
     "takes:lint": "node scripts/takes-lint.mjs",

@@ -7,6 +7,8 @@ angle: ai-exclusion
 platform: LinkedIn
 media: media/clip-b.jpg
 approved: "Nicholas Major 2026-08-11 (via chat)"
+pushedAt: "2026-08-11T16:35:04.471Z"
+postizId: cmsovskl20015dp6twsy6c4gd
 ---
 Insurers have started writing AI exclusions into commercial liability policies.
 

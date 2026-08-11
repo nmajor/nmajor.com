@@ -8,6 +8,8 @@ platform: LinkedIn
 meme: app/linkedin/second-deployment-is-smaller/memes/options/kinney-narrowed/04-pigeon.jpg
 media: memes/options/kinney-narrowed/04-pigeon.jpg
 approved: "Nicholas Major 2026-08-11 (via chat)"
+pushedAt: "2026-08-11T16:35:04.471Z"
+postizId: cmsovskg70014dp6t27umz8nk
 ---
 Kinney Drugs (a pharmacy chain in NY) rolled back an AI assistant after 3 months, going back to an old touch tone system.
 

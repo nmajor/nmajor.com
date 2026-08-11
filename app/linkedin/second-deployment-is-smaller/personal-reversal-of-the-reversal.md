@@ -8,6 +8,8 @@ platform: LinkedIn
 meme: app/linkedin/second-deployment-is-smaller/memes/options/reversal-of-the-reversal/04-panik-kalm-panik.jpg
 media: memes/options/reversal-of-the-reversal/04-panik-kalm-panik.jpg
 approved: "Nicholas Major 2026-08-11 (via chat)"
+pushedAt: "2026-08-11T16:35:04.471Z"
+postizId: cmsovskyk0018dp6thjzsol0c
 ---
 You may remember the bank that replaced a bunch of people with AI, then had to give them their jobs back.
 

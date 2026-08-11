@@ -8,6 +8,8 @@ platform: LinkedIn
 meme: app/linkedin/second-deployment-is-smaller/memes/options/nine-thousand/01-distracted-boyfriend.jpg
 media: memes/options/nine-thousand/01-distracted-boyfriend.jpg
 approved: "Nicholas Major 2026-08-11 (via chat)"
+pushedAt: "2026-08-11T16:35:04.471Z"
+postizId: cmsovskpr0016dp6temgi01ua
 ---
 Johnson & Johnson cut 85-90% of their AI implementations and initiatives. 
 

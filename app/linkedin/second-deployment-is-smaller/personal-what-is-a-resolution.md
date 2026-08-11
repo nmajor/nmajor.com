@@ -8,6 +8,8 @@ platform: LinkedIn
 meme: app/linkedin/second-deployment-is-smaller/memes/options/what-is-a-resolution/03-pigeon.jpg
 media: memes/options/what-is-a-resolution/03-pigeon.jpg
 approved: "Nicholas Major 2026-08-11 (via chat)"
+pushedAt: "2026-08-11T16:35:04.471Z"
+postizId: cmsovskue0017dp6t19hxdaok
 ---
 Intercom charges $0.99 when its AI resolves a ticket. It also charges $0.99 when the AI hands that ticket to a person.
 

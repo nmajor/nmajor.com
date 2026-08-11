@@ -1,0 +1,1466 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Iqza3LUNzZkgfH3LGyMvgi8NGbg</id>
+  <title>arXiv Query: search_query=cat:cs.SE OR cat:cs.HC OR cat:cs.IR OR cat:cs.MA&amp;id_list=&amp;start=0&amp;max_results=40</title>
+  <updated>2026-08-11T11:41:09Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.SE+OR+(cat:cs.HC+OR+(cat:cs.IR+OR+cat:cs.MA))&amp;start=0&amp;max_results=40&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>40</opensearch:itemsPerPage>
+  <opensearch:totalResults>97380</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09919v1</id>
+    <title>Detecting Behavioral Changes in Python Refactoring Implementations with Foundation Models</title>
+    <updated>2026-08-10T17:57:37Z</updated>
+    <link href="https://arxiv.org/abs/2608.09919v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09919v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Python is a widely adopted programming language, valued for its simplicity and flexibility. However, automated refactoring for Python remains challenging, even though refactoring is an essential practice in software evolution aimed at improving internal code structure without changing external behavior. Understanding how behavioral changes are introduced during refactoring is crucial, as such issues can compromise software reliability and reduce developer productivity. We propose an approach based on a foundation model oracle that analyzes git-style diffs to identify behavioral changes introduced by Python refactorings. We evaluated our technique on Rope refactoring implementations, reusing 1,152 refactoring attempts from a prior study and analyzing 217 resulting transformation pairs with the oracle. Our model-based analysis uncovered 13 distinct bugs among the seven refactoring types studied. All reported bugs were submitted to the respective developers, and 12 of the 13 resulting issue reports were accepted according to issue-tracker evidence. These results highlight the need to improve the robustness of current Python refactoring tools to ensure the correctness of automated code transformations and support reliable software maintenance.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T17:57:37Z</published>
+    <arxiv:comment>Accepted at Brazilian Symposium on Software Engineering (SBES) 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jonhnanthan Oliveira</name>
+    </author>
+    <author>
+      <name>Rohit Gheyi</name>
+    </author>
+    <author>
+      <name>Márcio Ribeiro</name>
+    </author>
+    <author>
+      <name>Alessandro Garcia</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09917v1</id>
+    <title>WhichTok? Comparing Three TikTok Data Acquisition Tools</title>
+    <updated>2026-08-10T17:56:58Z</updated>
+    <link href="https://arxiv.org/abs/2608.09917v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09917v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>TikTok's global growth has made it a prime platform for both entertainment and political discourse, prompting increased social science research. However, this rapidly evolving research field faces a fundamental reproducibility crisis. TikTok's opaque algorithmic systems hinder researchers from drawing meaningful empirical inferences, while the lack of standardized data collection methods compounds these challenges. This study addresses these methodological gaps by systematically comparing three data collection tools - the official TikTok Research API, Pyktok, and Apify. We evaluated five endpoints: User, Hashtag, Keyword, Comment, and Related Video. Results show substantial cross-tool differences, especially for hashtag and keyword searches. The Research API uses back-end API calls, whereas Apify and Pyktok rely on front-end web scraping, producing systematic differences in the time periods and popularity levels represented in retrieved content. The three tools yielded comprehensive and consistent results only for the user endpoint. Our results question whether these tools can acquire truly random[-ized] samples, as they introduce methodological confounds that may compromise research validity in ways not yet fully understood. Based on these results, we offer methodological, transparency, and ethical recommendations and guidelines to increase TikTok research quality.</summary>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T17:56:58Z</published>
+    <arxiv:comment>This paper has been accepted for the upcoming 21st International AAAI Conference on Web and Social Media (ICWSM'27)</arxiv:comment>
+    <arxiv:primary_category term="cs.SI"/>
+    <author>
+      <name>Gayoung Jeon</name>
+    </author>
+    <author>
+      <name>Cameron Moy</name>
+    </author>
+    <author>
+      <name>Silvia Teliz</name>
+    </author>
+    <author>
+      <name>Cristina Monzer</name>
+    </author>
+    <author>
+      <name>Nicolette Alayon</name>
+    </author>
+    <author>
+      <name>Deen Freelon</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09894v1</id>
+    <title>Competitive mediator games and urban CAV routing markets</title>
+    <updated>2026-08-10T17:42:40Z</updated>
+    <link href="https://arxiv.org/abs/2608.09894v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09894v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Inspired by possible future markets of autonomous routing and driving (ARAD), we introduce competitive mediator games and their equilibria which generalize the (coarse) correlated equilibria, which have become a popular research area recently as they not only can be more socially efficient than Nash equilibria but also are limits of algorithmic no-regret multi-agent learning dynamics. We discuss the basic properties of competitive mediator games and prove that in the generic setting of anonymous congestion(routing) games with market-share maximizing mediators all competitive mediator equilibria are monopolies whenever one of the mediators is weakly preferred to other mediators by all users. We apply and interpret these results in the context of new markets of competing ARAD service providers. We also provide a comprehensive overview of these markets and discuss the future mechanism design thereof.</summary>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="econ.TH" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.OC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T17:42:40Z</published>
+    <arxiv:comment>42 pages, 6 figures, 1 table</arxiv:comment>
+    <arxiv:primary_category term="cs.GT"/>
+    <author>
+      <name>Grzegorz Jamróz</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09875v1</id>
+    <title>Comprehending Python Repetition Structures: An Eye-Tracking Study with Novice Developers</title>
+    <updated>2026-08-10T17:28:11Z</updated>
+    <link href="https://arxiv.org/abs/2608.09875v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09875v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Code comprehension is central to software maintenance and evolution, yet different Python repetition structures may impose distinct cognitive demands. We conducted a controlled eye-tracking experiment with 32 undergraduate students with prior Python experience to compare comprehension of for loops, while loops, recursion, and list comprehensions (LCs). Participants solved six comprehension tasks in a Latin Square design while we measured completion behavior and eye-tracking metrics over full snippets and construct-specific Areas of Interest (AOIs). for loops showed the lowest visual effort. Relative to for, while loops increased AOI fixation duration by up to 97% and regression count by 114%, with regressions concentrated around counter management. Recursion showed a descriptive 50% increase in regressions, mainly between the base case and recursive call. LCs increased AOI time by 62.5% and fixation duration by 80.9%, with horizontal regressions suggesting dense token-by-token parsing. LC comparisons yielded the clearest statistically significant pairwise differences, while the combined comparison of all non-for structures was significant across all eye-tracking metrics. These findings provide process-level evidence that Python repetition structures induce distinct visual-effort patterns, with implications for readability, code review, refactoring, onboarding, and maintainability.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T17:28:11Z</published>
+    <arxiv:comment>Paper accepted at Brazilian Symposium on Software Engineering (SBES) 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>José Júnior Silva da Costa</name>
+    </author>
+    <author>
+      <name>Rohit Gheyi</name>
+    </author>
+    <author>
+      <name>José Aldo Silva da Costa</name>
+    </author>
+    <author>
+      <name>Márcio Ribeiro</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09828v1</id>
+    <title>Multi-Agent AI Safety as an Institutional Design Problem</title>
+    <updated>2026-08-10T16:47:01Z</updated>
+    <link href="https://arxiv.org/abs/2608.09828v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09828v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>AI agents increasingly work inside systems that govern how they delegate tasks, move information, execute actions, and use shared resources. Recent work already shows that deployment rules can change collective behavior. Here we ask which parts of an AI institution produce safety and how they do it. This is the first paper from POLIS, an ongoing research programme studying algorithmic institutions for multi-agent systems. We report a frozen 5,280-episode study suite. The main pre-specified delegation experiment spans four model families; a targeted high-conflict diagnostic adds three additional model endpoints. In matched structured workflows, the model sees different rule formulations and guards consult different authority states. We also vary the attractiveness of the immediate compliant internal/self fallback and allow blocked workflows to continue. A detailed constitutional prompt produces 0/384 realized violations. A provenance-aware executable guard also produces 0/384, although it blocks prohibited attempts in 51/384 episodes; 44/51 of those episodes later complete safely. The local-state guard's failures concentrate in scenarios where an ordinary transformation changes visible policy while originating authority stays fixed. In matched laundering scenarios, that guard admits violations in 22/96 episodes and provenance enforcement in 0/96 (p = 4.77 x 10^-7). A separate resource-allocation experiment shows that revealing the numerical value of an otherwise identical cap changes agent requests. In these structured workflows, the same final violation rate can hide very different mechanisms. The rule itself is only part of the institution. The authority state the system trusts matters, and so does the path available after a block.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T16:47:01Z</published>
+    <arxiv:comment>17 pages, 5 figures. Code and reproducibility artifacts available in the public POLIS repository</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Abdullah X</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09802v1</id>
+    <title>SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring</title>
+    <updated>2026-08-10T16:23:19Z</updated>
+    <link href="https://arxiv.org/abs/2608.09802v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09802v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As AI coding agents take on increasingly complex, long-horizon software engineering tasks, existing benchmarks are rapidly saturating and their evaluation quality has come under serious scrutiny: a recent audit found that nearly 60% of unsolved SWE-bench Verified instances contain flawed tests -- either overly narrow tests that reject correct solutions or overly broad tests that check unstated requirements -- and that frontier models can verbatim reproduce gold patches from training data. Code refactoring, which requires coordinated, behavior-preserving changes across many files, offers a substantially harder and more realistic test of agent capability, yet remains underserved by current benchmarks. We introduce SWE-Bench ProMax, an expert-curated, multilingual code refactoring benchmark of 170 instances drawn from real commits across seven programming languages (Python, Java, TypeScript, Go, C, C++, and Rust). Every instance undergoes rigorous, multi-stage curation that directly addresses the quality problems identified in prior benchmarks: issue descriptions are rewritten from scratch to provide precise, unambiguous specifications, and test suites are manually reviewed to remove overly narrow and overly broad tests. Tasks with insufficient complexity or limited cross-file scope are filtered out, yielding a benchmark of challenging, large-scale refactoring tasks that average 11.4 modified files and 261.6 lines of code per instance, substantially exceeding the scale of existing benchmarks. Experiments with frontier models under two agent scaffolds show that the best model achieves only 41.2% resolve rate, confirming that SWE-Bench ProMax presents a meaningful and unsaturated challenge for current AI coding agents. Our benchmark is available at https://huggingface.co/datasets/swe-bench-promax/SWE-Bench-ProMax.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T16:23:19Z</published>
+    <arxiv:comment>Published as a conference paper at COLM 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yuling Shi</name>
+    </author>
+    <author>
+      <name>Jinghan Xu</name>
+    </author>
+    <author>
+      <name>Kelin Fu</name>
+    </author>
+    <author>
+      <name>Wenhao Zeng</name>
+    </author>
+    <author>
+      <name>Shilin He</name>
+    </author>
+    <author>
+      <name>Lei Zhang</name>
+    </author>
+    <author>
+      <name>Yue Liu</name>
+    </author>
+    <author>
+      <name>Zelin Zhao</name>
+    </author>
+    <author>
+      <name>Terry Yue Zhuo</name>
+    </author>
+    <author>
+      <name>Jialun Cao</name>
+    </author>
+    <author>
+      <name>Siyu Ye</name>
+    </author>
+    <author>
+      <name>Tianyu Liu</name>
+    </author>
+    <author>
+      <name>Kai Cai</name>
+    </author>
+    <author>
+      <name>Shing-Chi Cheung</name>
+    </author>
+    <author>
+      <name>Xiaodong Gu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09799v1</id>
+    <title>SpecPath: Testing Coding Agents Across Contract-Equivalent Specification Histories</title>
+    <updated>2026-08-10T16:19:00Z</updated>
+    <link href="https://arxiv.org/abs/2608.09799v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09799v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern coding agents increasingly appear capable of following complex software requirements, yet their success leaves a critical ambiguity: do they resolve the active specification, or merely follow the most salient path by which it was stated? We identify specification-path sensitivity, a failure mode in which requirement histories that are equivalent in their final meaning lead the same agent system to produce behaviorally different programs. This reframes evolving-requirement evaluation as active-contract resolution: before writing code, an agent must determine which requirements still count.
+  Building on this view, we introduce SpecPath, a diagnostic evaluation that holds the repository, final contract, verifier, agent system, and execution budget fixed while changing only the revision path that leads to the contract. Rather than treating each patch as an isolated pass or failure, SpecPath uses paired executable outcomes to reveal whether an agent realizes the same tested behavior across contract-equivalent histories. Across five calibrated software tasks and fourteen coding-agent configurations, aggregate direct and revision-history accuracy is nearly unchanged; nevertheless, 35 of 100 complete blocks that succeed on the direct specification fail on at least one equivalent history. These results show that implementation success on a consolidated request does not guarantee specification-path invariance. Evaluating evolving requirements therefore calls for controlled tests of whether agents are robust to the path by which a specification becomes final.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T16:19:00Z</published>
+    <arxiv:comment>11 pages, 3 figures, 3 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yangfan Wu</name>
+    </author>
+    <author>
+      <name>Haozhe Wang</name>
+    </author>
+    <author>
+      <name>Huanyu Yang</name>
+    </author>
+    <author>
+      <name>Jianmin Ji</name>
+    </author>
+    <author>
+      <name>Fangzhen Lin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09790v1</id>
+    <title>CARD: Controlled Agentic Reddit Discussions for Credit Card Simulation</title>
+    <updated>2026-08-10T16:12:45Z</updated>
+    <link href="https://arxiv.org/abs/2608.09790v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09790v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Online credit card discussions provide a natural setting for studying how consumers communicate about financial products. Simulating these discussions requires more than just generating individual comments, the generated threads should also match how real users express themselves and interact with others. We introduce CARD, a framework for generating realistic credit card discussion threads. Given a credit card post and its matched real thread, CARD uses non-verbatim guidance on reply structure, comment function, stance, tone, and conversational variation. A planner organizes these controls, a writer generates the discussion, and a calibration loop updates comments' populations that contribute to differences between the generated and real thread distributions. We evaluate CARD on real Reddit credit card discussions using lexical, semantic, behavioral, and structural metrics. CARD matches the distributions of real credit card discussions better than simulation baselines across multiple LLMs and also demonstrates smaller effect sizes and distribution distances across metrics. These results show that structured planning and targeted revision can generate the realism of simulated credit card discussions.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T16:12:45Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yaoning Yu</name>
+    </author>
+    <author>
+      <name>Kai-Min Chang</name>
+    </author>
+    <author>
+      <name>Ye Yu</name>
+    </author>
+    <author>
+      <name>Yi-Chia Wang</name>
+    </author>
+    <author>
+      <name>Haojing Luo</name>
+    </author>
+    <author>
+      <name>Haohan Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09740v1</id>
+    <title>Security Tests as Executable Specifications for LLM Code Generation: Benefits, Trade-offs, and Coverage Limits</title>
+    <updated>2026-08-10T15:37:09Z</updated>
+    <link href="https://arxiv.org/abs/2608.09740v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09740v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) can generate functionally useful code that remains vulnerable, while security-focused interventions may break intended behavior. We investigate security tests as executable specifications both before generation and during iterative repair. We develop SecTDD, a controlled test-feedback scaffold that separates three factors: whether tests are shown upfront, whether failed executions trigger revision, and how failures are selected and represented. The evaluation uses behavior-partitioned visible and hidden tests and byte-identical initial candidates for repair comparisons. Across 2,705 trajectories, 31 task instances, three secure-code benchmarks, 16 CWE categories, and two model families, showing all visible tests upfront increases hidden functional-and-security joint success by 19.3 percentage points on average, but improves only seven of nine benchmark-model conditions and harms two. In shared-candidate comparisons, structured feedback repairs 80 initially unsuccessful candidates with no joint regressions; fixed raw feedback repairs 83 but causes three regressions. Structured and raw feedback are otherwise nearly indistinguishable head-to-head (six wins, six losses, and 453 ties). Candidates that pass all visible tests still fail hidden behavior families under every common regime. These results show that executable feedback can repair secure-code generation, but its benefits depend on the model, task, feedback entry point, and especially test coverage.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T15:37:09Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yunhao Liang</name>
+    </author>
+    <author>
+      <name>Chengguang Gan</name>
+    </author>
+    <author>
+      <name>Ruixuan Ying</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09719v1</id>
+    <title>Mirroring the Past: Exploring How Ancestral Digital Self Influences History Learning</title>
+    <updated>2026-08-10T15:20:28Z</updated>
+    <link href="https://arxiv.org/abs/2608.09719v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09719v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learners often perceive history as distant from themselves, which limits immersion and empathy in history learning. To bridge this gap, we introduce the "Ancestral Digital Self," an AI-generated pedagogical agent presented in prerecorded videos that mirrors the learner's facial features and vocal timbre, representing a historically situated version of the self. We developed a reproducible workflow for creating AI-generated historical learning videos and conducted a within-subjects study (N=36) comparing a Digital Self agent with a non-self pedagogical agent. The Digital Self agent enhanced experiential measures, including narrative transportation, perceived relatedness, self-other inclusion, and agent perception. However, it did not improve immediate learning outcomes: quiz scores were lower in the Digital Self condition, and Remember/Know judgments showed no reliable differences. Interviews further suggested that self-similarity increased familiarity and motivation, while novelty and uncanniness could draw attention away from historical content. These findings offer design implications for future educational environments supported by pedagogical agents.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T15:20:28Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Duo Gong</name>
+    </author>
+    <author>
+      <name>Fan Sun</name>
+    </author>
+    <author>
+      <name>Yucen Wang</name>
+    </author>
+    <author>
+      <name>Yufan Hu</name>
+    </author>
+    <author>
+      <name>Wen Zhong</name>
+    </author>
+    <author>
+      <name>Wei Zhang</name>
+    </author>
+    <author>
+      <name>Pengcheng An</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09715v1</id>
+    <title>Designing PULSE: A Realtime Annotation Tool to Support Simulation Debriefing</title>
+    <updated>2026-08-10T15:18:18Z</updated>
+    <link href="https://arxiv.org/abs/2608.09715v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09715v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Debriefing is central to effective simulation-based education. However, effective debriefing is challenged by high instructor workloads and limited engagement of observing students. A real-time annotation tool to support debriefing, called PULSE, was co-designed with nursing educators. A field study comparing three standard simulation debriefings with three debriefings using PULSE was conducted as a preliminary evaluation. Outcomes were assessed using the Debriefing Assessment for Simulation in Healthcare (DASH) student survey and a follow-up instructor interview. PULSE significantly improved overall DASH scores (t(4) = 4.03, p = 0.027, Cohen's d = 2.05). Survey findings suggested improvements in debriefing organization and depth of reflection. Interview data indicated that the student-generated annotations enhanced engagement and stimulated more interactive discussions. PULSE shows promise as a support tool for debriefing, particularly by facilitating reflection of observing students. However, larger and more diverse studies are needed to confirm effectiveness and refine the system for broader implementation.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T15:18:18Z</published>
+    <arxiv:comment>22 pages, 2 figures, 1 table, Currently Under Review</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Caleb Vatral</name>
+    </author>
+    <author>
+      <name>Jennifer Hunt</name>
+    </author>
+    <author>
+      <name>Mary Ann Jesse</name>
+    </author>
+    <author>
+      <name>Gautam Biswas</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09698v1</id>
+    <title>VeriForge: Mitigating Latent Knowledge Gaps in Narrative Drafting via Mixed-Initiative Scaffolding</title>
+    <updated>2026-08-10T15:03:26Z</updated>
+    <link href="https://arxiv.org/abs/2608.09698v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09698v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Great fiction earns its verisimilitude through precise details, from how a longsword is gripped to pierce armor gaps to why a bleeding corpse cannot yet smell of decay, weaving domain expertise into the fabric of invented worlds. Current AI writing tools offer limited support for discovering and integrating unfamiliar domain knowledge into narrative. They require explicit queries that authors cannot formulate, generate finished prose that risks homogenizing voice, or assist only within the boundaries of what authors already know. We argue that AI should reveal latent knowledge gaps to writers while preserving their agency to transform discovered knowledge into authentic prose. Grounded in formative interviews with 9 fiction writers, we present VeriForge, a mixed-initiative writing system that divides cognitive labor so that the system assumes initiative over domain discovery while the author retains full initiative over narrative synthesis. VeriForge realizes this through three complementary mechanisms. Proactive inline highlighting flags potential knowledge gaps as authors draft. Dual-stream querying pairs conversational responses with source-anchored Knowledge Cards for direct fact extraction. A spatial Knowledge Canvas allows authors to organize and connect discovered knowledge across their writing. These mechanisms are powered by a graph-based retrieval-augmented generation pipeline grounded in domain-specific source materials. A within-subjects user study (N=12) provides preliminary evidence that this paradigm helps authors recognize previously overlooked knowledge gaps, supports creative exploration, and is perceived by expert raters to produce passages with stronger domain grounding in a controlled cold-start writing task.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T15:03:26Z</published>
+    <arxiv:comment>14 pages, 5 figures, Accepted by UIST'26</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Ruqi Sun</name>
+    </author>
+    <author>
+      <name>Jiaping Li</name>
+    </author>
+    <author>
+      <name>Wenhui Tao</name>
+    </author>
+    <author>
+      <name>Ximing Zheng</name>
+    </author>
+    <author>
+      <name>Yuefeng Tan</name>
+    </author>
+    <author>
+      <name>Jiahao Wei</name>
+    </author>
+    <author>
+      <name>Yuxin Ma</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09673v1</id>
+    <title>The Unified Evaluation App for DNA Data Storage Codecs</title>
+    <updated>2026-08-10T14:48:02Z</updated>
+    <link href="https://arxiv.org/abs/2608.09673v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09673v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Background: Deoxyribonucleic acid (DNA) data storage is a paradigm with great potential for ultra-dense and durable information preservation. However, the rapid proliferation of coding schemes, or codecs, each with their own design constraints and reporting practices, has led to a fragmented landscape that lacks a standardized comparative assessment.
+  Methods: We developed an open-source, modular benchmarking platform that systematically integrates and evaluates state-of-the-art DNA storage encoding and decoding methods (codecs). Our approach uses a curated, diverse set of baseline data and applies multidimensional assessment criteria that are aligned with the consensus standard of the DNA Data Storage Alliance. These criteria include encoding/decoding throughput, computational efficiency, error correction performance across substitutions, insertions, and deletions, and cost efficiency.
+  Results: The developed platform integrates standardized wrapper functions for encoding and decoding, allows for the integration of new methods, and automates reproducible evaluations with comprehensive visual and tabular reporting. Benchmarking both contemporary and classical codecs using their default parameters and multiple metrics demonstrates that no single algorithm is optimal across all evaluated dimensions. The trade-offs between information density, success rate, runtime, and cost are quantified and shown to be critical factors in the design of future-proof formats.
+  Conclusions: Our work establishes a rigorously standardized, open-source evaluation framework that enables reproducible benchmarking, supports evidence-based codec selection, and provides the necessary foundation for translating DNA data storage from experimental research into deployable archival systems.</summary>
+    <category term="cs.ET" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T14:48:02Z</published>
+    <arxiv:comment>38 pages, 12 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.ET"/>
+    <author>
+      <name>Aleksandar Anžel</name>
+    </author>
+    <author>
+      <name>Chisom Anyabolu</name>
+    </author>
+    <author>
+      <name>Leon Wimbes</name>
+    </author>
+    <author>
+      <name>Luca Staus</name>
+    </author>
+    <author>
+      <name>Ihsan Tri Heldian</name>
+    </author>
+    <author>
+      <name>David Sonnabend</name>
+    </author>
+    <author>
+      <name>Khawla Elhadri</name>
+    </author>
+    <author>
+      <name>Samuel Becker</name>
+    </author>
+    <author>
+      <name>Felix Klein</name>
+    </author>
+    <author>
+      <name>Raffael Schoen</name>
+    </author>
+    <author>
+      <name>Michael Schwarz</name>
+    </author>
+    <author>
+      <name>Marius Welzel</name>
+    </author>
+    <author>
+      <name>Bernd Freisleben</name>
+    </author>
+    <author>
+      <name>Dominik Heider</name>
+    </author>
+    <author>
+      <name>Georges Hattab</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09659v1</id>
+    <title>A Domain-Specific Language for Formulating Hybrid Quantum-Classical Meta-Solver Strategies</title>
+    <updated>2026-08-10T14:34:52Z</updated>
+    <link href="https://arxiv.org/abs/2608.09659v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09659v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A key challenge when designing hybrid quantum-classical workflows is the identification of quantum candidates, that is, determining for which specific problems quantum advantages could potentially be achieved. When choosing between several candidates, it is crucial to consider the characteristics specific to the problem, as these can fundamentally determine how successful quantum or classical approaches will be. This implies that specialized expertise is needed to use hybrid quantum-classical workflows successfully. To address this challenge, we propose a domain-specific language (DSL) to express best-practices in solution strategies using a universal representation that is easy to use and share. This DSL provides a flexible approach to design hybrid quantum-classical workflows and to automate decisions for a wide range of problems, supporting decisions down to problem-specific details while remaining technically independent. Furthermore, we propose a framework that is built around our DSL that enables the execution of defined workflows using the ProvideQ toolbox as an orchestration layer. All contributions from this publication are open source.</summary>
+    <category term="quant-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T14:34:52Z</published>
+    <arxiv:comment>13 pages, 3 figures, preprint of a paper that was accepted at the GI Quantum Computing Workshop 2026</arxiv:comment>
+    <arxiv:primary_category term="quant-ph"/>
+    <author>
+      <name>Nick Poser</name>
+    </author>
+    <author>
+      <name>Domenik Eichhorn</name>
+    </author>
+    <author>
+      <name>Ina Schaefer</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09658v1</id>
+    <title>Removing Infrastructure Barriers in Human-Robot Collaboration Through Wireless Reconfigurable Cells</title>
+    <updated>2026-08-10T14:34:08Z</updated>
+    <link href="https://arxiv.org/abs/2608.09658v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09658v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Human-Robot Collaboration (HRC) plays a vital role in dynamic, high mix, low volume industrial scenarios such as remanufacturing, which frequently face workcell rearrangements. Traditional setups are constrained by power and data cabling, restricting modularity and reconfigurations, while the selection of commercial wireless devices suitable for real-time perception and safe collaboration are limited in availability. This paper presents a highly flexible, wireless, 5G-based system that serves as a versatile experimental testbed for applications including remanufacturing, operator training, and user studies. To eliminate infrastructure barriers, the workcell integrates a novel battery-powered, multi-sensor platform prototype. Additionally, to support operator safety and system adaptability across environmental shifts, the system integrates a computer vision module for object detection and pose estimation, further augmented for robust hand recognition. Trained on synthetic and real data, the model reliably detects oriented grasping poses and human hands across varying lighting and background conditions (with an mAP@50-95 of 97.74 +- 0.10% and a mean inference time of 12.5 ms). Offloading these computationally intensive tasks to the edge via 5G, the proposed architecture contributes to resolving the bandwidth-latency trade-off. To demonstrate portability, the system was implemented in both Hungary and Norway, and was evaluated across a combination of public and private, Standalone and Non-Standalone 5G infrastructures. The performed network experiments produced results in round-trip response times down to 12 ms in case of compatible network-device pairings, suitable for safe, adaptive HRC. However, these measurements also revealed practical limitations related to interoperability in current 5G deployments that should be addressed in future works.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T14:34:08Z</published>
+    <arxiv:comment>Accepted at the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). A supplementary video demonstrating the workcell is available at https://youtu.be/zobin6oytGk</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Emma Takács</name>
+    </author>
+    <author>
+      <name>Mátyás Hajós</name>
+    </author>
+    <author>
+      <name>Ádám Juniki</name>
+    </author>
+    <author>
+      <name>Ádám Fischer</name>
+    </author>
+    <author>
+      <name>Zoltán Komáromi</name>
+    </author>
+    <author>
+      <name>Kristóf Abai</name>
+    </author>
+    <author>
+      <name>Dániel Horváth</name>
+    </author>
+    <author>
+      <name>Sándor Máthé</name>
+    </author>
+    <author>
+      <name>Konstantinos Kousias</name>
+    </author>
+    <author>
+      <name>Bence Tipary</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09651v1</id>
+    <title>Representative Dataset Generation Framework for AI-based Failure Analysis during real-time Validation of Automotive Software Systems</title>
+    <updated>2026-08-10T14:28:42Z</updated>
+    <link href="https://arxiv.org/abs/2608.09651v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09651v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recently, thanks to its ability to extract knowledge from historical datasets, the data-driven approach has been widely used in various phases of the system development life cycle. During real-time system validation, remarkable achievements have been accomplished in developing an intelligent failure analysis based on historical data. However, despite its superiority over other conventional approaches, e.g., model-based and signal-based, the availability of representative datasets persists as a major challenge. Thus, for different engineering applications, new solutions to generate representative faulty data in different forms should be explored. Therefore, in this study, a novel approach based on Hardware-in-the-Loop (HIL) simulation and real-time Fault Injection (FI) method is proposed to generate and collect data samples under single and simultaneous faults for Machine Learning (ML) applications during system validation phases. The developed framework can generate not only sequential data, but also textual data including fault logs. The results show the applicability of the proposed framework in simulating and capturing the system behaviour under faults within the system components.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T14:28:42Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Mohammad Abboush</name>
+    </author>
+    <author>
+      <name>Christoph Knieke</name>
+    </author>
+    <author>
+      <name>Andreas Rausch</name>
+    </author>
+    <arxiv:doi>10.24251/HICSS.2024.877</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.24251/HICSS.2024.877" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09650v1</id>
+    <title>Listwise Cross-Encoder Fine-Tuning vs. Agentic Instruction Tuning for LLM Rerankers: A Systematic Study in Medical Procedure Reranking</title>
+    <updated>2026-08-10T14:28:30Z</updated>
+    <link href="https://arxiv.org/abs/2608.09650v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09650v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reranking medical procedures against patient queries is a critical component of health insurance information retrieval, complicated by a substantial lexical gap between patient language and clinical nomenclature. We present a systematic comparison of two reranking paradigms for this production task: (1) small cross-encoders (MedCPT, MiniLM-L12) fine-tuned with listwise learning-to-rank objectives across layer freezing configurations, and (2) Qwen3-Reranker-4B, a 4B-parameter instruction reranker whose prompt is iteratively refined via an agentic optimization loop driven by GPT-4.1. On a purpose-built dataset of 2,647 queries across 708 insurance services, we find that a 109M-parameter cross-encoder fine-tuned with ListNet outperforms the 4B-parameter model by 2.6 percentage points on NDCG@3 and 13.3 points on Spearman correlation - at 37x fewer parameters. We report practical findings, a scalable LLM based dataset construction pipeline, and deployment trade-offs relevant to production reranking systems. We release our code and a sample dataset to support reproducibility and adaptation to other domains.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T14:28:30Z</published>
+    <arxiv:comment>10 pages, 6 figures, 4 tables. Code available at https://github.com/matanf-healthee/listwise-crossencoder-reranking</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Matan Fainzilber</name>
+    </author>
+    <author>
+      <name>Shlomit Plavner</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09634v1</id>
+    <title>IntHQ: Task-Interactive Hierarchical Query on Dual-Stream Representations for Generative Recommendation</title>
+    <updated>2026-08-10T14:13:47Z</updated>
+    <link href="https://arxiv.org/abs/2608.09634v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09634v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Multi-task learning over heterogeneous data is fundamental to modern recommendation, while generative models are emerging as the backbone of next-generation recommenders. However, the integration of multi-task learning into the generative paradigm remains largely unexplored. Existing multi-task recommenders, in both discriminative and generative paradigms, extract task-relevant features from a single task-agnostic representation and wire tasks into a predefined conversion funnel. We show that this scheme is inherently prone to a threefold collapse. Source collapse, where task-specific signals are injected late and diluted in the shared latent space. Relational collapse, where task dependencies are either implicitly absorbed by the backbone or statically fixed by predefined funnels. Hierarchical collapse, where tasks depend on features at different scales and shift across training stages. We propose IntHQ, a multi-task generative recommender with three components, each alleviating one collapse. Dual-Stream Decoupling (DSD) injects task identity into computation stream early and separates the shared context stream from the task-specific stream, alleviating signal dilution. Task-Interactive Modeling (TIM) replaces the predefined funnel with explicit cross-task interaction, letting each task condition on the realized outcomes of its predecessors with learned, input-adaptive strength. Hierarchical Querying (HQ) lets each task gather multi-scale information across different layers at different training stages. In offline evaluations, IntHQ consistently outperforms competitive encoder backbones under four representative task-head configurations. Deployed in production on Amap, serving hundreds of millions of users for travel recommendation, IntHQ yields a 1.60\% relative UVCTR lift.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T14:13:47Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Junjie Sun</name>
+    </author>
+    <author>
+      <name>Longfei Xu</name>
+    </author>
+    <author>
+      <name>Huimin Yan</name>
+    </author>
+    <author>
+      <name>Wei Luo</name>
+    </author>
+    <author>
+      <name>Kaikui Liu</name>
+    </author>
+    <author>
+      <name>Xiangxiang Chu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09605v1</id>
+    <title>TSPORec: Token Selection via Preference Optimization for LLM-Based Sequential Recommendation</title>
+    <updated>2026-08-10T13:47:46Z</updated>
+    <link href="https://arxiv.org/abs/2608.09605v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09605v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) have emerged as powerful tools for improving recommendation systems. The effectiveness of LLMs arises from their ability to harness rich textual information and their capacity to model heterogeneous user preferences based on users' interaction history. However, due to the large-scale and deep architectures, LLM-based sequential recommendation approaches generally incur high inference costs, resulting in a low return on investment. To mitigate this cost, many existing approaches resort to using only the first few tokens of item descriptions, which inadvertently discards valuable information contained in the full text, thereby leading to suboptimal recommendation performance. To address this limitation, we propose a novel Token Selection approach for Preference Optimization in LLM-based sequential Recommendation, i.e., TSPORec, which accurately pinpoints informative tokens throughout the entire textual content to improve recommendation performance. Specifically, we design a three-stage pipeline to select informative tokens and introduce a novel proxy reward to facilitate the implementation. TSPORec not only enhances recommendation performance but also improves computational efficiency. Extensive experiments across two models and datasets demonstrate the superb performance (up to 31.25%) and efficiency (up to 63.4%) of our approach compared with six baseline approaches. Code is available at https://github.com/WNQzhu/TSPORec.git.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T13:47:46Z</published>
+    <arxiv:comment>16 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Wenqiao Zhu</name>
+    </author>
+    <author>
+      <name>Chao Xu</name>
+    </author>
+    <author>
+      <name>Haipang Wu</name>
+    </author>
+    <author>
+      <name>Ji Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09586v1</id>
+    <title>ICM Out! Better Tournament Strategy from Computed Continuations, vs. Solvers and LLMs</title>
+    <updated>2026-08-10T13:20:36Z</updated>
+    <link href="https://arxiv.org/abs/2608.09586v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09586v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The Independent Chip Model (ICM) converts tournament chips into reference prize equity, and policies are routinely constructed against those values. Because ICM reads only stack sizes, it omits action order, blind obligations, and seat rotation, and it does not price the elimination pressure a big stack puts on the short stacks it can bust. Those omissions can alter the successor-state contrasts that determine a move. We introduce Strategic-Continuation Optimization (SCO), a policy-construction method that enumerates current-hand outcomes, maps them to successor states, prices those states with continuation values computed from the finite tournament model, and optimizes and freezes the resulting current-hand policy. The fixed-ICM comparison policy changes one thing only: the same optimizer solves the same game with successor states priced by analytic ICM, so the two policies differ only through that pricing. We evaluate the resulting policies in a three-player jam/fold tournament with a \$1M prize pool. Relative to the frozen strategic-continuation benchmark, analytic ICM has \$9{,}036 mean absolute value error across all 2,838 state--seat entries. That value error rewrites the ranges it prices: measured against each decision point's own fixed-ICM jam range, SCO moves the jam frequency by an average of 14.08\%. To price those different moves, we compare all 946 states and three policy owners while changing only the focal policy and holding both opponents and the continuation evaluator fixed. The policy produced by SCO earns \$214.33 more prize equity per hand on average and is favored in 2,433 of 2,838 matched units. The ordering survives replacing the solver-built opponent with two LLMs and with a family of non-modeling threshold players. This value-to-policy-to-cost chain shows directly when ICM becomes an inadequate objective for tournament strategy construction.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T13:20:36Z</published>
+    <arxiv:comment>34 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Boning Li</name>
+    </author>
+    <author>
+      <name>Longbo Huang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09530v1</id>
+    <title>The Unseen Delta: Characterizing the Compiler Optimization Landscape via Top-Down Differential Analysis</title>
+    <updated>2026-08-10T12:32:19Z</updated>
+    <link href="https://arxiv.org/abs/2608.09530v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09530v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Compiler optimizations are essential for achieving high performance in modern software. However, recent studies highlight the persistence of performance bugs, i.e., subtle defects where the compiler generates functionally correct but computationally inefficient code, leading to significant performance degradation. Existing detection and testing methods typically employ a bottom-up approach, focusing on specific low-level code properties and remaining confined to known optimization rules. Consequently, they struggle to quantify the holistic impact of identified issues and often overlook critical microarchitectural inefficiencies.
+  We observe a key indicator of untapped potential: different compilers often produce binaries with significant performance differences for identical source code. However, the root causes of these discrepancies remain largely unexplored and difficult to pinpoint using current techniques. To bridge this gap, we introduce a top-down differential analysis methodology. This approach calibrates compiler optimization differences with fine-grained, hierarchical microarchitectural metrics, offering a comprehensive view of runtime behavior. Using a sampling-based approach, this method efficiently pinpoints the critical code snippets responsible for performance differences, enabling targeted root cause analysis.
+  Our empirical evaluation uncovers substantial and often surprising performance differences between binaries generated by GCC and Clang. A categorization of root causes reveals systemic challenges in compiler optimizations. To quantitatively validate our findings and demonstrate practical impact, we developed a binary patching framework that fixes identified performance issues by transplanting superior code sequences from competing compilers. This work provides a novel lens for understanding and analyzing optimization defects.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T12:32:19Z</published>
+    <arxiv:comment>To appear at ISSTA 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Proceedings of the ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA '26), October 03--09, 2026, Oakland, California</arxiv:journal_ref>
+    <author>
+      <name>Zhibo Liu</name>
+    </author>
+    <author>
+      <name>Huaijin Wang</name>
+    </author>
+    <author>
+      <name>Shuai Wang</name>
+    </author>
+    <arxiv:doi>10.1145/3832164</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3832164" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09477v1</id>
+    <title>SmellCC: A Tool for Automated Code Smells Remediation</title>
+    <updated>2026-08-10T11:45:23Z</updated>
+    <link href="https://arxiv.org/abs/2608.09477v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09477v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Code smells significantly threaten software maintainability by accumulating technical debt, yet developers often lack the resources to manually address these flaws under tight release schedules. While static analysis tools like SonarQube provide precise detection, they function largely as passive alert systems, leaving the burden of refactoring on developers. To bridge this gap, we present a novel cleaning tool, namely SmellCC, a Visual Studio Code extension that augments SonarQube with an LLM-based pipeline to automatically detect and refactor Python code smells. By employing Chain-of-Thought (CoT) and few-shot learning, SmellCC provides in-place, one-click remediation for the top-10 most frequent smells, effectively preventing the accumulation of technical debt during development. Our quantitative evaluation demonstrates that our SmellCC is promising in helping developers effectively eliminate code smells (96.8\% cleaning rate) with high accuracy (i.e., 91.3\%), ensuring that the refactored code remains syntactically correct and behavior-preserving, thereby significantly improving long-term software maintainability.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T11:45:23Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Xiaoting Zhang</name>
+    </author>
+    <author>
+      <name>Yujie Zhang</name>
+    </author>
+    <author>
+      <name>Zhipeng Gao</name>
+    </author>
+    <author>
+      <name>Xing Hu</name>
+    </author>
+    <author>
+      <name>Xin Xia</name>
+    </author>
+    <arxiv:doi>10.1145/3832783.3834611</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3832783.3834611" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09472v1</id>
+    <title>Algorithmics for Safe Bicycle Network Design with Bounded Detours in Rural Areas</title>
+    <updated>2026-08-10T11:39:31Z</updated>
+    <link href="https://arxiv.org/abs/2608.09472v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09472v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce the \emph{Safe Bicycle Network with Bounded Detours} (\emph{SBNBD}) problem, motivated by upgrading rural road networks for bicycle traffic. Given an undirected graph with safe and unsafe edges, edge lengths, upgrade costs, terminal pairs, a budget, and a detour factor $α$, the task is to upgrade unsafe edges so that each terminal pair is connected by a safe path of length at most $α$ times its shortest-path distance in the original network.
+  We study SBNBD from a parameterized perspective. We prove strong NP-hardness on restricted graph classes, including planar graphs of treewidth two, graphs with feedback vertex set number one, and graphs of maximum degree three, and complement these lower bounds with polynomial-time algorithms for trees and graphs of maximum degree two. We show fixed-parameter tractability for the number of unsafe edges and prove matching SETH-based lower bounds, a polynomial-kernel lower bound, and W-hardness for natural parameters. Our main structural result maps any instance to an equivalent instance with $O(\mathrm{fes}+p)$ vertices and edges, where $\mathrm{fes}$ is the feedback edge number and $p$ the number of terminal pairs; this yields fixed-parameter tractability for $\mathrm{fes}+p$.
+  Finally, we evaluate ILP-based algorithms on OpenStreetMap road networks for small German municipalities and their surroundings. The instances have small treewidth upper bounds and moderate feedback edge structure. Preprocessing based on the $\mathrm{fes}+p$ reduction and tree-decomposition-based cut generation both improve exact solving, especially on harder instances. Experiments with different detour factors show that increasing $α$ can reduce the upgraded-edge length, revealing trade-offs between upgrade cost and allowed relative detours. Overall, structural graph parameters provide a useful algorithmic lens for safe bicycle-network design.</summary>
+    <category term="cs.DS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T11:39:31Z</published>
+    <arxiv:primary_category term="cs.DS"/>
+    <author>
+      <name>Till Fluschnik</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09440v1</id>
+    <title>MetaStrategy: Generative Ranking with Executable LLM Strategies</title>
+    <updated>2026-08-10T11:16:09Z</updated>
+    <link href="https://arxiv.org/abs/2608.09440v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09440v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Industrial recommender systems rank heterogeneous content under coupled user, business, commercial, and experience objectives. Existing generative ranking methods typically construct item sequences directly, making them difficult to integrate with mature predictive models, operational rules, and field-level guardrails. We present MetaStrategy, a framework that instead generates a structured, executable ranking strategy. Conditioned on request context, a large language model (LLM) policy emits a typed JSON bundle controlling objective weights, content and category preferences, experience constraints, and position policies. A deterministic validator and compiler instantiate an isolated Generator that competes atomically with incumbents under the list-level Evaluator of the Generator-Evaluator (GE) architecture. We train the policy in a production-path replay environment that re-executes logged requests through the current re-ranking stack without user exposure. The method combines selection, relative-rank, and baseline-lift rewards, a self-competitive curriculum that feeds frequent strategies back as competitors, and Evaluator-routed reward-augmented on-policy distillation that transfers complementary 4B-parameter Teachers into a compact 0.8B-parameter Student. We deploy MetaStrategy in Taobao Homepage Guess You Like through diff-triggered nearline generation; LLM inference remains outside synchronous ranking, with no observable increase in response time (RT). In a seven-day user-randomized online A/B test, MetaStrategy wins 27.93% of treatment-side GE calls and significantly improves click page views (click PV) by 2.11%, item-detail page views (IPV) by 3.12%, and transaction amount by 2.83%.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T11:16:09Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Chengyu Lai</name>
+    </author>
+    <author>
+      <name>Jiuning Lin</name>
+    </author>
+    <author>
+      <name>Zhibo Xiao</name>
+    </author>
+    <author>
+      <name>Xiaodong Zhu</name>
+    </author>
+    <author>
+      <name>Ruiquan Lan</name>
+    </author>
+    <author>
+      <name>Bin Zhang</name>
+    </author>
+    <author>
+      <name>Zihong Huang</name>
+    </author>
+    <author>
+      <name>Wendong Zhang</name>
+    </author>
+    <author>
+      <name>Chuxin Chen</name>
+    </author>
+    <author>
+      <name>Yinjiang Cai</name>
+    </author>
+    <author>
+      <name>Shuai Zhong</name>
+    </author>
+    <author>
+      <name>Lingqing Zhang</name>
+    </author>
+    <author>
+      <name>Dimin Wang</name>
+    </author>
+    <author>
+      <name>Jialin Zhu</name>
+    </author>
+    <author>
+      <name>Han Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09421v1</id>
+    <title>LITEWAY: LIghtweight HAR via Temporal Efficient highWAY</title>
+    <updated>2026-08-10T10:49:17Z</updated>
+    <link href="https://arxiv.org/abs/2608.09421v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09421v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Wearable human activity recognition (HAR) remains challenging due to the computational and energy constraints of deep learning models on resource-limited devices. Existing lightweight approaches often rely on recurrent architectures (e.g., GRU and LSTM), limiting parallelism and increasing inference latency. We propose LITEWAY, a modality-agnostic, fully convolutional framework for multichannel sensor time series that replaces recurrent temporal modeling with structured convolutional decomposition. LITEWAY combines lightweight convolutional blocks, strided temporal processing, and convolution-attention pooling to efficiently capture temporal dependencies while reducing computational complexity. We evaluate LITEWAY on 16 HAR datasets against TinyHAR, TinierHAR, and MLP-HAR. LITEWAY achieves competitive macro F1 while reducing model size by 4.06x-9.52x (Light) and 3.87x-9.07x (Full) compared with TinyHAR and TinierHAR. Deployment experiments further show energy reductions of 2.29x-3.14x (Light) and 1.46x-2.01x (Full) compared with TinierHAR and MLP-HAR, highlighting efficient fully convolutional temporal modeling for wearable HAR. The source code is publicly available at https://github.com/dominique-nshimyimana/liteway.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T10:49:17Z</published>
+    <arxiv:comment>accepted at UbiComp / ISWC 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Dominique Nshimyimana</name>
+    </author>
+    <author>
+      <name>Vitor Fortes Rey</name>
+    </author>
+    <author>
+      <name>Mengxi Liu</name>
+    </author>
+    <author>
+      <name>Bo Zhou</name>
+    </author>
+    <author>
+      <name>Paul Lukowicz</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09408v1</id>
+    <title>DREAM Technical Report</title>
+    <updated>2026-08-10T10:35:32Z</updated>
+    <link href="https://arxiv.org/abs/2608.09408v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09408v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Industrial recommender systems commonly use cascaded retrieval, ranking, and re-ranking pipelines. Although efficient, these pipelines fragment information and objectives across modules, rely on rigid rules, and have limited awareness of real-time intent, leaving session-level shifts among browsing, comparison, and purchase insufficiently addressed. We present DREAM (Developing Recommender Engine with Agentic Methods), an autonomous optimization control architecture that adds a perception-aware, orchestrable, and auditable policy layer atop existing pipelines without replacing them. DREAM has two core components. First, a three-tier Intent Engine fuses on-device signals into structured L0/L1/L2 intent representations; its edge-cloud trigger chain reduces reporting volume to approximately 8.7%. Second, a Meta Engine uses a MetaModel for layered M1-to-M2-to-M3 reasoning: intent summarization, strategy planning informed by Strategy Memory, and parameter translation. It dispatches the resulting parameters through a unified outlet with safety guardrails. A Reward Dual Loop continuously optimizes both components by combining offline simulation for strategy-space exploration with online feedback for outcome calibration, forming a cycle of generation, execution, evaluation, and experience accumulation. Large-scale A/B tests on Taobao's homepage feed show that re-ranking control alone improves IPV by 2.06%, Core IPV by 2.39%, and GMV by 0.88%. Extending control to fine ranking raises these gains to 2.71%, 3.06%, and 1.31%, respectively, while consistently improving PV by more than 1%. These gains require neither replacement of pipeline models nor compromise of serving stability, supporting agentic meta-control as a viable paradigm for industrial recommendation.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T10:35:32Z</published>
+    <arxiv:comment>Technical Report</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Bin Zhang</name>
+    </author>
+    <author>
+      <name>Bowen Zheng</name>
+    </author>
+    <author>
+      <name>Chao Yi</name>
+    </author>
+    <author>
+      <name>Chengyu Lai</name>
+    </author>
+    <author>
+      <name>Dian Chen</name>
+    </author>
+    <author>
+      <name>Dimin Wang</name>
+    </author>
+    <author>
+      <name>Gaoyang Guo</name>
+    </author>
+    <author>
+      <name>Jialin Zhu</name>
+    </author>
+    <author>
+      <name>Jian Wu</name>
+    </author>
+    <author>
+      <name>Jing Yu</name>
+    </author>
+    <author>
+      <name>Jiuning Lin</name>
+    </author>
+    <author>
+      <name>Lingqing Zhang</name>
+    </author>
+    <author>
+      <name>Lingyun Zheng</name>
+    </author>
+    <author>
+      <name>Mao Zhang</name>
+    </author>
+    <author>
+      <name>Mingming Pan</name>
+    </author>
+    <author>
+      <name>Ruiquan Lan</name>
+    </author>
+    <author>
+      <name>Shuai Zhong</name>
+    </author>
+    <author>
+      <name>Wen Chen</name>
+    </author>
+    <author>
+      <name>Wendong Zhang</name>
+    </author>
+    <author>
+      <name>Xiaodong Zhu</name>
+    </author>
+    <author>
+      <name>Xuan Chen</name>
+    </author>
+    <author>
+      <name>Xunke Xi</name>
+    </author>
+    <author>
+      <name>Yifan Lu</name>
+    </author>
+    <author>
+      <name>Yiheng Wang</name>
+    </author>
+    <author>
+      <name>Yue Zeng</name>
+    </author>
+    <author>
+      <name>Yujie Luo</name>
+    </author>
+    <author>
+      <name>Yuning Jiang</name>
+    </author>
+    <author>
+      <name>Zhe Hu</name>
+    </author>
+    <author>
+      <name>Zhibo Xiao</name>
+    </author>
+    <author>
+      <name>Zihong Huang</name>
+    </author>
+    <author>
+      <name>Binbin Cao</name>
+    </author>
+    <author>
+      <name>Bo Zheng</name>
+    </author>
+    <author>
+      <name>Danning Wang</name>
+    </author>
+    <author>
+      <name>Dixuan Wang</name>
+    </author>
+    <author>
+      <name>Ge Fan</name>
+    </author>
+    <author>
+      <name>Haixia Wu</name>
+    </author>
+    <author>
+      <name>Han Zhu</name>
+    </author>
+    <author>
+      <name>Hao Fang</name>
+    </author>
+    <author>
+      <name>Haoming Chen</name>
+    </author>
+    <author>
+      <name>Huiping Chu</name>
+    </author>
+    <author>
+      <name>Jian Wang</name>
+    </author>
+    <author>
+      <name>Jianjun Wu</name>
+    </author>
+    <author>
+      <name>Jiawei Wu</name>
+    </author>
+    <author>
+      <name>Jiaxin Yu</name>
+    </author>
+    <author>
+      <name>Jingwen Liu</name>
+    </author>
+    <author>
+      <name>Jinzhe Shan</name>
+    </author>
+    <author>
+      <name>Kai Meng</name>
+    </author>
+    <author>
+      <name>Kai Zhang</name>
+    </author>
+    <author>
+      <name>Keqin Xu</name>
+    </author>
+    <author>
+      <name>Kewei Zhu</name>
+    </author>
+    <author>
+      <name>Lang Tian</name>
+    </author>
+    <author>
+      <name>Leihui Chen</name>
+    </author>
+    <author>
+      <name>Li Chen</name>
+    </author>
+    <author>
+      <name>Licheng Xu</name>
+    </author>
+    <author>
+      <name>Lide Xiao</name>
+    </author>
+    <author>
+      <name>Ruitong Zhang</name>
+    </author>
+    <author>
+      <name>Shiyao Peng</name>
+    </author>
+    <author>
+      <name>Silu Zhou</name>
+    </author>
+    <author>
+      <name>Tao Wang</name>
+    </author>
+    <author>
+      <name>Wei Shi</name>
+    </author>
+    <author>
+      <name>Wenjun Yang</name>
+    </author>
+    <author>
+      <name>Xiang Chen</name>
+    </author>
+    <author>
+      <name>Xiang Gao</name>
+    </author>
+    <author>
+      <name>Xiao Ren</name>
+    </author>
+    <author>
+      <name>Xu Liu</name>
+    </author>
+    <author>
+      <name>Xuwen Wang</name>
+    </author>
+    <author>
+      <name>Yang Li</name>
+    </author>
+    <author>
+      <name>Yeqiu Yang</name>
+    </author>
+    <author>
+      <name>Yi Hu</name>
+    </author>
+    <author>
+      <name>Yinnan Song</name>
+    </author>
+    <author>
+      <name>Yuan Liu</name>
+    </author>
+    <author>
+      <name>Yunqi Gao</name>
+    </author>
+    <author>
+      <name>Zhiliang Huang</name>
+    </author>
+    <author>
+      <name>Zhujin Gao</name>
+    </author>
+    <author>
+      <name>Zongyuan Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09393v1</id>
+    <title>Temporal Misgrounding in Legal RAG: A Versioned-Corpus Benchmark for French Tax Law</title>
+    <updated>2026-08-10T10:20:13Z</updated>
+    <link href="https://arxiv.org/abs/2608.09393v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09393v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We identify and quantify temporal misgrounding: the systematic retrieval and citation of the currently in-force version of a legal article when the applicable version is an earlier or future one. Standard legal RAG treats the corpus as static; we argue legal question answering is a temporally-indexed retrieval problem. We introduce FiscalQA Pro, pairing a versioned corpus of 32,436 article-versions of the French tax code (93 years, 1938-2031) with an all-model-hard temporal-reasoning track: 209 scored, expert-reviewed questions across 33 CGI articles (221 released; twelve flagged out of the answerable scope). At selection time, no evaluated model recovered its date-applicable answer closed-book in any of four sampling draws, and the currently in-force text lacks the gold value for all but one of the scored questions. Answers are scored deterministically via atomic ground-truth "nuggets" (regex and numeric-with-tolerance), never LLM-as-judge: an LLM judge would inherit the temporal bias it is meant to score. Across eleven models (five frontier closed-API systems plus Gemini 2.5 Pro as a substitute entry, and five open-weight), parametric knowledge yields 3.0% mean strict accuracy and RAG over a static current-version corpus 2.7%. Static RAG retrieves the date-applicable version 0% of the time, confidently citing a real but inapplicable version. Our end-to-end retriever over a multi-version index, with no oracle, reaches 98.3% mean strict; an oracle-article ablation reaches 99.1%, locating the residual gap in first-stage recall, not version selection. We additionally release a version-aware jurisprudence dataset of 69,208 citation links, together with the corpus, benchmark, model responses, and pipeline code.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T10:20:13Z</published>
+    <arxiv:comment>13 pages, 1 figure, 4 tables. Accepted at the ICML 2026 Workshop on AI for Law (AI4Law), Seoul. Code and data: https://github.com/rosecymbler/fiscal-fr-bench</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Rose Cymbler</name>
+    </author>
+    <author>
+      <name>Daniel Guez</name>
+    </author>
+    <author>
+      <name>Laurent Fabre</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09349v1</id>
+    <title>White paper: A perspective on civilian-to-defence research transfer to SDD</title>
+    <updated>2026-08-10T09:30:24Z</updated>
+    <link href="https://arxiv.org/abs/2608.09349v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09349v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Military capability is increasingly determined by software. Yet defence platforms are procured on decade-long timescales, while the software and AI models they carry must evolve in days or hours. This paper calls this mismatch the lifecycle paradox, and argues it is the central problem Software-Defined Defence (SDD) must solve.
+  SDD rests on three dimensions: software and systems engineering (design, procurement, certification), AI engineering (sovereignty and trust of learned components), and connectivity and infrastructure engineering (timely exchange of information among sensors, AI, and operators). The proposed path to resilient SDD starts from civilian technologies, addressed through a continuous, DevOps-style loop: model-based systems engineering and simulation-based testing front-load design and verification; tactical connectivity and low-power edge execution carry that design into contested operation; continuous compliance, assurance, and variability management run as cross-cutting concerns. This loop is sustainable given capabilities already proven in automotive, manufacturing, space, and energy. The next step is validating them under adversarial or defence-certified conditions, with short-, medium-, and long-term paths to closing gaps.
+  Closing the SDD gap while preserving civic benefits is a distributed responsibility: researchers must redirect methods toward adversarial conditions; industry must expose tooling to operational needs; policymakers must shape regulatory instruments; and defence agencies must validate results with operators. Recommendations span three horizons: a short-term baseline of adversarial testing and connectivity pilots; a medium-term pipeline of incremental certification; and a long-term validation closing the loop under operational conditions.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T09:30:24Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Rute C. Sofia</name>
+    </author>
+    <author>
+      <name>Daniel Mendez</name>
+    </author>
+    <author>
+      <name>Simon Barner</name>
+    </author>
+    <author>
+      <name>Hao Shen</name>
+    </author>
+    <author>
+      <name>Julian Woermann</name>
+    </author>
+    <author>
+      <name>Andrea Stocco</name>
+    </author>
+    <author>
+      <name>Axel von Arnim</name>
+    </author>
+    <author>
+      <name>Holger Pfeifer</name>
+    </author>
+    <author>
+      <name>Alexander Pretschner</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09318v1</id>
+    <title>Search-Based Generation of Undetected Quantum Circuit Mutants</title>
+    <updated>2026-08-10T08:58:39Z</updated>
+    <link href="https://arxiv.org/abs/2608.09318v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09318v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Quantum mutation analysis is emerging as an essential technique for evaluating test suites due to the limited availability of real faulty quantum programs. However, existing quantum mutation analysis tools use fixed gate-based mutations, resulting in easy-to-detect mutants, which reduces their effectiveness in assessing the quality of test suites. We propose QUMUG, a search-based approach for generating challenging mutants by utilising parameterisable quantum gates. QUMUG employs search algorithms to optimise mutation parameters and find non-equivalent mutants passing a given test suite. In our evaluation over 30 quantum programs, QUMUG produced mutants that are three times more challenging than the mutants generated by existing tools. Among the four evaluated search algorithms, the genetic algorithm was the most effective, generating an average of 494 undetected mutants per program with a 99.67% success rate and 94.3% non-equivalent ratio. The generated mutants demonstrated their effectiveness by requiring the addition of five times more test cases to the test suite than the mutants generated by existing tools. We also analysed the behaviour of higher order mutants in quantum circuits, and showed that while first order mutations are more effective for enhancing the test suite, higher order mutants highlight the need for new unique test cases.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:58:39Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Eñaut Mendiluze Usandizaga</name>
+    </author>
+    <author>
+      <name>Thomas Laurent</name>
+    </author>
+    <author>
+      <name>Paolo Arcaini</name>
+    </author>
+    <author>
+      <name>Shaukat Ali</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09294v1</id>
+    <title>Graphing the Everyday: A Neurosymbolic Approach to Eliciting Routines for Just-In-Time Adaptive Interventions</title>
+    <updated>2026-08-10T08:45:54Z</updated>
+    <link href="https://arxiv.org/abs/2608.09294v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09294v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Just-In-Time Adaptive Interventions (JITAIs) increasingly rely on conversational agents to elicit user routines, yet translating fluid human dialogue into rigid schedule data remains a significant challenge. We conducted a qualitative investigation of a neurosymbolic pipeline, combining Large Language Models (LLMs) with a Neo4j knowledge graph, to map unstructured verbal narratives into actionable interventions. Through human-centric evaluation using natural-language playbacks, we identified a critical "mental-model gap," where the linear extraction of LLMs clashes with hierarchical, non-linear human storytelling, causing severe entity fragmentation. Furthermore, we articulate an "ecological mismatch," demonstrating that algorithmic schedule availability frequently ignores the user's fluctuating psychological receptivity and physical energy levels. To resolve these tensions, we propose actionable design heuristics, including routine piggybacking, adaptive negotiation, and scalable transparency. Ultimately, these guidelines provide a foundational framework for evolving rigid schedule-trackers into empathetic, context-aware proactive agents capable of supporting long-term health behavior change.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:45:54Z</published>
+    <arxiv:comment>Accepted at OzCHI 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Shakyani Jayasiriwardene</name>
+    </author>
+    <author>
+      <name>Blake Mountford</name>
+    </author>
+    <author>
+      <name>Meican Ma</name>
+    </author>
+    <author>
+      <name>Niels van Berkel</name>
+    </author>
+    <author>
+      <name>Nicholas Koemel</name>
+    </author>
+    <author>
+      <name>Matthew Ahmadi</name>
+    </author>
+    <author>
+      <name>Jorge Goncalves</name>
+    </author>
+    <author>
+      <name>Emmanuel Stamatakis</name>
+    </author>
+    <author>
+      <name>Zhanna Sarsenbayeva</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09290v1</id>
+    <title>OpenCodeReview: Determinism over Non-Determinism for Cost-Effective Agent-Based Code Review</title>
+    <updated>2026-08-10T08:43:16Z</updated>
+    <link href="https://arxiv.org/abs/2608.09290v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09290v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLM-based code review agents promise scalable, always-on review, yet current systems suffer from two intertwined weaknesses: (1) non-determinism--unbounded tool use makes review outcomes unstable, and (2) context locality--the reviewer's access remains bounded to the diff, capping discoverable issue depth. Both give rise to three challenges: misaligned context retrieval, a coherence-efficiency trade-off in multi-file pull requests, and hallucinated comments that erode trust. To address these, we introduce OpenCodeReview, built on deterministic engineering for uncertain agents: rather than granting maximal freedom, we inject determinism at three deliberate pipeline points. Rule-Guided Dispatch uses a multi-layer rule system to deterministically select files and review criteria, eliminating variability of agent-driven triage. Grounded File Review replaces free-form exploration with a curated tool set exposed through a ReAct loop, while file-level parallel SubAgents balance context coherence against efficiency and recover cross-file dependencies on demand. Independent Reflection introduces a falsification-first filter under an asymmetric information boundary--the reflector sees only the diff, not the agent's tool-augmented exploration--removing hallucinated comments without self-reinforcing bias, improving precision while preserving recall. On AACR-Bench (200 real-world PRs, 10 languages, 1,505 expert-verified comments), OpenCodeReview outperforms mainstream coding agents (e.g., Claude Code and Codex) across six LLM backends, achieving up to 2.17x higher SEM-F1 (25.10% vs. 11.57%) while consuming 5-15x fewer tokens. We open-source OpenCodeReview at https://github.com/alibaba/open-code-review.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:43:16Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Zhengfeng Li</name>
+    </author>
+    <author>
+      <name>Lei Zhang</name>
+    </author>
+    <author>
+      <name>Xianwei Wu</name>
+    </author>
+    <author>
+      <name>Zhengqi Zhuang</name>
+    </author>
+    <author>
+      <name>Yingjie Xu</name>
+    </author>
+    <author>
+      <name>Boge Wang</name>
+    </author>
+    <author>
+      <name>Shaofei Zhu</name>
+    </author>
+    <author>
+      <name>Chuan Wang</name>
+    </author>
+    <author>
+      <name>Guoping Rong</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09278v1</id>
+    <title>Software Engineering for and with GUI Agent</title>
+    <updated>2026-08-10T08:33:19Z</updated>
+    <link href="https://arxiv.org/abs/2608.09278v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09278v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>GUI agents have advanced rapidly, producing a growing body of frameworks, benchmarks, and applications. However, this growth has outpaced the maturity of the field. GUI agents remain technically brittle, incompletely engineered, and insufficiently validated for sustained real-world use. They are evolving into closed-loop software systems. Within these systems, model reasoning is coupled with interface perception, execution feedback, recovery, and human oversight. This evolution calls for a software engineering perspective that remains largely absent from existing research. We address this gap by reviewing 336 GUI-agent papers from January 2018 to April 2026. Five research questions examine the research landscape, architectures, evaluation, software lifecycle concerns, and future opportunities. Our findings show that the field has expanded sharply since 2024, while mobile and web settings remain dominant. Architectures increasingly adopt modular perceive-reason-act loops, but recovery, human escalation, safety enforcement, and auditability remain underdeveloped. This architectural imbalance extends to evaluation. Evaluations are becoming more interactive, but they remain centered on task success and are difficult to compare across protocols. More broadly, existing studies provide limited support for testing beyond benchmarks and for maintaining agents after release. Observability, privacy engineering, and systematic human oversight are also underdeveloped. Together, these findings show that capability improvements alone cannot ensure deployment readiness. Future research should connect dependable execution with lifecycle-centered testing and reproducible evaluation. It should also integrate permission and privacy controls with cost-aware, human-centered governance. This integration is necessary to build dependable, maintainable, secure, and deployable GUI-agent systems.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:33:19Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Shengcheng Yu</name>
+    </author>
+    <author>
+      <name>Yuchen Ling</name>
+    </author>
+    <author>
+      <name>Junyang Xing</name>
+    </author>
+    <author>
+      <name>Quan Zhou</name>
+    </author>
+    <author>
+      <name>Chunrong Fang</name>
+    </author>
+    <author>
+      <name>Zhenyu Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09273v1</id>
+    <title>Entropy-based Code Adversarial Translation for Real-world Repository Migration</title>
+    <updated>2026-08-10T08:29:29Z</updated>
+    <link href="https://arxiv.org/abs/2608.09273v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09273v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLMs have demonstrated strong capabilities in code generation and automated program repair, but migrating an entire repository rarely produces a runnable application because long-horizon translation challenges LLM-based agents' ability to maintain repository-level migration objectives. In this work, we propose Entropy-based Code Adversarial Translation (ECAT), a multi-agent framework for automated Android-to-HarmonyOS repository migration. ECAT formulates repository migration as adversarial entropy minimization through a generator-discriminator architecture. The discriminator measures migration quality using a unified metric called Code Entropy and produces text gradients that specify both file-level generation directives and the skills needed to execute them. Guided by these optimization signals, the generator iteratively updates the repository, and each update is accepted only if it reduces Code Entropy. Repeated generator--discriminator interactions progressively drive the migration from an initial template toward a functionally complete HarmonyOS repository. Successful low-entropy trajectories are further distilled into a self-evolving memory tree, enabling transferable migration knowledge across repositories. We also introduce A2H-RepoBench, the first real-world benchmark for Android-to-HarmonyOS repository migration, covering applications from tens of thousands to hundreds of thousands of lines of code. Evaluated by node alignment and an agent-based functional judge, ECAT achieves 74.7% overall migration quality and consistently outperforms existing agent-based methods across repositories of different scales.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:29:29Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yushun Tang</name>
+    </author>
+    <author>
+      <name>Yisen Cao</name>
+    </author>
+    <author>
+      <name>Zhicheng Chen</name>
+    </author>
+    <author>
+      <name>Lin Peng</name>
+    </author>
+    <author>
+      <name>Junkang Mao</name>
+    </author>
+    <author>
+      <name>Fengyi Song</name>
+    </author>
+    <author>
+      <name>Yantao Jia</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09270v1</id>
+    <title>GRASP: Granularity-Aware Region Alignment and Semantic Prototype Learning for Fine-Grained Cross-Modal Understanding in Drone Views</title>
+    <updated>2026-08-10T08:26:47Z</updated>
+    <link href="https://arxiv.org/abs/2608.09270v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09270v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fine-grained cross-modal understanding in drone views is essential for aerial vision-language navigation. However, the inherent wide field of view and overhead perspective of drone scenarios impose dual challenges on vision-language understanding. At the macro level, overwhelming background clutter in visual representations leads to Cross-Modal Focus Misalignment, where the model prioritizes global environmental similarities over specific object details. At the micro level, Visual Isomorphism creates ambiguity, where candidates share similar geometric structures yet differ only in subtle attributes. To address these challenges, we propose the Granularity-Aware Region Alignment and Semantic Prototype (GRASP) learning framework, enhancing discriminative capability through two synergistic strategies. Specifically, we introduce Region-Focused Alignment (RFA) to promote object-centric cross-modal alignment while suppressing background interference. Concurrently, to tackle visual isomorphism, we propose Semantic Perturbation Enhanced Matching (SPEM), which leverages a foreground-purified Semantic Prototype Codebook (SPC) to construct semantically perturbed negatives for fine-grained semantic discrimination. Extensive experiments on the GeoText-1652 benchmark and the unseen ERA dataset demonstrate that GRASP achieves competitive performance in drone-view fine-grained image-text retrieval, validating its effectiveness for cross-modal understanding in aerial scenarios. Our code implementation is available at https://github.com/UCAS-JC/GRASP.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MM" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:26:47Z</published>
+    <arxiv:comment>Accepted at the 34th ACM International Conference on Multimedia (ACM Multimedia 2026, MM '26). 10 pages, 6 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Jiahui Cui</name>
+    </author>
+    <author>
+      <name>Yan Zhao</name>
+    </author>
+    <author>
+      <name>Kan Wei</name>
+    </author>
+    <author>
+      <name>Enze Zhu</name>
+    </author>
+    <author>
+      <name>Peirong Zhang</name>
+    </author>
+    <author>
+      <name>Lei Wang</name>
+    </author>
+    <author>
+      <name>Yiru Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09268v1</id>
+    <title>Can Coding Agents Solve Repository-Level Issues with Rendered Code? An Exploratory Study of Visual Representations</title>
+    <updated>2026-08-10T08:24:19Z</updated>
+    <link href="https://arxiv.org/abs/2608.09268v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09268v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Visual modality has recently been explored as a way to compress textual tokens, including rendering code as images for static code understanding. We study whether this representation can serve as operational context for agentic coding, where an agent must navigate repositories, edit source files, and verify executable patches. Using SWE-bench Verified, we evaluate rendered code in repository-level repair workflows and introduce controlled agent settings to separate unguided repository exploration from more structured repair stages. Our results show a mixed picture. Rendered code consistently reduces prompt-token cost, but the savings do not increase linearly with the nominal visual compression ratio. It largely preserves end-to-end repair accuracy, but does not overcome the performance limits of the underlying model or agent architecture, and can become unstable under aggressive compression. Further analysis suggests that visual code is most useful when raw source reading is a major bottleneck; once repository localization is structured, much of the remaining cost comes from patch--test trial-and-error, where visual compression has limited leverage. Overall, our study positions rendered code as a viable but conditional compression mechanism for realistic coding agents.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:24:19Z</published>
+    <arxiv:comment>8 pages of main content</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Weijie Liang</name>
+    </author>
+    <author>
+      <name>Yuanfeng Song</name>
+    </author>
+    <author>
+      <name>Xing Chen</name>
+    </author>
+    <author>
+      <name>Caleb Chen Cao</name>
+    </author>
+    <author>
+      <name>Sirui Han</name>
+    </author>
+    <author>
+      <name>Yike Guo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09256v1</id>
+    <title>Distributed Team Orchestration via Supervisor Networks: Convergence, Optimality, and Resilience</title>
+    <updated>2026-08-10T08:14:46Z</updated>
+    <link href="https://arxiv.org/abs/2608.09256v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09256v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we study zero-sum potential team games with a supervisor network, where agents rely on supervisor-provided belief information rather than accurate common beliefs. The main challenge is that such belief information can be inaccurate because of supervisors' belief-estimation errors and the misreporting of joint actions by Byzantine teams. We propose the distributed team-orchestrating algorithm (DTOA), which combines team fictitious play with supervisor-based distributed belief learning. We prove the convergence of supervisors' belief estimates and establish that the induced learning dynamics converge to a near team-Nash equilibrium (TNE) in terms of the team-Nash gap (TNG). In the Byzantine setting, we consider a misreporting attack model and develop a Byzantine-resilient DTOA. We further provide probabilistic guarantees for Byzantine-team identification and establish an asymptotic bound on the honest TNG. Numerical experiments illustrate the theoretical findings, compare DTOA with baseline learning methods, and evaluate its performance in a Markov decision process setting.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:14:46Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Juntian Zhu</name>
+    </author>
+    <author>
+      <name>Guanpu Chen</name>
+    </author>
+    <author>
+      <name>Tongtian Zhu</name>
+    </author>
+    <author>
+      <name>Miguel de Carvalho</name>
+    </author>
+    <author>
+      <name>Zhouwang Yang</name>
+    </author>
+    <author>
+      <name>Fengxiang He</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09251v1</id>
+    <title>MoRSE: Task-Oriented Multi-Agent System with Mixture of Role-Subtask Experts</title>
+    <updated>2026-08-10T08:11:24Z</updated>
+    <link href="https://arxiv.org/abs/2608.09251v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09251v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language model-based multi-agent systems have recently shown strong potential for complex, long-horizon tasks. However, existing methods mainly rely on coarse prompt-level differentiation without parameter adaptation for diverse subtasks, resulting in insufficient inter-agent heterogeneity and limited specialized capability that bottleneck performance on tasks with complex requirements. To address this, we introduce a Task-Oriented Multi-Agent System with Mixture of Role-Subtask Experts (MoRSE) that distinguishes agents with (role, subtask)-conditional specialization at both the task structure and parameter levels. To make agents' responsibility explicit at the task structure level, we formulate a task-oriented multi-agent system that decomposes each task into a dependency-aware Directed Acyclic Graph of subtasks and assigns each agent a specific (role, subtask), introducing task-level specialization across collaborating agents. Additionally, to address the diverse role and subtask parameter adaptation demands, we propose a dynamic Mixture of (role, subtask) LoRA Experts module with a prototype-based semantic router for subtasks, augmenting agents with parameter-level specialization on a shared LLM substrate cost-effectively. Then, to co-optimize experts and router stably under sparse task rewards, we further propose a hierarchical group-relative policy optimization with two-layer credit assignment that isolates expert updates from the cross-route variance introduced by routing decisions, disentangling expert quality from routing quality. Experiments on code-generation benchmarks across three backbones demonstrate the effectiveness of our approach, with improvements in both whole-task and step-wise performance, and the gains from trained specialization generalize across held-out task categories and domains.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T08:11:24Z</published>
+    <arxiv:comment>25 pages, 8 figures, 9 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Peiwen Li</name>
+    </author>
+    <author>
+      <name>Shiyang Zhang</name>
+    </author>
+    <author>
+      <name>Yangtian Zhang</name>
+    </author>
+    <author>
+      <name>Sizhuang He</name>
+    </author>
+    <author>
+      <name>David van Dijk</name>
+    </author>
+    <author>
+      <name>Rex Ying</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09185v1</id>
+    <title>SiriusDeliver: Automating Data Warehouse Delivery at Tencent</title>
+    <updated>2026-08-10T06:54:40Z</updated>
+    <link href="https://arxiv.org/abs/2608.09185v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09185v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Enterprise data warehouses (DWs) support business-critical analytics, but warehouse task delivery remains a complicated production process involving context retrieval, workflow configuration, code generation, platform submission, and failure diagnosis. Although large language models (LLMs) and coding agents have improved software development, they are insufficient for production DW delivery, which requires dependency-aware orchestration, lifecycle-aware artifact control, and continuous adaptation to evolving platform practices. We present SiriusDeliver, an end-to-end delivery automation agent for production warehouse task submission. SiriusDeliver integrates three components: a hierarchical delivery agent that orchestrates warehouse skills, an artifact lifecycle control module that verifies and revises artifacts before and after platform execution, and a trace-driven skill evolution mechanism that maintains reusable skills from delivery trajectories. We evaluate SiriusDeliver through offline datasets and large-scale production deployment on Tencent Cloud WeData. Offline experiments on real-world warehouse delivery cases show that SiriusDeliver improves delivery success and automation efficiency over representative baselines. During a two-month deployment across 6 business teams and 4 warehouse task types, SiriusDeliver served 3,600 monthly active users and supported 18,240 delivery sessions, achieving an 87.2% end-to-end success rate and a 73.5% autonomous submission rate. A one-month A/B test shows that SiriusDeliver reduces median delivery time from 228 to 23 minutes and engineer effort from 95 to 11 minutes, while maintaining comparable final delivery success.</summary>
+    <category term="cs.DB" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T06:54:40Z</published>
+    <arxiv:comment>13 pages, 13 figures, 3 tables. Under submission</arxiv:comment>
+    <arxiv:primary_category term="cs.DB"/>
+    <author>
+      <name>Haining Xie</name>
+    </author>
+    <author>
+      <name>Xiaokai Zhou</name>
+    </author>
+    <author>
+      <name>Jiaming Yang</name>
+    </author>
+    <author>
+      <name>Siqi Shen</name>
+    </author>
+    <author>
+      <name>Ziwei Wang</name>
+    </author>
+    <author>
+      <name>Yifeng Zheng</name>
+    </author>
+    <author>
+      <name>Tengyue Xu</name>
+    </author>
+    <author>
+      <name>Yipeng Shi</name>
+    </author>
+    <author>
+      <name>Zefang Zong</name>
+    </author>
+    <author>
+      <name>Yang Li</name>
+    </author>
+    <author>
+      <name>Peng Chen</name>
+    </author>
+    <author>
+      <name>Jie Jiang</name>
+    </author>
+    <author>
+      <name>Debiao He</name>
+    </author>
+    <author>
+      <name>Xiao Yan</name>
+    </author>
+    <author>
+      <name>Jiawei Jiang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09181v1</id>
+    <title>Memoir: Learning, Verifying, and Evolving False-Positive Memories for Static Application Security Testing Tools</title>
+    <updated>2026-08-10T06:47:39Z</updated>
+    <link href="https://arxiv.org/abs/2608.09181v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09181v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Static Application Security Testing (SAST) tools have become indispensable in modern secure software devel- opment. However, these tools often generate false-positive (FP) alerts, imposing substantial manual inspection costs and reducing the trust from developers. Existing FP reduction methods still face two primary challenges. First, the large differences among SAST tools and vulnerability categories make it difficult for these methods to learn recurring patterns in historical false positives. Moreover, the knowledge used by these methods are largely static and cannot be updated as newly validated cases accumulate. To address these challenges, we propose Memoir, a memory- driven framework for identifying false positives by transform- ing historical FP alerts into reusable semantic memories. It consists of two key modules. First, historical semantic memory construction converts historical FP alerts into structured semantic memories through LLM-guided annotation, pattern clustering, and memory synthesis to capture reusable behavioral patterns. Moreover, memory-driven identification and evolution retrieves relevant memories and performs semantic verification against taxonomy consistency and security invariants before making the final prediction. It then incorporates verified predictions back into the memory repository, allowing the knowledge base to evolve as new cases accumulate. We evaluate Memoir on CWE- Bench-Java to demonstrate its effectiveness in real-world security analysis. Specifically, Memoir achieves an F1-score of 99.43% with a Recall of 98.88% and perfect Precision, consistently outperforming other baselines. Furthermore, an industrial case study on production software systems from a top IT company shows that the learned memory base generalizes effectively across different SAST tools without retraining.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T06:47:39Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Shenyuan Guan</name>
+    </author>
+    <author>
+      <name>Qiaodan Hou</name>
+    </author>
+    <author>
+      <name>Yanjun Chen</name>
+    </author>
+    <author>
+      <name>Xincheng Wen</name>
+    </author>
+    <author>
+      <name>Jia Feng</name>
+    </author>
+    <author>
+      <name>Keke Lian</name>
+    </author>
+    <author>
+      <name>Cuiyun Gao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.09177v1</id>
+    <title>Intuitive Directional Sense Presentation to the Torso Using McKibben-Based Surface Haptic Sensation in Immersive Space</title>
+    <updated>2026-08-10T06:42:24Z</updated>
+    <link href="https://arxiv.org/abs/2608.09177v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.09177v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In recent years, systems that utilize immersive space have been developed in various fields. Immersive spaces often contain considerable amounts of visual information; therefore, users often fail to obtain their desired information. Therefore, various methods have been developed to guide users toward haptic sensations. However, many of these methods have limitations in terms of the intuitive perception of haptic sensation and require practice for familiarization with haptic sensation. Fabric actuators are wearable haptic devices that combine fabric and McKibben artificial muscles to provide wearers with surface haptic sensation. These sensations can be provided to a wide area of the body with intuitive perception, instead of only to a part of the body. This paper presents a novel air pressure adjustment method for whole-body motion guidance using surface haptic sensations provided by a wearable fabric actuator. The proposed system can provide users with a directional sense without visual information in an immersive space. The effectiveness of the proposed system was evaluated through subject experiments and statistical data analysis. Finally, a directional sense presentation was conducted for users performing micromanipulations in a mixed-reality space to demonstrate the applicability of the proposed system for teleoperation.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-10T06:42:24Z</published>
+    <arxiv:comment>This is the accepted version of an article published in IEEE Transactions on Haptics 18(1), 244-254 (2025). DOI: 10.1109/TOH.2024.3522897. Open Access under CC BY-NC-ND 4.0</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>IEEE Transactions on Haptics, vol. 18, no. 1, pp. 244-254, 2025</arxiv:journal_ref>
+    <author>
+      <name>Kenta Yokoe</name>
+    </author>
+    <author>
+      <name>Tadayoshi Aoyama</name>
+    </author>
+    <author>
+      <name>Yuki Funabora</name>
+    </author>
+    <author>
+      <name>Masaru Takeuchi</name>
+    </author>
+    <author>
+      <name>Yasuhisa Hasegawa</name>
+    </author>
+    <arxiv:doi>10.1109/TOH.2024.3522897</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/TOH.2024.3522897" title="doi"/>
+  </entry>
+</feed>

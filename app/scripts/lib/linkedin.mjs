@@ -83,6 +83,12 @@ export function readItem(id) {
       channel: typeof fm.channel === 'string' ? fm.channel.trim() : '',
       angle: typeof fm.angle === 'string' ? fm.angle.trim() : '',
       offsetDays: Number.isInteger(fm.offsetDays) ? fm.offsetDays : null,
+      // Optional per-post posting hour (UTC), overriding the batch-wide
+      // postingHourUTC so a week can land on each weekday's best slot.
+      postHourUTC: Number.isInteger(fm.postHourUTC) ? fm.postHourUTC : null,
+      // Repo-relative review asset chosen from a meme campaign. Selection
+      // metadata only; the scheduler continues to use `media` exclusively.
+      meme: typeof fm.meme === 'string' ? fm.meme.trim() : '',
       // Optional attachment(s), relative to the post's own batch folder: one
       // file, a comma-separated list, or a directory (expanded to its sorted
       // images, which is how a multi-slide carousel is declared). Absent on
@@ -290,7 +296,11 @@ export function selectDue(items, { now = new Date(), enabled = false, postingHou
     const parent = resolve(item, now);
     if (!parent.post || !parent.live) continue;
 
-    due.push({ item, post: parent.post, at: scheduleFor(d.offsetDays, parent.post.data.pubDate, postingHourUTC) });
+    // A post may override the batch-wide hour with its own `postHourUTC`, so a
+    // week can be spread across each weekday's best-performing slot rather than
+    // firing every day at the same time.
+    const hour = Number.isInteger(d.postHourUTC) ? d.postHourUTC : postingHourUTC;
+    due.push({ item, post: parent.post, at: scheduleFor(d.offsetDays, parent.post.data.pubDate, hour) });
   }
   return due;
 }

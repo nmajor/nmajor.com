@@ -1,21 +1,25 @@
 ---
 newsletter: second-deployment-is-smaller
 channel: personal
-offsetDays: 0
+offsetDays: 1
+postHourUTC: 20
 angle: kinney-narrowed
 platform: LinkedIn
+meme: app/linkedin/second-deployment-is-smaller/memes/options/kinney-narrowed/04-pigeon.jpg
+media: memes/options/kinney-narrowed/04-pigeon.jpg
+approved: "Nicholas Major 2026-08-11 (via chat)"
 ---
-Kinney Drugs put an AI assistant on incoming patient calls in May. By August it was back to a touch-tone menu.
+Kinney Drugs (a pharmacy chain in NY) rolled back an AI assistant after 3 months, going back to an old touch tone system.
 
-Patients had reported incoherent calls, wrong medication dosages, and missed prescription notifications. Kinney is an employee-owned pharmacy chain across New York and Vermont, so this isn't a tech company doing a tech thing.
+But they kept AI doing something it's actually well suited for.
+
+Patients had reported incoherent calls, wrong medication dosages, and missed prescription notifications.
 
 The AI kept one job. Outbound refill texts, to patients who opted in.
 
 Compare the two jobs. On an incoming call it has to understand a person and get a dosage right. On an outbound text, the patient asked to receive it and the worst case is a reminder they didn't need.
 
-Same tool, same vendor, same week. What changed is the cost of being wrong.
-
-Which is the test I'd apply before pointing one of these at anything. Ask what a wrong answer costs you, and ask it before you ask what the thing can do.
+They ended up putting AI on something that didn't really matter much if it screwed up. This is where a lot of AI belongs currently.
 
 Wrote it up properly today in Actual Intelligence, my newsletter for people who run things.
 

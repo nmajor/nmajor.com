@@ -42,6 +42,7 @@ offsetDays: 2                               # schedule = the issue's real pubDat
                                             # the weekly drip uses 0,1,2,3,6 (Tue-Fri + Mon)
                                             # (business preview is always offsetDays: 0)
 angle: vendor-bill                          # label only: a short name for the post's story
+# meme: app/linkedin/.../03-pigeon.jpg       # chosen review option; repo-relative, not attached
 # approved: "Nicholas Major 2026-06-30"     # Nick's sign-off — agents NEVER set this
 # shadowedAt: ...                           # set by the scheduler in shadow mode (idempotency)
 # pushedAt: ...                             # set by the scheduler once pushed to Postiz (idempotency)
@@ -50,6 +51,10 @@ The full LinkedIn post text goes here. Short (roughly 100-180 words), standalone
 no link in the body (a link goes in the first comment if one is needed), no hashtags. Follows
 the writing-voice skill, every word.
 ```
+
+`meme:` records which campaign option Nick chose. It does not schedule the image or
+approve it. The publishing workflow uses `media:` only after the exact asset clears
+approval and rights checks.
 
 ## Channels
 

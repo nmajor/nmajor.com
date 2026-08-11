@@ -1,10 +1,12 @@
 ---
 newsletter: second-deployment-is-smaller
 channel: personal
-offsetDays: 1
+offsetDays: 2
+postHourUTC: 19
 angle: ai-exclusion
 platform: LinkedIn
 media: media/clip-b.jpg
+approved: "Nicholas Major 2026-08-11 (via chat)"
 ---
 Insurers have started writing AI exclusions into commercial liability policies.
 

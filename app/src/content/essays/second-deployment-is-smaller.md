@@ -1,14 +1,15 @@
 ---
 title: The second deployment is smaller. Start there.
 summary: "Kinney Drugs put an AI assistant on incoming patient calls, got wrong dosages, and moved it to opt-in refill texts. Johnson & Johnson cut 9,000 AI use cases. Every one of these companies found a version that worked, and it was smaller than the one they launched."
-pubDate: "2026-08-11T14:00:00.000Z"
+pubDate: "2026-08-11T14:59:22.086Z"
 author: Nicholas Major
-draft: true
+draft: false
 approved: "Nicholas Major 2026-08-11 (via chat)"
 readingMinutes: 4
 heroTitleLead: "The second deployment is smaller. "
 heroTitleAccent: "Start there."
 heroLede: "A pharmacy chain put AI on incoming patient calls, got wrong dosages, and moved it to opt-in refill texts. That second job was available on day one."
+emailedAt: "2026-08-11T14:59:35.662Z"
 ---
 
 Kinney Drugs (a pharmacy chain in NY and Vermont) ran an AI phone assistant for all incoming calls for 3 months before killing it and replacing it with something more sensible.

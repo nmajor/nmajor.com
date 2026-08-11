@@ -3,7 +3,7 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": ["second-deployment-is-smaller"],
+  "queue": [],
   "lowQueueThreshold": 0,
-  "lastPublishedAt": "2026-08-04T14:50:17.569Z"
+  "lastPublishedAt": "2026-08-11T14:59:22.086Z"
 }

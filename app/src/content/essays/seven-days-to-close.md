@@ -1,14 +1,15 @@
 ---
 title: Seven days to close. Years to know if it worked.
 summary: "Customers Bancorp told investors its AI closed commercial loans in seven days instead of 30 to 60. Then an analyst asked what it had saved, and the honest answer was that nobody knows yet. In lending the fast number arrives first and the real one arrives last."
-pubDate: "2026-08-18T14:00:00.000Z"
+pubDate: "2026-08-18T14:35:02.671Z"
 author: Nicholas Major
-draft: true
+draft: false
 approved: "Nicholas Major 2026-08-18 (via chat)"
 readingMinutes: 4
 heroTitleLead: "Seven days to close. "
 heroTitleAccent: "Years to know if it worked."
 heroLede: "A bank told investors its AI closed commercial loans in seven days instead of 30 to 60. The number that says whether those were good loans arrives in about three years."
+emailedAt: "2026-08-18T14:35:16.323Z"
 ---
 
 Customers Bancorp told investors it closed commercial loans in seven days, against the 30 to 60 days it says is typical.

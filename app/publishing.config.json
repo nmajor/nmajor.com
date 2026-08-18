@@ -3,7 +3,9 @@
     "weekday": 2,
     "hourUTC": 14
   },
-  "queue": [],
+  "queue": [
+    "seven-days-to-close"
+  ],
   "lowQueueThreshold": 0,
   "lastPublishedAt": "2026-08-11T14:59:22.086Z"
 }

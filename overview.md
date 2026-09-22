@@ -142,6 +142,14 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
+- **2026-09-22: Dormant since 2026-08-18. Moving machines and handing off to Hermes.**
+  Nothing has been published, emailed, or posted since `seven-days-to-close`. Nick let the
+  Buttondown plan lapse (there were no subscribers), so the newsletter send path is dead
+  until he decides between reactivating it and switching platforms. The queue is empty.
+  The plan is to restart with **Hermes** running daily LinkedIn and the weekly newsletter
+  under Nick's supervision and approval. All existing workflows are a starting point that
+  can change, and the newsletter-drafting and LinkedIn workflows in particular are
+  considered unproven. See `HANDOFF.md` for the full takeover brief.
 - **2026-07-23 — Recovered the missed 2026-07-21 issue and identified the cause.**
   GitHub Actions did run successfully on Tuesday, but `your-ai-made-an-offer`, its
   approval, and its queue entry existed only in an uncommitted local worktree. The
@@ -227,6 +235,34 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## Build progress
 
+- **2026-08-11 — Classic-template social-meme workflow added and tested on the
+  `second-deployment-is-smaller` LinkedIn batch.** The new
+  `.skills/social-meme-campaign/` skill now keeps 79 researched classic-template
+  contracts: **50 active**, 15 held for more evidence, and 14 explicitly rejected for
+  safety or fit. Every record has a meaning, AI writing guide, anti-patterns, ordered
+  slots, invariants, and a visually rendered operator example. The exact Memegen
+  backgrounds, source URLs, canonical examples, admission status, and hashes are local;
+  runtime validation and rendering accept only active IDs. The raw-first catalog audit
+  under `research/social-meme-template-catalog/` preserves Memegen's 210-row catalog,
+  Imgflip's 100 current popular templates, the 658-row MemeFact catalog with its
+  GPT-4o-generated visual/style descriptions, two template-semantics papers, and 78 of
+  79 linked cultural source pages. Open metadata and open-source renderer code still do
+  not clear third-party template art for publishing. The skill also provides a Memegen
+  draft renderer, JSONL campaign
+  ledgers, post-body drift detection, asset hashes, and fail-closed approval and rights
+  checks. The test batch now has twenty deliberately scrappy review options, five for
+  each underlying management mistake, plus labeled per-post contact sheets.
+  `personal-ai-exclusion.md` kept its existing evidence screenshot. Chosen review assets
+  are recorded separately in post frontmatter as `meme:` paths; asking to adjust an exact
+  option also selects it. Current choices are Pigeon for `personal-kinney-narrowed.md`,
+  Distracted Boyfriend for `personal-nine-thousand.md`, Panik Kalm Panik for
+  `personal-reversal-of-the-reversal.md`, and Pigeon for
+  `personal-what-is-a-resolution.md`. The post files now also declare those choices as
+  `media:`, carry explicit approval, and have `pushedAt` timestamps from 2026-08-11.
+  The meme campaign ledger was not advanced with that delivery: its rows still say
+  `review`/`attached:false` and the classic art still says `fair-use-review`. That
+  mismatch is unresolved historical state, not rights clearance or a production-ready
+  campaign.
 - **2026-07-09 — `/projects` page added.** Lists Nick's current project portfolio in
   order: Every City in the USA, National Sites Guide, Sites That Get Calls,
   TangoLango, Calculator Campus, VeilBoard, and SupplierSignal. Project rows use each

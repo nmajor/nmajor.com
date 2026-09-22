@@ -1,0 +1,1024 @@
+{
+  "version": 2,
+  "admission_review": {
+    "date": "2026-08-11",
+    "reviewer": "Codex source-and-render audit",
+    "report": "research/social-meme-template-catalog/report.md",
+    "source_index": "research/social-meme-template-catalog/raw/semantic-sources/index.json",
+    "rendered_examples": 79
+  },
+  "admission": {
+    "active": [
+      "ackbar", "drake", "ds", "gru", "handshake", "mordor", "rollsafe",
+      "aag", "ants", "balloon", "bihw", "bilbo", "both", "bus", "buzz",
+      "center", "dbg", "dwight", "exit", "fetch", "fry", "gears", "genie",
+      "home", "inigo", "kombucha", "money", "ntot", "officespace",
+      "perfection", "same", "say", "stonks", "success", "db", "gb",
+      "panik-kalm-panik", "pigeon", "3hd", "afraid", "bender", "facepalm",
+      "gone", "made", "mouth", "nice", "noidea", "patrick", "reveal",
+      "touch"
+    ],
+    "hold": [
+      "saltbae", "away", "badchoice", "captain", "firsttry", "hagrid",
+      "harold", "michael-scott", "millers", "older", "pooh", "regret",
+      "right", "seagull", "wallet"
+    ],
+    "rejected": [
+      "astronaut", "fine", "kermit", "aint-got-time", "cbb", "chair",
+      "chosen", "cmm", "crazypills", "dodgson", "midwit", "woman-cat",
+      "wonka", "worst"
+    ]
+  },
+  "templates": {
+    "ackbar": {
+      "name": "It's A Trap!",
+      "meaning": "A tempting or harmless-looking situation contains an obvious hidden downside.",
+      "writing_guide": "Name the appealing setup first, then use the fixed warning as the realization. The danger must be inferable from the setup without explanatory prose.",
+      "anti_patterns": ["Do not put the warning first.", "Do not use it for an ordinary bad outcome with no tempting setup."],
+      "slots": [
+        {"key": "tempting_setup", "max_words": 11},
+        {"key": "warning", "max_words": 4, "required_regex": "(?i)^it'?s a trap!?$"}
+      ],
+      "invariants": ["The first line must describe the trap; the second line is the recognition."],
+      "operator_example": ["AI pilot, every control TBD", "It's a trap!"]
+    },
+    "astronaut": {
+      "name": "Always Has Been",
+      "meaning": "One character discovers a truth that another character already knew.",
+      "writing_guide": "Write a surprised question that discovers an enduring truth, then the fixed confirmation. The last two labels identify who is learning and what person or force already knew.",
+      "anti_patterns": ["Do not make both first lines statements.", "Do not use the character labels as extra dialogue."],
+      "slots": [
+        {"key": "discovery_question", "max_words": 9, "required_regex": "(?i)^wait[,—:]?.*\\?$"},
+        {"key": "confirmation", "max_words": 4, "required_regex": "(?i)^always has been[.!]?$"},
+        {"key": "discoverer_label", "max_words": 4},
+        {"key": "knower_label", "max_words": 4}
+      ],
+      "invariants": ["Line one is the complete question.", "Line two is the fixed confirmation.", "Lines three and four label the two characters; they are not dialogue."],
+      "operator_example": ["Wait, the handoff is the product?", "Always has been", "AI buyers", "Support teams"]
+    },
+    "db": {
+      "name": "Distracted Boyfriend",
+      "meaning": "A decision-maker abandons an existing priority for a more tempting alternative.",
+      "writing_guide": "Label the passing distraction, the decision-maker, and the neglected commitment. Both options must compete for that one decision-maker's attention.",
+      "anti_patterns": ["Do not label three unrelated things.", "Do not reverse the tempting and neglected options.", "Do not imply infidelity by or humiliate an identifiable person; use teams, priorities, or self-critique."],
+      "slots": [
+        {"key": "tempting_alternative", "max_words": 7},
+        {"key": "decision_maker", "max_words": 4},
+        {"key": "existing_priority", "max_words": 8}
+      ],
+      "invariants": ["The first and third labels must be competing options for the person in line two."],
+      "operator_example": ["Another AI pilot", "Leadership", "Measuring the first 40 pilots"]
+    },
+    "drake": {
+      "name": "Drakeposting",
+      "meaning": "The same person rejects the first option and prefers the second.",
+      "writing_guide": "Put the rejected version in the upper panel and the preferred comparable version in the lower panel. The contrast should be obvious at a glance.",
+      "anti_patterns": ["Do not compare different questions.", "Do not make the lower option worse from the viewer's perspective."],
+      "slots": [
+        {"key": "rejected_option", "max_words": 8},
+        {"key": "preferred_option", "max_words": 9}
+      ],
+      "invariants": ["The two lines must be comparable alternatives.", "The second option must be clearly preferable from the operator's perspective."],
+      "operator_example": ["AI answers pharmacy calls", "AI sends opt-in refill texts"]
+    },
+    "ds": {
+      "name": "Daily Struggle",
+      "meaning": "One person is caught between two mutually exclusive choices.",
+      "writing_guide": "Place one genuine choice on each button and identify the chooser. The joke comes from the chooser being unable to satisfy both options at once.",
+      "anti_patterns": ["Do not use two compatible actions.", "Do not put consequences on the buttons instead of choices."],
+      "slots": [
+        {"key": "left_choice", "max_words": 5},
+        {"key": "right_choice", "max_words": 5},
+        {"key": "chooser", "max_words": 4}
+      ],
+      "invariants": ["Lines one and two must be genuine alternatives for the person in line three."],
+      "operator_example": ["Keep the pilot", "Admit it failed", "Project owner"]
+    },
+    "fine": {
+      "name": "This Is Fine",
+      "meaning": "A person calmly denies an obviously worsening problem.",
+      "writing_guide": "State the visible escalating problem, then use the fixed denial. The situation must make the calm response plainly unreasonable.",
+      "anti_patterns": ["Do not use a minor inconvenience.", "Do not turn the first line into advice."],
+      "slots": [
+        {"key": "worsening_problem", "max_words": 10},
+        {"key": "denial", "max_words": 5, "required_regex": "(?i)^this is fine[.!]?$"}
+      ],
+      "invariants": ["The first line must make the denial visibly unreasonable."],
+      "operator_example": ["The AI needs three people supervising it", "This is fine"]
+    },
+    "gb": {
+      "name": "Galaxy Brain",
+      "meaning": "Four approaches escalate from ordinary to increasingly clever or absurd.",
+      "writing_guide": "Write four versions of the same choice or idea, escalating panel by panel from normal to supposedly transcendent. The final step may be brilliant, foolish, or both.",
+      "anti_patterns": ["Do not write a chronological checklist.", "Do not change the subject between stages.", "Do not use injury or death language, or intelligence labels applied to people or groups."],
+      "slots": [
+        {"key": "stage_1", "max_words": 6},
+        {"key": "stage_2", "max_words": 6},
+        {"key": "stage_3", "max_words": 7},
+        {"key": "stage_4", "max_words": 8}
+      ],
+      "invariants": ["Every panel must continue the same comparison.", "Each step must clearly escalate; a plain checklist is not enough."],
+      "operator_example": ["Count AI pilots", "Count active users", "Count useful outcomes", "Count the pilots you stopped"]
+    },
+    "gru": {
+      "name": "Gru's Plan",
+      "meaning": "A confident plan reaches an overlooked failure, then repeats that failure in stunned realization.",
+      "writing_guide": "Use two confident setup steps, reveal the fatal oversight, then repeat that exact oversight in the final panel to represent Gru noticing it.",
+      "anti_patterns": ["Do not paraphrase the fourth line.", "Do not make the failure unrelated to the plan."],
+      "slots": [
+        {"key": "plan_step_1", "max_words": 7},
+        {"key": "plan_step_2", "max_words": 7},
+        {"key": "failure_reveal", "max_words": 8},
+        {"key": "repeated_failure", "max_words": 8, "equal_to": "failure_reveal"}
+      ],
+      "invariants": ["Lines three and four must be identical.", "The failure must contradict or undermine the plan."],
+      "operator_example": ["Launch 9,000 AI use cases", "Measure which ones make value", "Most of the value comes from 10–15%", "Most of the value comes from 10–15%"]
+    },
+    "handshake": {
+      "name": "Epic Handshake",
+      "meaning": "Two different groups or outcomes share one specific trait.",
+      "writing_guide": "Name the two distinct sides on the arms and put their surprisingly specific common ground on the clasped hands.",
+      "anti_patterns": ["Do not put opposing traits in the center.", "Do not choose groups that are effectively identical."],
+      "slots": [
+        {"key": "left_group", "max_words": 4},
+        {"key": "right_group", "max_words": 4},
+        {"key": "shared_trait", "max_words": 7}
+      ],
+      "invariants": ["Line three must apply naturally to both groups or outcomes."],
+      "operator_example": ["AI resolution", "Human handoff", "$0.99 each"]
+    },
+    "kermit": {
+      "name": "But That's None of My Business",
+      "meaning": "The speaker notices a questionable choice, then performs exaggerated noninvolvement.",
+      "writing_guide": "Lead with a pointed observation that exposes the contradiction, then use the fixed disclaimer as mock detachment.",
+      "anti_patterns": ["Do not write direct advice.", "Do not omit the questionable behavior being observed."],
+      "slots": [
+        {"key": "pointed_observation", "max_words": 10},
+        {"key": "disclaimer", "max_words": 7, "required_regex": "(?i)^but that'?s none of my business[.!]?$"}
+      ],
+      "invariants": ["The first line is a pointed observation, not advice."],
+      "operator_example": ["Your resolution metric counts human handoffs", "But that's none of my business"]
+    },
+    "mordor": {
+      "name": "One Does Not Simply",
+      "meaning": "A supposedly simple action is actually difficult or constrained.",
+      "writing_guide": "Keep the fixed setup and finish it with an action people wrongly treat as easy. The hidden complication should be familiar to the audience.",
+      "anti_patterns": ["Do not use an action that really is simple.", "Do not replace the fixed setup."],
+      "slots": [
+        {"key": "fixed_setup", "max_words": 5, "required_regex": "(?i)^one does not simply$"},
+        {"key": "difficult_action", "max_words": 9}
+      ],
+      "invariants": ["Line two must be an action that sounds simple but has a recognizable complication."],
+      "operator_example": ["One does not simply", "compare two per-resolution AI prices"]
+    },
+    "panik-kalm-panik": {
+      "name": "Panik Kalm Panik",
+      "meaning": "An alarming event is briefly explained away, then a new fact makes it worse.",
+      "writing_guide": "Start with a credible alarm, provide a reassurance that genuinely resolves it, then reveal one fact that invalidates the reassurance and raises the stakes.",
+      "anti_patterns": ["Do not make the middle line merely neutral.", "Do not make the final line a repetition of the first alarm.", "Do not use layoffs, personal hardship, injury, or disaster as the reversal."],
+      "slots": [
+        {"key": "initial_alarm", "max_words": 8},
+        {"key": "reassurance", "max_words": 8},
+        {"key": "worse_reveal", "max_words": 9}
+      ],
+      "invariants": ["Line two must genuinely reduce concern.", "Line three must overturn line two and increase concern."],
+      "operator_example": ["Pilot missed its target", "It passed the revised target", "They revised it after the miss"]
+    },
+    "pigeon": {
+      "name": "Is This a Pigeon?",
+      "meaning": "An observer confidently misidentifies an object or situation.",
+      "writing_guide": "Label the observer and the thing being seen, then write the observer's mistaken question. The misclassification should reveal their flawed mental model.",
+      "anti_patterns": ["Do not make the question accurate.", "Do not omit the observer whose mistake drives the joke.", "Use claims, processes, systems, or self-critique; never make a protected or vulnerable person the mistaken object."],
+      "slots": [
+        {"key": "observer", "max_words": 4},
+        {"key": "observed_thing", "max_words": 6},
+        {"key": "mistaken_question", "max_words": 7, "required_regex": "(?i)^is this .+\\?$"}
+      ],
+      "invariants": ["Line three must be a mistaken or exaggerated interpretation of line two by line one."],
+      "operator_example": ["AI steering committee", "A chatbot demo", "Is this transformation?"]
+    },
+    "rollsafe": {
+      "name": "Roll Safe",
+      "meaning": "A person presents flawed logic as a clever workaround.",
+      "writing_guide": "State the problem being avoided and then a workaround that is technically logical but defeats the real goal. The speaker believes the loophole is clever.",
+      "anti_patterns": ["Do not use sound advice.", "Do not make the workaround unrelated to the problem."],
+      "slots": [
+        {"key": "problem_avoided", "max_words": 8},
+        {"key": "flawed_workaround", "max_words": 9}
+      ],
+      "invariants": ["The second line must follow logically but reveal why the logic is foolish."],
+      "operator_example": ["Can't have an AI pilot fail", "If you never define success"]
+    },
+    "saltbae": {
+      "name": "Salt Bae",
+      "meaning": "A small flourish is added with theatrical confidence, often causing disproportionate impact.",
+      "writing_guide": "Name the small add-on being sprinkled and the larger thing it lands on. The humor is the grand performance around a tiny, often costly flourish.",
+      "anti_patterns": ["Do not use a major transformation as the flourish.", "Do not reverse the add-on and its target."],
+      "slots": [
+        {"key": "small_flourish", "max_words": 7},
+        {"key": "affected_thing", "max_words": 5}
+      ],
+      "invariants": ["Line one must be the thing being sprinkled or added; line two must be what receives the impact."],
+      "operator_example": ["One more AI pilot", "The transformation budget"]
+    },
+    "3hd": {
+      "name": "Three-Headed Dragon",
+      "meaning": "Three supposed peers are compared, but one is conspicuously unserious.",
+      "writing_guide": "Label the two alert heads with credible peers and the goofy head with the conspicuous outlier. All three labels must belong to the same category.",
+      "anti_patterns": ["Do not use three unrelated labels.", "Do not put the outlier on one of the serious heads.", "Label approaches, artifacts, or systems, never people or groups."],
+      "slots": [
+        {"key": "serious_peer_left", "max_words": 5},
+        {"key": "serious_peer_middle", "max_words": 5},
+        {"key": "goofy_outlier", "max_words": 5}
+      ],
+      "invariants": ["The first two labels are credible peers; the third is the conspicuously unserious member of that same set."],
+      "operator_example": ["Security review", "Process redesign", "AI vision deck"]
+    },
+    "aag": {
+      "name": "Ancient Aliens Guy",
+      "meaning": "A complicated or unexplained result is reduced to one overconfident magical cause.",
+      "writing_guide": "Put the observation or mystery first and the speaker's simplistic one-word explanation second. The second line should feel like a reflexive attribution, not analysis.",
+      "anti_patterns": ["Do not provide a nuanced causal explanation.", "Do not use two unrelated statements."],
+      "slots": [
+        {"key": "unexplained_result", "max_words": 8},
+        {"key": "magic_explanation", "max_words": 3}
+      ],
+      "invariants": ["Line two claims to explain line one and is comically reductive."],
+      "operator_example": ["Quarterly results improved", "AI"]
+    },
+    "afraid": {
+      "name": "Afraid to Ask Andy",
+      "meaning": "A basic uncertainty persists so long that admitting it has become embarrassing.",
+      "writing_guide": "State the foundational thing the speaker still does not understand, then use the fixed admission. The gap should plausibly have gone unasked for too long.",
+      "anti_patterns": ["Do not use a niche fact nobody is expected to know.", "Do not turn the second line into a different excuse.", "Keep the ignorance first-person and self-owning; never assign it to a named employee or junior."],
+      "slots": [
+        {"key": "basic_unknown", "max_words": 10},
+        {"key": "delayed_admission", "max_words": 10, "required_regex": "(?i)^and at this point i['’]?m too afraid to ask[.!]?$"}
+      ],
+      "invariants": ["The unknown is basic enough that asking late would feel awkward."],
+      "operator_example": ["I don't know what our AI strategy means", "And at this point I'm too afraid to ask"]
+    },
+    "aint-got-time": {
+      "name": "Sweet Brown",
+      "meaning": "A task, nuisance, or complication is dismissed as not worth anyone's time.",
+      "writing_guide": "Name the unwanted burden, then deliver the fixed dismissal. The first line should be something the audience instantly recognizes as needless overhead.",
+      "anti_patterns": ["Do not use a high-priority obligation.", "Do not soften the fixed punchline."],
+      "slots": [
+        {"key": "unwanted_burden", "max_words": 7},
+        {"key": "dismissal", "max_words": 9, "required_regex": "(?i)^ain['’]?t nobody got time (?:fo|for)['’]? that[.!]?$"}
+      ],
+      "invariants": ["Line two dismisses the burden named in line one."],
+      "operator_example": ["A fourth AI steering committee", "Ain't nobody got time fo' that"]
+    },
+    "ants": {
+      "name": "Do You Want Ants?",
+      "meaning": "A repeated behavior is warned against because it predictably creates an unwanted outcome.",
+      "writing_guide": "Ask whether the reader wants the unwanted outcome, then identify the behavior that produces it using the matching fixed construction.",
+      "anti_patterns": ["Do not change the outcome between the two lines.", "Do not use a cause with no recognizable link to the consequence."],
+      "slots": [
+        {"key": "outcome_question", "max_words": 7, "required_regex": "(?i)^do you want .+\\?$"},
+        {"key": "causal_warning", "max_words": 10, "required_regex": "(?i)^because that['’]?s how you get .+[.!]?$"}
+      ],
+      "invariants": ["Both lines name the same unwanted outcome; line two connects it to the behavior being criticized."],
+      "operator_example": ["Do you want shadow AI?", "Because that's how you get shadow AI"]
+    },
+    "away": {
+      "name": "Life Finds a Way",
+      "meaning": "A force or behavior reappears despite attempts to constrain it.",
+      "writing_guide": "Name the constrained force in the first fragment and complete the familiar phrase in the second. The subject must be something that plausibly routes around restrictions.",
+      "anti_patterns": ["Do not use a passive object that cannot adapt.", "Do not explain the workaround in the punchline."],
+      "slots": [
+        {"key": "constrained_force", "max_words": 4},
+        {"key": "inevitable_return", "max_words": 4, "required_regex": "(?i)^finds? a way[.!]?$"}
+      ],
+      "invariants": ["Read together, the two lines form the claim that the named force finds a way around the constraint."],
+      "operator_example": ["Workarounds", "Find a way"]
+    },
+    "badchoice": {
+      "name": "Milk Was a Bad Choice",
+      "meaning": "A recent choice produces immediate, obvious regret.",
+      "writing_guide": "Name the choice in the first line and use the fixed verdict in the second. The audience should infer the consequence without a third explanation.",
+      "anti_patterns": ["Do not describe a long-term strategic mistake with no immediate consequence.", "Do not put the consequence rather than the choice in line one."],
+      "slots": [
+        {"key": "recent_choice", "max_words": 6},
+        {"key": "regret_verdict", "max_words": 5, "required_regex": "(?i)^was a bad choice[.!]?$"}
+      ],
+      "invariants": ["The two lines read as one sentence naming and judging the choice."],
+      "operator_example": ["Auto-approving every AI use case", "Was a bad choice"]
+    },
+    "balloon": {
+      "name": "Running Away Balloon",
+      "meaning": "Someone reaches for a desired outcome while a constraint or habit holds them back.",
+      "writing_guide": "Label the balloon with the desired outcome, the reaching figure with the actor, and the restraining figure with the blocker. The blocker must specifically prevent that actor from reaching that outcome.",
+      "anti_patterns": ["Do not label the first two slots with the same thing.", "Do not use a blocker unrelated to the desired outcome.", "Do not make a named person or vulnerable worker the restraining force."],
+      "slots": [
+        {"key": "desired_outcome", "max_words": 5},
+        {"key": "reaching_actor", "max_words": 4},
+        {"key": "restraining_force", "max_words": 6}
+      ],
+      "invariants": ["The actor wants line one and is prevented by line three."],
+      "operator_example": ["One useful AI workflow", "Leadership", "The 47-pilot portfolio"]
+    },
+    "bender": {
+      "name": "I'm Going to Build My Own Theme Park",
+      "meaning": "Someone rejects an existing system and boasts that a self-built replacement will indulge their preferences.",
+      "writing_guide": "Use the first line to announce the replacement and the second to add self-serving features. The confidence should exceed the seriousness of the plan.",
+      "anti_patterns": ["Do not make the replacement sober and well justified.", "Do not make the second line unrelated to why the speaker rejected the original.", "Never reproduce the canonical sexual or profane features; use harmless self-serving product choices."],
+      "slots": [
+        {"key": "diy_replacement", "max_words": 9, "required_regex": "(?i)^i['’]?m going to build my own .+"},
+        {"key": "indulgent_features", "max_words": 8, "required_regex": "(?i)^with .+"}
+      ],
+      "invariants": ["The second line describes the supposedly better features of the replacement announced first."],
+      "operator_example": ["I'm going to build my own AI platform", "With agents and no governance"]
+    },
+    "bihw": {
+      "name": "But It's Honest Work",
+      "meaning": "A modest or unglamorous result is defended because it is real and legitimate.",
+      "writing_guide": "Downplay the small result first, then use the fixed defense. The joke should respect useful work rather than mock the person doing it.",
+      "anti_patterns": ["Do not use a fraudulent or useless result.", "Do not boast in the first line."],
+      "slots": [
+        {"key": "modest_result", "max_words": 7, "required_regex": "(?i)^it ain['’]?t much.*"},
+        {"key": "honest_defense", "max_words": 5, "required_regex": "(?i)^but it['’]?s honest work[.!]?$"}
+      ],
+      "invariants": ["Line one minimizes the achievement; line two values its legitimacy."],
+      "operator_example": ["It ain't much, just one automated task", "But it's honest work"]
+    },
+    "bilbo": {
+      "name": "Why Shouldn't I Keep It",
+      "meaning": "Someone rationalizes keeping a tempting thing they know they probably should release.",
+      "writing_guide": "Start with the self-justifying pause, then use the possessive question. The object being kept should be implied by context or named briefly in the first line.",
+      "anti_patterns": ["Do not use an item the speaker unquestionably owns and needs.", "Do not write detached analysis rather than temptation.", "Name the tempting object in line one so the meme stands alone."],
+      "slots": [
+        {"key": "tempted_rationalization", "max_words": 9, "required_regex": "(?i)^.+: after all.*why not\\?$"},
+        {"key": "possessive_question", "max_words": 7, "required_regex": "(?i)^why shouldn['’]?t i keep it\\?$"}
+      ],
+      "invariants": ["Both lines are the same speaker talking themself into keeping the tempting thing."],
+      "operator_example": ["Another AI pilot: after all, why not?", "Why shouldn't I keep it?"]
+    },
+    "both": {
+      "name": "Why Not Both?",
+      "meaning": "A presented either-or choice is dissolved by choosing both options.",
+      "writing_guide": "State the two apparently competing options together, then use the fixed cheerful answer. Both must actually be possible at the same time for the joke to land.",
+      "anti_patterns": ["Do not use truly mutually exclusive choices.", "Do not omit one side of the false choice."],
+      "slots": [
+        {"key": "false_choice", "max_words": 7},
+        {"key": "both_answer", "max_words": 4, "required_regex": "(?i)^why not both\\?$"}
+      ],
+      "invariants": ["Line one clearly presents two options; line two chooses both."],
+      "operator_example": ["Buy the tool or rebuild the process?", "Why not both?"]
+    },
+    "bus": {
+      "name": "Two Guys on a Bus",
+      "meaning": "Two people experience the same situation but focus on opposite interpretations.",
+      "writing_guide": "Put the bleak interpretation on the wall-facing passenger and the constructive interpretation on the view-facing passenger. Both captions must describe the same underlying event.",
+      "anti_patterns": ["Do not describe two different situations.", "Do not make both interpretations equally positive or negative."],
+      "slots": [
+        {"key": "bleak_interpretation", "max_words": 7},
+        {"key": "constructive_interpretation", "max_words": 7}
+      ],
+      "invariants": ["The two captions are contrasting perspectives on one shared fact."],
+      "operator_example": ["Another pilot failed", "One bad pilot finally stopped"]
+    },
+    "buzz": {
+      "name": "X, X Everywhere",
+      "meaning": "One repeated thing has proliferated until it appears everywhere.",
+      "writing_guide": "Name the repeated thing in the first line and repeat it in the fixed 'everywhere' construction second. Use the format for uncontrolled abundance, saturation, or a suddenly ubiquitous trend.",
+      "anti_patterns": ["Do not name different things in the two lines.", "Do not use it for a single isolated occurrence."],
+      "slots": [
+        {"key": "repeated_thing", "max_words": 5},
+        {"key": "everywhere_claim", "max_words": 7, "required_regex": "(?i)^.+ everywhere[.!]?$"}
+      ],
+      "invariants": ["The same noun or noun phrase appears in both lines; line two declares it ubiquitous."],
+      "operator_example": ["AI pilots", "AI pilots everywhere"]
+    },
+    "captain": {
+      "name": "I Am the Captain Now",
+      "meaning": "A new actor abruptly asserts control over a role or system once owned by someone else.",
+      "writing_guide": "Use the fixed demand for attention, then rewrite the captain claim for the thing that has taken control. The takeover should be recognizable, not merely aspirational.",
+      "anti_patterns": ["Do not describe ordinary delegation.", "Do not omit the new authority's identity."],
+      "slots": [
+        {"key": "attention_command", "max_words": 4, "required_regex": "(?i)^look at me[.!]?$"},
+        {"key": "takeover_claim", "max_words": 7, "required_regex": "(?i)^i am the .+ now[.!]?$"}
+      ],
+      "invariants": ["Line two names the role the speaker has taken over."],
+      "operator_example": ["Look at me", "I am the roadmap now"]
+    },
+    "cbb": {
+      "name": "Communist Bugs Bunny",
+      "meaning": "Something framed as one party's property is cheekily reclassified as collective property.",
+      "writing_guide": "Name the individual ownership claim first and replace it with an 'our' version second. Keep the underlying object identical.",
+      "anti_patterns": ["Do not change the object between lines.", "Do not use the format for ordinary collaboration with consent."],
+      "slots": [
+        {"key": "individual_property", "max_words": 5},
+        {"key": "collective_claim", "max_words": 5, "required_regex": "(?i)^our .+"}
+      ],
+      "invariants": ["Line two collectivizes the same thing named in line one."],
+      "operator_example": ["Your customer data", "Our training data"]
+    },
+    "center": {
+      "name": "What Is This, a Center for Ants?!",
+      "meaning": "An object or effort is mocked for being absurdly too small for its stated purpose.",
+      "writing_guide": "Identify the undersized effort, then ask the fixed ants-style question naming what it claims to be. The scale mismatch must be the joke.",
+      "anti_patterns": ["Do not use something merely low quality.", "Do not use the format when size or capacity is irrelevant.", "Target an effort, artifact, or budget, never an under-resourced person or team."],
+      "slots": [
+        {"key": "undersized_effort", "max_words": 6},
+        {"key": "ants_question", "max_words": 10, "required_regex": "(?i)^what is this,? .+ for ants\\?!?$"}
+      ],
+      "invariants": ["The second line treats the first line as comically too small for its purpose."],
+      "operator_example": ["Three part-time AI owners", "What is this, a team for ants?!"]
+    },
+    "chair": {
+      "name": "American Chopper Argument",
+      "meaning": "A heated six-turn argument exposes a contradiction that survives several rounds of reasoning.",
+      "writing_guide": "Write a real dialogue: proposal, objection, counterexample, distinction, synthesis, then a stubborn return to the original objection. Each turn must directly answer the one before it.",
+      "anti_patterns": ["Do not write six independent slogans.", "Do not let either speaker silently change subjects."],
+      "slots": [
+        {"key": "proposal", "max_words": 9},
+        {"key": "objection", "max_words": 9},
+        {"key": "counterexample", "max_words": 11},
+        {"key": "distinction", "max_words": 11},
+        {"key": "synthesis", "max_words": 9},
+        {"key": "stubborn_reversal", "max_words": 9}
+      ],
+      "invariants": ["Turns alternate between the two speakers.", "The final turn contradicts the synthesis and reveals the speaker's inconsistency."],
+      "operator_example": ["Let's fund one useful workflow", "We need an enterprise AI strategy", "One workflow would prove actual value", "A strategy needs more than one workflow", "Then start with one and expand", "No, that isn't enterprise AI"]
+    },
+    "chosen": {
+      "name": "You Were the Chosen One!",
+      "meaning": "A once-promising person or tool betrays the exact expectation placed on it.",
+      "writing_guide": "State the high expectation as an accusation, then name the opposite behavior that caused the betrayal. The second line must negate the promise in the first.",
+      "anti_patterns": ["Do not use a merely disappointing result.", "Do not make the second line unrelated to the stated expectation."],
+      "slots": [
+        {"key": "betrayed_expectation", "max_words": 7, "required_regex": "(?i)^you were (?:the .+|supposed to .+)[.!]$"},
+        {"key": "opposite_behavior", "max_words": 10}
+      ],
+      "invariants": ["Line two is the precise opposite of what line one expected."],
+      "operator_example": ["You were supposed to simplify this!", "You added another approval layer"]
+    },
+    "cmm": {
+      "name": "Change My Mind",
+      "meaning": "A speaker publicly plants a provocative thesis and invites challenge with performative confidence.",
+      "writing_guide": "Write one crisp, arguable claim that can stand alone on the sign. It should be specific enough to dispute and strong enough to reveal a point of view.",
+      "anti_patterns": ["Do not write a neutral fact or question.", "Do not add evidence, caveats, or a second sentence."],
+      "slots": [
+        {"key": "provocative_thesis", "max_words": 11}
+      ],
+      "invariants": ["The single line is a complete, contestable thesis rather than a topic label."],
+      "operator_example": ["Most AI roadmaps are avoidance with milestones"]
+    },
+    "crazypills": {
+      "name": "I Feel Like I'm Taking Crazy Pills",
+      "meaning": "The speaker sees an obvious absurdity that everyone around them appears to accept.",
+      "writing_guide": "State the normalized absurdity first, then use the fixed reaction. The first line must be something the audience agrees should not be treated as normal.",
+      "anti_patterns": ["Do not use a mere personal preference.", "Do not mock mental illness or an individual person."],
+      "slots": [
+        {"key": "normalized_absurdity", "max_words": 9},
+        {"key": "disbelief_reaction", "max_words": 10, "required_regex": "(?i)^i feel like i['’]?m taking crazy pills[.!]?$"}
+      ],
+      "invariants": ["The reaction is caused by other people accepting line one as normal."],
+      "operator_example": ["A human handoff counts as AI resolution", "I feel like I'm taking crazy pills"]
+    },
+    "dbg": {
+      "name": "Expectation vs. Reality",
+      "meaning": "An appealing expectation is immediately contradicted by the disappointing real experience.",
+      "writing_guide": "Put the anticipated experience in the first panel and the specific disappointing reality in the second. Phrase them as comparable versions of the same moment.",
+      "anti_patterns": ["Do not compare unrelated situations.", "Do not put the worse outcome in the expectation slot.", "Never make race or another protected characteristic part of the caption or joke."],
+      "slots": [
+        {"key": "expectation", "max_words": 8},
+        {"key": "reality", "max_words": 9}
+      ],
+      "invariants": ["Line two is the realized version of line one and is clearly worse."],
+      "operator_example": ["AI handles the request", "AI opens a ticket for a human"]
+    },
+    "dodgson": {
+      "name": "See? Nobody Cares",
+      "meaning": "A grand announcement receives no interest because it is irrelevant or unimpressive.",
+      "writing_guide": "Put the self-important announcement first, then use the fixed crowd verdict. The announcement should be something its speaker expects to impress people.",
+      "anti_patterns": ["Do not dismiss information that materially affects the audience.", "Do not use the second line as general hostility."],
+      "slots": [
+        {"key": "grand_announcement", "max_words": 9},
+        {"key": "crowd_verdict", "max_words": 4, "required_regex": "(?i)^see\\?? nobody cares[.!]?$"}
+      ],
+      "invariants": ["Line two directly punctures the importance claimed by line one."],
+      "operator_example": ["We renamed the chatbot an agent!", "See? Nobody cares"]
+    },
+    "dwight": {
+      "name": "Schrute Facts",
+      "meaning": "A broad or sentimental claim is met with an overly literal correction.",
+      "writing_guide": "Write the claim as the first line and begin the second with 'False' before giving a clipped literal correction. The correction may be pedantic but must address the claim.",
+      "anti_patterns": ["Do not use a subjective preference that cannot be corrected.", "Do not make the correction factually unrelated."],
+      "slots": [
+        {"key": "loose_claim", "max_words": 8},
+        {"key": "literal_correction", "max_words": 10, "required_regex": "(?i)^false[.:,].+"}
+      ],
+      "invariants": ["Line two rejects and narrowly corrects line one."],
+      "operator_example": ["AI means fewer people?", "False. It means different work"]
+    },
+    "exit": {
+      "name": "Left Exit 12 Off Ramp",
+      "meaning": "A decision-maker abruptly abandons the intended path for a tempting alternative.",
+      "writing_guide": "Label the straight route with the sensible plan, the exit with the tempting diversion, and the car with the actor choosing. The diversion should betray the stated plan.",
+      "anti_patterns": ["Do not reverse the straight route and exit.", "Do not label the car with an inanimate outcome."],
+      "slots": [
+        {"key": "intended_path", "max_words": 7},
+        {"key": "tempting_exit", "max_words": 7},
+        {"key": "decision_maker", "max_words": 4}
+      ],
+      "invariants": ["The actor in line three should stay on line one but swerves toward line two."],
+      "operator_example": ["Fix the broken workflow", "Buy an AI copilot", "Leadership"]
+    },
+    "facepalm": {
+      "name": "Facepalm",
+      "meaning": "An obvious mistake or repeated misunderstanding leaves the observer speechless.",
+      "writing_guide": "Name the obvious mistake first and use a very short reaction second. The image supplies the exasperation, so do not explain why the mistake is bad.",
+      "anti_patterns": ["Do not use a subtle disagreement.", "Do not turn the caption into a lecture.", "Use the speaker's own error or an abstract claim or process; never make an identifiable person the fool."],
+      "slots": [
+        {"key": "obvious_mistake", "max_words": 9},
+        {"key": "speechless_reaction", "max_words": 5}
+      ],
+      "invariants": ["Line two is the observer's reaction to the mistake in line one."],
+      "operator_example": ["Success metric: launched on time", "I can't even"]
+    },
+    "fetch": {
+      "name": "Stop Trying to Make Fetch Happen",
+      "meaning": "Someone is told to stop forcing an idea, label, or trend that plainly will not catch on.",
+      "writing_guide": "Name the forced thing in the fixed command, then use the fixed prediction. The target should have repeated attempts behind it.",
+      "anti_patterns": ["Do not reject a new idea solely because it is new.", "Do not use two different targets across the lines.", "Reject an idea, label, or trend, never a named or vulnerable person."],
+      "slots": [
+        {"key": "stop_command", "max_words": 9, "required_regex": "(?i)^stop trying to make .+ happen[.!]?$"},
+        {"key": "failure_prediction", "max_words": 6, "required_regex": "(?i)^it['’]?s not going to happen[.!]?$"}
+      ],
+      "invariants": ["Line two predicts failure for the exact idea named in line one."],
+      "operator_example": ["Stop trying to make agentic transformation happen", "It's not going to happen"]
+    },
+    "firsttry": {
+      "name": "First Try!",
+      "meaning": "An unlikely success is celebrated as if it happened effortlessly on the first attempt.",
+      "writing_guide": "Describe the unexpectedly successful outcome first, then use the fixed boast. It may be sincere luck or sarcastic denial of many hidden attempts.",
+      "anti_patterns": ["Do not use a routine first-attempt success.", "Do not explain the failed attempts after the punchline."],
+      "slots": [
+        {"key": "unlikely_success", "max_words": 8},
+        {"key": "boast", "max_words": 3, "required_regex": "(?i)^first try!?$"}
+      ],
+      "invariants": ["The success in line one is surprising enough to make the boast funny."],
+      "operator_example": ["The pilot had an exit criterion", "First try!"]
+    },
+    "fry": {
+      "name": "Futurama Fry",
+      "meaning": "The observer cannot tell which of two suspicious explanations is true.",
+      "writing_guide": "Begin with 'not sure if' and one explanation, then 'or' and the competing explanation. Both must plausibly explain the same evidence.",
+      "anti_patterns": ["Do not compare two unrelated possibilities.", "Do not make one line a question and the other a conclusion."],
+      "slots": [
+        {"key": "first_suspicion", "max_words": 8, "required_regex": "(?i)^not sure if .+"},
+        {"key": "second_suspicion", "max_words": 8, "required_regex": "(?i)^or .+"}
+      ],
+      "invariants": ["Both lines are alternative explanations for one ambiguous observation."],
+      "operator_example": ["Not sure if autonomous", "Or just no owner assigned"]
+    },
+    "gears": {
+      "name": "You Know What Really Grinds My Gears?",
+      "meaning": "The speaker tees up one specific recurring annoyance and complains about it.",
+      "writing_guide": "Use the fixed setup as line one and name one concrete irritating behavior in line two. Specific recognition matters more than outrage.",
+      "anti_patterns": ["Do not list several grievances.", "Do not use a broad social problem with no recognizable behavior."],
+      "slots": [
+        {"key": "complaint_setup", "max_words": 9, "required_regex": "(?i)^you know what really grinds my gears\\?$"},
+        {"key": "specific_annoyance", "max_words": 10}
+      ],
+      "invariants": ["Line two answers the question in line one with one concrete annoyance."],
+      "operator_example": ["You know what really grinds my gears?", "Pilots with no person allowed to stop them"]
+    },
+    "genie": {
+      "name": "Genie Lamp",
+      "meaning": "Impressive capability is constrained by one comically small operational boundary.",
+      "writing_guide": "Put the grand capability first and the cramped constraint second. Both must describe the same tool or role at different scales.",
+      "anti_patterns": ["Do not compare two unrelated products.", "Do not make the second line merely less impressive rather than constraining."],
+      "slots": [
+        {"key": "grand_capability", "max_words": 6},
+        {"key": "tiny_constraint", "max_words": 7}
+      ],
+      "invariants": ["Line two sharply limits the capability celebrated in line one."],
+      "operator_example": ["Frontier model intelligence", "One broken approval queue"]
+    },
+    "gone": {
+      "name": "And It's Gone",
+      "meaning": "A clearly named item, opportunity, budget, or plan disappears immediately.",
+      "writing_guide": "Name the doomed item and the reassuring plan for it first, then use the fixed disappearance. The loss should follow immediately from the first line's confidence.",
+      "anti_patterns": ["Do not use a slow, well-understood expense.", "Do not omit the item, opportunity, budget, or plan that disappears.", "Do not use personal hardship or a vulnerable person's loss."],
+      "slots": [
+        {"key": "doomed_item_and_plan", "max_words": 9},
+        {"key": "instant_loss", "max_words": 5, "required_regex": "(?i)^\\.*a+nd it['’]?s gone[.!]?$"}
+      ],
+      "invariants": ["The thing committed in line one is the thing that vanishes in line two."],
+      "operator_example": ["We'll spread the budget across 40 pilots", "Aaaand it's gone"]
+    },
+    "hagrid": {
+      "name": "I Should Not Have Said That",
+      "meaning": "Someone blurts out revealing information and immediately regrets exposing it.",
+      "writing_guide": "Put the revealing admission first, then use the fixed regret. The first line should create the awkwardness on its own.",
+      "anti_patterns": ["Do not use harmless small talk.", "Do not make the first line something another person said."],
+      "slots": [
+        {"key": "revealing_admission", "max_words": 9},
+        {"key": "immediate_regret", "max_words": 7, "required_regex": "(?i)^i should not have said that[.!]?$"}
+      ],
+      "invariants": ["The same speaker says both lines; line two reacts to the disclosure in line one."],
+      "operator_example": ["We never defined what resolution means", "I should not have said that"]
+    },
+    "harold": {
+      "name": "Hide the Pain Harold",
+      "meaning": "A person maintains a polite smile while enduring an obviously unpleasant reality.",
+      "writing_guide": "Use the two lines as one concise situation: the outwardly positive moment first and the painful context second. The image supplies the forced smile.",
+      "anti_patterns": ["Do not describe genuine happiness.", "Do not mock a person's appearance or suffering."],
+      "slots": [
+        {"key": "polite_appearance", "max_words": 7},
+        {"key": "painful_context", "max_words": 8}
+      ],
+      "invariants": ["Line two explains why the pleasant expression in line one is forced."],
+      "operator_example": ["Presenting the AI savings", "After six months of integration work"]
+    },
+    "home": {
+      "name": "We Have Food at Home",
+      "meaning": "A request for a desirable option is denied in favor of an inferior substitute already available.",
+      "writing_guide": "Write the request, the authority's 'we have it at home' refusal, and then label the disappointing substitute. All three must refer to the same desired category.",
+      "anti_patterns": ["Do not make the substitute genuinely equivalent.", "Do not change the requested category in the last line."],
+      "slots": [
+        {"key": "request", "max_words": 9, "required_regex": "(?i)^.+can we (?:get|have|buy) .+\\?$"},
+        {"key": "at_home_refusal", "max_words": 10, "required_regex": "(?i)^.+we have .+ at home[.!]?$"},
+        {"key": "inferior_substitute", "max_words": 8, "required_regex": "(?i)^.+ at home:"}
+      ],
+      "invariants": ["The substitute in line three is a disappointing version of what line one requests and line two claims is available."],
+      "operator_example": ["Team: Can we get process redesign?", "Leadership: We have redesign at home", "Redesign at home: another chatbot"]
+    },
+    "inigo": {
+      "name": "Inigo Montoya",
+      "meaning": "A word is being used repeatedly in a way that does not match its real meaning.",
+      "writing_guide": "Name the misused word in the fixed first construction and follow with the fixed correction. Use this for semantic drift, not an ordinary factual mistake.",
+      "anti_patterns": ["Do not use it when the disputed word is merely ambiguous.", "Do not replace the fixed correction with a definition lecture."],
+      "slots": [
+        {"key": "misused_word", "max_words": 8, "required_regex": "(?i)^you keep using (?:that word|the word .+)"},
+        {"key": "meaning_correction", "max_words": 12, "required_regex": "(?i)^i do not think it means what you think it means[.!]?$"}
+      ],
+      "invariants": ["Line one identifies repeated misuse; line two challenges the user's meaning rather than the truth of a claim."],
+      "operator_example": ["You keep using the word autonomous", "I do not think it means what you think it means"]
+    },
+    "kombucha": {
+      "name": "Kombucha Girl",
+      "meaning": "An initial negative reaction turns into reluctant or surprised approval after reconsideration.",
+      "writing_guide": "Put the off-putting first impression first and the detail that changes the judgment second. The second panel must plausibly improve the same thing being evaluated.",
+      "anti_patterns": ["Do not compare two unrelated options.", "Do not make the second reaction more negative."],
+      "slots": [
+        {"key": "bad_first_impression", "max_words": 8},
+        {"key": "redeeming_reconsideration", "max_words": 9}
+      ],
+      "invariants": ["Both lines concern one subject, and line two causes the reaction to improve."],
+      "operator_example": ["The AI cannot close every ticket", "But it knows when to hand off"]
+    },
+    "made": {
+      "name": "I Made This",
+      "meaning": "Someone takes credit for work that another person or group actually created.",
+      "writing_guide": "Label the original creator and appropriator, then preserve the three-turn exchange: creator claims the work, appropriator confirms it, appropriator repeats the exact claim as their own.",
+      "anti_patterns": ["Do not use it for acknowledged collaboration.", "Do not change the claimed artifact between the two identical claims.", "Do not accuse an identifiable person or company of theft unless the post provides that evidence; prefer documented roles or generic systems."],
+      "slots": [
+        {"key": "original_creator", "max_words": 4},
+        {"key": "credit_taker", "max_words": 4},
+        {"key": "original_claim", "max_words": 7},
+        {"key": "appropriator_question", "max_words": 7, "required_regex": "(?i)^you made (?:this|that|it)\\?$"},
+        {"key": "stolen_claim", "max_words": 7, "equal_to": "original_claim"}
+      ],
+      "invariants": ["The final line repeats the original creator's claim verbatim but is now spoken by the credit taker."],
+      "operator_example": ["Operations team", "AI vendor", "I made this workflow", "You made this?", "I made this workflow"]
+    },
+    "michael-scott": {
+      "name": "Michael Scott No God No",
+      "meaning": "Recognition of an unwanted repeat event triggers escalating rejection.",
+      "writing_guide": "Use the first line for the shocked sequence of noes and the second for the extended final refusal. The context should make the returning problem obvious from the image choice or nearby post.",
+      "anti_patterns": ["Do not use it for mild dislike.", "Do not add an explanatory paragraph to either line."],
+      "slots": [
+        {"key": "shocked_rejection", "max_words": 8, "required_regex": "(?i)^no,? god!? no.*"},
+        {"key": "extended_no", "max_words": 2, "required_regex": "(?i)^no{4,}!?$"}
+      ],
+      "invariants": ["The second line escalates the rejection in the first rather than introducing new information."],
+      "operator_example": ["No, God! No God, please no!", "Nooooooooo!"]
+    },
+    "midwit": {
+      "name": "Midwit",
+      "meaning": "A novice and an expert reach the same simple conclusion while the middle overcomplicates it.",
+      "writing_guide": "Put the same concise position on the low and high ends, and a long overengineered objection in the middle. The middle must reject or obscure the shared simple answer.",
+      "anti_patterns": ["Do not give the novice and expert different conclusions.", "Do not make the middle merely more detailed while agreeing."],
+      "slots": [
+        {"key": "simple_novice_view", "max_words": 7},
+        {"key": "overcomplicated_middle", "max_words": 18},
+        {"key": "simple_expert_view", "max_words": 7, "equal_to": "simple_novice_view"}
+      ],
+      "invariants": ["Lines one and three are identical; line two loudly overcomplicates or rejects them."],
+      "operator_example": ["Stop the pilot if it is useless", "NOOO you need a transformation framework and twelve-stage maturity model", "Stop the pilot if it is useless"]
+    },
+    "millers": {
+      "name": "You Guys Are Getting Paid?",
+      "meaning": "Successive people discover steeply different rewards until the last realizes they receive nothing.",
+      "writing_guide": "Move down a clear hierarchy: state the best reward, have each next person react while naming their smaller reward, and end with someone shocked that rewards exist at all.",
+      "anti_patterns": ["Do not put the rewards out of descending order.", "Do not change what is being rewarded between panels."],
+      "slots": [
+        {"key": "top_reward", "max_words": 7},
+        {"key": "second_tier", "max_words": 11},
+        {"key": "third_tier", "max_words": 11},
+        {"key": "excluded_reaction", "max_words": 8, "required_regex": "(?i)^you guys are getting .+\\?$"}
+      ],
+      "invariants": ["Every line compares compensation or benefit for the same activity, descending toward none."],
+      "operator_example": ["The vendor gets $500k", "You're getting $500k? I get $30k", "You're getting $30k? I get lunch", "You guys are getting lunch?"]
+    },
+    "money": {
+      "name": "Shut Up and Take My Money!",
+      "meaning": "An offer is so appealing that the buyer wants to purchase it immediately without more persuasion.",
+      "writing_guide": "Preserve the two-part fixed demand. Use the template only when the surrounding idea is immediately desirable enough to make further explanation feel unnecessary.",
+      "anti_patterns": ["Do not use it for reluctant approval.", "Do not replace either half with product specifications."],
+      "slots": [
+        {"key": "eager_interruption", "max_words": 4, "required_regex": "(?i)^shut up and$"},
+        {"key": "purchase_demand", "max_words": 4, "required_regex": "(?i)^take my money!?$"}
+      ],
+      "invariants": ["The two lines form one uninterrupted demand from the eager buyer."],
+      "operator_example": ["Shut up and", "Take my money!"]
+    },
+    "mouth": {
+      "name": "Woman Holding Dog's Mouth",
+      "meaning": "One actor stops another from saying an unpopular, controversial, or corrective truth in front of an audience.",
+      "writing_guide": "Label the actor doing the silencing, the audience hearing the approved story, and the silenced speaker or truth. The suppressed message must directly complicate what the audience is being told.",
+      "anti_patterns": ["Do not use three parties who share the same knowledge.", "Do not make the suppressed truth unrelated to the approved story.", "Do not silence a vulnerable person or turn harassment into the joke."],
+      "slots": [
+        {"key": "silencing_actor", "max_words": 8},
+        {"key": "audience", "max_words": 5},
+        {"key": "silenced_speaker_or_truth", "max_words": 10}
+      ],
+      "invariants": ["Line one suppresses line three because the audience in line two is not meant to hear its corrective message."],
+      "operator_example": ["Sales promising full autonomy next quarter", "Executive buyer", "Engineering knows the approvals are still manual"]
+    },
+    "nice": {
+      "name": "So I Got That Goin' For Me, Which Is Nice",
+      "meaning": "An ordeal contains one modest silver lining that is real but insufficient.",
+      "writing_guide": "Put both the ordeal and its modest silver lining in the first line, then use the fixed self-comforting phrase. The upside must not erase the ordeal.",
+      "anti_patterns": ["Do not use a major victory.", "Do not make the fixed phrase celebrate someone else's misfortune."],
+      "slots": [
+        {"key": "ordeal_with_modest_silver_lining", "max_words": 10},
+        {"key": "self_comfort", "max_words": 11, "required_regex": "(?i)^so i got that goin['’]? for me,? which is nice[.!]?$"}
+      ],
+      "invariants": ["Line two treats line one as a consolation rather than a complete win."],
+      "operator_example": ["Most pilots failed; one had an owner", "So I got that goin' for me, which is nice"]
+    },
+    "noidea": {
+      "name": "I Have No Idea What I'm Doing",
+      "meaning": "Someone has been placed in a role despite having no grasp of what the role requires.",
+      "writing_guide": "Name the assignment or supposed role first, then use the fixed admission. The mismatch between authority and understanding is the joke.",
+      "anti_patterns": ["Do not use a learner who is appropriately supervised.", "Do not mock a named junior employee.", "Use self-deprecation or an abstract role, never an identifiable person."],
+      "slots": [
+        {"key": "assigned_role", "max_words": 6},
+        {"key": "incompetence_admission", "max_words": 9, "required_regex": "(?i)^i have no idea what i['’]?m doing[.!]?$"}
+      ],
+      "invariants": ["The speaker in line two is responsible for the role named in line one."],
+      "operator_example": ["New AI program owner", "I have no idea what I'm doing"]
+    },
+    "ntot": {
+      "name": "No Take, Only Throw",
+      "meaning": "Someone demands an outcome while angrily refusing the prerequisite needed to produce it.",
+      "writing_guide": "Ask for the desired result, reject the necessary input, then repeat the result as a demand. The contradiction must be direct and recognizable.",
+      "anti_patterns": ["Do not use a merely optional prerequisite.", "Do not change the desired outcome between the first and third lines."],
+      "slots": [
+        {"key": "desired_outcome", "max_words": 6},
+        {"key": "prerequisite_refusal", "max_words": 6, "required_regex": "(?i)^no .+!!?$"},
+        {"key": "outcome_demand", "max_words": 5, "required_regex": "(?i)^only .+!?$"}
+      ],
+      "invariants": ["Line two rejects what line one requires; line three demands line one anyway."],
+      "operator_example": ["Please deliver AI value?", "NO PROCESS CHANGE!!", "ONLY VALUE"]
+    },
+    "officespace": {
+      "name": "That Would Be Great",
+      "meaning": "An authority figure makes an inconvenient request in falsely casual, passive-aggressive language.",
+      "writing_guide": "Put the burdensome request in line one and the fixed breezy close in line two. The speaker should have enough authority that the request is not really optional.",
+      "anti_patterns": ["Do not use a sincere favor between peers.", "Do not make the first line an angry command."],
+      "slots": [
+        {"key": "passive_aggressive_request", "max_words": 11},
+        {"key": "breezy_close", "max_words": 5, "required_regex": "(?i)^that['’]?d be great[.!]?$"}
+      ],
+      "invariants": ["Line two disguises the burden imposed by line one as a casual preference."],
+      "operator_example": ["If every pilot could have twelve status slides", "That'd be great"]
+    },
+    "older": {
+      "name": "An Older Code Sir, But It Checks Out",
+      "meaning": "An old-fashioned method or artifact remains valid despite its age.",
+      "writing_guide": "Name the old method first and give the fixed qualified approval second. The subject should still work, not merely evoke nostalgia.",
+      "anti_patterns": ["Do not use something obsolete and broken.", "Do not confuse familiarity with current validity."],
+      "slots": [
+        {"key": "old_but_working_thing", "max_words": 6},
+        {"key": "qualified_approval", "max_words": 8, "required_regex": "(?i)^it['’]?s older .+ but it checks out[.!]?$"}
+      ],
+      "invariants": ["Line two confirms that the old thing in line one still works."],
+      "operator_example": ["A spreadsheet with named owners", "It's older tech, but it checks out"]
+    },
+    "patrick": {
+      "name": "Push It Somewhere Else Patrick",
+      "meaning": "Relocating a thing is presented as the solution to the problem around it.",
+      "writing_guide": "Use the fixed proposal opening to name the thing, then move it to another place, team, or label. Treat the move as a non-solution only when the post establishes that the underlying problem remains.",
+      "anti_patterns": ["Do not claim the relocation fails when the post does not support that conclusion.", "Do not change the thing being moved between lines."],
+      "slots": [
+        {"key": "problem_proposal", "max_words": 10, "required_regex": "(?i)^why don['’]?t we take .+"},
+        {"key": "relocation", "max_words": 10, "required_regex": "(?i)^and (?:put|move) .+"}
+      ],
+      "invariants": ["Line two relocates or renames the exact thing identified in line one and presents that move as the solution."],
+      "operator_example": ["Why don't we take all the failed pilots", "And put them in the innovation portfolio"]
+    },
+    "perfection": {
+      "name": "Perfection",
+      "meaning": "Two acceptable options are rejected before a third, often unexpected option is declared ideal.",
+      "writing_guide": "Present option one, request the real version, present option two, repeat the request more firmly, reveal option three, then approve it. All three must be versions of one category.",
+      "anti_patterns": ["Do not switch categories between options.", "Do not make the supposedly perfect option indistinguishable from the first two."],
+      "slots": [
+        {"key": "first_option", "max_words": 6},
+        {"key": "first_rejection", "max_words": 8, "required_regex": "(?i)^i prefer the real .+[.!]?$"},
+        {"key": "second_option", "max_words": 6},
+        {"key": "second_rejection", "max_words": 9, "required_regex": "(?i)^i said,? the real .+[.!]?$"},
+        {"key": "ideal_option", "max_words": 7},
+        {"key": "approval", "max_words": 2, "required_regex": "(?i)^perfection[.!]?$"}
+      ],
+      "invariants": ["Each odd-numbered line is a comparable option; the sixth line approves only the third option."],
+      "operator_example": ["Chatbot", "I prefer the real automation", "Copilot", "I said, the real automation", "One task that actually completes", "Perfection"]
+    },
+    "pooh": {
+      "name": "Tuxedo Winnie the Pooh",
+      "meaning": "A plain label is rejected in favor of an unnecessarily grandiose equivalent.",
+      "writing_guide": "Put the ordinary term in the first panel and a pompous rephrasing of the same thing in the second. Preserve the meaning while inflating the diction.",
+      "anti_patterns": ["Do not compare genuinely different concepts.", "Do not make the second wording clearer or simpler."],
+      "slots": [
+        {"key": "plain_term", "max_words": 5},
+        {"key": "pretentious_equivalent", "max_words": 8}
+      ],
+      "invariants": ["Both lines refer to the same thing; only the register becomes more pretentious."],
+      "operator_example": ["AI pilot", "Algorithmic capability validation initiative"]
+    },
+    "regret": {
+      "name": "I Immediately Regret This Decision!",
+      "meaning": "A decision creates consequences so quickly that regret is immediate.",
+      "writing_guide": "Name the just-made decision first and use the fixed realization second. The consequence should be obvious or strongly implied by the choice.",
+      "anti_patterns": ["Do not use a decision whose downside appears years later.", "Do not put the consequence rather than the decision in line one."],
+      "slots": [
+        {"key": "just_made_decision", "max_words": 8},
+        {"key": "instant_regret", "max_words": 7, "required_regex": "(?i)^i immediately regret this decision!?$"}
+      ],
+      "invariants": ["The same decision named first causes the regret expressed second."],
+      "operator_example": ["Let every team buy its own AI stack", "I immediately regret this decision!"]
+    },
+    "reveal": {
+      "name": "Scooby Doo Reveal",
+      "meaning": "A surface identity is unmasked as an underlying or meaningfully similar identity.",
+      "writing_guide": "Name the surface identity, use the unmasking line, reveal the underlying or similar identity, then close with recognition. The relationship must be supported by the post.",
+      "anti_patterns": ["Do not reveal something unrelated.", "Do not use two labels that are already obvious synonyms.", "Use claims, products, processes, or metrics, never people or protected traits."],
+      "slots": [
+        {"key": "surface_identity", "max_words": 5},
+        {"key": "unmasking", "max_words": 8, "required_regex": "(?i)^let['’]?s see (?:who|what) you really are[.!…]*$"},
+        {"key": "underlying_or_similar_identity", "max_words": 6},
+        {"key": "recognition", "max_words": 4, "required_regex": "(?i)^i knew it!?$"}
+      ],
+      "invariants": ["Line three is the underlying or meaningfully similar reality behind line one; line four confirms the recognition."],
+      "operator_example": ["AI transformation", "Let's see what you really are...", "A chatbot rollout", "I knew it!"]
+    },
+    "right": {
+      "name": "Anakin and Padme Change the World For the Better",
+      "meaning": "A confident statement contains a worrying ambiguity, and the listener's repeated question reveals the missing reassurance.",
+      "writing_guide": "Label both speakers, give the confident speaker an ambiguous plan, then repeat the listener's exact hopeful question in the last two panels. The silence between repeats is the punchline.",
+      "anti_patterns": ["Do not answer the listener's question.", "Do not change the wording between the last two panels."],
+      "slots": [
+        {"key": "confident_speaker", "max_words": 4},
+        {"key": "uneasy_listener", "max_words": 4},
+        {"key": "ambiguous_plan", "max_words": 8},
+        {"key": "hopeful_question", "max_words": 9},
+        {"key": "repeated_question", "max_words": 9, "equal_to": "hopeful_question"}
+      ],
+      "invariants": ["The plan leaves one troubling interpretation open; the final two lines are identical because no reassurance arrives."],
+      "operator_example": ["Program lead", "Operations", "We'll automate the whole workflow", "After we redesign it, right?", "After we redesign it, right?"]
+    },
+    "same": {
+      "name": "They're the Same Picture",
+      "meaning": "An observer treats two supposedly distinct things as functionally identical.",
+      "writing_guide": "Label the two things being compared and identify the observer or system that cannot distinguish them. The equivalence should reveal a meaningful blind spot or joke.",
+      "anti_patterns": ["Do not compare things with no relevant similarity.", "Do not use the third slot as extra dialogue."],
+      "slots": [
+        {"key": "first_thing", "max_words": 5},
+        {"key": "second_thing", "max_words": 5},
+        {"key": "equating_observer", "max_words": 5}
+      ],
+      "invariants": ["Line three is the person, policy, or metric treating lines one and two as equivalent."],
+      "operator_example": ["AI resolution", "Human handoff", "Outcome pricing"]
+    },
+    "say": {
+      "name": "Say the Line, Bart!",
+      "meaning": "A group pressures someone to repeat the predictable phrase they are known for.",
+      "writing_guide": "Have the crowd ask a named role to say the line, then supply that role's inevitable catchphrase. The punchline should be recognizable as a repeated habit.",
+      "anti_patterns": ["Do not use a one-time statement.", "Do not make the requested speaker and catchphrase unrelated.", "Use a role or archetype, never pressure a named employee or vulnerable person."],
+      "slots": [
+        {"key": "crowd_prompt", "max_words": 7, "required_regex": "(?i)^say the line,? .+!?$"},
+        {"key": "predictable_line", "max_words": 7}
+      ],
+      "invariants": ["Line two is the exact kind of stock response the role named in line one repeatedly gives."],
+      "operator_example": ["Say the line, AI consultant!", "It depends"]
+    },
+    "seagull": {
+      "name": "Inhaling Seagull",
+      "meaning": "A quiet conversational opening suddenly becomes an emphatic or shouted completion.",
+      "writing_guide": "Write a short calm lead-in first and its loud, overcommitted completion second. Read together, the two lines must form one utterance.",
+      "anti_patterns": ["Do not write two separate observations.", "Do not put the loud conclusion first."],
+      "slots": [
+        {"key": "quiet_lead_in", "max_words": 4},
+        {"key": "shouted_completion", "max_words": 9}
+      ],
+      "invariants": ["The second line grammatically and emotionally completes the first while sharply escalating volume."],
+      "operator_example": ["We can just", "SHIP IT AND DEFINE SUCCESS LATER!"]
+    },
+    "stonks": {
+      "name": "Stonks",
+      "meaning": "A foolish business or financial decision is presented as if it were obvious strategic competence.",
+      "writing_guide": "State the flawed move first and use the intentionally misspelled fixed verdict second. The move should superficially improve a metric while damaging the real outcome.",
+      "anti_patterns": ["Do not use a genuinely sound investment.", "Do not use the format for personal hardship or layoffs."],
+      "slots": [
+        {"key": "flawed_business_move", "max_words": 9},
+        {"key": "fake_competence", "max_words": 2, "required_regex": "(?i)^stonks[.!]?$"}
+      ],
+      "invariants": ["Line two falsely celebrates the bad reasoning in line one."],
+      "operator_example": ["Count handoffs as AI resolutions", "Stonks"]
+    },
+    "success": {
+      "name": "Success Kid",
+      "meaning": "An apparent setback unexpectedly produces a small but satisfying win.",
+      "writing_guide": "Put the setback or risky situation first and the lucky payoff second. The payoff must arise from the same situation, not from an unrelated achievement.",
+      "anti_patterns": ["Do not use a planned, guaranteed success.", "Do not make line two a merely neutral outcome."],
+      "slots": [
+        {"key": "apparent_setback", "max_words": 8},
+        {"key": "lucky_payoff", "max_words": 8}
+      ],
+      "invariants": ["Line two unexpectedly reverses line one into a win."],
+      "operator_example": ["Pilot fails in week two", "Saves eleven months of scaling it"]
+    },
+    "touch": {
+      "name": "Principal Skinner",
+      "meaning": "A leader briefly considers being wrong, then blames everyone else instead.",
+      "writing_guide": "Use the fixed self-question first and the fixed external blame second. The joke is the instant rejection of self-reflection.",
+      "anti_patterns": ["Do not make the second line accept responsibility.", "Do not target identifiable employees, customers, protected classes, or vulnerable groups as the blamed outsiders."],
+      "slots": [
+        {"key": "self_doubt", "max_words": 7, "required_regex": "(?i)^am i so out of touch\\?$"},
+        {"key": "external_blame", "max_words": 9, "required_regex": "(?i)^no,? it['’]?s .+ (?:who|that) (?:is|are) wrong[.!]?$"}
+      ],
+      "invariants": ["Line two rejects the possibility raised in line one and transfers blame outward."],
+      "operator_example": ["Am I so out of touch?", "No, it's the metrics that are wrong"]
+    },
+    "wallet": {
+      "name": "Patrick Star's Wallet",
+      "meaning": "A person accepts every premise in a proof but refuses the unavoidable conclusion.",
+      "writing_guide": "Build a stepwise eight-turn dialogue: identity question, yes; premise question, yes; evidence statement, agreement; demanded conclusion; flat contradiction. Keep every premise necessary to the final conclusion.",
+      "anti_patterns": ["Do not introduce evidence that does not support the conclusion.", "Do not let the denier reject an earlier premise; the absurdity is accepting all of them."],
+      "slots": [
+        {"key": "identity_question", "max_words": 7},
+        {"key": "identity_answer", "max_words": 2, "required_regex": "(?i)^(?:yup|yes)[.!]?$"},
+        {"key": "premise_question", "max_words": 8},
+        {"key": "premise_answer", "max_words": 2, "required_regex": "(?i)^(?:yup|yes)[.!]?$"},
+        {"key": "evidence", "max_words": 10},
+        {"key": "evidence_agreement", "max_words": 5},
+        {"key": "demanded_conclusion", "max_words": 8},
+        {"key": "flat_denial", "max_words": 7}
+      ],
+      "invariants": ["The denier agrees with identity, premise, and evidence, then rejects the conclusion they entail."],
+      "operator_example": ["Aren't these our pilots?", "Yup", "And pilots need success metrics?", "Yup", "This one has no metric", "That makes sense", "Then stop calling it successful!", "It's a successful pilot"]
+    },
+    "woman-cat": {
+      "name": "Woman Yelling at a Cat",
+      "meaning": "An emotional accusation is paired with a confused, oblivious, or defiant response.",
+      "writing_guide": "Put the accuser's complaint on the left and the target's incompatible perspective on the right. The right side should explain why the accusation is not landing.",
+      "anti_patterns": ["Do not write two people agreeing.", "Do not use the format to humiliate a named individual."],
+      "slots": [
+        {"key": "emotional_accusation", "max_words": 9},
+        {"key": "oblivious_response", "max_words": 8}
+      ],
+      "invariants": ["Line two responds to the same issue as line one but from a plainly incompatible mental model."],
+      "operator_example": ["Leadership: Deliver measurable AI value!", "Portfolio: Best I can do is 47 demos"]
+    },
+    "wonka": {
+      "name": "Condescending Wonka",
+      "meaning": "A naive boast is answered with exaggerated, sarcastic interest that exposes overconfidence.",
+      "writing_guide": "Use a patronizing setup or question first and a sarcastic conclusion second. The second line should reveal why the achievement does not justify the confidence.",
+      "anti_patterns": ["Do not use sincere praise.", "Do not punch down at a junior person or learner."],
+      "slots": [
+        {"key": "patronizing_setup", "max_words": 8},
+        {"key": "sarcastic_conclusion", "max_words": 9}
+      ],
+      "invariants": ["Line two undercuts the status or certainty implied by line one."],
+      "operator_example": ["Oh, your chatbot passed the demo?", "You must have solved transformation"]
+    },
+    "worst": {
+      "name": "The Worst Day of Your Life So Far",
+      "meaning": "A complaint about the absolute worst moment is corrected with the reminder that things can still get worse.",
+      "writing_guide": "State the superlative complaint first and repeat it in the second line with 'so far.' Preserve the same time unit or event in both lines.",
+      "anti_patterns": ["Do not switch subjects between the lines.", "Do not use real injury, disaster, or personal tragedy as the joke."],
+      "slots": [
+        {"key": "absolute_complaint", "max_words": 9, "required_regex": "(?i)^this is the worst .+ of my .+[.!]?$"},
+        {"key": "ominous_correction", "max_words": 11, "required_regex": "(?i)^this is the worst .+ of your .+ so far[.!]?$"}
+      ],
+      "invariants": ["Line two repeats the same complaint from line one and adds only the ominous time qualifier."],
+      "operator_example": ["This is the worst pilot review of my career", "This is the worst pilot review of your career so far"]
+    }
+  }
+}

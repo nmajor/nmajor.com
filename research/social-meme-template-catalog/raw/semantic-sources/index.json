@@ -1,0 +1,714 @@
+{
+  "version": 1,
+  "retrieved": "2026-08-11",
+  "note": "Files are unedited HTTP response bodies from each Memegen source URL.",
+  "templates": {
+    "ackbar": {
+      "source_url": "http://knowyourmeme.com/memes/its-a-trap",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/ackbar.html",
+      "final_url": "https://knowyourmeme.com/memes/its-a-trap",
+      "content_type": "text/html",
+      "bytes": 294610,
+      "sha256": "dd89ea388778c0a51c8bb0f60242afa0013be039c2b64d37dc99aba562a01168"
+    },
+    "astronaut": {
+      "source_url": "https://knowyourmeme.com/memes/wait-its-all-ohio-always-has-been",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/astronaut.html",
+      "final_url": "https://knowyourmeme.com/memes/wait-its-all-ohio-always-has-been",
+      "content_type": "text/html",
+      "bytes": 288581,
+      "sha256": "83b4b66c8909ee482173bbcf880550fb8a924e9d8514eead8fef5bd6ec230171"
+    },
+    "db": {
+      "source_url": "https://knowyourmeme.com/memes/distracted-boyfriend",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/db.html",
+      "final_url": "https://knowyourmeme.com/memes/distracted-boyfriend",
+      "content_type": "text/html",
+      "bytes": 356312,
+      "sha256": "ae7bf6f77d6e43f3a1e23b812df2f7bc2e2d383118881cdff3ec4d4d31cc5a96"
+    },
+    "drake": {
+      "source_url": "http://knowyourmeme.com/memes/drakeposting",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/drake.html",
+      "final_url": "https://knowyourmeme.com/memes/drakeposting",
+      "content_type": "text/html",
+      "bytes": 290639,
+      "sha256": "575c6ef59aec08f0195bda2faca2884e092da87ccc971af8d99d86aac9881a59"
+    },
+    "ds": {
+      "source_url": "https://knowyourmeme.com/memes/daily-struggle",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/ds.html",
+      "final_url": "https://knowyourmeme.com/memes/daily-struggle-two-buttons",
+      "content_type": "text/html",
+      "bytes": 278980,
+      "sha256": "b9d1ba83abbbf63eb7e259b36ef16a7a3d2390cb6bc45c7a3205688cbfc0157a"
+    },
+    "fine": {
+      "source_url": "http://gunshowcomic.com/648",
+      "retrieved": "2026-08-11",
+      "error": "HTTPError: HTTP Error 409: Conflict"
+    },
+    "gb": {
+      "source_url": "https://knowyourmeme.com/memes/galaxy-brain",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/gb.html",
+      "final_url": "https://knowyourmeme.com/memes/galaxy-brain",
+      "content_type": "text/html",
+      "bytes": 296271,
+      "sha256": "2232762b638fc74ef7b0b6c157f21427af133c729e82b0ecf2081f6987ff21b6"
+    },
+    "gru": {
+      "source_url": "https://knowyourmeme.com/memes/grus-plan",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/gru.html",
+      "final_url": "https://knowyourmeme.com/memes/grus-plan",
+      "content_type": "text/html",
+      "bytes": 289528,
+      "sha256": "415a649e18e79ae099271dbee1b9169fb3efea1167e8d794ad1d7822c60641da"
+    },
+    "handshake": {
+      "source_url": "https://www.deviantart.com/miloslavvonranda/art/EPIC-handshake-by-Dillon-and-Dutch-325709082",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/handshake.html",
+      "final_url": "https://www.deviantart.com/miloslavvonranda/art/EPIC-handshake-by-Dillon-and-Dutch-325709082",
+      "content_type": "text/html",
+      "bytes": 1064279,
+      "sha256": "6568035a4d47b42c5302fbf4ec1e759b48d56e0833148c357bf5b2e7c5003580"
+    },
+    "kermit": {
+      "source_url": "http://knowyourmeme.com/memes/but-thats-none-of-my-business",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/kermit.html",
+      "final_url": "https://knowyourmeme.com/memes/kermit-sipping-tea-but-thats-none-of-my-business",
+      "content_type": "text/html",
+      "bytes": 300349,
+      "sha256": "11bac2fb78f9238e50cd68a99e87d634f9a5ddaef25b8c7c8530f0ae4296370f"
+    },
+    "mordor": {
+      "source_url": "http://knowyourmeme.com/memes/one-does-not-simply-walk-into-mordor",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/mordor.html",
+      "final_url": "https://knowyourmeme.com/memes/one-does-not-simply-walk-into-mordor",
+      "content_type": "text/html",
+      "bytes": 304601,
+      "sha256": "eb0cafe7036c9f1a01b5ab1d302bbbc8e7487e8056a93ee1ffb768a28167deb3"
+    },
+    "panik-kalm-panik": {
+      "source_url": "https://knowyourmeme.com/memes/panik-kalm",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/panik-kalm-panik.html",
+      "final_url": "https://knowyourmeme.com/memes/panik-kalm",
+      "content_type": "text/html",
+      "bytes": 283420,
+      "sha256": "d2c7fb04cf907d3d8f573e4fa8d8444db3324e599ea1020e46a139228deed389"
+    },
+    "pigeon": {
+      "source_url": "https://knowyourmeme.com/memes/is-this-a-pigeon",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/pigeon.html",
+      "final_url": "https://knowyourmeme.com/memes/is-this-a-pigeon",
+      "content_type": "text/html",
+      "bytes": 301369,
+      "sha256": "bbcb518055f303de0c2ed6aafeffb5efa3619e059bab0ba35be434d1b1f0eff2"
+    },
+    "rollsafe": {
+      "source_url": "http://knowyourmeme.com/memes/roll-safe",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/rollsafe.html",
+      "final_url": "https://knowyourmeme.com/memes/roll-safe",
+      "content_type": "text/html",
+      "bytes": 295721,
+      "sha256": "4facfb20fdde524d6ee3a2c9ac69078cd042dfa2430f7bf74620876b30742d37"
+    },
+    "saltbae": {
+      "source_url": "http://knowyourmeme.com/memes/saltbae",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/saltbae.html",
+      "final_url": "https://knowyourmeme.com/memes/salt-bae",
+      "content_type": "text/html",
+      "bytes": 301791,
+      "sha256": "af904552c9d83e9ce7a846268e24dc6cf3a43a5ce76a004f45b21d9c128b1c85"
+    },
+    "3hd": {
+      "source_url": "https://knowyourmeme.com/memes/three-headed-dragon",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/3hd.html",
+      "final_url": "https://knowyourmeme.com/memes/three-headed-dragon",
+      "content_type": "text/html",
+      "bytes": 271245,
+      "sha256": "e1ad6c9a567f381f6ef03503a22c0b383507965ab6ba266aa766d1e08488753a"
+    },
+    "aag": {
+      "source_url": "http://knowyourmeme.com/memes/ancient-aliens",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/aag.html",
+      "final_url": "https://knowyourmeme.com/memes/ancient-aliens",
+      "content_type": "text/html",
+      "bytes": 295217,
+      "sha256": "4af8dddfd0e109a9605cdcee61d9a0c65c4606fa27de6f2ed439536329c62954"
+    },
+    "afraid": {
+      "source_url": "http://knowyourmeme.com/memes/afraid-to-ask-andy",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/afraid.html",
+      "final_url": "https://knowyourmeme.com/memes/afraid-to-ask-andy",
+      "content_type": "text/html",
+      "bytes": 277989,
+      "sha256": "5dd026282fda4e2d6d950f05ef98b54301107e8f2c4b468af7c021cdeee582d1"
+    },
+    "aint-got-time": {
+      "source_url": "https://knowyourmeme.com/memes/sweet-brown-aint-nobody-got-time-for-that",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/aint-got-time.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/sweet-brown-aint-nobody-got-time-for-that",
+      "content_type": "text/html",
+      "bytes": 269453,
+      "sha256": "71f46f496ae7bb88b99bfce39f56eab3f80d4fe4cd627bae1a5f4f59985c01ea"
+    },
+    "ants": {
+      "source_url": "http://knowyourmeme.com/memes/do-you-want-ants",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/ants.html",
+      "final_url": "https://knowyourmeme.com/memes/do-you-want-ants",
+      "content_type": "text/html",
+      "bytes": 273024,
+      "sha256": "eaa1c29ea80dabb132b8c28afd504f8694ab7c914ed3c975e3dcbb0b66e2ff84"
+    },
+    "away": {
+      "source_url": "https://www.youtube.com/watch?v=dMjQ3hA9mEA",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/away.html",
+      "final_url": "https://www.youtube.com/watch?v=dMjQ3hA9mEA",
+      "content_type": "text/html",
+      "bytes": 1166742,
+      "sha256": "99585e0bad5dc11b3510ffa6c80050d6dc85e784779dbf329c47a6070fbd0b1f"
+    },
+    "badchoice": {
+      "source_url": "https://www.youtube.com/watch?v=DeY0yPqibb0",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/badchoice.html",
+      "final_url": "https://www.youtube.com/watch?v=DeY0yPqibb0",
+      "content_type": "text/html",
+      "bytes": 1162773,
+      "sha256": "21f6d3e7d4948349b3be4e78389cc3459293ab1db1a115ec53b385a9b22e680c"
+    },
+    "balloon": {
+      "source_url": "https://knowyourmeme.com/memes/running-away-balloon",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/balloon.html",
+      "final_url": "https://knowyourmeme.com/memes/running-away-balloon",
+      "content_type": "text/html",
+      "bytes": 277447,
+      "sha256": "dbbe7e13884c65accc2edda2b2628ccbecf3e8e2a149137c6706c6e07db2dcc9"
+    },
+    "bender": {
+      "source_url": "http://knowyourmeme.com/memes/im-going-to-build-my-own-theme-park-with-blackjack-and-hookers",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/bender.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/im-going-to-build-my-own-theme-park-with-blackjack-and-hookers",
+      "content_type": "text/html",
+      "bytes": 289023,
+      "sha256": "860b353f8f077237a03b6a9881237f8796935f218e7e4d511e68b3b32dfa0d83"
+    },
+    "bihw": {
+      "source_url": "https://knowyourmeme.com/memes/but-its-honest-work",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/bihw.html",
+      "final_url": "https://knowyourmeme.com/memes/but-its-honest-work",
+      "content_type": "text/html",
+      "bytes": 289344,
+      "sha256": "6c0aad87f163fefde874cd7f96f5868df6d847faf088b18ef7f304eaf68505cd"
+    },
+    "bilbo": {
+      "source_url": "https://knowyourmeme.com/memes/after-all-why-not-why-shouldnt-i-keep-it",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/bilbo.html",
+      "final_url": "https://knowyourmeme.com/memes/after-all-why-not-why-shouldnt-i-keep-it",
+      "content_type": "text/html",
+      "bytes": 283693,
+      "sha256": "4c6bae135210154000e98d374db755e5e6f0e3e6ac8e340707c550cb9f0ad38a"
+    },
+    "both": {
+      "source_url": "http://knowyourmeme.com/memes/why-not-both-why-dont-we-have-both",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/both.html",
+      "final_url": "https://knowyourmeme.com/memes/why-not-both-why-dont-we-have-both",
+      "content_type": "text/html",
+      "bytes": 295867,
+      "sha256": "d19a141f5f8a2ef81196c28d2bbc721b05d72f513351dfcac72ef57f5c7f6147"
+    },
+    "bus": {
+      "source_url": "https://knowyourmeme.com/memes/two-guys-on-a-bus",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/bus.html",
+      "final_url": "https://knowyourmeme.com/memes/two-guys-on-a-bus",
+      "content_type": "text/html",
+      "bytes": 288466,
+      "sha256": "99a979e0cb80f24e550e508a06783d0518d15da046ea9eedbac8daa4eda9ece3"
+    },
+    "buzz": {
+      "source_url": "https://imgflip.com/memetemplate/X-Everywhere",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/buzz.html",
+      "final_url": "https://imgflip.com/memetemplate/X-X-Everywhere",
+      "content_type": "text/html",
+      "bytes": 10872,
+      "sha256": "16a270e2d91b5b4ee42c45e0d75a90af7624c49fe3866d26ded5783002e19dbe"
+    },
+    "captain": {
+      "source_url": "https://www.youtube.com/watch?v=dvA-mimf2yg",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/captain.html",
+      "final_url": "https://www.youtube.com/watch?v=dvA-mimf2yg",
+      "content_type": "text/html",
+      "bytes": 1165060,
+      "sha256": "8a6a82bb0060ca5649f24b4174c8ecdd66e2a6d5ea91a948c398065c94707ea7"
+    },
+    "cbb": {
+      "source_url": "https://knowyourmeme.com/memes/communist-bugs-bunny",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/cbb.html",
+      "final_url": "https://knowyourmeme.com/memes/communist-bugs-bunny",
+      "content_type": "text/html",
+      "bytes": 287529,
+      "sha256": "2aa6195ddbce6838b2bc7c0e6d93c677a9f49eb4d480749bf18aba7a370c0382"
+    },
+    "center": {
+      "source_url": "http://knowyourmeme.com/memes/what-is-this-a-center-for-ants",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/center.html",
+      "final_url": "https://knowyourmeme.com/memes/what-is-this-a-center-for-ants",
+      "content_type": "text/html",
+      "bytes": 278624,
+      "sha256": "79df2ce274511e54055e4bfcbb4b1226ee557573667bcf5ad5e0932037211c2b"
+    },
+    "chair": {
+      "source_url": "https://knowyourmeme.com/memes/american-chopper-argument",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/chair.html",
+      "final_url": "https://knowyourmeme.com/memes/american-chopper-argument",
+      "content_type": "text/html",
+      "bytes": 298680,
+      "sha256": "81428c00a8759b7c98935ec419d8309e17e10ce39b48d89348ced1cd66b374f0"
+    },
+    "chosen": {
+      "source_url": "http://knowyourmeme.com/memes/you-were-the-chosen-one",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/chosen.html",
+      "final_url": "https://knowyourmeme.com/memes/you-were-the-chosen-one",
+      "content_type": "text/html",
+      "bytes": 280588,
+      "sha256": "b264bd218ebc7cfdc9e19d794c94efec44d18f945cbbed43938beb626d064982"
+    },
+    "cmm": {
+      "source_url": "https://knowyourmeme.com/memes/steven-crowders-change-my-mind-campus-sign",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/cmm.html",
+      "final_url": "https://knowyourmeme.com/memes/steven-crowders-change-my-mind-campus-sign",
+      "content_type": "text/html",
+      "bytes": 284588,
+      "sha256": "1e5dec4026a5fcd845ea96799d79f69beab6c2b26cb16245c473ef445d0a28b8"
+    },
+    "crazypills": {
+      "source_url": "http://knowyourmeme.com/memes/i-feel-like-im-taking-crazy-pills",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/crazypills.html",
+      "final_url": "https://knowyourmeme.com/memes/i-feel-like-i-m-taking-crazy-pills",
+      "content_type": "text/html",
+      "bytes": 266402,
+      "sha256": "4a18a0699979234077f0d01683475e31037b653280baa6fd452aaffef16200ed"
+    },
+    "dbg": {
+      "source_url": "https://knowyourmeme.com/memes/disappointed-black-guy",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/dbg.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/disappointed-black-guy",
+      "content_type": "text/html",
+      "bytes": 265002,
+      "sha256": "c3b7c5f83a99c52b65ee9740d297d89abdac8d4069bd49ff0c21e83ee66e88a1"
+    },
+    "dodgson": {
+      "source_url": "http://knowyourmeme.com/memes/see-nobody-cares",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/dodgson.html",
+      "final_url": "https://knowyourmeme.com/memes/see-nobody-cares",
+      "content_type": "text/html",
+      "bytes": 279943,
+      "sha256": "22257abe7773c3a11843e0b7505617c8ac0b66c14dc1121141a3d3cba70404cf"
+    },
+    "dwight": {
+      "source_url": "http://knowyourmeme.com/memes/schrute-facts",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/dwight.html",
+      "final_url": "https://knowyourmeme.com/memes/schrute-facts",
+      "content_type": "text/html",
+      "bytes": 291893,
+      "sha256": "8a19bb839247f24df552faec878d54e576621c8bb01fd4493e6a275b916e0fdc"
+    },
+    "exit": {
+      "source_url": "https://knowyourmeme.com/memes/left-exit-12-off-ramp",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/exit.html",
+      "final_url": "https://knowyourmeme.com/memes/left-exit-12-off-ramp",
+      "content_type": "text/html",
+      "bytes": 282920,
+      "sha256": "f080be73ce3063d7b7f938adb69f5c88dacaa3c79b6a895104a0475a9985f1c2"
+    },
+    "facepalm": {
+      "source_url": "http://knowyourmeme.com/memes/facepalm",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/facepalm.html",
+      "final_url": "https://knowyourmeme.com/memes/facepalm",
+      "content_type": "text/html",
+      "bytes": 298526,
+      "sha256": "62c4af40115263da0d01fa779ecd2f5e1372fc4436026e51bd360afb2e1493c8"
+    },
+    "fetch": {
+      "source_url": "http://knowyourmeme.com/memes/stop-trying-to-make-fetch-happen",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/fetch.html",
+      "final_url": "https://knowyourmeme.com/memes/stop-trying-to-make-fetch-happen",
+      "content_type": "text/html",
+      "bytes": 274593,
+      "sha256": "771fc6e9d868d632a609fd9d89f135a5a7496bc2dfacf04c44864d8cda85e038"
+    },
+    "firsttry": {
+      "source_url": "https://www.youtube.com/watch?v=44-RsrF_V_w",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/firsttry.html",
+      "final_url": "https://www.youtube.com/watch?v=44-RsrF_V_w",
+      "content_type": "text/html",
+      "bytes": 1163638,
+      "sha256": "3d0797b7708c158cf86fc1ef7c15fbbdc350f4e9d4b26b18806b3f3fb40a97a9"
+    },
+    "fry": {
+      "source_url": "http://knowyourmeme.com/memes/futurama-fry-not-sure-if",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/fry.html",
+      "final_url": "https://knowyourmeme.com/memes/futurama-fry-not-sure-if",
+      "content_type": "text/html",
+      "bytes": 285659,
+      "sha256": "252fcb391cf4464e59bc9fcd52cbbfd29051432f8bd9e27ccde5cadd83b0eb79"
+    },
+    "gears": {
+      "source_url": "http://knowyourmeme.com/memes/you-know-what-really-grinds-my-gears",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/gears.html",
+      "final_url": "https://knowyourmeme.com/memes/you-know-what-really-grinds-my-gears",
+      "content_type": "text/html",
+      "bytes": 284320,
+      "sha256": "03b7da84379bd23a1b3237c7f88bab18964c91b026ee506b9323ce24f2d049a1"
+    },
+    "genie": {
+      "source_url": "https://imgflip.com/memetemplate/205390462",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/genie.html",
+      "final_url": "https://imgflip.com/memetemplate/205390462/Aladdin-Genie-Phenomenal-Cosmic-Power-Itty-Bitty-Living-Space",
+      "content_type": "text/html",
+      "bytes": 11349,
+      "sha256": "36f607f6d0ef0b45ed4e76adeee1dd8fb8682aa1e2f5c1ba091c661d631340fa"
+    },
+    "gone": {
+      "source_url": "https://knowyourmeme.com/memes/and-its-gone",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/gone.html",
+      "final_url": "https://knowyourmeme.com/memes/and-its-gone",
+      "content_type": "text/html",
+      "bytes": 278422,
+      "sha256": "b17fd33bc86df4940ec938a5b80279cc0027c556f63e79ef77ce00790511b6af"
+    },
+    "hagrid": {
+      "source_url": "https://www.youtube.com/watch?v=498HkRM77gg",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/hagrid.html",
+      "final_url": "https://www.youtube.com/watch?v=498HkRM77gg",
+      "content_type": "text/html",
+      "bytes": 1154744,
+      "sha256": "30cbf587dd6bebdcaabdb94b8e3cec9d287330db3d2f0bd9b43b30303fd4460e"
+    },
+    "harold": {
+      "source_url": "https://knowyourmeme.com/memes/hide-the-pain-harold",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/harold.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/hide-the-pain-harold",
+      "content_type": "text/html",
+      "bytes": 281287,
+      "sha256": "78e3171cbb482c3f66bdc35ae973e60c1c1bcd4b3b1e5e0a825cf0c696af3ef7"
+    },
+    "home": {
+      "source_url": "https://knowyourmeme.com/memes/we-have-food-at-home",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/home.html",
+      "final_url": "https://knowyourmeme.com/memes/we-have-food-at-home",
+      "content_type": "text/html",
+      "bytes": 297689,
+      "sha256": "41d67aebff2d1601fd22676d83e7f2fcf102dd5b6fa638fd8eefc53bf934e770"
+    },
+    "inigo": {
+      "source_url": "http://knowyourmeme.com/memes/you-keep-using-that-word-i-do-not-think-it-means-what-you-think-it-means",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/inigo.html",
+      "final_url": "https://knowyourmeme.com/memes/you-keep-using-that-word-i-do-not-think-it-means-what-you-think-it-means",
+      "content_type": "text/html",
+      "bytes": 286124,
+      "sha256": "f6cb5926d2ef454e5da716f1bb285570b98abf50855d3434e82eae568af13bf2"
+    },
+    "kombucha": {
+      "source_url": "https://www.buzzfeed.com/daniellaemanuel/woman-trying-kombucha-meme",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/kombucha.html",
+      "final_url": "https://www.buzzfeed.com/daniellaemanuel/woman-trying-kombucha-meme",
+      "content_type": "text/html",
+      "bytes": 942312,
+      "sha256": "73ad3bed0b290b0900221972475c7929d0f3a190beda6487a7a70c010d94dcb0"
+    },
+    "made": {
+      "source_url": "https://knowyourmeme.com/memes/i-made-this",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/made.html",
+      "final_url": "https://knowyourmeme.com/memes/i-made-this",
+      "content_type": "text/html",
+      "bytes": 275913,
+      "sha256": "bf645e2b023c24bd36182f1cd3b5e1c7e6b5be127fd91f8532172508a39806d2"
+    },
+    "michael-scott": {
+      "source_url": "https://www.youtube.com/watch?v=31g0YE61PLQ",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/michael-scott.html",
+      "final_url": "https://www.youtube.com/watch?v=31g0YE61PLQ",
+      "content_type": "text/html",
+      "bytes": 1164619,
+      "sha256": "0e06b16f148fedb027e3970fc42c038e0fc8b8e2c86ef97f6e57e4317c568d7e"
+    },
+    "midwit": {
+      "source_url": "https://knowyourmeme.com/memes/iq-bell-curve-midwit",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/midwit.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/iq-bell-curve-midwit",
+      "content_type": "text/html",
+      "bytes": 281609,
+      "sha256": "58683c4c88e83e53f8dc538dda364c7dce9543752aa62acaf10b7a11e681a4c5"
+    },
+    "millers": {
+      "source_url": "https://knowyourmeme.com/photos/1712302-you-guys-are-getting-paid",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/millers.html",
+      "final_url": "https://knowyourmeme.com/photos/1712302-you-guys-are-getting-paid",
+      "content_type": "text/html",
+      "bytes": 232363,
+      "sha256": "5a34198650e612845251c0816086669ec40d1c9264f0d15768c6def0b13a6054"
+    },
+    "money": {
+      "source_url": "http://knowyourmeme.com/memes/shut-up-and-take-my-money",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/money.html",
+      "final_url": "https://knowyourmeme.com/memes/shut-up-and-take-my-money",
+      "content_type": "text/html",
+      "bytes": 292992,
+      "sha256": "bb0218392fdcc52f35ff26e14ecfa63b3bc51a4ca8b4c25129367740d499d1e6"
+    },
+    "mouth": {
+      "source_url": "https://knowyourmeme.com/memes/women-holding-dogs-mouth",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/mouth.html",
+      "final_url": "https://knowyourmeme.com/memes/women-holding-dogs-mouth",
+      "content_type": "text/html",
+      "bytes": 259604,
+      "sha256": "69c95f7a0b0f894eff5f11c095da9c7ec373ba0b636ba586917435a7ee43a0c9"
+    },
+    "nice": {
+      "source_url": "http://knowyourmeme.com/memes/so-i-got-that-goin-for-me-which-is-nice",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/nice.html",
+      "final_url": "https://knowyourmeme.com/memes/so-i-got-that-goin-for-me-which-is-nice",
+      "content_type": "text/html",
+      "bytes": 272521,
+      "sha256": "1fd005a3629a44e9db05939c21f5731dbe8c23303c35a38be9de8ec994924513"
+    },
+    "noidea": {
+      "source_url": "http://knowyourmeme.com/memes/i-have-no-idea-what-i-m-doing",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/noidea.html",
+      "final_url": "https://knowyourmeme.com/memes/i-have-no-idea-what-im-doing",
+      "content_type": "text/html",
+      "bytes": 291557,
+      "sha256": "f6b97c44d8c40c725e0c6d26c16a1d2b83dca560f07adc51a6402f90644a8d0d"
+    },
+    "ntot": {
+      "source_url": "https://knowyourmeme.com/memes/no-take-only-throw",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/ntot.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/no-take-only-throw",
+      "content_type": "text/html",
+      "bytes": 258393,
+      "sha256": "b5af76d4f0dbf949838c6488b8c1a1337e295fa84fe8f6780fd200a2683b97ed"
+    },
+    "officespace": {
+      "source_url": "http://knowyourmeme.com/memes/that-would-be-great",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/officespace.html",
+      "final_url": "https://knowyourmeme.com/memes/that-would-be-great",
+      "content_type": "text/html",
+      "bytes": 276037,
+      "sha256": "4932489f09a279731b1105acad894f9ba3b10ffaec12a0c548d9e2ea41f05b28"
+    },
+    "older": {
+      "source_url": "http://knowyourmeme.com/memes/its-an-older-meme-but-it-checks-out",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/older.html",
+      "final_url": "https://knowyourmeme.com/memes/its-an-older-meme-but-it-checks-out",
+      "content_type": "text/html",
+      "bytes": 275737,
+      "sha256": "c79bdbb2ba8088a2976aee4143ef7cdd820cd261d19b5070c0abeeb30d14597f"
+    },
+    "patrick": {
+      "source_url": "http://knowyourmeme.com/memes/push-it-somewhere-else-patrick",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/patrick.html",
+      "final_url": "https://knowyourmeme.com/memes/push-it-somewhere-else-patrick",
+      "content_type": "text/html",
+      "bytes": 280145,
+      "sha256": "cfd71ed2b5a3b84c89790daf25f50647b63492670471fc7dd0f0a5ed07c93e04"
+    },
+    "perfection": {
+      "source_url": "https://knowyourmeme.com/memes/perfection",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/perfection.html",
+      "final_url": "https://knowyourmeme.com/memes/magnetos-perfection",
+      "content_type": "text/html",
+      "bytes": 288743,
+      "sha256": "706f0ec87019218d8abdacc618096c86f6529136d208772295434dbe9df8a420"
+    },
+    "pooh": {
+      "source_url": "https://knowyourmeme.com/memes/tuxedo-winnie-the-pooh",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/pooh.html",
+      "final_url": "https://knowyourmeme.com/memes/tuxedo-winnie-the-pooh",
+      "content_type": "text/html",
+      "bytes": 292944,
+      "sha256": "3ad065a425b27738305faf0dda2294bf5b6171472bdc52bdb6c0317a12f41d4d"
+    },
+    "regret": {
+      "source_url": "https://www.youtube.com/watch?v=gd9ltJGykYc",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/regret.html",
+      "final_url": "https://www.youtube.com/watch?v=gd9ltJGykYc",
+      "content_type": "text/html",
+      "bytes": 1153932,
+      "sha256": "d2b6658fa6d8c0266008c58501757e575646e3d96fee0b6344595dab1fda2043"
+    },
+    "reveal": {
+      "source_url": "https://knowyourmeme.com/memes/lets-see-who-this-really-is",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/reveal.html",
+      "final_url": "https://knowyourmeme.com/memes/lets-see-who-this-really-is",
+      "content_type": "text/html",
+      "bytes": 278146,
+      "sha256": "72313b9c503de7ec23282c620c0db43823d259f957349edcc57f1b25fccb2e85"
+    },
+    "right": {
+      "source_url": "https://www.reddit.com/r/MemeTemplatesOfficial/comments/nia6wu/im_going_to_change_the_world_for_the_better_right/",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/right.html",
+      "final_url": "https://www.reddit.com/r/MemeTemplatesOfficial/comments/nia6wu/im_going_to_change_the_world_for_the_better_right/",
+      "content_type": "text/html",
+      "bytes": 8483,
+      "sha256": "2eb7b4516c05f7e4cb1458bc2cd6e7645f78995d739a93fb8045e6de7931d5a8"
+    },
+    "same": {
+      "source_url": "https://knowyourmeme.com/memes/theyre-the-same-picture",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/same.html",
+      "final_url": "https://knowyourmeme.com/memes/theyre-the-same-picture",
+      "content_type": "text/html",
+      "bytes": 289611,
+      "sha256": "b29f51c3219e1cb7b501da4c86f46a3c78d8b7b25d7c88c926237ca7273d5c11"
+    },
+    "say": {
+      "source_url": "https://knowyourmeme.com/memes/say-the-line-bart",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/say.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/say-the-line-bart",
+      "content_type": "text/html",
+      "bytes": 263381,
+      "sha256": "9a5523ff0d76349f86b0398dcd11711dffe7fde76530b8ab9bf6e2b6179bcd44"
+    },
+    "seagull": {
+      "source_url": "https://knowyourmeme.com/memes/inhaling-seagull",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/seagull.html",
+      "final_url": "https://knowyourmeme.com/memes/inhaling-seagull",
+      "content_type": "text/html",
+      "bytes": 276104,
+      "sha256": "4f4bf3ec00a9a89eb780ee4340c7066c1957baac31099866d0df3f222901f200"
+    },
+    "stonks": {
+      "source_url": "https://knowyourmeme.com/memes/stonks",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/stonks.html",
+      "final_url": "https://knowyourmeme.com/memes/stonks",
+      "content_type": "text/html",
+      "bytes": 291389,
+      "sha256": "c84e0077aea5f6ed3a702ec7d98d4aba89218c958cb7bbca95e9a2e78b9cda97"
+    },
+    "success": {
+      "source_url": "http://knowyourmeme.com/memes/success-kid-i-hate-sandcastles",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/success.html",
+      "final_url": "https://knowyourmeme.com/memes/success-kid-i-hate-sandcastles",
+      "content_type": "text/html",
+      "bytes": 316360,
+      "sha256": "fb84b34f8596b84f2014b34d1d6e61b2d04a3541ae9a2996244d0629e2983314"
+    },
+    "touch": {
+      "source_url": "https://knowyourmeme.com/memes/am-i-out-of-touch",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/touch.html",
+      "final_url": "https://knowyourmeme.com/memes/am-i-so-out-of-touch",
+      "content_type": "text/html",
+      "bytes": 283757,
+      "sha256": "a923959ec8e4bb3277a1da70da348811ab24fa633538d3d0186c09c4ad7a82c5"
+    },
+    "wallet": {
+      "source_url": "https://knowyourmeme.com/memes/patrick-stars-wallet",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/wallet.html",
+      "final_url": "https://knowyourmeme.com/memes/patrick-stars-wallet",
+      "content_type": "text/html",
+      "bytes": 286618,
+      "sha256": "6dba4d88ccd0afa0d87f89258f50184420d59538e2f38f35f35e1a2b99ba46a9"
+    },
+    "woman-cat": {
+      "source_url": "https://knowyourmeme.com/memes/woman-yelling-at-a-cat",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/woman-cat.html",
+      "final_url": "https://knowyourmeme.com/sensitive/memes/woman-yelling-at-a-cat",
+      "content_type": "text/html",
+      "bytes": 266835,
+      "sha256": "5f68d35a99db939488a549fe7cb35d158557d88e1818901fb16cd8f24859c09e"
+    },
+    "wonka": {
+      "source_url": "http://knowyourmeme.com/memes/condescending-wonka-creepy-wonka",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/wonka.html",
+      "final_url": "https://knowyourmeme.com/memes/condescending-wonka-creepy-wonka",
+      "content_type": "text/html",
+      "bytes": 288875,
+      "sha256": "f0db78a91529934c6958607a49b19fa0e8ee2ad94faace2f51a362781360c41b"
+    },
+    "worst": {
+      "source_url": "https://knowyourmeme.com/memes/the-worst-day-of-your-life-so-far",
+      "retrieved": "2026-08-11",
+      "file": "raw/semantic-sources/worst.html",
+      "final_url": "https://knowyourmeme.com/memes/the-worst-day-of-your-life-so-far",
+      "content_type": "text/html",
+      "bytes": 279655,
+      "sha256": "0d981acf916bd7fa4937df2414a0ff333a557250b53eb1993a4d817c4027ed7a"
+    }
+  }
+}

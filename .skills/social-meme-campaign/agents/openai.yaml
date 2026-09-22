@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social Meme Campaign"
+  short_description: "Make deliberately scrappy classic-template memes"
+  default_prompt: "Use $social-meme-campaign to make classic-template memes for this LinkedIn batch."

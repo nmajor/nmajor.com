@@ -1,0 +1,178 @@
+[
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "sha": "687fafffb496c48c5bfb1fef61aa81eec7f06ed6",
+    "size": 120,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/.gitignore?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/blob/eswc/.gitignore",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/687fafffb496c48c5bfb1fef61aa81eec7f06ed6",
+    "download_url": "https://raw.githubusercontent.com/riccardotommasini/imkg/eswc/.gitignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/.gitignore?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/687fafffb496c48c5bfb1fef61aa81eec7f06ed6",
+      "html": "https://github.com/riccardotommasini/imkg/blob/eswc/.gitignore"
+    }
+  },
+  {
+    "name": "LICENCE",
+    "path": "LICENCE",
+    "sha": "1f784bfbf2eb85e7eede29394fb1c963aeddce73",
+    "size": 1075,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/LICENCE?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/blob/eswc/LICENCE",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/1f784bfbf2eb85e7eede29394fb1c963aeddce73",
+    "download_url": "https://raw.githubusercontent.com/riccardotommasini/imkg/eswc/LICENCE",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/LICENCE?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/1f784bfbf2eb85e7eede29394fb1c963aeddce73",
+      "html": "https://github.com/riccardotommasini/imkg/blob/eswc/LICENCE"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "7225eb49673148ef4ab930eafb6eac688dc067a3",
+    "size": 345,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/README.md?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/blob/eswc/README.md",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/7225eb49673148ef4ab930eafb6eac688dc067a3",
+    "download_url": "https://raw.githubusercontent.com/riccardotommasini/imkg/eswc/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/README.md?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/7225eb49673148ef4ab930eafb6eac688dc067a3",
+      "html": "https://github.com/riccardotommasini/imkg/blob/eswc/README.md"
+    }
+  },
+  {
+    "name": "analysis",
+    "path": "analysis",
+    "sha": "7657cdb541e2a9b7e2accc1af8df4d27b1e3298e",
+    "size": 0,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/analysis?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/tree/eswc/analysis",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/7657cdb541e2a9b7e2accc1af8df4d27b1e3298e",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/analysis?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/7657cdb541e2a9b7e2accc1af8df4d27b1e3298e",
+      "html": "https://github.com/riccardotommasini/imkg/tree/eswc/analysis"
+    }
+  },
+  {
+    "name": "imgflip",
+    "path": "imgflip",
+    "sha": "363a5f477dd5a418cfa7ac9099db0d4f98715706",
+    "size": 0,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/imgflip?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/tree/eswc/imgflip",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/363a5f477dd5a418cfa7ac9099db0d4f98715706",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/imgflip?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/363a5f477dd5a418cfa7ac9099db0d4f98715706",
+      "html": "https://github.com/riccardotommasini/imkg/tree/eswc/imgflip"
+    }
+  },
+  {
+    "name": "kym",
+    "path": "kym",
+    "sha": "ef312cb96626318c862033eac289c302053f5a59",
+    "size": 0,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/kym?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/tree/eswc/kym",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/ef312cb96626318c862033eac289c302053f5a59",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/kym?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/ef312cb96626318c862033eac289c302053f5a59",
+      "html": "https://github.com/riccardotommasini/imkg/tree/eswc/kym"
+    }
+  },
+  {
+    "name": "linkage",
+    "path": "linkage",
+    "sha": "e247cd6e435eb61b6c91493b80525e766b5ada5e",
+    "size": 0,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/linkage?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/tree/eswc/linkage",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/e247cd6e435eb61b6c91493b80525e766b5ada5e",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/linkage?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/e247cd6e435eb61b6c91493b80525e766b5ada5e",
+      "html": "https://github.com/riccardotommasini/imkg/tree/eswc/linkage"
+    }
+  },
+  {
+    "name": "meta.jsonld",
+    "path": "meta.jsonld",
+    "sha": "73726c4fca03b505e7d7f488a5fef90ea8cb8fff",
+    "size": 8330,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/meta.jsonld?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/blob/eswc/meta.jsonld",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/73726c4fca03b505e7d7f488a5fef90ea8cb8fff",
+    "download_url": "https://raw.githubusercontent.com/riccardotommasini/imkg/eswc/meta.jsonld",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/meta.jsonld?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/73726c4fca03b505e7d7f488a5fef90ea8cb8fff",
+      "html": "https://github.com/riccardotommasini/imkg/blob/eswc/meta.jsonld"
+    }
+  },
+  {
+    "name": "meta.rdf",
+    "path": "meta.rdf",
+    "sha": "f9568a7316d468b610b7dac1bd05527727db57c3",
+    "size": 4778,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/meta.rdf?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/blob/eswc/meta.rdf",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/f9568a7316d468b610b7dac1bd05527727db57c3",
+    "download_url": "https://raw.githubusercontent.com/riccardotommasini/imkg/eswc/meta.rdf",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/meta.rdf?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/f9568a7316d468b610b7dac1bd05527727db57c3",
+      "html": "https://github.com/riccardotommasini/imkg/blob/eswc/meta.rdf"
+    }
+  },
+  {
+    "name": "meta.ttl",
+    "path": "meta.ttl",
+    "sha": "6d1a14fa7022359513d2e59d27f7dd5e22c6f101",
+    "size": 2606,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/meta.ttl?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/blob/eswc/meta.ttl",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/6d1a14fa7022359513d2e59d27f7dd5e22c6f101",
+    "download_url": "https://raw.githubusercontent.com/riccardotommasini/imkg/eswc/meta.ttl",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/meta.ttl?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/blobs/6d1a14fa7022359513d2e59d27f7dd5e22c6f101",
+      "html": "https://github.com/riccardotommasini/imkg/blob/eswc/meta.ttl"
+    }
+  },
+  {
+    "name": "scraping",
+    "path": "scraping",
+    "sha": "38a0144e098149324010b4fa3d027e9603e3489d",
+    "size": 0,
+    "url": "https://api.github.com/repos/riccardotommasini/imkg/contents/scraping?ref=eswc",
+    "html_url": "https://github.com/riccardotommasini/imkg/tree/eswc/scraping",
+    "git_url": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/38a0144e098149324010b4fa3d027e9603e3489d",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/riccardotommasini/imkg/contents/scraping?ref=eswc",
+      "git": "https://api.github.com/repos/riccardotommasini/imkg/git/trees/38a0144e098149324010b4fa3d027e9603e3489d",
+      "html": "https://github.com/riccardotommasini/imkg/tree/eswc/scraping"
+    }
+  }
+]

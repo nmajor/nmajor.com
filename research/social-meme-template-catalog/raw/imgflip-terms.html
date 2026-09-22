@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+a=new XMLHttpRequest();
+a.onload=function(){I=JSON.parse(this.responseText);if(window.initData)initData();};
+a.open('get','/ajax_get_le_data',true);
+a.send();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DCRTFFEBRL"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-DCRTFFEBRL');
+	gtag('set', 'user_properties', {
+		app_type: (typeof window.matchMedia !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches) ? 'standalone' : 'web'
+	});
+	gtag('config', 'G-X8YQQMPY4Q', {send_page_view: false});
+	window._pwGA4PageviewId = ''.concat(Date.now());
+	gtag('event', 'ramp_js', {
+		send_to: 'G-X8YQQMPY4Q',
+		pageview_id: window._pwGA4PageviewId
+	});
+</script>
+<script>
+version=1532;
+spriteNum=5175;
+IMAGE_DOMAIN='//i.imgflip.com/';
+mm=0;
+</script>
+
+<style>
+.i-banner{width:320px;height:50px;display:block;margin:0 auto;overflow:hidden;}
+@media(min-width:500px){.i-banner{width:468px;height:60px;}}
+@media(min-width:760px){.i-banner{width:728px;height:90px;}}
+</style>
+<link rel="icon" href="/favicon.ico?b"/>
+<link rel="icon" sizes="96x96" href="/imgflip-icon-96.png"/>
+<link rel="icon" sizes="180x180" href="/apple-touch-icon.png?c"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?c"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Imgflip">
+<meta name="theme-color" content="#333"/>
+<link rel="manifest" href="/manifest.json">
+<link rel='stylesheet' href='//s.imgflip.com/v1532/style.css' media='screen'/>
+<title>Terms of Use - Imgflip</title>
+<meta name="description" content="Imgflip terms of use"/>
+
+<link rel='stylesheet' href='//s.imgflip.com/v1532/info_pages.css' media='screen'/>
+</head>
+
+<body class="fixed-header">
+<script>
+	var dm = document.cookie.match(/(^|;\s?)dm=([^;]+)/);
+	dm = dm ? dm[2] : '';
+	if (dm === '1' || (dm === '' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+		document.body.className += ' darkmode';
+	}
+</script>
+
+<div id="panel-back">
+
+	<div id="panel">
+		<div id="nt-nots-mini" class="darkmode"></div>
+		<a class="nav" href="/">
+			<img id="logo" alt="Imgflip Logo" src="/imgflip_white_96.png">
+			<img id="logo-icon" alt="Imgflip Logo Icon" src="/imgflip-icon-transparent-192.svg">
+		</a>
+
+		<div class="nav menu-wrap" id="nav-make">
+			<div id="nav-make-inner" class="menu-btn nosel down-arrow">Create</div>
+			<div id="make-list" class="menu">
+				<a class="make-item" href="/memegenerator" title="Meme Generator">
+					<svg width=30 height=30 class="make-icon make-icon-meme">
+						<g transform="scale(.3)">
+							<path d="M 20 0 l 30 50 l -50 -10 l 0 -40 z"/>
+							<path d="M 60 0 l 40 0 l -50 50 z"/>
+							<path d="M 100 60 l 0 40 l -20 0 l -30 -50 z"/>
+							<path d="M 40 100 l -40 0 l 50 -50 z"/>
+						</g>
+					</svg>
+					Make a Meme
+				</a>
+				<a class="make-item" href="/gif-maker" title="Animated GIF Maker (from video, youtube, images, etc.)">
+					<svg class="make-icon make-icon-gif">
+						<g transform="scale(.3)">
+							<rect width=66 height=66 x=31 y=3 />
+							<rect width=66 height=66 x=17 y=17 />
+							<rect width=66 height=66 x=3 y=31 />
+							<path d="M 24 50 l 25 14 l -25 14 z"/>
+						</g>
+					</svg>
+					Make a GIF or Short Video
+				</a>
+				<a class="make-item" href="/memetemplates" title="Popular Blank Meme Templates">
+					<div class="make-icon make-icon-meme-templates"></div>
+					Meme Templates
+				</a>
+				<a class="make-item" href="/gif-templates" title="Popular Blank GIF Templates">
+					<svg class="make-icon make-icon-gif-templates" viewBox="0 0 30 30">
+						<g transform="scale(.3)">
+							<path d="M 35 30 l 34 20 l -34 20 z"/>
+						</g>
+					</svg>
+					GIF Templates
+				</a>
+			</div>
+		</div>
+
+		<div class="nav menu-wrap" id="u-menu-wrap">
+			<div id="u-menu-btn" class="menu-btn nosel down-arrow">
+				<span id="u-long"></span>
+			</div>
+			<div id="u-menu" class="menu"></div>
+		</div>
+
+		<div id="nt-count" class="display-none"></div>
+
+		<svg width=30 height=30 id="panel-search-icon" class="s-icon" viewBox="0 0 100 100">
+			<path d="M 20 80 l 25 -25"/>
+			<circle r=20 cx=59 cy=41 />
+		</svg>
+
+		<div class="clear"></div>
+	</div>
+
+	<div id="panel-search-back" class="hidden">
+		<div id="panel-search">
+			<form class="s-form" action="/search" method="get">
+				<input id="panel-search-input" name="q" type="text" placeholder="Search memes, gifs, tags, users" autocomplete="off" autocapitalize="off" autocorrect="off"/>
+			</form>
+			<button type="button" class="s-submit l but">
+				<svg width=26 height=26 class="s-icon" viewBox="0 0 100 100">
+					<path d="M 20 80 l 25 -25"/>
+					<circle r=20 cx=59 cy=41 />
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<div id="panel-offline-msg" class="display-none"></div>
+</div>
+
+<div id="page">
+	<div class="info-page ibox">
+		<h1>Terms of Use</h1>
+		<p>By using any services ("Services") provided by or originating from imgflip.com ("Imgflip"), you are agreeing to these terms. Please read them carefully.</p>
+		<p>
+		Because some of our Services may be very specific, additional terms or product requirements (including age requirements) may apply.
+		Additional terms will be available with the relevant Services, and those additional terms become part of your agreement with us if you use those Services.
+		</p>
+
+		<h3>Hotlinking</h3>
+		<p>If you embed or "hotlink" an image hosted on Imgflip servers within another website, such as using the following markup
+			<code>&lt;img src=&#039;https://i.imgflip.com/abcd.gif&#039;/&gt;</code>
+			then you must include a hyperlink back to https://imgflip.com, or the main image page on imgflip.com (eg <code>https://imgflip.com/i/abcd</code>).
+			If you create an image with Imgflip, it is preferred that you include a link to the generator page so that people will
+			know how to make their own images from our generator as well. Since Imgflip does not currently charge
+			you money for the bandwidth on your images, we think these link-backs are a reasonable request.
+		</p>
+		<p>Images that are hotlinked and are not accompanied by one of the links mentioned above are subject to removal.</p>
+		<p>Example markup:</p>
+		<code>
+		&lt;a href=&#039;https://imgflip.com/i/abcd&#039;&gt;&lt;img src=&#039;https://i.imgflip.com/abcd.gif&#039;/&gt;&lt;/a&gt;&lt;a href=&#039;https://imgflip.com/gif-maker&#039;&gt; via Imgflip GIF Maker&lt;/a&gt;		</code>
+
+		<h3>Spam</h3>
+		<p>Do not spam. Spamming includes posting links exclusively to your own content or monetization, posting malware links,
+			posting irrelevant content, posting lengthy or irrelevant "copypastas", and anything else that is clearly
+			a detriment to the Imgflip community. Spam which is stylistic or just-for-fun such as copypastas is allowed
+			in user-created streams <i>if and only if</i> the moderators of the streams explicitly allow it.</p>
+
+		<h3>Conduct</h3>
+		<p>In any content that you create or modify while using Imgflip, do not discriminate against any sect, commit or condone illegal acts,
+			harass others, or otherwise make it less fun for other people. Imgflip is a place to be creative
+			and have fun! While Imgflip highly values freedom of expression, please express your opinions in a way that
+			is kind and respectful to all people of the world, or if stating your opinion does not follow these terms, please
+			keep it to yourself or post it elsewhere. Memes, comments, or other images whose sole purpose is to attack a person
+			or group of people in a condemning and non-humorous way are subject to deletion, and the user account
+			that posted such content is also subject to deletion. In particular, please be careful when authoring content
+			around sensitive subjects such as politics, religion, and race.
+		</p>
+
+		<h3>Imgflip is not a pornographic website</h3>
+		<p>The Imgflip generators can be used for anything that does not violate these terms, but please set any pornographic images you create
+			as "private", and then post them elsewhere if you wish to share. Any pornographic images that are not created with the "private"
+			setting are subject to removal. This includes images that are pornographic or primarily erotic in nature,
+			even if private parts are censored or technically covered. If it's allowed at a public beach or a non-x-rated
+			magazine cover, it's probably okay on Imgflip.</p>
+
+		<h3>Age</h3>
+		<p>
+			You must be at least 13 years of age to use our Services. Content on Imgflip is
+			not targeted to people under 13 years of age.
+		</p>
+
+		<h3>Media/Uploading</h3>
+		<p>
+			By uploading any type of media or other content (including but not limited to images, video, and audio)
+			to Imgflip, or by pasting a url into the Imgflip GIF Maker or other Imgflip tools, you are agreeing that
+			(i) doing so does not violate or infringe anyone else’s rights, (ii) you have the rights to use
+			whatever content you are uploading or requesting, (iii) that you have the rights to modify that content
+			in whichever ways you decide to modify it while using Imgflip, and (iv) if you make the original or
+			edited content publicly available, other users of the Services can also use the content with the Service
+			with no obligation to you.
+		</p>
+		
+<h3>Using our Services</h3>
+
+<p>You must follow any policies made available to you within the Services.
+
+<p>Don’t misuse our Services. For example, don’t interfere with our Services or try to access them using a method other than the interface and the instructions that we provide.
+	You may use our Services only as permitted by law, including applicable export and re-export control laws and regulations.
+	We may suspend or stop providing our Services to you if you do not comply with our terms or policies or if we are investigating suspected misconduct.
+
+<p>Using our Services does not give you ownership of any intellectual property rights in our Services or the content you access.
+	You may not use content from our Services unless you obtain permission from its owner or are otherwise permitted by law.
+	These terms do not grant you the right to use any branding or logos used in our Services.
+	Don’t remove, obscure, or alter any legal notices displayed in or along with our Services.
+
+<p>Our Services display some content that is not Imgflip’s. This content is the sole responsibility of the entity that makes it available.
+	We may review content to determine whether it is illegal or violates our policies,
+	and we may remove or refuse to display content that we reasonably believe violates our policies or the law.
+	But that does not necessarily mean that we review content, so please don’t assume that we do.
+
+<p>In connection with your use of the Services, we may send you service announcements, administrative messages, and other information. You may opt out of some of those communications.
+
+<h3>Privacy and Copyright Protection</h3>
+
+<p>Imgflip's privacy policies explain how we treat your personal data and protect your privacy when you use our Services.
+By using our Services, you agree that Imgflip can use such data in accordance with our privacy policies.
+
+<p>We respond to notices of alleged copyright infringement and terminate accounts of repeat infringers according to the process set out in the U.S. Digital Millennium Copyright Act.
+
+<p>If you think somebody is violating your copyrights and want to notify us, you can contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6403010a01160508240d090302080d144a070b09">[email&#160;protected]</a> with details of the infringement.
+	This email address is the primary contact for Imgflip LLC's DMCA designated agent and the fastest way to resolve complaints,
+	but additional contact information is available to you by clicking <span id="show-copyright-info" class="a">here</span>.
+
+<h3>Your Content in our Services</h3>
+
+<p>Some of our Services allow you to submit content. You retain ownership of any intellectual property rights that you hold in that content. In short, what belongs to you stays yours.
+
+<p>When you upload or otherwise submit content to our Services, you give Imgflip (and those we work with) a worldwide license to use, host, store, reproduce, modify,
+	create derivative works (such as those resulting from translations, adaptations or other changes we make so that your content works better with our Services),
+	communicate, publish, publicly perform, publicly display and distribute such content. The rights you grant in this license are for the limited purpose of operating,
+	promoting, and improving our Services, and to develop new ones. This license continues even if you stop using our Services.
+	Some Services may offer you ways to access and remove content that has been provided to that Service.
+
+<h3>About Software in our Services</h3>
+
+<p>Imgflip gives you a personal, worldwide, royalty-free, non-assignable and non-exclusive license to use the software provided to you by Imgflip as part of the Services.
+	This license is for the sole purpose of enabling you to use and enjoy the benefit of the Services as provided by Imgflip, in the manner permitted by these terms.
+	You may not copy, modify, distribute, sell, or lease any part of our Services or included software,
+	nor may you reverse engineer or attempt to extract the source code of that software, unless laws prohibit those restrictions or you have our written permission.
+
+<h3>Modifying and Terminating our Services</h3>
+
+<p>We are constantly changing and improving our Services. We may add or remove functionalities or features, and we may suspend or stop a Service altogether.
+
+<p>You can stop using our Services at any time, although we’ll be sorry to see you go.
+	Imgflip may also stop providing Services to you, or add or create new limits to our Services at any time.
+
+<h3>Our Warranties and Disclaimers</h3>
+
+<p>We provide our Services using a commercially reasonable level of skill and care and we hope that you will enjoy using them.
+	But there are certain things that we don’t promise about our Services.
+
+<p>OTHER THAN AS EXPRESSLY SET OUT IN THESE TERMS OR ADDITIONAL TERMS,
+	NEITHER IMGFLIP NOR ITS SUPPLIERS OR DISTRIBUTORS MAKE ANY SPECIFIC PROMISES ABOUT THE SERVICES.
+	FOR EXAMPLE, WE DON’T MAKE ANY COMMITMENTS ABOUT THE CONTENT WITHIN THE SERVICES, THE SPECIFIC FUNCTION OF THE SERVICES,
+	OR THEIR RELIABILITY, AVAILABILITY, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE,
+	OR ABILITY TO MEET YOUR NEEDS. WE PROVIDE THE SERVICES “AS IS”.
+
+<p>SOME JURISDICTIONS PROVIDE FOR CERTAIN WARRANTIES, LIKE THE IMPLIED WARRANTY OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, WE EXCLUDE ALL WARRANTIES.
+
+<h3>Liability for our Services</h3>
+
+<p>WHEN PERMITTED BY LAW, IMGFLIP, AND IMGFLIP'S SUPPLIERS AND DISTRIBUTORS, WILL NOT BE RESPONSIBLE FOR LOST PROFITS,
+	REVENUES, OR DATA, FINANCIAL LOSSES OR INDIRECT, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES.
+
+<p>TO THE EXTENT PERMITTED BY LAW, THE TOTAL LIABILITY OF IMGFLIP, AND ITS SUPPLIERS AND DISTRIBUTORS, FOR ANY CLAIM UNDER THESE TERMS,
+	INCLUDING FOR ANY IMPLIED WARRANTIES, IS LIMITED TO THE AMOUNT YOU PAID US TO USE THE SERVICES (OR, IF WE CHOOSE, TO SUPPLYING YOU THE SERVICES AGAIN).
+
+<p>IN ALL CASES, IMGFLIP, AND ITS SUPPLIERS AND DISTRIBUTORS, WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE THAT IS NOT REASONABLY FORESEEABLE.
+
+<h3>Indemnity</h3>
+
+<p>YOU WILL INDEMNIFY AND HOLD IMGFLIP (AND ITS EMPLOYEES, AGENTS, AFFILIATES AND REPRESENTATIVES)
+	HARMLESS FROM AND AGAINST ANY AND ALL CLAIMS, COSTS, LOSSES, DAMAGES, JUDGMENTS, PENALTIES,
+	INTEREST, AND EXPENSES (INCLUDING WITHOUT LIMITATION REASONABLE ATTORNEYS' FEES) ARISING OUT OF
+	ANY CLAIM, ACTION, AUDIT, INVESTIGATION, INQUIRY, OR OTHER PROCEEDING INSTITUTED BY A PERSON
+	OR ENTITY THAT ARISES OUT OF OR RELATES TO:  (I) YOUR VIOLATION OF THESE TERMS, (II) YOUR
+	INFRINGEMENT OF ANY THIRD PARTY'S RIGHTS, AND (III) ANY HARM CAUSED TO ANY THIRD PARTY
+	AS A RESULT OF YOUR UPLOADING OF MEDIA OR OTHER CONTENT (INCLUDING BUT NOT LIMITED TO
+	IMAGES, VIDEO, AND AUDIO) TO IMGFLIP.
+
+<h3>Business uses of our Services</h3>
+
+<p>If you are using our Services on behalf of a business, that business accepts these terms.
+	It will hold harmless and indemnify Imgflip and its affiliates, officers, agents, and employees from any claim,
+	suit or action arising from or related to the use of the Services or violation of these terms,
+	including any liability or expense arising from claims, losses, damages, suits, judgments, litigation costs and attorneys’ fees.
+
+<h3>About these Terms</h3>
+
+<p>We may modify these terms or any additional terms that apply to a Service to, for example,
+	reflect changes to the law or changes to our Services. You should look at the terms regularly.
+	Changes will not apply retroactively and will become effective at the time they are posted.
+	If you do not agree to the modified terms for a Service, you should discontinue your use of that Service.
+
+<p>If there is a conflict between these terms and the additional terms, the additional terms will control for that conflict.
+
+<p>These terms control the relationship between Imgflip and you. They do not create any third party beneficiary rights.
+
+<p>If you do not comply with these terms, and we don’t take action right away, this doesn’t mean that we are giving up any rights that we may have (such as taking action in the future).
+
+<p>If it turns out that a particular term is not enforceable, this will not affect any other terms.
+
+<p>The laws of California, U.S.A., excluding California’s conflict of laws rules, will apply to any disputes arising out of or relating to these terms or the Services.
+
+	</div>
+</div>
+
+<div id="footer">
+	<div id="footer-nav">
+		<a href="/pro?from=footer">Imgflip Pro</a>
+		<a href="/gif-maker">GIF Maker</a>
+		<a href="/memegenerator">Meme Generator</a>
+		<a href="/memetemplates">Blank Meme Templates</a>
+		<a href="/gif-templates">GIF Templates</a>
+		<a href="/chart-maker">Chart Maker</a>
+		<a href="/demotivational-maker">Demotivational Maker</a>
+		<a href="/image-resizer">Image Resizer</a>
+		<a href="/about">About</a>
+		<a href="/privacy">Privacy</a>
+		<a href="/terms">Terms</a>
+		<a href="/api">API</a>
+		<a href="/slack">Slack App</a>
+		<a href="/request_removal">Request Image Removal</a>
+		<a class="feedback-open" href="javascript:void(0)" data-from="footer" title="Submit feedback about Imgflip">Send Feedback</a>
+		<span id="do-not-sell-btn" class="qc-ccpa-persistent-link"></span>
+	</div>
+	<div id="findUs">
+		<a id="on-fb" href="https://www.facebook.com/imgflip">Facebook</a>
+		<a id="on-tw" href="https://twitter.com/imgflip">Twitter</a>
+		<a id="on-android" href="https://play.google.com/store/apps/details?id=com.imgflip.twa">Android App</a>
+		<a id="on-chrome" href="https://chrome.google.com/webstore/detail/imgflip-quick-create/ipdbhnffahpohpdkcelabahpmlheidff">Chrome Extension</a>
+	</div>
+	<div id="footline">
+		Empowering creativity on teh interwebz
+		<br/>Imgflip LLC 2026	</div>
+
+	</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://s.imgflip.com/jq.js"></script>
+
+<script crossorigin='anonymous' src='//s.imgflip.com/v1532/common.js'></script>
+<script>
+	$('#show-copyright-info').click(function() {
+		var box = new Box({
+			html: '<div class="load"></div>'
+		});
+		var show = function() {
+			var html = '<div style="pointer-events:none;user-select:none;-webkit-user-select:none;">';
+			html += '<p>Imgflip LLC\'s preferred and fastest contact method for DMCA takedown requests is general@imgflip.com,' +
+				' but the following are made available to you as well:</p>';
+			html += '<p>' + atob('bmFtZTogSW1nZmxpcCBMTEMsIHBob25lOiA4MDUyODA1NDMyLCBhZGRyZXNzOiA3MzUgU3RhdGUgU3QgU3RlIDQwMSwgU2FudGEgQmFyYmFyYSBDQSAgOTMxMDE=') + '</p>';
+			html += '</div>';
+			box.el().append(html);
+			box.recenter();
+		};
+		setTimeout(show, 15000);
+	});
+</script>
+
+</body>

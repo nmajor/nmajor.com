@@ -16,7 +16,8 @@ Required row fields:
 - `alt_text`: description of the template relationship and visible text.
 - `asset`: repo-relative rendered-draft path.
 - `asset_sha256`: empty while drafting; renderer fills it.
-- `render_url`: empty while drafting; renderer records Memegen's canonical URL.
+- `render_url`: empty while drafting; the renderer records Memegen's canonical URL. For
+  original generated art, record an `imagegen://` provenance identifier instead.
 - `rights`: object with `status` and `provenance`.
 - `status`: `draft`, `review`, `approved`, or `exported`.
 - `post_body_sha256`: SHA-256 of the Markdown body after frontmatter.

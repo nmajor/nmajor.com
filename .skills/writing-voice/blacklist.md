@@ -43,6 +43,12 @@ back to is," "What I keep coming back to is," "Here's the thing," "Here's where 
 interesting," "Here's what gets me," "But here's the kicker." If a line's only job is to
 announce that a good sentence is coming, cut it and write the good sentence.
 
+Evaluation preambles built as **"the [adjective] part"** are the same tell. Never write
+"the useful part," "the interesting part," "the best part," "the important part," "the
+strange part," or a similar phrase to announce your judgment. State the judgment or fact
+directly. This does not ban literal references to a physical or technical component when
+"part" is the precise noun.
+
 ## Wrap-up closers (delete)
 
 "In conclusion," "To wrap up," "To summarize," "In summary," "As we've seen," "It is

@@ -179,4 +179,6 @@ prefer to just get straight into it."*
    standing in for evidence.
 6. Keep contractions, open sentences with but/so/and, vary length on purpose (long, then
    short). No em dashes.
-7. End on the last fact, not a sign-off.
+7. End on the last fact or a direct observation about the example, not instructions for
+   the reader. Show what worked and why. Never append "the lesson is," "you need to," a
+   diagnostic question, or a "do this, not that" prescription.

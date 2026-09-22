@@ -253,8 +253,15 @@ def validate(path: Path, publish: bool) -> tuple[list[str], set[str]]:
                             issue(problems, row, f"unsupported rendered format: {image.format}")
                 except OSError as exc:
                     issue(problems, row, f"rendered asset is unreadable: {exc}")
-            if not str(row["render_url"]).startswith("https://api.memegen.link/images/"):
-                issue(problems, row, "review row is missing the canonical Memegen render URL")
+            render_url = str(row["render_url"])
+            is_memegen = render_url.startswith("https://api.memegen.link/images/")
+            is_owned_imagegen = rights_status == "owned" and render_url.startswith("imagegen://")
+            if not (is_memegen or is_owned_imagegen):
+                issue(
+                    problems,
+                    row,
+                    "review row needs a canonical Memegen render URL or owned imagegen provenance",
+                )
 
         if publish and selected == row["asset"]:
             selected_statuses.add(str(status))

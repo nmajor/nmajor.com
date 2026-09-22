@@ -207,6 +207,11 @@ Now write the essay. **Re-read `writing-voice` first** and follow it for every w
 includes the compact-for-busy-CEOs rule (short, dense, short paragraphs, get to the point)
 and Nick's voice profile (`voice-nick.md`).
 
+**Default drafting model: GLM 5.3 Flash.** Use `openrouter/z-ai/glm-5.3-flash` through
+the locally configured OpenCode/OpenRouter path for the first prose draft unless Nick
+instructs otherwise. Research, fact-checking, editing, and approval remain separate steps;
+the model choice does not relax any gate in this skill.
+
 **Open with hook options, don't just write the first line.** Before drafting the lede,
 run the **`hooks` skill** to generate **3-5 distinct, on-voice options** for (a) the
 title/subject line and (b) the opening line, each grounded in the spine material and a
@@ -219,9 +224,9 @@ sharp enough yet, fix that, not the wording.
 **Give the piece a shape that closes the loop (bookend it).** Favor a structure with a
 strong hook, a middle that develops it, and an ending that *rhymes with the beginning*:
 return to the opening image, phrase, or tension and resolve it, so the last line echoes
-the first and the reader feels the piece close rather than just stop. The close still
-lands the consequence and carries the tactical take-home, it just does so by calling back
-the lead. A title and a final line that mirror each other (e.g. a two-part title whose
+the first and the reader feels the piece close rather than just stop. The close lands a
+direct observation about what happened, without prescribing a takeaway for the reader. A
+title and a final line that mirror each other (e.g. a two-part title whose
 halves the ending re-states) are a clean way to do it. Nick favors this symmetry strongly;
 see `voice-nick.md`.
 
@@ -231,9 +236,10 @@ see `voice-nick.md`.
   inline as markdown links. End when you're done.
 - Use the shape's structure (below). Keep it to real capacity: tight, sourced, honest about
   tradeoffs and what didn't work.
-- **Carry the tactical take-home in the structure.** Order the story so the reader
-  extracts the applicable insight by following it. Don't label it, don't append an
-  "action items" list, and don't end on a motivational summary. End on the consequence.
+- **Let the evidence carry the implication.** For case-study and news-shaped pieces,
+  show what happened, what the company did well or poorly, and why the result followed.
+  Do not add reader instructions, diagnostic questions, an "action items" list, or a
+  spelled-out lesson. End on the final fact or a direct observation about the example.
 - **Weave the sources in where each claim is made** (see the third rule): pair Nick's
   experience with the real-world examples and research that back it, inline. Only cite a
   source you have opened and confirmed actually supports that exact point.

@@ -37,7 +37,9 @@ the way a brochure sells to you.
 3. **Write the way you'd say it out loud.** If you would not say a sentence to a
    colleague over coffee, rewrite it. This is the final test for every line.
 4. **Cut the throat-clearing.** Start on the point. Delete the wind-up and the
-   summary that restates what you just said.
+   summary that restates what you just said. Delete evaluative "the X part" preambles
+   such as "the useful part," "the interesting part," and "the best part." State the
+   judgment directly.
 5. **Vary the rhythm.** Mix short sentences with long ones. Some one-line paragraphs.
    AI writing has a metronome cadence; human writing does not.
 
@@ -151,6 +153,13 @@ point or a concrete detail, never "In today's world." One genuine position per p
 stated as Nick's own. Cite sources inline and name them. Vary structure. End when you're
 done, not with a summary.
 
+For case-study and news-shaped essays, describe what the company did well and why it had
+the reported impact, then stop. Let the reader infer what to carry into their own work.
+Do not turn the close into instructions, a diagnostic question, or a spelled-out lesson:
+no "you need to," "ask yourself," "the lesson is," "the useful move is," or "do this,
+not that." A direct observation such as "This is a good example of the in-depth research
+required to identify where AI can actually make a difference" is the intended register.
+
 **Email.** One email, one ask. The subject line is honest, not clickbait, and reads
 like a person wrote it. Conversational and direct. Signed by Nick.
 
@@ -166,11 +175,13 @@ Don't one-shot it. After drafting, run three passes:
 
 1. **Audit** — scan for em dashes, banned words (`blacklist.md`), "not X but Y,"
    rule-of-three, throat-clearing, fake-significance tails, Title Case headings, and
-   overclaims (absolutes, causal overreach, heuristics stated as laws).
+   overclaims (absolutes, causal overreach, heuristics stated as laws). Also scan for
+   evaluative "the X part" constructions and rewrite them as the claim itself.
 2. **Rhythm** — read it aloud. Mark every sentence that's the same length as its
    neighbor and every line you'd never say to a colleague. Rewrite those.
 3. **Substance** — is every claim specific and backed? Is there one clear position?
-   Cut anything that sounds like a brochure.
+   Cut anything that sounds like a brochure. For a case study, also cut advice appended
+   to the evidence or a closing paragraph that tells the reader what lesson to take.
 
 ## Pre-publish checklist
 
@@ -185,3 +196,5 @@ Don't one-shot it. After drafting, run three passes:
 - [ ] I read it aloud and would actually say it this way.
 - [ ] It sounds like Nick on nmajor.com: first-person, opinionated, plain, specific,
       honest, no hype.
+- [ ] Case-study and news-shaped pieces show what worked and why without prescribing what
+      the reader should do or spelling out the lesson.

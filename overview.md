@@ -142,17 +142,41 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
-- **2026-09-22: Dormant since 2026-08-18. Moving machines and handing off to Hermes.**
-  Nothing has been published, emailed, or posted since `seven-days-to-close`. Nick let the
-  Buttondown plan lapse (there were no subscribers), so the newsletter send path is dead
-  until the settled Buttondown account and scoped key are reactivated. The queue is empty.
-  The plan is to restart with **Hermes** running daily LinkedIn and the weekly newsletter
-  under Nick's supervision and approval. All existing workflows are a starting point that
-  can change, and the newsletter-drafting and LinkedIn workflows in particular are
-  considered unproven. The new workstation has a healthy, repository-managed Hermes setup,
-  but no nmajor.com content profile exists yet. The existing profiles are separate agents
-  for Cascais Newsletter, PR Outreach, and YNAB. Local secret files now exist at the repo
-  root; finish any missing values directly in those ignored files.
+- **2026-09-22: Farmers Insurance issue published and emailed.** Nick chose Farmers'
+  Agency Servicing Efficiency 35 program for the restart issue and set two standing
+  editorial rules: case studies should show what the company did well and why it worked,
+  then let readers infer the takeaway. Do not append prescriptive advice, diagnostic
+  questions, or a spelled-out lesson. Also ban evaluative "the X part" preambles such as
+  "the useful part," "the interesting part," and "the best part." Both rules are now in
+  `writing-voice`. Raw evidence and a claim-checked brief live in
+  `research/farmers-insurance-ai/`. A blind comparison found GLM 5.3 Flash and MiniMax M3
+  strongest and Kimi K3 substantially weaker; Nick selected GLM 5.3 Flash as the default
+  newsletter drafter until he instructs otherwise. The final article angle is that
+  Farmers' disclosed AI is an internal search assistant inside a broader operations program.
+  Five comparable deployments now support a narrower angle: useful internal support-search
+  tools can produce measurable returns, but Farmers has not shown that askfarmers.ai produced
+  its 16.4 million-hour headline. Nick approved the original reveal meme and its final caption.
+  The post was scheduled through Postiz for 2026-09-22 15:38:23 UTC on Nick's verified personal
+  LinkedIn profile and Facebook page; both files carry their machine `pushedAt` locks so the
+  newsletter workflow cannot duplicate them. The 667-word essay at
+  `app/src/content/essays/farmers-built-a-support-bot.md` was explicitly approved, deployed,
+  and sent through the Actual Intelligence Buttondown list. The live article is
+  `https://www.nmajor.com/writing/farmers-built-a-support-bot/`; Buttondown email
+  `em_2vsmpkyzp08vtrcbntcvs54tkz` reports `sent`. Three derived takes are scheduled for
+  September 24, 26, and 28. Research for the remaining four LinkedIn slots is complete;
+  drafting is paused at the required cross-provider focus-group gate because Claude reached
+  its subscription session limit and Gemini lacks subscription authentication. No remaining
+  post has been written, approved, or scheduled.
+- **2026-09-22: Dormancy ended; Hermes handoff deferred.** The project had been dormant since
+  2026-08-18, but the Farmers issue restarted publishing on 2026-09-22. Buttondown is active
+  and remains the settled newsletter platform. Nick asked to focus on the working editorial
+  and distribution loop before returning to Hermes. All existing workflows remain a starting
+  point that can change, and the newsletter-drafting and LinkedIn workflows in particular are
+  still being tested. The queue is empty after the direct same-day Farmers release. The new
+  workstation has a healthy, repository-managed Hermes setup, but no nmajor.com content
+  profile exists yet. The existing profiles are separate agents for Cascais Newsletter, PR
+  Outreach, and YNAB. Local secret files exist at the repo root; finish any missing values
+  directly in those ignored files.
   `research/newsletter-workflows/report.md` now synthesizes the 78 captured sources. It
   recommends a four-issue pilot: Hermes owns candidate collection, research, drafting,
   claim checks, review packets, and measurement; Nick chooses the topic, supplies or
@@ -403,6 +427,15 @@ audience; the consultancy is where the commercial conversation happens.
   IBMPlexMono; the variable Archivo was dropped because satori's parser can't read `fvar`).
   Verified live: all cards serve 200 `image/png` and the right card is referenced per page. Note:
   LinkedIn/Twitter cache OG images, so use their post inspectors to force a refresh on already-shared URLs.
+- **2026-09-22 — `/work-with-me` page and contact route added.** The nav and footer
+  now lead to a dedicated page instead of looping back to the footer. Its form posts
+  to the Worker at `POST /api/contact`, which validates the fields, verifies the
+  shared Cloudflare Turnstile widget server-side with the `nmajor_contact` action,
+  and sends the inquiry to Discord through the private
+  `DISCORD_CONTACT_WEBHOOK_URL` Worker secret. The webhook is never sent to the
+  browser. Successful inquiries also record a `work_inquiry` Rybbit event. Worker
+  version `a9f340a1-304b-43c3-b481-f2cd01bcdb0b` is live; the page returns 200 and
+  the production endpoint rejects missing or invalid Turnstile tokens.
 - **Still TODO:** `/about` page (where the co-founder credential gets real context)
   and a future consultancy company-page integration for the currently-disabled
   `business` LinkedIn channel. The personal LinkedIn channel is live in Postiz and

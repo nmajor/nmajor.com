@@ -1,0 +1,28 @@
+{
+  "intent": "concept",
+  "freshness_mode": "evergreen_ok",
+  "cluster_mode": "none",
+  "subqueries": [
+    {
+      "label": "primary",
+      "search_query": "enterprise AI search assistant internal knowledge RAG business impact",
+      "ranking_query": "Where are internal AI search assistants producing measured business impact rather than a demo?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram", "hackernews", "polymarket"],
+      "weight": 1.0
+    },
+    {
+      "label": "case-studies",
+      "search_query": "company internal knowledge assistant time saved search case study",
+      "ranking_query": "Which named companies report time savings or operational improvements from internal AI knowledge assistants?",
+      "sources": ["x", "youtube", "reddit", "hackernews"],
+      "weight": 0.8
+    },
+    {
+      "label": "skepticism",
+      "search_query": "enterprise RAG search assistant production adoption failure measurement",
+      "ranking_query": "What do operators report about adoption, reliability, and measurement of enterprise RAG search assistants in production?",
+      "sources": ["reddit", "x", "hackernews", "youtube"],
+      "weight": 0.7
+    }
+  ]
+}

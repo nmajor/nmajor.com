@@ -34,31 +34,29 @@ The rules that stay firm unless Nick changes them himself:
   (published and emailed 2026-08-18). Nothing has gone out on the site, the newsletter,
   or LinkedIn since then.
 - **Nick let the Buttondown newsletter plan lapse.** There were no subscribers, so nothing
-  was lost. Assume `BUTTONDOWN_API_KEY` sends will fail until Nick decides whether to
-  reactivate Buttondown or move to something else. That decision is open.
+  was lost. Buttondown remains the settled newsletter platform. Assume
+  `BUTTONDOWN_API_KEY` sends will fail until the plan and scoped key are reactivated.
 - **The publish queue is empty** (`app/publishing.config.json`). The GitHub Actions cron
   (`.github/workflows/publish.yml`, daily at 14:00 UTC) still runs. With an empty queue it
   only rebuilds the site and drips takes. **Don't queue an essay until the newsletter
   send path works again**, or the run will fail partway through.
-- **Unfinished items, all unapproved:**
-  - Essay drafts: `app/src/content/essays/everyone-uses-ai-not-everyone-can-say-so.md`
-    and `app/src/content/essays/who-tells-you-when-it-breaks.md` (both `draft: true`).
-    Check that they're still timely before reviving them.
-  - `app/linkedin/seven-days-to-close/`: five personal LinkedIn posts, drafted but never
-    approved or pushed. They're probably stale now.
-  - `research/newsletter-workflows/` has a brief (`BRIEF.md`) and ~80 raw sources, but
-    **no `report.md`**. That research was about fixing exactly the weak workflows named
-    above, and the synthesis step never happened. Running it (as a subagent, per the
-    research pattern) is a good first job.
+- **The active content pipeline is empty.** On 2026-09-22 Nick asked to start fresh. Two
+  unpublished essays, all 23 social files without a `pushedAt` lock, three unpublished
+  takes, and their dedicated unfinished research were moved to
+  `archive/content-reset-2026-09-22/`. Archived approvals do not carry forward.
+  Remaining open workflow work:
+  - `research/newsletter-workflows/` now has a brief (`BRIEF.md`), 78 raw sources, and a
+    completed `report.md`. The report recommends a four-issue Hermes pilot, a two-week
+    rolling cadence, claim-level verification, content-hash-bound approvals, and five to
+    seven LinkedIn posts as a target rather than a quota.
   - `research/ai-writing-tells/proposed-blacklist-changes.md` proposes edits to the
     `writing-voice` bans that were never applied.
   - Meme workflow (`.skills/social-meme-campaign/`): built and tried once. The rights
     and ledger state is unresolved (see the 2026-08-11 entry in `overview.md`). It's an
     experiment, not a default.
-- **Doc drift to know about:** `CLAUDE.md` says the LinkedIn pipeline runs in shadow mode
-  (`enabled: false`). It doesn't: `app/linkedin.config.json` has `enabled: true` with
-  live Postiz integrations for Nick's personal LinkedIn, Facebook, X, and Instagram. Fix
-  `CLAUDE.md` once the new workflow is decided.
+- **LinkedIn is live-enabled:** `app/linkedin.config.json` has `enabled: true` with live
+  Postiz integrations for Nick's personal LinkedIn, Facebook, X, and Instagram.
+  `CLAUDE.md` now reflects that state. Every post still needs Nick's per-item approval.
 
 ## What we learned (the short version)
 
@@ -131,8 +129,8 @@ What this means for you:
 ## Suggested first session
 
 1. Do the setup and confirm tests pass.
-2. Ask Nick about Hermes and the newsletter platform (reactivate Buttondown or switch).
-3. Synthesize `research/newsletter-workflows/` into `report.md` (subagent, raw-first).
-4. Propose a simpler, better newsletter and LinkedIn workflow from that report and what
+2. Confirm the Buttondown plan and scoped key are active before testing the send path.
+3. Read the completed `research/newsletter-workflows/report.md`.
+4. Implement the simpler newsletter and LinkedIn pilot from that report and what
    we learned. Agree on it with Nick before you rewrite the skills.
 5. Update `overview.md` and `CLAUDE.md` to match, and delete this file.

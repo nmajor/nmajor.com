@@ -3,8 +3,9 @@
 // posts additionally get the hook-fold rule and, when not yet pushed, the
 // anti-slop rules (no hashtags, ≤ 1400 visible chars). Posts that are
 // `approved` — or auto-approved by the preview policy (see isAutoApproved) —
-// are reported as schedule-ready; the rest are listed as drafts (not an error,
-// they are waiting on Nick's sign-off).
+// are reported as schedule-ready only when the active-mode idempotency lock is
+// absent. Handled history is reported separately; the rest are drafts waiting
+// on Nick's sign-off.
 //
 // This is the LinkedIn-side mirror of queue-lint.mjs. The scheduler refuses to
 // act on anything that does not pass here. Run any time with:
@@ -43,11 +44,12 @@ export function hookLength(body) {
   return [...firstPara].length;
 }
 
-/** @returns {{ok: boolean, problems: Array, ready: string[], drafts: string[]}} */
-export function lintLinkedin(items, channels = {}) {
+/** @returns {{ok: boolean, problems: Array, ready: string[], drafts: string[], handled: string[]}} */
+export function lintLinkedin(items, channels = {}, enabled = false) {
   const problems = [];
   const ready = [];
   const drafts = [];
+  const handled = [];
 
   for (const item of items) {
     const d = item.data;
@@ -96,11 +98,14 @@ export function lintLinkedin(items, channels = {}) {
       problems.push({ id: item.id, issues });
       continue;
     }
-    if (d.approved || isAutoApproved(item, channels)) ready.push(item.id);
-    else drafts.push(item.id);
+    if (d.approved || isAutoApproved(item, channels)) {
+      const locked = enabled ? d.pushedAt : d.shadowedAt;
+      if (locked) handled.push(item.id);
+      else ready.push(item.id);
+    } else drafts.push(item.id);
   }
 
-  return { ok: problems.length === 0, problems, ready, drafts };
+  return { ok: problems.length === 0, problems, ready, drafts, handled };
 }
 
 function format(problems) {
@@ -116,10 +121,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log('No LinkedIn posts yet. Nothing to lint.');
     process.exit(0);
   }
-  const { channels } = readLinkedinConfig();
-  const { ok, problems, ready, drafts } = lintLinkedin(items, channels);
+  const { channels, enabled } = readLinkedinConfig();
+  const { ok, problems, ready, drafts, handled } = lintLinkedin(items, channels, enabled);
   const now = new Date();
-  console.log(`${items.length} LinkedIn post(s): ${ready.length} schedule-ready, ${drafts.length} draft.`);
+  console.log(`${items.length} LinkedIn post(s): ${ready.length} schedule-ready, ${drafts.length} draft, ${handled.length} already handled.`);
   if (ready.length) {
     console.log('\nSchedule-ready:');
     for (const id of ready) {

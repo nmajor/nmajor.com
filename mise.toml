@@ -1,0 +1,14 @@
+[tools]
+node = "22"
+npm = "10.9.9"
+
+[tasks.check]
+description = "Install, test, lint the publishing state, and build the site"
+run = [
+  "npm --prefix app ci",
+  "npm --prefix app test",
+  "npm --prefix app run queue:lint",
+  "npm --prefix app run linkedin:lint",
+  "npm --prefix app run takes:lint",
+  "npm --prefix app run build",
+]

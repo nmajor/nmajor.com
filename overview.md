@@ -145,11 +145,37 @@ audience; the consultancy is where the commercial conversation happens.
 - **2026-09-22: Dormant since 2026-08-18. Moving machines and handing off to Hermes.**
   Nothing has been published, emailed, or posted since `seven-days-to-close`. Nick let the
   Buttondown plan lapse (there were no subscribers), so the newsletter send path is dead
-  until he decides between reactivating it and switching platforms. The queue is empty.
+  until the settled Buttondown account and scoped key are reactivated. The queue is empty.
   The plan is to restart with **Hermes** running daily LinkedIn and the weekly newsletter
   under Nick's supervision and approval. All existing workflows are a starting point that
   can change, and the newsletter-drafting and LinkedIn workflows in particular are
-  considered unproven. See `HANDOFF.md` for the full takeover brief.
+  considered unproven. The new workstation has a healthy, repository-managed Hermes setup,
+  but no nmajor.com content profile exists yet. The existing profiles are separate agents
+  for Cascais Newsletter, PR Outreach, and YNAB. Local secret files now exist at the repo
+  root; finish any missing values directly in those ignored files.
+  `research/newsletter-workflows/report.md` now synthesizes the 78 captured sources. It
+  recommends a four-issue pilot: Hermes owns candidate collection, research, drafting,
+  claim checks, review packets, and measurement; Nick chooses the topic, supplies or
+  confirms the argument, and approves the essay and each post. Five to seven LinkedIn posts
+  are a target, never a quota. The first implementation should use a two-week rolling
+  cadence, content-hash-bound approvals, no more than two model-led revision passes, and a
+  fail-closed preflight before any external effect. No Hermes profile or unattended send
+  path should be created until Buttondown is active and Nick authorizes the new Telegram bot
+  and isolated Bitwarden project. See `HANDOFF.md` for the remaining takeover
+  steps.
+- **2026-09-22: Active content reset.** At Nick's direction, all active-path unpublished
+  content was moved to `archive/content-reset-2026-09-22/`: two essay drafts, 23 unpushed
+  social posts, three derived takes, and the dedicated unfinished research from the abandoned
+  cycle. The active essay collection now contains no drafts and the active LinkedIn tree
+  contains no unpushed posts. Published work and research shared with published work remain
+  in place. Archived approvals do not carry forward.
+- **2026-09-22: Astro security upgrade deployed.** The app now runs Astro 7.3.3 and
+  Wrangler 4.136.2; `sanitize-html` and the remaining direct dependencies were updated, and
+  Satori is pinned to 0.32.0 to avoid the vulnerable `fflate` version pulled by the next
+  release. All 36 tests, the production build, queue, LinkedIn, and takes checks pass. Both
+  the production-only and full npm audits report zero vulnerabilities. Cloudflare Worker
+  version `c38e101f-d7a3-4c26-96c5-6289b649f5e0` is live; the home page, writing index, RSS
+  feed, and latest published essay returned HTTP 200 after deployment.
 - **2026-07-23 — Recovered the missed 2026-07-21 issue and identified the cause.**
   GitHub Actions did run successfully on Tuesday, but `your-ai-made-an-offer`, its
   approval, and its queue entry existed only in an uncommitted local worktree. The

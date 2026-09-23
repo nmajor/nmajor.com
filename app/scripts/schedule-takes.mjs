@@ -17,7 +17,6 @@
 // Flags: --dry-run logs what it would do and writes nothing (safe to repeat).
 
 import { readAllTakes, selectDueTakes, setTakeFields, toDateStamp } from './lib/takes.mjs';
-import { discord } from './lib/notify.mjs';
 
 const DRY = process.argv.includes('--dry-run');
 
@@ -54,16 +53,13 @@ async function main() {
     for (const d of group.items) {
       setTakeFields(d.take.slug, { pubDate: toDateStamp(d.at), draft: false });
     }
-    await discord(
-      'green',
-      `Takes scheduled: ${group.title}`,
-      `Scheduled ${group.items.length} take(s) to publish over the coming days:\n${lines}`,
+    console.log(
+      `Takes scheduled: ${group.title} — ${group.items.length} take(s) over the coming days:\n${lines}`,
     );
   }
 }
 
-main().catch(async (err) => {
+main().catch((err) => {
   console.error('schedule-takes failed:', err);
-  await discord('red', 'Takes scheduling failed', err instanceof Error ? err.message : String(err));
   process.exit(1);
 });

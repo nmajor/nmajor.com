@@ -23,7 +23,6 @@
 
 import { readAllPosts, setFrontmatterFields } from './lib/posts.mjs';
 import { isLive } from '../src/lib/publish.js';
-import { discord } from './lib/notify.mjs';
 
 const DRY = process.argv.includes('--dry-run');
 const SITE = 'https://nmajor.com';
@@ -98,19 +97,14 @@ async function main() {
   for (const post of due) {
     const r = await sendOne(post);
     if (r.sent) {
-      console.log(`Emailed "${post.data.title}".`);
-      await discord('green', 'Published and emailed', `**${post.data.title}**`, [
-        { name: 'Post', value: `${SITE}/writing/${post.slug}/`, inline: false },
-        { name: 'Author', value: post.data.author || 'Unknown', inline: true },
-      ]);
+      console.log(`Emailed "${post.data.title}" — ${SITE}/writing/${post.slug}/`);
     } else if (r.deduped) {
-      await discord('amber', 'Already in Buttondown', `**${post.data.title}** was already created in Buttondown; marked emailed without resending.`);
+      console.log(`"${post.data.title}" was already in Buttondown; marked emailed without resending.`);
     }
   }
 }
 
-main().catch(async (err) => {
+main().catch((err) => {
   console.error('send-newsletter failed:', err);
-  await discord('red', 'Newsletter send failed', err instanceof Error ? err.message : String(err));
   process.exit(1);
 });

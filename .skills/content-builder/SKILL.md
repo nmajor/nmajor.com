@@ -311,7 +311,7 @@ Two decoupled mechanisms move an essay live and into the inbox. Both gate on Nic
      promoted on a cadence day by `npm --prefix app run publish:queue` (CI-run; dry-run
      with `publish:queue:dry`). It flips `draft:false`, stamps `pubDate`, and CI builds +
      deploys. `npm --prefix app run queue:lint` refuses to promote a broken/unapproved
-     head. Use `npm --prefix app run preview:next` to see what's up next.
+     head. Read `app/publishing.config.json` to see what's up next.
    - **Manual:** set `draft:false` and deploy with `npm --prefix app run deploy` (there's
      no usable localhost; ship to prod).
 3. **Newsletter.** `npm --prefix app run newsletter:send` (dry-run `newsletter:send:dry`)

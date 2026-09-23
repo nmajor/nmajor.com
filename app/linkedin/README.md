@@ -80,7 +80,7 @@ Two channels, two different jobs (see `app/linkedin.config.json`):
 sent, it computes `pubDate + offsetDays` (at `postingHourUTC` from `app/linkedin.config.json`)
 and:
 
-- **shadow mode** (`enabled: false`): logs + Discord-announces the schedule it *would* set,
+- **shadow mode** (`enabled: false`): logs the schedule it *would* set,
   stamps `shadowedAt` so it announces once. No external side effects. This is where we are.
 - **live mode** (`enabled: true`, Postiz wired): pushes the post to Postiz as a scheduled
   draft for that date and stamps `pushedAt`. `pushedAt` is the idempotency lock, exactly

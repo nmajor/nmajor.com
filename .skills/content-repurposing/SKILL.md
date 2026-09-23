@@ -235,7 +235,7 @@ diagnosis: `research/linkedin-breakout/report.md`.
   (`scripts/schedule-linkedin.mjs`) resolves each post's `offsetDays` against the issue's real
   pubDate and (in live mode) pushes it to Postiz. You set the offset (0, 1, 2, 3, 6), never a
   date. NOTE: while the pipeline is in **shadow mode** it only announces the schedule to
-  Discord and posts nothing — confirm the mode in `app/linkedin.config.json` (`enabled`).
+  the workflow log and posts nothing — confirm the mode in `app/linkedin.config.json` (`enabled`).
 - **No full automation of posting itself, no auto-DM bots, no engagement pods** (ToS risk,
   shadowban risk, and off-brand). Nick approves every post before it's scheduled.
 

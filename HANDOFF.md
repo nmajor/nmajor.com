@@ -57,6 +57,12 @@ The rules that stay firm unless Nick changes them himself:
 - **LinkedIn is live-enabled:** `app/linkedin.config.json` has `enabled: true` with live
   Postiz integrations for Nick's personal LinkedIn, Facebook, X, and Instagram.
   `CLAUDE.md` now reflects that state. Every post still needs Nick's per-item approval.
+- **There are no publishing notifications any more (removed 2026-09-23).** The Discord
+  webhook alerts — empty queue, publish/send/schedule results, failures — and the
+  `queue-status.yml` workflow that fired the daily empty-queue nag are gone. The scripts
+  log to the workflow run instead. What's left: GitHub's own Actions failure email, and
+  the healthchecks.io dead-man ping (`HEALTHCHECK_PING_URL`) that catches a stopped cron.
+  If Hermes needs to report what it did, design that fresh rather than reviving this.
 
 ## What we learned (the short version)
 
@@ -109,7 +115,7 @@ What this means for you:
 3. **Secrets aren't in git.** Copy these by hand from the old machine (or have Nick
    re-issue them):
    - `.env`: `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, `BUTTONDOWN_API_KEY`
-     (lapsed, see above), `DISCORD_PUBLISH_WEBHOOK_URL`, `RYBBIT_HOST`,
+     (lapsed, see above), `RYBBIT_HOST`,
      `RYBBIT_SITE_ID`, `RYBBIT_ORG_ID`, `RYBBIT_API_KEY`, `POSTIZ_BASE_URL`,
      `POSTIZ_API_KEY`, `EXA_API_KEY`.
    - `.env.gsc`: the Google Search Console OAuth client (used by `scripts/gsc.py`).

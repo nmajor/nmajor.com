@@ -8,7 +8,7 @@
 // Safety properties:
 //   - lint gate: refuses to publish if the queue head is broken/unapproved.
 //   - idempotent: skips if it already published during this UTC day.
-//   - quiet on no-op days; amber Discord ping if a cadence day finds an empty queue.
+//   - quiet on no-op days; logs and does nothing if a cadence day finds an empty queue.
 //
 // Output: writes `published_slug=<slug>` (or empty) to $GITHUB_OUTPUT.
 //
@@ -19,7 +19,6 @@ import { appendFileSync } from 'node:fs';
 import { readConfig, writeConfig, isCadenceDay, alreadyPublishedToday } from './lib/config.mjs';
 import { readPost, setFrontmatterFields } from './lib/posts.mjs';
 import { lintQueue } from './queue-lint.mjs';
-import { discord } from './lib/notify.mjs';
 
 const args = new Set(process.argv.slice(2));
 const FORCE = args.has('--force');
@@ -47,7 +46,6 @@ async function main() {
 
   if (cfg.queue.length === 0) {
     console.log('Cadence day, but the queue is empty.');
-    if (!DRY) await discord('amber', 'Queue is empty', 'A cadence day arrived but there is nothing approved in the queue. Add and approve a post to publish next time.');
     return output('');
   }
 
@@ -59,12 +57,8 @@ async function main() {
       .map((p) => `**${p.slug}**: ${p.issues.join('; ')}`)
       .join('\n');
     // Not an infrastructure failure: the cron ran fine, the content isn't ready.
-    // Alert red so Nick fixes it, but exit 0 so the healthcheck still reports the
-    // run as alive and the failure-ping stays reserved for real breakage.
+    // Exit 0 so the run still reports as alive; the workflow log carries the detail.
     console.error(`Refusing to publish — queue has problems:\n${detail}`);
-    if (!DRY) {
-      await discord('red', 'Publish blocked: queue failed validation', detail);
-    }
     return output('');
   }
 
@@ -86,8 +80,7 @@ async function main() {
   output(slug);
 }
 
-main().catch(async (err) => {
+main().catch((err) => {
   console.error('publish-queue failed:', err);
-  await discord('red', 'Publish failed', err instanceof Error ? err.message : String(err));
   process.exit(1);
 });

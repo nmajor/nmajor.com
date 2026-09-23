@@ -7,8 +7,8 @@
 // handled exactly once.
 //
 // PHASE 1 — shadow mode (linkedin.config.json `enabled: false`):
-//   Computes the real schedule each due post WOULD get and announces it (log +
-//   Discord). Stamps `shadowedAt` so it announces once. No external side effects.
+//   Computes the real schedule each due post WOULD get and logs it. Stamps
+//   `shadowedAt` so it announces once. No external side effects.
 //   This lets us watch the resolver predict correct dates before anything touches
 //   LinkedIn.
 //
@@ -21,7 +21,6 @@
 
 import { readAllItems, setItemFields, selectDue, readLinkedinConfig, verifyIntegrationIdentity } from './lib/linkedin.mjs';
 import { createScheduledPost, postContent, uploadMedia, listIntegrations } from './lib/postiz.mjs';
-import { discord } from './lib/notify.mjs';
 import { existsSync, statSync } from 'node:fs';
 import { readdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
@@ -201,26 +200,21 @@ async function main() {
         setItemFields(d.item.id, { pushedAt: now.toISOString(), postizId: postId });
         pushed.push(`• ${channel}/${d.item.data.angle || 'post'} (+${d.item.data.offsetDays}d) → ${when(d.at)}`);
       }
-      await discord(
-        'green',
-        `LinkedIn scheduled: ${group.title}`,
-        `Scheduled ${pushed.length} LinkedIn post(s) to Postiz:\n${pushed.join('\n')}`,
+      console.log(
+        `LinkedIn scheduled: ${group.title} — ${pushed.length} post(s) pushed to Postiz:\n${pushed.join('\n')}`,
       );
       continue;
     }
 
     // Shadow mode: announce once, then mark handled so it stays quiet.
     for (const d of group.items) setItemFields(d.item.id, { shadowedAt: now.toISOString() });
-    await discord(
-      'info',
-      `LinkedIn schedule ready (shadow): ${group.title}`,
-      `This issue is live. In live mode these ${group.items.length} LinkedIn post(s) would be scheduled:\n${lines}\n\n_Shadow mode — nothing was posted. Wire Postiz to go live._`,
+    console.log(
+      `LinkedIn schedule ready (shadow): ${group.title} — in live mode these ${group.items.length} post(s) would be scheduled:\n${lines}\nShadow mode: nothing was posted.`,
     );
   }
 }
 
-main().catch(async (err) => {
+main().catch((err) => {
   console.error('schedule-linkedin failed:', err);
-  await discord('red', 'LinkedIn scheduling failed', err instanceof Error ? err.message : String(err));
   process.exit(1);
 });

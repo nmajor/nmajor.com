@@ -10,8 +10,6 @@
     "deploy": "bash deploy.sh",
     "deploy:only": "wrangler deploy",
     "queue:lint": "node scripts/queue-lint.mjs",
-    "preview:next": "node scripts/preview-next.mjs",
-    "preview:next:dry": "node scripts/preview-next.mjs --dry-run",
     "publish:queue": "node scripts/publish-queue.mjs",
     "publish:queue:dry": "node scripts/publish-queue.mjs --dry-run",
     "newsletter:send": "node scripts/send-newsletter.mjs",

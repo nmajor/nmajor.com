@@ -10,15 +10,14 @@ name: Publish
 # the new article) -> email any live+approved+unsent essay via Buttondown ->
 # schedule that issue's approved LinkedIn posts -> commit the result back to the repo.
 #
-# Notifications: the scripts post green/amber/red to Discord; this workflow adds
-# a guaranteed red ping on ANY step failure, and pings the healthcheck on every
-# run (success or fail) so a stopped cron is detected independently.
+# Notifications: none. The scripts log to the workflow run; GitHub's own
+# Actions failure email is the only alert. The healthcheck ping below runs on
+# every run (success or fail) so a stopped cron is detected independently.
 
 # ACTIVE: runs daily at 14:00 UTC. Re-enabled 2026-07-08 once the Buttondown,
 # Cloudflare, and Postiz secrets were confirmed wired in GitHub Actions secrets.
 # The queue only promotes on the cadence weekday; the daily run also lets pinned
-# future-dated essays go live and email on their day. The lightweight queue-empty
-# alarm lives in queue-status.yml.
+# future-dated essays go live and email on their day.
 on:
   schedule:
     - cron: '0 14 * * *'
@@ -44,7 +43,6 @@ jobs:
       run:
         working-directory: app
     env:
-      DISCORD_PUBLISH_WEBHOOK_URL: ${{ secrets.DISCORD_PUBLISH_WEBHOOK_URL }}
       HEALTHCHECK_PING_URL: ${{ secrets.HEALTHCHECK_PING_URL }}
       BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -66,12 +64,6 @@ jobs:
           cache-dependency-path: app/package-lock.json
 
       - run: npm ci
-
-      # Read-only: daily empty/low-queue alerts + a ~24h pre-publish heads-up.
-      # Never blocks a publish, so a hiccup here can't stop the real run.
-      - name: Queue status (alerts + ~24h preview)
-        continue-on-error: true
-        run: node scripts/preview-next.mjs
 
       - name: Promote top of queue
         id: promote
@@ -123,16 +115,7 @@ jobs:
         working-directory: .
         run: curl -fsS -m 10 --retry 3 "${HEALTHCHECK_PING_URL%/}" || true
 
-      - name: Notify failure
-        if: ${{ failure() }}
+      - name: Healthcheck failure
+        if: ${{ failure() && env.HEALTHCHECK_PING_URL != '' }}
         working-directory: .
-        run: |
-          if [ -n "${HEALTHCHECK_PING_URL}" ]; then
-            curl -fsS -m 10 "${HEALTHCHECK_PING_URL%/}/fail" || true
-          fi
-          if [ -n "${DISCORD_PUBLISH_WEBHOOK_URL}" ]; then
-            RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-            curl -fsS -m 10 -H 'Content-Type: application/json' \
-              -d "{\"username\":\"Publishing\",\"embeds\":[{\"title\":\"Publish workflow failed\",\"description\":\"A step failed before publishing completed. Check the logs.\",\"color\":12131395,\"fields\":[{\"name\":\"Run\",\"value\":\"[workflow logs](${RUN_URL})\"}]}]}" \
-              "${DISCORD_PUBLISH_WEBHOOK_URL}" || true
-          fi
+        run: curl -fsS -m 10 "${HEALTHCHECK_PING_URL%/}/fail" || true

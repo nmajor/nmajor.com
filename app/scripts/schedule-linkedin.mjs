@@ -111,7 +111,13 @@ async function main() {
   const cfg = readLinkedinConfig();
   await identityPreflight(cfg);
   const now = new Date();
-  const due = selectDue(readAllItems(), { now, enabled: cfg.enabled, postingHourUTC: cfg.postingHourUTC, channels: cfg.channels });
+  const due = selectDue(readAllItems(), {
+    now,
+    enabled: cfg.enabled,
+    postingHourUTC: cfg.postingHourUTC,
+    postingTimesUTCByWeekday: cfg.postingTimesUTCByWeekday,
+    channels: cfg.channels,
+  });
 
   if (due.length === 0) {
     console.log('No LinkedIn posts due (no live+approved issue with approved, unhandled posts).');
@@ -156,6 +162,9 @@ async function main() {
         // Upload any declared media first, so a failed upload aborts this post
         // before it is created rather than publishing it without its deck.
         const files = resolveMedia(d.item);
+        if (d.item.data.mediaRequired && !files.length) {
+          throw new Error(`${d.item.id}: mediaRequired is true but no approved visual is attached`);
+        }
 
         // Instagram rejects any post without media, so skip rather than send
         // one that is guaranteed to fail. Left un-stamped on purpose: it will

@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[3]
 SKILL = Path(__file__).resolve().parents[1]
 CONTRACTS_PATH = SKILL / "references" / "template-contracts.json"
 TEMPLATES = SKILL / "assets" / "templates"
-PUBLISHABLE_RIGHTS = {"owned", "licensed", "public-domain", "cc-compatible"}
+PUBLISHABLE_RIGHTS = {"owned", "licensed", "public-domain", "cc-compatible", "fair-use-approved"}
 ALL_RIGHTS = PUBLISHABLE_RIGHTS | {"unverified", "fair-use-review", "classic-template-preview"}
 STATUSES = {"draft", "review", "approved", "exported"}
 FM_RE = re.compile(r"\A---\r?\n(?P<fm>[\s\S]*?)\r?\n---\r?\n?")
@@ -197,6 +197,10 @@ def validate(path: Path, publish: bool) -> tuple[list[str], set[str]]:
         rights_status = rights.get("status", "") if isinstance(rights, dict) else ""
         if rights_status not in ALL_RIGHTS:
             issue(problems, row, f"unknown rights status `{rights_status}`")
+        if rights_status == "fair-use-approved" and not re.fullmatch(
+            r"Nicholas Major \d{4}-\d{2}-\d{2} \(via chat\)", str(rights.get("accepted_by", ""))
+        ):
+            issue(problems, row, "fair-use publication lacks recorded risk acceptance")
         if not isinstance(rights, dict) or len(str(rights.get("provenance", "")).split()) < 6:
             issue(problems, row, "rights provenance is missing or too thin")
 
@@ -255,12 +259,17 @@ def validate(path: Path, publish: bool) -> tuple[list[str], set[str]]:
                     issue(problems, row, f"rendered asset is unreadable: {exc}")
             render_url = str(row["render_url"])
             is_memegen = render_url.startswith("https://api.memegen.link/images/")
-            is_owned_imagegen = rights_status == "owned" and render_url.startswith("imagegen://")
-            if not (is_memegen or is_owned_imagegen):
+            is_attached_legacy_imagegen = (
+                row["attached"]
+                and status in {"approved", "exported"}
+                and rights_status == "owned"
+                and render_url.startswith("imagegen://")
+            )
+            if not (is_memegen or is_attached_legacy_imagegen):
                 issue(
                     problems,
                     row,
-                    "review row needs a canonical Memegen render URL or owned imagegen provenance",
+                    "review row needs a canonical Memegen render URL; generated template imitations are prohibited",
                 )
 
         if publish and selected == row["asset"]:

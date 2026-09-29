@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 FM_RE = re.compile(r"\A---\r?\n(?P<fm>[\s\S]*?)\r?\n---\r?\n?")
-PUBLISHABLE_RIGHTS = {"owned", "licensed", "public-domain", "cc-compatible"}
+PUBLISHABLE_RIGHTS = {"owned", "licensed", "public-domain", "cc-compatible", "fair-use-approved"}
 
 
 def repo_path(value: str) -> Path:
@@ -76,6 +76,10 @@ def attach(row: dict, write: bool) -> str:
     rights = row.get("rights") if isinstance(row.get("rights"), dict) else {}
     if rights.get("status") not in PUBLISHABLE_RIGHTS:
         raise ValueError(f"{row['id']}: rights status is not publishable")
+    if rights.get("status") == "fair-use-approved" and not re.fullmatch(
+        r"Nicholas Major \d{4}-\d{2}-\d{2} \(via chat\)", str(rights.get("accepted_by", ""))
+    ):
+        raise ValueError(f"{row['id']}: fair-use publication lacks recorded risk acceptance")
     if not asset.exists():
         raise ValueError(f"{row['id']}: asset missing: {row['asset']}")
     if file_hash(asset) != row.get("asset_sha256"):

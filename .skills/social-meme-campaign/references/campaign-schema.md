@@ -4,6 +4,10 @@ Store campaign-specific JSONL at
 `app/linkedin/<essay-slug>/memes/campaign.jsonl`. Keep reusable blank templates under
 `.skills/social-meme-campaign/assets/templates/`.
 
+For a delegated weekly-newsroom body variant, store the ledger under that run's research directory
+and keep its rendered asset inside the variant Markdown file's parent directory. Research variants
+are never scheduler inputs and cannot attach directly.
+
 Required row fields:
 
 - `version`: integer `1`.
@@ -16,8 +20,8 @@ Required row fields:
 - `alt_text`: description of the template relationship and visible text.
 - `asset`: repo-relative rendered-draft path.
 - `asset_sha256`: empty while drafting; renderer fills it.
-- `render_url`: empty while drafting; the renderer records Memegen's canonical URL. For
-  original generated art, record an `imagegen://` provenance identifier instead.
+- `render_url`: empty while drafting; the renderer records Memegen's canonical URL.
+  Generated replacement artwork is not valid for a classic-meme campaign.
 - `rights`: object with `status` and `provenance`.
 - `status`: `draft`, `review`, `approved`, or `exported`.
 - `post_body_sha256`: SHA-256 of the Markdown body after frontmatter.
@@ -25,8 +29,12 @@ Required row fields:
 
 Rights statuses:
 
-- Publishable: `owned`, `licensed`, `public-domain`, `cc-compatible`.
+- Publishable: `owned`, `licensed`, `public-domain`, `cc-compatible`, `fair-use-approved`.
 - Review-only: `unverified`, `fair-use-review`, `classic-template-preview`.
+
+`fair-use-approved` requires an established template, approval of the exact post-and-visual pair,
+and `rights.accepted_by: "Nicholas Major 2026-09-29 (via chat)"`. It records Nick's standing risk
+acceptance without representing the artwork as licensed.
 
 ## Post selection metadata
 

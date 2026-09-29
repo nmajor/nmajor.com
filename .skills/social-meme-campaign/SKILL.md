@@ -48,6 +48,10 @@ cards. The jank is part of the format.
 - Slightly awkward line breaks and compressed JPEGs are fine. Wrong template semantics
   are not.
 
+Never generate replacement artwork for a meme template. The familiar image is part of the meme's
+meaning. If the exact template cannot be used, choose another established template, move to a real
+source capture, or use no meme.
+
 ## Workflow
 
 1. Inventory the batch. Skip generation for every post with non-empty `media:`. Still
@@ -55,14 +59,21 @@ cards. The jank is part of the format.
 2. Abstract the story before writing. Identify the reusable decision error, incentive,
    risk pattern, or operational truth behind it. The named company is evidence for the
    post, not the meme's punchline. Make the operator the observer, not the fool.
-3. Choose a contract before writing. The image pattern carries meaning, so every slot
+3. Run `meme-angle-selector` to generate the comic payload, compare distinct angles, and rank
+   established templates before choosing a contract. The image pattern carries meaning, so every slot
    must perform its declared role. When the user asks for variants, use different
    template relationships and joke mechanisms. Do not relabel the same punchline five
    times.
+   In an ordered review set, option 1 is the recommendation. Later options exist only when
+   they express a genuinely different relationship or framing. Never duplicate a rendered asset
+   under a second label, and never describe a text-only change as an image variant.
 4. Use short text. Do not add factual claims that are absent from the post. Reject a
    concept that needs the LinkedIn caption to explain the template relationship.
-5. Write JSONL to `app/linkedin/<essay-slug>/memes/campaign.jsonl` with
-   `status: "draft"` and `attached: false`.
+5. For scheduler-facing recommendations, write JSONL to
+   `app/linkedin/<essay-slug>/memes/campaign.jsonl` with `status: "draft"` and
+   `attached: false`. In delegated weekly-newsroom mode, body and image variants stay entirely
+   under the run directory: use `research/linkedin-weekly/<run-id>/variant-memes/campaign.jsonl`,
+   keep each asset inside its variant post's research directory, and never attach it directly.
 6. Validate concepts:
 
    ```bash
@@ -87,10 +98,17 @@ cards. The jank is part of the format.
    choice such as "this one" selects it. A request to adjust one exact meme also selects
    that option; rerender it and update `meme:` in the same turn. Selection does not grant
    approval, clear rights, set `media:`, or authorize publishing.
+   When Nick explicitly approves an exact displayed candidate-1 post-and-meme pair without naming
+   another candidate, that approval also selects candidate 1 and the agent records its `meme:` path.
+   Approval of post copy alone does not select or approve a visual.
 10. Treat Memegen and classic-template art as `fair-use-review` by default. The open-source
-   renderer does not grant rights to its background images. Before production, record a
-   publishable rights status for the exact template asset or replace it with compatible
-   art that preserves the same recognizable pattern.
+    renderer does not grant rights to its background images. Before production, record a
+    publishable rights status for the exact template asset. Nick accepted the fair-use risk for
+    established meme templates on 2026-09-29 and instructed the workflow not to ask again. After
+    he approves an exact post-and-template pair, record `fair-use-approved` and
+    `accepted_by: Nicholas Major 2026-09-29 (via chat)` in the scheduler-facing ledger. This
+    standing acceptance does not approve the copy or visual selection and does not cover invented
+    imitation templates.
 11. After Nick explicitly approves each exact rendered meme, record
    `status: "approved"` and
    `approved: "Nicholas Major YYYY-MM-DD (via chat)"`. This approves the meme only,
@@ -111,9 +129,13 @@ cards. The jank is part of the format.
 
 - Require `audience: "ai-decision-maker"`, a specific `operator_moment`, correct slot
   mapping, useful alt text, a matching post-body hash, and a local catalog template.
-- Reject corporate phrasing, generic AI futurism, duplicate jokes, fear, humiliation,
+- Reject corporate phrasing, generic AI futurism, duplicate jokes, fear bait, humiliation,
   protected-class jokes, injuries, disasters, or unsupported claims.
-- Treat `unverified`, `fair-use-review`, and `classic-template-preview` as review-only.
+- A verified cautionary story is eligible. The meme must clarify the decision error, incentive,
+  or recovery and may not turn affected customers or individual employees into the punchline.
+- Treat `unverified`, `fair-use-review`, and `classic-template-preview` as review-only. An exact
+  approved established-template pair may move to `fair-use-approved` under Nick's standing
+  acceptance; do not ask him to repeat it.
 - Treat `meme:` as the chosen review asset and `media:` as the scheduler attachment.
   Never infer approval or publishable rights from selection.
 - Never attach a review meme. The attachment script fails closed on approval, rights,
@@ -124,4 +146,5 @@ cards. The jank is part of the format.
 
 Return the campaign ledger, local template assets used, rendered review set, QA result,
 rights blockers, attachment changes, and current asset gate: `DRAFT`, `REVIEW`,
-`PRODUCTION-READY`, or `EXPORTED`. State LinkedIn-post approval separately.
+`PRODUCTION-READY`, or `EXPORTED`. Order the recommendation first and show each path once.
+State LinkedIn-post approval separately.

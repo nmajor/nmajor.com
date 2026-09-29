@@ -1,0 +1,6197 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><meta name="description" content="STG Logistics automated manual tender processing with Pallet's AI agents, eliminating repetitive data entry across its operations."><meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://www.pallet.com/customers/stg-logistics"><meta property="og:locale" content="en_US"><meta property="og:type" content="website"><meta property="og:site_name" content="Pallet"><meta property="og:url" content="https://www.pallet.com/customers/stg-logistics"><meta property="og:title" content="STG Logistics: Automated Tender Processing | Pallet"><meta property="og:description" content="STG Logistics automated manual tender processing with Pallet's AI agents, eliminating repetitive data entry across its operations."><meta property="og:image" content="https://cdn.sanity.io/images/1ua24syd/production/c1dde5e4568cce8f157d2af293dcffaea7083e93-6720x4480.jpg?rect=0,476,6720,3528&w=1200&h=630&q=95&fit=crop&auto=format"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="STG Logistics: Automated Tender Processing | Pallet"><meta property="twitter:title" content="STG Logistics: Automated Tender Processing | Pallet"><meta property="twitter:description" content="STG Logistics automated manual tender processing with Pallet's AI agents, eliminating repetitive data entry across its operations."><meta property="twitter:card" content="summary_large_image"><meta property="twitter:creator" content="@trypallet"><meta property="twitter:image" content="https://cdn.sanity.io/images/1ua24syd/production/c1dde5e4568cce8f157d2af293dcffaea7083e93-6720x4480.jpg?rect=0,476,6720,3528&w=1200&h=630&q=95&fit=crop&auto=format"><meta property="twitter:image:alt" content="STG Logistics: Automated Tender Processing | Pallet"><title>STG Logistics: Automated Tender Processing | Pallet</title><style>@font-face {
+  font-family: "Suisse Intl";
+  src: url("/assets/fonts/suisse/SuisseIntl-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Onsite Mono";
+  src: url("/assets/fonts/onsite-semimono/OnsiteMono-Book.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("/assets/fonts/suisse/SuisseIntl-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 450;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("/assets/fonts/suisse/SuisseIntl-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --next-black: #1c1a17;
+  --next-white: #ffffff;
+  --next-offwhite: #fafafa;
+  --next-eggshell: #f1f1ed;
+  --next-gray: #838383;
+  --next-line: #d9d9d9;
+  --next-clay: #b16e41;
+  --next-gutter: 16px;
+  --next-content-max: 2280px;
+  --next-shell-max: 2560px;
+  --next-header-height: 66px;
+  --next-radius: 3px;
+  --next-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --next-ease-standard: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Gentler than --next-ease-out, which front-loads almost all of its travel
+     and makes the line-by-line heading reveal read as a snap. */
+  --next-ease-reveal: cubic-bezier(0.33, 1, 0.68, 1);
+  --next-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.66' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.32 0.32 0.32 0 0 0.32 0.32 0.32 0 0 0.32 0.32 0.32 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 768px) {
+  :root {
+    --next-gutter: 48px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --next-gutter: 140px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--next-white);
+  color: var(--next-black);
+  font-family: "Suisse Intl", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.next-page {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: clip;
+  background: var(--next-white);
+  color: var(--next-black);
+}
+
+:where(body.next-page, body.next-page button, body.next-page input) {
+  font:
+    400 16px/1.3 "Suisse Intl",
+    sans-serif;
+}
+
+/* Slightly smaller base type on phones, to match the trimmed-down mobile
+   header and menu. */
+@media (max-width: 767px) {
+  :where(body.next-page, body.next-page button, body.next-page input) {
+    font-size: 15px;
+  }
+}
+
+:where(
+  body.next-page h1,
+  body.next-page h2,
+  body.next-page h3,
+  body.next-page p,
+  body.next-page ul
+) {
+  margin: 0;
+}
+
+:where(body.next-page ul) {
+  padding: 0;
+  list-style: none;
+}
+
+:where(body.next-page a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(body.next-page button, body.next-page input) {
+  color: inherit;
+}
+
+:where(body.next-page button) {
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+:where(body.next-page img, body.next-page svg) {
+  display: block;
+}
+
+:where(body.next-page img) {
+  max-width: 100%;
+}
+
+body.next-page :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+body.next-page ::selection {
+  background: var(--next-black);
+  color: var(--next-white);
+}
+
+.next-container {
+  width: min(100%, var(--next-shell-max));
+  margin-inline: auto;
+  padding-inline: var(--next-gutter);
+}
+
+.next-section {
+  position: relative;
+  isolation: isolate;
+}
+
+/** Same hidden-scrollbar treatment classic's Toc.svelte/Terms.astro use for
+ * their own sticky sidebar lists, so a long list can scroll internally
+ * without a visible scrollbar. */
+.next-scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.next-scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.next-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 76px;
+  padding-bottom: 58px;
+  text-align: center;
+}
+
+.next-section-heading h2 {
+  max-width: 880px;
+  font-size: clamp(34px, 7.6vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.next-eyebrow {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.next-text-link {
+  display: inline-block;
+  width: fit-content;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1;
+}
+
+.next-text-link,
+.next-header a,
+.next-footer a {
+  transition: opacity 240ms var(--next-ease-out);
+}
+
+[data-peek-lines] .peek-line {
+  display: block;
+  overflow: hidden;
+  /** Room for descenders and glyph overhangs without changing line spacing. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+[data-peek-lines] .peek-line > span {
+  display: block;
+}
+
+.js [data-peek-lines] .peek-line > span {
+  transform: translate3d(0, 105%, 0);
+  transition: transform 900ms var(--next-ease-reveal);
+  transition-delay: calc(var(--peek-i, 0) * var(--peek-stagger, 110ms));
+  will-change: transform;
+}
+
+.js [data-peek-lines].is-peeked .peek-line > span {
+  transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 767px) {
+  [data-peek-lines] {
+    /** Wider gaps so multi-line mobile titles read as one line at a time. */
+    --peek-stagger: 170ms;
+  }
+}
+
+.next-text-link:hover,
+.next-header a:hover:not(.next-pill),
+.next-footer a:hover:not(.next-pill) {
+  opacity: 0.58;
+}
+
+/** :not([data-reveal="true"]) excludes the "video" lazy module's own
+ * click-to-reveal marker — see next.ts's initReveals() for why the two
+ * systems can't share this attribute value. */
+.js [data-reveal]:not([data-reveal="true"]) {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 700ms var(--next-ease-out),
+    transform 700ms var(--next-ease-out);
+}
+
+.js [data-reveal]:not([data-reveal="true"]).is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+  .next-section-heading {
+    gap: 24px;
+    padding-top: 96px;
+    padding-bottom: 68px;
+  }
+
+  .next-cases .next-section-heading {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .next-insights .next-section-heading {
+    padding-top: 80px;
+    padding-bottom: 58px;
+  }
+}
+
+.next-page .code {
+  background: hsl(351 47% 3%);
+  color: hsl(30 14% 93%);
+  overflow-x: auto;
+}
+
+/* prism.css sets white-space: pre-wrap on the <code> element, which wraps
+ * long lines instead of letting them scroll — for code that reads as the
+ * line's indentation/structure breaking apart. Keeping each line intact
+ * (pre) and letting .code's own overflow-x: auto handle anything that
+ * doesn't fit means a scrollbar only ever shows up on the lines that
+ * actually need it, never all the time. */
+.next-page .code code {
+  white-space: pre;
+}
+
+.next-brand {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.next-brand img {
+  display: block;
+  width: 110px;
+  height: 26px;
+}
+
+.next-brand--mark-only img {
+  width: 44px;
+  height: 23px;
+}
+
+.next-pill {
+  display: inline-flex;
+  min-height: 55px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 999px;
+  padding: 7px 8px 7px 24px;
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition:
+    color 260ms var(--next-ease-out),
+    background-color 260ms var(--next-ease-out);
+}
+
+.next-pill--light {
+  background: var(--next-eggshell);
+}
+
+.next-pill--dark {
+  background: var(--next-black);
+  color: var(--next-white);
+}
+
+.next-pill--white {
+  background: var(--next-white);
+  color: var(--next-black);
+}
+
+.next-pill--white .next-pill__arrow {
+  background: var(--next-eggshell);
+  color: var(--next-black);
+}
+
+.next-pill--glass {
+  background: rgb(255 255 255 / 12%);
+  color: var(--next-white);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.next-pill--glass:hover {
+  border-color: var(--next-white);
+  background: var(--next-white);
+  color: var(--next-black);
+}
+
+.next-pill__arrow {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--next-white);
+  color: var(--next-black);
+}
+
+.next-pill--glass .next-pill__arrow {
+  background: rgb(255 255 255 / 20%);
+  color: var(--next-white);
+}
+
+.next-pill--glass:hover .next-pill__arrow {
+  background: rgb(28 26 23 / 10%);
+  color: var(--next-black);
+}
+
+.next-pill__arrow svg {
+  transition: transform 350ms var(--next-ease-out);
+}
+
+.next-pill:hover {
+  background: var(--next-black);
+  color: var(--next-white);
+  opacity: 1;
+}
+
+.next-pill.next-pill--glass:hover {
+  background: var(--next-white);
+  box-shadow: inset 0 0 0 1px rgb(28 26 23 / 20%);
+  color: var(--next-black);
+}
+
+.next-pill:hover .next-pill__arrow svg {
+  transform: translate3d(2px, -2px, 0);
+}
+
+.next-announcement {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5px 16px;
+  background: var(--next-eggshell);
+  color: var(--next-black);
+}
+
+@media (min-width: 1024px) {
+  .next-announcement {
+    margin-bottom: 8px;
+  }
+}
+
+.next-announcement a {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.next-announcement a>span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+.next-announcement__label {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  border: 1px solid currentColor;
+  padding: 4px 5px 3px;
+  font-family: "Onsite Mono", monospace;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.next-header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  height: var(--next-header-height);
+  background: rgb(255 255 255 / 94%);
+  backdrop-filter: saturate(120%) blur(12px);
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 360ms var(--next-ease-out),
+    background-color 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease;
+  border-bottom: 1px solid transparent;
+  will-change: transform;
+}
+
+@media (min-width: 1024px) {
+
+  /* The announcement banner above adds an 8px margin-bottom gap on desktop
+     (see .next-announcement) — margin, not padding, so it's empty space
+     revealing the page background underneath rather than the banner's own
+     color. That reads as a visible seam whenever the header's own
+     background differs from the page background (e.g. --offwhite on
+     customer-story pages). Extending the header's background 8px upward
+     into that gap (inherit picks up whichever variant is active) plugs it
+     — harmless when there's no announcement, since it then sits off the
+     top of the viewport. */
+  .next-header::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: inherit;
+  }
+}
+
+.js .next-header.is-hidden {
+  pointer-events: none;
+  transform: translate3d(0, calc(-100% - 1px), 0);
+}
+
+.js .next-header.is-peeking,
+.js .next-header.is-hidden:focus-within {
+  pointer-events: auto;
+  background: var(--next-white);
+  box-shadow: 0 1px 0 rgb(17 17 15 / 8%);
+  transform: translate3d(0, 0, 0);
+}
+
+.next-header--offwhite {
+  background: rgb(250 250 250 / 94%);
+}
+
+.js .next-header--offwhite.is-peeking,
+.js .next-header--offwhite.is-hidden:focus-within {
+  background: var(--next-offwhite);
+}
+
+/** See-through over a dark hero image (Next404.astro) — white nav text/logo
+ * instead of the default dark-on-light. The base .next-header selector's
+ * own .is-peeking/.is-hidden:focus-within rules already solidify the
+ * *background* on scroll-up-to-peek (arbitrary page content, not the hero,
+ * sits behind the header by then) — but text/logo color needs its own
+ * explicit revert here, since nothing else resets this class's color. */
+.next-header--transparent {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+  color: var(--next-white);
+}
+
+.next-header--transparent .next-brand img,
+.next-header--transparent .next-header__mobile-wordmark {
+  filter: brightness(0) invert(1);
+}
+
+.js .next-header--transparent.is-peeking,
+.js .next-header--transparent.is-hidden:focus-within,
+.js .next-header--transparent.is-menu-pinned {
+  color: var(--next-black);
+}
+
+/** The mobile menu panel is its own solid white sheet directly beneath the
+ * header — leaving the bar above it see-through would show the hero photo
+ * sandwiched between an opaque header and an opaque panel. Force the same
+ * solid look the peeking state already uses. */
+.js .next-header--transparent.is-menu-pinned {
+  background: var(--next-white);
+}
+
+.js .next-header--transparent.is-peeking .next-brand img,
+.js .next-header--transparent.is-hidden:focus-within .next-brand img,
+.js .next-header--transparent.is-menu-pinned .next-brand img,
+.js .next-header--transparent.is-peeking .next-header__mobile-wordmark,
+.js .next-header--transparent.is-hidden:focus-within .next-header__mobile-wordmark,
+.js .next-header--transparent.is-menu-pinned .next-header__mobile-wordmark {
+  filter: none;
+}
+
+/** The glass CTA pill reads fine over the hero photo, but once the header
+ * solidifies to a solid white background (see above) its near-white glass
+ * tint + white text would nearly disappear — fall back to the same look
+ * the plain "light" pill uses everywhere else. */
+.js .next-header--transparent.is-peeking .next-pill--glass,
+.js .next-header--transparent.is-hidden:focus-within .next-pill--glass,
+.js .next-header--transparent.is-menu-pinned .next-pill--glass {
+  background: var(--next-eggshell);
+  color: var(--next-black);
+  backdrop-filter: none;
+}
+
+.js .next-header--transparent.is-peeking .next-pill--glass .next-pill__arrow,
+.js .next-header--transparent.is-hidden:focus-within .next-pill--glass .next-pill__arrow,
+.js .next-header--transparent.is-menu-pinned .next-pill--glass .next-pill__arrow {
+  background: var(--next-white);
+  color: var(--next-black);
+}
+
+.next-skip {
+  position: absolute;
+  z-index: 110;
+  top: 8px;
+  left: 8px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  background: var(--next-black);
+  color: var(--next-white);
+  padding: 12px 18px;
+}
+
+.next-skip:focus {
+  width: auto;
+  height: auto;
+  clip-path: none;
+}
+
+.next-header__inner {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.next-header__nav,
+.next-header__cta {
+  display: none;
+}
+
+.next-header__brand {
+  display: inline-flex;
+  grid-column: 2;
+  align-items: center;
+}
+
+.next-header__mobile-wordmark {
+  display: none;
+}
+
+.next-mobile-nav {
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  align-items: center;
+  justify-self: start;
+}
+
+.next-mobile-nav summary {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.next-mobile-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.next-mobile-nav__label {
+  transition: opacity 220ms var(--next-ease-out);
+}
+
+/* Full-screen panel dropping below the header. Height is set from JS to the
+   exact distance between the header's bottom and the viewport bottom so the
+   footer CTA always pins to the bottom edge; the calc() is the no-JS fallback.
+   Absolute (not fixed) because the header's transform makes it the containing
+   block for fixed descendants. */
+.next-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  height: var(--menu-height, calc(100svh - var(--next-header-height)));
+  flex-direction: column;
+  /** Its own opaque panel, so its own opaque (dark) text color too —
+   * .next-header--transparent's white applies to the closed header bar,
+   * not to a solid-white mobile menu panel underneath it. */
+  background: var(--next-white);
+  color: var(--next-black);
+  border-top: 1px solid var(--next-line);
+}
+
+.next-menu__scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.next-menu__nav {
+  display: flex;
+  flex-direction: column;
+  padding: 6px var(--next-gutter) 24px;
+}
+
+.next-menu__row {
+  position: relative;
+}
+
+.next-menu__link,
+.next-menu__trigger {
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--next-black);
+  transition: color 260ms var(--next-ease-out);
+}
+
+.next-menu__link {
+  display: block;
+  padding-block: 19px;
+}
+
+.next-menu__trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 16px;
+  text-align: left;
+}
+
+/* When one section is expanded, the others recede to gray. */
+.next-menu__nav.has-open .next-menu__section:not(.is-open) .next-menu__trigger,
+.next-menu__nav.has-open .next-menu__link {
+  color: var(--next-gray);
+}
+
+/* Plus that morphs into a minus — same idea as the product-page FAQ toggle. */
+.next-menu__plus {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.next-menu__plus::before,
+.next-menu__plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 19px;
+  height: 1.5px;
+  background: currentColor;
+  content: "";
+  translate: -50% -50%;
+  transition: transform 300ms var(--next-ease-out);
+}
+
+.next-menu__plus::after {
+  transform: rotate(90deg);
+}
+
+.next-menu__section.is-open .next-menu__plus::after {
+  transform: rotate(0);
+}
+
+/* Expand/collapse via the 0fr → 1fr grid-rows trick (matches the FAQ). Content
+   is shown by default so it stays reachable without JS; `.js` collapses it. */
+.next-menu__reveal {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows 480ms var(--next-ease-out),
+    opacity 320ms ease;
+}
+
+.next-menu__reveal-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.js .next-menu__reveal {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.js .next-menu__section.is-open .next-menu__reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.next-menu__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 4px 0 20px;
+}
+
+.next-menu__card {
+  display: flex;
+  min-height: 152px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  border-radius: var(--next-radius);
+  background: var(--next-eggshell);
+  transition: background-color 220ms var(--next-ease-out);
+}
+
+.next-menu__card:hover {
+  background: var(--next-line);
+}
+
+.next-menu__card-icon {
+  display: flex;
+  width: 27px;
+  height: 27px;
+}
+
+.next-menu__card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Glyph SVGs ship white for dark product imagery; render them dark here,
+     same as the homepage product detail glyphs. */
+  filter: brightness(0);
+}
+
+.next-menu__card-name {
+  margin-top: auto;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.next-menu__card-desc {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--next-gray);
+}
+
+.next-menu__sublist {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0 20px 2px;
+}
+
+.next-menu__sublist a {
+  display: block;
+  padding-block: 8px;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+/** navigation.section's optional labeled columns, mobile menu equivalent of
+ * .next-desktop-submenu__columns — stacked instead of side by side. */
+.next-menu__columns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-block: 20px;
+}
+
+.next-menu__column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.next-menu__column-title {
+  margin: 0;
+  color: var(--next-gray);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.next-menu__column .next-menu__sublist {
+  padding: 0;
+}
+
+.next-menu__footer {
+  flex: none;
+  padding: 14px var(--next-gutter) calc(18px + env(safe-area-inset-bottom, 0px));
+}
+
+.next-menu__cta.next-pill {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 62px;
+  justify-content: center;
+  padding-inline: 24px;
+}
+
+.next-menu__cta.next-pill .next-pill__arrow {
+  position: absolute;
+  right: 8px;
+}
+
+/* Open animation: the panel fades in while its rows drop down in sequence,
+   reading as the menu "animating down".
+
+   IMPORTANT: visibility must never depend on an animation firing. Native
+   <details> reveals its content from display:none, and Safari can leave a
+   fill-mode animation stuck on its starting keyframe — which previously froze
+   the rows at opacity:0 (blank menu). So the rows animate transform ONLY: even
+   if the animation never runs, they're fully opaque. The fade lives on the
+   panel with no fill-mode, so a skipped animation just means "no fade", never
+   "hidden". The whole thing is scoped to `.js` and to users who allow motion. */
+@keyframes nextMenuPanel {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nextMenuRow {
+  from {
+    transform: translateY(-14px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .next-mobile-nav[open] .next-menu {
+    animation: nextMenuPanel 260ms var(--next-ease-out);
+  }
+
+  .js .next-mobile-nav[open] .next-menu__row,
+  .js .next-mobile-nav[open] .next-menu__footer {
+    animation: nextMenuRow 520ms var(--next-ease-out) backwards;
+  }
+
+  .js .next-mobile-nav[open] .next-menu__row {
+    animation-delay: calc(70ms + var(--menu-i, 0) * 55ms);
+  }
+
+  .js .next-mobile-nav[open] .next-menu__footer {
+    animation-delay: 300ms;
+  }
+}
+
+@media (max-width: 1023px) {
+
+  /* Shared 40px row height so Menu / wordmark / Demo share one center. */
+  .next-header__brand,
+  .next-mobile-nav {
+    height: 40px;
+  }
+
+  .next-header__brand .next-brand {
+    display: none;
+  }
+
+  .next-header__mobile-wordmark {
+    display: block;
+    width: 59px;
+    height: 26px;
+  }
+
+  /* Freeze the page behind the open menu. overflow:hidden on the root breaks
+     position:sticky, so the header is pinned to its pre-lock screen position
+     (see .is-menu-pinned) while the panel is open. */
+  html.next-menu-open,
+  html.next-menu-open body {
+    overflow: hidden;
+  }
+
+  /* The menu panel already begins with the shared divider. Match it at the
+     header edge while open instead of carrying the scroll-state shadow. */
+  .js html.next-menu-open .next-header {
+    border-bottom-color: var(--next-line);
+    box-shadow: none;
+  }
+
+  /* Next404.astro's hero pulls up by exactly the header's normal-flow height
+     to sit behind it (see the negative margin in Next404.astro). Switching
+     the header to position:fixed above (.is-menu-pinned) zeroes that flow
+     height out, so the same negative margin overshoots and drags the hero's
+     background up over the announcement bar. Neutralize it while the menu
+     is open — the hero is fully hidden behind the header/panel either way. */
+  html.next-menu-open .next-404-hero {
+    margin-top: 0;
+  }
+
+  .next-header.is-menu-pinned {
+    position: fixed;
+    top: var(--header-pin-top, 0px);
+    right: 0;
+    left: 0;
+  }
+}
+
+.next-hero__copy {
+  display: grid;
+  min-height: 371px;
+  align-items: end;
+  gap: 36px;
+  padding-top: 94px;
+  padding-bottom: 42px;
+}
+
+.next-hero h1 {
+  max-width: 900px;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.next-hero__aside {
+  display: flex;
+  max-width: 430px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.next-hero__aside p {
+  color: #555552;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.next-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.next-events__filter.active {
+  color: var(--next-black);
+}
+
+.next-hero .next-pill {
+  min-height: 47px;
+  padding: 4px 4px 4px 20px;
+}
+
+.next-hero__media {
+  position: relative;
+  height: min(125vw, 620px);
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+}
+
+.hero-sequence__scenes,
+.hero-sequence__scene,
+.hero-sequence__video,
+.hero-sequence__veil {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-sequence__scene {
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1100ms var(--next-ease-standard);
+}
+
+.hero-sequence__scene.is-active {
+  z-index: 1;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero-sequence__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.js .hero-sequence__video {
+  opacity: 0;
+  transition: opacity 700ms var(--next-ease-standard);
+}
+
+.js .hero-sequence__video.is-ready {
+  opacity: 1;
+}
+
+.hero-sequence__veil {
+  background: linear-gradient(180deg,
+      rgb(3 5 3 / 38%) 0%,
+      transparent 34%,
+      transparent 65%,
+      rgb(3 5 3 / 48%) 100%);
+}
+
+.hero-sequence__feed {
+  --hero-feed-bottom-space: 72px;
+  position: absolute;
+  z-index: 2;
+  top: 48px;
+  right: 16px;
+  bottom: 0;
+  left: 16px;
+}
+
+.hero-sequence__feed-track {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: var(--hero-feed-bottom-space);
+  transform: translateY(var(--hero-feed-y, 100%));
+  transition: transform 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hero-sequence__feed-track.is-resetting {
+  transition: none;
+}
+
+/* Chrome-only bug: backdrop-filter can flash unfiltered for the first
+   paint or two right after an element goes display:none -> block, because
+   the compositor has to freshly allocate/sample the backdrop layer at that
+   moment (Safari doesn't have this bug). Every bubble reveal used to do
+   exactly that. Staying on `display: block` always and instead pulling
+   not-yet-revealed bubbles out of flow via position (so they don't occupy
+   space in the flex feed, same effect display:none had on layout) avoids
+   ever destroying/recreating that compositing layer. */
+.js .hero-bubble[hidden] {
+  display: block;
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html:not(.js) .hero-bubble[hidden] {
+  display: block;
+}
+
+.hero-bubble {
+  position: relative;
+  display: block;
+  width: 320px;
+  max-width: 100%;
+  color: var(--next-white);
+  font-size: 14px;
+  line-height: 1.32;
+  transform: none;
+  will-change: transform;
+}
+
+/* backdrop-filter lives on a separate, never-slid element from
+   .hero-bubble's own slide-in transform below — animating transform on the
+   SAME element as backdrop-filter forces the browser to resample the
+   backdrop at every frame as the element moves, which reads as flicker.
+   Keeping the blurred surface geometrically static (aside from the
+   imperceptible nudge below) avoids that resampling cost entirely, instead
+   of just hinting the compositor around it. */
+@keyframes hero-bubble-surface-nudge {
+
+  0%,
+  100% {
+    transform: translateZ(0);
+  }
+
+  50% {
+    transform: translate3d(0, 0.01px, 0);
+  }
+}
+
+.hero-bubble__surface {
+  position: relative;
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 18px;
+  background: rgb(183 181 159 / 0.2);
+  -webkit-backdrop-filter: blur(36px) saturate(1.08);
+  backdrop-filter: blur(36px) saturate(1.08);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Pins this to its own stable compositing layer, independent of
+     .hero-bubble's continuously-changing transform — without this, the
+     ancestor moving through sub-pixel positions each frame forces the
+     rounded-corner blur clip here to be re-rasterized at slightly
+     different offsets, which shows up as a flickering seam (often at the
+     bottom edge).
+     A perpetual, imperceptible sub-pixel nudge (rather than a static
+     translateZ(0)) keeps this layer permanently "active" to Chrome's
+     compositor — once a composited layer goes idle, Chrome can let its
+     backdrop-filter sample go stale against whatever's still changing
+     behind it (the playing hero video), which reads as a flicker. An
+     always-running animation never lets that happen. */
+  animation: hero-bubble-surface-nudge 1s linear infinite;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 14%),
+    inset 0 -1px 0 rgb(0 0 0 / 10%),
+    0 18px 48px rgb(0 0 0 / 13%);
+}
+
+.hero-bubble__surface::after {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: 14px;
+  pointer-events: none;
+  content: "";
+}
+
+.js .hero-bubble {
+  /* No opacity animation here on purpose — an ancestor transitioning
+     opacity forces its subtree into an isolated offscreen render before
+     compositing, and .hero-bubble__surface's backdrop-filter can't sample
+     past that isolation to the real page content behind it (same category
+     of bug as the mask-image issue). Transform alone doesn't force that
+     same isolated pass, so the slide-in stays but the fade doesn't. */
+  transform: translateY(24px) scale(0.965);
+  transform-origin: center bottom;
+  transition: transform 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .hero-bubble.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Old bubbles being pushed out (see revealBubble in HeroAnimation.astro)
+   fade out via a dedicated state instead of reusing the entrance's opacity
+   — scoped to just this bubble's own subtree so it doesn't put a
+   transitioning-opacity ancestor above any *currently visible* bubble's
+   backdrop-filter. This one's about to be invisible anyway, so its own
+   blur glitching briefly during the fade is a non-issue. */
+.js .hero-bubble.is-exiting {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+
+.hero-bubble__sender {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  color: rgb(255 255 255 / 72%);
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.hero-bubble__sender>span:last-child {
+  line-height: 1;
+}
+
+.hero-bubble--alert .hero-bubble__sender>span:last-child {
+  font-size: 16px;
+  font-weight: 450;
+}
+
+.hero-bubble__agent-mark {
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.hero-bubble__avatar {
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 12%);
+  color: var(--next-white);
+  font-size: 12px;
+}
+
+.hero-bubble__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bubble__agent-mark {
+  /* pallet-mark.svg is a wide lockup (viewBox 44x23, ~1.9:1) — it scales to
+     the narrower dimension inside this circle, so keep padding small or it
+     shrinks even further and reads as a barely-visible speck. */
+  padding: 3px;
+  background: rgb(6 8 6 / 76%);
+  color: var(--next-white);
+}
+
+.hero-bubble__agent-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* alert.svg is a self-contained icon (its own red circle + mark, not
+   currentColor) at a native 23x23 — sized to match, not stretched to fill
+   a smaller holder like the other bubble icons. */
+.hero-bubble__alert-icon {
+  display: inline-flex;
+  flex: none;
+  align-self: center;
+  width: 23px;
+  height: 23px;
+}
+
+.hero-bubble__file-icon svg,
+.hero-bubble li svg,
+.hero-bubble__resolved-row svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bubble__surface>strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.03em;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-bubble__actions-title {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-bubble p {
+  color: rgb(255 255 255 / 76%);
+  line-height: 1.36;
+}
+
+.hero-bubble__eyebrow {
+  position: relative;
+  display: block;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  color: rgb(255 255 255 / 90%);
+  font-size: 0.88em;
+  font-weight: 400;
+}
+
+.hero-bubble__eyebrow::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: rgb(255 255 255 / 22%);
+  content: "";
+}
+
+.hero-bubble__file-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-bubble__file-row strong {
+  overflow: hidden;
+  font-size: 1.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-bubble__file-copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.hero-bubble__file-row small {
+  color: rgb(255 255 255 / 80%);
+  font-size: 0.86em;
+}
+
+.hero-bubble__file-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+}
+
+.hero-bubble--will-complete.is-visible .hero-bubble__file-icon {
+  animation: heroFileSettle 620ms cubic-bezier(0.22, 1, 0.36, 1) 2130ms both;
+}
+
+@keyframes heroFileSettle {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(0.91);
+  }
+
+  72% {
+    transform: scale(1.045);
+  }
+}
+
+.hero-bubble__status-stack {
+  position: relative;
+  display: block;
+  height: 1.3em;
+  font-size: 0.96em;
+}
+
+.hero-bubble__status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(255 255 255 / 52%);
+}
+
+.hero-bubble__status--complete {
+  color: #54ca7e;
+  opacity: 0;
+  transform: translate3d(0, 5px, 0);
+}
+
+.hero-bubble--will-complete.is-visible .hero-bubble__status--loading {
+  animation: heroStatusLoadingOut 320ms cubic-bezier(0.4, 0, 0.2, 1) 2000ms forwards;
+}
+
+.hero-bubble--will-complete.is-visible .hero-bubble__status--complete {
+  animation: heroStatusCompleteIn 480ms cubic-bezier(0.22, 1, 0.36, 1) 2160ms forwards;
+}
+
+@keyframes heroStatusLoadingOut {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes heroStatusCompleteIn {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-bubble ul {
+  display: grid;
+  gap: 3px;
+}
+
+.hero-bubble li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgb(255 255 255 / 72%);
+}
+
+.hero-bubble__check {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(113, 112, 111, 1);
+}
+
+.hero-bubble__check svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* The green check only appears once every row has fully settled (see
+   --check-delay, computed in HeroBubble.astro from the row reveal timing
+   below) — until then the holder shows as a plain gray circle. */
+.js .hero-bubble__check svg {
+  opacity: 0;
+}
+
+.js .hero-bubble.is-visible .hero-bubble__check svg {
+  animation: heroCheckReveal 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--check-delay, 0ms);
+}
+
+@keyframes heroCheckReveal {
+  to {
+    opacity: 1;
+  }
+}
+
+.js .hero-bubble li {
+  opacity: 0;
+  transform: translate3d(0, 5px, 0);
+}
+
+.js .hero-bubble.is-visible li {
+  animation: heroActionComplete 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(260ms + var(--action-index) * 150ms);
+}
+
+@keyframes heroActionComplete {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-bubble__buttons {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgb(255 255 255 / 14%);
+}
+
+.hero-bubble__buttons span {
+  position: relative;
+  display: inline-flex;
+  min-width: 48px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 14%);
+  color: rgb(255 255 255 / 78%);
+  font-size: 16px;
+  font-weight: 450;
+  line-height: 1;
+}
+
+.hero-bubble__buttons span i {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-style: normal;
+  line-height: 1;
+}
+
+.hero-bubble__buttons span.is-resolving::before {
+  position: absolute;
+  inset: 0;
+  background: #42b96d;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.hero-bubble--alert.is-visible .hero-bubble__buttons span.is-resolving::before {
+  animation: heroResolveFill 620ms cubic-bezier(0.22, 1, 0.36, 1) 720ms forwards;
+}
+
+@keyframes heroResolveFill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-bubble__resolved-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+}
+
+.hero-bubble__resolved-row svg {
+  width: 42px;
+  height: 42px;
+  color: #71706f;
+}
+
+.hero-bubble--resolved.is-visible .hero-bubble__resolved-row svg {
+  animation: heroResolvedPop 580ms cubic-bezier(0.22, 1, 0.36, 1) 360ms both;
+}
+
+@keyframes heroResolvedPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+    color: #71706f;
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    color: #4faf62;
+  }
+}
+
+.hero-bubble__resolved-row strong {
+  font-size: 0.96em;
+}
+
+.next-logo-rail {
+  position: relative;
+  display: flex;
+  height: 178px;
+  align-items: center;
+  overflow: hidden;
+  background: var(--next-white);
+}
+
+.next-logo-rail::before,
+.next-logo-rail::after {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: min(18vw, 180px);
+  pointer-events: none;
+  content: "";
+}
+
+.next-logo-rail::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--next-white), transparent);
+}
+
+.next-logo-rail::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--next-white), transparent);
+}
+
+.next-logo-rail__track {
+  display: flex;
+  width: max-content;
+  animation: next-logo-marquee 38s linear infinite;
+}
+
+.next-logo-rail ul {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 60px;
+  padding-right: 60px;
+}
+
+.next-logo-rail li {
+  display: grid;
+  width: 120px;
+  height: 58px;
+  flex: none;
+  place-items: center;
+}
+
+.next-logo-rail img {
+  width: 124px;
+  max-height: 58px;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+@keyframes next-logo-marquee {
+  to {
+    transform: translate3d(var(--next-logo-rail-shift, -50%), 0, 0);
+  }
+}
+
+.next-cases {
+  overflow: hidden;
+  padding-bottom: 48px;
+  background: var(--next-white);
+}
+
+.next-cases__viewport {
+  position: relative;
+  width: min(100%, var(--next-shell-max));
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.next-cases__track {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: flex-start;
+  gap: 12px;
+  margin-inline: auto;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0 var(--next-gutter) 8px;
+  scroll-padding-left: var(--next-gutter);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.next-cases__track::-webkit-scrollbar {
+  display: none;
+}
+
+.next-case {
+  flex: 0 0 min(339px, calc(100vw - (2 * var(--next-gutter))));
+  scroll-snap-align: start;
+  will-change: flex-basis;
+}
+
+.next-case a {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.next-case__copy {
+  display: flex;
+  height: 212px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  border-top: 1px solid var(--next-eggshell);
+  padding-top: 22px;
+}
+
+.next-case__company {
+  font-size: 12px;
+}
+
+.next-case h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  max-width: 620px;
+  height: calc(1.15em * 4);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+/** Desktop locks peer wrap points via <br>; balance would fight that. */
+.next-case h3[data-breaks-locked] {
+  text-wrap: wrap;
+}
+
+.next-case .next-text-link {
+  margin-top: auto;
+}
+
+.next-case img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--next-radius);
+  object-fit: cover;
+}
+
+.next-cases__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.next-scroll-progress {
+  position: relative;
+  width: 174px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--next-eggshell);
+}
+
+.next-scroll-progress span {
+  display: block;
+  width: 25%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--next-black);
+  transform-origin: left center;
+}
+
+.next-cases__buttons {
+  display: none;
+  gap: 14px;
+}
+
+.next-cases__buttons button {
+  --case-timer-progress: 0;
+  position: relative;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--next-eggshell);
+  border-radius: 50%;
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.next-cases__buttons [data-case-next]::after {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(currentColor calc(var(--case-timer-progress) * 1turn),
+      transparent 0);
+  content: "";
+  pointer-events: none;
+  -webkit-mask: radial-gradient(farthest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px));
+}
+
+.next-cases__buttons button:hover {
+  border-color: var(--next-black);
+  background: var(--next-eggshell);
+}
+
+/** CustomerStories.astro's custom Splide transition (see
+ * customer-stories.ts's createSpotlightTransition) plus the matching
+ * scroll-into-view reveal for the first slide: image drops in from above,
+ * content column rises from below, together (no stagger).
+ * Deliberately its own thing rather than the generic [data-reveal] (a plain
+ * fade + 18px lift applied uniformly), since the whole point here is two
+ * elements moving in from opposite directions on every slide change, not
+ * just once on scroll. */
+.js [data-slide-image] {
+  opacity: 0;
+  transform: translate3d(0, -28px, 0);
+  transition:
+    opacity 700ms var(--next-ease-out),
+    transform 700ms var(--next-ease-out);
+}
+
+.js [data-slide-image].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.js [data-slide-content] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 700ms var(--next-ease-out),
+    transform 700ms var(--next-ease-out);
+}
+
+.js [data-slide-content].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/** Autoplay countdown ring on the shared spotlight-carousel.ts "next" arrow
+ * (CustomerStories.astro, Quotes.astro) — same conic-gradient technique as
+ * .next-cases__buttons [data-case-next]::after, driven by
+ * --spotlight-timer-progress from spotlight-carousel.ts. Present regardless
+ * of whether autoplay is enabled for a given caller — the ring just stays
+ * at 0% (invisible, since the conic-gradient sweep is empty) when it is not. */
+.next-spotlight-arrow {
+  --spotlight-timer-progress: 0;
+  position: relative;
+}
+
+[data-spotlight-next]::after {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(currentColor calc(var(--spotlight-timer-progress) * 1turn),
+      transparent 0);
+  content: "";
+  pointer-events: none;
+  -webkit-mask: radial-gradient(farthest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px));
+}
+
+.next-products {
+  overflow: clip;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: var(--next-white);
+}
+
+/** The pinned fan stage only exists on desktop — mobile renders
+ * `.next-product-stack` instead (a plain vertical list, see below). */
+.next-products__motion {
+  display: none;
+}
+
+.next-product-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px var(--next-gutter) 0;
+}
+
+.next-product-stack__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--next-radius);
+  aspect-ratio: 4 / 3;
+  background: #191815;
+}
+
+.next-product-stack__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.next-product-stack__panel {
+  position: relative;
+  z-index: 1;
+  width: min(280px, calc(100% - 48px));
+  margin: 40px auto 0;
+  border-radius: calc(var(--next-radius) - 6px);
+  background: var(--next-white);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.next-product-stack__panel h3 {
+  font-size: 22px;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+}
+
+.next-product-stack__panel p {
+  margin-top: 14px;
+  color: var(--next-gray);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+}
+
+.next-product-stack__panel .next-text-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .next-product-stack-mobile {
+    display: none;
+  }
+
+  .next-products__motion {
+    display: block;
+  }
+}
+
+/** Bounded to one viewport band (not just in scroll-jack mode) so
+ * `.next-products__deck-wrap` always has a real, measurable height budget —
+ * `updateFanScale()` (next.ts) reads that budget and scales the card row to
+ * fit it, at any screen size. Without this, the budget only existed in
+ * `.motion-enhanced` (scroll-jack) mode; a reduced-motion user (or anyone
+ * who otherwise fell back to the static layout) got an unbounded column, so
+ * the fit-to-viewport math had nothing to fit against and the skewed card
+ * row could paint over the detail copy below it. */
+.next-products__sticky {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - var(--next-header-height));
+}
+
+.next-products__stage {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.next-products .next-section-heading {
+  position: relative;
+  z-index: 40;
+  flex: none;
+  gap: 14px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+/** A plain flex row — cards lay themselves out and overlap via negative
+ * margin, no JS-computed pixel offsets. The diagonal "climb" and the fit-to-
+ * viewport scale are the only two things applied as transforms on top. */
+.next-products__deck-wrap {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-products__deck-stack {
+  position: relative;
+  transform: translateY(-16px);
+}
+
+.next-products__deck {
+  display: flex;
+  align-items: flex-end;
+  /** translateY corrects for align-items: center (on the wrap) centering
+   * the deck's layout box, not its actual skewed paint — see next.ts. */
+  transform: scale(var(--product-fan-scale, 1)) translateY(var(--product-fan-shift-y, 0px));
+}
+
+.next-product-card {
+  position: relative;
+  z-index: var(--product-z);
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: var(--next-radius);
+  background: var(--next-white);
+  color: var(--next-white);
+  width: min(60vw, 240px, 34svh);
+  aspect-ratio: 4 / 5;
+  margin-left: -140px;
+  /** All cards sit on one line (the flex row's baseline) — no per-card Y
+   * offset. skewY applies per-card in its own local box, so it tilts every
+   * card identically (photo, icon and label all lean together) without
+   * cascading into a staircase across the row. transform-origin: left keeps
+   * the left edge exactly at its natural flex position — skewY only pushes
+   * the right edge down from there — so the card only ever grows downward,
+   * never upward into the heading above it (a center origin, the default,
+   * pushes the top-left corner up above the row's own box on top of that). */
+  transform: skewY(16deg) scaleX(0.9);
+  transform-origin: left;
+  will-change: opacity;
+}
+
+.next-product-card:first-child {
+  margin-left: 0;
+}
+
+/** Scroll-driven stage — sticky freeze while scroll selects the active card */
+.next-products.motion-enhanced .next-products__motion {
+  height: var(--product-runway, 500svh);
+  min-height: 2400px;
+}
+
+.next-products.motion-enhanced .next-products__sticky {
+  position: sticky;
+  top: var(--next-header-height);
+  overflow: hidden;
+}
+
+/** Title pins with the sticky stage for the full product runway. */
+.next-products.motion-enhanced .next-section-heading {
+  position: relative;
+  z-index: 50;
+  gap: 12px;
+  padding-top: 12px;
+  padding-bottom: 92px;
+}
+
+.next-products.motion-enhanced .next-product-details {
+  position: relative;
+  z-index: 40;
+  flex: none;
+  min-height: 192px;
+  /** Margin (not padding) — absolute detail articles ignore padding inset. */
+  margin: 0 var(--next-gutter) 48px;
+  padding: 0;
+}
+
+/** Short viewports: pull heading to the top and detail copy to the bottom
+ * so the middle card band keeps as much room as possible. */
+@media (max-height: 820px) {
+  .next-products.motion-enhanced .next-section-heading {
+    gap: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .next-products.motion-enhanced .next-section-heading h2 {
+    font-size: clamp(26px, 6.5vw, 36px);
+  }
+
+  .next-products.motion-enhanced .next-product-details {
+    min-height: 132px;
+    margin-top: 4px;
+    margin-bottom: 64px;
+  }
+}
+
+/** Direct-child selector — the icon's own <img> (nested inside
+ * .next-product-card__icon) must stay untouched by the photo's fade. */
+.next-product-card>img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /** Fades toward the card's white background rather than the card itself
+   * fading — so an inactive card washes out pale, instead of just dimming. */
+  opacity: 0.2;
+}
+
+.next-product-card.is-active>img {
+  opacity: 1;
+}
+
+.next-product-card::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 44%, rgb(0 0 0 / 38%));
+  content: "";
+}
+
+.next-product-card__icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.next-product-card__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.next-product-detail__glyph img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.next-product-card__name {
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.next-product-details {
+  position: relative;
+  flex: none;
+  min-height: 164px;
+  margin-inline: var(--next-gutter);
+}
+
+.next-product-detail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms var(--next-ease-out);
+}
+
+.next-product-detail.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.next-product-detail__glyph {
+  width: 40px;
+  height: 40px;
+  transform: none;
+}
+
+.next-product-detail__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.next-product-detail__glyph img {
+  filter: brightness(0);
+}
+
+.next-product-detail h3 {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 450;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.next-product-detail p {
+  max-width: 34ch;
+  margin-top: 24px;
+  color: var(--next-gray);
+  font-size: 17px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.next-product-detail .next-text-link {
+  margin-top: 28px;
+  margin-bottom: 24px;
+  border-bottom: 0;
+  padding-bottom: 7px;
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(var(--next-line), var(--next-line));
+  background-position:
+    left bottom,
+    left bottom;
+  background-repeat: no-repeat;
+  background-size:
+    0 1px,
+    100% 1px;
+  font-size: 15px;
+  font-weight: 450;
+  transition:
+    background-size 420ms var(--next-ease-out),
+    opacity 240ms var(--next-ease-out);
+}
+
+.next-product-detail .next-text-link:hover,
+.next-product-detail .next-text-link:focus-visible {
+  background-size:
+    100% 1px,
+    100% 1px;
+  opacity: 1;
+}
+
+.next-products__hint {
+  display: none;
+}
+
+.next-insights {
+  /* background: var(--next-eggshell); */
+  background-color: #f3f4ef;
+}
+
+.next-insights__body {
+  display: grid;
+  gap: 28px;
+  padding-bottom: 80px;
+}
+
+.next-insights__illustration {
+  position: relative;
+  display: flex;
+  min-height: 440px;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.next-insights__illustration img {
+  width: min(92%, 520px);
+  max-height: 520px;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0.48;
+}
+
+.next-insights__grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.next-insights__grid article {
+  display: flex;
+  min-height: 318px;
+  flex-direction: column;
+  border-radius: 4px;
+  padding: 32px;
+  background: #f9f9f4;
+}
+
+.next-insights__icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin-bottom: auto;
+}
+
+.next-insights__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.next-insights__grid h3 {
+  margin-top: 42px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.next-insights__grid p {
+  margin-top: 10px;
+  color: var(--next-gray);
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+@media (max-width: 1023px) {
+
+  /** Mobile + md: no scroll runway — illustration + four equal cards in
+   * normal flow. md intentionally reuses the mobile layout (not the lg 2x2
+   * split) rather than a half-way tablet treatment. */
+  .next-insights .next-section-heading {
+    gap: 12px;
+    padding-top: 48px;
+    padding-bottom: 16px;
+  }
+
+  .next-insights .next-section-heading h2 {
+    font-size: clamp(28px, 7vw, 36px);
+  }
+
+  .next-insights__body {
+    gap: 12px;
+    padding-bottom: 48px;
+  }
+
+  .next-insights__illustration {
+    min-height: 280px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .next-insights__illustration img {
+    width: min(92%, 400px);
+    max-height: 280px;
+    object-position: center;
+    opacity: 0.4;
+  }
+
+  .next-insights__grid {
+    gap: 12px;
+  }
+
+  .next-insights__grid article {
+    min-height: 318px;
+    padding: 24px;
+  }
+
+  .next-insights__grid h3 {
+    margin-top: 28px;
+  }
+}
+
+.next-features {
+  background: var(--next-white);
+}
+
+.next-features__list {
+  padding-bottom: 68px;
+}
+
+.next-features__stack-tail {
+  display: none;
+}
+
+.next-feature {
+  display: grid;
+  border-top: 1px solid var(--next-eggshell);
+}
+
+.next-feature details {
+  min-width: 0;
+}
+
+.next-feature summary {
+  display: grid;
+  min-height: 68px;
+  cursor: pointer;
+  list-style: none;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding-block: 20px;
+}
+
+.next-feature summary::-webkit-details-marker {
+  display: none;
+}
+
+.next-feature summary>span,
+.next-feature summary h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.next-feature__detail-inner {
+  display: flex;
+  max-width: 470px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 4px 0 28px 64px;
+}
+
+.next-feature__detail p {
+  color: var(--next-gray);
+}
+
+.next-feature__visual {
+  position: relative;
+  height: 28px;
+  overflow: hidden;
+  border-radius: var(--next-radius);
+  /* background: var(--feature-flat); */
+  transition: height 700ms var(--next-ease-out);
+}
+
+.next-feature--image {
+  --feature-flat: var(--next-eggshell);
+}
+
+.next-feature--video .next-feature__visual {
+  border-radius: 0;
+}
+
+.next-feature__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right top;
+  transform: scale(1.012);
+  transition: transform 800ms var(--next-ease-out);
+}
+
+.next-feature__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right top;
+}
+
+.next-feature.is-active .next-feature__image,
+.next-feature details[open]+.next-feature__visual .next-feature__image {
+  transform: scale(1);
+}
+
+.next-feature__ramp {
+  position: absolute;
+  inset: -14% 0;
+  background: linear-gradient(180deg,
+      var(--feature-light) 0%,
+      var(--feature-mid) 36%,
+      var(--feature-deep) 74%,
+      var(--feature-dark) 100%);
+  opacity: 0;
+  transition: opacity 700ms var(--next-ease-out);
+}
+
+.next-feature__grain {
+  position: absolute;
+  inset: 0;
+  background-image: var(--next-grain);
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.next-feature details[open]+.next-feature__visual {
+  aspect-ratio: 650 / 520;
+  height: auto;
+}
+
+.next-feature details[open]+.next-feature__visual .next-feature__ramp {
+  opacity: 1;
+  animation: next-ramp-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes next-ramp-drift {
+  from {
+    transform: translate3d(0, -2.4%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 2.4%, 0);
+  }
+}
+
+.next-feature--blue {
+  --feature-flat: #215799;
+  --feature-light: #5e86c1;
+  --feature-mid: #2c62a6;
+  --feature-deep: #173a6e;
+  --feature-dark: #0e2350;
+}
+
+.next-feature--clay {
+  --feature-flat: #b06b3e;
+  --feature-light: #d09257;
+  --feature-mid: #b06b3e;
+  --feature-deep: #7a3f1d;
+  --feature-dark: #4c2410;
+}
+
+.next-feature--stone {
+  --feature-flat: #b3a89b;
+  --feature-light: #d9d4ca;
+  --feature-mid: #b3a89b;
+  --feature-deep: #7c7365;
+  --feature-dark: #55503f;
+}
+
+.next-feature--moss {
+  --feature-flat: #7a8259;
+  --feature-light: #99a07c;
+  --feature-mid: #6d7549;
+  --feature-deep: #4a4d2c;
+  --feature-dark: #35371d;
+}
+
+/* Scroll-driven mode (desktop, motion-friendly): all rows stay open in the
+   DOM; the active row is chosen from scroll progress. */
+.next-features.is-scroll-driven summary {
+  cursor: pointer;
+}
+
+.next-features.is-scroll-driven .next-feature__detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 550ms var(--next-ease-out);
+}
+
+.next-features.is-scroll-driven .next-feature__detail-body {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.next-features.is-scroll-driven .next-feature.is-active .next-feature__detail {
+  grid-template-rows: 1fr;
+}
+
+.next-features.is-scroll-driven .next-feature__detail .next-text-link {
+  transition:
+    opacity 300ms ease,
+    visibility 0s linear 300ms;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.next-features.is-scroll-driven .next-feature.is-active .next-feature__detail .next-text-link {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 300ms ease;
+}
+
+.next-features.is-scroll-driven .next-feature:not(.is-active) details[open]+.next-feature__visual {
+  height: 28px;
+}
+
+.next-features.is-scroll-driven .next-feature:not(.is-active) details[open]+.next-feature__visual .next-feature__ramp {
+  opacity: 0;
+  animation: none;
+}
+
+.next-features.is-scroll-driven .next-feature.is-active .next-feature__visual {
+  aspect-ratio: 650 / 520;
+  height: auto;
+}
+
+.next-features.is-scroll-driven .next-feature.is-active .next-feature__visual .next-feature__ramp {
+  opacity: 1;
+  animation: next-ramp-drift 18s ease-in-out infinite alternate;
+}
+
+@media (max-width: 767px) {
+
+  /** Sticky stages fill the viewport; peeking nav overlays instead of inset. */
+  .next-features.is-mobile-scroll .next-section-heading {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    gap: 12px;
+    padding-top: 20px;
+    padding-bottom: 22px;
+    background: var(--next-white);
+  }
+
+  .next-features.is-mobile-scroll .next-section-heading h2 {
+    font-size: clamp(31px, 8.5vw, 38px);
+  }
+
+  .next-features.is-mobile-scroll .next-features__runway {
+    position: relative;
+    min-height: 0;
+  }
+
+  .next-features.is-mobile-scroll .next-features__list {
+    position: sticky;
+    z-index: 10;
+    top: var(--feature-heading-height, 0px);
+    display: flex;
+    height: calc(100svh - var(--feature-heading-height, 0px));
+    height: calc(100dvh - var(--feature-heading-height, 0px));
+    min-height: 0;
+    flex-direction: column;
+    padding-bottom: 16px;
+    background: var(--next-white);
+  }
+
+  .next-features.is-mobile-scroll .next-feature {
+    min-height: 0;
+    flex: 0 0 auto;
+    flex-direction: column;
+    transition: flex-grow 620ms var(--next-ease-out);
+  }
+
+  .next-features.is-mobile-scroll .next-feature.is-active {
+    flex: 1 1 0;
+  }
+
+  .next-features.is-mobile-scroll .next-feature details {
+    flex: none;
+  }
+
+  .next-features.is-mobile-scroll .next-feature summary {
+    min-height: 58px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 4px;
+    padding-block: 12px;
+  }
+
+  .next-features.is-mobile-scroll .next-feature summary>span,
+  .next-features.is-mobile-scroll .next-feature summary h3 {
+    font-size: 17px;
+  }
+
+  .next-features.is-mobile-scroll .next-feature__detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 560ms var(--next-ease-out);
+  }
+
+  .next-features.is-mobile-scroll .next-feature__detail-body {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .next-features.is-mobile-scroll .next-feature.is-active .next-feature__detail {
+    grid-template-rows: 1fr;
+  }
+
+  .next-features.is-mobile-scroll .next-feature__detail-inner {
+    gap: 14px;
+    padding: 2px 0 18px 44px;
+  }
+
+  .next-features.is-mobile-scroll .next-feature__detail p,
+  .next-features.is-mobile-scroll .next-feature__detail .next-text-link {
+    font-size: 14px;
+  }
+
+  .next-features.is-mobile-scroll .next-feature details[open]+.next-feature__visual {
+    height: 0;
+    min-height: 0;
+    flex: 0 0 0;
+    transition:
+      flex-grow 700ms var(--next-ease-out),
+      opacity 420ms var(--next-ease-out);
+    opacity: 0;
+  }
+
+  .next-features.is-mobile-scroll .next-feature details[open]+.next-feature__visual .next-feature__ramp {
+    opacity: 0;
+    animation: none;
+  }
+
+  .next-features.is-mobile-scroll .next-feature.is-active details[open]+.next-feature__visual {
+    height: auto;
+    min-height: 80px;
+    flex: 1 1 0;
+    opacity: 1;
+  }
+
+  .next-features.is-mobile-scroll .next-feature.is-active details[open]+.next-feature__visual .next-feature__ramp {
+    opacity: 1;
+    animation: next-ramp-drift 18s ease-in-out infinite alternate;
+  }
+}
+
+[data-ambient] .next-feature__ramp,
+[data-ambient] .next-logo-rail__track {
+  animation-play-state: paused !important;
+}
+
+[data-ambient].is-live .next-feature__ramp,
+[data-ambient].is-live .next-logo-rail__track {
+  animation-play-state: running !important;
+}
+
+.next-security {
+  background: var(--next-eggshell);
+  padding-bottom: 48px;
+}
+
+.next-security__grid {
+  display: grid;
+  overflow: hidden;
+  border-top: 1px solid var(--next-line);
+  border-left: 1px solid var(--next-line);
+}
+
+.next-security__grid article {
+  display: flex;
+  min-height: 246px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  border-right: 1px solid var(--next-line);
+  border-bottom: 1px solid var(--next-line);
+  padding: 28px;
+}
+
+.next-security__grid h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.next-security__grid p {
+  max-width: 310px;
+  margin-top: 12px;
+  color: var(--next-gray);
+  font-size: 16px;
+}
+
+.next-security__seal {
+  position: relative;
+  display: grid;
+  width: 60px;
+  height: 60px;
+  place-items: center;
+}
+
+.next-security__seal b {
+  display: grid;
+  justify-items: center;
+  color: var(--next-gray);
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.next-security__seal b span:last-child:not(:only-child) {
+  font-weight: 500;
+}
+
+.next-security--dark {
+  --next-line: #525252;
+  --next-gray: #838383;
+  background: #1c1a17;
+  color: var(--next-white);
+}
+
+.next-security--dark .next-security__seal b {
+  color: var(--next-white);
+}
+
+.next-cta {
+  position: relative;
+  display: grid;
+  min-height: 675px;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 74% 6%, #e09b62 0%, rgb(224 155 98 / 0%) 54%),
+    radial-gradient(150% 110% at 14% 110%, #46200f 0%, rgb(70 32 15 / 0%) 56%),
+    linear-gradient(180deg, #b26a3c 0%, #a75f39 44%, #8a4a26 76%, #5c2d15 100%);
+  color: var(--next-white);
+}
+
+.next-cta__drift {
+  position: absolute;
+  inset: 0;
+}
+
+.next-cta__noise {
+  position: absolute;
+  inset: 0;
+  background-image: var(--next-grain);
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+.next-cta__content {
+  position: relative;
+  display: flex;
+  width: min(100%, 690px);
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  padding: 90px 24px;
+  text-align: center;
+}
+
+.next-cta h2 {
+  font-size: clamp(48px, 12vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.next-cta p {
+  max-width: 390px;
+}
+
+.next-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  background: var(--next-offwhite);
+}
+
+.next-footer__top {
+  display: grid;
+  grid-template-areas:
+    "mark"
+    "newsletter"
+    "groups";
+  /* Figma mobile footer: 48px between the mark, the newsletter, and the link
+     groups. */
+  gap: 48px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.next-footer__mark {
+  grid-area: mark;
+  width: 100px;
+}
+
+.next-footer__mark .next-brand img {
+  width: 44px;
+}
+
+.next-footer__groups {
+  display: grid;
+  grid-area: groups;
+  gap: 24px;
+}
+
+.next-footer__group-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 6px;
+  color: var(--next-gray);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Plus that morphs into a minus, matching the mobile menu + FAQ toggles. */
+.next-footer__plus {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.next-footer__plus::before,
+.next-footer__plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  translate: -50% -50%;
+  transition: transform 300ms var(--next-ease-out);
+}
+
+.next-footer__plus::after {
+  transform: rotate(90deg);
+}
+
+.next-footer__group.is-open .next-footer__plus::after {
+  transform: rotate(0);
+}
+
+/* Expand/collapse via the same 0fr → 1fr grid-rows animation as the mobile
+   menu sections. Open by default so content survives without JS. */
+.next-footer__reveal {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows 480ms var(--next-ease-out),
+    opacity 320ms ease;
+}
+
+.next-footer__reveal-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.js .next-footer__group:not(.is-open) .next-footer__reveal {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+/* 11px + the 20.8px line box lands on Figma's 32px link pitch. */
+.next-footer__groups ul {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding-top: 16px;
+  padding-bottom: 32px;
+}
+
+/* Flex rows so each item is exactly its link's line box, keeping the pitch
+   predictable from the gap alone. */
+.next-footer__groups li {
+  display: flex;
+}
+
+.next-footer__groups a {
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.next-footer__newsletter {
+  display: flex;
+  grid-area: newsletter;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.next-footer__newsletter p {
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.next-footer__newsletter .next-footer__hs-form {
+  width: 100%;
+}
+
+.next-footer__bottom {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.next-footer__bottom div {
+  display: contents;
+}
+
+.next-footer__bottom p {
+  text-align: right;
+}
+
+@media (min-width: 1024px) {
+  .next-header__nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 28px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .next-header__nav-item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  .next-header__nav-trigger {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition:
+      border-color 220ms var(--next-ease-out),
+      opacity 240ms var(--next-ease-out);
+  }
+
+  .next-header .next-header__nav-item:hover>.next-header__nav-trigger,
+  .next-header .next-header__nav-item:focus-within>.next-header__nav-trigger {
+    /** currentColor, not a hardcoded --next-black, so this tracks whichever
+     * text color is actually active — black normally, white when
+     * .next-header--transparent's hero-photo treatment is in effect. */
+    border-bottom-color: currentColor;
+    opacity: 1;
+  }
+
+  .next-desktop-submenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    transition: visibility 0s linear 520ms;
+  }
+
+  .next-desktop-submenu__inner {
+    width: 100%;
+    /** Its own opaque panel, so its own opaque (dark) text color too —
+     * .next-header--transparent's white applies to the closed header bar,
+     * not to a solid-white dropdown panel underneath it. */
+    background: var(--next-white);
+    color: var(--next-black);
+    transform: translate3d(0, -100%, 0);
+    transition: transform 520ms var(--next-ease-out);
+    will-change: transform;
+  }
+
+  .next-header__nav-item:hover>.next-desktop-submenu,
+  .next-header__nav-item:focus-within>.next-desktop-submenu {
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .next-header__nav-item:hover>.next-desktop-submenu>.next-desktop-submenu__inner,
+  .next-header__nav-item:focus-within>.next-desktop-submenu>.next-desktop-submenu__inner {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .next-desktop-submenu__products {
+    display: flex;
+    width: min(100%, var(--next-shell-max));
+    height: 323px;
+    gap: 12px;
+    margin-inline: auto;
+    padding: 48px var(--next-gutter);
+  }
+
+  .next-desktop-submenu__product {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 32px;
+    border-radius: 6px;
+    background: #f9f9f4;
+    transition:
+      background-color 240ms var(--next-ease-out),
+      opacity 240ms var(--next-ease-out);
+  }
+
+  .next-desktop-submenu__product:hover {
+    background: var(--next-eggshell);
+    opacity: 1 !important;
+  }
+
+  .next-desktop-submenu__product-icon {
+    display: flex;
+    width: 28px;
+    height: 28px;
+  }
+
+  .next-desktop-submenu__product-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0);
+  }
+
+  .next-desktop-submenu__product-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .next-desktop-submenu__product-name,
+  .next-desktop-submenu__product-description {
+    display: block;
+  }
+
+  .next-desktop-submenu__product-name {
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .next-desktop-submenu__product-description {
+    color: var(--next-gray);
+    font-size: 16px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .next-desktop-submenu__industries {
+    display: flex;
+    width: min(100%, var(--next-shell-max));
+    height: 448px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    margin-inline: auto;
+    padding: 48px var(--next-gutter);
+  }
+
+  .next-desktop-submenu__industry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .next-desktop-submenu__industry-list a {
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  /** navigation.section's optional labeled columns (see
+   * navigation-section.ts) — multiple .next-desktop-submenu__industry-list
+   * lists shown side by side, each with its own title, instead of one flat
+   * list. */
+  .next-desktop-submenu__columns {
+    display: flex;
+    /* A percentage gap resolves against this element's own box size, which
+       needs to be a definite length for that to work — flex:1 makes it grow
+       to fill the row's remaining space (instead of shrinking to its
+       content's width) so the gap has a real, larger width to scale off of
+       on big screens, rather than shrinking along with the columns. */
+    flex: 1;
+    gap: 15%;
+  }
+
+  .next-desktop-submenu__column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .next-desktop-submenu__column-title {
+    color: var(--next-gray);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .next-desktop-submenu__industry-image {
+    width: min(439px, 40vw);
+    height: 352px;
+    flex: none;
+    overflow: hidden;
+  }
+
+  .next-desktop-submenu__industry-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .next-mobile-nav {
+    display: none;
+  }
+
+  .next-header__cta {
+    display: inline-flex;
+    min-height: 55px;
+    justify-self: end;
+  }
+}
+
+@media (min-width: 768px) {
+  .next-hero {
+    --next-hero-top-height: var(--next-header-height);
+    display: grid;
+    /* min-height, not height: a fixed height is a hard cap the grid rows
+       must fit inside, so the media row's 600px minimum (below) could never
+       grow the section past it on a short viewport — it would just get
+       compressed under 600px instead. min-height lets the section grow
+       taller than 100svh-header when the floor needs the room. */
+    min-height: calc(100svh - var(--next-hero-top-height));
+    grid-template-rows: auto minmax(600px, 1fr);
+  }
+
+  /* No paired hero-video media (see Hero.astro) — don't force the section to
+     fill the viewport, since the second grid row would just sit empty. */
+  .next-hero--copy-only {
+    min-height: auto;
+    grid-template-rows: auto;
+  }
+
+  .next-hero__copy {
+    min-height: 308px;
+    grid-template-columns: minmax(0, 2.1fr) minmax(300px, 0.9fr);
+    gap: 48px;
+    padding-top: 82px;
+    padding-bottom: 48px;
+  }
+
+  .next-hero h1 {
+    max-width: 940px;
+    font-size: 64px;
+  }
+
+  .next-hero__aside {
+    align-self: end;
+  }
+
+  /* At least 600px on tablet/desktop regardless of viewport height — was
+     previously stretched to fill the remaining 100svh via the grid row. */
+  .next-hero__media {
+    height: auto;
+    min-height: 600px;
+  }
+
+  .hero-sequence__feed {
+    --hero-feed-bottom-space: clamp(88px, 7.8vw, 112px);
+    top: 19%;
+    right: auto;
+    bottom: 0;
+    left: 49vw;
+    width: min(34vw, 500px);
+  }
+
+  .hero-sequence__feed-track {
+    gap: clamp(11px, 1vw, 16px);
+  }
+
+  .hero-bubble {
+    font-size: clamp(14px, 0.95vw, 16px);
+  }
+
+  .hero-bubble__surface {
+    padding: clamp(15px, 1.15vw, 20px);
+    border-radius: clamp(18px, 1.4vw, 24px);
+  }
+
+  .hero-bubble__surface::after {
+    border-radius: clamp(14px, 1.1vw, 20px);
+  }
+
+  .hero-bubble__agent-mark,
+  .hero-bubble__avatar {
+    width: clamp(22px, 1.8vw, 28px);
+    height: clamp(22px, 1.8vw, 28px);
+  }
+
+  .hero-bubble__alert-icon {
+    width: clamp(20px, 1.5vw, 26px);
+    height: clamp(20px, 1.5vw, 26px);
+  }
+
+  .next-logo-rail {
+    height: 190px;
+  }
+
+  .next-logo-rail ul {
+    gap: 76px;
+    padding-right: 76px;
+  }
+
+  .next-cases {
+    /** Lead copy + card gap + lead image (665 × 4/5) — keeps the stage
+     * from collapsing while widths animate between lead and peer.
+     * Copy height assumes 4 clamped description lines at lead type size. */
+    --case-lead-width: 665px;
+    --case-lead-copy: 230px;
+    --case-card-stack-gap: 38px;
+    --case-viewport-height: calc(var(--case-lead-copy) + var(--case-card-stack-gap) + (var(--case-lead-width) * 0.8));
+    padding-bottom: 80px;
+  }
+
+  .next-cases__viewport {
+    height: var(--case-viewport-height);
+    overflow: visible;
+  }
+
+  .next-case {
+    flex-basis: 327px;
+  }
+
+  .next-cases__track {
+    height: 100%;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+    will-change: transform;
+  }
+
+  .next-case--lead {
+    flex-basis: var(--case-lead-width);
+  }
+
+  .next-case--lead .next-case__copy {
+    height: var(--case-lead-copy);
+  }
+
+  .next-case:not(.next-case--lead) .next-case__copy {
+    height: 230px;
+  }
+
+  .next-case h3 {
+    font-size: 28px;
+  }
+
+  .next-case:not(.next-case--lead) h3 {
+    font-size: 20px;
+  }
+
+  .next-cases__controls {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: min(100%, var(--next-shell-max));
+    justify-content: flex-end;
+    min-height: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .next-cases__buttons {
+    display: flex;
+  }
+
+  .next-scroll-progress {
+    display: none;
+  }
+
+  .next-products__motion {
+    height: var(--product-runway, 500svh);
+    min-height: 3200px;
+  }
+
+  .next-products {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .next-products__sticky {
+    position: sticky;
+    z-index: 1;
+    top: var(--next-header-height);
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - var(--next-header-height));
+    min-height: 620px;
+    overflow: hidden;
+  }
+
+  /** Title pins with the sticky stage for the full product runway. */
+  .next-products .next-section-heading,
+  .next-products.motion-enhanced .next-section-heading {
+    position: relative;
+    z-index: 50;
+    flex: none;
+    gap: 10px;
+    padding-top: 12px;
+    padding-bottom: 92px;
+  }
+
+  .next-products__stage {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .next-products__deck-wrap {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .next-product-card {
+    width: 300px;
+  }
+
+  .next-product-card__name {
+    font-size: 19px;
+  }
+
+  .next-product-details {
+    position: relative;
+    z-index: 40;
+    flex: none;
+    min-height: 180px;
+    /** Margin (not padding) — absolute detail articles ignore padding inset. */
+    margin: 0 var(--next-gutter) 48px;
+    padding: 0;
+  }
+
+  .next-product-detail h3 {
+    margin-top: 12px;
+  }
+
+  .next-product-detail p {
+    margin-top: 14px;
+  }
+
+  .next-product-detail .next-text-link {
+    margin-top: 18px;
+  }
+
+  .next-products__hint {
+    position: absolute;
+    right: var(--next-gutter);
+    bottom: 24px;
+    display: block;
+    color: var(--next-gray);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: opacity 240ms ease;
+  }
+
+  .next-products__hint.is-hidden {
+    opacity: 0;
+  }
+
+  .next-products.motion-static .next-products__hint {
+    display: none;
+  }
+
+  .next-features__list {
+    padding-bottom: 52px;
+  }
+
+  /* Each panel sticks beneath the header, offset by one label-height from the
+   * previous panel. The solid surface of the incoming panel covers the prior
+   * panel while leaving its number/title strip visible above it. */
+  .next-features--stacked.is-feature-stack .next-features__list {
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  .next-features--stacked.is-feature-stack .next-feature {
+    position: sticky;
+    z-index: var(--feature-stack-z);
+    top: calc(var(--next-header-height) + var(--feature-stack-offset));
+    background: var(--next-white);
+  }
+
+  .next-features--stacked.is-feature-stack .next-feature summary {
+    cursor: default;
+  }
+
+  .next-features--stacked.is-feature-stack .next-features__stack-tail {
+    display: block;
+    height: 80svh;
+  }
+
+  .next-feature {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .next-feature summary {
+    gap: 12px;
+  }
+
+  .next-features:not(.is-scroll-driven) .next-feature details[open] {
+    min-height: 520px;
+  }
+
+  .next-features:not(.is-scroll-driven) .next-feature details[open]+.next-feature__visual {
+    aspect-ratio: 650 / 520;
+    height: auto;
+  }
+
+  .next-features.is-scroll-driven .next-features__runway {
+    position: relative;
+    contain: layout;
+  }
+
+  .next-features.is-scroll-driven .next-features__list {
+    position: sticky;
+    top: calc(var(--next-header-height) + 10px);
+    padding-bottom: 24px;
+  }
+
+  .next-security {
+    padding-bottom: 75px;
+  }
+
+  .next-security__grid {
+    width: 100%;
+    margin-inline: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .next-security__grid article {
+    min-height: 335px;
+    gap: 40px;
+    padding: 32px;
+  }
+
+  .next-cta {
+    min-height: 760px;
+  }
+
+  .next-footer__top {
+    grid-template-areas: "mark groups newsletter";
+    grid-template-columns: 100px minmax(0, 756px) minmax(280px, 1fr);
+    gap: 12px;
+    padding-top: 48px;
+    padding-bottom: 0;
+  }
+
+  /* A 4th group needs more room than the 3-column track above budgets for. */
+  .next-footer__top--4col {
+    grid-template-columns: 100px minmax(0, 940px) minmax(280px, 1fr);
+  }
+
+  .next-footer__groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .next-footer__groups--4col {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .next-footer__group-toggle {
+    min-height: 24px;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .next-footer__plus {
+    display: none;
+  }
+
+  /* Always expanded on desktop, whatever the mobile toggle state. */
+  .next-footer__group .next-footer__reveal,
+  .js .next-footer__group:not(.is-open) .next-footer__reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .next-footer__groups ul {
+    gap: 20px;
+    padding-top: 16px;
+    padding-bottom: 0;
+  }
+
+  .next-footer__groups a {
+    font-size: 16px;
+  }
+
+  .next-footer {
+    min-height: 528px;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .next-footer__newsletter {
+    gap: 28px;
+  }
+
+  .next-footer__newsletter p {
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .next-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 48px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .next-footer__bottom div {
+    display: flex;
+    gap: 40px;
+    order: 2;
+  }
+
+  .next-footer__bottom p {
+    order: 1;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* .next-announcement only gets its own margin-bottom (8px) at this
+     breakpoint (see components.css's .next-announcement rule) — the hero's
+     100svh calc needs to subtract that too, or it comes up 8px short and
+     the section (and the bubble feed pinned inside it) gets clipped. */
+  .next-announcement+.next-header+main .next-hero {
+    --next-hero-top-height: calc(var(--next-header-height) + 8px);
+  }
+
+  /** lg+ only — the md tier (see the min-width: 768px block above) keeps
+   * the mobile 52px column instead of jumping straight to 104px. The
+   * detail's indent matches: 64px (52px column + 12px gap) below this
+   * breakpoint, 116px (104px + 12px) at and above it. */
+  .next-feature summary {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .next-feature__detail-inner {
+    padding-left: 116px;
+  }
+
+  /** lg+ only — md reuses the mobile layout instead (see the max-width:
+   * 1023px block above). Same 2x2 grid as before, smaller illustration. */
+  .next-insights__body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .next-insights__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .next-insights__illustration {
+    min-height: 480px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .next-insights__illustration img {
+    width: min(90%, 480px);
+    max-height: 480px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .next-insights__grid article {
+    min-height: 318px;
+    padding: 32px;
+  }
+
+  .next-insights__grid h3 {
+    font-size: 20px;
+  }
+
+  .next-insights__grid p {
+    max-width: 315px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1255px) {
+  .next-footer__top {
+    grid-template-areas:
+      "mark newsletter"
+      "groups groups";
+    grid-template-columns: 100px minmax(0, 1fr);
+    row-gap: 52px;
+  }
+
+  .next-footer__groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .next-footer__groups--4col {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .next-footer {
+    min-height: 620px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .next-product-card {
+    width: 360px;
+  }
+
+  .next-product-card__name {
+    font-size: 21px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .next-product-card {
+    width: 395px;
+  }
+
+  .next-product-card__name {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 760px) {
+
+  .next-products.motion-enhanced .next-section-heading,
+  .next-products .next-section-heading {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .next-products .next-section-heading h2 {
+    font-size: 36px;
+  }
+
+  .next-product-card {
+    width: 160px;
+  }
+
+  .next-product-details {
+    min-height: 132px;
+    margin-top: 4px;
+    margin-bottom: 64px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .next-hero h1 {
+    font-size: 76px;
+    max-width: 1120px;
+  }
+
+  .next-section-heading h2 {
+    font-size: 56px;
+    max-width: 1040px;
+  }
+
+  .next-insights__illustration {
+    min-height: 760px;
+  }
+
+  .next-insights__grid article {
+    min-height: 380px;
+  }
+}
+
+/* Product pages ----------------------------------------------------------- */
+
+.next-header__mobile-cta {
+  display: inline-flex;
+  grid-column: 3;
+  grid-row: 1;
+  align-items: center;
+  justify-self: end;
+  height: 40px;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.product-page {
+  --product-blue: #3c6f9e;
+  --product-moss: #7e947b;
+  --product-clay: #b87547;
+  --product-stone: #bdb6a8;
+  --product-soft: #f4f4f0;
+}
+
+.product-page .next-announcement__label {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
+.product-page .next-section-heading h2,
+.product-section-heading h2,
+.product-faqs h2 {
+  max-width: 850px;
+  font-size: clamp(42px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.product-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding-top: 104px;
+  padding-bottom: 58px;
+  text-align: center;
+}
+
+.product-hero {
+  background: var(--next-white);
+}
+
+.product-hero__inner {
+  display: flex;
+  min-height: 450px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  /* Figma insets the hero content 168px from the announcement bar, with the
+     66px nav floating over it. Our nav sits in flow, so 168 - 66 = 102. */
+  padding-top: 102px;
+  padding-bottom: 48px;
+  text-align: center;
+}
+
+.product-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-hero__mark {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  /** Homepage product marks are light-on-dark; ink them for the white hero. */
+  filter: brightness(0);
+  /** Marks are drawn pre-skewed for the product cards; undo that here. */
+  transform: skewX(-7deg) rotate(-13deg);
+}
+
+.product-hero h1 {
+  max-width: 892px;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.product-hero__description {
+  max-width: 520px;
+  color: #525252;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Figma groups the description + CTA in a single 24px-gap column inside the
+   36px-gap hero stack, so the button closes half of that outer gap. */
+.product-hero .next-pill {
+  min-height: 47px;
+  margin-top: -12px;
+}
+
+.product-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gradient-story {
+  position: relative;
+  min-height: 570px;
+  overflow: hidden;
+  background: #aaa;
+  color: var(--next-white);
+  isolation: isolate;
+}
+
+.gradient-story__image {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--next-ease-out);
+}
+
+.gradient-story:hover .gradient-story__image {
+  transform: scale(1.018);
+}
+
+.gradient-story__image--mobile {
+  display: none;
+}
+
+.gradient-story__wash {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 3%), rgb(0 0 0 / 54%)),
+    linear-gradient(90deg, rgb(0 0 0 / 22%), transparent 66%);
+}
+
+.gradient-story__copy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 34px;
+}
+
+.gradient-story__copy h3 {
+  max-width: 520px;
+  font-size: clamp(31px, 3vw, 46px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.gradient-story__copy > p:last-child {
+  max-width: 455px;
+  color: rgb(255 255 255 / 80%);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.gradient-story--compact {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  overflow: visible;
+  background: var(--next-white);
+  color: var(--next-black);
+}
+
+.gradient-story--compact .gradient-story__image {
+  position: relative;
+  z-index: auto;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 440 / 330;
+  border-radius: 3px;
+  object-fit: cover;
+  transition: none;
+}
+
+.gradient-story--compact:hover .gradient-story__image {
+  transform: none;
+}
+
+.gradient-story--compact .gradient-story__wash {
+  display: none;
+}
+
+.gradient-story--compact .gradient-story__copy {
+  position: relative;
+  inset: auto;
+  align-self: stretch;
+  gap: 24px;
+  padding: 0;
+}
+
+.gradient-story--compact .gradient-story__copy h3 {
+  max-width: 380px;
+  color: var(--next-black);
+  font-size: 24px;
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.gradient-story--compact .gradient-story__copy > p:last-child {
+  max-width: 420px;
+  color: #838383;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* Agents hero animation --------------------------------------------------- */
+
+/* Figma frames this section at 1440 × 930 with a 48px inset, so the plate is
+   1344 × 834. Tabs advance on a dwell timer rather than on scroll. */
+.product-map-shell {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+/* Agents image showcase -------------------------------------------------- */
+
+/* The legacy `agents-map` variation name is retained in Sanity for content
+   compatibility, but this plate is now entirely image-led. Each transparent
+   feature PNG is contained within the same 1344 × 834 desktop frame. */
+.agents-showcase {
+  position: relative;
+  height: 834px;
+  background: #f2f1ee;
+}
+
+.agents-showcase__viewport {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #f2f1ee;
+  isolation: isolate;
+}
+
+.agents-showcase__media {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.agents-showcase__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 700ms var(--next-ease-out);
+  will-change: opacity;
+}
+
+.agents-showcase__image.is-active {
+  z-index: 1;
+  opacity: 1;
+}
+
+.agents-showcase__tabs {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 68px;
+  display: flex;
+  width: min(30%, 340px);
+  flex-direction: column;
+  transform: translateY(-50%);
+}
+
+.agents-showcase__tabs::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: rgb(28 26 23 / 12%);
+  content: "";
+}
+
+.agents-showcase__tabs button {
+  position: relative;
+  display: flex;
+  min-height: 58px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: 10px 16px;
+  color: rgb(28 26 23 / 18%);
+  text-align: left;
+  transition:
+    color 340ms ease,
+    min-height 500ms var(--next-ease-out);
+}
+
+.agents-showcase__tabs button::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--next-black);
+  content: "";
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition:
+    opacity 300ms ease,
+    transform 500ms var(--next-ease-out);
+}
+
+.agents-showcase__tabs button > span {
+  font-size: 24px;
+  letter-spacing: -0.035em;
+}
+
+.agents-showcase__tabs button small {
+  max-width: 275px;
+  max-height: 0;
+  overflow: hidden;
+  color: #5f5e59;
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: 0;
+  transition:
+    max-height 500ms var(--next-ease-out),
+    margin-top 500ms var(--next-ease-out),
+    opacity 250ms ease;
+}
+
+.agents-showcase__tabs button[aria-selected="true"] {
+  min-height: 112px;
+  color: var(--next-black);
+}
+
+.agents-showcase__tabs button[aria-selected="true"]::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.agents-showcase__tabs button[aria-selected="true"] small {
+  max-height: 64px;
+  margin-top: 13px;
+  opacity: 1;
+}
+
+.agents-showcase__controls {
+  position: absolute;
+  z-index: 6;
+  right: 48px;
+  bottom: 34px;
+  display: flex;
+  gap: 16px;
+}
+
+.agents-showcase__controls button {
+  --use-case-timer: 0;
+  position: relative;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--next-line);
+  border-radius: 50%;
+  color: var(--next-black);
+  cursor: pointer;
+  transition: border-color 220ms ease;
+}
+
+.agents-showcase__controls button:hover {
+  border-color: var(--next-black);
+}
+
+.agents-showcase__controls [data-use-next]::after {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(
+    currentColor calc(var(--use-case-timer) * 1turn),
+    transparent 0
+  );
+  content: "";
+  pointer-events: none;
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2px),
+    #000 calc(100% - 1px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2px),
+    #000 calc(100% - 1px)
+  );
+}
+
+.agents-showcase__mobile-copy {
+  display: none;
+}
+
+/* Example use cases -------------------------------------------------------
+   Figma "Use Case Icon Row" — sits directly under the use-case carousel. */
+
+.use-case-row {
+  background: var(--next-white);
+}
+
+.use-case-row__title {
+  padding-top: 40px;
+  padding-bottom: 36px;
+  text-align: left;
+}
+
+.use-case-row__title p {
+  color: var(--next-gray);
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.use-case-row__scroller {
+  position: relative;
+}
+
+.use-case-row__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  /** row-gap | column-gap — more space between use cases. */
+  gap: 28px 48px;
+  padding-bottom: 80px;
+  list-style: none;
+}
+
+.use-case-row__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  color: var(--next-black);
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.use-case-row__icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  place-items: center;
+  border-radius: 3px;
+  background: var(--next-eggshell);
+  color: #766a60;
+}
+
+.use-case-row__icon svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Agents body ------------------------------------------------------------- */
+
+.roi-section {
+  padding-bottom: 100px;
+}
+
+.roi-section .product-section-heading {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.roi-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.roi-section__grid > article {
+  min-width: 0;
+}
+
+.roi-visual {
+  position: relative;
+  aspect-ratio: 667 / 500;
+  overflow: hidden;
+  background: #ccc;
+}
+
+.roi-visual > :is(img, video) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.roi-section__copy {
+  min-height: 154px;
+  padding: 36px 0 30px;
+}
+
+.roi-section__copy h3 {
+  max-width: 492px;
+  margin-top: 24px;
+  font-size: 24px;
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.product-proof-shell {
+  padding-top: 48px;
+  padding-bottom: 20px;
+}
+
+.product-proof {
+  display: grid;
+  width: min(100%, 758px);
+  min-height: 98px;
+  grid-template-columns: 82px minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 24px;
+  margin-inline: auto;
+  padding: 8px 20px 8px 8px;
+  background: var(--next-eggshell);
+  transition: background-color 250ms ease;
+}
+
+.product-proof:hover {
+  background: #e9e9e4;
+}
+
+.product-proof > img {
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+}
+
+.product-proof > span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Figma clamps the case-study title to two lines and ellipsises the rest. */
+.product-proof strong {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.product-proof i {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  justify-self: center;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--next-white);
+  font-style: normal;
+  transition: transform 300ms var(--next-ease-out);
+}
+
+.product-proof:hover i {
+  transform: translate(2px, -2px);
+}
+
+.product-split {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product-split--intelligence {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+.product-split--reverse {
+  padding-top: 0;
+  padding-bottom: 140px;
+}
+
+.product-split__copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 48px 32px 0;
+}
+
+.product-split--reverse .product-split__copy {
+  grid-column: 2;
+  grid-row: 1;
+  padding-right: 0;
+  padding-left: 48px;
+}
+
+.product-split--reverse .product-split__visual {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.product-split__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-split__copy h2 {
+  max-width: 620px;
+  margin-top: 0;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.product-split__points {
+  position: relative;
+  width: 100%;
+}
+
+.product-split__points article {
+  position: relative;
+  border-top: 1px solid #d1d1cc;
+}
+
+.product-split__points article::before {
+  position: absolute;
+  z-index: 1;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--next-black);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.product-split__points article.is-active::before {
+  animation: product-point-progress 8s linear forwards;
+}
+
+/* Hold the progress rule still whenever the rotation itself is paused. */
+.product-split__points.is-paused article.is-active::before {
+  animation-play-state: paused;
+}
+
+@keyframes product-point-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.product-split__points button {
+  width: 100%;
+  max-width: 442px;
+  padding: 22px 0 26px;
+  text-align: left;
+}
+
+.product-split__points button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
+.product-split__points h3 {
+  color: #85857f;
+  font-size: 24px;
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  transition: color 300ms ease;
+}
+
+.product-split__points article.is-active h3 {
+  color: var(--next-black);
+}
+
+.product-split__point-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 520ms var(--next-ease-out);
+}
+
+.product-split__point-detail > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.product-split__points article.is-active .product-split__point-detail {
+  grid-template-rows: 1fr;
+}
+
+.product-split__points p {
+  max-width: 442px;
+  padding: 0 0 44px;
+  color: var(--next-gray);
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.product-split__visual {
+  position: relative;
+  height: 840px;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+/* The 1px overhang clips the dark edge row baked into the source renders, which
+   otherwise reads as a hairline across the top of the plate. */
+.product-split__visual > img {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  object-fit: cover;
+}
+
+.product-split__visual > [data-timed-visual] {
+  opacity: 0;
+  transform: scale(1.015);
+  transition:
+    opacity 500ms ease,
+    transform 800ms var(--next-ease-out);
+}
+
+.product-split__visual > [data-timed-visual].is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.trust-section {
+  padding-bottom: 100px;
+}
+
+.trust-section .product-section-heading {
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.trust-section .product-proof-shell {
+  padding-top: 48px;
+}
+
+.trust-section__grid,
+.atlas-tools__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* imageSize "auto" — the image at its own natural size, capped to the
+   container and centered, unlike "full" (edge-to-edge hero plate) or
+   "containerWidth" (fixed-height drifting plate below). */
+.next-image-auto {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.next-image-auto img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  border-radius: var(--next-radius);
+}
+
+/* Figma: 48px frame around a 1344 × 754 plate, with the photo drifting inside
+   it on scroll. The overflow crop is what gives the parallax room to move. */
+.product-wide-media {
+  --parallax-y: 0px;
+  /* Give the worker an intentionally dramatic sweep through the fixed plate.
+     The 40% overscan keeps the crop filled across the full ±240px movement. */
+  --parallax-travel: 480px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.product-wide-media figure {
+  position: relative;
+  aspect-ratio: 1344 / 754;
+  overflow: hidden;
+  border-radius: var(--next-radius);
+  margin: 0;
+  background: var(--next-eggshell);
+}
+
+.product-wide-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Explicit (matches the default, but the scale below only reads as a
+     symmetric ±headroom overscan — matching the old inset: -40% 0 top and
+     bottom — if it expands from dead center rather than some inherited or
+     browser-default origin. */
+  transform-origin: center;
+  /* object-fit is computed from this element's own box, so the crop must
+     stay sized to match the figure (not inflated) or `cover` fits against a
+     distorted aspect ratio and the image looks blown up/stretched. A small
+     amount of headroom for the vertical drift comes from `scale` instead —
+     a paint-time transform that cover never sees. This is deliberately
+     modest (not enough to cover the full theoretical ±240px travel at every
+     viewport size) because a much larger scale re-introduces the same
+     "always zoomed in" look this was fixing; a sliver of edge at the very
+     extreme of the scroll range is a smaller defect than that. Order
+     matters: translate3d is listed first (outer) so --parallax-y still
+     moves the image by exactly that many screen pixels; scale is listed
+     second (inner) so it zooms the already-correctly-cropped image without
+     amplifying the translate distance. */
+  transform: translate3d(0, var(--parallax-y), 0) scale(1.1);
+  will-change: transform;
+}
+
+.surface-section {
+  padding-bottom: 118px;
+  background: var(--next-eggshell);
+}
+
+.surface-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.surface-section__grid article {
+  display: flex;
+  min-height: 261px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  border-radius: 5px;
+  background: #f9f9f4;
+  padding: 32px;
+}
+
+.surface-section__grid--square article {
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+}
+
+.surface-section__grid svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  color: #1c1a17;
+}
+
+.surface-section__grid h3 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.surface-section__grid p {
+  margin-top: 8px;
+  color: #838383;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.integrations-section {
+  padding-bottom: 40px;
+  background: var(--next-white);
+}
+
+.integrations-section .product-section-heading {
+  padding-top: 124px;
+  padding-bottom: 124px;
+}
+
+.integrations-section .product-section-heading h2 {
+  max-width: 690px;
+}
+
+/* Figma: five 189.922 × 79.767 cells, 28.409 column / 30.388 row gaps — 1063.25
+   of grid, plus the page gutter the shared container adds around it. */
+.integrations-section__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 30.388px 28.409px;
+  max-width: calc(1063.25px + (2 * var(--next-gutter)));
+  margin-inline: auto;
+  /** Dissolves into the security section — soft fade toward white at the bottom */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 22%,
+    rgb(0 0 0 / 52%) 48%,
+    rgb(0 0 0 / 22%) 78%,
+    rgb(0 0 0 / 6%) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 22%,
+    rgb(0 0 0 / 52%) 48%,
+    rgb(0 0 0 / 22%) 78%,
+    rgb(0 0 0 / 6%) 100%
+  );
+}
+
+.integrations-cell {
+  display: flex;
+  aspect-ratio: 190 / 80;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8.558px;
+  background: #f7f7f5;
+}
+
+.integrations-cell img {
+  height: auto;
+  opacity: 0.43;
+}
+
+/* Atlas ------------------------------------------------------------------ */
+
+/* Figma "Full width - Video": 1440 × 864 desktop, 402 × 503 mobile — the same
+   plate the homepage hero uses, so it shares that height formula. */
+.atlas-hero-media {
+  position: relative;
+  height: min(60vw, 1080px);
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 -1px 0;
+  padding: 0;
+}
+
+.atlas-hero-media::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 20%), transparent 50%), rgb(0 0 0 / 10%);
+  content: "";
+}
+
+.atlas-hero-media::after {
+  position: absolute;
+  z-index: 3;
+  right: 25px;
+  bottom: 31px;
+  width: 30px;
+  height: 30px;
+  border-radius: 1px;
+  background:
+    linear-gradient(var(--next-white), var(--next-white)) calc(50% - 3px) 50% /
+      2px 14px no-repeat,
+    linear-gradient(var(--next-white), var(--next-white)) calc(50% + 3px) 50% /
+      2px 14px no-repeat,
+    rgb(255 255 255 / 10%);
+  backdrop-filter: blur(7px);
+  content: "";
+}
+
+.atlas-hero-media--no-overlay::before,
+.atlas-hero-media--no-overlay::after {
+  content: none;
+}
+
+.atlas-hero-media > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atlas-hero-media__video {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  width: 74%;
+  max-width: 1440px;
+  height: auto;
+  border-radius: 16px 16px 0 0;
+  background: #f7f7f7;
+  box-shadow: 0 22px 60px rgb(0 0 0 / 16%);
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateX(-50%);
+}
+
+.atlas-network {
+  padding-bottom: 100px;
+  background: var(--next-white);
+}
+
+.atlas-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.atlas-intro h2 {
+  width: min(100%, 690px);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.atlas-intro p {
+  width: min(100%, 435px);
+  color: #838383;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.atlas-opportunities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 10px;
+}
+
+.atlas-opportunity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* 667 × 500 at the 1440 spec width. Above that the ratio would keep growing the
+   panels — ~750px tall each at 2560 — so the height stops at the design's 500px
+   and the extra width goes into a wider crop instead. */
+.atlas-opportunity__visual {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-height: 500px;
+  aspect-ratio: 667 / 500;
+  border-radius: var(--next-radius);
+  background: var(--opportunity-flat);
+  isolation: isolate;
+}
+
+.atlas-opportunity__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atlas-opportunity__ramp {
+  position: absolute;
+  z-index: -2;
+  inset: -14% 0;
+  background:
+    radial-gradient(
+      120% 82% at 24% 0%,
+      var(--opportunity-light) 0%,
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      var(--opportunity-mid) 0%,
+      var(--opportunity-mid) 34%,
+      var(--opportunity-deep) 74%,
+      var(--opportunity-dark) 100%
+    );
+  animation: next-ramp-drift 18s ease-in-out infinite alternate;
+}
+
+.atlas-opportunity__noise {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: var(--next-grain);
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+}
+
+.atlas-opportunity__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.atlas-opportunity__copy h3 {
+  max-width: 492px;
+  font-size: 24px;
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.atlas-opportunity__copy p {
+  max-width: 442px;
+  color: #838383;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.atlas-opportunity--blue {
+  --opportunity-flat: #215799;
+  --opportunity-light: #5e86c1;
+  --opportunity-mid: #2c62a6;
+  --opportunity-deep: #173a6e;
+  --opportunity-dark: #0e2350;
+}
+
+.atlas-opportunity--moss {
+  --opportunity-flat: #7a8259;
+  --opportunity-light: #99a07c;
+  --opportunity-mid: #6d7549;
+  --opportunity-deep: #4a4d2c;
+  --opportunity-dark: #35371d;
+}
+
+.atlas-opportunity--clay {
+  --opportunity-flat: #b06b3e;
+  --opportunity-light: #d09257;
+  --opportunity-mid: #b06b3e;
+  --opportunity-deep: #7a3f1d;
+  --opportunity-dark: #4c2410;
+}
+
+.atlas-opportunity--stone {
+  --opportunity-flat: #b3a89b;
+  --opportunity-light: #d9d4ca;
+  --opportunity-mid: #b3a89b;
+  --opportunity-deep: #7c7365;
+  --opportunity-dark: #55503f;
+}
+
+[data-ambient] .atlas-opportunity__ramp {
+  animation-play-state: paused;
+}
+
+[data-ambient].is-live .atlas-opportunity__ramp {
+  animation-play-state: running;
+}
+
+.atlas-actions {
+  padding: 0;
+}
+
+.atlas-actions .next-section-heading {
+  gap: 24px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.atlas-actions .next-section-heading h2 {
+  width: min(100%, 690px);
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+.atlas-actions.is-scroll-driven .next-feature.is-active .next-feature__visual {
+  height: clamp(360px, calc(100svh - 460px), 533px);
+}
+
+.atlas-memory {
+  padding-bottom: 100px;
+  background: var(--next-eggshell);
+}
+
+.atlas-memory__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 100px 48px 80px;
+  text-align: center;
+}
+
+.atlas-memory__heading h2 {
+  width: min(100%, 690px);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+.atlas-memory .gradient-story--compact {
+  background: transparent;
+}
+
+/* Shared lower-page sections --------------------------------------------- */
+
+.product-faqs {
+  padding: 80px 0 100px;
+  background: var(--next-white);
+}
+
+.product-faqs__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  /* 80px title padding + the 10px gap Figma puts above the first row. */
+  padding-bottom: 90px;
+  text-align: center;
+}
+
+/* Rows carry only a top rule, so the last answer closes without a line. */
+.product-faqs__list {
+  display: flex;
+  width: min(100%, 1118px);
+  flex-direction: column;
+  gap: 4px;
+  margin-inline: auto;
+}
+
+.product-faqs__item {
+  border-top: 1px solid var(--next-line);
+}
+
+.product-faqs__item > h3 {
+  font: inherit;
+}
+
+.product-faqs__item button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) 12px;
+  align-items: center;
+  gap: 4px;
+  padding-block: 24px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.product-faqs__item button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
+.product-faqs__plus {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  justify-self: end;
+  /* Figma prototype: the plus rotates into an × when the row expands. */
+  transition: transform 260ms ease;
+}
+
+.product-faqs__item.is-open .product-faqs__plus {
+  transform: rotate(45deg);
+}
+
+.product-faqs__plus::before,
+.product-faqs__plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  translate: -50% -50%;
+}
+
+.product-faqs__plus::after {
+  transform: rotate(90deg);
+}
+
+.product-faqs__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 520ms var(--next-ease-out),
+    opacity 300ms ease;
+}
+
+.product-faqs__answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.product-faqs__item.is-open .product-faqs__answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.product-faqs__answer p {
+  max-width: 616px;
+  padding: 12px 0 24px;
+  color: var(--next-gray);
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.product-explore {
+  padding: 32px var(--next-gutter) 80px;
+  background: var(--next-white);
+}
+
+.product-explore__inner {
+  display: grid;
+  width: min(100%, 1344px);
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1fr) min(390px, 40vw);
+  gap: 12px;
+  border-top: 1px solid #d9d9d9;
+  padding-top: 48px;
+}
+
+.product-explore__inner--no-divider {
+  border-top: none;
+}
+
+.product-explore__copy {
+  display: flex;
+  min-height: 486px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  padding-bottom: 48px;
+}
+
+.product-explore__title {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-explore h2 {
+  max-width: 690px;
+  font-size: clamp(38px, 3.333vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.product-explore .next-pill {
+  min-height: 47px;
+  gap: 12px;
+  padding: 6px 7px 6px 24px;
+}
+
+.product-explore .next-pill__arrow {
+  width: 35px;
+  height: 35px;
+}
+
+.product-explore__media {
+  --parallax-y: 0px;
+  position: relative;
+  height: 486px;
+  overflow: hidden;
+  border-radius: var(--next-radius);
+  background: var(--next-eggshell);
+}
+
+.product-explore__media > img:first-child {
+  position: absolute;
+  inset: -6% 0;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  object-position: 50% 60%;
+  transform: translate3d(0, var(--parallax-y), 0) scale(1.015);
+  will-change: transform;
+}
+
+.product-explore__mark,
+.product-explore__media figcaption {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .surface-section__grid--4col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .surface-section__grid--4col {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .next-header__mobile-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-page .next-announcement {
+    min-height: 32px;
+  }
+
+  .product-page .next-announcement a {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .product-hero__inner {
+    min-height: 447px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
+    padding: 102px 16px 24px;
+    text-align: left;
+  }
+
+  .product-hero h1 {
+    max-width: 370px;
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .product-hero__description {
+    max-width: 370px;
+    font-size: 16px;
+    text-wrap: pretty;
+  }
+
+  /* Mobile keeps one even 32px rhythm, so the CTA needs no gap correction. */
+  .product-hero .next-pill {
+    min-height: 47px;
+    margin-top: 0;
+  }
+
+  .product-hero__buttons {
+    justify-content: flex-start;
+  }
+
+  .product-hero--mobile-center .product-hero__inner {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .product-hero--mobile-center .product-hero__buttons {
+    justify-content: center;
+  }
+
+  .product-section-heading {
+    align-items: center;
+    gap: 20px;
+    padding-top: 80px;
+    padding-bottom: 42px;
+    text-align: center;
+  }
+
+  /* Mobile/H2 token — 32px, not the 48px desktop H2. */
+  .product-page .next-section-heading h2,
+  .product-section-heading h2,
+  .product-faqs h2 {
+    max-width: 370px;
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .product-map-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .agents-showcase {
+    height: 458px;
+    min-height: 0;
+    background: #f1f1ed;
+  }
+
+  .agents-showcase__viewport {
+    position: relative;
+    height: 100%;
+    background: #f1f1ed;
+  }
+
+  .agents-showcase__tabs {
+    display: none;
+  }
+
+  .agents-showcase__controls {
+    right: 50%;
+    bottom: 24px;
+    gap: 12px;
+    transform: translateX(50%);
+  }
+
+  .agents-showcase__mobile-copy {
+    position: absolute;
+    z-index: 6;
+    right: 16px;
+    bottom: 100px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .agents-showcase__mobile-copy > p {
+    font-size: 25px;
+    letter-spacing: -0.04em;
+    transition:
+      opacity 220ms var(--next-ease-out),
+      transform 220ms var(--next-ease-out);
+  }
+
+  .agents-showcase__mobile-copy > span {
+    max-width: 300px;
+    color: var(--next-gray);
+    font-size: 14px;
+    line-height: 1.4;
+    transition:
+      opacity 220ms var(--next-ease-out),
+      transform 220ms var(--next-ease-out);
+  }
+
+  .agents-showcase__mobile-copy.is-leaving > p,
+  .agents-showcase__mobile-copy.is-leaving > span {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+
+  .agents-showcase__mobile-copy.is-entering > p,
+  .agents-showcase__mobile-copy.is-entering > span {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+
+  .use-case-row__list {
+    gap: 24px 32px;
+  }
+
+  .roi-section {
+    padding-bottom: 80px;
+  }
+
+  .roi-section__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roi-visual {
+    min-height: 0;
+  }
+
+  /* Figma stacks the two cards 40px apart and leaves 48px before the
+     case-study strip, so the card copy carries no bottom padding of its own. */
+  .roi-section__grid {
+    gap: 40px;
+  }
+
+  .roi-section__copy {
+    min-height: 0;
+    padding: 28px 0 0;
+  }
+
+  .roi-section__copy h3 {
+    max-width: 350px;
+    font-size: 24px;
+  }
+
+  .product-proof-shell {
+    padding-top: 48px;
+    padding-bottom: 0;
+  }
+
+  .product-proof {
+    grid-template-columns: 82px minmax(0, 1fr) 40px;
+    gap: 12px;
+    padding: 8px 10px 8px 8px;
+  }
+
+  .product-proof > img {
+    width: 82px;
+    height: 82px;
+  }
+
+  .product-proof > span {
+    gap: 10px;
+  }
+
+  .product-proof strong {
+    font-size: 16px;
+  }
+
+  .product-proof i {
+    width: 38px;
+    height: 38px;
+  }
+
+  .product-split,
+  .product-split--reverse {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 68px;
+    padding-bottom: 60px;
+  }
+
+  .product-split--reverse {
+    padding-top: 0;
+  }
+
+  .product-split--reverse .product-split__visual {
+    order: 2;
+  }
+
+  .product-split__copy,
+  .product-split--reverse .product-split__copy {
+    min-height: 0;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: 10px 0 46px;
+  }
+
+  .product-split__copy h2 {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .product-split__points {
+    width: 100%;
+  }
+
+  .product-split__points h3 {
+    font-size: 20px;
+  }
+
+  .product-split__visual {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 440 / 550;
+  }
+
+  .trust-section {
+    padding-bottom: 76px;
+  }
+
+  /* Stacked stories need a clear division between one body copy and the next
+     story's image — 12px read as a single run-on block. */
+  .trust-section__grid,
+  .atlas-tools__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .gradient-story:not(.gradient-story--compact) {
+    min-height: 500px;
+  }
+
+  .gradient-story__copy {
+    gap: 15px;
+    padding: 27px;
+  }
+
+  .gradient-story__copy h3 {
+    max-width: 340px;
+    font-size: 35px;
+  }
+
+  .gradient-story--compact {
+    min-height: 0;
+  }
+
+  .gradient-story--compact .gradient-story__copy {
+    gap: 24px;
+    padding: 0;
+  }
+
+  .gradient-story--compact .gradient-story__copy h3 {
+    max-width: 380px;
+    font-size: 24px;
+  }
+
+  /* Keep the mobile sweep strong while leaving extra crop headroom. */
+  .product-wide-media {
+    --parallax-travel: 300px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .product-wide-media figure {
+    aspect-ratio: 4 / 5;
+  }
+
+  .surface-section {
+    padding-bottom: 84px;
+  }
+
+  /* Figma mobile: two 179px columns on a 12px gutter. */
+  .surface-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .surface-section__grid article {
+    min-height: 173px;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .surface-section__grid--square article {
+    aspect-ratio: auto;
+    min-height: 173px;
+  }
+
+  .integrations-section .product-section-heading {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  /* Figma mobile: three 114.32 × 48.014 cells on a 14.39px gutter, which is
+     what the 16px page gutter already yields at 402px. */
+  .integrations-section__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+    gap: 14.39px;
+  }
+
+  .integrations-cell {
+    border-radius: 6px;
+  }
+
+  .atlas-hero-media {
+    height: min(125vw, 620px);
+    width: 100%;
+    padding: 0;
+  }
+
+  .atlas-hero-media > img {
+    height: 100%;
+    object-position: 61% 50%;
+  }
+
+  .atlas-hero-media__video {
+    width: calc(100% - 32px);
+    border-radius: 10px 10px 0 0;
+  }
+
+  .atlas-hero-media::after {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .atlas-network {
+    padding-bottom: 100px;
+  }
+
+  .atlas-intro {
+    align-items: center;
+    gap: 24px;
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .atlas-intro h2 {
+    width: 100%;
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .atlas-intro p {
+    width: min(100%, 350px);
+    font-size: 16px;
+  }
+
+  .atlas-opportunities {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .atlas-opportunity {
+    gap: 36px;
+  }
+
+  .atlas-opportunity__visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .atlas-actions {
+    padding: 0;
+  }
+
+  .atlas-actions .next-section-heading {
+    gap: 12px;
+  }
+
+  .atlas-memory {
+    padding-bottom: 100px;
+  }
+
+  .atlas-memory__heading {
+    gap: 24px;
+    padding: 80px 16px;
+  }
+
+  .atlas-memory__heading h2 {
+    width: 100%;
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .atlas-memory .atlas-tools__grid {
+    gap: 40px;
+  }
+
+  .product-faqs {
+    padding: 80px 0;
+  }
+
+  .product-faqs__heading {
+    padding-bottom: 90px;
+  }
+
+  /* Mobile rows sit flush against each other — no 4px gap. */
+  .product-faqs__list {
+    gap: 0;
+  }
+
+  .product-faqs__item button {
+    font-size: 16px;
+  }
+
+  .product-faqs__answer p {
+    max-width: none;
+  }
+
+  .product-explore {
+    padding: 32px 16px 24px;
+  }
+
+  .product-explore__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 48px;
+  }
+
+  .product-explore__copy {
+    min-height: 0;
+    gap: 32px;
+    padding-bottom: 48px;
+  }
+
+  .product-explore h2 {
+    width: 100%;
+    max-width: 370px;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-wrap: pretty;
+  }
+
+  .product-explore__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 274 / 342;
+    padding: 24px;
+  }
+
+  .product-explore__media > img:first-child {
+    object-position: 50% 56%;
+  }
+
+  .product-explore__mark {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 32px;
+    height: 32px;
+    transform: translate(-50%, -50%);
+  }
+
+  .product-explore__media figcaption {
+    position: absolute;
+    z-index: 1;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    display: block;
+    color: var(--next-white);
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .product-hero__inner {
+    min-height: 450px;
+  }
+}
+
+.next-demo__logos-mask {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 48px,
+    black calc(100% - 48px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 48px,
+    black calc(100% - 48px),
+    transparent
+  );
+}
+
+.next-demo__hs-form .hsfc-Renderer[data-hsfc-id="Renderer"] {
+  --hsf-global__font-family: var(--font-sans, "Suisse Intl", sans-serif);
+  --hsf-global__font-size: 0.9375rem;
+  --hsf-global__color: var(--next-black);
+  --hsf-field-label__color: var(--next-gray);
+  --hsf-field-input__color: var(--next-black);
+  --hsf-field-input__background-color: var(--next-white);
+  --hsf-field-input__border-color: transparent;
+  --hsf-field-input__border-radius: 30px;
+  --hsf-field-input__padding: 0.9375rem 1.5rem;
+  --hsf-default-row__vertical-spacing: 1.25rem;
+  --hsf-module__vertical-spacing: 0.75rem;
+  --hsf-default-background__padding: 0;
+  --hsf-button__background-color: var(--next-white);
+  --hsf-button__color: var(--next-black);
+  --hsf-button__border-radius: 62.4375rem;
+  --hsf-button__padding: 0.4375rem 3.8125rem 0.4375rem 1.5rem;
+  --hsf-button__font-weight: 450;
+  --hsf-button__width: auto;
+  --hsf-button--hover__background-color: var(--next-black);
+  --hsf-button--hover__color: var(--next-white);
+  --hsf-erroralert__font-size: 0.8125rem;
+  --hsf-global__error-color: #ff142c;
+  --hsf-default-erroralert__color: #ff142c;
+
+  --hsf-default-navigationrow-buttons-single__justify-content: center;
+}
+
+.next-demo__hs-form [aria-invalid="true"] {
+  --hsf-field-input__border-color: #ff142c;
+}
+
+.next-demo__hs-form .hsfc-PhoneInput:has(> input[aria-invalid="true"]) {
+  border: 1px solid #ff142c;
+  border-radius: 30px;
+}
+
+.next-demo__hs-form .hsfc-PhoneInput > input[aria-invalid="true"] {
+  --hsf-field-input__border-color: transparent;
+}
+
+.next-demo__hs-form .hsfc-Row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hsf-default-row__vertical-spacing, 1.25rem);
+}
+
+.next-demo__hs-form .hsfc-TextField,
+.next-demo__hs-form .hsfc-EmailField,
+.next-demo__hs-form .hsfc-PhoneField,
+.next-demo__hs-form .hsfc-TextareaField,
+.next-demo__hs-form .hsfc-DropdownField {
+  position: relative;
+}
+
+.next-demo__hs-form .hsfc-TextInput,
+.next-demo__hs-form .hsfc-TextareaInput,
+.next-demo__hs-form .hsfc-FieldLabel {
+  font-weight: 450;
+}
+
+.next-demo__hs-form .hsfc-FieldLabel {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.7rem;
+  z-index: 1;
+  transform: translateY(-50%);
+  cursor: text;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+
+.next-demo__hs-form .hsfc-TextField:has(input:not(:placeholder-shown))
+  .hsfc-FieldLabel,
+.next-demo__hs-form .hsfc-EmailField:has(input:not(:placeholder-shown))
+  .hsfc-FieldLabel,
+.next-demo__hs-form .hsfc-PhoneField:has(input:not(:placeholder-shown))
+  .hsfc-FieldLabel,
+.next-demo__hs-form
+  .hsfc-TextareaField:has(textarea:not(:placeholder-shown))
+  .hsfc-FieldLabel {
+  opacity: 0;
+}
+
+.next-demo__hs-form
+  .hsfc-DropdownField:has(input:not([value=""]))
+  .hsfc-FieldLabel {
+  opacity: 0;
+}
+
+.next-demo__hs-form.next-demo__hs-form .hsfc-DropdownInput__Caret > span {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%2015.336l.533.528-.533.528-.533-.528.533-.528zM6.274%209.668l.533-.527%205.726%205.668-.533.527-.533.528-5.726-5.668.533-.528zM12%2015.336l-.533-.527%205.726-5.668.533.527.533.528-5.726%205.668-.533-.528z%22%20fill%3D%22%231c1a17%22%2F%3E%3C%2Fsvg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.next-demo__hs-form .hsfc-DropdownOptions__Search .hsfc-TextInput {
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+  border-bottom: 1px solid var(--next-line, #d9d9d9);
+}
+
+.next-demo__hs-form input:-webkit-autofill,
+.next-demo__hs-form input:-webkit-autofill:hover,
+.next-demo__hs-form input:-webkit-autofill:focus,
+.next-demo__hs-form input:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px var(--next-white, #fff) inset;
+  -webkit-text-fill-color: var(--next-black, #1c1a17);
+}
+
+.next-demo__hs-form.next-demo__hs-form .hsfc-PhoneInput__FlagAndCaret {
+  padding-right: 16px;
+  min-width: 0;
+}
+
+.next-demo__hs-form .hsfc-PhoneInput__FlagAndCaret__Caret {
+  display: none;
+}
+
+.next-demo__hs-form .hsfc-PhoneInput > input {
+  padding-left: 16px;
+}
+
+.next-demo__hs-form.next-demo__hs-form .hsfc-Button {
+  position: relative;
+  min-height: 3.375rem;
+  transition: none;
+}
+
+.next-demo__hs-form .hsfc-Button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background-color: var(--next-eggshell, #f1f1ed);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%2012%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M2.5%209.5%209.5%202.5M9.5%202.5h-6M9.5%202.5v6%22%20stroke%3D%22%231c1a17%22%20stroke-width%3D%221.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.next-demo__hs-form [data-hsfc-id="Renderer"] .hsfc-Row {
+  grid-template-columns: 1fr;
+  row-gap: var(--hsf-default-row__vertical-spacing);
+}
+
+@media (max-width: 430px) {
+  .next-demo__hs-form
+    [data-hsfc-id="Renderer"]
+    .hsfc-NavigationRow__Buttons
+    > * {
+    width: auto;
+  }
+}
+
+.next-demo__hs-form .hsfc-PostSubmit {
+  display: flex;
+  max-width: 300px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.next-demo__hs-form .hsfc-PostSubmit::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20.167%2036.67c9.204%200%2016.666-7.462%2016.666-16.667%200-9.204-7.462-16.666-16.666-16.666-9.205%200-16.667%207.462-16.667%2016.666%200%209.205%207.462%2016.667%2016.667%2016.667z%22%20fill%3D%22%231C1A17%22%2F%3E%3Cpath%20d%3D%22M14.14%2020.294l4.541%204.54%208.004-8.003%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.27%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.next-demo__hs-form .hsfc-PostSubmit p {
+  margin: 0;
+}
+
+.next-demo__hs-form .hsfc-PostSubmit p:first-of-type strong {
+  font-weight: 469;
+}
+
+.next-demo__hs-form .hsfc-PostSubmit p:first-of-type ~ p {
+  color: #525252;
+  font-size: 16px;
+}
+
+.next-demo__hs-form .hsfc-PostSubmit p:last-child {
+  display: none;
+}
+
+.next-demo__panel:has(.hsfc-PostSubmit) h3,
+.next-demo__panel:has(.hsfc-PostSubmit) .next-demo__terms {
+  display: none;
+}
+
+.next-demo__hs-form:has(.hsfc-PostSubmit) {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-hs-form .hsfc-Renderer[data-hsfc-id="Renderer"] {
+  --hsf-global__font-family: var(--font-sans, "Suisse Intl", sans-serif);
+  --hsf-global__font-size: 0.9375rem;
+  --hsf-global__color: var(--next-black);
+  --hsf-field-label__color: var(--next-gray);
+  --hsf-field-input__color: var(--next-black);
+  --hsf-field-input__background-color: var(--next-white);
+  --hsf-field-input__border-color: transparent;
+  --hsf-field-input__border-radius: 999px;
+  --hsf-field-input__padding: 0.9375rem 4.75rem 0.9375rem 1.5rem;
+  --hsf-default-background__padding: 0;
+  --hsf-button__background-color: var(--next-eggshell);
+  --hsf-button--hover__background-color: var(--next-black);
+  --hsf-global__error-color: #ff142c;
+  --hsf-default-erroralert__color: #ff142c;
+}
+
+/** Footer variant: same pill/button treatment, colors swapped (eggshell
+ * input, white button) to match the footer's card-less on-white placement. */
+.next-footer__hs-form .hsfc-Renderer[data-hsfc-id="Renderer"] {
+  --hsf-field-input__background-color: var(--next-eggshell);
+  --hsf-button__background-color: var(--next-white);
+}
+
+/** The email field's own placeholder attribute is a real, non-empty string
+ * ("Enter your email address", confirmed via live inspection) — unlike
+ * Demo.astro's fields, it doesn't need the label-as-fake-placeholder
+ * technique, and stacking one on top of the other just doubles up the text.
+ * Hide the label visually (matches classic's own .subscribe-form) while
+ * keeping it for screen readers. */
+.next-hs-form .hsfc-FieldLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/** Same technique as the classic site's .subscribe-form (_hubspot.scss):
+ * stack the field row and the submit button in the same grid cell so the
+ * button sits inside the pill instead of below it, then unwrap the
+ * NavigationRow wrapper so .hsfc-Button becomes a direct grid child. */
+.next-hs-form .hsfc-Step__Content,
+.next-hs-form .hsfc-EmailField {
+  display: grid;
+}
+
+.next-hs-form .hsfc-Row,
+.next-hs-form .hsfc-Button {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/** HubSpot's own default gives every .hsfc-Row a bottom margin for spacing
+ * out multiple rows — this form only ever has the one row, so it just adds
+ * dead space below the pill. HubSpot's own rule for this is
+ * [data-hsfc-id="Renderer"] .hsfc-Row (an attribute + a class, same
+ * specificity as a plain two-class override), so it needs the doubled
+ * class to win the tie without !important. */
+.next-hs-form.next-hs-form .hsfc-Row {
+  margin-bottom: 0;
+}
+
+.next-hs-form .hsfc-NavigationRow,
+.next-hs-form [data-hsfc-id="Renderer"] .hsfc-NavigationRow__Buttons {
+  display: contents;
+}
+
+.next-hs-form.next-hs-form .hsfc-Button {
+  /** .hsfc-Row grows taller than the input itself once its error message
+   * renders below it (confirmed live: 54.5px -> 87px) — align-self: center
+   * would center the button against that whole grown cell, not just the
+   * input, so it visibly drifts down into the error text. The input's own
+   * top edge never moves regardless of what renders below it, so anchoring
+   * to the top with a fixed offset keeps the button locked to the pill. */
+  justify-self: end;
+  align-self: start;
+  margin-top: 8px;
+  margin-right: 8px;
+  width: 39px;
+  height: 39px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  text-indent: -9999px;
+  transition: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%2012%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M2.5%206h7M6.5%203%209.5%206%206.5%209%22%20stroke%3D%22%231c1a17%22%20stroke-width%3D%221.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/** The arrow itself is a hardcoded-black background-image (not currentColor
+ * text), so it needs its own hover swap to stay visible once the button's
+ * own background inverts to black. */
+.next-hs-form.next-hs-form .hsfc-Button:hover {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%2012%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M2.5%206h7M6.5%203%209.5%206%206.5%209%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.next-hs-form input:-webkit-autofill,
+.next-hs-form input:-webkit-autofill:hover,
+.next-hs-form input:-webkit-autofill:focus,
+.next-hs-form input:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px var(--next-white, #fff) inset;
+  -webkit-text-fill-color: var(--next-black, #1c1a17);
+}
+
+.next-footer__hs-form input:-webkit-autofill,
+.next-footer__hs-form input:-webkit-autofill:hover,
+.next-footer__hs-form input:-webkit-autofill:focus,
+.next-footer__hs-form input:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px var(--next-eggshell, #f1f1ed) inset;
+}
+
+.next-hs-form [aria-invalid="true"] {
+  --hsf-field-input__border-color: #ff142c;
+}
+
+/** HubSpot renders both this form-level summary AND a per-field message
+ * ("Please complete this required field.") on the same error — the
+ * per-field one is more useful and sits right under the pill; this one is
+ * redundant, and since .hsfc-NavigationRow is unwrapped to `contents` above
+ * it would otherwise fall into the field grid as a stray extra row. */
+.next-hs-form .hsfc-NavigationRow__Alerts {
+  display: none;
+}
+
+.next-blog__filter.active {
+  color: var(--next-black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .next-logo-rail__track {
+    animation: none;
+  }
+  .next-logo-rail__track ul[aria-hidden="true"] {
+    display: none;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .js [data-slide-image],
+  .js [data-slide-content] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-peek-lines] .peek-line > span {
+    transform: none;
+    transition: none;
+  }
+  .next-product-card {
+    will-change: auto;
+  }
+  .hero-sequence__scene {
+    transition: none;
+  }
+  .atlas-hero-media__video {
+    display: none;
+  }
+  .hero-sequence__feed-track {
+    transition: none;
+    will-change: auto;
+  }
+  .js .hero-bubble {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+  .hero-bubble--will-complete .hero-bubble__status--loading {
+    opacity: 0;
+  }
+  .hero-bubble--will-complete .hero-bubble__status--complete,
+  .js .hero-bubble li,
+  .js .hero-bubble__check svg {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-bubble__buttons span.is-resolving::before {
+    animation: none;
+    transform: scaleX(1);
+  }
+  .hero-bubble--resolved .hero-bubble__resolved-row svg {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .next-pill,
+  .next-case img,
+  .next-product-card,
+  .next-feature__visual,
+  .next-security__grid article {
+    border: 1px solid CanvasText;
+  }
+
+  /* masked seal stencils paint via background-color, which forced colors
+     would otherwise wipe to Canvas (invisible) */
+  .next-security__seal i {
+    forced-color-adjust: none;
+    background-color: CanvasText;
+  }
+}
+</style><link rel="preload" href="/assets/fonts/suisse/SuisseIntl-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="icon" type="image/svg+xml" href="/static/favicon.svg"><link rel="shortcut icon" href="/static/favicon.ico"><link rel="apple-touch-icon" href="/static/apple-touch-icon.png"><script>
+      document.documentElement.classList.add("js");
+      // If the page module never loads (network failure, blocked chunk),
+      // drop the class so reveal-hidden content becomes visible again.
+      setTimeout(function () {
+        if (!window.__nextReady) {
+          document.documentElement.classList.remove("js");
+        }
+      }, 3000);
+    </script><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFQ8P4TD');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFQ8P4TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><link rel="stylesheet" href="/assets/_customerSlug_.Dth_Ykr5.css">
+<style>:root{--warm-gray: #bcb5b9;--yellow: #e8ab35;--code-red: #ff4458;--code-green: #cdf2ca;--code-blue: #aad5f4;--code-yellow: var(--yellow);--code-gray: var(--warm-gray)}code[class*=language-],pre[class*=language-]{display:block}code[class*=language-],code[class*=language-] *,pre[class*=language-]{word-wrap:normal;word-break:normal;white-space:pre-wrap}pre code{text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-hyphens:none;hyphens:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:var(--code-gray)}.token.function,.token.builtin,.token.property,.token.attr-name,.token.char,.token.inserted{color:var(--code-blue)}.token.class,.token.selector,.token.string,.token.tag{color:var(--code-yellow)}.token.atrule,.token.keyword{color:var(--code-red)}.token.number,.token.hexcode,.token.attr-value{color:var(--code-green)}.token.important,.token.bold{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}code[class*=language-jsx] .token.script,code[class*=language-tsx] .token.script{color:var(--code-green)}code[class*=language-jsx] .token.punctuation,code[class*=language-tsx] .token.punctuation,code[class*=language-xml] .token.punctuation,code[class*=language-html] .token.punctuation,code[class*=language-markup] .token.punctuation{color:var(--code-yellow)}code[class*=language-css] .token.builtin,code[class*=language-sass] .token.builtin,code[class*=language-scss] .token.builtin,code[class*=language-less] .token.builtin,code[class*=language-stylus] .token.builtin,code[class*=language-css] .token.function,code[class*=language-sass] .token.function,code[class*=language-scss] .token.function,code[class*=language-less] .token.function,code[class*=language-stylus] .token.function{color:var(--code-red)}
+</style>
+<link rel="stylesheet" href="/assets/_customerSlug_.DnODwMIi.css">
+<link rel="stylesheet" href="/assets/_hubspot.Ddp5DyLc.css">
+<link rel="stylesheet" href="/assets/_customerSlug_.DFk8AM3o.css"><script type="module" src="/assets/page.V2R8AmkL.js"></script></head> <body class="next-page">  <div class="next-announcement"><a href="https://industrial-renaissance-summit.com/#top"><span class="next-announcement__label">News</span><span>Reserve a spot: Industrial Renaissance Summit | Nov 2-3, 2026 | Napa, CA</span></a></div><header class="next-header next-header--offwhite" data-next-header> <a class="next-skip" href="#next-content">Skip to content</a> <div class="next-container next-header__inner"> <nav class="next-header__nav" aria-label="Primary navigation"> <div class="next-header__nav-item"> <button type="button" class="next-header__nav-trigger" aria-haspopup="true"> Products </button> <div class="next-desktop-submenu next-desktop-submenu--products" aria-label="Products"> <div class="next-desktop-submenu__inner"> <div class="next-desktop-submenu__products"> <a class="next-desktop-submenu__product" href="/product/agent"> <span class="next-desktop-submenu__product-icon" aria-hidden="true"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><use xlink:href="/assets/images/sprite.svg?v=0.023#agent"></use></svg><!--]--> </span> <span class="next-desktop-submenu__product-copy"> <span class="next-desktop-submenu__product-name"> Agents </span> <span class="next-desktop-submenu__product-description"> Run your operations end-to-end with AI. </span> </span> </a><a class="next-desktop-submenu__product" href="/product/atlas"> <span class="next-desktop-submenu__product-icon" aria-hidden="true"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><use xlink:href="/assets/images/sprite.svg?v=0.023#atlas"></use></svg><!--]--> </span> <span class="next-desktop-submenu__product-copy"> <span class="next-desktop-submenu__product-name"> Atlas </span> <span class="next-desktop-submenu__product-description"> Surface your hidden revenue opportunities </span> </span> </a> </div> </div> </div> </div><div class="next-header__nav-item"> <button type="button" class="next-header__nav-trigger" aria-haspopup="true"> Solutions </button> <div class="next-desktop-submenu next-desktop-submenu--industries" aria-label="Solutions"> <div class="next-desktop-submenu__inner"> <div class="next-desktop-submenu__industries" data-nav-image-panel> <div class="next-desktop-submenu__columns"> <div class="next-desktop-submenu__column"> <p class="next-desktop-submenu__column-title"> By company type </p> <ul class="next-desktop-submenu__industry-list"> <li> <a href="/solutions/manufacturers" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/e37a0604fdd58e2f4104904a66746c59b81a5510-878x704.jpg?w=720&q=82&fit=max&auto=format"> Manufacturers </a> </li><li> <a href="/solutions/distributors" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/efadd12596c335160bbbf9286326d96f751ab85a-878x704.jpg?w=720&q=82&fit=max&auto=format"> Distributors </a> </li><li> <a href="/solutions/retail" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/62dcfbbf30f875a622f47707f4ba6f10b3ce51ce-878x704.jpg?w=720&q=82&fit=max&auto=format"> Retailers </a> </li> </ul> </div><div class="next-desktop-submenu__column"> <p class="next-desktop-submenu__column-title"> By industry </p> <ul class="next-desktop-submenu__industry-list"> <li> <a href="/solutions/aerospace" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/956ca9b543b237077ba6e9b854d4add5b1d8fcf0-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Aerospace </a> </li><li> <a href="/solutions/automotive" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/bdc4527d6aaf42cabcb0929c5c0942a0e3d1f7e8-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Automotive </a> </li><li> <a href="/solutions/food-beverage" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/cfe99e710a97d56d03695b4dcaf662b8eb919e35-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Food &amp; beverage </a> </li><li> <a href="/solutions/high-tech-and-electronics" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/90f1d253347ffbabbff90cdd772de59557ad165c-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> High tech &amp; electronics </a> </li><li> <a href="/solutions/pharma-and-life-sciences" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/cd71d9e048ea07b5b51c9a82fc22e26b42c3cbae-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Pharma &amp; life sciences </a> </li> </ul> </div><div class="next-desktop-submenu__column"> <p class="next-desktop-submenu__column-title"> By logistics type </p> <ul class="next-desktop-submenu__industry-list"> <li> <a href="/solutions/ftl-carriers" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/e4041f4fe601ff4492658bae1e32711e350b55a7-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> FTL carriers </a> </li><li> <a href="/solutions/ltl-carriers" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/e4d687d0703afeff3fcb73c3ffe9652049a64661-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> LTL carriers </a> </li><li> <a href="/solutions/warehouses" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/b2449b9a39ad519cb4dd3bab31f56b1caef2a7f5-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Warehouses </a> </li><li> <a href="/solutions/forwarders" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/88ef9da31dcc12cece29aedeb32a02fec9678206-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Freight forwarders </a> </li><li> <a href="/solutions/brokerages" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/9cf5f95e3c4abfa506acee648a2abddabcabd6e4-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Freight brokerages </a> </li><li> <a href="/solutions/ocean-carriers" data-nav-hover-image="https://cdn.sanity.io/images/1ua24syd/production/2ba5e3e5e67cf9111c76c482e7fcb3cd638ca782-1317x1056.jpg?w=720&q=82&fit=max&auto=format"> Ocean carriers </a> </li> </ul> </div> </div> <div class="next-desktop-submenu__industry-image" aria-hidden="true"> <img src="https://cdn.sanity.io/images/1ua24syd/production/ac626076589b27a91b2183c6ee6ec57036d663f4-658x877.jpg?w=720&q=82&fit=max&auto=format" alt="" loading="lazy" decoding="async"> </div> </div> </div> </div> </div><div class="next-header__nav-item"> <button type="button" class="next-header__nav-trigger" aria-haspopup="true"> Resources </button> <div class="next-desktop-submenu next-desktop-submenu--industries" aria-label="Resources"> <div class="next-desktop-submenu__inner"> <div class="next-desktop-submenu__industries" data-nav-image-panel> <ul class="next-desktop-submenu__industry-list"> <li> <a href="/blog">Blog</a> </li><li> <a href="/security">Security</a> </li><li> <a href="https://www.pallet.com/labs">Labs</a> </li> </ul>  </div> </div> </div> </div><div class="next-header__nav-item"> <a class="next-header__nav-trigger" href="/company"> Company </a> </div> </nav> <details class="next-mobile-nav" data-mobile-nav> <summary aria-label="Menu"> <span class="next-mobile-nav__label">Menu</span> </summary> <div class="next-menu"> <div class="next-menu__scroll"> <nav class="next-menu__nav" aria-label="Mobile navigation" data-menu-nav> <div class="next-menu__row next-menu__section" style="--menu-i:0" data-menu-section> <button class="next-menu__trigger" type="button" aria-expanded="false" data-menu-trigger> <span class="next-menu__title">Products</span> <span class="next-menu__plus" aria-hidden="true"></span> </button> <div class="next-menu__reveal" data-menu-reveal> <div class="next-menu__reveal-inner"> <div class="next-menu__cards"> <a class="next-menu__card" href="/product/agent"> <span class="next-menu__card-icon" aria-hidden="true"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><use xlink:href="/assets/images/sprite.svg?v=0.023#agent"></use></svg><!--]--> </span> <span class="next-menu__card-name"> Agents </span> <span class="next-menu__card-desc"> Run your operations end-to-end with AI. </span> </a><a class="next-menu__card" href="/product/atlas"> <span class="next-menu__card-icon" aria-hidden="true"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><use xlink:href="/assets/images/sprite.svg?v=0.023#atlas"></use></svg><!--]--> </span> <span class="next-menu__card-name"> Atlas </span> <span class="next-menu__card-desc"> Surface your hidden revenue opportunities </span> </a> </div> </div> </div> </div><div class="next-menu__row next-menu__section" style="--menu-i:1" data-menu-section> <button class="next-menu__trigger" type="button" aria-expanded="false" data-menu-trigger> <span class="next-menu__title">Solutions</span> <span class="next-menu__plus" aria-hidden="true"></span> </button> <div class="next-menu__reveal" data-menu-reveal> <div class="next-menu__reveal-inner"> <div class="next-menu__columns"> <div class="next-menu__column"> <p class="next-menu__column-title"> By company type </p> <ul class="next-menu__sublist"> <li> <a href="/solutions/manufacturers">Manufacturers</a> </li><li> <a href="/solutions/distributors">Distributors</a> </li><li> <a href="/solutions/retail">Retailers</a> </li> </ul> </div><div class="next-menu__column"> <p class="next-menu__column-title"> By industry </p> <ul class="next-menu__sublist"> <li> <a href="/solutions/aerospace">Aerospace</a> </li><li> <a href="/solutions/automotive">Automotive</a> </li><li> <a href="/solutions/food-beverage">Food &amp; beverage</a> </li><li> <a href="/solutions/high-tech-and-electronics">High tech &amp; electronics</a> </li><li> <a href="/solutions/pharma-and-life-sciences">Pharma &amp; life sciences</a> </li> </ul> </div><div class="next-menu__column"> <p class="next-menu__column-title"> By logistics type </p> <ul class="next-menu__sublist"> <li> <a href="/solutions/ftl-carriers">FTL carriers</a> </li><li> <a href="/solutions/ltl-carriers">LTL carriers</a> </li><li> <a href="/solutions/warehouses">Warehouses</a> </li><li> <a href="/solutions/forwarders">Freight forwarders</a> </li><li> <a href="/solutions/brokerages">Freight brokerages</a> </li><li> <a href="/solutions/ocean-carriers">Ocean carriers</a> </li> </ul> </div> </div> </div> </div> </div><a class="next-menu__row next-menu__link" style="--menu-i:2" href="/blog"> Articles </a><a class="next-menu__row next-menu__link" style="--menu-i:3" href="/company"> Company </a> </nav> </div> <div class="next-menu__footer"> <a class="next-pill next-pill--light next-menu__cta" href="/demo"> <span>Book a demo</span> <span class="next-pill__arrow" aria-hidden="true"> <svg viewBox="0 0 12 12" width="12" height="12" fill="none"> <path d="M2.5 9.5 9.5 2.5M9.5 2.5h-6M9.5 2.5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </span> </a> </div> </div> </details> <a class="next-header__brand" href="/" aria-label="Pallet home"> <span class="next-brand"> <img src="/assets/pallet-logo.BaJhtbSy.svg" width="110" height="26" alt="" aria-hidden="true"> </span> <img class="next-header__mobile-wordmark" src="/assets/pallet-wordmark.Se8b-wGI.svg" width="59" height="26" alt="" aria-hidden="true"> </a> <a class="next-pill next-pill--light next-header__cta" href="/demo"> <span>Book a demo</span> <span class="next-pill__arrow" aria-hidden="true"> <svg viewBox="0 0 12 12" width="12" height="12" fill="none"> <path d="M2.5 9.5 9.5 2.5M9.5 2.5h-6M9.5 2.5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </span> </a> <a class="next-header__mobile-cta" href="/demo">Demo</a> </div> </header> <main id="next-content">  <article class="bg-white"> <header class="bg-v3-offwhite"> <div class="next-container py-64 md:py-96"> <div class="md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-16">  <p class="next-eyebrow text-center text-v3-gray-05 md:col-start-2 md:justify-self-center">
+Customer Story
+</p> <div class="hidden md:block"></div> </div> <div class="mx-auto mt-32 grid max-w-900 gap-32 text-center md:mt-36 md:gap-36" data-reveal> <!--[--><!----><h1 class="text-32 md:text-48 leading-none md:leading-1.1 -tracking-0.05 font-normal text-v3-black" data-heading-level="2">STG Logistics automated manual tender processing with Pallet<!----><!----></h1><!----><!--]--> <!--[--><!--[0--><img url="https://cdn.sanity.io/images/1ua24syd/production/56e8492247f5daea35920a5340c8c35f36dc098b-522x132.png?w=115&amp;h=29&amp;q=95&amp;fit=crop&amp;auto=format" width="115" height="29" srcset="https://cdn.sanity.io/images/1ua24syd/production/56e8492247f5daea35920a5340c8c35f36dc098b-522x132.png?w=115&amp;h=29&amp;q=95&amp;fit=crop&amp;auto=format 115w, https://cdn.sanity.io/images/1ua24syd/production/56e8492247f5daea35920a5340c8c35f36dc098b-522x132.png?w=230&amp;h=58&amp;q=95&amp;fit=crop&amp;auto=format 230w" src="https://cdn.sanity.io/images/1ua24syd/production/56e8492247f5daea35920a5340c8c35f36dc098b-522x132.png?w=115&amp;h=29&amp;q=95&amp;fit=crop&amp;auto=format" alt="stg logistics logo" sizes="(max-width: 115px) 100vw, 115px" class="mx-auto h-29 w-auto object-contain" loading="lazy" decoding="async" onload="this.__e=event" onerror="this.__e=event"/><!--]--><!--]--> </div> <div class="relative mx-auto mt-40 aspect-4/3 max-w-900 overflow-hidden rounded-3 transition-[aspect-ratio] duration-700 ease-[var(--next-ease-out)]">  <!--[--><!--[0--><img url="https://cdn.sanity.io/images/1ua24syd/production/c1dde5e4568cce8f157d2af293dcffaea7083e93-6720x4480.jpg?w=900&amp;h=600&amp;q=95&amp;fit=crop&amp;auto=format" width="900" height="600" srcset="https://cdn.sanity.io/images/1ua24syd/production/c1dde5e4568cce8f157d2af293dcffaea7083e93-6720x4480.jpg?w=900&amp;h=600&amp;q=95&amp;fit=crop&amp;auto=format 900w, https://cdn.sanity.io/images/1ua24syd/production/c1dde5e4568cce8f157d2af293dcffaea7083e93-6720x4480.jpg?w=1800&amp;h=1200&amp;q=95&amp;fit=crop&amp;auto=format 1800w" src="https://cdn.sanity.io/images/1ua24syd/production/c1dde5e4568cce8f157d2af293dcffaea7083e93-6720x4480.jpg?w=900&amp;h=600&amp;q=95&amp;fit=crop&amp;auto=format" alt="stg logistics" sizes="(max-width: 900px) 100vw, 900px" class="isolate absolute inset-0 h-full w-full object-cover transition-opacity duration-500 peer-[.play]:invisible peer-[.play]:opacity-0" loading="eager" decoding="async" onload="this.__e=event" onerror="this.__e=event"/><!--]--><!--]-->  </div> <div class="mx-auto mt-48 grid max-w-668 gap-24 text-center md:mt-64" data-reveal> <!--[--><!----><p class="text-24 md:text-32 leading-none md:leading-1.1 -tracking-0.03 font-book text-v3-black" data-heading-level="3">
+&ldquo;With Pallet automating order processing, our team gets 60% of their time back.&rdquo;
+<!----><!----></p><!----><!--]--> <div class="flex flex-col items-center gap-4"> <!--[--><!----><span class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Sal DiDonato<!----><!----></span><!----><!--]--> <p class="next-eyebrow text-v3-gray-05">EVP &amp; Chief Information Officer</p> </div> </div> </div> </header> <div class="bg-white py-48 md:py-80"><div class="next-container grid gap-12 md:grid-flow-col md:auto-cols-[minmax(0,1fr)]"><div class="flex flex-col gap-32 md:gap-64 2xl:gap-120 rounded-3 bg-v3-offwhite px-20 py-24 xl:p-32"><!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="text-v3-black"><use xlink:href="/assets/images/sprite.svg?v=0.023#vision"></use></svg><!--]--><!--[--><!----><p class="text-20 leading-1.1 -tracking-0.03 font-normal mb-16 text-v3-black last:mb-0" data-heading-level="5">95% touchless resolution rate for orders<!----><!----></p><!----><!--]--></div><div class="flex flex-col gap-32 md:gap-64 2xl:gap-120 rounded-3 bg-v3-offwhite px-20 py-24 xl:p-32"><!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="text-v3-black"><use xlink:href="/assets/images/sprite.svg?v=0.023#win-more"></use></svg><!--]--><!--[--><!----><p class="text-20 leading-1.1 -tracking-0.03 font-normal mb-16 text-v3-black last:mb-0" data-heading-level="5">80% cost savings in order entry<!----><!----></p><!----><!--]--></div><div class="flex flex-col gap-32 md:gap-64 2xl:gap-120 rounded-3 bg-v3-offwhite px-20 py-24 xl:p-32"><!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="text-v3-black"><use xlink:href="/assets/images/sprite.svg?v=0.023#paper"></use></svg><!--]--><!--[--><!----><p class="text-20 leading-1.1 -tracking-0.03 font-normal mb-16 text-v3-black last:mb-0" data-heading-level="5">45 data fields required per order<!----><!----></p><!----><!--]--></div></div></div> <div class="next-container"> <div class="mx-auto grid w-full max-w-1344 gap-40 pb-48 lg:grid-cols-[18.75rem_auto] lg:gap-64 lg:pb-80"> <div class="flex min-w-0 flex-col gap-16 md:gap-32 lg:sticky lg:top-96 lg:self-start"> <ul class="grid gap-24 border-t border-v3-gray-00 pt-24 lg:gap-32"><li class="grid gap-8"><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">Customer<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">STG Logistics<!----><!----></p><!----><!--]--></li><li class="grid gap-8"><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">Headquarters<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Chicago Metro, IL<!----><!----></p><!----><!--]--></li><li class="grid gap-8"><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">Operation Type<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Port-to-Door Logistics Provider<!----><!----></p><!----><!--]--></li><li class="grid gap-8"><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">Services<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Intermodal, Drayage, Deferred LTL, LCL Services, Transloading, Warehousing, Final Mile<!----><!----></p><!----><!--]--></li></ul> <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-12 border-y border-v3-gray-00 py-16"> <!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03">Share this story<!----><!----></p><!----><!--]--> <div class="flex items-center gap-8"> <a href="https://x.com/intent/tweet?text=STG%20Logistics%20automated%20manual%20tender%20processing%20with%20Pallet&url=http%3A%2F%2Flocalhost%3A8000%2Fcustomers%2Fstg-logistics" target="_blank" rel="noopener" aria-label="Share on X"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="h-24 w-24"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-share-x"></use></svg><!--]--> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A8000%2Fcustomers%2Fstg-logistics" target="_blank" rel="noopener" aria-label="Share on LinkedIn"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="h-24 w-24"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-share-in"></use></svg><!--]--> </a> <button type="button" data-modules="[&#34;copy-link&#34;]" data-copy-link="http://localhost:8000/customers/stg-logistics" aria-label="Copy link"> <!--[--><svg role="img" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="h-24 w-24"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-share-link"></use></svg><!--]--> </button> </div> </div> </div> <div class="min-w-0 max-w-760 ml-auto w-full text-v3-gray-05"> <!--[--><!----><h2 class="text-24 md:text-32 leading-none md:leading-1.1 -tracking-0.03 font-book content-header mb-24 lg:mb-32 last:mb-0 mt-48 lg:mt-64 first:mt-0 text-v3-black scroll-mt-96 [&amp;+*]:mt-0" data-heading-level="3" id="summary">Summary<!----><!----></h2><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">STG Logistics deployed Pallet to automate tender processing across its intermodal and drayage operations. Orders that once required manual TMS entry are now processed touchlessly, with 95% requiring no human intervention and the remainder handled by a human operator. The result: lower cost to serve, faster order execution, and operators freed to focus on customer service.<!----><!----></p><!----><!--]--><!--[--><!----><h2 class="text-24 md:text-32 leading-none md:leading-1.1 -tracking-0.03 font-book content-header mb-24 lg:mb-32 last:mb-0 mt-48 lg:mt-64 first:mt-0 text-v3-black scroll-mt-96 [&amp;+*]:mt-0" data-heading-level="3" id="about-the-company">About the company<!----><!----></h2><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">STG Logistics is the largest fully integrated port-to-door service provider in the United States, with more than 100 locations across North America, including all major port markets. The company owns 15,000 53-foot intermodal containers and operates across intermodal, drayage, container deconsolidation, reconsolidation, transloading, warehousing, over the road, and final mile.<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">Salvatore DiDonato is EVP and Chief Information Officer at STG Logistics, where he leads technology strategy and AI-enabled transformation across the company&#39;s logistics network. Salvatore is also a board advisor to TMS provider Revenova and WMS provider Made4net. Prior to STG, he was a technology and operations leader at Cigna and Lineage Logistics.<!----><!----></p><!----><!--]--><!--[--><!----><h2 class="text-24 md:text-32 leading-none md:leading-1.1 -tracking-0.03 font-book content-header mb-24 lg:mb-32 last:mb-0 mt-48 lg:mt-64 first:mt-0 text-v3-black scroll-mt-96 [&amp;+*]:mt-0" data-heading-level="3" id="challenges">Challenges<!----><!----></h2><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">STG needed to grow without expanding its labor footprint, and tender processing was one of the clearest bottlenecks.<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">Before Pallet, when a shipper tendered an order, a customer service agent had to open the email, extract the order details, and manually enter them into STG&#39;s TMS. That process took 5 minutes per order, and 15 team members were spending 60% of their day on manual order entry.<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">The work was highly variable. Tenders arrived as PDFs, Excel files, plain-text emails, and attachments buried several levels deep. Operators needed to fill out at least 45 fields inside the TMS. Customers had different business rules and default specifications, based on customer and facility. Requirements also changed by move type and railroad, with additional complexity from rail billing systems, customs compliance, hazmat data, and shipment-specific regulatory fields.<!----><!----></p><!----><!--]--><ul class="my-24 lg:my-48 text-v3-gray-05 flex flex-col gap-24"><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Intermodal and drayage orders required additional fields like rail bills, chassis numbers, and cargo itemization </div> </li><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Hazmat orders required attaching safety sheets and followed a different routing process </div> </li><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Cross-border orders with Mexico required line-by-line cargo details </div> </li></ul><div class="my-48 flex flex-col gap-40 2xl:gap-64 items-center px-16 py-40 text-center rounded-3 bg-v3-eggshell lg:my-64 lg:items-start lg:px-48 lg:py-48 lg:text-left"><!--[--><svg role="img" aria-hidden="true" width="24" height="22" viewBox="0 0 24 22" class="h-22 w-24 text-v3-black"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-post-quote-icon"></use></svg><!--]--><!--[--><!----><h4 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black" data-heading-level="4">Even the same customer might send us multiple orders with different requirements and formats.<!----><!----></h4><!----><!--]--><div><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Sal DiDonato<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">EVP &amp; Chief Information Officer<!----><!----></p><!----><!--]--></div></div><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">Traditional OCR-based approaches could not keep up. Every new customer meant new data, new configuration work, and new failure points. STG needed a system that could handle format variability without constant rework and integrate directly into its proprietary environment without disrupting the customer service workflow.<!----><!----></p><!----><!--]--><!--[--><!----><h2 class="text-24 md:text-32 leading-none md:leading-1.1 -tracking-0.03 font-book content-header mb-24 lg:mb-32 last:mb-0 mt-48 lg:mt-64 first:mt-0 text-v3-black scroll-mt-96 [&amp;+*]:mt-0" data-heading-level="3" id="solution">Solution<!----><!----></h2><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">STG’s requirements were twofold: The system had to be accurate, and it had to fit into the way the team already worked. Pallet met both.<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">Pallet used LLM-powered AI agents to read and interpret tenders across formats without the repeated reconfiguration required by traditional OCR systems. Pallet also integrated directly into STG’s workflow, reading orders inside their inbox and sending the orders to their custom TMS via EDI, so no system or process changes were required.<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">Along the way, Pallet handled various technical complexities in processing orders including:<!----><!----></p><!----><!--]--><ul class="my-24 lg:my-48 text-v3-gray-05 flex flex-col gap-24"><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Chain of documents stored in web portals, not attached to the email </div> </li><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Building a decryption tool to handle encrypted PDFs </div> </li><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Supporting .eml file formats </div> </li><li class="grid grid-cols-[auto_1fr] gap-16 items-start before:rounded-full before:mb-auto before:bg-v3-gray-05 before:w-6 before:h-6 before:mt-10"> <div> Parallel agents for processing for 50+ orders in bulk </div> </li></ul><div class="my-48 flex flex-col gap-40 2xl:gap-64 items-center px-16 py-40 text-center rounded-3 bg-v3-eggshell lg:my-64 lg:items-start lg:px-48 lg:py-48 lg:text-left"><!--[--><svg role="img" aria-hidden="true" width="24" height="22" viewBox="0 0 24 22" class="h-22 w-24 text-v3-black"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-post-quote-icon"></use></svg><!--]--><!--[--><!----><h4 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black" data-heading-level="4">We started by giving you our most complex orders. Once we knew you could process those, we were confident you could handle everything else.<!----><!----></h4><!----><!--]--><div><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Sal DiDonato<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">EVP &amp; Chief Information Officer<!----><!----></p><!----><!--]--></div></div><!--[--><!----><h2 class="text-24 md:text-32 leading-none md:leading-1.1 -tracking-0.03 font-book content-header mb-24 lg:mb-32 last:mb-0 mt-48 lg:mt-64 first:mt-0 text-v3-black scroll-mt-96 [&amp;+*]:mt-0" data-heading-level="3" id="impact">Impact<!----><!----></h2><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">Touchless order processing gave the team capacity back where it matters. The 15 people who had spent most of their day on tender entry now focus on higher-value work, and the downstream errors that manual order creation introduces, including billing issues, incorrect legs, chassis charges, and compliance failures, have been substantially reduced.<!----><!----></p><!----><!--]--><div class="my-48 flex flex-col gap-40 2xl:gap-64 items-center px-16 py-40 text-center rounded-3 bg-v3-eggshell lg:my-64 lg:items-start lg:px-48 lg:py-48 lg:text-left"><!--[--><svg role="img" aria-hidden="true" width="24" height="22" viewBox="0 0 24 22" class="h-22 w-24 text-v3-black"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-post-quote-icon"></use></svg><!--]--><!--[--><!----><h4 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black" data-heading-level="4">95% of the orders that Pallet processed required no intervention. We were able to deliver better, more timely service.<!----><!----></h4><!----><!--]--><div><!--[--><!----><p class="text-16 leading-1.3 -tracking-0.02 font-normal text-v3-black">Sal DiDonato<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-12 leading-1.3 tracking-normal font-normal uppercase tracking-0.03 text-v3-gray-04">EVP &amp; Chief Information Officer<!----><!----></p><!----><!--]--></div></div><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">The result: a 5x return on investment.<!----><!----></p><!----><!--]--><!--[--><!----><p class="text-16 -tracking-0.02 font-normal mb-24 last:mb-0 leading-1.5">STG is now expanding its Pallet deployment, adding agents across order execution and customer service.<!----><!----></p><!----><!--]--> </div> </div> </div> </article> <section class="bg-v3-eggshell" data-reveal><div class="next-container py-64 2xl:py-80" data-modules="[&#34;related-content&#34;]"><div class="mb-40 flex items-start justify-between gap-16 lg:mb-64"><div class="flex flex-col gap-16"><!--[--><!----><h2 class="text-32 md:text-48 leading-none md:leading-1.1 -tracking-0.05 font-normal text-v3-black" data-heading-level="2">Related stories<!----><!----></h2><!----><!--]--></div><div class="flex shrink-0 gap-8"><button type="button" class="splide-arrow flex h-40 w-40 items-center justify-center rounded-full border border-v3-gray-01 text-v3-black hover:bg-white" aria-label="Go to previous item"><!--[--><svg role="img" aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-carousel-prev"></use></svg><!--]--></button><button type="button" class="splide-arrow flex h-40 w-40 items-center justify-center rounded-full border border-v3-gray-01 text-v3-black hover:bg-white" aria-label="Go to next item"><!--[--><svg role="img" aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><use xlink:href="/assets/images/sprite.svg?v=0.023#next-carousel-next"></use></svg><!--]--></button></div></div><div class="splide min-w-0 overflow-hidden mr-[calc(var(--next-gutter)*-1)]"><div class="splide__track"><ul class="splide__list -mx-6 flex lg:-mx-12"><li class="splide__slide w-[85%] shrink-0 px-6 sm:w-1/2 lg:w-[26%] lg:px-12"><!--[--><article class="flex grow flex-col"><a class="grid grow grid-rows-[auto_1fr] gap-32 pb-24" href="/customers/lineage-logistics"><!--[0--><img url="https://cdn.sanity.io/images/1ua24syd/production/fe8b94b0dc51124877ed5ad08cbf50863be67950-1920x1080.png?rect=0,1,1920,1079&amp;w=644&amp;h=362&amp;q=95&amp;fit=crop&amp;auto=format" width="644" height="362" srcset="https://cdn.sanity.io/images/1ua24syd/production/fe8b94b0dc51124877ed5ad08cbf50863be67950-1920x1080.png?rect=0,1,1920,1079&amp;w=644&amp;h=362&amp;q=95&amp;fit=crop&amp;auto=format 644w, https://cdn.sanity.io/images/1ua24syd/production/fe8b94b0dc51124877ed5ad08cbf50863be67950-1920x1080.png?rect=0,1,1920,1079&amp;w=1288&amp;h=724&amp;q=95&amp;fit=crop&amp;auto=format 1288w" src="https://cdn.sanity.io/images/1ua24syd/production/fe8b94b0dc51124877ed5ad08cbf50863be67950-1920x1080.png?rect=0,1,1920,1079&amp;w=644&amp;h=362&amp;q=95&amp;fit=crop&amp;auto=format" alt="lineage" sizes="(max-width: 644px) 100vw, 644px" class="aspect-544/420 w-full rounded-3 object-cover" loading="lazy" decoding="async" onload="this.__e=event" onerror="this.__e=event"/><!--]--><!----> <div class="flex flex-col items-start gap-24 max-w-500 pt-24 border-t border-v3-gray-01"><!--[0--><p class="font-sans text-11 leading-none tracking-0.03 uppercase text-v3-gray-05">3pl</p><!--]--> <h3 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black">How Lineage delivers high-touch service across 2 million shipments</h3> <!--[1--><span class="next-text-link text-v3-black">Read article</span><!--]--></div></a></article><!--]--></li><li class="splide__slide w-[85%] shrink-0 px-6 sm:w-1/2 lg:w-[26%] lg:px-12"><!--[--><article class="flex grow flex-col"><a class="grid grow grid-rows-[auto_1fr] gap-32 pb-24" href="/customers/eassons"><!--[0--><img url="https://cdn.sanity.io/images/1ua24syd/production/78e608fcdd3d2c1876f4d74cae8098adb7df6262-4581x3054.jpg?rect=0,1,4581,3052&amp;w=644&amp;h=429&amp;q=95&amp;fit=crop&amp;auto=format" width="644" height="429" srcset="https://cdn.sanity.io/images/1ua24syd/production/78e608fcdd3d2c1876f4d74cae8098adb7df6262-4581x3054.jpg?rect=0,1,4581,3052&amp;w=644&amp;h=429&amp;q=95&amp;fit=crop&amp;auto=format 644w, https://cdn.sanity.io/images/1ua24syd/production/78e608fcdd3d2c1876f4d74cae8098adb7df6262-4581x3054.jpg?rect=0,1,4581,3052&amp;w=1288&amp;h=858&amp;q=95&amp;fit=crop&amp;auto=format 1288w" src="https://cdn.sanity.io/images/1ua24syd/production/78e608fcdd3d2c1876f4d74cae8098adb7df6262-4581x3054.jpg?rect=0,1,4581,3052&amp;w=644&amp;h=429&amp;q=95&amp;fit=crop&amp;auto=format" alt="" sizes="(max-width: 644px) 100vw, 644px" class="aspect-544/420 w-full rounded-3 object-cover" loading="lazy" decoding="async" onload="this.__e=event" onerror="this.__e=event"/><!--]--><!----> <div class="flex flex-col items-start gap-24 max-w-500 pt-24 border-t border-v3-gray-01"><!--[0--><p class="font-sans text-11 leading-none tracking-0.03 uppercase text-v3-gray-05">Carrier</p><!--]--> <h3 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black">Eassons Transport automated load entry with Pallet achieving 98% touchless processing</h3> <!--[1--><span class="next-text-link text-v3-black">Read article</span><!--]--></div></a></article><!--]--></li><li class="splide__slide w-[85%] shrink-0 px-6 sm:w-1/2 lg:w-[26%] lg:px-12"><!--[--><article class="flex grow flex-col"><a class="grid grow grid-rows-[auto_1fr] gap-32 pb-24" href="/customers/mallory"><!--[0--><img url="https://cdn.sanity.io/images/1ua24syd/production/b975a8660962db2b4ba04c4626ea1c4ca238db78-1920x1080.png?rect=0,1,1920,1079&amp;w=644&amp;h=362&amp;q=95&amp;fit=crop&amp;auto=format" width="644" height="362" srcset="https://cdn.sanity.io/images/1ua24syd/production/b975a8660962db2b4ba04c4626ea1c4ca238db78-1920x1080.png?rect=0,1,1920,1079&amp;w=644&amp;h=362&amp;q=95&amp;fit=crop&amp;auto=format 644w, https://cdn.sanity.io/images/1ua24syd/production/b975a8660962db2b4ba04c4626ea1c4ca238db78-1920x1080.png?rect=0,1,1920,1079&amp;w=1288&amp;h=724&amp;q=95&amp;fit=crop&amp;auto=format 1288w" src="https://cdn.sanity.io/images/1ua24syd/production/b975a8660962db2b4ba04c4626ea1c4ca238db78-1920x1080.png?rect=0,1,1920,1079&amp;w=644&amp;h=362&amp;q=95&amp;fit=crop&amp;auto=format" alt="mallory" sizes="(max-width: 644px) 100vw, 644px" class="aspect-544/420 w-full rounded-3 object-cover" loading="lazy" decoding="async" onload="this.__e=event" onerror="this.__e=event"/><!--]--><!----> <div class="flex flex-col items-start gap-24 max-w-500 pt-24 border-t border-v3-gray-01"><!--[0--><p class="font-sans text-11 leading-none tracking-0.03 uppercase text-v3-gray-05">Freight Forwarder</p><!--]--> <h3 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black">Mallory Alexander created $18M in enterprise value by automating import workflows with Pallet</h3> <!--[1--><span class="next-text-link text-v3-black">Read article</span><!--]--></div></a></article><!--]--></li><li class="splide__slide w-[85%] shrink-0 px-6 sm:w-1/2 lg:w-[26%] lg:px-12"><!--[--><article class="flex grow flex-col"><a class="grid grow grid-rows-[auto_1fr] gap-32 pb-24" href="/customers/prism"><!--[0--><img url="https://cdn.sanity.io/images/1ua24syd/production/75e0a95c2363b9909b7bd03f70a98d6e8202b0fc-8192x5464.jpg?rect=5,0,8183,5464&amp;w=644&amp;h=430&amp;q=95&amp;fit=crop&amp;auto=format" width="644" height="430" srcset="https://cdn.sanity.io/images/1ua24syd/production/75e0a95c2363b9909b7bd03f70a98d6e8202b0fc-8192x5464.jpg?rect=5,0,8183,5464&amp;w=644&amp;h=430&amp;q=95&amp;fit=crop&amp;auto=format 644w, https://cdn.sanity.io/images/1ua24syd/production/75e0a95c2363b9909b7bd03f70a98d6e8202b0fc-8192x5464.jpg?rect=5,0,8183,5464&amp;w=1288&amp;h=860&amp;q=95&amp;fit=crop&amp;auto=format 1288w" src="https://cdn.sanity.io/images/1ua24syd/production/75e0a95c2363b9909b7bd03f70a98d6e8202b0fc-8192x5464.jpg?rect=5,0,8183,5464&amp;w=644&amp;h=430&amp;q=95&amp;fit=crop&amp;auto=format" alt="prism" sizes="(max-width: 644px) 100vw, 644px" class="aspect-544/420 w-full rounded-3 object-cover" loading="lazy" decoding="async" onload="this.__e=event" onerror="this.__e=event"/><!--]--><!----> <div class="flex flex-col items-start gap-24 max-w-500 pt-24 border-t border-v3-gray-01"><!--[0--><p class="font-sans text-11 leading-none tracking-0.03 uppercase text-v3-gray-05">Broker</p><!--]--> <h3 class="text-20 md:text-24 leading-none md:leading-1.2 -tracking-0.03 font-book text-v3-black">Prism Logistix builds AI-native brokerage with Pallet, achieving 10% net margin improvement</h3> <!--[1--><span class="next-text-link text-v3-black">Read article</span><!--]--></div></a></article><!--]--></li></ul></div></div></div></section><section class="next-cta" aria-labelledby="next-cta-title"> <div data-modules="[&quot;grain-gradient&quot;]" class="next-cta__drift" aria-hidden="true"></div> <div class="next-cta__noise" aria-hidden="true" style="background-image:url(&#34;https://cdn.sanity.io/images/1ua24syd/production/ee07df961351e19255eebe70c4b3830e67c1c1bf-2078x1097.png&#34;);background-size:cover;background-repeat:no-repeat;background-position:center;mix-blend-mode:soft-light;opacity:0.5"></div> <div class="next-cta__content" data-reveal> <h2 id="next-cta-title">Put AI to work</h2> <p>Pallet powers how the world makes, moves, and sells goods.</p> <a class="next-pill next-pill--glass" href="/demo"> <span>Get started</span> <span class="next-pill__arrow" aria-hidden="true"> <svg viewBox="0 0 12 12" width="12" height="12" fill="none"> <path d="M2.5 9.5 9.5 2.5M9.5 2.5h-6M9.5 2.5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </span> </a> </div> </section>  </main> <footer class="next-footer"> <div class="next-container next-footer__top next-footer__top--4col"> <a href="/" aria-label="Pallet home" class="next-footer__mark"><span class="next-brand next-brand--mark-only"> <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2044%2023'%20fill='none'%3e%3cpath%20fill='currentColor'%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M21.958.051%2043.256%2010.89h.011c.333.17.333.646%200%20.816l-3.396%201.735a.42.42%200%200%201-.4%200L18.151%202.602c-.333-.17-.333-.646%200-.816L21.558.051a.42.42%200%200%201%20.4%200Zm9.434%2016.927L10.028%206.116a.42.42%200%200%200-.4%200L6.221%207.851c-.333.17-.333.646%200%20.816l21.376%2010.873a.42.42%200%200%200%20.4%200l3.395-1.735c.333-.17.333-.646%200-.816v-.011Zm-5.938%203.05L4.068%209.155a.42.42%200%200%200-.4%200L.25%2010.889c-.333.17-.333.646%200%20.816l21.309%2010.93a.42.42%200%200%200%20.4%200l3.496-1.791c.333-.17.333-.646%200-.816Zm11.865-6.1L15.988%203.09a.42.42%200%200%200-.4%200l-3.407%201.734c-.333.17-.333.646%200%20.816l21.343%2010.85a.42.42%200%200%200%20.4%200l3.395-1.734c.333-.17.333-.646%200-.816v-.011Z'/%3e%3c/svg%3e" width="44" height="23" alt="" aria-hidden="true"> </span></a> <div class="next-footer__groups next-footer__groups--4col"> <div class="next-footer__group" data-footer-group> <button class="next-footer__group-toggle" type="button" aria-expanded="true" data-footer-toggle> <span>Products</span> <span class="next-footer__plus" aria-hidden="true"></span> </button> <div class="next-footer__reveal" data-footer-reveal> <div class="next-footer__reveal-inner"> <ul> <li> <a href="/product/agent"> Agents </a> </li><li> <a href="/product/atlas"> Atlas </a> </li> </ul> </div> </div> </div><div class="next-footer__group" data-footer-group> <button class="next-footer__group-toggle" type="button" aria-expanded="true" data-footer-toggle> <span>Operations</span> <span class="next-footer__plus" aria-hidden="true"></span> </button> <div class="next-footer__reveal" data-footer-reveal> <div class="next-footer__reveal-inner"> <ul> <li> <a href="/solutions/manufacturers"> Manufacturers </a> </li><li> <a href="/solutions/distributors"> Distributors </a> </li><li> <a href="/solutions/retail"> Retailers </a> </li><li> <a href="/solutions/aerospace"> Aerospace </a> </li><li> <a href="/solutions/automotive"> Automotive </a> </li><li> <a href="/solutions/warehouses"> Warehouses </a> </li><li> <a href="/solutions/forwarders"> Freight forwarders </a> </li><li> <a href="/solutions/brokerages"> Freight brokerages </a> </li><li> <a href="/solutions/ocean-carriers"> Ocean carriers </a> </li> </ul> </div> </div> </div><div class="next-footer__group" data-footer-group> <button class="next-footer__group-toggle" type="button" aria-expanded="true" data-footer-toggle> <span>4th Column</span> <span class="next-footer__plus" aria-hidden="true"></span> </button> <div class="next-footer__reveal" data-footer-reveal> <div class="next-footer__reveal-inner"> <ul> <li> <a href="/solutions/high-tech-and-electronics"> High tech &amp; electronics </a> </li><li> <a href="/solutions/pharma-and-life-sciences"> Pharma &amp; life sciences </a> </li><li> <a href="/solutions/ftl-carriers"> FTL carriers </a> </li><li> <a href="/solutions/ltl-carriers"> LTL carriers </a> </li><li> <a href="/solutions/warehouses"> Warehouses </a> </li><li> <a href="/solutions/forwarders"> Freight forwarders </a> </li><li> <a href="/solutions/brokerages"> Freight brokerages </a> </li><li> <a href="/solutions/ocean-carriers"> Ocean carriers </a> </li> </ul> </div> </div> </div><div class="next-footer__group" data-footer-group> <button class="next-footer__group-toggle" type="button" aria-expanded="true" data-footer-toggle> <span>Company</span> <span class="next-footer__plus" aria-hidden="true"></span> </button> <div class="next-footer__reveal" data-footer-reveal> <div class="next-footer__reveal-inner"> <ul> <li> <a href="/company"> Company </a> </li><li> <a href="https://job-boards.greenhouse.io/pallet"> Careers </a> </li><li> <a href="/security"> Security </a> </li> </ul> </div> </div> </div> </div> <div class="next-footer__newsletter"> <p>Sign up to our newsletter</p> <div class="hs-form-html next-hs-form next-footer__hs-form" data-modules="[&#34;hs-form&#34;]" data-portal-id="24335872" data-form-id="ece125a7-6602-4e56-85a9-b3769fd2fca0" data-region="na1"> <div class="h-54 flex flex-col justify-center px-24 rounded-30 bg-v3-eggshell">
+Loading...
+</div> </div> </div> </div> <div class="next-container next-footer__bottom"> <div> <a href="trust.pallet.com"> Trust center </a><a href="/terms"> Terms of service </a><a href="/privacy-policy"> Privacy policy </a> </div> <p>Pallet © 2026</p> </div> </footer>  <script type="module" src="/assets/NextLayout.astro_astro_type_script_index_0_lang.HGOjOwZ6.js"></script> </body> </html>

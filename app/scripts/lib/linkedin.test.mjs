@@ -5,7 +5,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scheduleFor, selectDue, verifyIntegrationIdentity } from './linkedin.mjs';
+import { postingTimeFor, scheduleAfterIssue, scheduleFor, scheduleForTime, selectDue, verifyIntegrationIdentity } from './linkedin.mjs';
 
 // --- scheduleFor: the resolver -------------------------------------------------
 
@@ -36,6 +36,19 @@ test('scheduleFor crosses month boundaries correctly', () => {
   assert.equal(scheduleFor(3, pub, 15).toISOString(), '2026-07-03T15:00:00.000Z');
 });
 
+test('scheduleAfterIssue preserves the exact publication time', () => {
+  const pub = new Date('2026-06-23T17:42:00Z');
+  assert.equal(scheduleAfterIssue(pub, 60).toISOString(), '2026-06-23T18:42:00.000Z');
+});
+
+test('weekday posting priors support minute precision and preserve the fallback', () => {
+  const pub = new Date('2026-06-23T14:00:00Z'); // Tuesday
+  const priors = { '3': '13:35', '4': '16:10' };
+  assert.deepEqual(postingTimeFor(1, pub, priors, 18), { hour: 13, minute: 35 });
+  assert.deepEqual(postingTimeFor(3, pub, priors, 18), { hour: 18, minute: 0 });
+  assert.equal(scheduleForTime(1, pub, 13, 35).toISOString(), '2026-06-24T13:35:00.000Z');
+});
+
 // --- selectDue: the gate -------------------------------------------------------
 
 const mkPost = () => ({ slug: 'iss', data: { title: 'Issue', pubDate: new Date('2026-06-23T14:00:00Z') } });
@@ -61,6 +74,33 @@ test('selects an approved post under a live, approved newsletter', () => {
   assert.equal(due[0].at.toISOString(), '2026-06-24T15:00:00.000Z');
 });
 
+test('an issue companion can schedule exactly one hour after publication', () => {
+  const due = selectDue([item({ offsetDays: 0, offsetMinutesAfterIssue: 60 })], {
+    enabled: false,
+    resolve: liveApproved,
+  });
+  assert.equal(due[0].at.toISOString(), '2026-06-23T15:00:00.000Z');
+});
+
+test('independent posts use the target weekday posting prior', () => {
+  const due = selectDue([item({ offsetDays: 1 })], {
+    enabled: false,
+    postingHourUTC: 18,
+    postingTimesUTCByWeekday: { '3': '13:35' },
+    resolve: liveApproved,
+  });
+  assert.equal(due[0].at.toISOString(), '2026-06-24T13:35:00.000Z');
+});
+
+test('a per-post whole-hour override wins over the weekday prior', () => {
+  const due = selectDue([item({ offsetDays: 1, postHourUTC: 20 })], {
+    enabled: false,
+    postingTimesUTCByWeekday: { '3': '13:35' },
+    resolve: liveApproved,
+  });
+  assert.equal(due[0].at.toISOString(), '2026-06-24T20:00:00.000Z');
+});
+
 test('skips an unapproved post (Nick has not signed off)', () => {
   assert.equal(selectDue([item({ approved: '' })], { resolve: liveApproved }).length, 0);
 });
@@ -82,6 +122,11 @@ test('skips invalid channel / negative / missing offset', () => {
   assert.equal(selectDue([item({ channel: 'mastodon' })], { resolve: liveApproved }).length, 0);
   assert.equal(selectDue([item({ offsetDays: -1 })], { resolve: liveApproved }).length, 0);
   assert.equal(selectDue([item({ offsetDays: null })], { resolve: liveApproved }).length, 0);
+});
+
+test('skips supplied but malformed timing fields instead of using defaults', () => {
+  assert.equal(selectDue([item({ postHourUTCSupplied: true, postHourUTC: null })], { resolve: liveApproved }).length, 0);
+  assert.equal(selectDue([item({ offsetMinutesAfterIssueSupplied: true, offsetMinutesAfterIssue: null })], { resolve: liveApproved }).length, 0);
 });
 
 test('idempotency markers are mode-specific', () => {

@@ -31,6 +31,9 @@ const HOOK_MAX_CHARS_PUSHED = 210;
 // LinkedIn readers can now one-click flag AI slop, and a hashtag block is a slop marker.
 // Scoped to posts without a `pushedAt` stamp so already-pushed history stays green.
 const BODY_MAX_CHARS = 1400;
+// LinkedIn's current documented post limit. The house target above may be
+// exceeded only with lengthReason; the platform limit never may.
+const PLATFORM_MAX_CHARS = 3000;
 const HASHTAG = /(^|[\s(])#[A-Za-z0-9_]/;
 
 /** The body as a reader sees it: HTML comments stripped, trimmed. */
@@ -54,6 +57,7 @@ export function lintLinkedin(items, channels = {}, enabled = false) {
   for (const item of items) {
     const d = item.data;
     const issues = [];
+    const supplied = (key) => item.fm && Object.prototype.hasOwnProperty.call(item.fm, key);
 
     if (!d.newsletter) {
       issues.push('missing `newsletter` slug');
@@ -68,8 +72,31 @@ export function lintLinkedin(items, channels = {}, enabled = false) {
     } else if (d.offsetDays < 0) {
       issues.push('`offsetDays` must be ≥ 0');
     }
+    if ((d.postHourUTCSupplied || supplied('postHourUTC')) && d.postHourUTC === null) {
+      issues.push('`postHourUTC` must be a whole number from 0 to 23');
+    }
+    if ((d.offsetMinutesAfterIssueSupplied || supplied('offsetMinutesAfterIssue')) && d.offsetMinutesAfterIssue === null) {
+      issues.push('`offsetMinutesAfterIssue` must be a whole number ≥ 0');
+    }
+    if (Number.isInteger(d.postHourUTC) && (d.postHourUTC < 0 || d.postHourUTC > 23)) {
+      issues.push('`postHourUTC` must be a whole number from 0 to 23');
+    }
+    if (Number.isInteger(d.offsetMinutesAfterIssue)) {
+      if (d.offsetMinutesAfterIssue < 0) {
+        issues.push('`offsetMinutesAfterIssue` must be ≥ 0');
+      }
+      if (d.offsetDays !== 0) {
+        issues.push('`offsetMinutesAfterIssue` is only valid with `offsetDays: 0`');
+      }
+      if (Number.isInteger(d.postHourUTC)) {
+        issues.push('use either `offsetMinutesAfterIssue` or `postHourUTC`, not both');
+      }
+    }
     if (item.body.trim().length < MIN_BODY_CHARS) {
       issues.push(`body looks unfinished (<${MIN_BODY_CHARS} chars)`);
+    }
+    if ((d.approved || isAutoApproved(item, channels)) && d.mediaRequired && d.media.length === 0) {
+      issues.push('approved post requires media, but no approved visual has been attached');
     }
     // Hook must clear the "see more" fold. Personal reach posts only; business/preview
     // posts are link-summaries whose rules invert, so they are exempt. Already-pushed
@@ -88,7 +115,9 @@ export function lintLinkedin(items, channels = {}, enabled = false) {
           issues.push('hashtag in body — hashtags are banned on personal posts (anti-slop); delete the # tags');
         }
         const bodyLen = [...visible].length;
-        if (bodyLen > BODY_MAX_CHARS) {
+        if (bodyLen > PLATFORM_MAX_CHARS) {
+          issues.push(`visible body is ${bodyLen} chars; LinkedIn posts are limited to ${PLATFORM_MAX_CHARS}`);
+        } else if (bodyLen > BODY_MAX_CHARS && !d.lengthReason) {
           issues.push(`visible body is ${bodyLen} chars; must be ≤ ${BODY_MAX_CHARS} (posts target ~100-180 words) — cut it down`);
         }
       }

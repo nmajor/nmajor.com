@@ -28,6 +28,13 @@ export function readLinkedinConfig() {
   return {
     enabled: cfg.enabled === true,
     postingHourUTC: Number.isInteger(cfg.postingHourUTC) ? cfg.postingHourUTC : 15,
+    // Optional day-specific defaults, keyed by UTC weekday number (0=Sunday).
+    // Values are HH:MM. These are experiment priors; per-post `postHourUTC`
+    // remains available for deliberate overrides.
+    postingTimesUTCByWeekday:
+      cfg.postingTimesUTCByWeekday && typeof cfg.postingTimesUTCByWeekday === 'object'
+        ? cfg.postingTimesUTCByWeekday
+        : {},
     // channel name -> { integrationId, settingsType }. Maps each post's `channel`
     // to a connected Postiz channel. Empty/missing in shadow mode.
     channels: cfg.channels && typeof cfg.channels === 'object' ? cfg.channels : {},
@@ -83,12 +90,28 @@ export function readItem(id) {
       channel: typeof fm.channel === 'string' ? fm.channel.trim() : '',
       angle: typeof fm.angle === 'string' ? fm.angle.trim() : '',
       offsetDays: Number.isInteger(fm.offsetDays) ? fm.offsetDays : null,
+      // The issue-day companion may be scheduled relative to the newsletter's
+      // exact publish timestamp instead of a fixed UTC hour.
+      offsetMinutesAfterIssue: Number.isInteger(fm.offsetMinutesAfterIssue) ? fm.offsetMinutesAfterIssue : null,
+      offsetMinutesAfterIssueSupplied: Object.prototype.hasOwnProperty.call(fm, 'offsetMinutesAfterIssue'),
       // Optional per-post posting hour (UTC), overriding the batch-wide
       // postingHourUTC so a week can land on each weekday's best slot.
       postHourUTC: Number.isInteger(fm.postHourUTC) ? fm.postHourUTC : null,
+      postHourUTCSupplied: Object.prototype.hasOwnProperty.call(fm, 'postHourUTC'),
+      weeklyBatchVersion: Number.isInteger(fm.weeklyBatchVersion) ? fm.weeklyBatchVersion : null,
+      sourceKind: typeof fm.sourceKind === 'string' ? fm.sourceKind.trim() : '',
+      editorialLane: typeof fm.editorialLane === 'string' ? fm.editorialLane.trim() : '',
+      reachGame: typeof fm.reachGame === 'string' ? fm.reachGame.trim() : '',
+      lengthReason: typeof fm.lengthReason === 'string' ? fm.lengthReason.trim() : '',
       // Repo-relative review asset chosen from a meme campaign. Selection
       // metadata only; the scheduler continues to use `media` exclusively.
       meme: typeof fm.meme === 'string' ? fm.meme.trim() : '',
+      // Row id selected from visuals/campaign.jsonl. Selection alone does not
+      // approve or attach the asset; attach-social-visual.mjs enforces both.
+      visual: typeof fm.visual === 'string' ? fm.visual.trim() : '',
+      // New visual-led posts fail closed at scheduling time until an approved
+      // asset has been attached as media. Legacy posts omit this field.
+      mediaRequired: fm.mediaRequired === true,
       // Optional attachment(s), relative to the post's own batch folder: one
       // file, a comma-separated list, or a directory (expanded to its sorted
       // images, which is how a multi-slide carousel is declared). Absent on
@@ -252,6 +275,31 @@ export function scheduleFor(offsetDays, pubDate, postingHourUTC = 15) {
   return new Date(base + offsetDays * 24 * 60 * 60 * 1000);
 }
 
+/** Resolve an HH:MM weekday prior, falling back to the legacy whole-hour default. */
+export function postingTimeFor(offsetDays, pubDate, postingTimesUTCByWeekday = {}, postingHourUTC = 15) {
+  const targetDay = new Date(Date.UTC(
+    pubDate.getUTCFullYear(), pubDate.getUTCMonth(), pubDate.getUTCDate() + offsetDays,
+  )).getUTCDay();
+  const raw = postingTimesUTCByWeekday[String(targetDay)];
+  const match = typeof raw === 'string' ? raw.match(/^([01]\d|2[0-3]):([0-5]\d)$/) : null;
+  if (!match) return { hour: postingHourUTC, minute: 0 };
+  return { hour: Number(match[1]), minute: Number(match[2]) };
+}
+
+/** Schedule at a precise UTC hour and minute on the issue-relative day. */
+export function scheduleForTime(offsetDays, pubDate, postingHourUTC = 15, postingMinuteUTC = 0) {
+  const base = Date.UTC(
+    pubDate.getUTCFullYear(), pubDate.getUTCMonth(), pubDate.getUTCDate(),
+    postingHourUTC, postingMinuteUTC, 0, 0,
+  );
+  return new Date(base + offsetDays * 24 * 60 * 60 * 1000);
+}
+
+/** Schedule relative to the newsletter's exact publish timestamp. */
+export function scheduleAfterIssue(pubDate, offsetMinutesAfterIssue) {
+  return new Date(pubDate.getTime() + offsetMinutesAfterIssue * 60 * 1000);
+}
+
 /**
  * Resolve a LinkedIn post against its parent newsletter. Returns the parent post
  * (or null if missing) and whether the parent is live + approved.
@@ -280,12 +328,18 @@ export function resolveParent(item, now = new Date()) {
  *
  * @returns {Array<{item, post, at: Date}>}  each due post with its resolved date
  */
-export function selectDue(items, { now = new Date(), enabled = false, postingHourUTC = 15, channels = {}, resolve = resolveParent } = {}) {
+export function selectDue(items, { now = new Date(), enabled = false, postingHourUTC = 15, postingTimesUTCByWeekday = {}, channels = {}, resolve = resolveParent } = {}) {
   const due = [];
   for (const item of items) {
     const d = item.data;
     if (!d.approved && !isAutoApproved(item, channels)) continue;
     if (d.offsetDays === null || d.offsetDays < 0) continue;
+    if (d.postHourUTCSupplied && d.postHourUTC === null) continue;
+    if (d.offsetMinutesAfterIssueSupplied && d.offsetMinutesAfterIssue === null) continue;
+    if (Number.isInteger(d.postHourUTC) && (d.postHourUTC < 0 || d.postHourUTC > 23)) continue;
+    if (Number.isInteger(d.offsetMinutesAfterIssue) && (
+      d.offsetMinutesAfterIssue < 0 || d.offsetDays !== 0 || Number.isInteger(d.postHourUTC)
+    )) continue;
     if (!CHANNELS.includes(d.channel)) continue;
     if (enabled ? d.pushedAt : d.shadowedAt) continue;
 
@@ -299,8 +353,21 @@ export function selectDue(items, { now = new Date(), enabled = false, postingHou
     // A post may override the batch-wide hour with its own `postHourUTC`, so a
     // week can be spread across each weekday's best-performing slot rather than
     // firing every day at the same time.
-    const hour = Number.isInteger(d.postHourUTC) ? d.postHourUTC : postingHourUTC;
-    due.push({ item, post: parent.post, at: scheduleFor(d.offsetDays, parent.post.data.pubDate, hour) });
+    let at;
+    if (Number.isInteger(d.offsetMinutesAfterIssue)) {
+      at = scheduleAfterIssue(parent.post.data.pubDate, d.offsetMinutesAfterIssue);
+    } else if (Number.isInteger(d.postHourUTC)) {
+      at = scheduleFor(d.offsetDays, parent.post.data.pubDate, d.postHourUTC);
+    } else {
+      const time = postingTimeFor(
+        d.offsetDays,
+        parent.post.data.pubDate,
+        postingTimesUTCByWeekday,
+        postingHourUTC,
+      );
+      at = scheduleForTime(d.offsetDays, parent.post.data.pubDate, time.hour, time.minute);
+    }
+    due.push({ item, post: parent.post, at });
   }
   return due;
 }

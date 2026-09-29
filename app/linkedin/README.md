@@ -7,17 +7,24 @@ posts carry an offset, not a date, so their real schedule is computed only at th
 the issue goes live. Nothing is ever pushed to LinkedIn while the newsletter is still
 queued.
 
-## The batch model (since 2026-08): 5 short posts, one per weekday
+## The weekly newsroom model (since 2026-09)
 
-Each issue gets a batch of **5 personal posts** planned on publish day, dripped daily with
-`offsetDays` **0, 1, 2, 3, 6** (Tue, Wed, Thu, Fri, the following Monday — weekends off).
-Only 1-2 posts slice the essay itself; the rest are sourced through the newsroom process in
-the `content-repurposing` skill (journalist-persona subagents investigate the essay's concept
-in current news, pitches are scored, the best 5 get drafted). Posts are **short and natural**:
-roughly 100-180 words, a ≤140-char hook line, no hashtags, no AI-slop tics. Lint enforces the
-hook fold, a 1400-char visible-body ceiling, and the hashtag ban on every not-yet-pushed
-personal post (already-pushed history is grandfathered). Batches before 2026-08 used the older
-3-post A/B/C atomization model; they remain here as provenance.
+Each issue can carry **one to seven personal posts**, with five as the target. The seven available
+`offsetDays` values are **0 through 6** (Tuesday through Monday). Tuesday is the required newsletter
+companion. It uses `offsetMinutesAfterIssue: 60`, so it follows the issue by one hour even when an
+issue publishes at an unusual time. Wednesday, Thursday, Friday, and Monday are the normal other
+slots; weekends are available only when extra stories clear the same bar.
+
+The other posts are independently reported applied-AI stories and do not need to share the
+newsletter topic. The newsroom always investigates a cautionary lane, but weak or sensational
+failure stories do not receive a slot. It is valid to produce four posts, or fewer, rather than
+pad the week.
+
+Posts are normally 100-180 words, with a ≤140-character first paragraph, no hashtags, and no
+AI-slop tics. A longer post needs an explicit `lengthReason`; the normal ceiling is not a reason to
+cut evidence the reader needs. Every new weekly post requires an image and sets
+`mediaRequired: true`. Research packets, variants, and image alternatives live under `research/`,
+never below this recursively scanned directory.
 
 This directory is **not** an Astro content collection on purpose: a malformed file here
 can never break the site build or the newsletter publish path. Validation is the
@@ -39,10 +46,19 @@ must match a real essay slug in `app/src/content/essays/`. One folder = one issu
 newsletter: build-versus-buy-broke          # slug of the parent essay (must exist)
 channel: personal                           # personal (all weekly posts) | business (one preview)
 offsetDays: 2                               # schedule = the issue's real pubDate + N days;
-                                            # the weekly drip uses 0,1,2,3,6 (Tue-Fri + Mon)
+                                            # weekly slots use 0..6 (Tue through Mon)
                                             # (business preview is always offsetDays: 0)
+weeklyBatchVersion: 1                        # opts into the current weekly contract
+# offsetMinutesAfterIssue: 60                # Tuesday companion only; exact issue time + 1 hour
+# postHourUTC: 18                            # deliberate fixed-hour override (0..23)
 angle: vendor-bill                          # label only: a short name for the post's story
+sourceKind: independent                      # newsletter | independent
+editorialLane: implementation                # companion | value | cautionary | etc.
+reachGame: baseline                          # baseline | spike
+# lengthReason: "..."                        # required only above the normal body target
 # meme: app/linkedin/.../03-pigeon.jpg       # chosen review option; repo-relative, not attached
+# visual: support-agent-evidence              # chosen visual-ledger row; not approval or media
+mediaRequired: true                           # fail closed until approved media is attached
 # approved: "Nicholas Major 2026-06-30"     # Nick's sign-off — agents NEVER set this
 # shadowedAt: ...                           # set by the scheduler in shadow mode (idempotency)
 # pushedAt: ...                             # set by the scheduler once pushed to Postiz (idempotency)
@@ -56,12 +72,22 @@ the writing-voice skill, every word.
 approve it. The publishing workflow uses `media:` only after the exact asset clears
 approval and rights checks.
 
+`visual:` records a selection from `visuals/campaign.jsonl`. It is still not approval. The
+guarded attachment script adds `media:` only after that exact ledger row has Nick's explicit
+visual approval, publishable rights, matching post-body and asset hashes, and an unpushed post.
+The ledger accepts exactly three formats: a real annotated source screenshot, a classic meme, or
+a synthetic workbench photo. Workbench photos must disclose their generated provenance in the
+ledger and alt text and must never be described as a real scene.
+Post approval and visual approval remain separate gates.
+New weekly posts set `mediaRequired: true`; once their post text is approved they cannot become
+schedule-ready—or be pushed directly—until the guarded attachment command adds `media:`.
+
 ## Channels
 
 Two channels, two different jobs (see `app/linkedin.config.json`):
 
-- **`personal`** — Nick's own profile (Nicholas Major). The reach + selling engine. **All five
-  weekly posts** go here. This is where the craft and the ICP-focus-group refinement effort
+- **`personal`** — Nick's own profile (Nicholas Major). The reach + selling engine. **All weekly
+  newsroom posts** go here. This is where the craft and the ICP-focus-group refinement effort
   goes. This is the only channel that posts today.
 - **`business`** — **PENDING, not wired.** nmajor.com has no company page yet: the consultancy
   (the only commercial entity in the ecosystem) is still TBD, so there is no business LinkedIn
@@ -77,17 +103,27 @@ Two channels, two different jobs (see `app/linkedin.config.json`):
 
 `scripts/schedule-linkedin.mjs` runs daily in the publish workflow. For each post whose
 **parent newsletter is live + approved** and which is itself **approved** and not yet
-sent, it computes `pubDate + offsetDays` (at `postingHourUTC` from `app/linkedin.config.json`)
-and:
+sent, it computes `pubDate + offsetDays`. Independent posts use the target UTC weekday's
+`HH:MM` entry in `postingTimesUTCByWeekday` from `app/linkedin.config.json`; a post-level
+`postHourUTC` deliberately overrides that prior. The Tuesday companion normally uses
+`offsetMinutesAfterIssue: 60`, so an unusual issue time moves its companion with it.
+
+The weekday map is a testing prior for Nick's US-heavy professional audience, not a claim that
+LinkedIn has a universal golden hour. Its evidence, limitations, and eight-week measurement plan
+live in `research/linkedin-posting-times-2026-09/report.md`. Revisit the map using Nick's own
+48-hour and seven-day results; keep weekends optional and do not let timing rescue a weak post.
+
+The scheduler then:
 
 - **shadow mode** (`enabled: false`): logs the schedule it *would* set,
-  stamps `shadowedAt` so it announces once. No external side effects. This is where we are.
+  stamps `shadowedAt` so it announces once. No external side effects.
 - **live mode** (`enabled: true`, Postiz wired): pushes the post to Postiz as a scheduled
   draft for that date and stamps `pushedAt`. `pushedAt` is the idempotency lock, exactly
   like `emailedAt` on newsletters — to deliberately re-push, clear it.
 
 The two markers are separate so that turning live mode on never skips a post merely because
-it was announced in shadow mode.
+it was announced in shadow mode. They are machine state. Agents never set or clear either one by
+hand.
 
 ## Integration identity is verified at push time
 

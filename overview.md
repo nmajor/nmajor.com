@@ -142,6 +142,86 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
+- **2026-09-29: The weekly LinkedIn workflow is now autonomous at generation time.** The
+  `content-repurposing` skill is the single command after a newsletter story is settled. It can
+  finish without weekly input from Nick, or absorb his opinion when he has time. It reports 12-18
+  candidates across the full applied-AI beat, always runs a cautionary desk, selects one Tuesday
+  newsletter companion plus zero to six independent stories, and targets five without padding.
+  Every retained post receives a rendered meme-first image recommendation and optional alternatives
+  in the research packet. Hooks, audience review, and visual recommendation now have delegated
+  modes, so they no longer stop for routine choices. Publishing remains fail-closed: each exact
+  post and visual still needs Nick's explicit approval. New versioned batches have seven daily
+  slots, a true issue-time-plus-60-minutes companion schedule, and a dedicated weekly lint. The
+  independent slots now resolve through a minute-precise UTC weekday map in
+  `app/linkedin.config.json`, initially tuned as a US-heavy professional-audience prior from the
+  raw-first study in `research/linkedin-posting-times-2026-09/`. It is explicitly an eight-week
+  test and should yield to Nick's own 48-hour and seven-day post analytics.
+  workflow and independent Astra/Fable reviews live in
+  `research/linkedin-workflow-redesign-2026-09/`. Historical performance ingestion is ready as an
+  optional lane once Nick provides the real export; no pattern has been inferred in advance.
+- **2026-09-29: Meme catalog expanded and variant handoff clarified.** The catalog now holds 123
+  researched contracts: 75 active, 27 held, and 21 rejected. Two 22-candidate expansion waves
+  preserve source, meaning, usage examples, slot mapping, phone-size inspection, safety, rights
+  status, and an admission decision under `research/social-meme-template-catalog/`; 25 were admitted.
+  The second wave focused on missing business and applied-AI joke relationships, and its audit lives
+  under `expansion-wave2-2026-09-29/`. Weekly review packets now list one named, recommended
+  post-and-image pair first and add
+  a second pair only when it makes a materially different editorial argument. Silence never grants
+  publication approval. Meme recommendations must use established templates. The workflow does not
+  generate imitation versions of familiar meme images.
+- **2026-09-29: Meme selection is now a separate, evidence-backed step.** The
+  `meme-angle-selector` skill extracts the factual tension first, generates several joke mechanisms,
+  retrieves established templates by semantic relationship, maps source facts to exact visual
+  slots, renders a shortlist, and pairwise-ranks the survivors. It can return `NO_MEME_FIT` instead
+  of forcing an image. Its selection index covers all 75 active templates with semantic families,
+  relationships, usage patterns, differentiated neighbors, cultural baggage, and dated familiarity
+  evidence. The research and blind five-post test live under
+  `research/meme-template-selection-2026-09-29/`.
+- **2026-09-29: Rockwell knowledge-retention issue published and emailed.** “Rockwell put 30
+  years of knowledge at the machine” is live at `/writing/rockwell-knowledge-at-the-machine/`
+  and was sent through the Actual Intelligence Buttondown list. Nick explicitly approved this
+  essay in chat. The issue argues that LLMs make experiential knowledge economically retrievable,
+  while the hard organizational work remains capture, maintenance, structure, and delivery in the
+  interface where the decision is made. Nick approved the five recommended LinkedIn post-and-meme
+  pairs and accepted the fair-use risk for established meme templates as a standing policy. The
+  exact assets carry that dated acceptance without being misrepresented as licensed. All five are
+  attached and scheduled to his verified personal LinkedIn profile: the Rockwell companion at
+  2026-09-29 14:47:41 UTC, then FavTrip Wednesday 20:00 UTC, Domtar Thursday 21:00 UTC, Odyssey
+  Friday 19:00 UTC, and STG Monday 21:00 UTC. Each post carries its Postiz idempotency lock.
+- **2026-09-23: Social visuals are now meme-first.** Future social-image selection uses a fixed
+  preference order: a classic meme whenever a familiar template communicates the concept cleanly;
+  otherwise a real source screenshot with a crude circle around the exact claim; otherwise a
+  synthetic workbench photo. Boxes, arrows, and highlights are fallback annotations when a circle
+  is not legible. Meme-heavy weeks are allowed when the concepts genuinely support
+  them. Variety cannot displace a strong meme, but repeated templates and forced jokes remain
+  disallowed. The three-format limit, rights checks, separate visual approval, and attachment gate
+  are unchanged.
+- **2026-09-23: LinkedIn AI-slop audit added to the writing gate.** A raw-first scan of 96
+  items across Reddit, X, YouTube, TikTok, Instagram, and Hacker News now lives under
+  `research/linkedin-ai-slop/`. The operational finding is that readers mainly reject polished,
+  low-effort copy with no checkable claim, attributable judgment, or substance; em dashes,
+  broetry, forced threes, stock contrasts, engagement bait, and tidy conclusions only amplify the
+  suspicion and are not proof of AI authorship. `content-repurposing` now requires one checkable
+  claim, a source-specific receipt near the top, one judgment Nick could own, uncertainty attached
+  to the claim, and a final accusation test. The four Farmers follow-up posts were revised against
+  that gate and each has an owned synthetic workbench photo with complete prompt and source
+  provenance. Nick explicitly approved all four post-and-visual pairs. They are attached and
+  scheduled through Postiz to his verified personal LinkedIn profile for September 23, 24, 25,
+  and 28 at 18:00 UTC; each file carries its machine `pushedAt` and `postizId` lock.
+- **2026-09-23: Social visual system and Antigravity provider migration.** The weekly LinkedIn
+  workflow now requires one purposeful visual candidate per post and permits exactly three
+  formats: real source screenshots with crude annotation, classic memes, and synthetic workbench
+  photos of notebooks, whiteboards, scratch calculations, or marked-up generic printouts. Cards,
+  charts, diagrams, timelines, carousels, and general illustrations are retired. Workbench photos
+  are recorded as generated illustrations and can never masquerade as source evidence or Nick's
+  real workspace. Every format shares a campaign ledger with source, rights,
+  post-body, and asset hashes. Selection, visual approval, post approval, and attachment remain
+  separate states. A guarded attachment command fails closed on changed copy, stale assets,
+  review-only rights, missing explicit approval, existing media, or an already-pushed post. The
+  four Farmers follow-up posts have now cleared those gates and are scheduled with owned synthetic
+  workbench photos. The earlier raw source captures remain research/review artifacts only. The
+  Google-family focus-group seat now uses the authenticated Antigravity CLI
+  through mise; the retired Gemini CLI is no longer a fallback.
 - **2026-09-22: Farmers Insurance issue published and emailed.** Nick chose Farmers'
   Agency Servicing Efficiency 35 program for the restart issue and set two standing
   editorial rules: case studies should show what the company did well and why it worked,
@@ -163,10 +243,8 @@ audience; the consultancy is where the commercial conversation happens.
   and sent through the Actual Intelligence Buttondown list. The live article is
   `https://www.nmajor.com/writing/farmers-built-a-support-bot/`; Buttondown email
   `em_2vsmpkyzp08vtrcbntcvs54tkz` reports `sent`. Three derived takes are scheduled for
-  September 24, 26, and 28. Research for the remaining four LinkedIn slots is complete;
-  drafting is paused at the required cross-provider focus-group gate because Claude reached
-  its subscription session limit and Gemini lacks subscription authentication. No remaining
-  post has been written, approved, or scheduled.
+  September 24, 26, and 28. Research for the remaining four LinkedIn slots is complete. Four
+  drafts now exist for review; no remaining post has been approved or scheduled.
 - **2026-09-22: Dormancy ended; Hermes handoff deferred.** The project had been dormant since
   2026-08-18, but the Farmers issue restarted publishing on 2026-09-22. Buttondown is active
   and remains the settled newsletter platform. Nick asked to focus on the working editorial
@@ -274,7 +352,8 @@ audience; the consultancy is where the commercial conversation happens.
   **Takes** (short, frequent, billboard/social fuel — now **auto-generated and
   auto-scheduled** from each approved essay by `content-repurposing`; see build progress
   below), **Essays** (the substantive spine — *each essay IS the blog post AND the newsletter
-  issue AND the source for LinkedIn atomization*; do not run a separate blog and newsletter),
+  issue, and it supplies the required Tuesday companion for the wider LinkedIn newsroom*; do not
+  run a separate blog and newsletter),
   and **Pages** (About, Work-with-me, engineering archive). Every page's #1 job is to earn an
   email signup. Open: how commercial the "Work with me" page is at launch (consultancy still
   has no name/site).
@@ -287,8 +366,8 @@ audience; the consultancy is where the commercial conversation happens.
 
 - **2026-08-11 — Classic-template social-meme workflow added and tested on the
   `second-deployment-is-smaller` LinkedIn batch.** The new
-  `.skills/social-meme-campaign/` skill now keeps 79 researched classic-template
-  contracts: **50 active**, 15 held for more evidence, and 14 explicitly rejected for
+  `.skills/social-meme-campaign/` skill now keeps 123 researched classic-template
+  contracts: **75 active**, 27 held for more evidence, and 21 explicitly rejected for
   safety or fit. Every record has a meaning, AI writing guide, anti-patterns, ordered
   slots, invariants, and a visually rendered operator example. The exact Memegen
   backgrounds, source URLs, canonical examples, admission status, and hashes are local;

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social visual system"
+  short_description: "Create screenshots, memes, or workbench photos"
+  default_prompt: "Use $social-visual-system to create the strongest allowed visual for this social post."

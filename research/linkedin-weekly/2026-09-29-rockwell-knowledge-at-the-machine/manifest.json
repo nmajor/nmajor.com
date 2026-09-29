@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "run_id": "2026-09-29-rockwell-knowledge-at-the-machine",
+  "essay_slug": "rockwell-knowledge-at-the-machine",
+  "state": "blocked-item",
+  "stages": {
+    "capture": "complete",
+    "reporting": "complete",
+    "selection": "complete",
+    "drafting": "complete",
+    "claim_check": "complete",
+    "audience_review": "complete",
+    "visuals": "review-only-rights",
+    "materialization": "complete",
+    "validation": "complete"
+  },
+  "inputs": {
+    "essay": "app/src/content/essays/rockwell-knowledge-at-the-machine.md",
+    "weekly_direction": "research/linkedin-weekly/2026-09-29-rockwell-knowledge-at-the-machine/input.md",
+    "discovery_report": "research/discovery/2026-09-29/digest.md",
+    "discovery_raw": "research/discovery/2026-09-29/raw/"
+  },
+  "posts": [
+    {"id":"knowledge-at-the-machine","offset":0,"path":"app/linkedin/rockwell-knowledge-at-the-machine/personal-knowledge-at-the-machine.md","visual":"rockwell-knowledge-mordor"},
+    {"id":"favtrip-invoice-agent","offset":1,"path":"app/linkedin/rockwell-knowledge-at-the-machine/personal-favtrip-invoice-agent.md","visual":"favtrip-bill-drake"},
+    {"id":"domtar-sensor-overload","offset":2,"path":"app/linkedin/rockwell-knowledge-at-the-machine/personal-domtar-sensor-overload.md","visual":"domtar-data-panik"},
+    {"id":"odyssey-legacy-modernization","offset":3,"path":"app/linkedin/rockwell-knowledge-at-the-machine/personal-odyssey-legacy-modernization.md","visual":"odyssey-review-handshake"},
+    {"id":"stg-order-entry","offset":6,"path":"app/linkedin/rockwell-knowledge-at-the-machine/personal-stg-order-entry.md","visual":"stg-admin-pigeon"}
+  ],
+  "provider_substitutions": [
+    "Google Antigravity seat omitted from the bounded draft review; native Codex and Claude Code Opus reviews were used."
+  ],
+  "unresolved": [
+    "All classic-template meme images remain fair-use-review and require exact-use rights approval before attachment. Generated template imitations are prohibited."
+  ]
+}

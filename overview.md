@@ -185,8 +185,10 @@ audience; the consultancy is where the commercial conversation happens.
   interface where the decision is made. Nick approved the five recommended LinkedIn post-and-meme
   pairs and accepted the fair-use risk for established meme templates as a standing policy. The
   exact assets carry that dated acceptance without being misrepresented as licensed. All five are
-  attached and scheduled to his verified personal LinkedIn profile: the Rockwell companion at
-  2026-09-29 14:47:41 UTC, then FavTrip Wednesday 20:00 UTC, Domtar Thursday 21:00 UTC, Odyssey
+  attached and scheduled to his verified personal LinkedIn profile: the Rockwell companion
+  published successfully at 2026-09-29 14:48 UTC
+  (`https://www.linkedin.com/feed/update/urn:li:share:7510711954991263744`), then FavTrip Wednesday
+  20:00 UTC, Domtar Thursday 21:00 UTC, Odyssey
   Friday 19:00 UTC, and STG Monday 21:00 UTC. Each post carries its Postiz idempotency lock.
 - **2026-09-23: Social visuals are now meme-first.** Future social-image selection uses a fixed
   preference order: a classic meme whenever a familiar template communicates the concept cleanly;

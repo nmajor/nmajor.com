@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "recent_template_ids": [
+    "mordor",
+    "drake",
+    "panik-kalm-panik",
+    "handshake",
+    "pigeon"
+  ],
+  "assignments": [
+    {
+      "post_id": "staples",
+      "packet": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/staples-selection.json",
+      "packet_sha256": "5362c62cd3e9b19c9cdb58bffcd03099caf498bfff196dbdfdddea61bddaf9ae",
+      "template": "bihw",
+      "mechanism": "reluctant_update",
+      "collision_reason": "The two reaction updates expose different operating facts: unglamorous physical work retains value, while narrowing context improves specificity. Their distinct image relationships communicate each more accurately than available replacements."
+    },
+    {
+      "post_id": "branch",
+      "packet": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/branch-selection.json",
+      "packet_sha256": "02fa1069f4be069696854ababe48b3574202ebedc4550e2c2013ae116be67d66",
+      "template": "light",
+      "mechanism": "hidden_constraint",
+      "collision_reason": null
+    },
+    {
+      "post_id": "tokio",
+      "packet": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/tokio-selection.json",
+      "packet_sha256": "7fc8e5640d11b2ba4d99b83275f8455c0cd2eaa3fa2ee0fec69deaf67ce77fe4",
+      "template": "kombucha",
+      "mechanism": "reluctant_update",
+      "collision_reason": "The two reaction updates expose different operating facts: unglamorous physical work retains value, while narrowing context improves specificity. Their distinct image relationships communicate each more accurately than available replacements."
+    },
+    {
+      "post_id": "xpt",
+      "packet": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/xpt-selection.json",
+      "packet_sha256": "20355a3fad7e944e4b2436eaddab21a18c8ccd813f85804b9b37e2e1b687e71a",
+      "template": "same",
+      "mechanism": "scale_mismatch",
+      "collision_reason": null
+    },
+    {
+      "post_id": "elliott",
+      "packet": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/elliott-selection.json",
+      "packet_sha256": "189b4be6394d4b1bf09c5802d1739e0b12212c480de891d7ddf199e25e81fa6d",
+      "template": "gru",
+      "mechanism": "reversal",
+      "collision_reason": null
+    }
+  ]
+}

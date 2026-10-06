@@ -1,0 +1,167 @@
+{
+  "version": 2,
+  "post_id": "elliott",
+  "payload": {
+    "fact": "A concealed AI-directed command in a court filing failed; the judge read a printed copy.",
+    "expected": "The hidden instruction would steer an AI reviewer.",
+    "actual": "There was no AI reviewing the motion and the judge read paper.",
+    "tension": "An attempted machine shortcut meets a human reading paper.",
+    "target": "The attempted shortcut and trust in document inputs.",
+    "reader_realization": "The document sender was trying to control the reviewer.",
+    "tone": "cautionary",
+    "forbidden_targets": [
+      "patients",
+      "people seeking access to court",
+      "the medical dispute"
+    ]
+  },
+  "angles": [
+    {
+      "rank": 1,
+      "id": "printed-plan",
+      "mechanism": "reversal",
+      "line": "The plan to control an AI reviewer reaches a judge reading paper.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 2,
+      "id": "clever-loophole",
+      "mechanism": "false_shortcut",
+      "line": "Telling the reviewer to agree is mistaken for winning the argument.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 3,
+      "id": "invisible-command",
+      "mechanism": "ownership_mismatch",
+      "line": "The document author tries to become the reviewing tool's operator.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    },
+    {
+      "rank": 4,
+      "id": "paper-recovery",
+      "mechanism": "institutional_memory",
+      "line": "A paper copy sidesteps instructions written for a machine.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    }
+  ],
+  "retrieval": [
+    {
+      "query": "plan to manipulate reviewer defeated by reviewer reading paper",
+      "mechanism": "reversal",
+      "returned_templates": [
+        "glasses",
+        "gone",
+        "gru"
+      ]
+    }
+  ],
+  "manual_additions": [
+    {
+      "template": "gru",
+      "reason": "Complete contract read; semantic slots map to the sourced angle."
+    },
+    {
+      "template": "rollsafe",
+      "reason": "Complete contract read; semantic slots map to the sourced angle."
+    }
+  ],
+  "catalog_scan": {
+    "active_count": 75,
+    "contracts_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+    "selection_index_sha256": "9fe8a640b03e284a1dbf4162d4e8ff0def3f29b4e77b92dd65fa15272640b64f"
+  },
+  "candidates": [
+    {
+      "template": "gru",
+      "angle": "printed-plan",
+      "slot_map": {
+        "plan_step_1": "Two setup steps seek AI agreement; a judge reading paper defeats the plan and is repeated verbatim. Caption: HIDE WHITE-TEXT AI INSTRUCTIONS",
+        "plan_step_2": "Two setup steps seek AI agreement; a judge reading paper defeats the plan and is repeated verbatim. Caption: MAKE THE AI AGREE",
+        "failure_reveal": "Two setup steps seek AI agreement; a judge reading paper defeats the plan and is repeated verbatim. Caption: THE JUDGE READS PAPER",
+        "repeated_failure": "Two setup steps seek AI agreement; a judge reading paper defeats the plan and is repeated verbatim. Caption: THE JUDGE READS PAPER"
+      },
+      "slots": {
+        "plan_step_1": "HIDE WHITE-TEXT AI INSTRUCTIONS",
+        "plan_step_2": "MAKE THE AI AGREE",
+        "failure_reveal": "THE JUDGE READS PAPER",
+        "repeated_failure": "THE JUDGE READS PAPER"
+      },
+      "render": {
+        "asset": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/elliott-gru.jpg",
+        "asset_sha256": "b6f71b818e11b25751fc7f26213ba3b4148de00bb95069ed8af9bed4e171d859",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 3,
+        "compression": 3,
+        "operator_recognition": 3,
+        "audience_familiarity": 3,
+        "voice_target": 3,
+        "visual_fluency": 2
+      },
+      "reasons": {
+        "relationship_fit": "Two setup steps seek AI agreement; a judge reading paper defeats the plan and is repeated verbatim.",
+        "surprise_coherence": "An attempted hidden command failed because the judge read the printed document.",
+        "compression": "Short captions carry the relationship without numerical overreach.",
+        "operator_recognition": "An attempted hidden command failed because the judge read the printed document.",
+        "audience_familiarity": "Established active catalog pattern; recognizable without explaining the character.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; all captions readable. Longer text needs deliberate reading."
+      }
+    },
+    {
+      "template": "rollsafe",
+      "angle": "clever-loophole",
+      "slot_map": {
+        "problem_avoided": "The clever-looking directive tries to avoid losing an argument by corrupting the reviewer. Caption: CAN'T LOSE THE ARGUMENT",
+        "flawed_workaround": "The clever-looking directive tries to avoid losing an argument by corrupting the reviewer. Caption: IF YOU TELL THE REVIEWER TO AGREE"
+      },
+      "slots": {
+        "problem_avoided": "CAN'T LOSE THE ARGUMENT",
+        "flawed_workaround": "IF YOU TELL THE REVIEWER TO AGREE"
+      },
+      "render": {
+        "asset": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/alternatives/elliott-rollsafe.jpg",
+        "asset_sha256": "46f8821f260c0a7d1fce432d53fd37bf0a7dc108f0ecb95499e108bb369affa6",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 2,
+        "compression": 2,
+        "operator_recognition": 3,
+        "audience_familiarity": 3,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "The clever-looking directive tries to avoid losing an argument by corrupting the reviewer.",
+        "surprise_coherence": "An attempted hidden command failed because the judge read the printed document.",
+        "compression": "The alternate needs more inference or text than the recommended relationship.",
+        "operator_recognition": "An attempted hidden command failed because the judge read the printed document.",
+        "audience_familiarity": "Established active catalog pattern; recognizable without explaining the character.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    }
+  ],
+  "recommendation": {
+    "template": "gru",
+    "reason": "Gru makes the failed sequence explicit and preserves the printed-paper fact. Roll Safe shows flawed intent but omits the actual recovery that makes this case specific.",
+    "confidence": "high",
+    "alternative": "rollsafe"
+  },
+  "post_body_sha256": "8ec5cba3dab6ea96977b2ba2bb452c7f3f055b53546bf5aa9217a24bf115d891"
+}

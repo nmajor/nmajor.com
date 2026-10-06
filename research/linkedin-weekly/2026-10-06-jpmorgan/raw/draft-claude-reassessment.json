@@ -1,0 +1,54 @@
+{
+  "persona": "skeptical practical logistics ops director",
+  "provider": "anthropic",
+  "model": "claude-opus-5-5",
+  "artifacts": [
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-branch-intake.md",
+      "gut_reaction": "Clean and honest now. Both parties are named, the number is credited to the vendor, and the limits are stated. I trust it more than the last version. It still stops right before saying what I should check myself, so I'd nod and keep scrolling rather than save it.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "Branch's AI claim-reporting calls take about seven minutes.",
+          "reason": "A specific number from a named company stops me. But until the next line it reads as a fact rather than the vendor's claim, and seven minutes alone isn't surprising without the twelve-minute comparison.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "It says nothing about how quickly Branch settles the claim.",
+          "reason": "This is the line that earns trust. It separates intake speed from the outcome that matters to the business, which is what a skeptic wants someone to do.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "Branch uses Liberate's voice AI and digital intake to collect the first report of a loss.",
+          "reason": "Who did what is clear now: Liberate is the vendor and Branch is the insurer. The repeated workflow paragraphs are gone. The one wobble is the opening, which states the figure before saying it comes from the vendor.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "I'd judge an intake agent on the record it leaves for the claims team as well as the call duration.",
+          "reason": "Right instinct, but it doesn't tell me how to act on it. It never says what a good record looks like: complete required fields, rework or callback rate, how often an adjuster has to re-contact the claimant, escalation rate. I can't take this into a vendor meeting.",
+          "score": 3
+        },
+        "insight": {
+          "quote": "It says nothing about how quickly Branch settles the claim.",
+          "reason": "Separating call time from claim outcome is useful, though anyone who has run intake knows it. Nothing here would make a practitioner stop and think.",
+          "score": 3
+        },
+        "credibility": {
+          "quote": "Liberate hasn't published the sample or measurement period behind Branch's figure, or Branch-specific escalation results.",
+          "reason": "Strong disclosure. General platform capabilities are credited to the vendor and not presented as Branch results. One risk to check against the ledger: 'Branch's outsourced call center' isn't among the listed source facts. If the release doesn't say that, cut it.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "I'd judge an intake agent on the record it leaves for the claims team",
+          "reason": "Downstream data quality is a pain I recognize from shipment and claims intake. But the post states it abstractly instead of pointing to the cost, like the adjuster rework or the second call to the customer.",
+          "score": 3
+        }
+      },
+      "highest_leverage_fix": "Turn the closing judgment into two or three concrete checks a buyer could ask for. Examples: the share of first reports the adjuster accepts without calling the claimant back, the required-field completion rate, and the escalation rate with the reason for each. Also confirm 'outsourced call center' is in the release, or drop it.",
+      "would_not_act": "I wouldn't follow or save the post based on this alone. It audits a vendor claim well but doesn't give me a method I can reuse.",
+      "pass": true,
+      "blocking_issue": null
+    }
+  ]
+}

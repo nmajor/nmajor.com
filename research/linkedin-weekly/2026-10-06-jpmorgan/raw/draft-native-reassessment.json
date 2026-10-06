@@ -1,0 +1,55 @@
+{
+  "persona": "[mini] Skeptical insurance COO",
+  "provider": "openai",
+  "model": "native Codex subscription seat",
+  "artifacts": [
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-branch-intake.md",
+      "gut_reaction": "Seven minutes gets my attention because this is a process we pay for. Naming the vendor immediately and separating intake duration from settlement makes the claim credible enough to read. I appreciate that it does not invent an escalation result.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "Branch's AI claim-reporting calls take about seven minutes.",
+          "reason": "Concrete process duration and named insurer replace the generic capability opening.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "It says nothing about how quickly Branch settles the claim.",
+          "reason": "Fast, relevant scope correction keeps this from becoming another exaggerated carrier success claim.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "Voice-AI vendor Liberate says",
+          "reason": "Identifies both the supplier and source of the measurement immediately.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "the record it leaves for the claims team as well as the call duration",
+          "reason": "Relevant operator judgment, though no actual record-quality outcome is provided.",
+          "score": 3
+        },
+        "insight": {
+          "quote": "or Branch-specific escalation results",
+          "reason": "Distinguishes a product capability from demonstrated performance at the named insurer.",
+          "score": 4
+        },
+        "credibility": {
+          "quote": "hasn't published the sample or measurement period",
+          "reason": "Specific vendor claim remains qualified and no repeated-explanation outcome is invented.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "first report of a loss",
+          "reason": "Directly relevant carrier intake process.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "No blocking change. Preserve source-specific access to the September 30 release in the publication's source comment or link.",
+      "would_not_act": "A paired image presents seven minutes as settlement time or projected savings as achieved.",
+      "pass": true,
+      "blocking_issue": null
+    }
+  ],
+  "slate_repetition": "Only Branch reassessed. Its prior generic opening and repeated one-account implication are removed. Other artifacts were not rescored."
+}

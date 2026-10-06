@@ -1,0 +1,18 @@
+1. genie (Genie Lamp) [18.55]
+  Impressive capability is constrained by one comically small operational boundary.
+  matched: operational
+2. yodawg (Xzibit Yo Dawg) [18.55]
+  A supposed improvement nests another instance of the same activity inside itself.
+  matched: improvement
+3. friends (Are You Two Friends?) [13.539]
+  Two parties give incompatible answers about whether they are aligned.
+  matched: unexpected
+4. handshake (Epic Handshake) [13.539]
+  Two different groups or outcomes share one specific trait.
+  matched: unexpected
+5. kramer (Kramer, What's Going On In There?) [13.539]
+  A visible symptom prompts a question and receives an unexpectedly specific explanation.
+  matched: unexpected
+6. perfection (Perfection) [13.539]
+  Two acceptable options are rejected before a third, often unexpected option is declared ideal.
+  matched: unexpected

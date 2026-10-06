@@ -1,0 +1,287 @@
+[
+  {
+    "post_id": "personal-staples",
+    "recommended": "J.P. Morgan's AI deployment includes a robot that removes staples.",
+    "family": "named-example",
+    "pool": [
+      {
+        "family": "named-example",
+        "line": "J.P. Morgan put an AI-powered robot in its payment mailroom.",
+        "characters": 60,
+        "decision": "runner-up"
+      },
+      {
+        "family": "surprising-data",
+        "line": "J.P. Morgan still processed more than 130 million checks in 2025.",
+        "characters": 65,
+        "decision": "runner-up"
+      },
+      {
+        "family": "new-mechanism",
+        "line": "The mailroom robot feeds a payment system rebuilt in 2020.",
+        "characters": 58,
+        "decision": "reject"
+      },
+      {
+        "family": "problem-named",
+        "line": "A folded payment record has to become readable before software can use it.",
+        "characters": 74,
+        "decision": "reject"
+      },
+      {
+        "family": "scope",
+        "line": "The 13-billion-keystroke claim belongs to the wider system.",
+        "characters": 59,
+        "decision": "reject"
+      },
+      {
+        "family": "bounded-result",
+        "line": "One site got the mail robot. The wider platform got the keystroke figure.",
+        "characters": 73,
+        "decision": "reject"
+      },
+      {
+        "family": "direct-question",
+        "line": "What has to happen before AI can read a payment envelope?",
+        "characters": 57,
+        "decision": "reject"
+      },
+      {
+        "family": "plain-useful",
+        "line": "J.P. Morgan connected physical mail to document processing.",
+        "characters": 59,
+        "decision": "reject"
+      }
+    ],
+    "reason": "The chosen line states the concrete event or metric with the least setup; source limits follow in the body.",
+    "hard_gates": "No unsupported experience or em dash; selected first paragraph under140 chars."
+  },
+  {
+    "post_id": "personal-branch-intake",
+    "recommended": "Branch's AI claim-reporting calls take about seven minutes.",
+    "family": "named-example",
+    "pool": [
+      {
+        "family": "named-example",
+        "line": "Branch uses voice AI to collect the first report of a loss.",
+        "characters": 59,
+        "decision": "runner-up"
+      },
+      {
+        "family": "surprising-data",
+        "line": "Branch's vendor reports 42% shorter claim-reporting calls.",
+        "characters": 58,
+        "decision": "runner-up"
+      },
+      {
+        "family": "scope",
+        "line": "A seven-minute claim report says nothing about settlement speed.",
+        "characters": 64,
+        "decision": "reject"
+      },
+      {
+        "family": "new-mechanism",
+        "line": "The claims team needs a usable record after the AI call ends.",
+        "characters": 61,
+        "decision": "reject"
+      },
+      {
+        "family": "problem-named",
+        "line": "The phone call ends. The claims workflow is still beginning.",
+        "characters": 60,
+        "decision": "reject"
+      },
+      {
+        "family": "direct-question",
+        "line": "What does an AI intake agent leave for the claims team?",
+        "characters": 55,
+        "decision": "reject"
+      },
+      {
+        "family": "uncertainty",
+        "line": "Branch's call-time result comes from its vendor, without a published sample.",
+        "characters": 76,
+        "decision": "reject"
+      },
+      {
+        "family": "workflow",
+        "line": "Liberate puts claim intake alongside the systems that handle the next step.",
+        "characters": 75,
+        "decision": "reject"
+      }
+    ],
+    "reason": "The chosen line states the concrete event or metric with the least setup; source limits follow in the body.",
+    "hard_gates": "No unsupported experience or em dash; selected first paragraph under140 chars."
+  },
+  {
+    "post_id": "personal-tokio-marine-manual",
+    "recommended": "Tokio Marine HCC gave its AI agents the whole underwriting manual. Then it cut the reading list.",
+    "family": "named-example",
+    "pool": [
+      {
+        "family": "named-example",
+        "line": "Tokio Marine HCC narrowed the material its underwriting agents received.",
+        "characters": 72,
+        "decision": "runner-up"
+      },
+      {
+        "family": "new-mechanism",
+        "line": "The whole underwriting manual gave the agent less specific answers.",
+        "characters": 67,
+        "decision": "runner-up"
+      },
+      {
+        "family": "scope",
+        "line": "Tokio Marine's underwriting system is still being tested before production.",
+        "characters": 75,
+        "decision": "reject"
+      },
+      {
+        "family": "problem-named",
+        "line": "A bigger manual did not give this underwriting agent a better answer.",
+        "characters": 69,
+        "decision": "reject"
+      },
+      {
+        "family": "bounded-result",
+        "line": "Tokio Marine reports better specificity after narrowing the relevant guidance.",
+        "characters": 78,
+        "decision": "reject"
+      },
+      {
+        "family": "direct-question",
+        "line": "How much of the underwriting manual does this particular task need?",
+        "characters": 67,
+        "decision": "reject"
+      },
+      {
+        "family": "human-work",
+        "line": "Tokio Marine's underwriters helped test the system before it went live.",
+        "characters": 71,
+        "decision": "reject"
+      },
+      {
+        "family": "mechanism",
+        "line": "Tokio Marine kept the reasons behind an agent's submission scores visible.",
+        "characters": 74,
+        "decision": "reject"
+      }
+    ],
+    "reason": "The chosen line states the concrete event or metric with the least setup; source limits follow in the body.",
+    "hard_gates": "No unsupported experience or em dash; selected first paragraph under140 chars."
+  },
+  {
+    "post_id": "personal-xpt-small-accounts",
+    "recommended": "A small insurance account can bring a small premium and a full workload.",
+    "family": "problem-named",
+    "pool": [
+      {
+        "family": "named-example",
+        "line": "XPT built AI tools for insurance accounts that cost too much work to shop broadly.",
+        "characters": 82,
+        "decision": "runner-up"
+      },
+      {
+        "family": "specific-result",
+        "line": "XPT can send an insurance risk to up to 20 markets in parallel.",
+        "characters": 63,
+        "decision": "runner-up"
+      },
+      {
+        "family": "new-mechanism",
+        "line": "XPT moved the processing work without giving retail agents another portal.",
+        "characters": 74,
+        "decision": "reject"
+      },
+      {
+        "family": "scope",
+        "line": "XPT keeps a specialist responsible for the final insurance placement.",
+        "characters": 69,
+        "decision": "reject"
+      },
+      {
+        "family": "problem-named",
+        "line": "Small accounts can take nearly as much work as large ones.",
+        "characters": 58,
+        "decision": "reject"
+      },
+      {
+        "family": "direct-question",
+        "line": "How widely can a small insurance account afford to get shopped?",
+        "characters": 63,
+        "decision": "reject"
+      },
+      {
+        "family": "workflow",
+        "line": "XPT says retail agents get broader options without re-keying a submission.",
+        "characters": 74,
+        "decision": "reject"
+      },
+      {
+        "family": "uncertainty",
+        "line": "XPT's design is public. Its AI return is not isolated.",
+        "characters": 54,
+        "decision": "reject"
+      }
+    ],
+    "reason": "The chosen line states the concrete event or metric with the least setup; source limits follow in the body.",
+    "hard_gates": "No unsupported experience or em dash; selected first paragraph under140 chars."
+  },
+  {
+    "post_id": "personal-hidden-instructions",
+    "recommended": "A court filing hid instructions for an AI reader in white text.",
+    "family": "named-example",
+    "pool": [
+      {
+        "family": "dated-event",
+        "line": "In August, a Connecticut court sanctioned concealed AI instructions in filings.",
+        "characters": 79,
+        "decision": "runner-up"
+      },
+      {
+        "family": "reversal",
+        "line": "The hidden instructions expected an AI reader. The judge read a printed copy.",
+        "characters": 77,
+        "decision": "runner-up"
+      },
+      {
+        "family": "scope",
+        "line": "The hidden prompt failed. The court still revoked electronic filing.",
+        "characters": 68,
+        "decision": "reject"
+      },
+      {
+        "family": "new-mechanism",
+        "line": "A document can try to give orders to the software reviewing it.",
+        "characters": 63,
+        "decision": "reject"
+      },
+      {
+        "family": "problem-named",
+        "line": "The sender controls the file, including text the human reader may not see.",
+        "characters": 74,
+        "decision": "reject"
+      },
+      {
+        "family": "direct-question",
+        "line": "Who is the document's hidden text trying to instruct?",
+        "characters": 53,
+        "decision": "reject"
+      },
+      {
+        "family": "distinction",
+        "line": "This court case concerned concealed instructions, rather than invented citations.",
+        "characters": 81,
+        "decision": "reject"
+      },
+      {
+        "family": "reported-limit",
+        "line": "The hidden prompt did not affect the court's ruling.",
+        "characters": 52,
+        "decision": "reject"
+      }
+    ],
+    "reason": "The chosen line states the concrete event or metric with the least setup; source limits follow in the body.",
+    "hard_gates": "No unsupported experience or em dash; selected first paragraph under140 chars."
+  }
+]

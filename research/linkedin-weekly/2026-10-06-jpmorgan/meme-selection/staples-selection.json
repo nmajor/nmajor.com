@@ -1,0 +1,159 @@
+{
+  "version": 2,
+  "post_id": "staples",
+  "payload": {
+    "fact": "JPMorgan's robot removes staples as part of document processing.",
+    "expected": "An AI deployment would mainly concern sophisticated software.",
+    "actual": "The deployment includes physical staple removal.",
+    "tension": "Useful high-tech work includes a mundane physical job.",
+    "target": "Glamorous expectations of AI deployment.",
+    "reader_realization": "Getting the paper ready still matters.",
+    "tone": "dry",
+    "forbidden_targets": [
+      "mailroom workers"
+    ]
+  },
+  "angles": [
+    {
+      "rank": 1,
+      "id": "respect-mundane",
+      "mechanism": "reluctant_update",
+      "line": "The staple-removing robot is unglamorous but useful.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 2,
+      "id": "physical-prerequisite",
+      "mechanism": "hidden_constraint",
+      "line": "Even sophisticated document AI needs the staple removed.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 3,
+      "id": "paper-persistence",
+      "mechanism": "institutional_memory",
+      "line": "Paper payments keep a very old job inside a modern system.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    },
+    {
+      "rank": 4,
+      "id": "keys-vs-staples",
+      "mechanism": "scale_mismatch",
+      "line": "A giant processing system still has tiny physical obstacles.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    }
+  ],
+  "retrieval": [
+    {
+      "query": "powerful technology blocked by mundane physical prerequisite",
+      "mechanism": "reluctant_update",
+      "returned_templates": [
+        "ntot"
+      ]
+    }
+  ],
+  "manual_additions": [
+    {
+      "template": "bihw",
+      "reason": "Complete contract read; semantic slots map to the sourced angle."
+    },
+    {
+      "template": "genie",
+      "reason": "Complete contract read; semantic slots map to the sourced angle."
+    }
+  ],
+  "catalog_scan": {
+    "active_count": 75,
+    "contracts_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+    "selection_index_sha256": "9fe8a640b03e284a1dbf4162d4e8ff0def3f29b4e77b92dd65fa15272640b64f"
+  },
+  "candidates": [
+    {
+      "template": "bihw",
+      "angle": "respect-mundane",
+      "slot_map": {
+        "modest_result": "The first caption minimizes staple removal; the fixed second caption values useful legitimate work. Caption: IT AIN'T MUCH, JUST REMOVING STAPLES",
+        "honest_defense": "The first caption minimizes staple removal; the fixed second caption values useful legitimate work. Caption: BUT IT'S HONEST WORK"
+      },
+      "slots": {
+        "modest_result": "IT AIN'T MUCH, JUST REMOVING STAPLES",
+        "honest_defense": "BUT IT'S HONEST WORK"
+      },
+      "render": {
+        "asset": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/staples-bihw.jpg",
+        "asset_sha256": "3b0a053110b728a8be313923598170d4263602c17d1a631587d35dee787c7d14",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 3,
+        "compression": 3,
+        "operator_recognition": 3,
+        "audience_familiarity": 3,
+        "voice_target": 3,
+        "visual_fluency": 2
+      },
+      "reasons": {
+        "relationship_fit": "The first caption minimizes staple removal; the fixed second caption values useful legitimate work.",
+        "surprise_coherence": "Useful document automation still has a physical paper-handling prerequisite.",
+        "compression": "Short captions carry the relationship without numerical overreach.",
+        "operator_recognition": "Useful document automation still has a physical paper-handling prerequisite.",
+        "audience_familiarity": "Established active catalog pattern; recognizable without explaining the character.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; all captions readable. Longer text needs deliberate reading."
+      }
+    },
+    {
+      "template": "genie",
+      "angle": "physical-prerequisite",
+      "slot_map": {
+        "grand_capability": "Reading capability meets the physical prerequisite of removing staples from the same documents. Caption: AI CAN READ YOUR DOCUMENTS",
+        "tiny_constraint": "Reading capability meets the physical prerequisite of removing staples from the same documents. Caption: AFTER SOMEONE REMOVES THE STAPLES"
+      },
+      "slots": {
+        "grand_capability": "AI CAN READ YOUR DOCUMENTS",
+        "tiny_constraint": "AFTER SOMEONE REMOVES THE STAPLES"
+      },
+      "render": {
+        "asset": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/alternatives/staples-genie.jpg",
+        "asset_sha256": "daaa558314702591ebd8979152101a0c681edd3b520b23f0a48e18119900f6f0",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 2,
+        "compression": 2,
+        "operator_recognition": 3,
+        "audience_familiarity": 2,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "Reading capability meets the physical prerequisite of removing staples from the same documents.",
+        "surprise_coherence": "Useful document automation still has a physical paper-handling prerequisite.",
+        "compression": "The alternate needs more inference or text than the recommended relationship.",
+        "operator_recognition": "Useful document automation still has a physical paper-handling prerequisite.",
+        "audience_familiarity": "Established but less universal pattern; captions supply the relationship.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    }
+  ],
+  "recommendation": {
+    "template": "bihw",
+    "reason": "Honest Work values the unglamorous removal step directly. Genie adds a capability bottleneck but needs an extra implied dependency; the human-or-machine prerequisite is already explicit in the copy.",
+    "confidence": "medium",
+    "alternative": "genie"
+  },
+  "post_body_sha256": "37cf096fad407a982d42fb2542a571561e5145091b9c4fa6244a9b103cd79d5c"
+}

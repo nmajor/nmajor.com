@@ -1,0 +1,290 @@
+{
+  "persona": "[mini] Skeptical insurance COO",
+  "provider": "openai",
+  "model": "native Codex subscription seat",
+  "artifacts": [
+    {
+      "path": "app/src/content/essays/jpmorgan-ai-in-the-mailroom.md",
+      "gut_reaction": "I would open this. A bank removing staples is specific enough to cut through the AI claims, and the platform history explains why the robot has somewhere useful to send its output.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "J.P. Morgan's AI had to remove the staples",
+          "reason": "Concrete mundane task and recognized institution earn attention.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "This is lockbox processing.",
+          "reason": "Explains the unfamiliar workflow before moving to the installation.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "The bank deposits the check and digitizes the accompanying documents",
+          "reason": "Readable explanation of what lockbox processing does.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "The robot feeds a processing platform that J.P. Morgan rebuilt in 2020.",
+          "reason": "Shows a connected operation rather than an isolated demo.",
+          "score": 4
+        },
+        "insight": {
+          "quote": "It can't be credited to one robot or to the language models alone.",
+          "reason": "Separates layered operational progress from a fashionable single cause.",
+          "score": 4
+        },
+        "credibility": {
+          "quote": "The public account describes the first deployment at one site",
+          "reason": "Preserves deployment scope and limits the bank-reported result.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "read the accompanying information and check whether it is usable",
+          "reason": "Paper intake and usable records are familiar carrier problems.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "Optional precision only: place the internal-data caveat directly beside the keystroke claim so it cannot be mistaken for the omitted accuracy statistic.",
+      "would_not_act": "A later headline or image assigns the bank-wide keystroke reduction to this one robot.",
+      "pass": true,
+      "blocking_issue": null
+    },
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-branch-intake.md",
+      "gut_reaction": "This is my industry, but the opening sounds like a vendor product description. The call-duration limit earns some trust. I do not learn enough beyond the basic intake workflow to stop scrolling.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "Branch's voice AI collects the claim report and passes it into the claims workflow.",
+          "reason": "Accurate but generic capability description; no distinctive tension at the top.",
+          "value": false
+        },
+        "keep_reading": {
+          "quote": "It says nothing about how quickly the insurer settles the claim.",
+          "reason": "Honest metric boundary makes the body worth reading if encountered.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "42% reduction in reporting time",
+          "reason": "Explicitly separates reporting-call duration from settlement.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "integrations with insurance systems and escalation to people when needed",
+          "reason": "These are relevant basics, but the implementation is still thin.",
+          "score": 3
+        },
+        "insight": {
+          "quote": "the next person needs a usable record of what happened",
+          "reason": "An essential principle I already know rather than a new finding.",
+          "score": 3
+        },
+        "credibility": {
+          "quote": "Liberate hasn't published the sample or measurement period",
+          "reason": "Vendor attribution and missing measurement detail accompany the result.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "Branch uses voice AI and digital intake",
+          "reason": "Direct carrier workflow relevance despite the ordinary opening.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "Lead with a concrete, source-backed tension such as after-hours claim reporting or the measured reporting-call comparison instead of the generic capability.",
+      "would_not_act": "Assuming a usable record eliminates repeated customer explanations when that downstream experience has not been measured.",
+      "pass": false,
+      "blocking_issue": "Attention gate fails. Opening reads like a generic vendor capability, not a distinctive reported case. Final sentence's 'one account' should not imply demonstrated elimination of repeated explanations."
+    },
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-hidden-instructions.md",
+      "gut_reaction": "I would stop. We accept outside documents every day, and this is an actual example of someone hiding instructions in one. Saying the attempt failed makes me trust the reporting more.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "A court filing hid instructions for an AI reader in white text.",
+          "reason": "Specific physical trick makes an unfamiliar failure mechanism tangible.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "The attempt failed.",
+          "reason": "Quickly resolves the incident outcome without sensationalizing it.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "tiny white-on-white messages aimed at steering an AI review",
+          "reason": "Explains intent and means without technical jargon.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "A document can carry instructions intended for the software reading it",
+          "reason": "Names an external-input risk that applies to our document workflows.",
+          "score": 4
+        },
+        "insight": {
+          "quote": "different failure mechanism from invented citations",
+          "reason": "Separates adversarial input from accidental model mistakes.",
+          "score": 4
+        },
+        "credibility": {
+          "quote": "an August 6 Connecticut decision",
+          "reason": "Dates the older event and preserves failed attempt and limited sanction.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "while looking ordinary to a person",
+          "reason": "Human-readable material can still present tool risk in our business.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "No blocking change. Keep the primary decision or source-specific receipt accessible in the eventual publication metadata.",
+      "would_not_act": "A visual says the judge was manipulated or makes the plaintiff's dispute the joke.",
+      "pass": true,
+      "blocking_issue": null
+    },
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-staples.md",
+      "gut_reaction": "The staple opener would catch me. The post explains the physical bottleneck and does not give one robot credit for the bank's whole processing system.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "J.P. Morgan's AI deployment includes a robot that removes staples.",
+          "reason": "Concrete, surprising task beats a generic AI deployment announcement.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "At one payment-processing site",
+          "reason": "Clear scope and practical description maintain credibility.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "opens envelopes, unfolds the contents, separates pages and scans the paperwork",
+          "reason": "The reader can picture exactly what the machine does.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "processing platform rebuilt in 2020",
+          "reason": "Shows why physical intake depends on existing processing stages.",
+          "score": 4
+        },
+        "insight": {
+          "quote": "One robot doesn't get the credit for all of it.",
+          "reason": "Avoids the false single-tool attribution common in these stories.",
+          "score": 4
+        },
+        "credibility": {
+          "quote": "with no public measurement method",
+          "reason": "Qualifies the bank-reported wider outcome and dates the disclosure.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "the envelope, the document and the payment record",
+          "reason": "Connected records and physical intake are recognizable operating constraints.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "No substantive blocker. Ensure the source/essay link accompanies the published post so the numbers are checkable.",
+      "would_not_act": "A meme or caption implies the robot processed all 130 million checks.",
+      "pass": true,
+      "blocking_issue": null
+    },
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-tokio-marine-manual.md",
+      "gut_reaction": "I would read this. A team changing the inputs during testing is more useful to me than another underwriting success percentage. The pre-production status is clear.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "gave its AI agents the whole underwriting manual. Then it cut the reading list.",
+          "reason": "Specific correction and recognizable document make a credible curiosity gap.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "being tested before production",
+          "reason": "Honest status prevents a false ROI story while preserving a practical finding.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "Narrowing it to relevant sections improved the specificity",
+          "reason": "Straightforward before-and-after design change.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "the system records reasons for its scores",
+          "reason": "Gives an identifiable review mechanism alongside the input correction.",
+          "score": 4
+        },
+        "insight": {
+          "quote": "More material ... without giving it a better answer",
+          "reason": "Concrete example challenges the assumption that a whole manual is always better context.",
+          "score": 4
+        },
+        "credibility": {
+          "quote": "There isn't a measured production return to quote yet.",
+          "reason": "Preserves pilot status and avoids invented savings.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "Underwriters still decide whether to accept the business",
+          "reason": "Decision boundary and underwriter involvement matter directly to a carrier.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "No blocking change. The phrase 'a useful failure' can be softened if the interview describes an iterative improvement rather than an actual failure, but the reported input correction is supported.",
+      "would_not_act": "A visual turns this into a deployed underwriting disaster or an achieved ROI claim.",
+      "pass": true,
+      "blocking_issue": null
+    },
+    {
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-xpt-small-accounts.md",
+      "gut_reaction": "This is a margin problem I recognize. The existing-workflow detail is more convincing than another growth claim. I would read, while treating the broader-search economics as the proposed benefit rather than a measured outcome.",
+      "gates": {
+        "stop_scroll": {
+          "quote": "A small insurance account can bring a small premium and a full workload.",
+          "reason": "Names a familiar economic tension in one plain sentence.",
+          "value": true
+        },
+        "keep_reading": {
+          "quote": "no new portal and no re-keying",
+          "reason": "Concrete adoption friction makes the design relevant.",
+          "value": true
+        }
+      },
+      "criteria": {
+        "clarity": {
+          "quote": "up to 20 insurance markets in parallel",
+          "reason": "Defines the tool's scope without mixing the separate brokerage product.",
+          "score": 4
+        },
+        "usefulness": {
+          "quote": "An XPT specialist reviews the results",
+          "reason": "Shows the retained decision responsibility and connection mechanism.",
+          "score": 4
+        },
+        "insight": {
+          "quote": "small premium and a full workload",
+          "reason": "Explains why processing effort constrains lower-value account service.",
+          "score": 4
+        },
+        "credibility": {
+          "quote": "doesn't isolate the tools' contribution or disclose their costs",
+          "reason": "Rejects unsupported growth attribution, though the closing economics remain an inference.",
+          "score": 4
+        },
+        "resonance": {
+          "quote": "Small commercial accounts can take nearly as much processing work as large ones",
+          "reason": "Directly addresses a carrier/distribution cost problem.",
+          "score": 4
+        }
+      },
+      "highest_leverage_fix": "Optional precision: label broader search becoming more practical as the intended operational benefit rather than a measured result.",
+      "would_not_act": "The post starts implying that broader searches or better placement were independently measured.",
+      "pass": true,
+      "blocking_issue": null
+    }
+  ],
+  "slate_repetition": "Three independent insurance stories narrow sector diversity, but claims intake, manual-context design and wholesale account economics are distinct jobs. Staples companion intentionally overlaps the newsletter. Hidden instructions supplies a separate cautionary mechanism. No repeated claim or padding detected."
+}

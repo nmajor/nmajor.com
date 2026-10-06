@@ -1,0 +1,167 @@
+{
+  "version": 2,
+  "post_id": "tokio",
+  "payload": {
+    "fact": "Tokio Marine narrowed an entire underwriting manual to relevant sections, improving specificity.",
+    "expected": "Giving an agent more of the manual would give it more helpful context.",
+    "actual": "The narrower relevant material improved specificity.",
+    "tension": "Less supplied material can produce a more specific result.",
+    "target": "The habit of supplying every available document.",
+    "reader_realization": "Relevant context can matter more than total context.",
+    "tone": "dry",
+    "forbidden_targets": [
+      "underwriters"
+    ]
+  },
+  "angles": [
+    {
+      "rank": 1,
+      "id": "less-is-useful",
+      "mechanism": "reluctant_update",
+      "line": "The agent gets less of the manual and gives more specific answers.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 2,
+      "id": "manual-views",
+      "mechanism": "preference_contrast",
+      "line": "The same narrowed manual can look like lost material or retained relevant guidance.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 3,
+      "id": "more-is-worse",
+      "mechanism": "contradiction",
+      "line": "More material is not automatically more useful context.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    },
+    {
+      "rank": 4,
+      "id": "context-label",
+      "mechanism": "misclassification",
+      "line": "The full manual is called context even where sections are irrelevant to the assessment.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    }
+  ],
+  "retrieval": [
+    {
+      "query": "large technical capability constrained by irrelevant material",
+      "mechanism": "reluctant_update",
+      "returned_templates": [
+        "genie",
+        "mordor",
+        "boat"
+      ]
+    }
+  ],
+  "manual_additions": [
+    {
+      "template": "kombucha",
+      "reason": "Both captions evaluate the same underwriting agent; its narrower manual improves specificity and changes the reaction."
+    },
+    {
+      "template": "bus",
+      "reason": "Opposite interpretations concern the same operational change, preserving one event across both passengers."
+    }
+  ],
+  "catalog_scan": {
+    "active_count": 75,
+    "contracts_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+    "selection_index_sha256": "9fe8a640b03e284a1dbf4162d4e8ff0def3f29b4e77b92dd65fa15272640b64f"
+  },
+  "candidates": [
+    {
+      "template": "kombucha",
+      "angle": "less-is-useful",
+      "slot_map": {
+        "bad_first_impression": "Both captions evaluate the same underwriting agent; its narrower manual improves specificity and changes the reaction. Caption: THE AGENT GETS LESS OF THE MANUAL",
+        "redeeming_reconsideration": "Both captions evaluate the same underwriting agent; its narrower manual improves specificity and changes the reaction. Caption: AND GIVES MORE SPECIFIC ANSWERS"
+      },
+      "slots": {
+        "bad_first_impression": "THE AGENT GETS LESS OF THE MANUAL",
+        "redeeming_reconsideration": "AND GIVES MORE SPECIFIC ANSWERS"
+      },
+      "render": {
+        "asset": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/tokio-kombucha.jpg",
+        "asset_sha256": "d810ffac357818f726a82c8683df6a2b39b59350c1e3bd42df45717f70ce48e7",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 3,
+        "compression": 3,
+        "operator_recognition": 3,
+        "audience_familiarity": 3,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "Both captions evaluate the same underwriting agent; its narrower manual improves specificity and changes the reaction.",
+        "surprise_coherence": "Relevant manual sections improved specificity compared with supplying the entire manual.",
+        "compression": "Short captions carry the relationship without numerical overreach.",
+        "operator_recognition": "Relevant manual sections improved specificity compared with supplying the entire manual.",
+        "audience_familiarity": "Established active catalog pattern; recognizable without explaining the character.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    },
+    {
+      "template": "bus",
+      "angle": "manual-views",
+      "slot_map": {
+        "bleak_interpretation": "Opposite interpretations concern the same operational change, preserving one event across both passengers. Caption: WE CUT THE READING LIST",
+        "constructive_interpretation": "Opposite interpretations concern the same operational change, preserving one event across both passengers. Caption: WE KEPT THE RELEVANT SECTIONS"
+      },
+      "slots": {
+        "bleak_interpretation": "WE CUT THE READING LIST",
+        "constructive_interpretation": "WE KEPT THE RELEVANT SECTIONS"
+      },
+      "render": {
+        "asset": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/alternatives/tokio-bus.jpg",
+        "asset_sha256": "e1723635d29e69c54ae00d7df6789f4ce7de1ab531904cba92a5fd7a8ea50519",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 2,
+        "compression": 2,
+        "operator_recognition": 3,
+        "audience_familiarity": 2,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "Opposite interpretations concern the same operational change, preserving one event across both passengers.",
+        "surprise_coherence": "Relevant manual sections improved specificity compared with supplying the entire manual.",
+        "compression": "The alternate needs more inference or text than the recommended relationship.",
+        "operator_recognition": "Relevant manual sections improved specificity compared with supplying the entire manual.",
+        "audience_familiarity": "Established but less universal pattern; captions supply the relationship.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    }
+  ],
+  "recommendation": {
+    "template": "kombucha",
+    "reason": "Kombucha directly changes the reaction to the same agent after context narrows. Bus gives two views of the same cut but conveys the specificity result less directly.",
+    "confidence": "high",
+    "alternative": "bus"
+  },
+  "post_body_sha256": "1b45d593b1698e3e66d20cb6189b9324f2cb20adec860ff65c4a8bef876e278d",
+  "rejected_render": {
+    "template": "balloon",
+    "asset": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/alternatives/tokio-balloon.jpg",
+    "reason": "Rejected: the hosted actor slot lands on the clipped lower balloon, contradicting declared semantic positioning.",
+    "phone_size_qa": "fail"
+  }
+}

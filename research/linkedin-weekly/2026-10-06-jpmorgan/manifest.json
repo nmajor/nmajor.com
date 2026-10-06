@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "run_id": "2026-10-06-jpmorgan",
+  "essay_slug": "jpmorgan-ai-in-the-mailroom",
+  "essay_sha256": "b3a17ee57bb36eaf83db32705198df96b8e77130aafbc6eb208e281b0fd73cfe",
+  "input_sha256": "689c578a2f7ae8429c89378a5b16b5830d8865303bea99b5741f68c7f580e530",
+  "stages": {
+    "capture": "complete",
+    "reporting": "complete",
+    "selection": "complete",
+    "drafting": "complete",
+    "claim_check": "complete",
+    "audience_review": "complete",
+    "visuals": "complete",
+    "materialization": "complete",
+    "validation": "complete"
+  },
+  "provider_substitutions": [
+    {
+      "provider": "Google Antigravity",
+      "reason": "subscription RESOURCE_EXHAUSTED; unavailable; no API fallback",
+      "replacement": null
+    },
+    {
+      "provider": "GLM 5.3 Flash draft",
+      "reason": "OpenCode run stalled; terminated; first direct response hit reasoning token ceiling; final direct GLM response saved",
+      "replacement": "same GLM model via non-OpenAI OpenRouter route"
+    }
+  ],
+  "audience_review_degraded": true,
+  "audience_review_providers": [
+    "native Codex",
+    "Anthropic subscription"
+  ],
+  "final_state": "published-and-scheduled",
+  "unresolved_items": [],
+  "posts": [
+    {
+      "id": "personal-branch-intake",
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-branch-intake.md",
+      "body_file_sha256": "43bcce9133a07ddd2588e259d704d9607b71e4664b853ac5c65e60a5ad75408d",
+      "visual": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/branch-light.jpg",
+      "offsetDays": 1
+    },
+    {
+      "id": "personal-hidden-instructions",
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-hidden-instructions.md",
+      "body_file_sha256": "e1d79dc808969645562572f546a364e0a2424b08ccbe20cbdb04c50d8bfbf2f1",
+      "visual": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/elliott-gru.jpg",
+      "offsetDays": 6
+    },
+    {
+      "id": "personal-staples",
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-staples.md",
+      "body_file_sha256": "d65e0a4a4cebd30b14fb04c17c729ed818647dba9ce299d5b46b22d11850eece",
+      "visual": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/staples-bihw.jpg",
+      "offsetDays": 0
+    },
+    {
+      "id": "personal-tokio-marine-manual",
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-tokio-marine-manual.md",
+      "body_file_sha256": "cbd2c942691c9fe9dcc76388239170f9339f798202d3c49479305bd5916e8b0d",
+      "visual": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/tokio-kombucha.jpg",
+      "offsetDays": 2
+    },
+    {
+      "id": "personal-xpt-small-accounts",
+      "path": "app/linkedin/jpmorgan-ai-in-the-mailroom/personal-xpt-small-accounts.md",
+      "body_file_sha256": "eb58147e5de5120dcbe1529a9b0bef975950edc6785ce9038c093a5f69cc7ceb",
+      "visual": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/xpt-same.jpg",
+      "offsetDays": 3
+    }
+  ],
+  "review_packet": "research/linkedin-weekly/2026-10-06-jpmorgan/review.md",
+  "review_sheet": "research/linkedin-weekly/2026-10-06-jpmorgan/review-sheet.jpg",
+  "scheduled": true,
+  "sent": true,
+  "approval": {
+    "by": "Nicholas Major",
+    "date": "2026-10-06",
+    "via": "chat",
+    "message": "Approve it all get the newsletter out and the posts scheduled."
+  },
+  "release": {
+    "newsletter": {
+      "id": "em_6zzq5vk95p8etbpvgqnfgs23w5",
+      "subject": "J.P. Morgan's AI had to remove the staples",
+      "status": "sent",
+      "publish_date": "2026-10-06T20:27:24.206476Z",
+      "creation_date": "2026-10-06T20:27:24.048004Z"
+    },
+    "linkedin": [
+      {
+        "id": "cmux4rb990004g46vq2j7nvyp",
+        "state": "QUEUE",
+        "publishDate": "2026-10-12T21:00:00.000Z"
+      },
+      {
+        "id": "cmux4r9rx0000g46vu3tq5jwt",
+        "state": "QUEUE",
+        "publishDate": "2026-10-06T21:23:47.790Z"
+      },
+      {
+        "id": "cmux4rant0001g46viaalm4ta",
+        "state": "QUEUE",
+        "publishDate": "2026-10-07T20:00:00.000Z"
+      },
+      {
+        "id": "cmux4rauu0002g46vywqhvyrz",
+        "state": "QUEUE",
+        "publishDate": "2026-10-08T21:00:00.000Z"
+      },
+      {
+        "id": "cmux4rb2w0003g46v4bv7ek1y",
+        "state": "QUEUE",
+        "publishDate": "2026-10-09T19:00:00.000Z"
+      }
+    ]
+  }
+}

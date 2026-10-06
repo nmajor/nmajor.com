@@ -1,0 +1,9 @@
+1. genie (Genie Lamp) [40.116]
+  Impressive capability is constrained by one comically small operational boundary.
+  matched: capability, constrained
+2. mordor (One Does Not Simply) [16.928]
+  A supposedly simple action is actually difficult or constrained.
+  matched: constrained
+3. boat (I Should Buy a Boat Cat) [13.913]
+  A thought or small observation triggers a sudden desire to acquire or start something.
+  matched: large

@@ -1,0 +1,9 @@
+1. glasses (Peter Parker's Glasses) [23.188]
+  The same thing looks different when the observer changes perspective.
+  matched: reading
+2. gone (And It's Gone) [18.606]
+  A clearly named item, opportunity, budget, or plan disappears immediately.
+  matched: plan
+3. gru (Gru's Plan) [18.606]
+  A confident plan reaches an overlooked failure, then repeats that failure in stunned realization.
+  matched: plan

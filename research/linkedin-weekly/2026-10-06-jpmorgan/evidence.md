@@ -1,0 +1,83 @@
+# Weekly evidence packet, October 6, 2026
+
+Recommend JPMorgan's newsletter companion plus Branch, Unilever, XPT and Elliott. This gives us customer intake, plant capacity, distribution economics and adversarial documents. All judgments below are `editorial-proposal`. Nothing is approved or scheduled.
+
+## Candidate pool and decisions
+
+| Pitch | Desk | Evidence state | Decision |
+| --- | --- | --- | --- |
+| JPMorgan lockbox robotics | Operations | Bank primary source, May 27 | Required companion; parent handles |
+| Branch claim intake | Customer work | September 30 vendor release plus October 2 trade coverage | Select |
+| Unilever Raeford digital twin | Operations | Named company's 2026 account | Select narrowly |
+| XPT broader SME market search | Distribution economics | October 1 company release, named partner quotation | Select |
+| Elliott hidden instructions | Cautionary/security | August 6 court PDF plus September 30 Dechert analysis | Select, clearly date event |
+| Tokio Marine submissions pilot | Implementation | Full executive interview; in acceptance testing | Strong fallback |
+| Direct Pojistovna windshield claims | Operations | July Microsoft story; 87% headline scope needs full check | Hold |
+| Evry Health usage census | Cost/adoption | Vendor account through July 31 | Hold, modelled value and source conflicts need review |
+| Prudential preliminary underwriting | Interfaces | September 9 primary launch disclosure | Hold, already in last discovery digest |
+| Intact recurring AI benefit | Measurement | September 11 trade account and COO quotation | Hold, aggregate result and repeat discovery |
+| State Farm counsel's invented citations | Cautionary/recovery | Full September 15 legal trade article | Fallback, court order not captured |
+| Deloitte government-report refund | Cautionary/recovery | Official-document leads plus older reporting | Reject as current news; event October 2025 |
+| OpenAI Hugging Face lawsuit | Accountability | September 29 news | Reject, incident family already covered in discovery |
+| Anonymous underwriting profit claim | Cost | Already Built AI anonymous vendor account | Reject, client unidentified |
+| OneShot Zurich workflow | Implementation | Explicit solution design based on others' sources | Reject as new deployment |
+| Lemonade agency explainer | Open desk | October 1 repackaged overview | Reject, no new original reporting |
+
+We checked last week's five Rockwell posts and searched `app/linkedin/` for the retained companies and Elliott. None of the four selected independent cases occurs in that corpus. FavTrip, Domtar, Odyssey, STG and Rockwell are excluded. None of the four repeats the newsletter's mailroom workflow. XPT and Branch share insurance but concern different jobs.
+
+## Branch claim intake
+
+Source 1 is [Liberate's September 30 release](https://www.businesswire.com/news/home/20260930951872/en/Liberate-Gives-Insurance-Agents-and-Carriers-Back-More-Than-100-Million-Minutes), captured in `raw/04-cautionary-full-and-branch-primary.json`. Source 2 is [PYMNTS, October 2](https://www.pymnts.com/insurance/2026/liberates-ai-agents-take-over-the-insurance-night-shift/), full capture at `research/discovery/2026-10-06/raw/04-unilever-liberate-full.json`.
+
+Safe claims: Liberate says Branch moved first notice of loss to voice AI and digital intake. Reporting takes about seven minutes versus more than twelve with its outsourced call center, a reported 42% reduction. The named Branch resource describes 24/7 intake. The product writes actions into carrier systems and escalates to humans when needed.
+
+The 42% measures reporting-call duration, not settlement speed or all claim handling. No sample, measurement window or independent audit is published. Lower handling costs of roughly 70% are expected, not achieved. Omit adoption because the release says 43% while another vendor account says 65% without reconciled denominators. Platform-wide 100 million minutes cannot be assigned to Branch. Overnight service can be new capacity, but nobody quantifies Branch's after-hours split.
+
+Proposed judgment: completing intake and recording it downstream gives a voice agent operational value beyond answering the phone. Meme opportunity: a claim arrives when the office is closed. No joke at a claimant's expense.
+
+## Unilever Raeford factory
+
+[Unilever's executive Q&A](https://www.unilever.com/news/news-search/2026/how-unilever-is-building-an-ai-first-enterprise-at-scale/) is captured in `research/discovery/2026-10-06/raw/04-unilever-liberate-full.json`. Its full article is visible there, including the two passages naming a US personal-care plant and identifying Raeford, North Carolina. A direct HTML retry returned 403; the web capture succeeded.
+
+Safe claim: Unilever says AI-powered digital twins helped increase capacity by 10% at its Raeford personal-care factory. Its wider factory network uses digital twins for energy, ingredients and product quality. These wider outcomes do not supply separate Raeford metrics.
+
+The article supplies no baseline, measurement window, implementation date or independent validation for the 10%. Do not call it a new October deployment. The $270 million center is under development, and the 75% faster claims-generation figure concerns product claims in Beauty & Wellbeing, a separate job. No cash saving is established.
+
+Proposed judgment: added capacity inside an existing production operation is a concrete business outcome worth discussing, even when the company has not published enough detail to audit it. Keep this post narrow and avoid inventing what signals or control loops the twin uses. A restrained meme can depict additional output from existing equipment; a source screenshot is preferable if the joke requires technical inventions.
+
+## XPT Specialty market search
+
+[XPT's October 1 primary release](https://xptspecialty.com/xpt-specialty-deploys-suite-of-ai-tools-across-wholesale-operation/) is captured in full in `raw/02-full-source-pages.json`. Its named retail partner, Kulchin Ross Insurance Services, confirms broader options, within the same company release rather than an independent interview.
+
+Safe claims: XPT deployed co-developed tools around underwriting, comparative rating and brokerage. Its binding tool sends a risk to up to 20 markets in parallel through direct connections. An XPT expert reviews final placement. Retail agents keep their existing workflow without a new portal or re-keying. The company says small accounts can require nearly as much processing work as large accounts despite lower premiums.
+
+Comparative rating rolled out in Q2 2026. Bars and Taverns had AI in its workflow nine months before the disclosure. The company reports mixed monthly and annual growth measures without controlled attribution, costs or error rates. Prefer no outcome percentage. Do not conflate the 20 parallel connections with the brokerage tool's search across 100 markets, or invent a brokers-replaced claim.
+
+Proposed judgment: reducing wholesale processing work can widen the search for accounts whose low premiums otherwise make a broad search expensive. Meme opportunity: the same small account asks for the same amount of work while bringing a smaller fee.
+
+## Elliott concealed prompt injection
+
+Primary decision [Elliott v. New York Bariatric Group](https://civilinquiry.jud.ct.gov/DocumentInquiry/DocumentInquiry.aspx?DocumentNo=33274425), August 6, 2026. The official endpoint stalled on direct download; the identical linked decision is saved from [Dechert's hosted copy](https://www.dechert.com/content/dam/dechert%20files/knowledge/re-torts/Elliott%20v.%20New%20York%20Bariatric%20Group.pdf) as `raw/elliott-dechert-copy.pdf`. This is a scanned 14-page PDF. Pages 8, 13 and 14 were rendered and visually inspected. [Dechert's September 30 analysis](https://www.dechert.com/knowledge/re-torts/2026/9/Connecticut-Court-Sanctions-Litigant-for-Hidden-Prompt-Injection-Text-In-Filings.html) and [Reason's August 13 court excerpts](https://reason.com/volokh/2026/08/13/court-faults-self-represented-plaintiff-for-including-hidden-prompt-injection-in-court-filing/?comments=true) are captured in `raw/04-cautionary-full-and-branch-primary.json`.
+
+Safe claims: a self-represented plaintiff put tiny white text in filings to direct an AI reader toward his position. The judge revoked e-filing privileges after continued concealed messages. Page 8 says the court reviewed a printed motion and the hidden instruction had no effect on a ruling. Pages 13 and 14 require future paper filings in person while leaving lawful AI drafting allowed if independently verified.
+
+The event is August 6, with fresh September 30 legal analysis. It was an attempted manipulation, not a successful AI compromise. The sanction also followed repeated concealed messages after warning. Avoid saying the court banned AI or that hidden instructions changed a judgment. Joke about a document posing as an instruction source, not the plaintiff's health dispute or access to court.
+
+Proposed judgment: incoming documents can contain instructions addressed to the reviewing tool, so visibly normal material can be adversarial input. This extends beyond legal citation errors and adds a distinct cautionary mechanism to the week.
+
+## Tokio Marine fallback
+
+[Automation Today's interview](https://automationtoday.net/featuredarticles/clearing-the-path-for-human-expertise-how-tokio-marine-hcc-is-automating-underwriting-not-the-underwriter/) is fully captured in `raw/02-full-source-pages.json`. The visible header says October 6 while search metadata says October 3; avoid asserting a publication day. As of the interview, the system was in user acceptance testing and approaching production.
+
+Safe claims: executive Tamer Assaad says the team initially gave agents the entire underwriting manual, then narrowed material to relevant sections, improving specificity and performance. Agents organize and prioritize submissions; underwriters retain acceptance decisions. The company plans to evaluate conversion and speed metrics but publishes no measured production result. Underwriters participated in development and the system records reasons for scores.
+
+Proposed judgment: feeding the whole manual into an agent did not produce the specificity this underwriting task needed. This has a strong meme fit, but should not displace Unilever if sector range matters more.
+
+## Reporting limitations
+
+This rush research uses full primary and trade pages rather than paid API model calls. Targeted web and Reddit search responses are preserved raw as limited social-signal fallback; no audience-performance conclusion comes from them. The complete multi-platform `last30days` tool was not run. The parent workflow owns pitch-panel scoring, copy, visuals, manifest state and final claim-to-post ledgers. Evidence-led selection here does not claim panel review has passed.
+
+
+## Selection after audience review
+
+The native COO panel retained Unilever narrowly but rated it the weakest selected pitch. The independent Anthropic logistics seat rejected it for absent implementation detail and novelty. It is replaced by Tokio Marine, which provides a checkable design correction in pre-production testing. No production ROI is inferred. Branch is revised to lead on downstream intake rather than a vendor call-time figure. JPMorgan supplemental claim ledger is the primary bank HTML and newsletter drafting brief in research/discovery/2026-10-06/raw/. Google panel unavailable due subscription quota exhausted, so panel is degraded to two independent provider families. The simulated judgments are directional, not audience forecasts.

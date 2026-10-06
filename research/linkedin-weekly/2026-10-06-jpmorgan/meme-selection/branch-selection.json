@@ -1,0 +1,172 @@
+{
+  "version": 2,
+  "post_id": "branch",
+  "payload": {
+    "fact": "Branch uses voice AI and digital intake for round-the-clock claim reporting.",
+    "expected": "A claim arriving outside office hours would encounter a closed human desk.",
+    "actual": "AI and digital intake make reporting available around the clock.",
+    "tension": "The reporting desk can keep operating outside office hours.",
+    "target": "Service-hour assumptions and measurement scope.",
+    "reader_realization": "Reporting can be available when staff are off shift.",
+    "tone": "dry",
+    "forbidden_targets": [
+      "claimants",
+      "people suffering loss"
+    ]
+  },
+  "angles": [
+    {
+      "rank": 1,
+      "id": "metric-boundary",
+      "mechanism": "hidden_constraint",
+      "line": "The reporting-time result is bounded by intake and says nothing about settlement speed.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 2,
+      "id": "metric-reading",
+      "mechanism": "misclassification",
+      "line": "The same seven-minute number can be misread as claims rather than claim reporting.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 3,
+      "id": "new-capacity",
+      "mechanism": "reversal",
+      "line": "An after-hours interaction can become service rather than tomorrow's voicemail.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    },
+    {
+      "rank": 4,
+      "id": "record-handoff",
+      "mechanism": "ownership_mismatch",
+      "line": "The phone answer matters only if a usable record reaches the next team.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    }
+  ],
+  "retrieval": [
+    {
+      "query": "unexpected satisfaction caused by mundane operational improvement",
+      "mechanism": "hidden_constraint",
+      "returned_templates": [
+        "genie",
+        "yodawg",
+        "friends",
+        "handshake",
+        "kramer",
+        "perfection"
+      ]
+    }
+  ],
+  "manual_additions": [
+    {
+      "template": "light",
+      "reason": "The question asks about settlement outside the reporting-time measure; the answer preserves that scope boundary."
+    },
+    {
+      "template": "glasses",
+      "reason": "Both readings concern the same seven-minute metric; the second corrects its meaning to claim reporting."
+    }
+  ],
+  "catalog_scan": {
+    "active_count": 75,
+    "contracts_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+    "selection_index_sha256": "9fe8a640b03e284a1dbf4162d4e8ff0def3f29b4e77b92dd65fa15272640b64f"
+  },
+  "candidates": [
+    {
+      "template": "light",
+      "angle": "metric-boundary",
+      "slot_map": {
+        "boundary_question": "The question asks about settlement outside the reporting-time measure; the answer preserves that scope boundary. Caption: WHAT ABOUT SETTLING THE CLAIM?",
+        "scope_answer": "The question asks about settlement outside the reporting-time measure; the answer preserves that scope boundary. Caption: THAT'S BEYOND THE SEVEN-MINUTE NUMBER"
+      },
+      "slots": {
+        "boundary_question": "WHAT ABOUT SETTLING THE CLAIM?",
+        "scope_answer": "THAT'S BEYOND THE SEVEN-MINUTE NUMBER"
+      },
+      "render": {
+        "asset": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/branch-light.jpg",
+        "asset_sha256": "b72c4b2aee241b2b689839127014a525d30bd641fc3333bd7f6d5635cfe15121",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 3,
+        "compression": 3,
+        "operator_recognition": 3,
+        "audience_familiarity": 2,
+        "voice_target": 3,
+        "visual_fluency": 2
+      },
+      "reasons": {
+        "relationship_fit": "The question asks about settlement outside the reporting-time measure; the answer preserves that scope boundary.",
+        "surprise_coherence": "Round-the-clock intake produces a record; reporting-call time does not measure settlement.",
+        "compression": "Short captions carry the relationship without numerical overreach.",
+        "operator_recognition": "Round-the-clock intake produces a record; reporting-call time does not measure settlement.",
+        "audience_familiarity": "Established but less universal pattern; captions supply the relationship.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; all captions readable. Longer text needs deliberate reading."
+      }
+    },
+    {
+      "template": "glasses",
+      "angle": "metric-reading",
+      "slot_map": {
+        "first_reading": "Both readings concern the same seven-minute metric; the second corrects its meaning to claim reporting. Caption: SEVEN-MINUTE CLAIMS",
+        "revised_reading": "Both readings concern the same seven-minute metric; the second corrects its meaning to claim reporting. Caption: SEVEN-MINUTE CLAIM REPORTING"
+      },
+      "slots": {
+        "first_reading": "SEVEN-MINUTE CLAIMS",
+        "revised_reading": "SEVEN-MINUTE CLAIM REPORTING"
+      },
+      "render": {
+        "asset": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/alternatives/branch-glasses.jpg",
+        "asset_sha256": "bb212a971bf9836bfdb7b09fdbba76f3518c591c9f460aa3308188df21e02fb9",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 2,
+        "compression": 2,
+        "operator_recognition": 3,
+        "audience_familiarity": 2,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "Both readings concern the same seven-minute metric; the second corrects its meaning to claim reporting.",
+        "surprise_coherence": "Round-the-clock intake produces a record; reporting-call time does not measure settlement.",
+        "compression": "The alternate needs more inference or text than the recommended relationship.",
+        "operator_recognition": "Round-the-clock intake produces a record; reporting-call time does not measure settlement.",
+        "audience_familiarity": "Established but less universal pattern; captions supply the relationship.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    }
+  ],
+  "recommendation": {
+    "template": "light",
+    "reason": "Light names the excluded settlement measure directly and keeps the scope boundary visible. Glasses changes the reading of the same metric, but its initial label could be mistaken for a claim before the second panel is read.",
+    "confidence": "medium",
+    "alternative": "glasses"
+  },
+  "post_body_sha256": "d59d6acbdb6fc2fab40f9a6a6075410226528c16ae20c5ca6b631e977d951f97",
+  "claim_limit": "Midnight refers to the vendor-described 24/7 intake capability; no Branch-specific after-hours volume or savings are asserted.",
+  "rejected_render": {
+    "template": "kramer",
+    "asset": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/branch-kramer.jpg",
+    "reason": "The native blank center wastes about a third of the feed image. Rejected after parent full-size review despite legible captions.",
+    "phone_size_qa": "fail"
+  }
+}

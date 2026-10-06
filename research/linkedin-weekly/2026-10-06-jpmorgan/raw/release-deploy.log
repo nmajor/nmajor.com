@@ -1,0 +1,37 @@
+
+> nmajor@0.0.1 deploy:only
+> wrangler deploy
+
+
+ ⛅️ wrangler 4.136.2
+────────────────────
+
+Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+🌀 Building list of assets...
+✨ Read 165 files from the assets directory /home/nmajor/projects/nmajor/app/dist
+🌀 Starting asset upload...
+🌀 Found 10 new or modified static assets to upload. Proceeding with upload...
++ /sitemap-index.xml
++ /writing/rockwell-knowledge-at-the-machine/index.html
++ /subscribe/index.html
++ /rss.xml
++ /sitemap-0.xml
++ /writing/index.html
++ /index.html
++ /writing/jpmorgan-ai-in-the-mailroom/index.html
++ /takes/index.html
++ /og/writing/jpmorgan-ai-in-the-mailroom.png
+Uploaded 3 of 10 assets
+Uploaded 6 of 10 assets
+Uploaded 10 of 10 assets
+✨ Success! Uploaded 10 files (88 already uploaded) (1.87 sec)
+
+Total Upload: 8.91 KiB / gzip: 2.38 KiB
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+
+Uploaded nmajor (9.03 sec)
+Deployed nmajor triggers (1.59 sec)
+  https://nmajor.nick-f76.workers.dev
+Current Version ID: 1e947374-d4c9-4f1d-a5a4-0e50aa55b318

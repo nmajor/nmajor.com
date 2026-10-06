@@ -1,0 +1,94 @@
+{
+  "seat": "Skeptical insurance COO",
+  "provider": "openai",
+  "model": "native Codex subscription seat",
+  "mode": "inherited-context",
+  "artifact_type": "LinkedIn pitch slate",
+  "caveat": "Directional persona simulation, not a prediction of human response. This is pitch review, not approval of final copy or images. JPMorgan evidence is delegated to the parent and incomplete in the supplied packet.",
+  "gut_reaction": "Branch and XPT concern work I actually pay for. Elliott gives me a failure mechanism my team should recognize. Unilever sounds like another corporate percentage without enough detail to use. The bank's staples story might get my attention, but this packet mostly asks me to trust that someone else checked it.",
+  "pitches": [
+    {
+      "pitch_id": "jpmorgan",
+      "critique": "A concrete physical bottleneck is more memorable than another chatbot announcement. But the provided evidence does not describe the bank's workflow or support any operating result. I cannot verify the companion from this packet.",
+      "factual_gate": {"pass": false, "reason": "Local packet contains only a bank-primary-source label and May 27 date. Require the parent's claim ledger before final-copy approval; this is an evidence-completeness hold, not an allegation of falsity."},
+      "criteria": {
+        "evidence_strength": {"quote": "Bank primary source; parent owns evidence", "rationale": "Source ownership is stated, but the substantive receipt is absent here.", "score": 2},
+        "novelty": {"quote": "JPMorgan lockbox robotics", "rationale": "Physical preparation of paper is an unusual entry into applied AI.", "score": 4},
+        "operator_addressability": {"quote": "Operations", "rationale": "Paper workflows matter to us, but this pitch supplies no operational details.", "score": 3},
+        "usefulness": {"quote": "Required companion; parent handles", "rationale": "The proposed story could be useful; the current summary does not establish how.", "score": 3},
+        "reach_potential": {"quote": "JPMorgan lockbox robotics", "rationale": "A recognized bank and a mundane physical task make a credible attention candidate.", "score": 4},
+        "slate_distinctiveness": {"quote": "mailroom workflow", "rationale": "Physical intake differs from claims calls, plant capacity, market search and hostile documents.", "score": 4}
+      },
+      "decision": "hold pending parent evidence",
+      "highest_leverage_fix": "Include the exact bank-supported mechanism and distinguish May disclosure from current news.",
+      "would_not_act": "A claim that bank-scale automation is an easy copy for a regional insurer."
+    },
+    {
+      "pitch_id": "branch",
+      "critique": "Seven minutes instead of twelve is an intelligible result in my own industry. Vendor measurement and a shorter call are not proof of a better claim experience. The proposed 70% cost saving would make me distrust the whole piece if it crept in as a result.",
+      "factual_gate": {"pass": true, "reason": "Pass only with explicit vendor attribution, call-duration scope and omission of projected cost savings and conflicting adoption rates."},
+      "criteria": {
+        "evidence_strength": {"quote": "No sample, measurement window or independent audit is published", "rationale": "Named deployment and clear metric, but vendor evidence remains limited.", "score": 3},
+        "novelty": {"quote": "first notice of loss to voice AI and digital intake", "rationale": "Voice intake is familiar; downstream completion adds substance.", "score": 3},
+        "operator_addressability": {"quote": "writes actions into carrier systems and escalates to humans", "rationale": "This concerns an identifiable carrier process and handoff.", "score": 4},
+        "usefulness": {"quote": "seven minutes versus more than twelve", "rationale": "Metric scope and downstream work give me something concrete to compare.", "score": 4},
+        "reach_potential": {"quote": "24/7 intake", "rationale": "After-hours claims are easy to understand, though the category is crowded.", "score": 3},
+        "slate_distinctiveness": {"quote": "customer intake", "rationale": "Customer-facing service adds a different job from the other retained stories.", "score": 4}
+      },
+      "decision": "retain",
+      "highest_leverage_fix": "Keep the shorter reporting call and downstream recording together, with vendor attribution attached to the number.",
+      "would_not_act": "Shorter calls presented as faster settlements or proven customer satisfaction."
+    },
+    {
+      "pitch_id": "unilever",
+      "critique": "Capacity in an existing factory is a business outcome, but I have heard plenty of unexplained 10% claims. This needs restraint. A meme that imagines the machinery or controls would add confidence the source has not earned.",
+      "factual_gate": {"pass": true, "reason": "Pass narrowly as Unilever's reported Raeford capacity claim. No implementation date, causal audit, cash saving or invented control mechanism."},
+      "criteria": {
+        "evidence_strength": {"quote": "no baseline, measurement window, implementation date or independent validation", "rationale": "The company and plant are named, but the result is not auditable from this account.", "score": 3},
+        "novelty": {"quote": "AI-powered digital twins", "rationale": "The category is familiar and the pitch has little implementation detail.", "score": 3},
+        "operator_addressability": {"quote": "Raeford personal-care factory", "rationale": "A specific plant makes this concrete, but the mechanism remains thin.", "score": 3},
+        "usefulness": {"quote": "increase capacity by 10%", "rationale": "A useful outcome category, but insufficient detail for a decision on its own.", "score": 3},
+        "reach_potential": {"quote": "added capacity inside an existing production operation", "rationale": "A recognizable company and understandable result may travel beyond manufacturing.", "score": 3},
+        "slate_distinctiveness": {"quote": "plant capacity", "rationale": "The only production story breaks up a heavily insurance-oriented slate.", "score": 4}
+      },
+      "decision": "retain narrowly; weakest selected pitch",
+      "highest_leverage_fix": "Use the exact company claim and its missing measurement detail; do not imply a fresh deployment or explain an undocumented mechanism.",
+      "would_not_act": "A generic digital-twin success story padded with transformation language."
+    },
+    {
+      "pitch_id": "xpt",
+      "critique": "Small accounts consuming large-account effort is a real economics problem. Keeping retail agents in their existing workflow and retaining specialist placement gives this more substance than a growth percentage. I would read it, although the company release does not prove the economics improved.",
+      "factual_gate": {"pass": true, "reason": "Pass with up to 20 binding-market connections kept separate from brokerage search across 100 markets. Omit causal growth claims and unmeasured savings."},
+      "criteria": {
+        "evidence_strength": {"quote": "within the same company release rather than an independent interview", "rationale": "Concrete deployment detail, but the partner quote is not independent validation.", "score": 3},
+        "novelty": {"quote": "small accounts can require nearly as much processing work as large accounts", "rationale": "The economics angle is sharper than the usual faster-underwriting story.", "score": 4},
+        "operator_addressability": {"quote": "without a new portal or re-keying", "rationale": "This addresses adoption friction I recognize immediately.", "score": 4},
+        "usefulness": {"quote": "An XPT expert reviews final placement", "rationale": "Identifiable automation boundary and distribution friction are useful operating details.", "score": 4},
+        "reach_potential": {"quote": "lower premiums", "rationale": "The margin tension is broadly understandable, though wholesale insurance narrows reach.", "score": 3},
+        "slate_distinctiveness": {"quote": "distribution economics", "rationale": "Different job from Branch despite the shared industry.", "score": 4}
+      },
+      "decision": "retain",
+      "highest_leverage_fix": "Lead with the small-account processing burden and support it with the no-re-keying workflow detail.",
+      "would_not_act": "Parallel market connections described as proof that AI increased growth or replaced brokers."
+    },
+    {
+      "pitch_id": "elliott",
+      "critique": "Hidden instructions in ordinary-looking documents are a more useful warning than another invented-citation story. The fact that this attempt failed matters. Turning it into an AI-hacked-the-court headline would destroy the value.",
+      "factual_gate": {"pass": true, "reason": "Primary court PDF inspected. Pass only with the failed attempt, repeated warnings and August event date preserved. The sanction removed e-filing privileges, not all lawful AI use."},
+      "criteria": {
+        "evidence_strength": {"quote": "Pages 8, 13 and 14 were rendered and visually inspected", "rationale": "The mechanism and sanction have inspected primary-document support.", "score": 4},
+        "novelty": {"quote": "tiny white text in filings", "rationale": "A documented real-world injection attempt is more distinctive than abstract security advice.", "score": 4},
+        "operator_addressability": {"quote": "incoming documents can contain instructions addressed to the reviewing tool", "rationale": "My company routinely ingests outside documents, making the boundary relevant.", "score": 4},
+        "usefulness": {"quote": "hidden instruction had no effect on a ruling", "rationale": "Showing the actual failed mechanism teaches more than an exaggerated incident headline.", "score": 4},
+        "reach_potential": {"quote": "a document posing as an instruction source", "rationale": "The visual trick is easy to grasp and naturally shareable without a technical lecture.", "score": 4},
+        "slate_distinctiveness": {"quote": "adversarial input", "rationale": "Adds a specific cautionary mechanism absent from the success cases.", "score": 4}
+      },
+      "decision": "retain",
+      "highest_leverage_fix": "State immediately that the concealed instruction failed and date the court event to August.",
+      "would_not_act": "A meme mocking the claimant or implying the judge followed the hidden prompt."
+    }
+  ],
+  "slate_verdict": "Retain Branch, XPT and Elliott. Unilever is an acceptable restrained sector-diversity choice, but not a strong practical case. JPMorgan needs the parent's evidence gate before final review. No selected case earns an exceptional score from this packet.",
+  "highest_leverage_fix": "Keep result scope and source attribution beside every number. The difference between a deployment description and demonstrated business benefit is the load-bearing trust issue across this slate.",
+  "would_not_act": "Five cheerful AI wins dressed up as operating guidance. Elliott prevents that pattern, provided the failed attempt is reported accurately."
+}

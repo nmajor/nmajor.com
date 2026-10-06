@@ -1,0 +1,170 @@
+{
+  "version": 2,
+  "post_id": "xpt",
+  "payload": {
+    "fact": "XPT says small accounts can require nearly as much processing work as large accounts.",
+    "expected": "Smaller premiums would mean proportionately smaller processing jobs.",
+    "actual": "Much of the processing burden remains despite the lower premium.",
+    "tension": "Account value and processing effort do not shrink together.",
+    "target": "The economics of small-account processing.",
+    "reader_realization": "Paperwork does not care how small the fee is.",
+    "tone": "dry",
+    "forbidden_targets": [
+      "small business owners",
+      "retail agents"
+    ]
+  },
+  "angles": [
+    {
+      "rank": 1,
+      "id": "same-burden",
+      "mechanism": "scale_mismatch",
+      "line": "Small and large accounts can look nearly identical to the paperwork workload.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 2,
+      "id": "different-view",
+      "mechanism": "preference_contrast",
+      "line": "The same wholesale automation can mean less processing burden and a broader market search.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "keep"
+    },
+    {
+      "rank": 3,
+      "id": "market-access",
+      "mechanism": "reversal",
+      "line": "Low-value accounts can get a broader search when work moves to the wholesaler.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    },
+    {
+      "rank": 4,
+      "id": "new-portal",
+      "mechanism": "hidden_constraint",
+      "line": "Useful automation preserves the retail workflow instead of adding another portal.",
+      "truth_check": "Supported by the post and source limits in evidence.md; expectation is an editorial premise.",
+      "decision": "reject"
+    }
+  ],
+  "retrieval": [
+    {
+      "query": "same workload despite vastly different revenue",
+      "mechanism": "scale_mismatch",
+      "returned_templates": [
+        "glasses",
+        "noidea",
+        "handshake",
+        "yodawg",
+        "whatyear",
+        "bus",
+        "drake",
+        "oprah"
+      ]
+    }
+  ],
+  "manual_additions": [
+    {
+      "template": "same",
+      "reason": "Complete contract read; semantic slots map to the sourced angle."
+    },
+    {
+      "template": "bus",
+      "reason": "Complete contract read; semantic slots map to the sourced angle."
+    }
+  ],
+  "catalog_scan": {
+    "active_count": 75,
+    "contracts_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+    "selection_index_sha256": "9fe8a640b03e284a1dbf4162d4e8ff0def3f29b4e77b92dd65fa15272640b64f"
+  },
+  "candidates": [
+    {
+      "template": "same",
+      "angle": "same-burden",
+      "slot_map": {
+        "first_thing": "The paperwork observes two differently sized account submissions with nearly equivalent processing burden. Caption: SMALL-ACCOUNT PAPERWORK",
+        "second_thing": "The paperwork observes two differently sized account submissions with nearly equivalent processing burden. Caption: LARGE-ACCOUNT PAPERWORK",
+        "equating_observer": "The paperwork observes two differently sized account submissions with nearly equivalent processing burden. Caption: PROCESSING WORKLOAD"
+      },
+      "slots": {
+        "first_thing": "SMALL-ACCOUNT PAPERWORK",
+        "second_thing": "LARGE-ACCOUNT PAPERWORK",
+        "equating_observer": "PROCESSING WORKLOAD"
+      },
+      "render": {
+        "asset": "app/linkedin/jpmorgan-ai-in-the-mailroom/memes/options/xpt-same.jpg",
+        "asset_sha256": "8eff152917be1e179ec614770207ba968d015ccbf32ec2b93727e73353974d01",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 3,
+        "compression": 3,
+        "operator_recognition": 3,
+        "audience_familiarity": 3,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "The paperwork observes two differently sized account submissions with nearly equivalent processing burden.",
+        "surprise_coherence": "Small premiums can bring nearly the same processing burden, so wholesale automation widens search.",
+        "compression": "Short captions carry the relationship without numerical overreach.",
+        "operator_recognition": "Small premiums can bring nearly the same processing burden, so wholesale automation widens search.",
+        "audience_familiarity": "Established active catalog pattern; recognizable without explaining the character.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    },
+    {
+      "template": "bus",
+      "angle": "different-view",
+      "slot_map": {
+        "bleak_interpretation": "Opposite interpretations concern the same operational change, preserving one event across both passengers. Caption: SMALL ACCOUNTS, FULL WORKLOAD",
+        "constructive_interpretation": "Opposite interpretations concern the same operational change, preserving one event across both passengers. Caption: BROADER SEARCH, SAME RETAIL WORKFLOW"
+      },
+      "slots": {
+        "bleak_interpretation": "SMALL ACCOUNTS, FULL WORKLOAD",
+        "constructive_interpretation": "BROADER SEARCH, SAME RETAIL WORKFLOW"
+      },
+      "render": {
+        "asset": "research/linkedin-weekly/2026-10-06-jpmorgan/meme-selection/alternatives/xpt-bus.jpg",
+        "asset_sha256": "c88a509b2c5b03c93fbc7f6454f1aca2de1168a37c17e235186fbffb2b17d44e",
+        "full_size_qa": "pass",
+        "phone_size_qa": "pass"
+      },
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {
+        "relationship_fit": 3,
+        "surprise_coherence": 2,
+        "compression": 2,
+        "operator_recognition": 3,
+        "audience_familiarity": 2,
+        "voice_target": 3,
+        "visual_fluency": 3
+      },
+      "reasons": {
+        "relationship_fit": "Opposite interpretations concern the same operational change, preserving one event across both passengers.",
+        "surprise_coherence": "Small premiums can bring nearly the same processing burden, so wholesale automation widens search.",
+        "compression": "The alternate needs more inference or text than the recommended relationship.",
+        "operator_recognition": "Small premiums can bring nearly the same processing burden, so wholesale automation widens search.",
+        "audience_familiarity": "Established but less universal pattern; captions supply the relationship.",
+        "voice_target": "Targets an operating assumption or attempted shortcut, not affected people.",
+        "visual_fluency": "Inspected full size and at 300 pixels; concise text and roles read quickly."
+      }
+    }
+  ],
+  "recommendation": {
+    "template": "same",
+    "reason": "Same Picture shows the account-size and paperwork mismatch immediately. Bus needs readers to infer two different views of wholesale automation.",
+    "confidence": "medium",
+    "alternative": "bus"
+  },
+  "post_body_sha256": "ca4437ebb54012f94e3776f4e0b5a6c847d1ec4149f9d933e0fef75de46fb470",
+  "claim_limit": "Same Picture uses comic compression for the source's nearly equal workload, not literal identity in all underwriting requirements."
+}

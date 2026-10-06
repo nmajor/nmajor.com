@@ -1,0 +1,82 @@
+
+> nmajor@0.0.1 build
+> astro build
+
+21:24:17 [content] Syncing content
+21:24:17 [content] Synced content
+21:24:17 [types] Generated 658ms
+21:24:17 [build] output: "static"
+21:24:17 [build] mode: "static"
+21:24:17 [build] directory: /home/nmajor/projects/nmajor/app/dist/
+21:24:17 [build] Collecting build info...
+21:24:17 [build] ✓ Completed in 701ms.
+21:24:17 [build] Building static entrypoints...
+21:24:18 [vite] ✓ built in 359ms
+21:24:18 [vite] ✓ built in 127ms
+21:24:18 [build] Rearranging server assets...
+
+ generating static routes 
+21:24:18   ├─ /building/index.html (+13ms) 
+21:24:18   ├─ /engineering/index.html (+1ms) 
+21:24:18   ├─ /og/default.png (+67ms) 
+21:24:18   ├─ /og/subscribe.png (+35ms) 
+21:24:18   ├─ /og/writing/a-machine-cant-answer-for-it.png (+30ms) 
+21:24:18   ├─ /og/writing/banning-ai-is-the-risk.png (+31ms) 
+21:24:18   ├─ /og/writing/build-versus-buy-broke.png (+35ms) 
+21:24:18   ├─ /og/writing/farmers-built-a-support-bot.png (+28ms) 
+21:24:18   ├─ /og/writing/fix-the-process-first.png (+33ms) 
+21:24:18   ├─ /og/writing/jpmorgan-ai-in-the-mailroom.png (+31ms) 
+21:24:18   ├─ /og/writing/rockwell-knowledge-at-the-machine.png (+28ms) 
+21:24:18   ├─ /og/writing/second-deployment-is-smaller.png (+32ms) 
+21:24:18   ├─ /og/writing/seven-days-to-close.png (+26ms) 
+21:24:18   ├─ /og/writing/the-bottleneck-moved.png (+28ms) 
+21:24:18   ├─ /og/writing/the-case-study-was-an-ad.png (+34ms) 
+21:24:18   ├─ /og/writing/uber-measured-the-bill.png (+26ms) 
+21:24:18   ├─ /og/writing/your-ai-made-an-offer.png (+27ms) 
+21:24:18   ├─ /posts/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/index.html (+2ms) 
+21:24:18   ├─ /posts/2018-02-14-deploying-a-node-js-app-on-azure-app-services/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-02-16-express-js-with-es6-and-babel/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-03-21-get-a-facebook-page-access-token-that-never-expires/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-07-16-react-css-styled-components/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-07-17-adding-eslint-to-your-project/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-07-25-making-redux-middleware-for-websockets/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-08-22-node-env-variables-solving-the-nightmare/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-08-23-access-and-refresh-token-handling-with-redux/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-08-25-serverless-my-initial-setup-with-es6-testing-and-ci-deployment/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-08-28-serverless-framework-s3-file-uploads/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-09-01-serverless-framework-executable-binaries-aws-lambda/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-09-20-simple-object-storage-in-redis-and-node/index.html (+1ms) 
+21:24:18   ├─ /posts/2018-09-28-multi-tenancy-with-expressmongoose/index.html (+1ms) 
+21:24:18   ├─ /posts/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions/index.html (+1ms) 
+21:24:18   ├─ /posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal/index.html (+1ms) 
+21:24:18   ├─ /posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd/index.html (+1ms) 
+21:24:18   ├─ /posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage/index.html (+1ms) 
+21:24:18   ├─ /posts/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg/index.html (+1ms) 
+21:24:18   ├─ /projects/index.html (+3ms) 
+21:24:18   ├─ /rss.xml (+153ms) 
+21:24:19   ├─ /subscribe/index.html (+2ms) 
+21:24:19   ├─ /takes/index.html (+2ms) 
+21:24:19   ├─ /work-with-me/index.html (+1ms) 
+21:24:19   ├─ /writing/index.html (+2ms) 
+21:24:19   ├─ /writing/a-machine-cant-answer-for-it/index.html (+1ms) 
+21:24:19   ├─ /writing/banning-ai-is-the-risk/index.html (+1ms) 
+21:24:19   ├─ /writing/build-versus-buy-broke/index.html (+1ms) 
+21:24:19   ├─ /writing/farmers-built-a-support-bot/index.html (+1ms) 
+21:24:19   ├─ /writing/fix-the-process-first/index.html (+1ms) 
+21:24:19   ├─ /writing/jpmorgan-ai-in-the-mailroom/index.html (+1ms) 
+21:24:19   ├─ /writing/rockwell-knowledge-at-the-machine/index.html (+1ms) 
+21:24:19   ├─ /writing/second-deployment-is-smaller/index.html (+1ms) 
+21:24:19   ├─ /writing/seven-days-to-close/index.html (+1ms) 
+21:24:19   ├─ /writing/the-bottleneck-moved/index.html (+1ms) 
+21:24:19   ├─ /writing/the-case-study-was-an-ad/index.html (+1ms) 
+21:24:19   ├─ /writing/uber-measured-the-bill/index.html (+1ms) 
+21:24:19   ├─ /writing/your-ai-made-an-offer/index.html (+1ms) 
+21:24:19   ├─ /index.html (+2ms) 
+21:24:19 ✓ Completed in 843ms.
+
+21:24:19 [build] ✓ Completed in 1.36s.
+21:24:19 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+21:24:19 [build] 40 page(s) built in 2.09s
+21:24:19 [build] Complete!

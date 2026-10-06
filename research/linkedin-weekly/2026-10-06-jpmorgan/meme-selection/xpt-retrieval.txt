@@ -1,0 +1,24 @@
+1. glasses (Peter Parker's Glasses) [29.67]
+  The same thing looks different when the observer changes perspective.
+  matched: different, same
+2. noidea (I Have No Idea What I'm Doing) [18.55]
+  Someone has been placed in a role despite having no grasp of what the role requires.
+  matched: despite
+3. handshake (Epic Handshake) [14.885]
+  Two different groups or outcomes share one specific trait.
+  matched: different
+4. yodawg (Xzibit Yo Dawg) [13.829]
+  A supposed improvement nests another instance of the same activity inside itself.
+  matched: same
+5. whatyear (What Year Is It?) [11.164]
+  An outdated practice or uncanny recurrence makes the observer feel displaced in time.
+  matched: different
+6. bus (Two Guys on a Bus) [11.063]
+  Two people experience the same situation but focus on opposite interpretations.
+  matched: same
+7. drake (Drakeposting) [11.063]
+  The same person rejects the first option and prefers the second.
+  matched: same
+8. oprah (Oprah You Get a Car) [11.063]
+  The same thing is enthusiastically handed to everyone without discrimination.
+  matched: same

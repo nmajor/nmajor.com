@@ -1,0 +1,33 @@
+
+> nmajor@0.0.1 linkedin:doctor
+> node scripts/linkedin-doctor.mjs
+
+linkedin-doctor — 13 integration(s) on the Postiz instance, mode: live
+
+personal: integration cmsey6xl3001alv6zvff148mp
+  disabled: no — OK
+  identifier: expected "linkedin", Postiz reports "linkedin" — OK
+  name: expected "Nicholas Major", Postiz reports "Nicholas Major" — OK
+  profile: expected "nmajor", Postiz reports "nmajor" — OK
+
+facebook: integration cmrko8lbx000lkc6x5f1jxvac
+  disabled: no — OK
+  identifier: expected "facebook", Postiz reports "facebook" — OK
+  name: expected "Nicholas Major", Postiz reports "Nicholas Major" — OK
+  profile: expected "realnmajor", Postiz reports "realnmajor" — OK
+
+twitter: integration cms4mriqn0005lv6zzhcray21
+  disabled: no — OK
+  identifier: expected "x", Postiz reports "x" — OK
+  name: expected "Nicholas Major", Postiz reports "Nicholas Major" — OK
+  profile: expected "thenmajor", Postiz reports "thenmajor" — OK
+
+instagram: integration cmrks2y5d0001gl7bw2l09den
+  disabled: no — OK
+  identifier: expected "instagram", Postiz reports "instagram" — OK
+  name: expected "Nicholas Major", Postiz reports "Nicholas Major" — OK
+  profile: expected "realnmajor", Postiz reports "realnmajor" — OK
+
+business: PENDING — no integrationId configured, scheduler skips it.
+
+All configured channels match their expect blocks.

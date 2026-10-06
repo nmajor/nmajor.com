@@ -32,8 +32,10 @@
     "native Codex",
     "Anthropic subscription"
   ],
-  "final_state": "published-and-scheduled",
-  "unresolved_items": [],
+  "final_state": "newsletter-sent-four-queued-one-failed",
+  "unresolved_items": [
+    "Today\u2019s approved post failed twice in Postiz; need the private failure message to diagnose."
+  ],
   "posts": [
     {
       "id": "personal-branch-intake",
@@ -97,8 +99,8 @@
       },
       {
         "id": "cmux4r9rx0000g46vu3tq5jwt",
-        "state": "QUEUE",
-        "publishDate": "2026-10-06T21:23:47.790Z"
+        "state": "ERROR",
+        "publishDate": "2026-10-06T21:37:09.680Z"
       },
       {
         "id": "cmux4rant0001g46viaalm4ta",
@@ -115,6 +117,14 @@
         "state": "QUEUE",
         "publishDate": "2026-10-09T19:00:00.000Z"
       }
-    ]
+    ],
+    "retry": {
+      "requested_by": "Nicholas Major (via chat)",
+      "request": "Then reschedule it to like 5 minutes from now. Let\u2019s get it posted",
+      "postId": "cmux4r9rx0000g46vu3tq5jwt",
+      "date": "2026-10-06T21:37:09.680Z",
+      "state": "ERROR",
+      "verification": "Read-only Postiz API confirmed ERROR after the 21:37 UTC attempt; no release URL or ID. Debug endpoint returned 403 Unauthorized."
+    }
   }
 }

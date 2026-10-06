@@ -142,11 +142,13 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
-- **2026-10-06: J.P. Morgan newsletter sent; five meme posts scheduled.** Nick explicitly
+- **2026-10-06: J.P. Morgan newsletter sent; four posts queued, today’s post failed.** Nick explicitly
   approved the essay and every exact post/visual pair. The essay is live at
   `/writing/jpmorgan-ai-in-the-mailroom/`; Buttondown independently confirms `sent`.
-  All five attached meme posts are verified in Postiz's queue on Nicholas Major's personal
-  LinkedIn: October 6 at 21:23 UTC, October 7 at 20:00 UTC, October 8 at 21:00 UTC,
+  The approved companion failed at 21:23 UTC and again after Nick requested a retry at
+  21:37 UTC; no LinkedIn release URL or ID exists. API access cannot expose the private failure
+  detail, so Nick was asked for it. The remaining four meme posts are queued on his personal
+  LinkedIn: October 7 at 20:00 UTC, October 8 at 21:00 UTC,
   October 9 at 19:00 UTC and October 12 at 21:00 UTC. One deduplicated site take is scheduled
   for October 8. Production build and publishing/visual lints passed. The source audit and
   two-provider editorial review passed; Google's reviewer seat was unavailable due quota.

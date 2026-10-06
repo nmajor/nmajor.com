@@ -15,3 +15,9 @@ All five approved memes were attached by the guarded scripts. Postiz identity ch
 | personal-hidden-instructions | 2026-10-12T21:00:00.000Z | 2026-10-12 22:00 | cmux4rb990004g46vq2j7nvyp |
 
 The pipeline also scheduled one deduplicated site take for October 8. Production build, production visual validation, LinkedIn lint and takes lint passed. The initial Python Postiz verification request returned HTTP 403; the Node fetch verification succeeded with HTTP 200. No manual changes were made to the send or scheduling locks.
+
+## Today’s retry
+
+The October 6 attempt at 21:23 UTC failed in Postiz. Nick explicitly requested rescheduling five minutes ahead. The same post ID, approved body and meme were rescheduled through the API to 2026-10-06T21:37:09.680Z (22:37 Lisbon), independently verified as `QUEUE`. No idempotency lock was cleared or changed.
+
+The 21:37 UTC retry also failed, verified via Postiz (`ERROR`, no release ID or URL). The debug endpoint returned 403 Unauthorized, and browser automation was unavailable. Nick was asked for the failed-post error message. The post has not published.

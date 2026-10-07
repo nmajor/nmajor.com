@@ -21,3 +21,7 @@ The pipeline also scheduled one deduplicated site take for October 8. Production
 The October 6 attempt at 21:23 UTC failed in Postiz. Nick explicitly requested rescheduling five minutes ahead. The same post ID, approved body and meme were rescheduled through the API to 2026-10-06T21:37:09.680Z (22:37 Lisbon), independently verified as `QUEUE`. No idempotency lock was cleared or changed.
 
 The 21:37 UTC retry also failed, verified via Postiz (`ERROR`, no release ID or URL). The debug endpoint returned 403 Unauthorized, and browser automation was unavailable. Nick was asked for the failed-post error message. The post has not published.
+
+## October 7: connection repaired; entire batch shifted one day
+
+Nick confirmed the LinkedIn/Postiz connection was fixed and requested moving all five posts one day later. Each existing post ID was rescheduled through the API with the exact approved text and meme; no send locks were altered. Independent API verification confirms all five entries in `QUEUE` on Nicholas Major’s enabled `nmajor` integration. The failed companion now runs October 7 at 21:37 UTC (22:37 Lisbon); Branch October 8 at 20:00 UTC (21:00 Lisbon); Tokio Marine October 9 at 21:00 UTC (22:00 Lisbon); XPT October 10 at 19:00 UTC (20:00 Lisbon); Elliott October 13 at 21:00 UTC (22:00 Lisbon). See raw/day-shift-verification.json.

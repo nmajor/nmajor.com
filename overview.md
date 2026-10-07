@@ -142,17 +142,15 @@ audience; the consultancy is where the commercial conversation happens.
 
 ## State
 
-- **2026-10-06: J.P. Morgan newsletter sent; four posts queued, today’s post failed.** Nick explicitly
-  approved the essay and every exact post/visual pair. The essay is live at
-  `/writing/jpmorgan-ai-in-the-mailroom/`; Buttondown independently confirms `sent`.
-  The approved companion failed at 21:23 UTC and again after Nick requested a retry at
-  21:37 UTC; no LinkedIn release URL or ID exists. API access cannot expose the private failure
-  detail, so Nick was asked for it. The remaining four meme posts are queued on his personal
-  LinkedIn: October 7 at 20:00 UTC, October 8 at 21:00 UTC,
-  October 9 at 19:00 UTC and October 12 at 21:00 UTC. One deduplicated site take is scheduled
-  for October 8. Production build and publishing/visual lints passed. The source audit and
-  two-provider editorial review passed; Google's reviewer seat was unavailable due quota.
-  Delivery IDs, approval and verification are in
+- **2026-10-07: LinkedIn connection repaired; all five approved meme posts shifted one day.**
+  Nick confirmed the connection fix and authorized rescheduling. Independent Postiz API verification
+  confirms all five existing IDs in `QUEUE` on his enabled personal `nmajor` integration:
+  October 7 at 21:37 UTC, October 8 at 20:00 UTC, October 9 at 21:00 UTC,
+  October 10 at 19:00 UTC and October 13 at 21:00 UTC. The approved text and visuals are unchanged.
+  The companion's two October 6 publishing attempts failed; it is now queued for October 7.
+  The J.P. Morgan newsletter remains live at `/writing/jpmorgan-ai-in-the-mailroom/` and
+  Buttondown confirmed it sent October 6. One deduplicated site take is scheduled for October 8.
+  Approval, delivery IDs and retry history are in
   `research/linkedin-weekly/2026-10-06-jpmorgan/release.md`.
 
 - **2026-09-29: The weekly LinkedIn workflow is now autonomous at generation time.** The

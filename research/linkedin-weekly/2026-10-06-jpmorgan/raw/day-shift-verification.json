@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-07T07:46:24.922Z",
+  "posts": [
+    {
+      "id": "cmux4rb990004g46vq2j7nvyp",
+      "content": "A court filing hid instructions for an AI reader in white text.\n\nIn Elliott v. New York Bariatric Group, an August 6 Connecticut decision describes tiny white-on-white messages aimed at steering an AI review toward the plaintiff's position. Dechert revisited the case on September 30.\n\nThe attempt failed. The court wasn't using AI to decide the motion, and the judge read a printed copy. The hidden instructions had no effect on the ruling.\n\nAfter repeated concealed messages, including after a warning, the judge revoked the plaintiff's electronic-filing privileges. The order still allowed AI-assisted drafting if the filer independently checked the work.\n\nThis is a different failure mechanism from invented citations. A document can carry instructions intended for the software reading it, while looking ordinary to a person.\n\nThe sender controlled the document. They were trying to control its reviewer, too.",
+      "publishDate": "2026-10-13T21:00:00.000Z",
+      "releaseURL": null,
+      "releaseId": null,
+      "state": "QUEUE",
+      "intervalInDays": null,
+      "group": "150cf3e1-5f8a-4146-bab4-0b17c1417282",
+      "creationMethod": "API",
+      "settings": "{\"__type\":\"linkedin\"}",
+      "tags": [],
+      "integration": {
+        "id": "cmsey6xl3001alv6zvff148mp",
+        "providerIdentifier": "linkedin",
+        "name": "Nicholas Major",
+        "picture": "https://postiz.nmajor.net/uploads/2026/10/07/f2037af883155ecd3e1b1c3cb2f1b0fb.jpg"
+      }
+    },
+    {
+      "id": "cmux4rb2w0003g46v4bv7ek1y",
+      "content": "A small insurance account can bring a small premium and a full workload.\n\nXPT Specialty named that problem in its October 1 announcement. Small commercial accounts can take nearly as much processing work as large ones, which limits how widely they get shopped around.\n\nIts new binding tool sends a risk to up to 20 insurance markets in parallel through direct system connections. An XPT specialist reviews the results and remains responsible for final placement.\n\nRetail agents keep their existing workflow. XPT says there's no new portal and no re-keying of the submission.\n\nThe company reports growth figures, but doesn't isolate the tools' contribution or disclose their costs. I wouldn't count those figures as proven AI returns.\n\nThe operating change is clearer. More of the comparison work moves to the wholesaler, making a broader search more practical for accounts that bring in less revenue.",
+      "publishDate": "2026-10-10T19:00:00.000Z",
+      "releaseURL": null,
+      "releaseId": null,
+      "state": "QUEUE",
+      "intervalInDays": null,
+      "group": "0173f217-9830-4606-8cf7-a9566d28db4e",
+      "creationMethod": "API",
+      "settings": "{\"__type\":\"linkedin\"}",
+      "tags": [],
+      "integration": {
+        "id": "cmsey6xl3001alv6zvff148mp",
+        "providerIdentifier": "linkedin",
+        "name": "Nicholas Major",
+        "picture": "https://postiz.nmajor.net/uploads/2026/10/07/f2037af883155ecd3e1b1c3cb2f1b0fb.jpg"
+      }
+    },
+    {
+      "id": "cmux4rant0001g46viaalm4ta",
+      "content": "Branch's AI claim-reporting calls take about seven minutes.\n\nVoice-AI vendor Liberate says that compares with more than twelve minutes at insurer Branch's outsourced call center. Its September 30 release reports a 42% reduction in reporting time. It says nothing about how quickly Branch settles the claim.\n\nBranch uses Liberate's voice AI and digital intake to collect the first report of a loss. The vendor also describes round-the-clock service, recording actions in insurers' core systems and escalation to people when needed.\n\nI'd judge an intake agent on the record it leaves for the claims team as well as the call duration. Liberate hasn't published the sample or measurement period behind Branch's figure, or Branch-specific escalation results.",
+      "publishDate": "2026-10-08T20:00:00.000Z",
+      "releaseURL": null,
+      "releaseId": null,
+      "state": "QUEUE",
+      "intervalInDays": null,
+      "group": "e1619064-1493-429d-8258-0f2433d5d591",
+      "creationMethod": "API",
+      "settings": "{\"__type\":\"linkedin\"}",
+      "tags": [],
+      "integration": {
+        "id": "cmsey6xl3001alv6zvff148mp",
+        "providerIdentifier": "linkedin",
+        "name": "Nicholas Major",
+        "picture": "https://postiz.nmajor.net/uploads/2026/10/07/f2037af883155ecd3e1b1c3cb2f1b0fb.jpg"
+      }
+    },
+    {
+      "id": "cmux4rauu0002g46vywqhvyrz",
+      "content": "Tokio Marine HCC gave its AI agents the whole underwriting manual. Then it cut the reading list.\n\nIn an Automation Today interview, executive Tamer Assaad describes a submissions-prioritization system being tested before production. The team initially supplied the entire manual. Narrowing it to relevant sections improved the specificity of the agents' work.\n\nThat's a useful failure to catch during development. More material gave the system more to work through, without giving it a better answer to the particular underwriting question.\n\nThe agents organize and prioritize submissions. Underwriters still decide whether to accept the business, and the system records reasons for its scores. The underwriters also participated in development.\n\nThere isn't a measured production return to quote yet. The company plans to evaluate speed and conversion after deployment.\n\nThe work already described is specific: selecting the relevant guidance, testing it with the people making the decisions, and keeping the reasons visible to them.",
+      "publishDate": "2026-10-09T21:00:00.000Z",
+      "releaseURL": null,
+      "releaseId": null,
+      "state": "QUEUE",
+      "intervalInDays": null,
+      "group": "dd815d7e-7648-48c6-9175-44bce371ee2c",
+      "creationMethod": "API",
+      "settings": "{\"__type\":\"linkedin\"}",
+      "tags": [],
+      "integration": {
+        "id": "cmsey6xl3001alv6zvff148mp",
+        "providerIdentifier": "linkedin",
+        "name": "Nicholas Major",
+        "picture": "https://postiz.nmajor.net/uploads/2026/10/07/f2037af883155ecd3e1b1c3cb2f1b0fb.jpg"
+      }
+    },
+    {
+      "id": "cmux4r9rx0000g46vu3tq5jwt",
+      "content": "J.P. Morgan's AI deployment includes a robot that removes staples.\n\nThe bank described it in May. At one payment-processing site, the robot opens envelopes, unfolds the contents, separates pages and scans the paperwork. J.P. Morgan processed more than 130 million checks in 2025, so the physical handling still matters.\n\nThe robot feeds a processing platform rebuilt in 2020. That platform uses AI to extract data and check quality. The bank later added language models for more complex review tasks.\n\nJ.P. Morgan says data entry that once required roughly 13 billion keystrokes a year is now largely automated. That's a result attributed to the wider processing system, with no public measurement method. One robot doesn't get the credit for all of it.\n\nThe deployment joins the envelope, the document and the payment record. Even good document software needs something to get the staple out.",
+      "publishDate": "2026-10-07T21:37:09.680Z",
+      "releaseURL": null,
+      "releaseId": null,
+      "state": "QUEUE",
+      "intervalInDays": null,
+      "group": "59170aa3-081e-4212-8ea8-3e128b4bd835",
+      "creationMethod": "API",
+      "settings": "{\"__type\":\"linkedin\"}",
+      "tags": [],
+      "integration": {
+        "id": "cmsey6xl3001alv6zvff148mp",
+        "providerIdentifier": "linkedin",
+        "name": "Nicholas Major",
+        "picture": "https://postiz.nmajor.net/uploads/2026/10/07/f2037af883155ecd3e1b1c3cb2f1b0fb.jpg"
+      }
+    }
+  ]
+}

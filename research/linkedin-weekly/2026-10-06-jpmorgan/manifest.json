@@ -32,10 +32,8 @@
     "native Codex",
     "Anthropic subscription"
   ],
-  "final_state": "newsletter-sent-four-queued-one-failed",
-  "unresolved_items": [
-    "Today\u2019s approved post failed twice in Postiz; need the private failure message to diagnose."
-  ],
+  "final_state": "published-and-scheduled",
+  "unresolved_items": [],
   "posts": [
     {
       "id": "personal-branch-intake",
@@ -95,27 +93,27 @@
       {
         "id": "cmux4rb990004g46vq2j7nvyp",
         "state": "QUEUE",
-        "publishDate": "2026-10-12T21:00:00.000Z"
-      },
-      {
-        "id": "cmux4r9rx0000g46vu3tq5jwt",
-        "state": "ERROR",
-        "publishDate": "2026-10-06T21:37:09.680Z"
-      },
-      {
-        "id": "cmux4rant0001g46viaalm4ta",
-        "state": "QUEUE",
-        "publishDate": "2026-10-07T20:00:00.000Z"
-      },
-      {
-        "id": "cmux4rauu0002g46vywqhvyrz",
-        "state": "QUEUE",
-        "publishDate": "2026-10-08T21:00:00.000Z"
+        "publishDate": "2026-10-13T21:00:00.000Z"
       },
       {
         "id": "cmux4rb2w0003g46v4bv7ek1y",
         "state": "QUEUE",
-        "publishDate": "2026-10-09T19:00:00.000Z"
+        "publishDate": "2026-10-10T19:00:00.000Z"
+      },
+      {
+        "id": "cmux4rant0001g46viaalm4ta",
+        "state": "QUEUE",
+        "publishDate": "2026-10-08T20:00:00.000Z"
+      },
+      {
+        "id": "cmux4rauu0002g46vywqhvyrz",
+        "state": "QUEUE",
+        "publishDate": "2026-10-09T21:00:00.000Z"
+      },
+      {
+        "id": "cmux4r9rx0000g46vu3tq5jwt",
+        "state": "QUEUE",
+        "publishDate": "2026-10-07T21:37:09.680Z"
       }
     ],
     "retry": {
@@ -125,6 +123,12 @@
       "date": "2026-10-06T21:37:09.680Z",
       "state": "ERROR",
       "verification": "Read-only Postiz API confirmed ERROR after the 21:37 UTC attempt; no release URL or ID. Debug endpoint returned 403 Unauthorized."
+    },
+    "day_shift": {
+      "requested_by": "Nicholas Major (via chat)",
+      "date": "2026-10-07",
+      "request": "OK fixed the linkedin postiz connection. Can you reschedule all the posts shift them by a day",
+      "verifiedAt": "2026-10-07T07:46:24.922Z"
     }
   }
 }

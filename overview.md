@@ -146,7 +146,7 @@ audience; the consultancy is where the commercial conversation happens.
   Nick confirmed the connection fix and authorized rescheduling. Independent Postiz API verification
   confirms all five existing IDs in `QUEUE` on his enabled personal `nmajor` integration:
   October 7 at 21:37 UTC, October 8 at 20:00 UTC, October 9 at 21:00 UTC,
-  October 10 at 19:00 UTC and October 13 at 21:00 UTC. The approved text and visuals are unchanged.
+  October 10 at 19:00 UTC and October 12 at 21:00 UTC (Nick moved the last post back to Monday). The approved text and visuals are unchanged.
   The companion's two October 6 publishing attempts failed; it is now queued for October 7.
   The J.P. Morgan newsletter remains live at `/writing/jpmorgan-ai-in-the-mailroom/` and
   Buttondown confirmed it sent October 6. One deduplicated site take is scheduled for October 8.

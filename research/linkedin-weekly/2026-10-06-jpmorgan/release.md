@@ -25,3 +25,7 @@ The 21:37 UTC retry also failed, verified via Postiz (`ERROR`, no release ID or 
 ## October 7: connection repaired; entire batch shifted one day
 
 Nick confirmed the LinkedIn/Postiz connection was fixed and requested moving all five posts one day later. Each existing post ID was rescheduled through the API with the exact approved text and meme; no send locks were altered. Independent API verification confirms all five entries in `QUEUE` on Nicholas Major’s enabled `nmajor` integration. The failed companion now runs October 7 at 21:37 UTC (22:37 Lisbon); Branch October 8 at 20:00 UTC (21:00 Lisbon); Tokio Marine October 9 at 21:00 UTC (22:00 Lisbon); XPT October 10 at 19:00 UTC (20:00 Lisbon); Elliott October 13 at 21:00 UTC (22:00 Lisbon). See raw/day-shift-verification.json.
+
+## Hidden instructions moved to Monday
+
+At Nick’s explicit request, only the Hidden instructions post was moved to Monday, October 12 at 21:00 UTC (22:00 Lisbon). The same post ID, approved text and meme are independently verified in `QUEUE`. The other four posts are unchanged. See raw/hidden-instructions-monday-verification.json.

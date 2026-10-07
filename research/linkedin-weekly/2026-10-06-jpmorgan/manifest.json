@@ -93,7 +93,7 @@
       {
         "id": "cmux4rb990004g46vq2j7nvyp",
         "state": "QUEUE",
-        "publishDate": "2026-10-13T21:00:00.000Z"
+        "publishDate": "2026-10-12T21:00:00.000Z"
       },
       {
         "id": "cmux4rb2w0003g46v4bv7ek1y",
@@ -129,6 +129,11 @@
       "date": "2026-10-07",
       "request": "OK fixed the linkedin postiz connection. Can you reschedule all the posts shift them by a day",
       "verifiedAt": "2026-10-07T07:46:24.922Z"
+    },
+    "hidden_instructions_monday": {
+      "requested_by": "Nicholas Major (via chat)",
+      "date": "2026-10-12T21:00:00.000Z",
+      "state": "QUEUE"
     }
   }
 }

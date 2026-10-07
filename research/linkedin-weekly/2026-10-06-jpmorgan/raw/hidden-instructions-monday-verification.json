@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-07T08:54:57.446Z",
+  "result": [
+    {
+      "postId": "cmux4rb990004g46vq2j7nvyp",
+      "integration": "cmsey6xl3001alv6zvff148mp"
+    }
+  ],
+  "post": {
+    "id": "cmux4rb990004g46vq2j7nvyp",
+    "content": "A court filing hid instructions for an AI reader in white text.\n\nIn Elliott v. New York Bariatric Group, an August 6 Connecticut decision describes tiny white-on-white messages aimed at steering an AI review toward the plaintiff's position. Dechert revisited the case on September 30.\n\nThe attempt failed. The court wasn't using AI to decide the motion, and the judge read a printed copy. The hidden instructions had no effect on the ruling.\n\nAfter repeated concealed messages, including after a warning, the judge revoked the plaintiff's electronic-filing privileges. The order still allowed AI-assisted drafting if the filer independently checked the work.\n\nThis is a different failure mechanism from invented citations. A document can carry instructions intended for the software reading it, while looking ordinary to a person.\n\nThe sender controlled the document. They were trying to control its reviewer, too.",
+    "publishDate": "2026-10-12T21:00:00.000Z",
+    "releaseURL": null,
+    "releaseId": null,
+    "state": "QUEUE",
+    "intervalInDays": null,
+    "group": "b9868fe9-f014-4571-b919-65e9b613f7b4",
+    "creationMethod": "API",
+    "settings": "{\"__type\":\"linkedin\"}",
+    "tags": [],
+    "integration": {
+      "id": "cmsey6xl3001alv6zvff148mp",
+      "providerIdentifier": "linkedin",
+      "name": "Nicholas Major",
+      "picture": "https://postiz.nmajor.net/uploads/2026/10/07/f2037af883155ecd3e1b1c3cb2f1b0fb.jpg"
+    }
+  }
+}

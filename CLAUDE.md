@@ -32,13 +32,14 @@ until its time — which makes every deploy safe.
    and **adds the slug to `queue` in `app/publishing.config.json`** (order = publish order;
    reorder anytime). `npm --prefix app run queue:lint` checks the queue is all finished,
    approved drafts.
-4. **Marking it ready also triggers repurposing:** run the `content-repurposing` skill. It
-   produces **two** outputs from the approved essay: (a) LinkedIn posts under
-   `app/linkedin/<slug>/` — Nick reviews and **approves each** (its own `approved:` field;
-   see `app/linkedin/README.md`); and (b) **1-3 short "takes"** written straight into the
-   `takes` collection (`app/src/content/takes/`), atomized from the essay's takeaways,
-   deduplicated against every past take, and **auto-scheduled with NO approval** (0 takes is
-   valid when nothing is fresh). Takes drip onto `/takes` in the days after the issue.
+4. **Once the newsletter story is settled, run `content-repurposing`.** It is the autonomous
+   weekly LinkedIn newsroom: one Tuesday issue companion plus up to six independently reported
+   applied-AI posts, with five as the target and fewer when quality is weak. Every retained post
+   gets a rendered meme-first visual recommendation. Nick may provide weekly direction, but the
+   generation run does not depend on it. Posts live under `app/linkedin/<slug>/`; Nick reviews and
+   **approves each exact post and visual** before either can schedule. Once the essay itself is
+   finalized, the same skill also writes **0-3 short takes** to `app/src/content/takes/`,
+   deduplicated against every past take and auto-scheduled with no approval.
 5. Each cadence slot (default **Tuesday 14:00 UTC**), the `.github/workflows/publish.yml`
    workflow promotes the top of the queue: stamps `pubDate`, flips `draft: false`,
    **builds + deploys the site** (the website updates with the new article),

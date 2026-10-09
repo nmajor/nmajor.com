@@ -1,0 +1,81 @@
+{
+  "post_id": "personal-stg-order-entry",
+  "post": "app/linkedin/rockwell-knowledge-at-the-machine/personal-stg-order-entry.md",
+  "catalog_scan": {"active_templates_reviewed": 63, "source": ".skills/social-meme-campaign/references/template-contracts.json"},
+  "payload": {
+    "fact": "At STG Logistics, each emailed-tender order took about five minutes and at least 45 fields, yet 15 people spent 60% of their day on the work; Pallet says its system now creates 95% of processed orders without manual field entry.",
+    "expected": "A five-minute administrative task would be too small to matter strategically.",
+    "actual": "Repeated at scale across variable files and 45 fields, it consumed most of 15 people's workday.",
+    "tension": "The unit task looked trivial while its aggregate labor was enormous.",
+    "target": "The decision habit of dismissing repetitive administrative work because each instance is short.",
+    "reader_realization": "Small tasks become large systems when volume and variability compound.",
+    "tone": "incredulous",
+    "forbidden_targets": ["order-entry staff", "people handling exceptions", "STG employees"]
+  },
+  "angles": [
+    {"rank": 1, "id": "five-minutes-sixty-percent", "mechanism": "scale mismatch", "line": "The five-minute task became 60% of the day for 15 people.", "kept": true},
+    {"rank": 2, "id": "same-task-two-readings", "mechanism": "contradiction", "line": "One order looked like five minutes of admin; the same process at scale looked like most of a department's day.", "kept": true},
+    {"rank": 3, "id": "fields-everywhere", "mechanism": "recursive absurdity", "line": "Every variable tender became at least 45 more fields for someone to key in.", "kept": false},
+    {"rank": 4, "id": "automate-the-handoff", "mechanism": "misclassification", "line": "The automation target was not the form but the messy handoff that kept recreating it.", "kept": false},
+    {"rank": 5, "id": "exceptions-remain", "mechanism": "hidden constraint", "line": "The vendor's 95% automation claim leaves the other 5% and its checking cost outside the frame.", "kept": false}
+  ],
+  "candidates": [
+    {
+      "template": "dbg", "angle": "five-minutes-sixty-percent", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 4, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The harmless-looking unit task and its aggregate workload are expectation and reality of the same process.",
+        "role_mapping": "'Five minutes per order' maps to expectation and '60% of 15 workdays' maps to reality.",
+        "surprise": "The two sourced scales produce the joke without adding a fictional actor.",
+        "instant_clarity": "The five-minute and 60% numbers establish the contradiction immediately.",
+        "operator_resonance": "Leaders recognize small repeated tasks that disappear in unit-level estimates.",
+        "caption_economy": "Both captions fit the contract with room to preserve the key numbers.",
+        "cultural_familiarity": "Expectation versus reality is a universal visual grammar.",
+        "freshness": "This is the strongest expectation-reality relationship in the batch, so the template can be reserved for it."
+      }
+    },
+    {
+      "template": "glasses", "angle": "same-task-two-readings", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 3, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The contract shows the same order-entry task under unit and system-level readings.",
+        "role_mapping": "'Five-minute admin task' and '60% of 15 workdays' are two supported views of one process.",
+        "surprise": "Changing the scale of observation changes a trivial task into a major workload.",
+        "instant_clarity": "The paired numbers make the perspective shift easy to scan.",
+        "operator_resonance": "Unit-cost blind spots are familiar in operations work.",
+        "caption_economy": "Both readings fit within five words when numerals are used.",
+        "cultural_familiarity": "The template's two-reading meaning is less universal than expectation versus reality but still established.",
+        "freshness": "No other selected batch recommendation needs this perspective-shift relationship."
+      }
+    },
+    {
+      "template": "morpheus", "angle": "five-minutes-sixty-percent", "hard_fail": false,
+      "scores": {"semantic_fit": 4, "role_mapping": 4, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 4, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The aggregate workload is a counterintuitive fact that overturns the small-task assumption.",
+        "role_mapping": "The fixed invitation leads to the sourced 60%-of-15-people fact, while the five-minute setup remains implicit.",
+        "surprise": "The scale jump is strong enough to carry the revelation.",
+        "instant_clarity": "The bottom line can state the full correction in nine words.",
+        "operator_resonance": "The revelation speaks to hidden administrative load.",
+        "caption_economy": "Only one substantive caption is needed.",
+        "cultural_familiarity": "The catchphrase remains widely recognizable.",
+        "freshness": "The template is otherwise unused in the batch."
+      }
+    },
+    {
+      "template": "pigeon", "angle": "same-task-two-readings", "hard_fail": true,
+      "hard_fail_reason": "The current meme invents an AI steering committee absent from the post, and '15 staff, 45 fields each' is not an object that the observer can coherently misclassify as 'just admin.'",
+      "scores": {"semantic_fit": 3, "role_mapping": 2, "surprise": 3, "instant_clarity": 4, "operator_resonance": 4, "caption_economy": 4, "cultural_familiarity": 5, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "Dismissing a large workload as admin resembles misclassification, but the source does not stage that act.",
+        "role_mapping": "The required observer is invented and the observed label combines people with fields rather than naming one situation.",
+        "surprise": "The dismissal has bite, but it comes from an unsourced caricature.",
+        "instant_clarity": "The familiar question format is readable despite the muddled observed object.",
+        "operator_resonance": "Decision-makers recognize administrative work being underestimated.",
+        "caption_economy": "The existing labels fit the slot limits.",
+        "cultural_familiarity": "Is This a Pigeon is widely recognized.",
+        "freshness": "The template is unused elsewhere in the batch, but novelty cannot fix the invented role."
+      }
+    }
+  ]
+}

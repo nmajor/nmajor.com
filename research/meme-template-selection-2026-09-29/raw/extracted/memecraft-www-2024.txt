@@ -1,0 +1,718 @@
+                                                                          MemeCraft: Contextual and Stance-Driven
+                                                                              Multimodal Meme Generation
+                                                                                 Han Wang                                                                         Roy Ka-Wei Lee
+                                                      Information Systems Technology and Design                                                Information Systems Technology and Design
+                                                     Singapore University of Technology and Design                                            Singapore University of Technology and Design
+                                                                       Singapore                                                                                Singapore
+                                                                han_wang@sutd.edu.sg                                                                      roy_lee@sutd.edu.sg
+
+                                         ABSTRACT
+                                         Online memes have emerged as powerful digital cultural artifacts in
+arXiv:2403.14652v1 [cs.CY] 24 Feb 2024
+
+
+
+
+                                         the age of social media, offering not only humor but also platforms
+                                         for political discourse, social critique, and information dissemina-
+                                         tion. Their extensive reach and influence in shaping online commu-
+                                         nities’ sentiments make them invaluable tools for campaigning and
+                                         promoting ideologies. Despite the development of several meme-
+                                         generation tools, there remains a gap in their systematic evaluation
+                                         and their ability to effectively communicate ideologies. Address-
+                                         ing this, we introduce MemeCraft, an innovative meme generator
+                                         that leverages large language models (LLMs) and visual language
+                                         models (VLMs) to produce memes advocating specific social move-                                 Figure 1: An example meme campaigning for climate change.
+                                         ments. MemeCraft presents an end-to-end pipeline, transforming                                  1     INTRODUCTION
+                                         user prompts into compelling multimodal memes without manual                                    Online memes represent digital cultural artifacts that have become
+                                         intervention. Conscious of the misuse potential in creating divisive                            pervasive in the era of social media. Typically comprised of im-
+                                         content, an intrinsic safety mechanism is embedded to curb hateful                              ages, videos, or text, memes frequently convey humor, irony, or
+                                         meme production. Our assessment, focusing on two UN Sustainable                                 satire, rendering them highly shareable and relatable to a broad
+                                         Development Goals—Climate Action and Gender Equality—shows                                      audience. These memes can disseminate rapidly, at times achieving
+                                         MemeCraft’s prowess in creating memes that are both funny and                                   viral status, and wield substantial influence in shaping the collec-
+                                         supportive of advocacy goals. This paper highlights how generative                              tive sentiments and trends of the online community. Beyond their
+                                         AI can promote social good and pioneers the use of LLMs and VLMs                                comedic aspect, memes can also serve as conduits for political
+                                         in meme generation.                                                                             discourse, social critique, and the dissemination of information.
+                                                                                                                                         Multiple research endeavors have explored the communicative
+                                         CCS CONCEPTS                                                                                    prowess of memes, suggesting their efficacy as both a communica-
+                                         • Do Not Use This Code → Generate the Correct Terms for                                         tion and campaigning instrument [14, 22, 23]. Such studies affirm
+                                         Your Paper; Generate the Correct Terms for Your Paper; Generate                                 memes’ unparalleled reach and persuasiveness, often harnessed by
+                                         the Correct Terms for Your Paper; Generate the Correct Terms for                                individuals and groups to campaign for social movements or ad-
+                                         Your Paper.                                                                                     vancing ideologies. For instance, [47] found that exposure to climate
+                                                                                                                                         change-themed memes increases individuals’ intentions to engage
+                                         KEYWORDS                                                                                        in online civic discourse concerning climate change. Figure 1 shows
+                                                                                                                                         an exmaple of a memes advocating for climate change.
+                                         mutlimodal memes, meme generation, visual language model
+                                                                                                                                            In response to the soaring popularity and applicability of memes,
+                                         ACM Reference Format:                                                                           both academic researchers and the tech industry have presented
+                                         Han Wang and Roy Ka-Wei Lee. 2024. MemeCraft: Contextual and Stance-                            an array of tools to aid in meme generation [28, 33, 41]. Semi-
+                                         Driven Multimodal Meme Generation. In Proceedings of the ACM Web Con-                           automated tools such as Imgflip1 offer users the capacity to overlay
+                                         ference 2024 (WWW ’24), May 13–17, 2024, Singapore, Singapore. ACM, New                         text on pre-existing meme templates.
+                                         York, NY, USA, 12 pages. https://doi.org/10.1145/3589334.3648151                                   While these tools enhance meme creation efficiency through
+                                                                                                                                         deep learning, they typically require extensive training with large
+                                         Permission to make digital or hard copies of all or part of this work for personal or           datasets. For example, Dank Learning [28] used a dataset of 400,000
+                                         classroom use is granted without fee provided that copies are not made or distributed           memes from [21], and Memeify [41] collected 1.1 million memes
+                                         for profit or commercial advantage and that copies bear this notice and the full citation
+                                         on the first page. Copyrights for components of this work owned by others than the
+                                                                                                                                         from [31] for training. In contrast, our approach leverages large
+                                         author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or          models effectively with only a few demonstration memes, achiev-
+                                         republish, to post on servers or to redistribute to lists, requires prior specific permission   ing similar performance while drastically reducing training costs.
+                                         and/or a fee. Request permissions from permissions@acm.org.
+                                         Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+                                                                                                                                         Moreover, current evaluations of meme-generation tools are not
+                                         © 2024 Copyright held by the owner/author(s). Publication rights licensed to ACM.               systematic. Existing studies primarily assess the resemblance of
+                                         ACM ISBN 978-1-4503-XXXX-X/18/06. . . $15.00
+                                         https://doi.org/10.1145/3589334.3648151                                                         1 https://imgflip.com/
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY                                                             Han Wang and Roy Ka-Wei Lee
+
+
+automatically generated memes to their manually crafted counter-        [24, 29], and propaganda [5]. Efforts to develop models for detecting
+parts [28, 33]. They often overlook evaluating the ability of these     harmful memes have intensified in academia and industry [1, 2, 8,
+generated memes to effectively and persuasively communicate spe-        9, 13, 16, 30, 38, 52].
+cific ideologies.                                                          The generation of memes has evolved significantly over time.
+   To address these gaps, we introduce MemeCraft, a state-of-the-       Initial models primarily relied on rule-based methods for meme
+art, multimodal meme generator that harnesses the capabilities of       creation [25, 42]. With the emergence of deep learning techniques,
+large language models (LLMs) and visual language models (VLMs)          novel methodologies have been proposed. Peirson and Tolunay [28]
+to generate humorous memes that convey specific contexts and            presented the Dank Learning approach, which employs the Incep-
+stances as directed by users. Specifically, MemeCraft is an end-        tion V3 architecture for image encoding and an attention-driven,
+to-end pipeline that generates multimodal memes from specially          deeper-layer LSTM for decoding, facilitating the generation of
+designed prompts that aim to advocate specific social movements.        meme captions for images. Subsequent models, including Meme-
+Our proposed meme generator automatically takes an image and            Bot [33] and Memeify [41], incorporate text input and harness
+generates a text overlay to convert the image into a humorous           transformer-based architectures. Evaluation metrics for these mod-
+meme that advocates the specified social causes. With MemeCraft,        els commonly include differentiability between generated memes
+users can effortlessly craft natural, compelling memes, aligning        and human-craft memes, user satisfaction, and the humor quotient.
+with extensive social and communication campaigns.                         Collectively, prior research has provided valuable insights into
+   Recent studies have also indicated that malicious users have         the methodologies of meme generation. Building on these foun-
+created and circulated hateful memes, exacerbating societal dis-        dational works, our research introduces a novel meme generator
+cord, perpetuating stereotypes, and disseminating false informa-        designed to bolster social movements. Differing from existing tools,
+tion [10, 37]. To counteract potential misuse of MemeCraft, we          our proposed model employs LLMs and VLMs to craft humorous
+have implemented a self-regulating safety mechanism. This feature       memes at scale to communicate specific social causes and stances
+ensures MemeCraft does not produce hateful memes, maintaining           as determined by the users. Additionally, we enhance the exist-
+a platform free from abusive or offensive content.                      ing studies by conducting a thorough human-centric evaluation,
+   To evaluate the effectiveness of MemeCraft as a social campaign-     assessing the efficacy of our model in advocating social campaigns.
+ing tool, we first generate a large dataset of memes concentrated
+around two of the United Nations Sustainable Development Goals          2.2     Large Language and Visual Language Models
+(UN SDGs) [7]: “Climate Action” and “Gender Equality”. The dataset      Large language models (LLMs), characterized by vast parameter
+encompasses memes both in favor of and against these pivotal goals.     sizes often in the range of billions, are pre-trained on expansive
+Subsequently, we conduct a comprehensive human evaluation to            natural language datasets. Notable examples include GPT-3 [3],
+assess the quality of these generated memes on four primary fac-        T5 [32], and BLOOM [35]. A defining feature of these LLMs is their
+tors: authenticity, hilarity, message conveyance, and persuasiveness.   ability to perform exceptionally well on novel tasks with only task
+Additionally, we also evaluate the robustness of MemeCraft’s safety     instructions provided, a capability termed as zero-shot in-context
+mechanism against the creation of hateful content.                      learning. To enhance this performance, certain models undergo
+   Our contributions can be summarized as follows: (i) We intro-        post-pre-training refinements. Specifically, T0 [34] and FLAN [43]
+duced MemeCraft2 which is an innovative meme generator utiliz-          are fine-tuned across various tasks, outperforming GPT-3 in zero-
+ing LLMs or VLMs to produce large-scale advocacy memes. To our          shot scenarios. InstructGPT[27] undergoes refinement from GPT-3
+knowledge, this is the pioneering exploration of adapting LLMs or       via reinforcement learning from human feedback (RLHF), thereby
+VLMs for meme generation. (ii) We conducted an extensive human          improving its adherence to instructions. Additionally, ChatGPT3 ,
+evaluation to assess the effectiveness of our proposed meme genera-     which originates from InstructGPT, is fine-tuned with conversa-
+tor in promoting SDGs (i.e., climate action and gender equality). Our   tional datasets using RLHF, enabling it to engage in dialogues and
+experiment results show that MemeCraft outperformed the state-          provide detailed responses to user queries. Touvron et al. [39] in-
+of-the-art meme generators in generating humorous and persuasive        troduced LLaMA, a suite of efficient Large Language Models with
+memes that advocate these social movements. At a higher level,          parameter sizes ranging from 7B to 65B. Despite their reduced scale,
+our study explores and demonstrates the potential of leveraging         these LLMs have proven to be highly competitive when compared
+generative AI to promote social good.                                   to their larger counterparts. In this study, we investigated the use
+                                                                        of online LLM APIs, such as ChatGPT, as well as offline models like
+2 RELATED WORKS                                                         LLaMA for meme generation. To our knowledge, this is the inaugu-
+2.1 Meme Anaylsis and Generation                                        ral study that harnesses LLMs for meme creation and thoroughly
+                                                                        assesses their capability to produce humorous memes.
+Internet memes are a significant cultural phenomenon in online
+                                                                           Recent advancements in the vision-language domain have led to
+communication. Extensive research has focused on analyzing topics
+                                                                        the emergence of large vision-language models (VLMs) known for
+[6], semantics [44], and emotions [36] conveyed in memes. An
+                                                                        their robust generative abilities [4, 18, 19, 26, 45, 51]. These nascent
+important application of meme analysis is the detection of hateful
+                                                                        VLMs set themselves apart from the prevailing smaller versions
+memes. Detection of hateful memes is crucial due to their potential
+                                                                        by virtue of their extensive model size and superior performance
+misuse for spreading harmful messages [12, 20], misinformation
+                                                                        in multimodal understanding tasks. Recent research indicates that
+2 https://github.com/Social-AI-Studio/MemeCraft                         3 https://openai.com/blog/chatgpt
+MemeCraft: Contextual and Stance-Driven
+Multimodal Meme Generation                                                                                                                                                Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+
+
+
+         Large meme template
+                                                                     Instruction:
+           database (Imgflip)
+                                                                     Generate a caption to turn the image into
+                                                                     a humorous meme that highlights the
+                                                                     Causes of Climate Change to Support it.
+         Sampled
+
+
+
+
+                                                                                                                                                                                                     Pretrained Hateful Memes
+                                                                                                                                             Text Overlay API (Imgflip)
+                                                                                      LLM (ChatGPT, LLaMA) or
+
+
+
+
+                                                                                                                                                                                                                                Remove
+                                                                                                                                                                                                                                Memes
+                                                                                                                                                                                                                                Hateful
+                                                                                                                                                                                                          Detection Model
+                                     VLM (LLaVA)
+
+
+
+
+                                                                                           VLM (LLaVA)
+                                                   Image Description:                                           Meme Text
+                                                   The image features an old                                    Waiting for the forests to                                                                                                Generated
+                                                   skeleton bone sitting on a park                              magically grow back
+                                                                                                                                                                                                                                           Dataset
+                                                   bench next to a tree.
+
+
+
+
+      Image Name: Waiting Skeleton
+
+
+
+                                                                    Figure 2: Overview of MemeCraft framework.
+
+
+VLMs demonstrate noteworthy zero-shot capabilities across vari-                                                              API, using the image names from the dataset. These IDs are cru-
+ous multimodal tasks [49], highlighting their potential applicability                                                        cial for sourcing the blank image URLs and enabling text overlay
+in diverse downstream applications such as image captioning. Ex-                                                             through the Imgflip API.
+amples of these advancements include ChatCaptioner [50], which
+integrates ChatGPT with BLIP-2 for image captioning, and LLaVA-                                                              3.2        Image Description Generation
+Med [17], which utilizes GPT-4 for queries related to biomedical                                                             For the task of image description, we utilize the LLaVA-7B, the 7
+images. Drawing inspiration from these existing studies, we lever-                                                           billion parameter version of LLaVA [19], a state of the art VLM.
+age LLaVA [19] visual comprehension and text generation prowess                                                              LLaVA is a comprehensively trained multimodal model that en-
+for meme creation.                                                                                                           compasses both visual and language comprehension abilities, and
+                                                                                                                             existing research have showed that LLaVA is able to perform well
+3     METHODOLOGY                                                                                                            in image captioning task [46]. Given its adeptness in generating de-
+Figure 2 presents an overview of our MemeCraft framework. As                                                                 tailed image captions, we leverage the VLM by issuing a zero-shot
+most viral memes are generated based on popular meme template                                                                prompt to obtain high-quality image descriptions for each meme
+images, we first sample meme template images from online reposi-                                                             template image. Figure 2 shows an illustrative example of a meme
+tories like Imgflip. The sampled images are then processed using a                                                           tempalte image and its corresponding generated image description.
+VLM to derive their textual descriptions (i.e., captions). Following
+this, we input the name of the meme template and generated de-                                                               3.3        Meme Text Generation
+scriptions into either an LLM or VLM to produce humorous meme
+                                                                                                                             The goal of this task is to produce meme text that, when combined
+texts that align with specific social causes, such as "climate ac-
+                                                                                                                             with a meme template image, results in a multimodal meme that
+tion" and "gender equality. To create the final memes, the generated
+                                                                                                                             communicates a campaign message. This message is guided by
+meme texts are superimposed on the sampled meme template im-
+                                                                                                                             three user-defined parameters:
+ages using a text overlay API. Finally, to ensure that our proposed
+framework does not generate hateful memes, we use a pre-trained                                                                     • Social Cause: This denotes the social issue or movement
+model dedicated to detecting hateful memes to filter the generated                                                                    the meme addresses. While our experiments focused on
+memes. Only memes deemed non-hateful are kept in our generated                                                                        two causes, namely “climate action” and “gender equality”,
+dataset. The details of each MemeCraft component are discussed                                                                        it is noteworthy that MemeCraft can generate memes for a
+in the subsequent subsections.                                                                                                        broader range of social topics.
+                                                                                                                                    • Stance: This determines whether the meme will support or
+3.1       Meme Template Image Sampling                                                                                                deny the chosen social cause.
+For effective application of our model, it is essential to have access                                                              • Persuasion Technique: This specifies the method employed
+to meme templates. These templates are pre-existing images com-                                                                       to sway the audience towards supporting or opposing the so-
+monly used for meme generation, often accompanied by a unique                                                                         cial cause. As an example, a strategy for championing climate
+name and a specific format for text addition, as provided by meme                                                                     action might highlight the consequences of climate change.
+creation websites.                                                                                                                    Although several persuasion methods are versatile and fit
+   We built our collection of meme templates using the Meme Gener-                                                                    various causes, some causes might necessitate specialized
+ator Dataset 4 , identifying 1914 distinct templates. It’s worth noting                                                               techniques. The specific techniques used for “climate action”
+that the blank image URLs in this dataset were no longer functional.                                                                  and “gender equality” are elaborated in the next section.
+Therefore, we retrieved 1500 meme template IDs from the Imgflip                                                                 To generate meme text that conveys the intended social cam-
+                                                                                                                             paign message, we employ prompts based on the three user-defined
+4 https://www.kaggle.com/datasets/electron0zero/memegenerator-dataset                                                        parameters and pair them with randomly selected meme template
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY                                                                Han Wang and Roy Ka-Wei Lee
+
+
+Table 1: An illustration of a prompt utilizing 𝑁 training ex-               the risk of generating such content. This mechanism involves the
+amples is presented, consisting of the instruction (in green),              critical evaluation of generated memes for potential hateful content.
+the input (in yellow), and the output provided (in purple)                     Central to our approach is the employment of the MultiModal
+that are utilized as input to LLMs.                                         BiTransformers (MMBT-Grid) model, a dedicated hateful memes
+    # Demonstration samples 1...𝑁                                           detection technique introduced in [11]. MMBT-Grid adopts a multi-
+    Instruction: Generate a caption to turn the image into a humorous       modal supervised bitransformer architecture, which utilizes distinct
+    meme that highlights the Causes of Climate Change to Support it.        unimodal components. These components have been trained to as-
+    Input: Image "willywonka" describing "A man wearing a purple and        sociate multimodal image embeddings with textual tokens.
+    gold suit, a top hat, and..."                                              Our choice of MMBT-Grid is supported by its thorough pre-
+    Output: [Let’s think step-by-step.] The "willywonka" image is fre-
+                                                                            training on the Hateful Meme Challenge (HMC) Dataset, a promi-
+    quently employed sarcastically, often with rhetorical questions.
+    Let’s use it for... Caption at top: "You think global warming
+                                                                            nent benchmark for identifying hateful content [12]. MMBT-Grid
+    is fake?" and Caption at bottom: "Please tell me how you get            achieves 66.85% accuracy on this dataset [40]. To balance the gen-
+    the "FACTS" from politicians and oil companies"                         eration of diverse memes while prioritizing safety, we established
+    ###                                                                     a high confidence threshold of 0.9 to classify content as hateful.
+    # Actual image in prompt                                                Any content exceeding this threshold is excluded. Memes that are
+    Instruction: Generate a caption to turn the image into a humorous       validated through this mechanism are added to our final dataset.
+    meme that highlights the Causes of Climate Change to Support it.
+    Input: Image "Waiting Skeleton" describing "The image features an
+    old skeleton bone sitting on a park bench..."                           4   DATASET GENERATION
+    Output: [Let’s think step-by-step.] The "Waiting Skeleton" image is
+                                                                            In this section, we present the process of utilizing MemeCraft to
+    often used to depict patience or waiting with a touch of irony. Let’s
+    use this image for... Caption at top: "Waiting for the forests to
+                                                                            generate a dataset that focuses on two social causes: “climate action”
+    magically grow back"                                                    and “gender equality”. The generated dataset will be used in our
+                                                                            large-scale human evaluation in the subsequent section.
+images. An exemplary prompt supporting “climate action” using                   For each social cause, we first design prompts with persuasion
+the causes of climate change as a persuasion technique is demon-            techniques to generate the memes. These memes aim to influence
+strated in Table 1. We enhance this prompt with the prefix “Let’s           people to support or oppose the given cause. Specifically, we use
+think step by step.” [48]. This prefix encourages LLMs to establish a       the following techniques for persuasion:
+stronger connection between the image and meme text, ensuring                   Causes: This technique emphasizes factors that can contribute
+the generated text closely aligns with the visual content.                  to or intensify the social causes. This approach is used in support-
+   In our study, we utilize three models as variations of MemeCraft         ing “climate action” and “gender equality”. An illustrative example
+to generate humorous meme text based on our specifically designed           involves a meme that accuses individuals of failing to switch off
+prompts: ChatGPT-3.55 , LLaMA-2-13B [39], and LLaVA-7B [19].                lights every time they exit a room in the context of “climate action”.
+   For the LLMs, namely ChatGPT and LLaMA, we adopt a few-                      Consequences: This technique emphasizes the potential neg-
+shots prompting technique, illustrated in Table 1. Through various          ative consequences that may arise from underlying social causes.
+tests, we evaluated the effectiveness of providing different numbers        This approach is used in supporting “climate action” and “gender
+of demonstration examples, denoted as 𝑁 , varying from 2 to 8. Our          equality”. An illustrative example includes a meme that emphasizes
+observations revealed that when 𝑁 is minimal, such as 2, LLaMA              how global warming affects everyone, not just polar bears, within
+faces challenges in comprehending the task. On the other hand,              the context of “climate action”.
+when 𝑁 is increased to values like 6 or 8, LLaMA tends to mimic the             Solutions: This technique offers solutions and encourages indi-
+provided examples. As a result, we empirically settled on presenting        viduals to take action in addressing the social causes. This approach
+4 demonstration examples.                                                   is used in supporting “climate action” and “gender equality”. An
+   In contrast, LLaVA, a VLM, does not support the few-shots                illustrative example involves a meme that highlights the idea that
+prompting technique. Hence, we employed a zero-shot prompt-                 single-use plastic can be environmentally friendly if it’s reused,
+ing method for this model. While the structure of the prompting             within the context of “climate action”.
+format aligns with the template presented in Table 1—comprising                 Evidence of Absence: This technique presents evidence sug-
+Instruction, Input, and Output segments—it does not incorporate             gesting that the social causes either do not exist or are not signif-
+any demonstration samples. Additionally, the prefix “Let’s think            icant problems. This approach is used in denying “climate action”
+step-by-step” is excluded from the output, prompting the VLM to             and “gender equality”. An illustrative example includes a meme that
+generate the meme text directly.                                            emphasizes the recent increase in the number of polar bears within
+                                                                            the context of “climate action”.
+3.4     Hateful Memes Detection                                                 Benefits: This technique highlights the idea that the social
+Recent research indicates a concerning rise in the production and           causes could have positive effects for us. This approach is used in
+distribution of hateful memes, which not only target, but also risk         denying “climate action”. An illustrative example includes a meme
+inciting violence against protected groups [12, 20]. In light of this,      that emphasizes how farmers can now cultivate plants year-round
+we have enhanced MemeCraft with a safety mechanism to mitigate              due to global warming.
+                                                                                Rationale: This technique emphasizes that the existence of a
+5 https://api.openai.com/v1/chat/completions                                social causes is supported by valid reasons. This approach is used
+MemeCraft: Contextual and Stance-Driven
+Multimodal Meme Generation                                                                        Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+
+
+                                      Table 2: Distribution of memes generated for human evaluation.
+           Social Cause              Model       Causes   Consequences   Solutions    Evidence of Absence       Benefits    Rationale    Total
+                             MemeCraft-ChatGPT     100         100         100                  100               100           0         500
+          Climate Action     MemeCraft-LLaMA       100         100         100                  100               100           0         500
+                              MemeCraft-LLaVA      100         100         100                  100               100           0         500
+                             MemeCraft-ChatGPT     100         100         100                  100                 0          100        500
+         Gender Equality     MemeCraft-LLaMA       100         100         100                  100                 0          100        500
+                              MemeCraft-LLaVA      100         100         100                  100                 0          100        500
+                 -              Dank Learning       0           0           0                     0                 0           0         100
+                 -              Online Random       0           0           0                     0                 0           0         100
+
+
+in denying “gender equality”. An example includes a meme that               Table 3: Average authenticity scores of various models.
+underscores the notion that because women and men have distinct                  Social Cause               Model             Authenticity Score
+physical differences, it is natural to treat them differently.                                        MemeCraft-ChatGPT             0.48
+                                                                                Climate Action        MemeCraft-LLaMA               0.43
+   After establishing the persuasion technique, we generate memes
+                                                                                                       MemeCraft-LLaVA              0.36
+focused on “climate action” and “gender equality” using the three
+                                                                                                      MemeCraft-ChatGPT             0.53
+variations of MemeCraft: ChatGPT, LLaMA, and LLaVA. Each                        Gender Equality       MemeCraft-LLaMA               0.45
+MemeCraft variation produces 500 memes for each social cause.                                          MemeCraft-LLaVA              0.34
+The distribution of the generated memes for our human evaluation                       -                Dank Learning               0.23
+is displayed in Table 2. In total, MemeCraft was used to produce                       -                Online Random               0.59
+3,000 memes. For comparison, we also created 100 memes with the             Message Conveyance: This metric evaluates the capacity of gen-
+state-of-the-art Dank Learning meme generator [28], and randomly         erated memes to adeptly convey the intended message, particularly
+sampled 100 online memes from ImgFlip.                                   in terms of supporting or denying specific social causes. Evaluators
+                                                                         categorize each meme as either “support”, “deny”, or exhibiting no
+5     EXPERIMENTS                                                        clear alignment (“NA”) with the specified social cause. The Message
+In this section, we describe the comprehensive human evaluation          Conveyance score is compute by the percentage of memes evaluated
+conducted with the generated dataset. Specifically, we designed          to convey the specified social cause and stance.
+experiments to address the following research questions:                    Persuasiveness: This metric measures the persuasive quality of
+                                                                         the generated memes. Evaluators rate the persuasiveness of memes
+      • R1: Do the generated memes resemble publicly available
+                                                                         on a scale from 1 to 5, where 1 signified “not persuasive” and 5
+        online memes? [Authencity]
+                                                                         signified “persuasive”.
+      • R2: Are the generated memes humorous? [Hilarity]
+                                                                            Hatefulness: This metric assesses the effectiveness of a safety
+      • R3: Do the generated memes communicate the intended mes-
+                                                                         mechanism in mitigating the generation of hateful memes. The
+        sage? (e.g., support climate action) [Message Conveyance]
+                                                                         safety mechanism classifies generated memes as either hateful or
+      • R4: Are the generated memes persuasive? [Persuasiveness]
+                                                                         non-hateful and filters out the hateful ones. Evaluators are tasked
+      • R5: Is the safety mechanism effectiveness in reducing hateful
+                                                                         to identify the presence of hateful content within the remaining
+        meme generation? [Hatefulness]
+                                                                         memes. We report two hatefulness scores: one represents the per-
+                                                                         centage of hateful memes identified by machine (i.e., safety mech-
+5.1     Experimental Settings                                            anism), and the other denotes the percentage of hateful memes
+Human Evaluators. We recruited a group of 12 undergraduate               identified by the evaluators.
+students, selected for their familiarity with online meme culture,
+to serve as evaluators in our study. Each meme was assessed by at
+least two evaluator, and the average rating from these evaluations       5.2      Authenticity
+was recorded to represent the consensus on each meme.                    Table 3 shows the average authenticity scores of the various meme
+   Evaluation Metrics. To address the research questions outlined        generators. Specifically, we report the three variations of our Meme-
+in our study, we developed five evaluation metrics to assess the         Craft model and the two baseline methods. These scores are indica-
+various aspects of the generated memes comprehensively.                  tive of each generator’s ability to create memes that are perceived
+   Authenticity: This metric gauges the resemblance of generated         as genuine when compared to typical online content.
+memes to those typically encountered online. Evaluators deter-              Interestingly, we observed that even authentic online memes (i.e.,
+minte whether a meme resembled those found on the internet, with         Online Random) achieved an authenticity score of only 0.59. How-
+responses categorized as “yes” or “no”. The Authenticity score is        ever, it was noted that MemeCraft-ChatGPT attained authenticity
+computed as the percentage of memes rated as “yes”,                      scores closer to those of authentic online memes, with averages of
+   Hilarity: This metric evaluates the humor of the generated meme.      0.48 for “climate action” and 0.53 for “gender equality”. In contrast,
+Evaluators rate the humor of meme using a 5-point scale, with 1          due to their smaller model sizes, MemeCraft-LLaMA and Meme-
+indicating “not humorous” and 5 indicating “humorous”.                   Craft-LLaVA achieved lower scores of approximately 0.45 and 0.35,
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY                                                                                          Han Wang and Roy Ka-Wei Lee
+
+
+                                                                                                          In our examination of memes evaluated as supporting the social
+                                                                                                      causes, we observed notable differences among various persuasion
+                                                                                                      strategies. The technique we have termed “Causes” emerged as
+                                                                                                      the most effective, yielding approximately 0.7 supportive memes
+                                                                                                      when utilized by MemeCraft-ChatGPT and MemeCraft-LLaMA,
+                                                                                                      i..e, among the memes generated using “Causes” technique, about
+                                                                                                      70% of these memes are evaluated as supporting the social cause.
+                                                                                                      Additionally, other supportive strategies registered efficacy scores
+                                                                                                      exceeding 0.6 with MemeCraft-ChatGPT. In contrast, persuasion
+                                                                                                      strategies specifically designed to deny social causes produced ap-
+                                                                                                      proximately 30% of memes that still advocated for the cause.
+              Climate:   Climate    Climate:   Gender:    Gender:    Gender:
+             MemeCraft- MemeCraft- MemeCraft- MemeCraft- MemeCraft- MemeCraft-
+                                                                                  Dank
+                                                                                 Learning
+                                                                                             Online
+                                                                                            Random
+                                                                                                          In our analysis of memes evaluated as denying social causes, we
+              ChatGPT    LLaMA       LLaVA     ChatGPT    LLaMA       LLaVA
+
+Figure 3: Distribution of hilarity scores across models and                                           discovered that memes utilizing supportive persuasion techniques
+social causes                                                                                         rarely adopted an opposing viewpoint, with only approximately
+                                                                                                      10% doing so. Conversely, the efficacy of various denied persuasion
+respectively. Notably, all three MemeCraft model variations signifi-
+                                                                                                      techniques generally yielded a low conversion to contrarian memes.
+cantly outperformed the Dank Learning baseline.
+                                                                                                      A significant outlier was observed with the “Evidence of Absence”
+   The authenticity scores for the “gender equality” theme are ob-
+                                                                                                      technique in the context of the “climate action” social cause when
+served to be slightly higher than those for the “climate action”. The
+                                                                                                      applied in the MemeCraft-LLaMA model. Here, 76% of the gener-
+richness of content available for “gender equality” themes offers a
+                                                                                                      ated memes opposed the cause. This anomaly was attributed to the
+wealth of recognizable symbols, narratives, and humor that models
+                                                                                                      MemeCraft-LLaMA model’s replication of patterns from provided
+can draw from to craft their memes. This richness allows for a
+                                                                                                      demonstration examples during the meme generation process.
+diverse expression that aligns closely with the authentic online
+memes. Furthermore, the complexity of the “climate action” topic
+may not translate as effectively into the meme format, which often                                    5.5    Persuasiveness
+relies on simplicity and immediacy for impact. The “gender equality”                                  Figure 4 and 5 present the persuasiveness score distributions of
+memes might encapsulate their message more straightforwardly,                                         various models generating “climate action” and “gender equality”
+avoiding the intricate scientific explanations that can dilute the                                    memes, respectively. Overall, we observed that MemeCraft-ChatGPT
+authenticity of “climate action” memes.                                                               outperformed other MemeCraft models in both social causes, with
+                                                                                                      around 40% of memes receiving a rating of 3 out of 5 persuasive-
+5.3     Hilarity                                                                                      ness score. It is noteworthy that different persuasion techniques
+Figure 3 presents the distribution of hilarity scores across different                                could exhibit varying levels of performance. In general, within the
+social causes and meme generation models. The analysis high-                                          social cause of “climate action”, persuasion techniques emphasizing
+lights that MemeCraft-ChatGPT is one standout model, achieving                                        support tended to perform better. In the context of the “Solutions”
+a median hilarity score of 3 in both social causes examined. This                                     technique employed within MemeCraft-ChatGPT, it notably at-
+score suggests that over half of the memes generated by Meme-                                         tained a persuasive score of 3 for more than 50% of the evaluated
+Craft-ChatGPT were considered to have a moderate level of humor.                                      memes. Conversely, in the social cause of “gender equality”, the
+We also noted that the LLM-based models, MemeCraft-ChatGPT                                            disparity in persuasiveness scores between support and deny per-
+and MemeCraft-LLaMA, perform better than the VLM-base model,                                          suasion techniques was less pronounced.
+MemeCraft-LLaVA. The observed performance disparity can be                                               In summary, the memes we generated demonstrate moderate
+attributed to the inherent limitations of the LLaVA model, which                                      persuasive, and the persuasiveness scores are notably influenced by
+exclusively relies on zero-shot learning capabilities. Unlike other                                   the social causes and persuasion techniques used. These findings
+models that can learn and improve from demonstration examples,                                        suggest that tailoring persuasion techniques to specific social causes
+LLaVA operates without such examples in its prompts, leading to                                       is crucial for enhancing the persuasive impact of the memes.
+comparatively suboptimal performance. Comparatively, the base-
+line model Dank Learning yielded a median hilarity score of only                                      5.6    Hatefulness
+1, indicating a general lack of humor its generated memes. Nev-                                       Table 5 presents two sets of hatefulness scores: (i) hateful memes
+ertheless, machine-generated memes have lower hilarity scores                                         identified by MemeCraft’s safety mechanism ( machine), and (ii) the
+compared to authentic online memes. The authentic online memes                                        hateful memes identified by the evaluators in the set post-filtered
+(i.e., Online Random) have a median hilarity score of 4. This finding                                 by the safety mechanism. In contentious social issues like "gender
+underscores that there remains room for improvement for machines                                      equality," our safety mechanism notably detects a markedly higher
+to generate humorous content.                                                                         proportion of memes as hateful, highlighting the risk for LLMs to
+                                                                                                      propagate hate speech [15]. This underscores the need for caution
+5.4     Message Conveyance                                                                            when creating memes in such social causes.
+Table 4 presents the message conveyance scores of the three Meme-                                        Following the removal of memes identified as hateful by our
+Craft variations when employing different persuasion techniques                                       models, we engaged human annotators to assess the remaining
+to either support or oppose the social causes.                                                        memes for hatefulness. After applying our safety mechanism, we
+MemeCraft: Contextual and Stance-Driven
+Multimodal Meme Generation                                                                                                                         Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+
+
+                 Table 4: Message conveyance scores of memes created by supportive and denied persuasion techniques.
+                                                                                                Supportive Persuasion Techniques                              Denied Persuasion Techniques
+ Stance Evaluated                   Social Cause                     Model                      Causes        Consequences                Solutions      Evidence of Absence              Benefits           Rationale
+                                                                MemeCraft-ChatGPT                0.71             0.65                       0.8                 0.3                        0.43                 -
+                                Climate Action                  MemeCraft-LLaMA                  0.71             0.47                      0.45                0.17                        0.45                 -
+                                                                 MemeCraft-LLaVA                 0.51             0.55                      0.42                0.24                        0.38                 -
+       Support
+                                                                MemeCraft-ChatGPT                0.76             0.63                      0.67                0.41                          -                0.51
+                               Gender Equality                  MemeCraft-LLaMA                  0.69             0.54                       0.6                0.34                          -                0.43
+                                                                 MemeCraft-LLaVA                 0.42             0.38                      0.48                0.29                          -                0.34
+                                                                MemeCraft-ChatGPT                 0.1             0.17                      0.05                 0.5                         0.4                 -
+                                Climate Action                  MemeCraft-LLaMA                  0.1              0.07                      0.12                0.76                        0.39                 -
+                                                                 MemeCraft-LLaVA                 0.15              0.1                      0.12                0.43                        0.28                 -
+        Deny
+                                                                MemeCraft-ChatGPT                0.08              0.1                      0.06                0.49                          -                0.33
+                               Gender Equality                  MemeCraft-LLaMA                  0.11              0.1                      0.04                0.28                          -                0.39
+                                                                 MemeCraft-LLaVA                 0.07             0.04                      0.08                 0.2                          -                0.17
+
+
+
+
+                                                 Evidence of                                                             Evidence of                                                           Evidence of
+        Causes       Consequences    Solutions                  Benefits             Causes   Consequences   Solutions                 Benefits            Causes   Consequences Solutions                    Benefits
+                                                  Absence                                                                 Absence                                                               Absence
+
+
+
+
+                       Figure 4: Persuasiveness scores distribution of various models generating climate action memes.
+
+
+
+
+                                                  Evidence of                                                            Evidence of                                                           Evidence of
+        Causes       Consequences    Solutions                  Rationale            Causes   Consequences   Solutions                 Rationale           Causes   Consequences   Solutions                  Rationale
+                                                   Absence                                                                Absence                                                               Absence
+
+
+
+                      Figure 5: Persuasiveness scores distribution of various models generating gender equality memes.
+
+Table 5: Hatefulness scores of generated memes identified                                                           consistently remained below 0.05, which is lower than that of two
+by the safety mechanism (Machine) and post-filtered memes                                                           baselines. While “gender equality” social cause had a slightly higher
+assess by the evaluators (Human).                                                                                   proportion of hateful memes, the percentages still stayed within
+       Social Cause                              Model                     Machine     Human                        acceptable limits. This serves as empirical evidence affirming the
+                                    MemeCraft-ChatGPT                       0.06         0.01                       efficacy of our framework for filtering out hateful memes.
+      Climate Action                MemeCraft-LLaMA                         0.03           0
+                                     MemeCraft-LLaVA                        0.03         0.01                       5.7        Case Study
+                                    MemeCraft-ChatGPT                       0.55         0.02                      Table 6 presents selected high-quality and low-quality memes across
+     Gender Equality                MemeCraft-LLaMA                         0.41         0.04                      various models. Analysis of these case studies indicates that high-
+                                     MemeCraft-LLaVA                        0.27         0.01                      quality memes typically demonstrate a seamless integration of text
+                 -                     Dank Learning                          -          0.05                      and imagery, which together produce humor and a coherent mes-
+                                                                                                                   sage. A prime example is meme 2, where Drake’s popular reaction
+                 -                     Online Random                          -          0.05                      image aptly satirizes the rejection of outdated gender stereotypes.
+found that the percentage of hateful memes in both social causes                                                      In contrast, low-quality memes can be attributed to several fac-
+                                                                                                                   tors. Firstly, there may be a lack of semantic connection between
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY                                                                                   Han Wang and Roy Ka-Wei Lee
+
+
+
+
+    Memes
+
+
+
+
+                    (1)                          (2)                                  (3)                                        (4)
+    Meme Texts      Waiting for the forests to   When men and women are ex-           Does you hear what metallica in a          we hate upvote begging - we think
+                    magically grow back          pected to conform to traditional     song? It the best band in America?         it’s stupid - upvote if you think thats
+                                                 gender roles - But we just want      How                                        true - upvote if you think thats true
+                                                 to be silly and have fun together!
+                    {A: Yes, M-H: 5, M: Sup-     {A: Yes, M-H: 5, M: Support, P:      {A: Yes, M-H: 4, H: No}                    {A: Yes, M-H: 5, H: No}
+    Evaluations
+                    port, P: 5, H: No}           5, H: No}
+                    {A: Yes, M-H: 4, M: Sup-     {A: Yes, M-H: 4, M: Support, P:      {A: No, M-H: 3, H: No}                     {A: Yes, M-H: 5, H: No}
+                    port, P: 4, H: No}           3, H: No}
+    Social Causes   Support Climate Action       Support Gender Equality              -                                          -
+    and Stances
+    Models          MemeCraft-LLaMA              MemeCraft-ChatGPT                    Dank Learning                              Random Online
+
+
+
+
+    Memes
+
+
+
+
+                    (5)                          (6)                                  (7)                                        (8)
+    Meme Texts      Me: "I’m gonna recycle"      Breaking the glass ceiling, it’s a   It’s a circle of my new life so you must   Most white people - Didn’t own
+                                                 man’s world!                         like me! The only slice of furniture       slaves & Many died to end it
+                    {A: No, M-H: 2, M: Sup-      {A: No, M-H: 2, M: NA, P: 1, H:      {A: No, M-H: 1, H: No}                     {A: No, M-H: 1, H: No}
+    Evaluations
+                    port, P: 2, H: No}           No}
+                    {A: No, M-H: 1, M: NA, P:    {A: No, M-H: 3, M: Deny, P: 2,       {A: No, M-H: 1, H: No}                     {A: No, M-H: 1, H: Yes}
+                    1, H: No}                    H: No}
+    Social Causes   Support Climate Action       Deny Gender Equality                 -                                          -
+    and Stances
+    Models          MemeCraft-LLaMA              MemeCraft-LLaVA                      Dank Learning                              Random Online
+Table 6: Example memes generated using various models with their Authenticity (A), Meme Hilarity (M-H), Message Conveyance
+(M), Persuasiveness (P), and Hatefulness (H) scores. For clarity in our results, annotations that meet all the following criteria
+— Authenticity: Yes, Hilarity ≥ 3, Message Conveyance is correctly identified, Persuasiveness ≥ 3 and Hatefulness: No — are
+highlighted in blue. Conversely, annotations that do not meet these standards are highlighted in red.
+
+
+the text and the image, as observed in memes 5 and 6. While the text                  The research presented herein illustrates that by utilizing LLMs and
+may possess individual meaning, its relationship with the accompa-                    VLMs, which have been pre-trained on comprehensive datasets,
+nying visual element is unclear. Secondly, some low-quality memes                     our system is capable of producing memes that not only closely
+suffer from nonsensical textual content, as exemplified by meme 7.                    mirror those found within online communities but also maintain
+These memes fail to convey coherent messages, diminishing their                       contextual relevance and are devoid of offensive content. The gen-
+overall quality. Finally, certain memes addressing sensitive topics                   erator has achieved satisfactory metrics in terms of persuasiveness
+may carry a latent risk of being labeled as hateful, as evidenced                     and hilarity, indicating the utility of memes as a medium for sup-
+in the case of meme 8, which appears to downplay white people’s                       porting distinct societal objectives. While there is still room for
+historical involvement in the enslavement of Black individuals,                       improvement in achieving humor scores comparable to real online
+potentially undermining their overall credibility.                                    memes, our framework has significantly narrowed the gap. For
+                                                                                      future works, we aim to refine the synergy between textual and vi-
+                                                                                      sual elements to enhance both the comedic and persuasive qualities
+6     CONCLUSION                                                                      of the generated memes, thereby contributing to the progressive
+In conclusion, our development of the MemeCraft generator con-                        evolution of meme generation technology.
+stitutes a noteworthy advancement in automated meme creation.
+MemeCraft: Contextual and Stance-Driven
+Multimodal Meme Generation                                                                                           Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+
+
+REFERENCES                                                                                      Search and Data Mining. 706–714.
+ [1] Rui Cao, Ming Shan Hee, Adriel Kuek, Wen-Haw Chong, Roy Ka-Wei Lee, and               [25] H. G. Oliveira, D. Costa, and A. M. Pinto. 2016. One Does Not Simply Produce
+     Jing Jiang. 2023. Pro-Cap: Leveraging a Frozen Vision-Language Model for                   Funny Memes! – Explorations on the Automatic Generation of Internet Humor.
+     Hateful Meme Detection. Proceedings of the 31st ACM International Conference               In Proceedings of the Seventh International Conference on Computational Creativity
+     on Multimedia (2023).                                                                      (ICCC 2016). Paris, France.
+ [2] Rui Cao, Roy Ka-Wei Lee, Wen-Haw Chong, and Jing Jiang. 2022. Prompting for           [26] OpenAI. 2023. OpenAI Gpt-4 Technical Report. Technical Report.
+     Multimodal Hateful Meme Classification. In Proceedings of the 2022 Conference         [27] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela
+     on Empirical Methods in Natural Language Processing. 321–332.                              Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. 2022.
+ [3] Zekai Chen, Mariann Micsinai Balan, and Kevin Brown. 2023. Language models                 Training language models to follow instructions with human feedback. Advances
+     are few-shot learners for prognostic prediction. arXiv preprint arXiv:2302.12692           in Neural Information Processing Systems 35 (2022), 27730–27744.
+     (Feb. 2023). arXiv:2302.12692 [cs.CL]                                                 [28] V. A. L. Peirson and E. M. Tolunay. 2018. Dank Learning: Generating Memes
+ [4] Wenliang Dai, Junnan Li, Dongxu Li, Anthony Meng Huat Tiong, Junqi Zhao,                   Using Deep Neural Networks. arXiv preprint arXiv:1806.04510 (2018).
+     Weisheng Wang, Boyang Li, Pascale Fung, and Steven Hoi. 2023. InstructBLIP:           [29] Shraman Pramanick, Dimitar Dimitrov, Rituparna Mukherjee, Shivam Sharma,
+     Towards General-purpose Vision-Language Models with Instruction Tuning.                    Md. Shad Akhtar, Preslav Nakov, and Tanmoy Chakraborty. 2021. Detecting
+     arXiv:2305.06500 [cs.CV]                                                                   Harmful Memes and Their Targets. In Findings of the Association for Computa-
+ [5] Dimitar Dimitrov, Bishr Bin Ali, Shaden Shaar, Firoj Alam, Fabrizio Silvestri,             tional Linguistics: ACL-IJCNLP 2021. Association for Computational Linguistics,
+     Hamed Firooz, Preslav Nakov, and Giovanni Da San Martino. 2021. Detecting                  Online, 2783–2796. https://doi.org/10.18653/v1/2021.findings-acl.246
+     propaganda techniques in memes. The Association for Computational Linguistics         [30] Shraman Pramanick, Shivam Sharma, Dimitar Dimitrov, Md. Shad Akhtar, Preslav
+     (ACL) (2021).                                                                              Nakov, and Tanmoy Chakraborty. 2021. MOMENTA: A Multimodal Framework
+ [6] Yuhao Du, Muhammad Aamir Masood, and Kenneth Joseph. 2020. Understanding                   for Detecting Harmful Memes and Their Targets. In Findings of the Association
+     visual memes: An empirical analysis of text superimposed on memes shared on                for Computational Linguistics: EMNLP 2021.
+     twitter. In Proceedings of the International AAAI Conference on Web and Social        [31] QuickMeme. 2016. Quick Meme Website. http://quickmeme.com/
+     Media, Vol. 14. 153–164.                                                              [32] Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Mitch
+ [7] Tomáš Hák, Stanislava Janoušková, and Bedřich Moldan. 2016. Sustainable                    Matena, ..., and Peter J. Liu. 2020. Exploring the limits of transfer learning with a
+     Development Goals: A need for relevant indicators. Ecological indicators 60                unified text-to-text transformer. The Journal of Machine Learning Research 21, 1
+     (2016), 565–573.                                                                           (2020), 5485–5551.
+ [8] Ming Shan Hee, Wen-Haw Chong, and Roy Ka-Wei Lee. 2023. Decoding the                  [33] A. Sadasivam, K. Gunasekar, H. Davulcu, and Y. Yang. 2020. MemeBot: Towards
+     Underlying Meaning of Multimodal Hateful Memes. The International Joint                    automatic image meme generation. arXiv preprint arXiv:2004.14571 (2020).
+     Conference on Artificial Intelligence(IJCAI) (2023).                                  [34] Victor Sanh, Albert Webson, Colin Raffel, Stephen H Bach, Lintang Sutawika,
+ [9] Ming Shan Hee, Roy Ka-Wei Lee, and Wen-Haw Chong. 2022. On explaining                      Zaid Alyafeai, Antoine Chaffin, Arnaud Stiegler, Teven Le Scao, Arun Raja, et al.
+     multimodal hateful meme detection models. In Proceedings of the ACM Web                    2022. Multitask Prompted Training Enables Zero-Shot Task Generalization. In
+     Conference 2022. 3651–3655.                                                                ICLR 2022-Tenth International Conference on Learning Representations.
+[10] Paulo Cezar de Q Hermida and Eulanda M dos Santos. 2023. Detecting hate               [35] Teven Le Scao, Angela Fan, Christopher Akiki, Ellie Pavlick, Suzana Ilić, Daniel
+     speech in memes: a review. Artificial Intelligence Review (2023), 1–19.                    Hesslow, Roman Castagné, Alexandra Sasha Luccioni, François Yvon, Matthias
+[11] Douwe Kiela, Suvrat Bhooshan, Hossein Firooz, Emily Perez, and Davide Tes-                 Gallé, et al. 2022. Bloom: A 176b-parameter open-access multilingual language
+     tuggine. 2019. Supervised multimodal bitransformers for classifying images and             model. arXiv preprint arXiv:2211.05100 (2022).
+     text. arXiv preprint arXiv:1909.02950 (2019).                                         [36] Chhavi Sharma, Deepesh Bhageria, William Scott, Srinivas Pykl, Amitava Das,
+[12] Douwe Kiela, Hossein Firooz, Abhishek Mohan, Vedanuj Goswami, Amanpreet                    Tanmoy Chakraborty, Viswanath Pulabaigari, and Björn Gambäck. 2020. SemEval-
+     Singh, Pratyay Ringshia, and Davide Testuggine. 2020. The hateful memes                    2020 Task 8: Memotion Analysis-the Visuo-Lingual Metaphor!. In Proceedings of
+     challenge: Detecting hate speech in multimodal memes. Conference on Neural                 the Fourteenth Workshop on Semantic Evaluation. 759–773.
+     Information Processing Systems(NeurIPS 33 (2020), 2611–2624.                          [37] Shivam Sharma, Firoj Alam, Md Shad Akhtar, Dimitar Dimitrov, Giovanni
+[13] Hannah Kirk, Yennie Jun, Paulius Rauba, Gal Wachtel, Ruining Li, Xingjian Bai,             Da San Martino, Hamed Firooz, Alon Halevy, Fabrizio Silvestri, Preslav Nakov,
+     Noah Broestl, Martin Doff-Sotta, Aleksandar Shtedritski, and Yuki M Asano.                 and Tanmoy Chakraborty. 2022. Detecting and Understanding Harmful Memes:
+     2021. Memes in the Wild: Assessing the Generalizability of the Hateful Memes               A Survey. The International Joint Conference on Artificial Intelligence (IJCAI)
+     Challenge Dataset. In Proceedings of the 5th Workshop on Online Abuse and Harms            (2022).
+     (WOAH 2021). 26–35.                                                                   [38] Abhinav Kumar Thakur, Filip Ilievski, Hông-Ân Sandlin, Alain Mermoud, Zhivar
+[14] Anushka Kulkarni. 2017. Internet meme and Political Discourse: A study on the              Sourati, Luca Luceri, and Riccardo Tommasini. 2022. Multimodal and explainable
+     impact of internet meme as a tool in communicating political satire. Journal of            internet meme classification. arXiv preprint arXiv:2212.05612 (2022).
+     Content, Community & Communication Amity School of Communication 6 (2017).            [39] H. Touvron, L. Martin, K. Stone, P. Albert, A. Almahairi, Y. Babaei, and T. ...
+[15] A. Kumar, S. Singh, S. V. Murty, and S. Ragupathy. 2024. The Ethics of Interaction:        & Scialom. 2023. LLama 2: Open foundation and fine-tuned chat models. arXiv
+     Mitigating Security Threats in LLMs. (2024). arXiv:2401.12273 [cs.CR]                      preprint arXiv:2307.09288 (2023).
+[16] R. K. W. Lee, R. Cao, Z. Fan, J. Jiang, and W. H. Chong. 2021. Disentangling          [40] M. H. Van and X. Wu. 2023. Detecting and correcting hate speech in multimodal
+     hate in online memes. In Proceedings of the 29th ACM International Conference on           memes with large visual language model. The Conference and Workshop on Neural
+     Multimedia. 5138–5147.                                                                     Information Processing Systems(NeurIPS) (2023).
+[17] C. Li, C. Wong, S. Zhang, N. Usuyama, H. Liu, J. Yang, and J. Gao. 2023. Llava-med:   [41] S. R. Vyalla and V. Udandarao. 2020. Memeify: A large-scale meme generation
+     Training a large language-and-vision assistant for biomedicine in one day. (2023).         system. In Proceedings of the 7th ACM IKDD CoDS and 25th COMAD. 307–311.
+     arXiv:arXiv:2306.00890 [cs.CL]                                                        [42] W. Y. Wang and M. Wen. 2015. I Can Has Cheezburger? A nonparanormal
+[18] J. Li, D. Li, S. Savarese, and S. Hoi. 2023. Blip-2: Bootstrapping language-image          approach to combining textual and visual information for predicting and gen-
+     pre-training with frozen image encoders and large language models. Proceed-                erating popular meme descriptions. In Proceedings of the 2015 Conference of the
+     ings of the 40th International Conference on Machine Learning(ICML) (2023).                North American Chapter of the Association for Computational Linguistics: Human
+     arXiv:arXiv:2301.12597 [cs.CL]                                                             Language Technologies. 355–365.
+[19] H. Liu, C. Li, Q. Wu, and Y. J. Lee. 2023. Visual instruction tuning. Conference on   [43] Jason Wei, Maarten Bosma, Vincent Y Zhao, Kelvin Guu, Adams Wei Yu, Brian
+     Neural Information Processing Systems(NeurIPS) (2023).                                     Lester, Nan Du, Andrew M Dai, and Quoc V Le. 2021. Finetuned language models
+[20] Lambert Mathias, Shaoliang Nie, Aida Mostafazadeh Davani, Douwe Kiela, Vin-                are zero-shot learners. arXiv preprint arXiv:2109.01652 (2021).
+     odkumar Prabhakaran, Bertie Vidgen, and Zeerak Waseem. 2021. Findings of the          [44] Bo Xu, Tingting Li, Junzhe Zheng, Mehdi Naseriparsa, Zhehuan Zhao, Hongfei
+     WOAH 5 shared task on fine grained hateful memes detection. In Proceedings of              Lin, and Feng Xia. 2022. MET-Meme: A multimodal meme dataset rich in
+     the 5th Workshop on Online Abuse and Harms (WOAH 2021). 201–206.                           metaphors. In Proceedings of the 45th International ACM SIGIR Conference on
+[21] Memegenerator.net. 2018. Meme Generator. http://www.memegenerator.net/                     Research and Development in Information Retrieval. 2887–2899.
+[22] Mia Moody-Ramirez and Andrew B Church. 2019. Analysis of Facebook meme                [45] Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan, Yiyang Zhou, Junyang
+     groups used during the 2016 US presidential election. Social Media+ Society 5, 1           Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, et al. 2023. mplug-owl: Modular-
+     (2019), 2056305118808799.                                                                  ization empowers large language models with multimodality. arXiv preprint
+[23] AE Msugheter. 2020. Internet meme as a campaign tool to the fight against Covid-           arXiv:2304.14178 (2023).
+     19 in Nigeria. Global Journal of Human-Social Science: A Arts & Humanities–           [46] B. Zhai, S. Yang, X. Zhao, C. Xu, S. Shen, D. Zhao, and X. Fan. 2023. HallE-Switch:
+     Psychology 20, 6 (2020), 27–39.                                                            Rethinking and Controlling Object Existence Hallucinations in Large Vision
+[24] Usman Naseem, Jinman Kim, Matloob Khushi, and Adam G Dunn. 2023. A                         Language Models for Detailed Caption. arXiv preprint (2023). arXiv:2310.01779
+     Multimodal Framework for the Identification of Vaccine Critical Memes on              [47] B. Zhang and J. Pinto. 2021. Changing the World One Meme at a Time: The
+     Twitter. In Proceedings of the Sixteenth ACM International Conference on Web               Effects of Climate Change Memes on Civic Engagement Intentions. Environmental
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY                                                         Han Wang and Roy Ka-Wei Lee
+
+
+     Communication 15, 6 (2021), 749–764.                                                A   ADDITIONAL INFORMATION ON
+[48] Zhuosheng Zhang, Aston Zhang, Mu Li, and Alex Smola. 2022. Automatic chain
+     of thought prompting in large language models. arXiv preprint arXiv:2210.03493          EVALUATION RESULTS
+     (Oct. 2022). arXiv:2210.03493 [cs.CL]
+[49] Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu,
+     Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric Xing, et al. 2023.
+     Judging LLM-as-a-judge with MT-Bench and Chatbot Arena. arXiv preprint
+     arXiv:2306.05685 (2023).
+[50] D. Zhu, J. Chen, K. Haydarov, X. Shen, W. Zhang, and M. Elhoseiny. 2023. Chatgpt
+     asks, blip-2 answers: Automatic questioning towards enriched visual descriptions.
+     (2023). arXiv:arXiv:2303.06594 [cs.CV]
+[51] Deyao Zhu, Jun Chen, Xiaoqian Shen, Xiang Li, and Mohamed Elhoseiny. 2023.
+     MiniGPT-4: Enhancing Vision-Language Understanding with Advanced Large
+     Language Models. arXiv preprint arXiv:2304.10592 (2023).
+[52] Jiawen Zhu, Roy Ka-Wei Lee, and Wen Haw Chong. 2022. Multimodal zero-shot
+     hateful meme detection. In Proceedings of the 14th ACM Web Science Conference
+     2022. 382–389.
+MemeCraft: Contextual and Stance-Driven
+Multimodal Meme Generation                                                                                                                            Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+
+
+                       Table 7: Average authenticity scores of various models breakdown by persuasion techniques.
+          Social Cause                       Model                   Causes      Consequences             Solutions              Evidence of Absence                 Benefits          Rationale           Average
+                                  MemeCraft-ChatGPT                   0.56              0.47                      0.52                           0.41                   0.43                 -                0.48
+        Climate Action
+                                  MemeCraft-LLaMA                      0.5              0.4                       0.41                            0.4                   0.45                 -                0.43
+                                   MemeCraft-LLaVA                    0.41              0.36                      0.32                           0.35                   0.36                 -                0.36
+                                  MemeCraft-ChatGPT                   0.58              0.58                      0.48                           0.56                     -                0.47               0.53
+       Gender Equality
+                                  MemeCraft-LLaMA                     0.57              0.47                      0.44                           0.34                     -                0.45               0.45
+                                   MemeCraft-LLaVA                    0.42              0.33                      0.33                           0.28                     -                0.32               0.34
+                 -                     Dank Learning                   -                  -                        -                              -                       -                  -                0.23
+                 -                     Online Random                   -                  -                        -                              -                       -                  -                0.59
+
+
+
+
+                                           Evidence of                                                                 Evidence of                                                                   Evidence of
+       Causes   Consequences   Solutions                  Benefits           Causes    Consequences   Solutions                       Benefits              Causes     Consequences    Solutions                     Benefits
+                                            Absence                                                                     Absence                                                                       Absence
+
+         Figure 6: Distribution of hilarity scores across models for climate action breakdown by persuasion techniques.
+
+
+
+
+                                           Evidence of                                                                  Evidence of                                                                   Evidence of
+       Causes   Consequences   Solutions                 Rationale            Causes   Consequences   Solutions                       Rationale               Causes    Consequences     Solutions                    Rationale
+                                            Absence                                                                      Absence                                                                       Absence
+
+        Figure 7: Distribution of hilarity scores across models for gender equality breakdown by persuasion techniques
+
+Table 8: Hatefulness scores of generated memes identified by the safety mechanism (Machine) breakdown by persuasion
+techniques.
+          Social Cause                       Model                   Causes      Consequences             Solutions              Evidence of Absence                 Benefits          Rationale           Average
+                                  MemeCraft-ChatGPT                   0.03              0.06                      0.07                           0.07                   0.04                 -                0.06
+        Climate Action            MemeCraft-LLaMA                     0.01              0.02                      0.05                            0.0                   0.08                 -                0.03
+                                   MemeCraft-LLaVA                    0.01              0.02                      0.03                           0.07                   0.03                 -                0.03
+                                  MemeCraft-ChatGPT                   0.54              0.41                      0.56                           0.59                     -                0.63               0.55
+       Gender Equality            MemeCraft-LLaMA                     0.38              0.32                      0.39                           0.47                     -                 0.5               0.41
+                                   MemeCraft-LLaVA                    0.22              0.28                      0.29                           0.28                     -                0.26               0.27
+Conference acronym ’XX, June 03–05, 2018, Woodstock, NY                                                                       Han Wang and Roy Ka-Wei Lee
+
+
+ Table 9: Hatefulness scores of post-filtered memes assess by the evaluators (Human) breakdown by persuasion techniques.
+          Social Cause              Model             Causes     Consequences   Solutions   Evidence of Absence   Benefits   Rationale   Average
+                            MemeCraft-ChatGPT               0        0.03         0.01             0.02             0.01         -        0.01
+        Climate Action      MemeCraft-LLaMA                0           0          0.01             0.01             0.01         -          0
+                             MemeCraft-LLaVA              0.01       0.01           0              0.01               0          -        0.01
+                            MemeCraft-ChatGPT             0.02       0.02         0.01             0.01              -         0.04       0.02
+        Gender Equality     MemeCraft-LLaMA               0.03       0.02         0.03             0.03              -         0.08       0.04
+                             MemeCraft-LLaVA              0.02       0.01         0.02             0.01              -         0.03       0.01
+                -              Dank Learning               -          -             -                -               -           -        0.05
+                -              Online Random               -          -             -                -               -           -        0.05
+

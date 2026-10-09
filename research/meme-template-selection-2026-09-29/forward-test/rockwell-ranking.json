@@ -1,0 +1,5 @@
+[
+  {"template":"mordor","angle":"simple-chatbot-hard-work","score":102,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"genie","angle":"capability-needs-corpus","score":86,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"reveal","angle":"simple-chatbot-hard-work","score":82,"eligible":false,"hard_fail":false,"critical_pass":false}
+]

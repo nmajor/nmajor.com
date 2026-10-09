@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+
+const TURNSTILE_SITEKEY = '0x4AAAAAADwCt8xxNYgYoiEK';
+---
+<Base
+  title="Work with me · Nicholas Major"
+  description="Tell Nicholas Major about the process, AI project, or internal tool your company is trying to improve."
+>
+  <header class="work-head">
+    <div class="eyebrow">Work with me</div>
+    <h1>Tell me what you're trying to fix.</h1>
+    <p>
+      I help companies work out where AI can save time or remove a stubborn bit of
+      manual work. Sometimes that means building an internal tool. Sometimes it
+      means finding out that AI is the wrong answer before you spend the money.
+    </p>
+  </header>
+
+  <section class="work-body">
+    <div class="work-copy">
+      <h2>What to include</h2>
+      <p>
+        Tell me what the work looks like today, where it gets stuck, and what a
+        better result would look like. You don't need a finished brief or an AI
+        strategy.
+      </p>
+      <p>
+        Your note comes straight to me. If it sounds like something I can help
+        with, I'll reply by email.
+      </p>
+    </div>
+
+    <form class="work-form" action="/api/contact" method="POST" data-contact-form novalidate>
+      <div class="field-row">
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="name" required maxlength="120" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Work email</span>
+          <input type="email" name="email" required maxlength="320" autocomplete="email" inputmode="email" />
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Company <small>Optional</small></span>
+        <input type="text" name="company" maxlength="160" autocomplete="organization" />
+      </label>
+
+      <label class="field">
+        <span>What are you trying to change?</span>
+        <textarea
+          name="message"
+          required
+          minlength="20"
+          maxlength="4000"
+          rows="8"
+          placeholder="What happens now, where it gets stuck, and what you'd like to happen instead."
+        ></textarea>
+        <small class="field__count" data-count>0 / 4,000</small>
+      </label>
+
+      <label class="trap" aria-hidden="true">
+        Website
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </label>
+
+      <div
+        id="turnstile-contact"
+        class="cf-turnstile"
+        data-sitekey={TURNSTILE_SITEKEY}
+        data-action="nmajor_contact"
+        data-theme="light"
+        data-size="flexible"
+      ></div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Send your note</button>
+        <span>I read every submission myself.</span>
+      </div>
+      <p class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script is:inline>
+    (function () {
+      var form = document.querySelector('[data-contact-form]');
+      if (!form) return;
+      var message = form.querySelector('textarea[name="message"]');
+      var count = form.querySelector('[data-count]');
+      var status = form.querySelector('.form-message');
+      var button = form.querySelector('button[type="submit"]');
+
+      function updateCount() {
+        count.textContent = message.value.length.toLocaleString('en-US') + ' / 4,000';
+      }
+      message.addEventListener('input', updateCount);
+      updateCount();
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        status.className = 'form-message';
+        status.textContent = '';
+
+        if (!form.reportValidity()) return;
+        var token = form.querySelector('[name="cf-turnstile-response"]');
+        if (!token || !token.value) {
+          status.textContent = 'Please complete the anti-spam check, then try again.';
+          return;
+        }
+
+        var label = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Sending...';
+        try {
+          var data = Object.fromEntries(new FormData(form).entries());
+          var response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          var result = await response.json();
+          if (!result.ok) throw new Error(result.error || 'Could not send your message. Please try again.');
+
+          form.reset();
+          updateCount();
+          form.classList.add('is-sent');
+          status.className = 'form-message form-message--ok';
+          status.textContent = 'Thanks. I have your note and will reply by email.';
+          if (window.rybbit && window.rybbit.event) {
+            window.rybbit.event('work_inquiry', { source: 'work_with_me' });
+          }
+        } catch (error) {
+          status.textContent = error instanceof Error ? error.message : 'Could not send your message. Please try again.';
+          button.disabled = false;
+          button.textContent = label;
+          if (window.turnstile) window.turnstile.reset('#turnstile-contact');
+        }
+      });
+    })();
+  </script>
+
+  <style>
+    .work-head,
+    .work-body {
+      width: min(900px, calc(100% - 2 * clamp(20px, 5vw, 48px)));
+      margin-inline: auto;
+    }
+
+    .work-head {
+      padding-block: clamp(48px, 8vw, 88px) clamp(36px, 5vw, 52px);
+      border-bottom: 1px solid var(--line2);
+    }
+    .work-head h1 {
+      max-width: 12ch;
+      margin: 12px 0 0;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: .96;
+      letter-spacing: -.04em;
+      font-weight: 900;
+    }
+    .work-head p {
+      max-width: 65ch;
+      margin: 24px 0 0;
+      font-size: clamp(17px, 1.9vw, 20px);
+      line-height: 1.6;
+      color: var(--body);
+    }
+
+    .work-body {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr);
+      gap: clamp(36px, 7vw, 80px);
+      padding-block: clamp(40px, 7vw, 76px);
+      align-items: start;
+    }
+    .work-copy h2 { margin: 0 0 14px; font-size: 24px; letter-spacing: -.025em; }
+    .work-copy p { margin: 0 0 16px; font-size: 16px; line-height: 1.6; color: var(--body); }
+
+    .work-form { display: flex; flex-direction: column; gap: 20px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; }
+    .field small { color: var(--muted2); font-weight: 500; }
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line2);
+      border-radius: 10px;
+      background: #fff;
+      padding: 13px 14px;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 400;
+      line-height: 1.5;
+      outline: none;
+    }
+    .field textarea { resize: vertical; min-height: 180px; }
+    .field input:focus,
+    .field textarea:focus { border-color: var(--accent); }
+    .field__count { align-self: flex-end; }
+    .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    .cf-turnstile { max-width: 100%; }
+    .form-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .form-actions .btn { border: 0; cursor: pointer; font-family: inherit; }
+    .form-actions .btn:disabled { opacity: .6; cursor: default; }
+    .form-actions span { font-size: 13px; color: var(--muted2); }
+    .form-message { min-height: 1.5em; margin: -4px 0 0; color: var(--accent); font-size: 14px; font-weight: 600; }
+    .form-message--ok { color: #1f7a4d; }
+    .work-form.is-sent > :not(.form-message) { display: none; }
+
+    @media (max-width: 720px) {
+      .work-body { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</Base>

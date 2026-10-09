@@ -1,11 +1,15 @@
 {
   "version": 2,
   "admission_review": {
-    "date": "2026-08-11",
-    "reviewer": "Codex source-and-render audit",
-    "report": "research/social-meme-template-catalog/report.md",
-    "source_index": "research/social-meme-template-catalog/raw/semantic-sources/index.json",
-    "rendered_examples": 79
+    "date": "2026-09-29",
+    "reviewer": "Astra wave-two source-and-render expansion audit; earlier decisions retained",
+    "report": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/report.md",
+    "source_index": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/index.json",
+    "rendered_examples": 123,
+    "prior_review": "research/social-meme-template-catalog/expansion-2026-09-29/report.md",
+    "prior_source_index": "research/social-meme-template-catalog/expansion-2026-09-29/raw/index.json",
+    "newly_rendered_examples": 22,
+    "prior_contract_count": 101
   },
   "admission": {
     "active": [
@@ -16,17 +20,21 @@
       "perfection", "same", "say", "stonks", "success", "db", "gb",
       "panik-kalm-panik", "pigeon", "3hd", "afraid", "bender", "facepalm",
       "gone", "made", "mouth", "nice", "noidea", "patrick", "reveal",
-      "touch"
+      "touch", "agnes", "biw", "boat", "gandalf", "glasses", "morpheus", "oprah", "remembers", "ski", "spiderman", "wddth", "xy", "yodawg",
+      "cake", "elf", "friends", "headaches", "interesting", "jw", "khaby-lame", "kramer", "light", "philosoraptor", "spirit", "whatyear"
     ],
     "hold": [
       "saltbae", "away", "badchoice", "captain", "firsttry", "hagrid",
       "harold", "michael-scott", "millers", "older", "pooh", "regret",
-      "right", "seagull", "wallet"
+      "right", "seagull", "wallet",
+      "ch", "crowd", "jim", "sb", "scc", "ptj",
+      "blb", "dragon", "ive", "nails", "stop", "vince"
     ],
     "rejected": [
       "astronaut", "fine", "kermit", "aint-got-time", "cbb", "chair",
       "chosen", "cmm", "crazypills", "dodgson", "midwit", "woman-cat",
-      "wonka", "worst"
+      "wonka", "worst", "lrv", "drowning", "pool",
+      "box", "disastergirl", "spongebob", "wkh"
     ]
   },
   "templates": {
@@ -1008,6 +1016,2031 @@
       "invariants": ["Line two undercuts the status or certainty implied by line one."],
       "operator_example": ["Oh, your chatbot passed the demo?", "You must have solved transformation"]
     },
+    "agnes": {
+      "name": "Agnes Harkness Winking",
+      "meaning": "A stated claim is knowingly untrue, and the wink admits the shared secret.",
+      "writing_guide": "Set up the situation, then state the transparently false assurance. The wink contradicts the assurance; do not add a confession caption.",
+      "anti_patterns": [
+        "Do not use an honest promise or an uncertain forecast.",
+        "Keep deception generic or self-directed; never accuse a named company without evidence."
+      ],
+      "slots": [
+        {
+          "key": "situation",
+          "max_words": 6,
+          "role": "Top caption supplies the context for the wink."
+        },
+        {
+          "key": "obvious_falsehood",
+          "max_words": 8,
+          "role": "Bottom caption is the claim the wink contradicts."
+        }
+      ],
+      "invariants": [
+        "The audience must recognize why the speaker does not mean the assurance."
+      ],
+      "operator_example": [
+        "When the demo needs human approval",
+        "Fully autonomous"
+      ],
+      "evidence": {
+        "renderer_id": "agnes",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/agnes-harkness-winking",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/agnes.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#agnes"
+      },
+      "assessment": {
+        "origin": "WandaVision trailer and episode reaction; source explicitly documents open secrets and obvious lies.",
+        "safety": "Fictional TV character. Avoid unsupported dishonesty allegations.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds knowingly false reassurance, distinct from genuine confusion or misclassification."
+      }
+    },
+    "biw": {
+      "name": "Baby Insanity Wolf",
+      "meaning": "A tiny harmless deviation is treated as an act of rebellion.",
+      "writing_guide": "Describe an ordinary action and the trivial rule or expectation it defies. Keep the act so mild that only the speaker would consider it daring.",
+      "anti_patterns": [
+        "Do not celebrate unsafe workarounds, privacy breaches, or bypassed approvals.",
+        "Do not imitate disability or use mental-health language in the caption."
+      ],
+      "slots": [
+        {
+          "key": "ordinary_action",
+          "max_words": 6,
+          "role": "Top caption names the small act."
+        },
+        {
+          "key": "tiny_defiance",
+          "max_words": 7,
+          "role": "Bottom caption makes its supposed rebelliousness comically minor."
+        }
+      ],
+      "invariants": [
+        "The deviation must be harmless and much smaller than the implied bravado."
+      ],
+      "operator_example": [
+        "Ended the AI steering meeting",
+        "Five minutes early"
+      ],
+      "evidence": {
+        "renderer_id": "biw",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/baby-insanity-wolf",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/biw.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#biw"
+      },
+      "assessment": {
+        "origin": "Wolf-cub advice animal; KYM defines minor acts of defiance.",
+        "safety": "Animal photograph, not violent wolf art. Title stays catalog metadata, never diagnostic language.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds gentle self-owning rebellion without attacking an employee."
+      }
+    },
+    "boat": {
+      "name": "I Should Buy a Boat Cat",
+      "meaning": "A thought or small observation triggers a sudden desire to acquire or start something.",
+      "writing_guide": "Put the triggering thought above the cat and an 'I should' conclusion below. A disproportionate purchase is optional, not the format's required meaning.",
+      "anti_patterns": [
+        "Do not require every desire to be foolish or unaffordable.",
+        "Do not turn it into a vendor endorsement or factual buying recommendation."
+      ],
+      "slots": [
+        {
+          "key": "triggering_observation",
+          "max_words": 7,
+          "role": "Top line is the observation prompting the idea."
+        },
+        {
+          "key": "new_desire",
+          "max_words": 7,
+          "role": "Bottom line is the cat's new plan.",
+          "required_regex": "(?i)^i should .+"
+        }
+      ],
+      "invariants": [
+        "The desire must follow from the first-line observation, even if the leap is comically large."
+      ],
+      "operator_example": [
+        "Automated one spreadsheet",
+        "I should build the whole ERP"
+      ],
+      "evidence": {
+        "renderer_id": "boat",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/i-should-buy-a-boat-cat",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/boat.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#boat"
+      },
+      "assessment": {
+        "origin": "Cat reading newspaper from Bjork's Triumph of the Heart music video.",
+        "safety": "Music-video frame; avoid finance or appearance mockery.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds impulsive scope expansion rather than an abstract preferred option."
+      }
+    },
+    "ch": {
+      "name": "Captain Hindsight",
+      "meaning": "After a problem has happened, someone announces the precaution that would have prevented it.",
+      "writing_guide": "State the already-realized problem, then the belated 'should have' advice. The lateness makes the advice unhelpful; it is not a prospective warning.",
+      "anti_patterns": [
+        "Do not blame victims of injury or disaster.",
+        "Do not humiliate the employee who inherited the problem."
+      ],
+      "slots": [
+        {
+          "key": "realized_problem",
+          "max_words": 8,
+          "role": "Top line establishes an outcome that already happened."
+        },
+        {
+          "key": "belated_precaution",
+          "max_words": 8,
+          "role": "Bottom line gives hindsight, too late to help.",
+          "required_regex": "(?i)^.+should have .+"
+        }
+      ],
+      "invariants": [
+        "Line two is a counterfactual prevention for line one, not a present fix."
+      ],
+      "operator_example": [
+        "The pilot produced no measurable savings",
+        "We should have measured the old process"
+      ],
+      "evidence": {
+        "renderer_id": "ch",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/captain-hindsight",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/ch.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#ch"
+      },
+      "assessment": {
+        "origin": "South Park character introduced around the Deepwater Horizon response; source documents hindsight snowclone.",
+        "safety": "Hold: source's core origin mocks disaster response; captions cannot silently clear that baggage.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Useful retrospective relationship, but disaster-origin satire and victim-blaming drift need a separate safety decision."
+      }
+    },
+    "crowd": {
+      "name": "Soccer Celebration In A Bar",
+      "meaning": "An ordinary small payoff receives the celebration normally reserved for a sporting victory.",
+      "writing_guide": "For this renderer, both text lines land on the same TV screen. Do not generate campaign captions from this contract until that overlap is fixed. The intended joke is a small success receiving excessive celebration.",
+      "anti_patterns": [
+        "Do not use an enormous achievement that merits this celebration.",
+        "Do not celebrate another person's failure or a harmful outcome."
+      ],
+      "slots": [
+        {
+          "key": "anticipation",
+          "max_words": 6,
+          "role": "First renderer caption on the TV screen, not a separate anticipation panel."
+        },
+        {
+          "key": "small_payoff",
+          "max_words": 7,
+          "role": "Second renderer caption on the same TV screen; it overlaps the first in the audited JPG."
+        }
+      ],
+      "invariants": [
+        "The second line completes the first task, and its smallness makes the cheering excessive."
+      ],
+      "operator_example": [
+        "Opened the AI incident ticket",
+        "It already had an owner"
+      ],
+      "evidence": {
+        "renderer_id": "crowd",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/soccer-celebration-in-a-bar",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/crowd.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#crowd"
+      },
+      "assessment": {
+        "origin": "England football fans watching a 2016 goal, remixed to celebrate innocuous clips.",
+        "safety": "Crowd cheering, no visible injury. Exact event footage remains review-only.",
+        "legibility": "FAIL: both captions overlap on one TV screen. No separate anticipation or celebration panels exist in this renderer.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Hold: exact Memegen two-slot JPEG overlays both captions on the same screen. The proposed waiting/celebration panel mapping was false."
+      }
+    },
+    "gandalf": {
+      "name": "Confused Gandalf",
+      "meaning": "A supposedly familiar place or artifact suddenly feels unfamiliar.",
+      "writing_guide": "Name the return to a familiar artifact first; answer with the fixed no-memory reaction. Use first-person forgetfulness, not a claim that older workers cannot remember.",
+      "anti_patterns": [
+        "Do not diagnose dementia or joke about age.",
+        "Do not use for a subject the speaker has never encountered."
+      ],
+      "slots": [
+        {
+          "key": "familiar_context",
+          "max_words": 7,
+          "role": "Top caption explains what the returning observer should recognize."
+        },
+        {
+          "key": "no_memory_reaction",
+          "max_words": 9,
+          "role": "Bottom caption is the observer's recognition failure.",
+          "required_regex": "(?i)^i have no memory of .+"
+        }
+      ],
+      "invariants": [
+        "The speaker previously knew the thing that now feels unfamiliar."
+      ],
+      "operator_example": [
+        "Opening the pilot we shipped last quarter",
+        "I have no memory of this workflow"
+      ],
+      "evidence": {
+        "renderer_id": "gandalf",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/confused-gandalf",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/gandalf.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#gandalf"
+      },
+      "assessment": {
+        "origin": "Gandalf in Moria; KYM documents office return and forgotten codebase uses.",
+        "safety": "Film frame; no age or cognitive-disability jokes.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds loss of familiarity and undocumented work, distinct from never understanding a role."
+      }
+    },
+    "glasses": {
+      "name": "Peter Parker's Glasses",
+      "meaning": "The same thing looks different when the observer changes perspective.",
+      "writing_guide": "Write the first reading in the upper right and the revised reading below. Both must describe the same artifact. A corrected reading is one use, not a claim that glasses always reveal truth in the film.",
+      "anti_patterns": [
+        "Do not label unrelated competing products.",
+        "Do not use a person as a degrading comparison or claim a real company is fraudulent without evidence."
+      ],
+      "slots": [
+        {
+          "key": "first_reading",
+          "max_words": 5,
+          "role": "Upper-right object panel pairs with the first glasses pose."
+        },
+        {
+          "key": "revised_reading",
+          "max_words": 5,
+          "role": "Lower-right object panel pairs with the changed glasses pose."
+        }
+      ],
+      "invariants": [
+        "Both labels describe one subject under different readings, not two unrelated subjects."
+      ],
+      "operator_example": [
+        "AI strategy",
+        "Software shopping list"
+      ],
+      "evidence": {
+        "renderer_id": "glasses",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/peter-parkers-glasses",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/glasses.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#glasses"
+      },
+      "assessment": {
+        "origin": "Spider-Man film scene became a two-reading comparison.",
+        "safety": "Fictional character; restrict labels to artifacts and processes.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds reinterpretation of a single artifact, unlike Drake's separate choices."
+      }
+    },
+    "jim": {
+      "name": "Jim Halpert Pointing to Whiteboard",
+      "meaning": "A presenter lays out a claim and then its supporting reason or complication.",
+      "writing_guide": "Write a short board claim, then a related explanation on the next board. It must add a reasoning step; avoid using the boards as a generic quote card.",
+      "anti_patterns": [
+        "Do not fill either board with a paragraph.",
+        "Do not pretend a poster with two unrelated statements is a relational meme."
+      ],
+      "slots": [
+        {
+          "key": "claim",
+          "max_words": 7,
+          "role": "First board presents the proposition."
+        },
+        {
+          "key": "reason_or_complication",
+          "max_words": 8,
+          "role": "Second board develops or undercuts that proposition."
+        }
+      ],
+      "invariants": [
+        "The second statement must give a reason for or expose a problem with the first."
+      ],
+      "operator_example": [
+        "The demo answered every question",
+        "We wrote every question"
+      ],
+      "evidence": {
+        "renderer_id": "jim",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/jim-halpert-pointing-to-whiteboard",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/jim.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#jim"
+      },
+      "assessment": {
+        "origin": "The Office scene; KYM preserves explanatory and request variants rather than one fixed argument structure.",
+        "safety": "Tiny board text and flexible semantics make reliable autonomous selection uncertain.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Short example is readable, but broad claim-and-explanation semantics add a thesis poster rather than a distinct joke. Hold until the contract has a useful, bounded selection rule."
+      }
+    },
+    "lrv": {
+      "name": "Laundry Room Viking",
+      "meaning": "An optimistic instruction is repeated sarcastically after the promised experience disappoints.",
+      "writing_guide": "Quote the instruction with 'they said', then the promised benefit with the same ending. The picture supplies the bad reality.",
+      "anti_patterns": [
+        "Do not use this exact flood photograph in campaigns.",
+        "Do not make real disaster damage the joke."
+      ],
+      "slots": [
+        {
+          "key": "quoted_instruction",
+          "max_words": 8,
+          "role": "Top caption repeats the advice.",
+          "required_regex": "(?i)^.+they said[.!]?$"
+        },
+        {
+          "key": "quoted_promise",
+          "max_words": 8,
+          "role": "Bottom caption repeats the false promise.",
+          "required_regex": "(?i)^.+they said[.!]?$"
+        }
+      ],
+      "invariants": [
+        "Both captions quote the same overoptimistic recommendation; the art contradicts it."
+      ],
+      "operator_example": [
+        "Just add a chatbot they said",
+        "It will save time they said"
+      ],
+      "evidence": {
+        "renderer_id": "lrv",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/laundry-room-viking",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/lrv.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#lrv"
+      },
+      "assessment": {
+        "origin": "Facebook photo of a man in a flooded laundry room after Hurricane Irene.",
+        "safety": "Rejected for real-disaster imagery, even when proposed caption concerns harmless software.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "The recognizable background is a real Hurricane Irene flood, violating the disaster gate."
+      }
+    },
+    "morpheus": {
+      "name": "Matrix Morpheus",
+      "meaning": "A calm revelation challenges an assumption the audience took for granted.",
+      "writing_guide": "Use the fixed 'What if I told you' invitation, then a concrete counterintuitive fact or correction. The revelation needs support in the accompanying post.",
+      "anti_patterns": [
+        "Do not deliver patronizing personal insults or conspiracy claims.",
+        "Do not attribute the catchphrase as an actual line from the films."
+      ],
+      "slots": [
+        {
+          "key": "revelation_invitation",
+          "max_words": 6,
+          "role": "Top line invites reconsideration.",
+          "required_regex": "(?i)^what if i told you(?: that)?[?]?$"
+        },
+        {
+          "key": "revealing_fact",
+          "max_words": 9,
+          "role": "Bottom line supplies the counterintuitive correction."
+        }
+      ],
+      "invariants": [
+        "The second line must overturn a recognizable assumption, not merely repeat a slogan."
+      ],
+      "operator_example": [
+        "What if I told you",
+        "The best fix was a dropdown"
+      ],
+      "evidence": {
+        "renderer_id": "morpheus",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/matrix-morpheus",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/morpheus.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#morpheus"
+      },
+      "assessment": {
+        "origin": "Matrix reaction macro; KYM notes the phrase is not spoken in the films.",
+        "safety": "Film portrait; factual correction must be sourced, no condescension toward an identifiable person.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds assumption correction through a calm reveal; constrained to systems, not personal belittling."
+      }
+    },
+    "oprah": {
+      "name": "Oprah You Get a Car",
+      "meaning": "The same thing is enthusiastically handed to everyone without discrimination.",
+      "writing_guide": "Give one recipient an item in line one, then announce that everybody receives that same item. Keep the allocation broad; its merit can be sincere or ironic.",
+      "anti_patterns": [
+        "Do not give different items to different groups.",
+        "Do not imply the pictured host endorses a product or company."
+      ],
+      "slots": [
+        {
+          "key": "individual_allocation",
+          "max_words": 7,
+          "role": "Top caption gives one audience member the item.",
+          "required_regex": "(?i)^you get .+"
+        },
+        {
+          "key": "universal_allocation",
+          "max_words": 7,
+          "role": "Bottom caption extends that item to everyone.",
+          "required_regex": "(?i)^everybody gets .+"
+        }
+      ],
+      "invariants": [
+        "The item distributed in both lines must be identical; the scope expands to everyone."
+      ],
+      "operator_example": [
+        "You get a chatbot",
+        "Everybody gets a chatbot"
+      ],
+      "evidence": {
+        "renderer_id": "oprah",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/oprah-you-get-a-car",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/oprah.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#oprah"
+      },
+      "assessment": {
+        "origin": "2004 TV car giveaway and its repeated distribution catchphrase.",
+        "safety": "TV-host likeness; no endorsement, personal medical outcomes, or humiliation.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds indiscriminate distribution, distinct from enthusiasm to buy one product."
+      }
+    },
+    "remembers": {
+      "name": "Pepperidge Farm Remembers",
+      "meaning": "A speaker recalls a once-common practice that others seem to have forgotten.",
+      "writing_guide": "Begin with 'Remember when' and a concrete older practice, then the fixed remembering reply. Make the past verifiable or recognizably generic; do not invent Nick's memories.",
+      "anti_patterns": [
+        "Do not make an unsupported everything-was-better claim.",
+        "Do not mock age, young workers, or a protected group."
+      ],
+      "slots": [
+        {
+          "key": "forgotten_practice",
+          "max_words": 10,
+          "role": "Top caption asks about the vanished practice.",
+          "required_regex": "(?i)^remember when .+"
+        },
+        {
+          "key": "remembering_reply",
+          "max_words": 4,
+          "role": "Bottom caption preserves the commercial-parody line.",
+          "required_regex": "(?i)^pepperidge farm remembers[.!]?$"
+        }
+      ],
+      "invariants": [
+        "The first line describes a prior practice, not a forecast or a wish."
+      ],
+      "operator_example": [
+        "Remember when software had an undo button?",
+        "Pepperidge Farm remembers"
+      ],
+      "evidence": {
+        "renderer_id": "remembers",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/pepperidge-farm-remembers",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/remembers.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#remembers"
+      },
+      "assessment": {
+        "origin": "Family Guy parody of bakery advertisements, used for nostalgic recollection.",
+        "safety": "Branded TV parody; no implication of sponsorship or age stereotype.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds organizational memory and disappearing product expectations without asserting old technology is superior."
+      }
+    },
+    "sb": {
+      "name": "Scumbag Brain",
+      "meaning": "One's own mind remembers or supplies the wrong thing while withholding what is needed.",
+      "writing_guide": "Contrast an unhelpful mental success with a useful mental failure, both owned by the same speaker. Do not generalize this to another person's health.",
+      "anti_patterns": [
+        "Do not diagnose a coworker or mock a mental-health condition.",
+        "Do not use suicidal ideation, intrusive trauma, or treatment as the joke."
+      ],
+      "slots": [
+        {
+          "key": "unhelpful_success",
+          "max_words": 8,
+          "role": "Top caption names the mind's useless success."
+        },
+        {
+          "key": "useful_failure",
+          "max_words": 8,
+          "role": "Bottom caption names the needed capability it withholds."
+        }
+      ],
+      "invariants": [
+        "The same person's mind succeeds when unhelpful and fails when useful."
+      ],
+      "operator_example": [
+        "Remembers every model name",
+        "Forgets why we bought them"
+      ],
+      "evidence": {
+        "renderer_id": "sb",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/scumbag-brain",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/sb.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#sb"
+      },
+      "assessment": {
+        "origin": "Brain advice animal; KYM traces earliest known use to a suicide-support community.",
+        "safety": "Hold: mental-health context. Gandalf is the safer bounded familiarity alternative.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Documented suicide-support origin and insulting framing require separate safety review; do not silently activate as ordinary memory humor."
+      }
+    },
+    "scc": {
+      "name": "Sudden Clarity Clarence",
+      "meaning": "An ordinary observation suddenly feels like a major epiphany.",
+      "writing_guide": "Use a brief realization exclamation followed by the mundane insight. Keep the insight simple; do not use this as proof of a large business result.",
+      "anti_patterns": [
+        "Do not imply the photographed person is intoxicated or unintelligent.",
+        "Do not make the insight a grand unsupported prediction."
+      ],
+      "slots": [
+        {
+          "key": "epiphany_reaction",
+          "max_words": 4,
+          "role": "Top caption is the sudden reaction.",
+          "required_regex": "(?i)^oh my god[.!]?$"
+        },
+        {
+          "key": "mundane_insight",
+          "max_words": 8,
+          "role": "Bottom caption reveals the simple realization."
+        }
+      ],
+      "invariants": [
+        "The insight is ordinary enough that the intensity of the reaction is excessive."
+      ],
+      "operator_example": [
+        "Oh my God",
+        "We can ask the people doing the work"
+      ],
+      "evidence": {
+        "renderer_id": "scc",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/sudden-clarity-clarence",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/scc.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#scc"
+      },
+      "assessment": {
+        "origin": "Party photograph documented by KYM as stock imagery supplied to Australian Associated Press.",
+        "safety": "Hold: stock-photo rights and real-person framing. No implied intoxication.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Real stock-photo subject and AAP-associated provenance need an exact-image review; no automatic admission from an epiphany title."
+      }
+    },
+    "ski": {
+      "name": "Super Cool Ski Instructor",
+      "meaning": "A concrete risky shortcut receives a calm warning about the foreseeable hassle.",
+      "writing_guide": "Use an 'If you' condition for a preventable operational mistake, then the fixed warning. Explain the actual failure mechanism in the post, not in tiny image text.",
+      "anti_patterns": [
+        "Do not threaten the audience or joke about injury.",
+        "Do not use a vague prediction that all AI will fail."
+      ],
+      "slots": [
+        {
+          "key": "risky_shortcut",
+          "max_words": 10,
+          "role": "Top caption states the preventable behavior.",
+          "required_regex": "(?i)^if you .+"
+        },
+        {
+          "key": "calm_warning",
+          "max_words": 8,
+          "role": "Bottom caption is the fixed warning.",
+          "required_regex": "(?i)^you['’]?re gonna have a bad time[.!]?$"
+        }
+      ],
+      "invariants": [
+        "The warning must follow plausibly from the particular shortcut, not fear alone."
+      ],
+      "operator_example": [
+        "If you skip testing the handoff",
+        "You're gonna have a bad time"
+      ],
+      "evidence": {
+        "renderer_id": "ski",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/super-cool-ski-instructor",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/ski.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#ski"
+      },
+      "assessment": {
+        "origin": "South Park ski instructor became a general risky-choice warning macro.",
+        "safety": "Cartoon instructor, no injury in art. Restrict to low-stakes operational inconvenience.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds a concise preventive warning, distinct from a hidden trap or after-the-fact blame."
+      }
+    },
+    "spiderman": {
+      "name": "Spider-Man Pointing at Spider-Man",
+      "meaning": "Two supposedly distinct actors discover their similarity or mirror each other's behavior.",
+      "writing_guide": "Label the two figures with distinct roles doing the same thing. The shared behavior must be evident in both labels or the post; pointing alone does not prove blame.",
+      "anti_patterns": [
+        "Do not label unrelated opponents.",
+        "Do not accuse a named actor of wrongdoing using only a suggestive picture."
+      ],
+      "slots": [
+        {
+          "key": "left_actor",
+          "max_words": 6,
+          "role": "Caption on the left Spider-Man."
+        },
+        {
+          "key": "right_actor",
+          "max_words": 6,
+          "role": "Caption on the right Spider-Man."
+        }
+      ],
+      "invariants": [
+        "The two actors must have a meaningful shared trait or reciprocal behavior."
+      ],
+      "operator_example": [
+        "Agent waiting for approval",
+        "Manager waiting for the agent"
+      ],
+      "evidence": {
+        "renderer_id": "spiderman",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/spiderman.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#spiderman"
+      },
+      "assessment": {
+        "origin": "1960s Spider-Man impersonation scene; later similarity captions.",
+        "safety": "Cartoon figures without injury. Avoid personal insults and unproven blame.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds reciprocal dependency and mirrored behavior between actors."
+      }
+    },
+    "wddth": {
+      "name": "We Don't Do That Here",
+      "meaning": "A familiar action violates the local norm and is matter-of-factly refused.",
+      "writing_guide": "Name the attempted behavior first and use the fixed local-rule response second. The joke may expose a bad norm or defend a good one; make that direction clear in the post.",
+      "anti_patterns": [
+        "Do not exclude people based on identity or background.",
+        "Do not use a general dislike when no local norm is involved."
+      ],
+      "slots": [
+        {
+          "key": "norm_violation",
+          "max_words": 8,
+          "role": "Top caption supplies the attempted action."
+        },
+        {
+          "key": "local_refusal",
+          "max_words": 6,
+          "role": "Bottom caption preserves the response.",
+          "required_regex": "(?i)^we don['’]?t do that here[.!]?$"
+        }
+      ],
+      "invariants": [
+        "The response rejects the first-line behavior as outside this setting's norm."
+      ],
+      "operator_example": [
+        "Can we measure the old process first?",
+        "We don't do that here"
+      ],
+      "evidence": {
+        "renderer_id": "wddth",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/we-dont-do-that-here",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/wddth.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#wddth"
+      },
+      "assessment": {
+        "origin": "Black Panther stops Bruce Banner bowing in Avengers: Infinity War.",
+        "safety": "Fictional social correction. No exclusion of protected groups or foreign cultures.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds local organizational taboo, distinct from a forced trend failing to catch on."
+      }
+    },
+    "xy": {
+      "name": "X all the Y",
+      "meaning": "A burst of enthusiasm becomes a sweeping demand to do one action to everything.",
+      "writing_guide": "Put the action verb first and 'all the' plus its object second. The overbroad scope is deliberate comic exaggeration, not actual implementation advice.",
+      "anti_patterns": [
+        "Do not use this for a carefully bounded plan.",
+        "Do not target people or imply dangerous actions should be universal."
+      ],
+      "slots": [
+        {
+          "key": "sweeping_action",
+          "max_words": 3,
+          "role": "Top caption names the imperative verb."
+        },
+        {
+          "key": "universal_target",
+          "max_words": 5,
+          "role": "Bottom caption gives the all-the-things target.",
+          "required_regex": "(?i)^all the .+"
+        }
+      ],
+      "invariants": [
+        "Both lines form one grammatical imperative with exaggerated universal scope."
+      ],
+      "operator_example": [
+        "Automate",
+        "All the workflows!"
+      ],
+      "evidence": {
+        "renderer_id": "xy",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/x-all-the-y",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/xy.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#xy"
+      },
+      "assessment": {
+        "origin": "Allie Brosh's Hyperbole and a Half comic about bursts of enthusiasm for adult responsibilities.",
+        "safety": "Named living artist's copyrighted work; no compatible art licence found.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds indiscriminate action rather than identical resource allocation."
+      }
+    },
+    "yodawg": {
+      "name": "Xzibit Yo Dawg",
+      "meaning": "A supposed improvement nests another instance of the same activity inside itself.",
+      "writing_guide": "Use the familiar invitation to name the activity, then put a version inside another version. Repeat the activity during the final 'while' turn so the recursion is unmistakable.",
+      "anti_patterns": [
+        "Do not list merely adjacent features.",
+        "Do not caricature race or accent beyond the familiar fixed opening; use ordinary spelling."
+      ],
+      "slots": [
+        {
+          "key": "named_activity",
+          "max_words": 9,
+          "role": "Top caption introduces the activity the recipient likes.",
+          "required_regex": "(?i)^yo dawg,? i heard you like .+"
+        },
+        {
+          "key": "recursive_addition",
+          "max_words": 14,
+          "role": "Bottom caption nests the activity and repeats it.",
+          "required_regex": "(?i)^so .+ while .+"
+        }
+      ],
+      "invariants": [
+        "The same activity appears inside itself and occurs while it is already being performed."
+      ],
+      "operator_example": [
+        "Yo dawg, I heard you like agents",
+        "So your agent manages agents while you manage your agent"
+      ],
+      "evidence": {
+        "renderer_id": "yodawg",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/xzibit-yo-dawg",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/yodawg.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#yodawg"
+      },
+      "assessment": {
+        "origin": "Xzibit publicity portrait and recursive Pimp My Ride-derived caption pattern.",
+        "safety": "Real artist likeness; no accent mockery, endorsement, or personal accusations.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds explicit recursive delegation, useful for redundant tools and agent hierarchies."
+      }
+    },
+    "ptj": {
+      "name": "Phoebe Teaching Joey",
+      "meaning": "A learner correctly repeats every component but fails to combine them into the intended conclusion.",
+      "writing_guide": "Write three short prompt-and-exact-repeat pairs, then the combined instruction and a contradictory final answer. Label no real junior worker; aim the failure at a process or system.",
+      "anti_patterns": [
+        "Do not make the earlier repeats wrong.",
+        "Do not mock language ability, disability, or an identifiable learner."
+      ],
+      "slots": [
+        {
+          "key": "first_component",
+          "max_words": 3,
+          "role": "First-row teacher turn."
+        },
+        {
+          "key": "first_repeat",
+          "max_words": 3,
+          "role": "First-row learner repeats.",
+          "equal_to": "first_component"
+        },
+        {
+          "key": "second_component",
+          "max_words": 3,
+          "role": "Second-row teacher turn."
+        },
+        {
+          "key": "second_repeat",
+          "max_words": 3,
+          "role": "Second-row learner repeats.",
+          "equal_to": "second_component"
+        },
+        {
+          "key": "third_component",
+          "max_words": 3,
+          "role": "Third-row teacher turn."
+        },
+        {
+          "key": "third_repeat",
+          "max_words": 3,
+          "role": "Third-row learner repeats.",
+          "equal_to": "third_component"
+        },
+        {
+          "key": "combined_instruction",
+          "max_words": 7,
+          "role": "Last-row teacher combines all components."
+        },
+        {
+          "key": "failed_combination",
+          "max_words": 7,
+          "role": "Last-row learner contradicts the combined instruction."
+        }
+      ],
+      "invariants": [
+        "The three pairs match exactly; the combined instruction contains all three components; the final answer fails that instruction."
+      ],
+      "operator_example": [
+        "Check",
+        "Check",
+        "The",
+        "The",
+        "Source",
+        "Source",
+        "Check the source",
+        "Trust the chatbot"
+      ],
+      "evidence": {
+        "renderer_id": "ptj",
+        "renderer_lines": 8,
+        "source_url": "https://knowyourmeme.com/memes/phoebe-teaching-joey",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/ptj-semantic.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#ptj",
+        "renderer_source_url": "https://knowyourmeme.com/photos/1846826-phoebe-teaching-joey"
+      },
+      "assessment": {
+        "origin": "Friends scene about repeating French fragments; full semantic entry supplements Memegen's photo-page pointer.",
+        "safety": "Hold: small text and learner humiliation risk. Use only after a separate short-copy phone-size review.",
+        "legibility": "HOLD: all eight turns visible, but final row small at 360px; needs a defined short-copy phone-size acceptance test.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Eight small dialogue panels remain too dense for the default phone-size contact sheet. Semantic evidence does not resolve legibility."
+      }
+    },
+    "drowning": {
+      "name": "Drowning High Five",
+      "meaning": "A request for help receives acknowledgment that does nothing to solve the problem.",
+      "writing_guide": "Label the requester, the responding actor, and the useless response. The response recognizes the need but fails to provide the required assistance.",
+      "anti_patterns": [
+        "Do not activate this exact drowning comic.",
+        "Do not celebrate real suffering or treat danger as an amusing failure."
+      ],
+      "slots": [
+        {
+          "key": "requester",
+          "max_words": 5,
+          "role": "Person represented by hand reaching from water."
+        },
+        {
+          "key": "responder",
+          "max_words": 5,
+          "role": "Other hand offering a high five."
+        },
+        {
+          "key": "unhelpful_response",
+          "max_words": 7,
+          "role": "Label on the gesture instead of rescue."
+        }
+      ],
+      "invariants": [
+        "The response must acknowledge the problem without addressing it."
+      ],
+      "operator_example": [
+        "Team needs help",
+        "Steering committee",
+        "Another status meeting"
+      ],
+      "evidence": {
+        "renderer_id": "drowning",
+        "renderer_lines": 3,
+        "source_url": "https://knowyourmeme.com/memes/drowning-high-five",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/drowning.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#drowning"
+      },
+      "assessment": {
+        "origin": "Gudim comic published on Instagram in 2017.",
+        "safety": "Rejected for injury/danger premise and creator-owned artwork.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Drowning danger is the image's essential mechanism; inappropriate even for harmless operational captions."
+      }
+    },
+    "pool": {
+      "name": "Mother Ignoring Kid Drowning In A Pool",
+      "meaning": "One dependent receives attention while another is neglected by the same authority.",
+      "writing_guide": "Label the favored recipient, the neglected recipient, and the authority distributing attention. These are roles within one allocation decision, not three unrelated priorities.",
+      "anti_patterns": [
+        "Do not activate this exact child-distress photograph.",
+        "Do not use child neglect, drowning, or family hardship as a joke."
+      ],
+      "slots": [
+        {
+          "key": "favored_recipient",
+          "max_words": 5,
+          "role": "Lifted child receives attention."
+        },
+        {
+          "key": "neglected_recipient",
+          "max_words": 5,
+          "role": "Other child is struggling."
+        },
+        {
+          "key": "attention_giver",
+          "max_words": 5,
+          "role": "Adult decides which child receives attention."
+        }
+      ],
+      "invariants": [
+        "The same authority favors one dependent while neglecting the other."
+      ],
+      "operator_example": [
+        "New AI pilot",
+        "Existing software",
+        "IT budget"
+      ],
+      "evidence": {
+        "renderer_id": "pool",
+        "renderer_lines": 3,
+        "source_url": "https://knowyourmeme.com/memes/mother-ignoring-kid-drowning-in-a-pool",
+        "source_file": "research/social-meme-template-catalog/expansion-2026-09-29/raw/pool.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-2026-09-29/candidate-evidence.json#pool"
+      },
+      "assessment": {
+        "origin": "Family swimming photograph later used for differential-attention labels.",
+        "safety": "Rejected for vulnerable children and injury imagery; family-photo permission is unverified.",
+        "legibility": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Real children and apparent drowning distress are central to the photo; use a non-distress allocation pattern instead."
+      }
+    },
+    "blb": {
+      "name": "Bad Luck Brian",
+      "meaning": "An ordinary attempt produces a sharply disproportionate unlucky result.",
+      "writing_guide": "Put the reasonable action first and the unlucky consequence second. Apply the role to a project, process, or yourself, never an employee or customer.",
+      "anti_patterns": [
+        "Do not target a real person or vulnerable group.",
+        "Do not use an expected result; the failure must feel absurdly unlucky."
+      ],
+      "slots": [
+        {
+          "key": "reasonable_attempt",
+          "max_words": 7,
+          "role": "Top caption names the normal attempt."
+        },
+        {
+          "key": "unlucky_result",
+          "max_words": 7,
+          "role": "Bottom caption gives the disproportionate failure."
+        }
+      ],
+      "invariants": [
+        "The second line must be worse than the first line reasonably predicts.",
+        "The joke target must be a system, project, or self-own."
+      ],
+      "operator_example": [
+        "Runs the clean pilot",
+        "Production data changes that morning"
+      ],
+      "evidence": {
+        "renderer_id": "blb",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/bad-luck-brian",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/blb.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#blb"
+      },
+      "assessment": {
+        "origin": "Advice-animal macro built around Kyle Craven's school portrait and a run of catastrophically unlucky outcomes.",
+        "safety": "The template historically humiliates a named-looking person. Hold until the selector can enforce project or self-directed targets.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "The failure relationship is useful, but its default human target conflicts with the operator-not-fool rule."
+      }
+    },
+    "box": {
+      "name": "What's in the box!?",
+      "meaning": "A promised container or package conceals an alarming unknown.",
+      "writing_guide": "Name the supposedly complete package, then use the fixed question to expose missing visibility.",
+      "anti_patterns": [
+        "Do not use for ordinary curiosity.",
+        "Do not invoke harm, victims, or the film's violent reveal."
+      ],
+      "slots": [
+        {
+          "key": "opaque_package",
+          "max_words": 7,
+          "role": "Top caption names the package whose contents are unclear."
+        },
+        {
+          "key": "fixed_question",
+          "max_words": 5,
+          "role": "Bottom caption is the fixed demand to see inside.",
+          "required_regex": "(?i)^what['\u2019]?s in the box[!?]*$"
+        }
+      ],
+      "invariants": [
+        "The first line must name something presented as complete while its actual contents remain unknown."
+      ],
+      "operator_example": [
+        "The all-inclusive AI contract",
+        "What's in the box?"
+      ],
+      "evidence": {
+        "renderer_id": "box",
+        "renderer_lines": 2,
+        "source_url": "https://screenrant.com/hilarious-se7en-memes/",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/box.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#box"
+      },
+      "assessment": {
+        "origin": "Reaction from the climax of the film Se7en, whose concealed box contains evidence of a murder.",
+        "safety": "The recognizable meaning depends on a violent murder reveal.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "The violence is not incidental to the template's suspense, so it fails the injury and disaster gate."
+      }
+    },
+    "cake": {
+      "name": "Office Space Milton",
+      "meaning": "A promised benefit or resource quietly fails to appear.",
+      "writing_guide": "Set the occasion on top and adapt the fixed complaint below. The missing item should have been explicitly promised, not merely hoped for.",
+      "anti_patterns": [
+        "Do not use for a vague disappointment.",
+        "Do not make an employee's exclusion the joke."
+      ],
+      "slots": [
+        {
+          "key": "occasion",
+          "max_words": 6,
+          "role": "Top caption names the event or promise."
+        },
+        {
+          "key": "missing_promise",
+          "max_words": 9,
+          "role": "Bottom caption begins with the fixed complaint.",
+          "required_regex": "(?i)^i was told there would be .+"
+        }
+      ],
+      "invariants": [
+        "The missing item must be something the setup explicitly led the subject to expect."
+      ],
+      "operator_example": [
+        "The AI pilot kickoff",
+        "I was told there would be data access"
+      ],
+      "evidence": {
+        "renderer_id": "cake",
+        "renderer_lines": 2,
+        "source_url": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/cake.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#cake"
+      },
+      "assessment": {
+        "origin": "Milton's repeated cake complaint in the 1999 workplace comedy Office Space.",
+        "safety": "Fictional workplace character. Keep the target on a missing organizational promise, not employee exclusion.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds broken organizational promises in a workplace-native format."
+      }
+    },
+    "disastergirl": {
+      "name": "Disaster Girl",
+      "meaning": "A calm observer appears to have caused the destruction behind them.",
+      "writing_guide": "Name the plan or result, then imply smug responsibility.",
+      "anti_patterns": [
+        "Do not use real disasters.",
+        "Do not imply a named person caused harm."
+      ],
+      "slots": [
+        {
+          "key": "destructive_result",
+          "max_words": 7,
+          "role": "Top caption names the destructive result."
+        },
+        {
+          "key": "smug_admission",
+          "max_words": 6,
+          "role": "Bottom caption implies it was planned."
+        }
+      ],
+      "invariants": [
+        "The background destruction is the reason the calm expression reads as culpable."
+      ],
+      "operator_example": [
+        "The rollout deleted production",
+        "Just as I planned"
+      ],
+      "evidence": {
+        "renderer_id": "disastergirl",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/disaster-girl",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/disastergirl.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#disastergirl"
+      },
+      "assessment": {
+        "origin": "A 2005 photograph of a child watching firefighters conduct a controlled burn, later edited into disaster scenes.",
+        "safety": "The joke depends on fire and implied responsibility for destruction.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Directly conflicts with the catalog's disaster gate."
+      }
+    },
+    "dragon": {
+      "name": "What Color Do You Want Your Dragon",
+      "meaning": "A supposedly ordinary request is treated as less realistic than receiving a dragon.",
+      "writing_guide": "Use the one editable line for the initial request. It should sound reasonable to the requester but impossible under the stated constraints.",
+      "anti_patterns": [
+        "Do not ask for a genuinely trivial thing.",
+        "Do not require the reader to know missing dialogue outside the template."
+      ],
+      "slots": [
+        {
+          "key": "impossible_request",
+          "max_words": 9,
+          "role": "The editable speech bubble contains the request rejected as unrealistic."
+        }
+      ],
+      "invariants": [
+        "The fixed dragon offer must be easier than granting the editable request."
+      ],
+      "operator_example": [
+        "A reliable model with no evaluation budget"
+      ],
+      "evidence": {
+        "renderer_id": "dragon",
+        "renderer_lines": 1,
+        "source_url": "https://knowyourmeme.com/photos/1052192-tumblr",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/dragon.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#dragon"
+      },
+      "assessment": {
+        "origin": "An illustrated Tumblr exchange in which a request for a boyfriend is judged less realistic than a dragon.",
+        "safety": "Illustrated fictional exchange. Avoid stereotypes about relationships or protected traits.",
+        "legibility": "FAIL: the editable speech bubble remains too small at the audited 360px width, even with a short example.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "The impossible-constraints relationship is useful, but the editable bubble is too small at the audited 360px width."
+      }
+    },
+    "elf": {
+      "name": "You Sit on a Throne of Lies",
+      "meaning": "A confident assurance is dismissed as obviously false.",
+      "writing_guide": "Put the assurance on top and preserve the fixed accusation below. Use only when the post has evidence that contradicts the assurance.",
+      "anti_patterns": [
+        "Do not accuse a named company or person of lying without strong evidence.",
+        "Do not use for uncertainty or a mere prediction miss."
+      ],
+      "slots": [
+        {
+          "key": "false_assurance",
+          "max_words": 8,
+          "role": "Top caption states the contradicted assurance."
+        },
+        {
+          "key": "fixed_rebuke",
+          "max_words": 8,
+          "role": "Bottom caption preserves the established rebuke.",
+          "required_regex": "(?i)^you sit on a throne of lies[.!]*$"
+        }
+      ],
+      "invariants": [
+        "The post must contain evidence that makes the assurance false, not debatable."
+      ],
+      "operator_example": [
+        "The vendor says setup takes one day",
+        "You sit on a throne of lies"
+      ],
+      "evidence": {
+        "renderer_id": "elf",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/elf.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#elf"
+      },
+      "assessment": {
+        "origin": "Buddy confronts a department-store Santa in the 2003 film Elf; the phrase became a reaction to false statements.",
+        "safety": "Fictional confrontation. Restrict accusations to substantiated claims or generic/self-directed examples.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds blunt evidence-backed contradiction, stronger than Agnes's knowing wink."
+      }
+    },
+    "friends": {
+      "name": "Are You Two Friends?",
+      "meaning": "Two parties give incompatible answers about whether they are aligned.",
+      "writing_guide": "Label the outside observer first, then the party that says yes and the party that says no. Use a real asymmetry in incentives or expectations.",
+      "anti_patterns": [
+        "Do not use for two parties who simply disagree on a topic.",
+        "Do not swap the yes and no roles after rendering."
+      ],
+      "slots": [
+        {
+          "key": "questioner",
+          "max_words": 4,
+          "role": "First overlay labels the person asking about the relationship."
+        },
+        {
+          "key": "no_party",
+          "max_words": 4,
+          "role": "Second overlay labels the left character, who answers no."
+        },
+        {
+          "key": "yes_party",
+          "max_words": 4,
+          "role": "Third overlay labels the right character, who answers yes."
+        }
+      ],
+      "invariants": [
+        "One labeled party must plausibly answer yes and the other no to the same relationship question."
+      ],
+      "operator_example": [
+        "Executive sponsor",
+        "Production ops",
+        "Pilot team"
+      ],
+      "evidence": {
+        "renderer_id": "friends",
+        "renderer_lines": 3,
+        "source_url": "https://knowyourmeme.com/memes/are-you-two-friends",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/friends.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#friends"
+      },
+      "assessment": {
+        "origin": "A Star Trek: Voyager exchange in which Tuvok says he and Paris are friends while Paris says they are not.",
+        "safety": "Fictional dialogue. Use organizational roles, not protected groups or political caricatures.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds asymmetric alignment, a common source of failed internal AI programs."
+      }
+    },
+    "headaches": {
+      "name": "Types of Headaches",
+      "meaning": "One process or condition causes pain far beyond the ordinary categories shown beside it.",
+      "writing_guide": "Use the editable final label for a specific operational nuisance whose repeated burden is the joke.",
+      "anti_patterns": [
+        "Do not joke about a person's illness.",
+        "Do not use a broad topic such as 'AI' without naming the actual burden."
+      ],
+      "slots": [
+        {
+          "key": "worst_pain",
+          "max_words": 4,
+          "role": "The editable fourth label names the outsized operational pain."
+        }
+      ],
+      "invariants": [
+        "The custom condition must be plausibly more frustrating than the three fixed headache categories in the image."
+      ],
+      "operator_example": [
+        "Re-keying orders"
+      ],
+      "evidence": {
+        "renderer_id": "headaches",
+        "renderer_lines": 1,
+        "source_url": "https://knowyourmeme.com/memes/types-of-headaches",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/headaches.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#headaches"
+      },
+      "assessment": {
+        "origin": "A headache-location infographic turned into a four-panel comparison with a fully red final head.",
+        "safety": "Medical imagery, but no victim or injury. Keep the comparison figurative and work-related.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds a compact way to show cumulative operational pain."
+      }
+    },
+    "interesting": {
+      "name": "The Most Interesting Man in the World",
+      "meaning": "A rare behavior is paired with the speaker's reliably distinctive way of doing it.",
+      "writing_guide": "Preserve the 'I don't always' and 'but when I do' syntax. The second line should expose a specific habit, contradiction, or preference.",
+      "anti_patterns": [
+        "Do not use as generic self-praise.",
+        "Do not drop the fixed two-part syntax."
+      ],
+      "slots": [
+        {
+          "key": "rare_behavior",
+          "max_words": 9,
+          "role": "Top caption begins the fixed rarity setup.",
+          "required_regex": "(?i)^i don['\u2019]?t always .+"
+        },
+        {
+          "key": "distinctive_habit",
+          "max_words": 10,
+          "role": "Bottom caption completes the fixed exception.",
+          "required_regex": "(?i)^but when i do[,]? .+"
+        }
+      ],
+      "invariants": [
+        "The second line must describe what reliably happens on the rare occasions named in line one."
+      ],
+      "operator_example": [
+        "I don't always automate a process",
+        "But when I do, I keep the exception queue"
+      ],
+      "evidence": {
+        "renderer_id": "interesting",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/interesting.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#interesting"
+      },
+      "assessment": {
+        "origin": "Advice-animal macro based on Jonathan Goldsmith's Dos Equis advertisement and its 'I don't always ... but when I do' line.",
+        "safety": "Commercial character and actor likeness. Avoid implying endorsement or copying beer branding into the caption.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds a strong fixed syntax for revealing an uncommon but consistent operating habit."
+      }
+    },
+    "ive": {
+      "name": "Jony Ive Redesigns Things",
+      "meaning": "A polished redesign removes or obscures something people actually need.",
+      "writing_guide": "Name the removed function first, then use a polished assurance below. The joke is misplaced design confidence, not appearance alone.",
+      "anti_patterns": [
+        "Do not attack Jony Ive personally.",
+        "Do not use for an ordinary visual redesign with no lost function."
+      ],
+      "slots": [
+        {
+          "key": "removed_function",
+          "max_words": 7,
+          "role": "Top caption names what the redesign removed."
+        },
+        {
+          "key": "polished_assurance",
+          "max_words": 7,
+          "role": "Bottom caption gives the confident product-language reassurance."
+        }
+      ],
+      "invariants": [
+        "The redesign must make the underlying task harder while presenting itself as an improvement."
+      ],
+      "operator_example": [
+        "We removed the exception queue",
+        "We think you'll love it"
+      ],
+      "evidence": {
+        "renderer_id": "ive",
+        "renderer_lines": 2,
+        "source_url": "https://www.apple.com/pr/bios/jonathan-ive.html",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/ive.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#ive"
+      },
+      "assessment": {
+        "origin": "Memegen attributes the image to Apple's former design chief, but its source points to an Apple biography rather than a cultural-history page.",
+        "safety": "Real identifiable executive. The current evidence does not establish the template's mutation or accepted caption structure.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Hold until a cultural source and three documented uses verify the redesign relationship."
+      }
+    },
+    "jw": {
+      "name": "Probably Not a Good Idea",
+      "meaning": "A concrete reckless action receives an understated warning after it is proposed or revealed.",
+      "writing_guide": "State the questionable action as a direct question, then preserve the calm verdict. Use a specific operational decision, not general AI anxiety.",
+      "anti_patterns": [
+        "Do not turn the warning into fear bait.",
+        "Do not use when the downside is merely uncertain."
+      ],
+      "slots": [
+        {
+          "key": "reckless_action",
+          "max_words": 10,
+          "role": "Top caption asks whether the risky action really happened."
+        },
+        {
+          "key": "fixed_verdict",
+          "max_words": 7,
+          "role": "Bottom caption is the understated fixed judgment.",
+          "required_regex": "(?i)^probably not a good idea[.!]*$"
+        }
+      ],
+      "invariants": [
+        "The post must explain the foreseeable downside of the specific action."
+      ],
+      "operator_example": [
+        "You gave the agent production write access?",
+        "Probably not a good idea"
+      ],
+      "evidence": {
+        "renderer_id": "jw",
+        "renderer_lines": 2,
+        "source_url": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/jw.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#jw"
+      },
+      "assessment": {
+        "origin": "Chris Pratt's Jurassic World character reacts to the creation of a new dinosaur in the film's 2014 trailer.",
+        "safety": "Fictional film character. Avoid using it for vague catastrophe predictions.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds dry understatement after a concrete risky decision."
+      }
+    },
+    "khaby-lame": {
+      "name": "Khaby Lame Shrug",
+      "meaning": "An elaborate workaround loses to an obvious, simpler method.",
+      "writing_guide": "Put the overengineered method first and the direct alternative second. Both must solve the same problem.",
+      "anti_patterns": [
+        "Do not use for two mere preferences.",
+        "Do not imply that a complex task is easy when the post shows otherwise."
+      ],
+      "slots": [
+        {
+          "key": "overcomplicated_method",
+          "max_words": 7,
+          "role": "Top-left caption names the unnecessary workaround."
+        },
+        {
+          "key": "obvious_method",
+          "max_words": 7,
+          "role": "Bottom-left caption names the direct alternative indicated by the shrug."
+        }
+      ],
+      "invariants": [
+        "Both lines must pursue the same outcome, and the second must remove needless steps."
+      ],
+      "operator_example": [
+        "Build a chatbot for every policy",
+        "Fix policy search"
+      ],
+      "evidence": {
+        "renderer_id": "khaby-lame",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/photos/2132291-khaby-lame-shrug-its-that-simple",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/khaby-lame.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#khaby-lame"
+      },
+      "assessment": {
+        "origin": "Khaby Lame's 2021 reaction to a contrived pizza life hack, followed by a shrug toward the obvious method.",
+        "safety": "Real creator likeness. Keep the contrast on methods and never on identity or ability.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds a familiar overengineering-versus-direct-fix relationship."
+      }
+    },
+    "kramer": {
+      "name": "Kramer, What's Going On In There?",
+      "meaning": "A visible symptom prompts a question and receives an unexpectedly specific explanation.",
+      "writing_guide": "Keep the first line as a question about the odd visible result. The second line names the surprising mechanism in plain language.",
+      "anti_patterns": [
+        "Do not use a generic 'AI is weird' explanation.",
+        "Do not make the answer longer than the image can carry."
+      ],
+      "slots": [
+        {
+          "key": "symptom_question",
+          "max_words": 8,
+          "role": "Top dialogue asks what is causing the visible anomaly."
+        },
+        {
+          "key": "unexpected_cause",
+          "max_words": 10,
+          "role": "Bottom dialogue gives the specific, surprising cause."
+        }
+      ],
+      "invariants": [
+        "The second line must actually explain the first line's visible anomaly."
+      ],
+      "operator_example": [
+        "Why is the queue turning red?",
+        "The agent approved its own exceptions"
+      ],
+      "evidence": {
+        "renderer_id": "kramer",
+        "renderer_lines": 2,
+        "source_url": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/kramer.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#kramer"
+      },
+      "assessment": {
+        "origin": "A Seinfeld apartment scene whose red light is repeatedly relabeled with strange fictional causes.",
+        "safety": "Fictional sitcom scene. Keep explanations about systems, not groups or people.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds symptom-to-unexpected-cause storytelling."
+      }
+    },
+    "light": {
+      "name": "Everything the Light Touches is Our Kingdom",
+      "meaning": "A proud claim of broad scope is immediately bounded by one conspicuous excluded area.",
+      "writing_guide": "Ask about the excluded area first and answer with the boundary second. Use a real ownership, access, or support boundary.",
+      "anti_patterns": [
+        "Do not use for an arbitrary disliked thing.",
+        "Do not hide the boundary that makes the post's claim accurate."
+      ],
+      "slots": [
+        {
+          "key": "boundary_question",
+          "max_words": 8,
+          "role": "First dialogue asks about the conspicuous excluded area."
+        },
+        {
+          "key": "scope_answer",
+          "max_words": 11,
+          "role": "Second dialogue states that the area is outside the claimed scope."
+        }
+      ],
+      "invariants": [
+        "The excluded area must materially limit the broad scope implied by the image."
+      ],
+      "operator_example": [
+        "What about production exceptions?",
+        "That's beyond the pilot. You must never go there."
+      ],
+      "evidence": {
+        "renderer_id": "light",
+        "renderer_lines": 2,
+        "source_url": "https://www.youtube.com/watch?v=JawCb15MWLc",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/light.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#light"
+      },
+      "assessment": {
+        "origin": "The Lion King scene defining the kingdom and warning Simba away from the shadowy place became a scope and gatekeeping macro.",
+        "safety": "Animated fictional characters. Avoid political or protected-group gatekeeping.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds explicit scope boundaries, a recurring truth in AI pilots."
+      }
+    },
+    "nails": {
+      "name": "Guy Hammering Nails Into Sand",
+      "meaning": "A tool or representation tries futilely to impose stable boundaries on something that will not hold them.",
+      "writing_guide": "Label the actor, the method, and the unstable medium. The method should be structurally incapable of controlling the medium.",
+      "anti_patterns": [
+        "Do not use for generic hard work.",
+        "Do not claim futility when the method merely needs improvement."
+      ],
+      "slots": [
+        {
+          "key": "actor",
+          "max_words": 4,
+          "role": "First label names who is trying to impose order."
+        },
+        {
+          "key": "method",
+          "max_words": 4,
+          "role": "Second label names the rigid tool or representation."
+        },
+        {
+          "key": "unstable_medium",
+          "max_words": 8,
+          "role": "Third label names what cannot hold the imposed boundary."
+        }
+      ],
+      "invariants": [
+        "The method must fail because the target cannot retain the imposed structure."
+      ],
+      "operator_example": [
+        "The governance team",
+        "A static checklist",
+        "An agent that changes tools mid-run"
+      ],
+      "evidence": {
+        "renderer_id": "nails",
+        "renderer_lines": 3,
+        "source_url": "https://keepmeme.com/meme/when-the-boss-coming-and-you-need-to-pretend-doing-something-hammering-nails-into-the-sand-beach-meme",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/nails.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#nails"
+      },
+      "assessment": {
+        "origin": "A photograph cataloged by Memegen, Imgflip, and OldMeme; no reliable cultural-origin account was found.",
+        "safety": "No obvious harmful subject, but the source and established caption relationship remain weakly documented.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Hold until a cultural source establishes familiarity and the three-label relation beyond isolated catalog examples."
+      }
+    },
+    "philosoraptor": {
+      "name": "Philosoraptor",
+      "meaning": "A familiar premise leads to a playful paradox or semantic question.",
+      "writing_guide": "State the premise first and make the second line a genuine twist created by the premise. Prefer wordplay over fake profundity.",
+      "anti_patterns": [
+        "Do not use as a generic question card.",
+        "Do not present a factual claim as a paradox without checking it."
+      ],
+      "slots": [
+        {
+          "key": "premise",
+          "max_words": 10,
+          "role": "Top caption states the familiar premise."
+        },
+        {
+          "key": "paradox_question",
+          "max_words": 11,
+          "role": "Bottom caption asks the playful consequence."
+        }
+      ],
+      "invariants": [
+        "The question must follow from the wording or logic of the premise, not merely share a topic."
+      ],
+      "operator_example": [
+        "If the AI learned from our old process",
+        "Is automation just faster institutional memory?"
+      ],
+      "evidence": {
+        "renderer_id": "philosoraptor",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/philosoraptor",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/philosoraptor.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#philosoraptor"
+      },
+      "assessment": {
+        "origin": "Advice-animal illustration of a contemplative velociraptor used for absurd philosophical questions and paradoxes.",
+        "safety": "Illustrated animal. Avoid laundering misinformation as a clever question.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds genuine premise-to-paradox wordplay."
+      }
+    },
+    "spirit": {
+      "name": "Fake Spirit Halloween Costume",
+      "meaning": "A recognizable organizational type is packaged as a costume with a revealing inventory of traits.",
+      "writing_guide": "Name the role, preserve 'Includes:', and list three concrete artifacts or habits. The list should reveal the type without insults.",
+      "anti_patterns": [
+        "Do not target a protected class or individual employee.",
+        "Do not use three synonyms as the included items."
+      ],
+      "slots": [
+        {
+          "key": "costume_name",
+          "max_words": 5,
+          "role": "First line names the organizational type on the package."
+        },
+        {
+          "key": "fixed_includes",
+          "max_words": 2,
+          "role": "Second line preserves the package label.",
+          "required_regex": "(?i)^includes:?$"
+        },
+        {
+          "key": "included_one",
+          "max_words": 5,
+          "role": "Third line is the first concrete included trait."
+        },
+        {
+          "key": "included_two",
+          "max_words": 5,
+          "role": "Fourth line is the second concrete included trait."
+        },
+        {
+          "key": "included_three",
+          "max_words": 5,
+          "role": "Fifth line is the third concrete included trait."
+        }
+      ],
+      "invariants": [
+        "The three included items must be distinct, concrete evidence of the named type."
+      ],
+      "operator_example": [
+        "Enterprise AI pilot",
+        "Includes:",
+        "A polished demo",
+        "No data owner",
+        "Six steering committees"
+      ],
+      "evidence": {
+        "renderer_id": "spirit",
+        "renderer_lines": 5,
+        "source_url": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/spirit.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#spirit"
+      },
+      "assessment": {
+        "origin": "Edits of Spirit Halloween costume packaging became a format for labeling a character type and listing its recognizable contents.",
+        "safety": "Corporate parody is acceptable. Avoid protected groups, appearance, or demeaning employee stereotypes.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds an inventory joke that can expose the ingredients of a familiar failure pattern."
+      }
+    },
+    "spongebob": {
+      "name": "Mocking Spongebob",
+      "meaning": "A statement is repeated in alternating case to belittle the speaker.",
+      "writing_guide": "Repeat the claim in mocking typography.",
+      "anti_patterns": [
+        "Do not ridicule a person or group.",
+        "Do not substitute mockery for a factual rebuttal."
+      ],
+      "slots": [
+        {
+          "key": "original_claim",
+          "max_words": 10,
+          "role": "Top caption quotes the statement."
+        },
+        {
+          "key": "mocked_repeat",
+          "max_words": 10,
+          "role": "Bottom caption repeats it in alternating case."
+        }
+      ],
+      "invariants": [
+        "The second line must mock the first line rather than add an argument."
+      ],
+      "operator_example": [
+        "We don't need evaluation",
+        "wE dOn'T nEeD eVaLuAtIoN"
+      ],
+      "evidence": {
+        "renderer_id": "spongebob",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/mocking-spongebob",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/spongebob.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#spongebob"
+      },
+      "assessment": {
+        "origin": "A SpongeBob reaction image used specifically to mimic and ridicule another person's statement.",
+        "safety": "Its established mechanism is humiliation rather than clarification.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Conflicts with the operator-not-fool rule and rewards unsupported sneering."
+      }
+    },
+    "stop": {
+      "name": "Stop It Patrick You're Scaring Him",
+      "meaning": "A misunderstood label escalates through six dialogue turns until the subject panics.",
+      "writing_guide": "Preserve the six-turn misunderstanding. Keep every turn extremely short and make the false definition drive the escalation.",
+      "anti_patterns": [
+        "Do not use mental health, protected identity, or a real person's fear.",
+        "Do not squeeze explanatory prose into the six panels."
+      ],
+      "slots": [
+        {
+          "key": "self_label",
+          "max_words": 5,
+          "role": "First dialogue states the condition or role."
+        },
+        {
+          "key": "definition_question",
+          "max_words": 5,
+          "role": "Second dialogue asks what it means."
+        },
+        {
+          "key": "wrong_definition",
+          "max_words": 7,
+          "role": "Third dialogue gives the comic misunderstanding."
+        },
+        {
+          "key": "correction",
+          "max_words": 4,
+          "role": "Fourth dialogue rejects that definition."
+        },
+        {
+          "key": "trigger",
+          "max_words": 4,
+          "role": "Fifth dialogue performs the misunderstood trigger."
+        },
+        {
+          "key": "fixed_warning",
+          "max_words": 8,
+          "role": "Sixth dialogue tells Patrick to stop."
+        }
+      ],
+      "invariants": [
+        "The wrong definition must directly motivate the fifth-line trigger and final reaction."
+      ],
+      "operator_example": [
+        "I'm scared of autonomous agents",
+        "What does that mean?",
+        "He fears every spreadsheet",
+        "No, I don't",
+        "Pivot table noises",
+        "Stop it, Patrick, you're scaring him"
+      ],
+      "evidence": {
+        "renderer_id": "stop",
+        "renderer_lines": 6,
+        "source_url": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/stop.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#stop"
+      },
+      "assessment": {
+        "origin": "A six-panel SpongeBob exchange about misunderstanding claustrophobia as fear of Santa Claus.",
+        "safety": "The original hinges on fear and the six captions risk unreadable mobile text.",
+        "legibility": "FAIL: six independent dialogue captions are too small to scan at the audited 360px width.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Hold pending an exact phone-size render that proves six short lines remain readable without identity jokes."
+      }
+    },
+    "vince": {
+      "name": "Vince McMahon Reaction",
+      "meaning": "Three options or revelations produce escalating excitement.",
+      "writing_guide": "Order three genuinely stronger benefits from good to extraordinary. Each line should be comparable on the same dimension.",
+      "anti_patterns": [
+        "Do not use merely different options.",
+        "Do not use sexual or body-focused material from the original footage."
+      ],
+      "slots": [
+        {
+          "key": "good_option",
+          "max_words": 5,
+          "role": "First panel labels the good option."
+        },
+        {
+          "key": "better_option",
+          "max_words": 5,
+          "role": "Second panel labels the stronger option."
+        },
+        {
+          "key": "best_option",
+          "max_words": 5,
+          "role": "Third panel labels the strongest option."
+        }
+      ],
+      "invariants": [
+        "Each successive item must intensify the same benefit or preference."
+      ],
+      "operator_example": [
+        "Find the answer",
+        "Show the source",
+        "Open the exact maintenance step"
+      ],
+      "evidence": {
+        "renderer_id": "vince",
+        "renderer_lines": 3,
+        "source_url": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/vince.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#vince"
+      },
+      "assessment": {
+        "origin": "Reaction sequence built from WWE footage of Vince McMahon showing escalating amazement.",
+        "safety": "Real executive likeness. The source footage objectifies a performer, and current allegations create unrelated public-figure baggage.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Useful escalation structure, but hold because the recognizable subject now carries distracting safety baggage."
+      }
+    },
+    "whatyear": {
+      "name": "What Year Is It?",
+      "meaning": "An outdated practice or uncanny recurrence makes the observer feel displaced in time.",
+      "writing_guide": "Name one concrete anachronistic practice on top and preserve the fixed question below.",
+      "anti_patterns": [
+        "Do not use for a merely old technology still fit for purpose.",
+        "Do not stack a long list of nostalgic references."
+      ],
+      "slots": [
+        {
+          "key": "anachronism",
+          "max_words": 8,
+          "role": "Top caption names the practice that feels out of time."
+        },
+        {
+          "key": "fixed_question",
+          "max_words": 5,
+          "role": "Bottom caption preserves the fixed disoriented question.",
+          "required_regex": "(?i)^what year is (it|this)[!?]*$"
+        }
+      ],
+      "invariants": [
+        "The first line must establish why the present situation feels like a different era."
+      ],
+      "operator_example": [
+        "Copying orders from email into ERP",
+        "What year is it?"
+      ],
+      "evidence": {
+        "renderer_id": "whatyear",
+        "renderer_lines": 2,
+        "source_url": "http://knowyourmeme.com/memes/what-year-is-it",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/whatyear.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#whatyear"
+      },
+      "assessment": {
+        "origin": "Robin Williams's newly freed character in Jumanji asks the year after 26 years trapped in the game.",
+        "safety": "Actor likeness. Keep the joke on outdated processes, not the actor or mental state.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Adds a concise anachronism reaction well suited to legacy workflows."
+      }
+    },
+    "wkh": {
+      "name": "Who Killed Hannibal?",
+      "meaning": "The actor who caused the failure immediately blames an unrelated party.",
+      "writing_guide": "Label the harmed result, the responsible actor, and the false accusation.",
+      "anti_patterns": [
+        "Do not depict or joke about violence.",
+        "Do not accuse a real organization without evidence."
+      ],
+      "slots": [
+        {
+          "key": "harmed_result",
+          "max_words": 5,
+          "role": "First label names what the actor damages."
+        },
+        {
+          "key": "responsible_actor",
+          "max_words": 5,
+          "role": "Second label names the actor causing the damage."
+        },
+        {
+          "key": "false_blame",
+          "max_words": 8,
+          "role": "Third caption blames someone else."
+        }
+      ],
+      "invariants": [
+        "The second role must directly cause the first outcome and the final line must redirect blame."
+      ],
+      "operator_example": [
+        "The support queue",
+        "The rushed rollout",
+        "Why would users do this?"
+      ],
+      "evidence": {
+        "renderer_id": "wkh",
+        "renderer_lines": 3,
+        "source_url": "https://knowyourmeme.com/memes/who-killed-hannibal",
+        "source_file": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/wkh.html",
+        "retrieved": "2026-09-29",
+        "detail": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/candidate-evidence.json#wkh"
+      },
+      "assessment": {
+        "origin": "An Eric Andre Show sketch in which Andre shoots Hannibal Buress and asks who killed him.",
+        "safety": "The visible shooting is inseparable from the established self-caused-blame joke.",
+        "legibility": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+        "rights_status": "fair-use-review",
+        "admission_rationale": "Fails the campaign's violence and injury gate despite its useful blame-shifting relationship."
+      }
+    },
+
     "worst": {
       "name": "The Worst Day of Your Life So Far",
       "meaning": "A complaint about the absolute worst moment is corrected with the reminder that things can still get worse.",

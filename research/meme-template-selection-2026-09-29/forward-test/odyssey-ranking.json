@@ -1,0 +1,6 @@
+[
+  {"template":"reveal","angle":"autonomy-unmasked","score":102,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"genie","angle":"agent-review-boundary","score":99,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"glasses","angle":"same-project-two-readings","score":99,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"handshake","angle":"agent-review-boundary","score":70,"eligible":false,"hard_fail":true,"critical_pass":false}
+]

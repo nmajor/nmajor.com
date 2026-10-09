@@ -1,6 +1,6 @@
 ---
 name: icp-focus-group
-description: Run a multi-provider "ICP focus group" — a panel of LLMs from different providers (Anthropic, OpenAI, Google), each role-playing the target customer persona, to score one piece of content against its goal and return per-criterion scores plus a prioritized list of fixes. Use before publishing or posting anything customer-facing (a LinkedIn post, newsletter issue, landing page, email, headline, lead magnet) when you want goal-based, persona-grounded feedback and concrete improvements, or to A/B two drafts. Heterogeneous judges from disjoint model families cut self-enhancement and leniency bias and correlate better with humans (PoLL). Composes with writing-voice. It assesses only — it never writes or edits the content; the authoring skill (for LinkedIn, content-repurposing) applies the fixes and hands the revision back to re-assess. Honest about its limits: directional decision-support, not a prediction of real audience behavior.
+description: "Run a multi-provider ICP focus group that role-plays target customers, scores customer-facing content against a stated goal, and returns prioritized fixes or an A/B preference. Use before publishing LinkedIn posts, newsletters, landing pages, emails, headlines, or lead magnets. It assesses only; the authoring skill applies revisions. Supports an inherited-context mode for autonomous workflows whose artifact, goal, rubric, and personas are already fixed. Results are directional decision support, not predictions of human behavior."
 ---
 
 # ICP focus group
@@ -32,7 +32,13 @@ unimpressed. Reasoning comes before the number every time (react first, quote-th
 jurors never see each other's work, scoring runs at temperature ~0, and aggregation happens
 only after every independent verdict is in.
 
-## Clarification gate (mandatory — do not skip)
+## Clarification gate
+
+The gate below is mandatory for a standalone request. It is already satisfied in
+**inherited-context mode** when an authoring skill explicitly supplies the exact artifact, content
+type, fixed goal, rubric preset, and named `.icps` personas. In that mode, record those inherited
+choices and continue without asking the user to reconfirm them. Missing or contradictory required
+context still stops the run.
 
 Before any run, confirm three things in writing and get the user's OK:
 
@@ -69,14 +75,19 @@ Before any run, confirm three things in writing and get the user's OK:
   `rubric.md` (present A and B, randomize order per juror, ask which better serves the goal
   and why). Pointwise scoring is the default for improving one piece; pairwise is only for
   selection.
+- **inherited-context** — used only when a calling workflow has already fixed the artifact, goal,
+  rubric, and personas. It may be mini, full, or pairwise. It skips repeated user confirmation but
+  preserves the same blind jurors, provider separation, output schema, and caveats.
 
 ## Procedure
 
 1. **Preflight** (`providers.md`). Identify the host provider (the agent reading this).
-   Detect which other CLIs are installed and authed (`claude`, `codex`, `gemini`). Build the
+   Detect which other CLIs are installed and authed (`claude`, `codex`, `antigravity`). Build the
    seat lineup: the host's seat(s) run as **native subagents**; the other providers' seats
    run via **their CLI**. If fewer than 2 distinct providers are usable, warn that the
-   cross-provider debiasing is lost and ask whether to proceed anyway.
+  cross-provider debiasing is lost. In standalone mode, ask whether to proceed. In
+  inherited-context mode, continue with the available providers, label the panel degraded, and
+  never imply it was cross-provider.
 2. **Build prompts.** For each seat, assemble the per-seat prompt from the template in
    `rubric.md`: persona → goal/funnel → the content (clearly delimited) → in-character gut
    reaction → each criterion as quote + one-line rationale **before** its number → all scores

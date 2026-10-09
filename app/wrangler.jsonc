@@ -16,10 +16,11 @@
   // path + query, and astro.config.mjs uses https://www.nmajor.com as the canonical site.
   // worker.js handles POST /api/subscribe (Turnstile verify → Buttondown); all
   // other requests fall through to the static assets. run_worker_first ensures the
-  // Worker sees /api/subscribe even though it's not a static asset. Secrets
-  // (PROJECTS_TURNSTILE_SECRET_KEY, BUTTONDOWN_API_KEY) are Worker secrets, set
-  // via `wrangler secret put`, never in the repo. The Turnstile action and exact
-  // request hostname are enforced server-side.
+  // Worker sees /api/subscribe and /api/contact even though they are not static
+  // assets. Secrets (PROJECTS_TURNSTILE_SECRET_KEY, BUTTONDOWN_API_KEY,
+  // DISCORD_CONTACT_WEBHOOK_URL) are Worker secrets, set via `wrangler secret
+  // put`, never in the repo. The Turnstile action and exact request hostname are
+  // enforced server-side.
   "main": "worker.js",
   "assets": {
     "directory": "./dist",

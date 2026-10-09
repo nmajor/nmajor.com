@@ -1,0 +1,446 @@
+[
+  {
+    "id": "blb",
+    "name": "Bad Luck Brian",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/blb.jpg",
+    "example": {
+      "text": [
+        "falls asleep in class",
+        "has a wet dream"
+      ],
+      "url": "https://api.memegen.link/images/blb/falls_asleep_in_class/has_a_wet_dream.jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/bad-luck-brian",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/blb"
+  },
+  {
+    "id": "box",
+    "name": "What's in the box!?",
+    "lines": 2,
+    "overlays": 1,
+    "styles": [
+      "animated",
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/box.jpg",
+    "example": {
+      "text": [
+        "",
+        "What's in the box!?"
+      ],
+      "url": "https://api.memegen.link/images/box/_/What's_in_the_box!~q.webp"
+    },
+    "source": "https://screenrant.com/hilarious-se7en-memes/",
+    "keywords": [
+      "Seven"
+    ],
+    "_self": "https://api.memegen.link/templates/box"
+  },
+  {
+    "id": "cake",
+    "name": "Office Space Milton",
+    "lines": 2,
+    "overlays": 1,
+    "styles": [
+      "animated",
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/cake.jpg",
+    "example": {
+      "text": [
+        "",
+        "I was told there would be cake"
+      ],
+      "url": "https://api.memegen.link/images/cake/_/I_was_told_there_would_be_cake.webp"
+    },
+    "source": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/cake"
+  },
+  {
+    "id": "disastergirl",
+    "name": "Disaster Girl",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/disastergirl.jpg",
+    "example": {
+      "text": [
+        "",
+        "just as I planned..."
+      ],
+      "url": "https://api.memegen.link/images/disastergirl/_/just_as_I_planned....jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/disaster-girl",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/disastergirl"
+  },
+  {
+    "id": "dragon",
+    "name": "What Color Do You Want Your Dragon",
+    "lines": 1,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/dragon.jpg",
+    "example": {
+      "text": [
+        "OK I want a boyfriend"
+      ],
+      "url": "https://api.memegen.link/images/dragon/OK_I_want_a_boyfriend.jpg"
+    },
+    "source": "https://knowyourmeme.com/photos/1052192-tumblr",
+    "keywords": [
+      "wish"
+    ],
+    "_self": "https://api.memegen.link/templates/dragon"
+  },
+  {
+    "id": "elf",
+    "name": "You Sit on a Throne of Lies",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/elf.jpg",
+    "example": {
+      "text": [
+        "",
+        "you sit on a throne of lies"
+      ],
+      "url": "https://api.memegen.link/images/elf/_/you_sit_on_a_throne_of_lies.jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+    "keywords": [
+      "Elf"
+    ],
+    "_self": "https://api.memegen.link/templates/elf"
+  },
+  {
+    "id": "friends",
+    "name": "Are You Two Friends?",
+    "lines": 3,
+    "overlays": 3,
+    "styles": [
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/friends.jpg",
+    "example": {
+      "text": [
+        "Progressives",
+        "Republicans",
+        "Libertarians"
+      ],
+      "url": "https://api.memegen.link/images/friends/Progressives/Republicans/Libertarians.jpg"
+    },
+    "source": "https://knowyourmeme.com/memes/are-you-two-friends",
+    "keywords": [
+      "Star Trek"
+    ],
+    "_self": "https://api.memegen.link/templates/friends"
+  },
+  {
+    "id": "headaches",
+    "name": "Types of Headaches",
+    "lines": 1,
+    "overlays": 1,
+    "styles": [
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/headaches.jpg",
+    "example": {
+      "text": [
+        "Breaking Production"
+      ],
+      "url": "https://api.memegen.link/images/headaches/Breaking_Production.jpg"
+    },
+    "source": "https://knowyourmeme.com/memes/types-of-headaches",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/headaches"
+  },
+  {
+    "id": "interesting",
+    "name": "The Most Interesting Man in the World",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/interesting.jpg",
+    "example": {
+      "text": [
+        "I don't often drink beer",
+        "so you shouldn't value my opinion"
+      ],
+      "url": "https://api.memegen.link/images/interesting/I_don't_often_drink_beer/so_you_shouldn't_value_my_opinion.jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/interesting"
+  },
+  {
+    "id": "ive",
+    "name": "Jony Ive Redesigns Things",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/ive.jpg",
+    "example": {
+      "text": [
+        "we think",
+        "you'll love it"
+      ],
+      "url": "https://api.memegen.link/images/ive/we_think/you'll_love_it.jpg"
+    },
+    "source": "https://www.apple.com/pr/bios/jonathan-ive.html",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/ive"
+  },
+  {
+    "id": "jw",
+    "name": "Probably Not a Good Idea",
+    "lines": 2,
+    "overlays": 1,
+    "styles": [
+      "alternate",
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/jw.jpg",
+    "example": {
+      "text": [
+        "you just went and made a new dinosaur?",
+        "probably not a good idea"
+      ],
+      "url": "https://api.memegen.link/images/jw/you_just_went_and_made_a_new_dinosaur~q/probably_not_a_good_idea.jpg"
+    },
+    "source": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/jw"
+  },
+  {
+    "id": "khaby-lame",
+    "name": "Khaby Lame Shrug",
+    "lines": 2,
+    "overlays": 2,
+    "styles": [
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/khaby-lame.jpg",
+    "example": {
+      "text": [
+        "Bad mood?",
+        "Laugh at memes"
+      ],
+      "url": "https://api.memegen.link/images/khaby-lame/Bad_mood~q/Laugh_at_memes.jpg"
+    },
+    "source": "https://knowyourmeme.com/photos/2132291-khaby-lame-shrug-its-that-simple",
+    "keywords": [
+      "It's That Sample"
+    ],
+    "_self": "https://api.memegen.link/templates/khaby-lame"
+  },
+  {
+    "id": "kramer",
+    "name": "Kramer, What's Going On In There?",
+    "lines": 2,
+    "overlays": 1,
+    "styles": [
+      "default",
+      "seinfeld"
+    ],
+    "blank": "https://api.memegen.link/images/kramer.jpg",
+    "example": {
+      "text": [
+        "Kramer, what's going on in there?",
+        "It's a Chicken Roaster sign, right across from my window."
+      ],
+      "url": "https://api.memegen.link/images/kramer/Kramer,_what's_going_on_in_there~q/It's_a_Chicken_Roaster_sign,_right_across_from_my_window..jpg"
+    },
+    "source": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/kramer"
+  },
+  {
+    "id": "light",
+    "name": "Everything the Light Touches is Our Kingdom",
+    "lines": 2,
+    "overlays": 2,
+    "styles": [
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/light.jpg",
+    "example": {
+      "text": [
+        "What about that shadowy place?",
+        "That's beyond our borders. You must never go there."
+      ],
+      "url": "https://api.memegen.link/images/light/What_about_that_shadowy_place~q/That's_beyond_our_borders._You_must_never_go_there..jpg"
+    },
+    "source": "https://www.youtube.com/watch?v=JawCb15MWLc",
+    "keywords": [
+      "Lion King",
+      "Mufasa and Simba"
+    ],
+    "_self": "https://api.memegen.link/templates/light"
+  },
+  {
+    "id": "nails",
+    "name": "Guy Hammering Nails Into Sand",
+    "lines": 3,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/nails.jpg",
+    "example": {
+      "text": [
+        "Humanity",
+        "Language",
+        "The inherently indescribably nature of the universe"
+      ],
+      "url": "https://api.memegen.link/images/nails/Humanity/Language/The_inherently_indescribably_nature_of_the_universe.jpg"
+    },
+    "source": "https://keepmeme.com/meme/when-the-boss-coming-and-you-need-to-pretend-doing-something-hammering-nails-into-the-sand-beach-meme",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/nails"
+  },
+  {
+    "id": "philosoraptor",
+    "name": "Philosoraptor",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/philosoraptor.jpg",
+    "example": {
+      "text": [
+        "if the earth is the third planet from the sun",
+        "then isn't every country a third world country?"
+      ],
+      "url": "https://api.memegen.link/images/philosoraptor/if_the_earth_is_the_third_planet_from_the_sun/then_isn't_every_country_a_third_world_country~q.jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/philosoraptor",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/philosoraptor"
+  },
+  {
+    "id": "spirit",
+    "name": "Fake Spirit Halloween Costume",
+    "lines": 5,
+    "overlays": 1,
+    "styles": [
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/spirit.jpg",
+    "example": {
+      "text": [
+        "My Dad",
+        "Includes:",
+        "- Nothing",
+        "- Nothing",
+        "- Nothing"
+      ],
+      "url": "https://api.memegen.link/images/spirit/My_Dad/Includes:/--_Nothing/--_Nothing/--_Nothing.jpg"
+    },
+    "source": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+    "keywords": [
+      "adult size costume"
+    ],
+    "_self": "https://api.memegen.link/templates/spirit"
+  },
+  {
+    "id": "spongebob",
+    "name": "Mocking Spongebob",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/spongebob.jpg",
+    "example": {
+      "text": [
+        "BF: I don't even know her like that",
+        "Me: i DoN'T eVeN KnOw HeR lIkE tHaT"
+      ],
+      "url": "https://api.memegen.link/images/spongebob/BF:_I_don't_even_know_her_like_that/Me:_i_DoN'T_eVeN_KnOw_HeR_lIkE_tHaT.jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/mocking-spongebob",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/spongebob"
+  },
+  {
+    "id": "stop",
+    "name": "Stop It Patrick You're Scaring Him",
+    "lines": 6,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/stop.jpg",
+    "example": {
+      "text": [
+        "I'm claustrophobic.",
+        "What does \"claustrophobic\" mean?",
+        "It means he's afraid of Santa Claus.",
+        "No, it doesn't.",
+        "HO-HO-HO",
+        "Stop it, Patrick, you're scaring him!"
+      ],
+      "url": "https://api.memegen.link/images/stop/I'm_claustrophobic./What_does_''claustrophobic''_mean~q/It_means_he's_afraid_of_Santa_Claus./No,_it_doesn't./HO--HO--HO/Stop_it,_Patrick,_you're_scaring_him!.jpg"
+    },
+    "source": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/stop"
+  },
+  {
+    "id": "vince",
+    "name": "Vince McMahon Reaction",
+    "lines": 3,
+    "overlays": 3,
+    "styles": [
+      "default"
+    ],
+    "blank": "https://api.memegen.link/images/vince.jpg",
+    "example": {
+      "text": [
+        "2-Day Delivery",
+        "Overnight Shipping",
+        "Shopping at the Store"
+      ],
+      "url": "https://api.memegen.link/images/vince/2--Day_Delivery/Overnight_Shipping/Shopping_at_the_Store.jpg"
+    },
+    "source": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/vince"
+  },
+  {
+    "id": "whatyear",
+    "name": "What Year Is It?",
+    "lines": 2,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/whatyear.jpg",
+    "example": {
+      "text": [
+        "",
+        "what year is it?"
+      ],
+      "url": "https://api.memegen.link/images/whatyear/_/what_year_is_it~q.jpg"
+    },
+    "source": "http://knowyourmeme.com/memes/what-year-is-it",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/whatyear"
+  },
+  {
+    "id": "wkh",
+    "name": "Who Killed Hannibal?",
+    "lines": 3,
+    "overlays": 0,
+    "styles": [],
+    "blank": "https://api.memegen.link/images/wkh.jpg",
+    "example": {
+      "text": [
+        "Twin Towers",
+        "George Bush",
+        "Why would Al-Qaeda do this?"
+      ],
+      "url": "https://api.memegen.link/images/wkh/Twin_Towers/George_Bush/Why_would_Al--Qaeda_do_this~q.jpg"
+    },
+    "source": "https://knowyourmeme.com/memes/who-killed-hannibal",
+    "keywords": [],
+    "_self": "https://api.memegen.link/templates/wkh"
+  }
+]

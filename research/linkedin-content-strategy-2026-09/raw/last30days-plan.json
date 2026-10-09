@@ -1,0 +1,35 @@
+{
+  "intent": "concept",
+  "freshness_mode": "evergreen_ok",
+  "cluster_mode": "none",
+  "subqueries": [
+    {
+      "label": "primary",
+      "search_query": "LinkedIn content AI automation organic reach hooks",
+      "ranking_query": "What are creators and marketers reporting about LinkedIn organic reach, AI-assisted content, hooks, and content automation?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram", "hackernews", "polymarket"],
+      "weight": 1.0
+    },
+    {
+      "label": "ai-workflow",
+      "search_query": "LinkedIn AI writing workflow authentic voice prompt",
+      "ranking_query": "Which AI-assisted LinkedIn writing workflows preserve a person's evidence, judgment, and recognizable voice?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram"],
+      "weight": 0.8
+    },
+    {
+      "label": "reach-patterns",
+      "search_query": "LinkedIn organic reach hooks audience content patterns",
+      "ranking_query": "Which hook, story, and distribution patterns are associated with reaching beyond an existing technical network on LinkedIn?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram"],
+      "weight": 0.8
+    },
+    {
+      "label": "paid-distribution",
+      "search_query": "LinkedIn personal post boost Thought Leader Ads followers",
+      "ranking_query": "What results and limitations do people report from boosting personal posts or using LinkedIn Thought Leader Ads to reach new audiences and gain followers?",
+      "sources": ["reddit", "x", "youtube"],
+      "weight": 0.7
+    }
+  ]
+}

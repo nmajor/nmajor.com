@@ -1,13 +1,15 @@
 ---
 name: hooks
-description: Generate 3-5 distinct, on-voice opening hooks to pick from — for a newsletter subject line/title, an article lede (the first line of a post), or a LinkedIn post's first line. Use whenever you need to open a piece: inside content-builder at the drafting stage, or standalone for a LinkedIn post or a subject line. Composes with writing-voice (every word follows it) and is backed by research/content-hooks/report.md.
+description: "Generate 3-5 distinct, on-voice opening hooks for a newsletter title, article lede, or LinkedIn first line. Use inside an authoring workflow or standalone. In delegated mode the caller may select the strongest option automatically; standalone use presents choices. Composes with writing-voice and is backed by research/content-hooks/report.md."
 ---
 
 # Hooks: generate options to pick from
 
 A hook's only job is to earn the next sentence. This skill produces a short slate of
-**3-5 genuinely different hook options** for a human (Nick or Isaac) to choose from,
-grounded in the real material so they are specific and honest, not generic AI openers.
+**3-5 genuinely different hook options**, grounded in the real material so they are specific and
+honest, not generic AI openers. Standalone use presents the slate for a human choice. When an
+authoring skill explicitly delegates selection, score the options, choose one, and return the
+runner-ups without pausing.
 
 It covers three surfaces:
 
@@ -92,8 +94,8 @@ is what tips it into clickbait.
 
 ## Surface mechanics (the load-bearing constraints)
 
-- **LinkedIn:** the hook is everything visible above "see more" — roughly the first 210
-  characters on desktop, ~140 on mobile. Front-load the most compelling content. Keep the
+- **LinkedIn:** the hook is everything visible above "see more". The nmajor.com house budget is
+  **140 characters** so the first paragraph works on mobile. Front-load the most compelling content. Keep the
   hook to one line (a one-line hook leaves room for a second informative line in the
   preview). Aim ~5-15 words. Engagement bait ("Comment YES") is penalized and insults the
   reader; the honest specific opener is what the platform now rewards.
@@ -126,9 +128,11 @@ techniques that make LLM-generated hooks reliable instead of generic.
    any that fail, then keep the strongest survivors that are each a *different* angle. Do
    not reward length; for hooks, shorter and more concrete usually wins.
 
-4. **Present 3-5 distinct options to the author.** Label each with its angle and add a
+4. **Return 3-5 distinct options.** Label each with its angle and add a
    one-line note on why it works (or what it trades off). Make them real alternatives, not
-   variations of one line. The author picks or asks for another round. Example shape:
+   variations of one line. In standalone mode, the author picks or asks for another round. In
+   delegated mode, select the highest-scoring option that fits the piece's reach game, mark it
+   `recommended`, keep at most two runner-ups, and continue the calling workflow. Example shape:
 
    ```
    1. [Specific-result] "We spent $23,000 on agents last quarter and shipped one thing that stuck."
@@ -151,7 +155,7 @@ techniques that make LLM-generated hooks reliable instead of generic.
 - Contains a banned hype/clickbait word or pattern (em dash, "It's not X, it's Y",
   rule-of-three, fake-significance tail, anything in `writing-voice/blacklist.md`).
 - Makes a claim not supported by the source material.
-- Over the surface's length limit (LinkedIn first line ≤ ~210 chars / one line; subject
+- Over the surface's length limit (LinkedIn first paragraph ≤ 140 chars; subject
   ≤ ~50-60 chars / 6-10 words).
 - Manufactured urgency, false scarcity, deceptive framing (fake RE:/FWD:, "Oops"), pure
   mystery bait, engagement bait, or a curiosity gap the piece won't actually close.

@@ -1,0 +1,5048 @@
+{
+  "version": 1,
+  "generated": "2026-09-29",
+  "active_catalog_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+  "sources": {
+    "contracts": ".skills/social-meme-campaign/references/template-contracts.json",
+    "memegen_snapshot": "research/social-meme-template-catalog/raw/memegen-templates.json",
+    "imgflip_snapshot": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+    "semantic_source_index": "research/social-meme-template-catalog/raw/semantic-sources/index.json"
+  },
+  "familiarity_note": "Current Imgflip top-100 placement is a volatile familiarity proxy, not a quality or rights signal. Established templates outside that snapshot remain unmeasured.",
+  "templates": {
+    "ackbar": {
+      "template_id": "ackbar",
+      "name": "It's A Trap!",
+      "semantic_family": "danger_warning",
+      "relationship_graph": {
+        "roles": [
+          "tempting setup",
+          "warning"
+        ],
+        "relationships": [
+          "The first line must describe the trap; the second line is the recognition."
+        ]
+      },
+      "humor_mechanisms": [
+        "foreseeable_consequence",
+        "recognition"
+      ],
+      "affect": [
+        "cautionary",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the It's A Trap! format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not put the warning first."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/ackbar.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "ants",
+          "distinction": "Use It's A Trap! when a tempting or harmless-looking situation contains an obvious hidden downside; use Do You Want Ants? when a repeated behavior is warned against because it predictably creates an unwanted outcome."
+        },
+        {
+          "template_id": "ski",
+          "distinction": "Use It's A Trap! when a tempting or harmless-looking situation contains an obvious hidden downside; use Super Cool Ski Instructor when a concrete risky shortcut receives a calm warning about the foreseeable hassle."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI pilot, every control TBD",
+            "It's a trap!"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "it's a trap!"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<tempting setup>",
+            "<warning>"
+          ]
+        }
+      ]
+    },
+    "drake": {
+      "template_id": "drake",
+      "name": "Drakeposting",
+      "semantic_family": "preference_contrast",
+      "relationship_graph": {
+        "roles": [
+          "rejected option",
+          "preferred option"
+        ],
+        "relationships": [
+          "The two lines must be comparable alternatives.",
+          "The second option must be clearly preferable from the operator's perspective."
+        ]
+      },
+      "humor_mechanisms": [
+        "contrast",
+        "rejection_and_choice"
+      ],
+      "affect": [
+        "decisive",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Drakeposting format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not compare different questions."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Drake Hotline Bling with 1551250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "perfection",
+          "distinction": "Use Drakeposting when the same person rejects the first option and prefers the second; use Perfection when two acceptable options are rejected before a third, often unexpected option is declared ideal."
+        },
+        {
+          "template_id": "home",
+          "distinction": "Use Drakeposting when the same person rejects the first option and prefers the second; use We Have Food at Home when a request for a desirable option is denied in favor of an inferior substitute already available."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI answers pharmacy calls",
+            "AI sends opt-in refill texts"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "left on unread",
+            "left on read"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<rejected option>",
+            "<preferred option>"
+          ]
+        }
+      ]
+    },
+    "ds": {
+      "template_id": "ds",
+      "name": "Daily Struggle",
+      "semantic_family": "choice_conflict",
+      "relationship_graph": {
+        "roles": [
+          "left choice",
+          "right choice",
+          "chooser"
+        ],
+        "relationships": [
+          "Lines one and two must be genuine alternatives for the person in line three."
+        ]
+      },
+      "humor_mechanisms": [
+        "dilemma",
+        "contradiction",
+        "false_choice"
+      ],
+      "affect": [
+        "frustrated",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Daily Struggle format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use two compatible actions."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Two Buttons with 1206000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "both",
+          "distinction": "Use Daily Struggle when one person is caught between two mutually exclusive choices; use Why Not Both? when a presented either-or choice is dissolved by choosing both options."
+        },
+        {
+          "template_id": "ntot",
+          "distinction": "Use Daily Struggle when one person is caught between two mutually exclusive choices; use No Take, Only Throw when someone demands an outcome while angrily refusing the prerequisite needed to produce it."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Keep the pilot",
+            "Admit it failed",
+            "Project owner"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "The dress is black and blue.",
+            "The dress is gold and white."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<left choice>",
+            "<right choice>",
+            "<chooser>"
+          ]
+        }
+      ]
+    },
+    "gru": {
+      "template_id": "gru",
+      "name": "Gru's Plan",
+      "semantic_family": "plan_reversal",
+      "relationship_graph": {
+        "roles": [
+          "plan step 1",
+          "plan step 2",
+          "failure reveal",
+          "repeated failure"
+        ],
+        "relationships": [
+          "Lines three and four must be identical.",
+          "The failure must contradict or undermine the plan."
+        ]
+      },
+      "humor_mechanisms": [
+        "reversal",
+        "reveal",
+        "expectation_break"
+      ],
+      "affect": [
+        "cautionary",
+        "wry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Gru's Plan format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not paraphrase the fourth line."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Gru's Plan with 380250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "success",
+          "distinction": "Use Gru's Plan when a confident plan reaches an overlooked failure, then repeats that failure in stunned realization; use Success Kid when an apparent setback unexpectedly produces a small but satisfying win."
+        },
+        {
+          "template_id": "panik-kalm-panik",
+          "distinction": "Use Gru's Plan when a confident plan reaches an overlooked failure, then repeats that failure in stunned realization; use Panik Kalm Panik when an alarming event is briefly explained away, then a new fact makes it worse."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Launch 9,000 AI use cases",
+            "Measure which ones make value",
+            "Most of the value comes from 10–15%",
+            "Most of the value comes from 10–15%"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Learn how to make memes.",
+            "Make a meme.",
+            "No one likes it.",
+            "No one likes it."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<plan step 1>",
+            "<plan step 2>",
+            "<failure reveal>",
+            "<repeated failure>"
+          ]
+        }
+      ]
+    },
+    "handshake": {
+      "template_id": "handshake",
+      "name": "Epic Handshake",
+      "semantic_family": "equivalence_mirror",
+      "relationship_graph": {
+        "roles": [
+          "left group",
+          "right group",
+          "shared trait"
+        ],
+        "relationships": [
+          "Line three must apply naturally to both groups or outcomes."
+        ]
+      },
+      "humor_mechanisms": [
+        "comparison",
+        "recognition",
+        "unexpected_similarity"
+      ],
+      "affect": [
+        "dry",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Epic Handshake format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not put opposing traits in the center."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Epic Handshake with 266500 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "same",
+          "distinction": "Use Epic Handshake when two different groups or outcomes share one specific trait; use They're the Same Picture when an observer treats two supposedly distinct things as functionally identical."
+        },
+        {
+          "template_id": "spiderman",
+          "distinction": "Use Epic Handshake when two different groups or outcomes share one specific trait; use Spider-Man Pointing at Spider-Man when two supposedly distinct actors discover their similarity or mirror each other's behavior."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI resolution",
+            "Human handoff",
+            "$0.99 each"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "left",
+            "right",
+            "center"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<left group>",
+            "<right group>",
+            "<shared trait>"
+          ]
+        }
+      ]
+    },
+    "mordor": {
+      "template_id": "mordor",
+      "name": "One Does Not Simply",
+      "semantic_family": "hidden_constraint",
+      "relationship_graph": {
+        "roles": [
+          "fixed setup",
+          "difficult action"
+        ],
+        "relationships": [
+          "Line two must be an action that sounds simple but has a recognizable complication."
+        ]
+      },
+      "humor_mechanisms": [
+        "constraint_reveal",
+        "scale_mismatch"
+      ],
+      "affect": [
+        "incredulous",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the One Does Not Simply format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use an action that really is simple."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists One Does Not Simply with 492000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "center",
+          "distinction": "Use One Does Not Simply when a supposedly simple action is actually difficult or constrained; use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose."
+        },
+        {
+          "template_id": "genie",
+          "distinction": "Use One Does Not Simply when a supposedly simple action is actually difficult or constrained; use Genie Lamp when impressive capability is constrained by one comically small operational boundary."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "One does not simply",
+            "compare two per-resolution AI prices"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "one does not simply",
+            "walk into mordor"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<fixed setup>",
+            "<difficult action>"
+          ]
+        }
+      ]
+    },
+    "rollsafe": {
+      "template_id": "rollsafe",
+      "name": "Roll Safe",
+      "semantic_family": "false_logic",
+      "relationship_graph": {
+        "roles": [
+          "problem avoided",
+          "flawed workaround"
+        ],
+        "relationships": [
+          "The second line must follow logically but reveal why the logic is foolish."
+        ]
+      },
+      "humor_mechanisms": [
+        "irony",
+        "self_defeating_logic",
+        "overconfidence"
+      ],
+      "affect": [
+        "cautionary",
+        "sarcastic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Roll Safe format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use sound advice."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Roll Safe Think About It with 342750 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "stonks",
+          "distinction": "Use Roll Safe when a person presents flawed logic as a clever workaround; use Stonks when a foolish business or financial decision is presented as if it were obvious strategic competence."
+        },
+        {
+          "template_id": "touch",
+          "distinction": "Use Roll Safe when a person presents flawed logic as a clever workaround; use Principal Skinner when a leader briefly considers being wrong, then blames everyone else instead."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Can't have an AI pilot fail",
+            "If you never define success"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "can't get fired",
+            "if you don't have a job"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<problem avoided>",
+            "<flawed workaround>"
+          ]
+        }
+      ]
+    },
+    "aag": {
+      "template_id": "aag",
+      "name": "Ancient Aliens Guy",
+      "semantic_family": "causal_oversimplification",
+      "relationship_graph": {
+        "roles": [
+          "unexplained result",
+          "magic explanation"
+        ],
+        "relationships": [
+          "Line two claims to explain line one and is comically reductive."
+        ]
+      },
+      "humor_mechanisms": [
+        "absurd_attribution",
+        "oversimplification"
+      ],
+      "affect": [
+        "sarcastic",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Ancient Aliens Guy format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not provide a nuanced causal explanation."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Ancient Aliens with 386000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "rollsafe",
+          "distinction": "Use Ancient Aliens Guy when a complicated or unexplained result is reduced to one overconfident magical cause; use Roll Safe when a person presents flawed logic as a clever workaround."
+        },
+        {
+          "template_id": "morpheus",
+          "distinction": "Use Ancient Aliens Guy when a complicated or unexplained result is reduced to one overconfident magical cause; use Matrix Morpheus when a calm revelation challenges an assumption the audience took for granted."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Quarterly results improved",
+            "AI"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "aliens"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<unexplained result>",
+            "<magic explanation>"
+          ]
+        }
+      ]
+    },
+    "ants": {
+      "template_id": "ants",
+      "name": "Do You Want Ants?",
+      "semantic_family": "danger_warning",
+      "relationship_graph": {
+        "roles": [
+          "outcome question",
+          "causal warning"
+        ],
+        "relationships": [
+          "Both lines name the same unwanted outcome; line two connects it to the behavior being criticized."
+        ]
+      },
+      "humor_mechanisms": [
+        "foreseeable_consequence",
+        "recognition"
+      ],
+      "affect": [
+        "cautionary",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Do You Want Ants? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not change the outcome between the two lines."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/ants.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "ackbar",
+          "distinction": "Use Do You Want Ants? when a repeated behavior is warned against because it predictably creates an unwanted outcome; use It's A Trap! when a tempting or harmless-looking situation contains an obvious hidden downside."
+        },
+        {
+          "template_id": "ski",
+          "distinction": "Use Do You Want Ants? when a repeated behavior is warned against because it predictably creates an unwanted outcome; use Super Cool Ski Instructor when a concrete risky shortcut receives a calm warning about the foreseeable hassle."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Do you want shadow AI?",
+            "Because that's how you get shadow AI"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "do you want ants?",
+            "because that's how you get ants"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<outcome question>",
+            "<causal warning>"
+          ]
+        }
+      ]
+    },
+    "balloon": {
+      "template_id": "balloon",
+      "name": "Running Away Balloon",
+      "semantic_family": "temptation_abandonment",
+      "relationship_graph": {
+        "roles": [
+          "desired outcome",
+          "reaching actor",
+          "restraining force"
+        ],
+        "relationships": [
+          "The actor wants line one and is prevented by line three."
+        ]
+      },
+      "humor_mechanisms": [
+        "temptation",
+        "neglect",
+        "self_sabotage"
+      ],
+      "affect": [
+        "cautionary",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Running Away Balloon format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not label the first two slots with the same thing."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Running Away Balloon with 601750 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "db",
+          "distinction": "Use Running Away Balloon when someone reaches for a desired outcome while a constraint or habit holds them back; use Distracted Boyfriend when a decision-maker abandons an existing priority for a more tempting alternative."
+        },
+        {
+          "template_id": "exit",
+          "distinction": "Use Running Away Balloon when someone reaches for a desired outcome while a constraint or habit holds them back; use Left Exit 12 Off Ramp when a decision-maker abruptly abandons the intended path for a tempting alternative."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "One useful AI workflow",
+            "Leadership",
+            "The 47-pilot portfolio"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Opportunities",
+            "Opportunities",
+            "Shyness"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<desired outcome>",
+            "<reaching actor>",
+            "<restraining force>"
+          ]
+        }
+      ]
+    },
+    "bihw": {
+      "template_id": "bihw",
+      "name": "But It's Honest Work",
+      "semantic_family": "modest_legitimacy",
+      "relationship_graph": {
+        "roles": [
+          "modest result",
+          "honest defense"
+        ],
+        "relationships": [
+          "Line one minimizes the achievement; line two values its legitimacy."
+        ]
+      },
+      "humor_mechanisms": [
+        "understatement",
+        "silver_lining"
+      ],
+      "affect": [
+        "wry",
+        "warm"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the But It's Honest Work format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a fraudulent or useless result."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/bihw.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "nice",
+          "distinction": "Use But It's Honest Work when a modest or unglamorous result is defended because it is real and legitimate; use So I Got That Goin' For Me, Which Is Nice when an ordeal contains one modest silver lining that is real but insufficient."
+        },
+        {
+          "template_id": "success",
+          "distinction": "Use But It's Honest Work when a modest or unglamorous result is defended because it is real and legitimate; use Success Kid when an apparent setback unexpectedly produces a small but satisfying win."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "It ain't much, just one automated task",
+            "But it's honest work"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "it ain't much",
+            "but it's honest work"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<modest result>",
+            "<honest defense>"
+          ]
+        }
+      ]
+    },
+    "bilbo": {
+      "template_id": "bilbo",
+      "name": "Why Shouldn't I Keep It",
+      "semantic_family": "temptation_abandonment",
+      "relationship_graph": {
+        "roles": [
+          "tempted rationalization",
+          "possessive question"
+        ],
+        "relationships": [
+          "Both lines are the same speaker talking themself into keeping the tempting thing."
+        ]
+      },
+      "humor_mechanisms": [
+        "temptation",
+        "neglect",
+        "self_sabotage"
+      ],
+      "affect": [
+        "cautionary",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Why Shouldn't I Keep It format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use an item the speaker unquestionably owns and needs."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/bilbo.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "balloon",
+          "distinction": "Use Why Shouldn't I Keep It when someone rationalizes keeping a tempting thing they know they probably should release; use Running Away Balloon when someone reaches for a desired outcome while a constraint or habit holds them back."
+        },
+        {
+          "template_id": "exit",
+          "distinction": "Use Why Shouldn't I Keep It when someone rationalizes keeping a tempting thing they know they probably should release; use Left Exit 12 Off Ramp when a decision-maker abruptly abandons the intended path for a tempting alternative."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Another AI pilot: after all, why not?",
+            "Why shouldn't I keep it?"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "After all... why not?",
+            "Why shouldn't I keep it?"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<tempted rationalization>",
+            "<possessive question>"
+          ]
+        }
+      ]
+    },
+    "both": {
+      "template_id": "both",
+      "name": "Why Not Both?",
+      "semantic_family": "choice_conflict",
+      "relationship_graph": {
+        "roles": [
+          "false choice",
+          "both answer"
+        ],
+        "relationships": [
+          "Line one clearly presents two options; line two chooses both."
+        ]
+      },
+      "humor_mechanisms": [
+        "dilemma",
+        "contradiction",
+        "false_choice"
+      ],
+      "affect": [
+        "frustrated",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Why Not Both? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use truly mutually exclusive choices."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/both.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "ds",
+          "distinction": "Use Why Not Both? when a presented either-or choice is dissolved by choosing both options; use Daily Struggle when one person is caught between two mutually exclusive choices."
+        },
+        {
+          "template_id": "ntot",
+          "distinction": "Use Why Not Both? when a presented either-or choice is dissolved by choosing both options; use No Take, Only Throw when someone demands an outcome while angrily refusing the prerequisite needed to produce it."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Buy the tool or rebuild the process?",
+            "Why not both?"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "hard or soft tacos",
+            "why not both?"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<false choice>",
+            "<both answer>"
+          ]
+        }
+      ]
+    },
+    "bus": {
+      "template_id": "bus",
+      "name": "Two Guys on a Bus",
+      "semantic_family": "perspective_split",
+      "relationship_graph": {
+        "roles": [
+          "bleak interpretation",
+          "constructive interpretation"
+        ],
+        "relationships": [
+          "The two captions are contrasting perspectives on one shared fact."
+        ]
+      },
+      "humor_mechanisms": [
+        "reinterpretation",
+        "reaction_change",
+        "contrast"
+      ],
+      "affect": [
+        "reflective",
+        "wry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Two Guys on a Bus format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not describe two different situations."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Two guys on a bus with 29250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "kombucha",
+          "distinction": "Use Two Guys on a Bus when two people experience the same situation but focus on opposite interpretations; use Kombucha Girl when an initial negative reaction turns into reluctant or surprised approval after reconsideration."
+        },
+        {
+          "template_id": "glasses",
+          "distinction": "Use Two Guys on a Bus when two people experience the same situation but focus on opposite interpretations; use Peter Parker's Glasses when the same thing looks different when the observer changes perspective."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Another pilot failed",
+            "One bad pilot finally stopped"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Postseason",
+            "Preseason"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<bleak interpretation>",
+            "<constructive interpretation>"
+          ]
+        }
+      ]
+    },
+    "buzz": {
+      "template_id": "buzz",
+      "name": "X, X Everywhere",
+      "semantic_family": "escalation",
+      "relationship_graph": {
+        "roles": [
+          "repeated thing",
+          "everywhere claim"
+        ],
+        "relationships": [
+          "The same noun or noun phrase appears in both lines; line two declares it ubiquitous."
+        ]
+      },
+      "humor_mechanisms": [
+        "repetition",
+        "exaggeration",
+        "scale_shift"
+      ],
+      "affect": [
+        "incredulous",
+        "energetic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the X, X Everywhere format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not name different things in the two lines."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists X, X Everywhere with 408000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gb",
+          "distinction": "Use X, X Everywhere when one repeated thing has proliferated until it appears everywhere; use Galaxy Brain when four approaches escalate from ordinary to increasingly clever or absurd."
+        },
+        {
+          "template_id": "oprah",
+          "distinction": "Use X, X Everywhere when one repeated thing has proliferated until it appears everywhere; use Oprah You Get a Car when the same thing is enthusiastically handed to everyone without discrimination."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI pilots",
+            "AI pilots everywhere"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "memes",
+            "memes everywhere"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<repeated thing>",
+            "<everywhere claim>"
+          ]
+        }
+      ]
+    },
+    "center": {
+      "template_id": "center",
+      "name": "What Is This, a Center for Ants?!",
+      "semantic_family": "hidden_constraint",
+      "relationship_graph": {
+        "roles": [
+          "undersized effort",
+          "ants question"
+        ],
+        "relationships": [
+          "The second line treats the first line as comically too small for its purpose."
+        ]
+      },
+      "humor_mechanisms": [
+        "constraint_reveal",
+        "scale_mismatch"
+      ],
+      "affect": [
+        "incredulous",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the What Is This, a Center for Ants?! format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use something merely low quality."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/center.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "mordor",
+          "distinction": "Use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose; use One Does Not Simply when a supposedly simple action is actually difficult or constrained."
+        },
+        {
+          "template_id": "genie",
+          "distinction": "Use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose; use Genie Lamp when impressive capability is constrained by one comically small operational boundary."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Three part-time AI owners",
+            "What is this, a team for ants?!"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "what is this",
+            "a center for ants"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<undersized effort>",
+            "<ants question>"
+          ]
+        }
+      ]
+    },
+    "dbg": {
+      "template_id": "dbg",
+      "name": "Expectation vs. Reality",
+      "semantic_family": "expectation_reality",
+      "relationship_graph": {
+        "roles": [
+          "expectation",
+          "reality"
+        ],
+        "relationships": [
+          "Line two is the realized version of line one and is clearly worse."
+        ]
+      },
+      "humor_mechanisms": [
+        "contradiction",
+        "disappointment",
+        "reaction"
+      ],
+      "affect": [
+        "frustrated",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Expectation vs. Reality format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not compare unrelated situations."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/dbg.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "facepalm",
+          "distinction": "Use Expectation vs. Reality when an appealing expectation is immediately contradicted by the disappointing real experience; use Facepalm when an obvious mistake or repeated misunderstanding leaves the observer speechless."
+        },
+        {
+          "template_id": "cake",
+          "distinction": "Use Expectation vs. Reality when an appealing expectation is immediately contradicted by the disappointing real experience; use Office Space Milton when a promised benefit or resource quietly fails to appear."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI handles the request",
+            "AI opens a ticket for a human"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Clicking the 'X' on a mobile ad",
+            "The 'X' is part of the ad"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<expectation>",
+            "<reality>"
+          ]
+        }
+      ]
+    },
+    "dwight": {
+      "template_id": "dwight",
+      "name": "Schrute Facts",
+      "semantic_family": "literal_correction",
+      "relationship_graph": {
+        "roles": [
+          "loose claim",
+          "literal correction"
+        ],
+        "relationships": [
+          "Line two rejects and narrowly corrects line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "literalism",
+        "pedantic_correction"
+      ],
+      "affect": [
+        "dry",
+        "corrective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Schrute Facts format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a subjective preference that cannot be corrected."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/dwight.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "inigo",
+          "distinction": "Use Schrute Facts when a broad or sentimental claim is met with an overly literal correction; use Inigo Montoya when a word is being used repeatedly in a way that does not match its real meaning."
+        },
+        {
+          "template_id": "morpheus",
+          "distinction": "Use Schrute Facts when a broad or sentimental claim is met with an overly literal correction; use Matrix Morpheus when a calm revelation challenges an assumption the audience took for granted."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI means fewer people?",
+            "False. It means different work"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "love is all you need?",
+            "false. you need water and rations."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<loose claim>",
+            "<literal correction>"
+          ]
+        }
+      ]
+    },
+    "exit": {
+      "template_id": "exit",
+      "name": "Left Exit 12 Off Ramp",
+      "semantic_family": "temptation_abandonment",
+      "relationship_graph": {
+        "roles": [
+          "intended path",
+          "tempting exit",
+          "decision maker"
+        ],
+        "relationships": [
+          "The actor in line three should stay on line one but swerves toward line two."
+        ]
+      },
+      "humor_mechanisms": [
+        "temptation",
+        "neglect",
+        "self_sabotage"
+      ],
+      "affect": [
+        "cautionary",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Left Exit 12 Off Ramp format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not reverse the straight route and exit."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Left Exit 12 Off Ramp with 738500 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "balloon",
+          "distinction": "Use Left Exit 12 Off Ramp when a decision-maker abruptly abandons the intended path for a tempting alternative; use Running Away Balloon when someone reaches for a desired outcome while a constraint or habit holds them back."
+        },
+        {
+          "template_id": "bilbo",
+          "distinction": "Use Left Exit 12 Off Ramp when a decision-maker abruptly abandons the intended path for a tempting alternative; use Why Shouldn't I Keep It when someone rationalizes keeping a tempting thing they know they probably should release."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Fix the broken workflow",
+            "Buy an AI copilot",
+            "Leadership"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "The Pins",
+            "The Gutter",
+            "Bowling Ball"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<intended path>",
+            "<tempting exit>",
+            "<decision maker>"
+          ]
+        }
+      ]
+    },
+    "fetch": {
+      "template_id": "fetch",
+      "name": "Stop Trying to Make Fetch Happen",
+      "semantic_family": "trend_rejection",
+      "relationship_graph": {
+        "roles": [
+          "stop command",
+          "failure prediction"
+        ],
+        "relationships": [
+          "Line two predicts failure for the exact idea named in line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "social_pressure",
+        "predictable_repetition"
+      ],
+      "affect": [
+        "weary",
+        "teasing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Stop Trying to Make Fetch Happen format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not reject a new idea solely because it is new."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/fetch.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "say",
+          "distinction": "Use Stop Trying to Make Fetch Happen when someone is told to stop forcing an idea, label, or trend that plainly will not catch on; use Say the Line, Bart! when a group pressures someone to repeat the predictable phrase they are known for."
+        },
+        {
+          "template_id": "wddth",
+          "distinction": "Use Stop Trying to Make Fetch Happen when someone is told to stop forcing an idea, label, or trend that plainly will not catch on; use We Don't Do That Here when a familiar action violates the local norm and is matter-of-factly refused."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Stop trying to make agentic transformation happen",
+            "It's not going to happen"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "stop trying to make fetch happen",
+            "it's not going to happen"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<stop command>",
+            "<failure prediction>"
+          ]
+        }
+      ]
+    },
+    "fry": {
+      "template_id": "fry",
+      "name": "Futurama Fry",
+      "semantic_family": "ambiguity",
+      "relationship_graph": {
+        "roles": [
+          "first suspicion",
+          "second suspicion"
+        ],
+        "relationships": [
+          "Both lines are alternative explanations for one ambiguous observation."
+        ]
+      },
+      "humor_mechanisms": [
+        "suspicion",
+        "alternative_explanations"
+      ],
+      "affect": [
+        "skeptical",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Futurama Fry format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not compare two unrelated possibilities."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Futurama Fry with 321500 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "agnes",
+          "distinction": "Use Futurama Fry when the observer cannot tell which of two suspicious explanations is true; use Agnes Harkness Winking when a stated claim is knowingly untrue, and the wink admits the shared secret."
+        },
+        {
+          "template_id": "dbg",
+          "distinction": "Use Futurama Fry when the observer cannot tell which of two suspicious explanations is true; use Expectation vs. Reality when an appealing expectation is immediately contradicted by the disappointing real experience."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Not sure if autonomous",
+            "Or just no owner assigned"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "not sure if trolling",
+            "or just stupid"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<first suspicion>",
+            "<second suspicion>"
+          ]
+        }
+      ]
+    },
+    "gears": {
+      "template_id": "gears",
+      "name": "You Know What Really Grinds My Gears?",
+      "semantic_family": "complaint",
+      "relationship_graph": {
+        "roles": [
+          "complaint setup",
+          "specific annoyance"
+        ],
+        "relationships": [
+          "Line two answers the question in line one with one concrete annoyance."
+        ]
+      },
+      "humor_mechanisms": [
+        "specific_grievance",
+        "recognition"
+      ],
+      "affect": [
+        "frustrated",
+        "comic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the You Know What Really Grinds My Gears? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not list several grievances."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/gears.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "facepalm",
+          "distinction": "Use You Know What Really Grinds My Gears? when the speaker tees up one specific recurring annoyance and complains about it; use Facepalm when an obvious mistake or repeated misunderstanding leaves the observer speechless."
+        },
+        {
+          "template_id": "officespace",
+          "distinction": "Use You Know What Really Grinds My Gears? when the speaker tees up one specific recurring annoyance and complains about it; use That Would Be Great when an authority figure makes an inconvenient request in falsely casual, passive-aggressive language."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "You know what really grinds my gears?",
+            "Pilots with no person allowed to stop them"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "you know what really grinds my gears?",
+            "when people post images of cogs that don't mesh"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<complaint setup>",
+            "<specific annoyance>"
+          ]
+        }
+      ]
+    },
+    "genie": {
+      "template_id": "genie",
+      "name": "Genie Lamp",
+      "semantic_family": "hidden_constraint",
+      "relationship_graph": {
+        "roles": [
+          "grand capability",
+          "tiny constraint"
+        ],
+        "relationships": [
+          "Line two sharply limits the capability celebrated in line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "constraint_reveal",
+        "scale_mismatch"
+      ],
+      "affect": [
+        "incredulous",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Genie Lamp format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not compare two unrelated products."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/genie.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "mordor",
+          "distinction": "Use Genie Lamp when impressive capability is constrained by one comically small operational boundary; use One Does Not Simply when a supposedly simple action is actually difficult or constrained."
+        },
+        {
+          "template_id": "center",
+          "distinction": "Use Genie Lamp when impressive capability is constrained by one comically small operational boundary; use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Frontier model intelligence",
+            "One broken approval queue"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "phenomenal cosmic power",
+            "itty bitty living space"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<grand capability>",
+            "<tiny constraint>"
+          ]
+        }
+      ]
+    },
+    "home": {
+      "template_id": "home",
+      "name": "We Have Food at Home",
+      "semantic_family": "preference_contrast",
+      "relationship_graph": {
+        "roles": [
+          "request",
+          "at home refusal",
+          "inferior substitute"
+        ],
+        "relationships": [
+          "The substitute in line three is a disappointing version of what line one requests and line two claims is available."
+        ]
+      },
+      "humor_mechanisms": [
+        "contrast",
+        "rejection_and_choice"
+      ],
+      "affect": [
+        "decisive",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the We Have Food at Home format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not make the substitute genuinely equivalent."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/home.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "drake",
+          "distinction": "Use We Have Food at Home when a request for a desirable option is denied in favor of an inferior substitute already available; use Drakeposting when the same person rejects the first option and prefers the second."
+        },
+        {
+          "template_id": "money",
+          "distinction": "Use We Have Food at Home when a request for a desirable option is denied in favor of an inferior substitute already available; use Shut Up and Take My Money! when an offer is so appealing that the buyer wants to purchase it immediately without more persuasion."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Team: Can we get process redesign?",
+            "Leadership: We have redesign at home",
+            "Redesign at home: another chatbot"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Me: Can we stop and get food?",
+            "Mom: We have food at home.",
+            "Food at home:"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<request>",
+            "<at home refusal>",
+            "<inferior substitute>"
+          ]
+        }
+      ]
+    },
+    "inigo": {
+      "template_id": "inigo",
+      "name": "Inigo Montoya",
+      "semantic_family": "misclassification",
+      "relationship_graph": {
+        "roles": [
+          "misused word",
+          "meaning correction"
+        ],
+        "relationships": [
+          "Line one identifies repeated misuse; line two challenges the user's meaning rather than the truth of a claim."
+        ]
+      },
+      "humor_mechanisms": [
+        "mislabeling",
+        "unmasking",
+        "perspective_correction"
+      ],
+      "affect": [
+        "dry",
+        "corrective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Inigo Montoya format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use it when the disputed word is merely ambiguous."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/inigo.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "pigeon",
+          "distinction": "Use Inigo Montoya when a word is being used repeatedly in a way that does not match its real meaning; use Is This a Pigeon? when an observer confidently misidentifies an object or situation."
+        },
+        {
+          "template_id": "reveal",
+          "distinction": "Use Inigo Montoya when a word is being used repeatedly in a way that does not match its real meaning; use Scooby Doo Reveal when a surface identity is unmasked as an underlying or meaningfully similar identity."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "You keep using the word autonomous",
+            "I do not think it means what you think it means"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "you keep using that word",
+            "i do not think it means what you think it means"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<misused word>",
+            "<meaning correction>"
+          ]
+        }
+      ]
+    },
+    "kombucha": {
+      "template_id": "kombucha",
+      "name": "Kombucha Girl",
+      "semantic_family": "perspective_split",
+      "relationship_graph": {
+        "roles": [
+          "bad first impression",
+          "redeeming reconsideration"
+        ],
+        "relationships": [
+          "Both lines concern one subject, and line two causes the reaction to improve."
+        ]
+      },
+      "humor_mechanisms": [
+        "reinterpretation",
+        "reaction_change",
+        "contrast"
+      ],
+      "affect": [
+        "reflective",
+        "wry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Kombucha Girl format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not compare two unrelated options."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/kombucha.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "bus",
+          "distinction": "Use Kombucha Girl when an initial negative reaction turns into reluctant or surprised approval after reconsideration; use Two Guys on a Bus when two people experience the same situation but focus on opposite interpretations."
+        },
+        {
+          "template_id": "glasses",
+          "distinction": "Use Kombucha Girl when an initial negative reaction turns into reluctant or surprised approval after reconsideration; use Peter Parker's Glasses when the same thing looks different when the observer changes perspective."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "The AI cannot close every ticket",
+            "But it knows when to hand off"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Trying a thing.",
+            "Trying a thing again."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<bad first impression>",
+            "<redeeming reconsideration>"
+          ]
+        }
+      ]
+    },
+    "money": {
+      "template_id": "money",
+      "name": "Shut Up and Take My Money!",
+      "semantic_family": "preference_contrast",
+      "relationship_graph": {
+        "roles": [
+          "eager interruption",
+          "purchase demand"
+        ],
+        "relationships": [
+          "The two lines form one uninterrupted demand from the eager buyer."
+        ]
+      },
+      "humor_mechanisms": [
+        "contrast",
+        "rejection_and_choice"
+      ],
+      "affect": [
+        "decisive",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Shut Up and Take My Money! format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use it for reluctant approval."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/money.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "drake",
+          "distinction": "Use Shut Up and Take My Money! when an offer is so appealing that the buyer wants to purchase it immediately without more persuasion; use Drakeposting when the same person rejects the first option and prefers the second."
+        },
+        {
+          "template_id": "home",
+          "distinction": "Use Shut Up and Take My Money! when an offer is so appealing that the buyer wants to purchase it immediately without more persuasion; use We Have Food at Home when a request for a desirable option is denied in favor of an inferior substitute already available."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Shut up and",
+            "Take my money!"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "shut up and",
+            "take my money!"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<eager interruption>",
+            "<purchase demand>"
+          ]
+        }
+      ]
+    },
+    "ntot": {
+      "template_id": "ntot",
+      "name": "No Take, Only Throw",
+      "semantic_family": "choice_conflict",
+      "relationship_graph": {
+        "roles": [
+          "desired outcome",
+          "prerequisite refusal",
+          "outcome demand"
+        ],
+        "relationships": [
+          "Line two rejects what line one requires; line three demands line one anyway."
+        ]
+      },
+      "humor_mechanisms": [
+        "dilemma",
+        "contradiction",
+        "false_choice"
+      ],
+      "affect": [
+        "frustrated",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the No Take, Only Throw format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a merely optional prerequisite."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/ntot.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "ds",
+          "distinction": "Use No Take, Only Throw when someone demands an outcome while angrily refusing the prerequisite needed to produce it; use Daily Struggle when one person is caught between two mutually exclusive choices."
+        },
+        {
+          "template_id": "both",
+          "distinction": "Use No Take, Only Throw when someone demands an outcome while angrily refusing the prerequisite needed to produce it; use Why Not Both? when a presented either-or choice is dissolved by choosing both options."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Please deliver AI value?",
+            "NO PROCESS CHANGE!!",
+            "ONLY VALUE"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Pls throw??",
+            "NO TAKE!!",
+            "ONLY THROW"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<desired outcome>",
+            "<prerequisite refusal>",
+            "<outcome demand>"
+          ]
+        }
+      ]
+    },
+    "officespace": {
+      "template_id": "officespace",
+      "name": "That Would Be Great",
+      "semantic_family": "coerced_request",
+      "relationship_graph": {
+        "roles": [
+          "passive aggressive request",
+          "breezy close"
+        ],
+        "relationships": [
+          "Line two disguises the burden imposed by line one as a casual preference."
+        ]
+      },
+      "humor_mechanisms": [
+        "passive_aggression",
+        "understatement"
+      ],
+      "affect": [
+        "dry",
+        "annoyed"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the That Would Be Great format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a sincere favor between peers."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/officespace.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gears",
+          "distinction": "Use That Would Be Great when an authority figure makes an inconvenient request in falsely casual, passive-aggressive language; use You Know What Really Grinds My Gears? when the speaker tees up one specific recurring annoyance and complains about it."
+        },
+        {
+          "template_id": "mouth",
+          "distinction": "Use That Would Be Great when an authority figure makes an inconvenient request in falsely casual, passive-aggressive language; use Woman Holding Dog's Mouth when one actor stops another from saying an unpopular, controversial, or corrective truth in front of an audience."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "If every pilot could have twelve status slides",
+            "That'd be great"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "yeah...",
+            "that'd be great"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<passive aggressive request>",
+            "<breezy close>"
+          ]
+        }
+      ]
+    },
+    "perfection": {
+      "template_id": "perfection",
+      "name": "Perfection",
+      "semantic_family": "preference_contrast",
+      "relationship_graph": {
+        "roles": [
+          "first option",
+          "first rejection",
+          "second option",
+          "second rejection",
+          "ideal option",
+          "approval"
+        ],
+        "relationships": [
+          "Each odd-numbered line is a comparable option; the sixth line approves only the third option."
+        ]
+      },
+      "humor_mechanisms": [
+        "contrast",
+        "rejection_and_choice"
+      ],
+      "affect": [
+        "decisive",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Perfection format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not switch categories between options."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/perfection.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "drake",
+          "distinction": "Use Perfection when two acceptable options are rejected before a third, often unexpected option is declared ideal; use Drakeposting when the same person rejects the first option and prefers the second."
+        },
+        {
+          "template_id": "home",
+          "distinction": "Use Perfection when two acceptable options are rejected before a third, often unexpected option is declared ideal; use We Have Food at Home when a request for a desirable option is denied in favor of an inferior substitute already available."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Chatbot",
+            "I prefer the real automation",
+            "Copilot",
+            "I said, the real automation",
+            "One task that actually completes",
+            "Perfection"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Sebastian Shaw",
+            "I prefer the real Darth Vader.",
+            "Hayden Christensen",
+            "I said, the real Darth Vader.",
+            "Jake Lloyd",
+            "Perfection."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<first option>",
+            "<first rejection>",
+            "<second option>",
+            "<second rejection>",
+            "<ideal option>",
+            "<approval>"
+          ]
+        }
+      ]
+    },
+    "same": {
+      "template_id": "same",
+      "name": "They're the Same Picture",
+      "semantic_family": "equivalence_mirror",
+      "relationship_graph": {
+        "roles": [
+          "first thing",
+          "second thing",
+          "equating observer"
+        ],
+        "relationships": [
+          "Line three is the person, policy, or metric treating lines one and two as equivalent."
+        ]
+      },
+      "humor_mechanisms": [
+        "comparison",
+        "recognition",
+        "unexpected_similarity"
+      ],
+      "affect": [
+        "dry",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the They're the Same Picture format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not compare things with no relevant similarity."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists They're The Same Picture with 188000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "handshake",
+          "distinction": "Use They're the Same Picture when an observer treats two supposedly distinct things as functionally identical; use Epic Handshake when two different groups or outcomes share one specific trait."
+        },
+        {
+          "template_id": "spiderman",
+          "distinction": "Use They're the Same Picture when an observer treats two supposedly distinct things as functionally identical; use Spider-Man Pointing at Spider-Man when two supposedly distinct actors discover their similarity or mirror each other's behavior."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI resolution",
+            "Human handoff",
+            "Outcome pricing"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "π",
+            "3",
+            "The Bible"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<first thing>",
+            "<second thing>",
+            "<equating observer>"
+          ]
+        }
+      ]
+    },
+    "say": {
+      "template_id": "say",
+      "name": "Say the Line, Bart!",
+      "semantic_family": "trend_rejection",
+      "relationship_graph": {
+        "roles": [
+          "crowd prompt",
+          "predictable line"
+        ],
+        "relationships": [
+          "Line two is the exact kind of stock response the role named in line one repeatedly gives."
+        ]
+      },
+      "humor_mechanisms": [
+        "social_pressure",
+        "predictable_repetition"
+      ],
+      "affect": [
+        "weary",
+        "teasing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Say the Line, Bart! format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a one-time statement."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists say the line bart! simpsons with 31000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "fetch",
+          "distinction": "Use Say the Line, Bart! when a group pressures someone to repeat the predictable phrase they are known for; use Stop Trying to Make Fetch Happen when someone is told to stop forcing an idea, label, or trend that plainly will not catch on."
+        },
+        {
+          "template_id": "oprah",
+          "distinction": "Use Say the Line, Bart! when a group pressures someone to repeat the predictable phrase they are known for; use Oprah You Get a Car when the same thing is enthusiastically handed to everyone without discrimination."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Say the line, AI consultant!",
+            "It depends"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Say the line, Senior Engineer!",
+            "It depends."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<crowd prompt>",
+            "<predictable line>"
+          ]
+        }
+      ]
+    },
+    "stonks": {
+      "template_id": "stonks",
+      "name": "Stonks",
+      "semantic_family": "false_logic",
+      "relationship_graph": {
+        "roles": [
+          "flawed business move",
+          "fake competence"
+        ],
+        "relationships": [
+          "Line two falsely celebrates the bad reasoning in line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "irony",
+        "self_defeating_logic",
+        "overconfidence"
+      ],
+      "affect": [
+        "cautionary",
+        "sarcastic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Stonks format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a genuinely sound investment."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/stonks.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "rollsafe",
+          "distinction": "Use Stonks when a foolish business or financial decision is presented as if it were obvious strategic competence; use Roll Safe when a person presents flawed logic as a clever workaround."
+        },
+        {
+          "template_id": "touch",
+          "distinction": "Use Stonks when a foolish business or financial decision is presented as if it were obvious strategic competence; use Principal Skinner when a leader briefly considers being wrong, then blames everyone else instead."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Count handoffs as AI resolutions",
+            "Stonks"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "stonks"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<flawed business move>",
+            "<fake competence>"
+          ]
+        }
+      ]
+    },
+    "success": {
+      "template_id": "success",
+      "name": "Success Kid",
+      "semantic_family": "plan_reversal",
+      "relationship_graph": {
+        "roles": [
+          "apparent setback",
+          "lucky payoff"
+        ],
+        "relationships": [
+          "Line two unexpectedly reverses line one into a win."
+        ]
+      },
+      "humor_mechanisms": [
+        "reversal",
+        "reveal",
+        "expectation_break"
+      ],
+      "affect": [
+        "cautionary",
+        "wry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Success Kid format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a planned, guaranteed success."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/success.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gru",
+          "distinction": "Use Success Kid when an apparent setback unexpectedly produces a small but satisfying win; use Gru's Plan when a confident plan reaches an overlooked failure, then repeats that failure in stunned realization."
+        },
+        {
+          "template_id": "panik-kalm-panik",
+          "distinction": "Use Success Kid when an apparent setback unexpectedly produces a small but satisfying win; use Panik Kalm Panik when an alarming event is briefly explained away, then a new fact makes it worse."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Pilot fails in week two",
+            "Saves eleven months of scaling it"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "don't know a question on the test",
+            "answer is in another question"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<apparent setback>",
+            "<lucky payoff>"
+          ]
+        }
+      ]
+    },
+    "db": {
+      "template_id": "db",
+      "name": "Distracted Boyfriend",
+      "semantic_family": "temptation_abandonment",
+      "relationship_graph": {
+        "roles": [
+          "tempting alternative",
+          "decision maker",
+          "existing priority"
+        ],
+        "relationships": [
+          "The first and third labels must be competing options for the person in line two."
+        ]
+      },
+      "humor_mechanisms": [
+        "temptation",
+        "neglect",
+        "self_sabotage"
+      ],
+      "affect": [
+        "cautionary",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Distracted Boyfriend format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not label three unrelated things."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Distracted Boyfriend with 1184000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "balloon",
+          "distinction": "Use Distracted Boyfriend when a decision-maker abandons an existing priority for a more tempting alternative; use Running Away Balloon when someone reaches for a desired outcome while a constraint or habit holds them back."
+        },
+        {
+          "template_id": "bilbo",
+          "distinction": "Use Distracted Boyfriend when a decision-maker abandons an existing priority for a more tempting alternative; use Why Shouldn't I Keep It when someone rationalizes keeping a tempting thing they know they probably should release."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Another AI pilot",
+            "Leadership",
+            "Measuring the first 40 pilots"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Socialism",
+            "The Youth",
+            "Capitalism"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<tempting alternative>",
+            "<decision maker>",
+            "<existing priority>"
+          ]
+        }
+      ]
+    },
+    "gb": {
+      "template_id": "gb",
+      "name": "Galaxy Brain",
+      "semantic_family": "escalation",
+      "relationship_graph": {
+        "roles": [
+          "stage 1",
+          "stage 2",
+          "stage 3",
+          "stage 4"
+        ],
+        "relationships": [
+          "Every panel must continue the same comparison.",
+          "Each step must clearly escalate; a plain checklist is not enough."
+        ]
+      },
+      "humor_mechanisms": [
+        "repetition",
+        "exaggeration",
+        "scale_shift"
+      ],
+      "affect": [
+        "incredulous",
+        "energetic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Galaxy Brain format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not write a chronological checklist."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Expanding Brain with 483250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "buzz",
+          "distinction": "Use Galaxy Brain when four approaches escalate from ordinary to increasingly clever or absurd; use X, X Everywhere when one repeated thing has proliferated until it appears everywhere."
+        },
+        {
+          "template_id": "oprah",
+          "distinction": "Use Galaxy Brain when four approaches escalate from ordinary to increasingly clever or absurd; use Oprah You Get a Car when the same thing is enthusiastically handed to everyone without discrimination."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Count AI pilots",
+            "Count active users",
+            "Count useful outcomes",
+            "Count the pilots you stopped"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Who",
+            "Whom",
+            "Whom'st",
+            "Whomst'd"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<stage 1>",
+            "<stage 2>",
+            "<stage 3>",
+            "<stage 4>"
+          ]
+        }
+      ]
+    },
+    "panik-kalm-panik": {
+      "template_id": "panik-kalm-panik",
+      "name": "Panik Kalm Panik",
+      "semantic_family": "plan_reversal",
+      "relationship_graph": {
+        "roles": [
+          "initial alarm",
+          "reassurance",
+          "worse reveal"
+        ],
+        "relationships": [
+          "Line two must genuinely reduce concern.",
+          "Line three must overturn line two and increase concern."
+        ]
+      },
+      "humor_mechanisms": [
+        "reversal",
+        "reveal",
+        "expectation_break"
+      ],
+      "affect": [
+        "cautionary",
+        "wry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Panik Kalm Panik format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not make the middle line merely neutral."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Panik Kalm Panik with 226250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gru",
+          "distinction": "Use Panik Kalm Panik when an alarming event is briefly explained away, then a new fact makes it worse; use Gru's Plan when a confident plan reaches an overlooked failure, then repeats that failure in stunned realization."
+        },
+        {
+          "template_id": "success",
+          "distinction": "Use Panik Kalm Panik when an alarming event is briefly explained away, then a new fact makes it worse; use Success Kid when an apparent setback unexpectedly produces a small but satisfying win."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Pilot missed its target",
+            "It passed the revised target",
+            "They revised it after the miss"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "You hear a sound downstairs",
+            "It's just a cat",
+            "You don't have a cat"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<initial alarm>",
+            "<reassurance>",
+            "<worse reveal>"
+          ]
+        }
+      ]
+    },
+    "pigeon": {
+      "template_id": "pigeon",
+      "name": "Is This a Pigeon?",
+      "semantic_family": "misclassification",
+      "relationship_graph": {
+        "roles": [
+          "observer",
+          "observed thing",
+          "mistaken question"
+        ],
+        "relationships": [
+          "Line three must be a mistaken or exaggerated interpretation of line two by line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "mislabeling",
+        "unmasking",
+        "perspective_correction"
+      ],
+      "affect": [
+        "dry",
+        "corrective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Is This a Pigeon? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not make the question accurate."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Is This A Pigeon with 241000 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "inigo",
+          "distinction": "Use Is This a Pigeon? when an observer confidently misidentifies an object or situation; use Inigo Montoya when a word is being used repeatedly in a way that does not match its real meaning."
+        },
+        {
+          "template_id": "reveal",
+          "distinction": "Use Is This a Pigeon? when an observer confidently misidentifies an object or situation; use Scooby Doo Reveal when a surface identity is unmasked as an underlying or meaningfully similar identity."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI steering committee",
+            "A chatbot demo",
+            "Is this transformation?"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Engineer",
+            "PowerPoint",
+            "Is this Photoshop?"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<observer>",
+            "<observed thing>",
+            "<mistaken question>"
+          ]
+        }
+      ]
+    },
+    "3hd": {
+      "template_id": "3hd",
+      "name": "Three-Headed Dragon",
+      "semantic_family": "peer_mismatch",
+      "relationship_graph": {
+        "roles": [
+          "serious peer left",
+          "serious peer middle",
+          "goofy outlier"
+        ],
+        "relationships": [
+          "The first two labels are credible peers; the third is the conspicuously unserious member of that same set."
+        ]
+      },
+      "humor_mechanisms": [
+        "comparison",
+        "incongruity",
+        "status_mismatch"
+      ],
+      "affect": [
+        "playful",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Three-Headed Dragon format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use three unrelated labels."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Three-headed Dragon with 53500 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "handshake",
+          "distinction": "Use Three-Headed Dragon when three supposed peers are compared, but one is conspicuously unserious; use Epic Handshake when two different groups or outcomes share one specific trait."
+        },
+        {
+          "template_id": "same",
+          "distinction": "Use Three-Headed Dragon when three supposed peers are compared, but one is conspicuously unserious; use They're the Same Picture when an observer treats two supposedly distinct things as functionally identical."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Security review",
+            "Process redesign",
+            "AI vision deck"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Pepperoni",
+            "Mushroom",
+            "Pineapple"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<serious peer left>",
+            "<serious peer middle>",
+            "<goofy outlier>"
+          ]
+        }
+      ]
+    },
+    "afraid": {
+      "template_id": "afraid",
+      "name": "Afraid to Ask Andy",
+      "semantic_family": "delayed_admission",
+      "relationship_graph": {
+        "roles": [
+          "basic unknown",
+          "delayed admission"
+        ],
+        "relationships": [
+          "The unknown is basic enough that asking late would feel awkward."
+        ]
+      },
+      "humor_mechanisms": [
+        "self_own",
+        "delayed_reveal"
+      ],
+      "affect": [
+        "self_aware",
+        "awkward"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Afraid to Ask Andy format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a niche fact nobody is expected to know."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/afraid.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "noidea",
+          "distinction": "Use Afraid to Ask Andy when a basic uncertainty persists so long that admitting it has become embarrassing; use I Have No Idea What I'm Doing when someone has been placed in a role despite having no grasp of what the role requires."
+        },
+        {
+          "template_id": "gandalf",
+          "distinction": "Use Afraid to Ask Andy when a basic uncertainty persists so long that admitting it has become embarrassing; use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "I don't know what our AI strategy means",
+            "And at this point I'm too afraid to ask"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "i don't know what this meme is for",
+            "and at this point i'm too afraid to ask"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<basic unknown>",
+            "<delayed admission>"
+          ]
+        }
+      ]
+    },
+    "bender": {
+      "template_id": "bender",
+      "name": "I'm Going to Build My Own Theme Park",
+      "semantic_family": "self_built_rejection",
+      "relationship_graph": {
+        "roles": [
+          "diy replacement",
+          "indulgent features"
+        ],
+        "relationships": [
+          "The second line describes the supposedly better features of the replacement announced first."
+        ]
+      },
+      "humor_mechanisms": [
+        "boast",
+        "overcorrection",
+        "wish_fulfillment"
+      ],
+      "affect": [
+        "defiant",
+        "self_aware"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the I'm Going to Build My Own Theme Park format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not make the replacement sober and well justified."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/bender.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "boat",
+          "distinction": "Use I'm Going to Build My Own Theme Park when someone rejects an existing system and boasts that a self-built replacement will indulge their preferences; use I Should Buy a Boat Cat when a thought or small observation triggers a sudden desire to acquire or start something."
+        },
+        {
+          "template_id": "home",
+          "distinction": "Use I'm Going to Build My Own Theme Park when someone rejects an existing system and boasts that a self-built replacement will indulge their preferences; use We Have Food at Home when a request for a desirable option is denied in favor of an inferior substitute already available."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "I'm going to build my own AI platform",
+            "With agents and no governance"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "i'm going to build my own theme park",
+            "with blackjack and hookers"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<diy replacement>",
+            "<indulgent features>"
+          ]
+        }
+      ]
+    },
+    "facepalm": {
+      "template_id": "facepalm",
+      "name": "Facepalm",
+      "semantic_family": "expectation_reality",
+      "relationship_graph": {
+        "roles": [
+          "obvious mistake",
+          "speechless reaction"
+        ],
+        "relationships": [
+          "Line two is the observer's reaction to the mistake in line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "contradiction",
+        "disappointment",
+        "reaction"
+      ],
+      "affect": [
+        "frustrated",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Facepalm format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a subtle disagreement."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/facepalm.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "dbg",
+          "distinction": "Use Facepalm when an obvious mistake or repeated misunderstanding leaves the observer speechless; use Expectation vs. Reality when an appealing expectation is immediately contradicted by the disappointing real experience."
+        },
+        {
+          "template_id": "cake",
+          "distinction": "Use Facepalm when an obvious mistake or repeated misunderstanding leaves the observer speechless; use Office Space Milton when a promised benefit or resource quietly fails to appear."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Success metric: launched on time",
+            "I can't even"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "I can't even"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<obvious mistake>",
+            "<speechless reaction>"
+          ]
+        }
+      ]
+    },
+    "gone": {
+      "template_id": "gone",
+      "name": "And It's Gone",
+      "semantic_family": "plan_reversal",
+      "relationship_graph": {
+        "roles": [
+          "doomed item and plan",
+          "instant loss"
+        ],
+        "relationships": [
+          "The thing committed in line one is the thing that vanishes in line two."
+        ]
+      },
+      "humor_mechanisms": [
+        "reversal",
+        "reveal",
+        "expectation_break"
+      ],
+      "affect": [
+        "cautionary",
+        "wry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the And It's Gone format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a slow, well-understood expense."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/gone.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gru",
+          "distinction": "Use And It's Gone when a clearly named item, opportunity, budget, or plan disappears immediately; use Gru's Plan when a confident plan reaches an overlooked failure, then repeats that failure in stunned realization."
+        },
+        {
+          "template_id": "success",
+          "distinction": "Use And It's Gone when a clearly named item, opportunity, budget, or plan disappears immediately; use Success Kid when an apparent setback unexpectedly produces a small but satisfying win."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "We'll spread the budget across 40 pilots",
+            "Aaaand it's gone"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "we'll just invest that money",
+            "...aaaand it's gone"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<doomed item and plan>",
+            "<instant loss>"
+          ]
+        }
+      ]
+    },
+    "made": {
+      "template_id": "made",
+      "name": "I Made This",
+      "semantic_family": "credit_ownership",
+      "relationship_graph": {
+        "roles": [
+          "original creator",
+          "credit taker",
+          "original claim",
+          "appropriator question",
+          "stolen claim"
+        ],
+        "relationships": [
+          "The final line repeats the original creator's claim verbatim but is now spoken by the credit taker."
+        ]
+      },
+      "humor_mechanisms": [
+        "credit_reversal",
+        "suppressed_truth",
+        "role_inversion"
+      ],
+      "affect": [
+        "critical",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the I Made This format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use it for acknowledged collaboration."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/made.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "mouth",
+          "distinction": "Use I Made This when someone takes credit for work that another person or group actually created; use Woman Holding Dog's Mouth when one actor stops another from saying an unpopular, controversial, or corrective truth in front of an audience."
+        },
+        {
+          "template_id": "handshake",
+          "distinction": "Use I Made This when someone takes credit for work that another person or group actually created; use Epic Handshake when two different groups or outcomes share one specific trait."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Operations team",
+            "AI vendor",
+            "I made this workflow",
+            "You made this?",
+            "I made this workflow"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "The Internet",
+            "Everyone",
+            "I made this.",
+            "You made this?",
+            "I made this."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<original creator>",
+            "<credit taker>",
+            "<original claim>",
+            "<appropriator question>",
+            "<stolen claim>"
+          ]
+        }
+      ]
+    },
+    "mouth": {
+      "template_id": "mouth",
+      "name": "Woman Holding Dog's Mouth",
+      "semantic_family": "credit_ownership",
+      "relationship_graph": {
+        "roles": [
+          "silencing actor",
+          "audience",
+          "silenced speaker or truth"
+        ],
+        "relationships": [
+          "Line one suppresses line three because the audience in line two is not meant to hear its corrective message."
+        ]
+      },
+      "humor_mechanisms": [
+        "credit_reversal",
+        "suppressed_truth",
+        "role_inversion"
+      ],
+      "affect": [
+        "critical",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Woman Holding Dog's Mouth format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use three parties who share the same knowledge."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/mouth.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "made",
+          "distinction": "Use Woman Holding Dog's Mouth when one actor stops another from saying an unpopular, controversial, or corrective truth in front of an audience; use I Made This when someone takes credit for work that another person or group actually created."
+        },
+        {
+          "template_id": "officespace",
+          "distinction": "Use Woman Holding Dog's Mouth when one actor stops another from saying an unpopular, controversial, or corrective truth in front of an audience; use That Would Be Great when an authority figure makes an inconvenient request in falsely casual, passive-aggressive language."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Sales promising full autonomy next quarter",
+            "Executive buyer",
+            "Engineering knows the approvals are still manual"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Sales Team presenting the solution in PowerPoint",
+            "Excited Customer",
+            "Engineering Team knowing the solution is not technically possible"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<silencing actor>",
+            "<audience>",
+            "<silenced speaker or truth>"
+          ]
+        }
+      ]
+    },
+    "nice": {
+      "template_id": "nice",
+      "name": "So I Got That Goin' For Me, Which Is Nice",
+      "semantic_family": "modest_legitimacy",
+      "relationship_graph": {
+        "roles": [
+          "ordeal with modest silver lining",
+          "self comfort"
+        ],
+        "relationships": [
+          "Line two treats line one as a consolation rather than a complete win."
+        ]
+      },
+      "humor_mechanisms": [
+        "understatement",
+        "silver_lining"
+      ],
+      "affect": [
+        "wry",
+        "warm"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the So I Got That Goin' For Me, Which Is Nice format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a major victory."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/nice.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "bihw",
+          "distinction": "Use So I Got That Goin' For Me, Which Is Nice when an ordeal contains one modest silver lining that is real but insufficient; use But It's Honest Work when a modest or unglamorous result is defended because it is real and legitimate."
+        },
+        {
+          "template_id": "success",
+          "distinction": "Use So I Got That Goin' For Me, Which Is Nice when an ordeal contains one modest silver lining that is real but insufficient; use Success Kid when an apparent setback unexpectedly produces a small but satisfying win."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Most pilots failed; one had an owner",
+            "So I got that goin' for me, which is nice"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "so i got that goin' for me, which is nice"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<ordeal with modest silver lining>",
+            "<self comfort>"
+          ]
+        }
+      ]
+    },
+    "noidea": {
+      "template_id": "noidea",
+      "name": "I Have No Idea What I'm Doing",
+      "semantic_family": "delayed_admission",
+      "relationship_graph": {
+        "roles": [
+          "assigned role",
+          "incompetence admission"
+        ],
+        "relationships": [
+          "The speaker in line two is responsible for the role named in line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "self_own",
+        "delayed_reveal"
+      ],
+      "affect": [
+        "self_aware",
+        "awkward"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the I Have No Idea What I'm Doing format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a learner who is appropriately supervised."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/noidea.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "afraid",
+          "distinction": "Use I Have No Idea What I'm Doing when someone has been placed in a role despite having no grasp of what the role requires; use Afraid to Ask Andy when a basic uncertainty persists so long that admitting it has become embarrassing."
+        },
+        {
+          "template_id": "gandalf",
+          "distinction": "Use I Have No Idea What I'm Doing when someone has been placed in a role despite having no grasp of what the role requires; use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "New AI program owner",
+            "I have no idea what I'm doing"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "i have no idea",
+            "what i'm doing"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<assigned role>",
+            "<incompetence admission>"
+          ]
+        }
+      ]
+    },
+    "patrick": {
+      "template_id": "patrick",
+      "name": "Push It Somewhere Else Patrick",
+      "semantic_family": "relocation_as_solution",
+      "relationship_graph": {
+        "roles": [
+          "problem proposal",
+          "relocation"
+        ],
+        "relationships": [
+          "Line two relocates or renames the exact thing identified in line one and presents that move as the solution."
+        ]
+      },
+      "humor_mechanisms": [
+        "false_solution",
+        "literalization"
+      ],
+      "affect": [
+        "deadpan",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Push It Somewhere Else Patrick format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not claim the relocation fails when the post does not support that conclusion."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/patrick.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "rollsafe",
+          "distinction": "Use Push It Somewhere Else Patrick when relocating a thing is presented as the solution to the problem around it; use Roll Safe when a person presents flawed logic as a clever workaround."
+        },
+        {
+          "template_id": "yodawg",
+          "distinction": "Use Push It Somewhere Else Patrick when relocating a thing is presented as the solution to the problem around it; use Xzibit Yo Dawg when a supposed improvement nests another instance of the same activity inside itself."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Why don't we take all the failed pilots",
+            "And put them in the innovation portfolio"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "why don't we take all the memes",
+            "and put them on memegen"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<problem proposal>",
+            "<relocation>"
+          ]
+        }
+      ]
+    },
+    "reveal": {
+      "template_id": "reveal",
+      "name": "Scooby Doo Reveal",
+      "semantic_family": "misclassification",
+      "relationship_graph": {
+        "roles": [
+          "surface identity",
+          "unmasking",
+          "underlying or similar identity",
+          "recognition"
+        ],
+        "relationships": [
+          "Line three is the underlying or meaningfully similar reality behind line one; line four confirms the recognition."
+        ]
+      },
+      "humor_mechanisms": [
+        "mislabeling",
+        "unmasking",
+        "perspective_correction"
+      ],
+      "affect": [
+        "dry",
+        "corrective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Scooby Doo Reveal format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not reveal something unrelated."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Scooby doo mask reveal with 33750 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "inigo",
+          "distinction": "Use Scooby Doo Reveal when a surface identity is unmasked as an underlying or meaningfully similar identity; use Inigo Montoya when a word is being used repeatedly in a way that does not match its real meaning."
+        },
+        {
+          "template_id": "pigeon",
+          "distinction": "Use Scooby Doo Reveal when a surface identity is unmasked as an underlying or meaningfully similar identity; use Is This a Pigeon? when an observer confidently misidentifies an object or situation."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI transformation",
+            "Let's see what you really are...",
+            "A chatbot rollout",
+            "I knew it!"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Villain",
+            "Let's see who you really are...",
+            "Protagonist",
+            "I knew it!"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<surface identity>",
+            "<unmasking>",
+            "<underlying or similar identity>",
+            "<recognition>"
+          ]
+        }
+      ]
+    },
+    "touch": {
+      "template_id": "touch",
+      "name": "Principal Skinner",
+      "semantic_family": "false_logic",
+      "relationship_graph": {
+        "roles": [
+          "self doubt",
+          "external blame"
+        ],
+        "relationships": [
+          "Line two rejects the possibility raised in line one and transfers blame outward."
+        ]
+      },
+      "humor_mechanisms": [
+        "irony",
+        "self_defeating_logic",
+        "overconfidence"
+      ],
+      "affect": [
+        "cautionary",
+        "sarcastic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Principal Skinner format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not make the second line accept responsibility."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/raw/semantic-sources/touch.html",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "rollsafe",
+          "distinction": "Use Principal Skinner when a leader briefly considers being wrong, then blames everyone else instead; use Roll Safe when a person presents flawed logic as a clever workaround."
+        },
+        {
+          "template_id": "stonks",
+          "distinction": "Use Principal Skinner when a leader briefly considers being wrong, then blames everyone else instead; use Stonks when a foolish business or financial decision is presented as if it were obvious strategic competence."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Am I so out of touch?",
+            "No, it's the metrics that are wrong"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Am I so out of touch?",
+            "No, it's the children who are wrong."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<self doubt>",
+            "<external blame>"
+          ]
+        }
+      ]
+    },
+    "agnes": {
+      "template_id": "agnes",
+      "name": "Agnes Harkness Winking",
+      "semantic_family": "knowing_falsehood",
+      "relationship_graph": {
+        "roles": [
+          "situation",
+          "obvious falsehood"
+        ],
+        "relationships": [
+          "The audience must recognize why the speaker does not mean the assurance."
+        ]
+      },
+      "humor_mechanisms": [
+        "wink",
+        "irony",
+        "shared_secret"
+      ],
+      "affect": [
+        "knowing",
+        "skeptical"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Agnes Harkness Winking format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use an honest promise or an uncertain forecast."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/agnes.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "fry",
+          "distinction": "Use Agnes Harkness Winking when a stated claim is knowingly untrue, and the wink admits the shared secret; use Futurama Fry when the observer cannot tell which of two suspicious explanations is true."
+        },
+        {
+          "template_id": "reveal",
+          "distinction": "Use Agnes Harkness Winking when a stated claim is knowingly untrue, and the wink admits the shared secret; use Scooby Doo Reveal when a surface identity is unmasked as an underlying or meaningfully similar identity."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "When the demo needs human approval",
+            "Fully autonomous"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "i have read and agree to the terms and conditions"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<situation>",
+            "<obvious falsehood>"
+          ]
+        }
+      ]
+    },
+    "biw": {
+      "template_id": "biw",
+      "name": "Baby Insanity Wolf",
+      "semantic_family": "tiny_rebellion",
+      "relationship_graph": {
+        "roles": [
+          "ordinary action",
+          "tiny defiance"
+        ],
+        "relationships": [
+          "The deviation must be harmless and much smaller than the implied bravado."
+        ]
+      },
+      "humor_mechanisms": [
+        "overstatement",
+        "scale_mismatch"
+      ],
+      "affect": [
+        "playful",
+        "self_aware"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Baby Insanity Wolf format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not celebrate unsafe workarounds, privacy breaches, or bypassed approvals."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/biw.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "center",
+          "distinction": "Use Baby Insanity Wolf when a tiny harmless deviation is treated as an act of rebellion; use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose."
+        },
+        {
+          "template_id": "nice",
+          "distinction": "Use Baby Insanity Wolf when a tiny harmless deviation is treated as an act of rebellion; use So I Got That Goin' For Me, Which Is Nice when an ordeal contains one modest silver lining that is real but insufficient."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Ended the AI steering meeting",
+            "Five minutes early"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "gets iced coffee",
+            "in the winter"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<ordinary action>",
+            "<tiny defiance>"
+          ]
+        }
+      ]
+    },
+    "boat": {
+      "template_id": "boat",
+      "name": "I Should Buy a Boat Cat",
+      "semantic_family": "impulsive_expansion",
+      "relationship_graph": {
+        "roles": [
+          "triggering observation",
+          "new desire"
+        ],
+        "relationships": [
+          "The desire must follow from the first-line observation, even if the leap is comically large."
+        ]
+      },
+      "humor_mechanisms": [
+        "overreaction",
+        "leap_in_scope"
+      ],
+      "affect": [
+        "playful",
+        "self_aware"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the I Should Buy a Boat Cat format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not require every desire to be foolish or unaffordable."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/boat.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "bender",
+          "distinction": "Use I Should Buy a Boat Cat when a thought or small observation triggers a sudden desire to acquire or start something; use I'm Going to Build My Own Theme Park when someone rejects an existing system and boasts that a self-built replacement will indulge their preferences."
+        },
+        {
+          "template_id": "xy",
+          "distinction": "Use I Should Buy a Boat Cat when a thought or small observation triggers a sudden desire to acquire or start something; use X all the Y when a burst of enthusiasm becomes a sweeping demand to do one action to everything."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Automated one spreadsheet",
+            "I should build the whole ERP"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "i should buy a boat"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<triggering observation>",
+            "<new desire>"
+          ]
+        }
+      ]
+    },
+    "gandalf": {
+      "template_id": "gandalf",
+      "name": "Confused Gandalf",
+      "semantic_family": "institutional_memory",
+      "relationship_graph": {
+        "roles": [
+          "familiar context",
+          "no memory reaction"
+        ],
+        "relationships": [
+          "The speaker previously knew the thing that now feels unfamiliar."
+        ]
+      },
+      "humor_mechanisms": [
+        "nostalgia",
+        "norm_inversion",
+        "recognition_failure"
+      ],
+      "affect": [
+        "wry",
+        "reflective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Confused Gandalf format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not diagnose dementia or joke about age."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/gandalf.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "remembers",
+          "distinction": "Use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar; use Pepperidge Farm Remembers when a speaker recalls a once-common practice that others seem to have forgotten."
+        },
+        {
+          "template_id": "wddth",
+          "distinction": "Use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar; use We Don't Do That Here when a familiar action violates the local norm and is matter-of-factly refused."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Opening the pilot we shipped last quarter",
+            "I have no memory of this workflow"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "I have no memory of this place"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<familiar context>",
+            "<no memory reaction>"
+          ]
+        }
+      ]
+    },
+    "glasses": {
+      "template_id": "glasses",
+      "name": "Peter Parker's Glasses",
+      "semantic_family": "misclassification",
+      "relationship_graph": {
+        "roles": [
+          "first reading",
+          "revised reading"
+        ],
+        "relationships": [
+          "Both labels describe one subject under different readings, not two unrelated subjects."
+        ]
+      },
+      "humor_mechanisms": [
+        "mislabeling",
+        "unmasking",
+        "perspective_correction"
+      ],
+      "affect": [
+        "dry",
+        "corrective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Peter Parker's Glasses format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not label unrelated competing products."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/glasses.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "inigo",
+          "distinction": "Use Peter Parker's Glasses when the same thing looks different when the observer changes perspective; use Inigo Montoya when a word is being used repeatedly in a way that does not match its real meaning."
+        },
+        {
+          "template_id": "pigeon",
+          "distinction": "Use Peter Parker's Glasses when the same thing looks different when the observer changes perspective; use Is This a Pigeon? when an observer confidently misidentifies an object or situation."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "AI strategy",
+            "Software shopping list"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Virginity is cool, stay pure",
+            "I am utterly incapable of getting laid"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<first reading>",
+            "<revised reading>"
+          ]
+        }
+      ]
+    },
+    "morpheus": {
+      "template_id": "morpheus",
+      "name": "Matrix Morpheus",
+      "semantic_family": "revelation",
+      "relationship_graph": {
+        "roles": [
+          "revelation invitation",
+          "revealing fact"
+        ],
+        "relationships": [
+          "The second line must overturn a recognizable assumption, not merely repeat a slogan."
+        ]
+      },
+      "humor_mechanisms": [
+        "assumption_flip",
+        "counterintuitive_fact"
+      ],
+      "affect": [
+        "calm",
+        "surprising"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Matrix Morpheus format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not deliver patronizing personal insults or conspiracy claims."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/morpheus.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "glasses",
+          "distinction": "Use Matrix Morpheus when a calm revelation challenges an assumption the audience took for granted; use Peter Parker's Glasses when the same thing looks different when the observer changes perspective."
+        },
+        {
+          "template_id": "dwight",
+          "distinction": "Use Matrix Morpheus when a calm revelation challenges an assumption the audience took for granted; use Schrute Facts when a broad or sentimental claim is met with an overly literal correction."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "What if I told you",
+            "The best fix was a dropdown"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Top Line",
+            "Bottom Line"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<revelation invitation>",
+            "<revealing fact>"
+          ]
+        }
+      ]
+    },
+    "oprah": {
+      "template_id": "oprah",
+      "name": "Oprah You Get a Car",
+      "semantic_family": "escalation",
+      "relationship_graph": {
+        "roles": [
+          "individual allocation",
+          "universal allocation"
+        ],
+        "relationships": [
+          "The item distributed in both lines must be identical; the scope expands to everyone."
+        ]
+      },
+      "humor_mechanisms": [
+        "repetition",
+        "exaggeration",
+        "scale_shift"
+      ],
+      "affect": [
+        "incredulous",
+        "energetic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Oprah You Get a Car format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not give different items to different groups."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Oprah You Get A with 223250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "buzz",
+          "distinction": "Use Oprah You Get a Car when the same thing is enthusiastically handed to everyone without discrimination; use X, X Everywhere when one repeated thing has proliferated until it appears everywhere."
+        },
+        {
+          "template_id": "gb",
+          "distinction": "Use Oprah You Get a Car when the same thing is enthusiastically handed to everyone without discrimination; use Galaxy Brain when four approaches escalate from ordinary to increasingly clever or absurd."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "You get a chatbot",
+            "Everybody gets a chatbot"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Top Line",
+            "Bottom Line"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<individual allocation>",
+            "<universal allocation>"
+          ]
+        }
+      ]
+    },
+    "remembers": {
+      "template_id": "remembers",
+      "name": "Pepperidge Farm Remembers",
+      "semantic_family": "institutional_memory",
+      "relationship_graph": {
+        "roles": [
+          "forgotten practice",
+          "remembering reply"
+        ],
+        "relationships": [
+          "The first line describes a prior practice, not a forecast or a wish."
+        ]
+      },
+      "humor_mechanisms": [
+        "nostalgia",
+        "norm_inversion",
+        "recognition_failure"
+      ],
+      "affect": [
+        "wry",
+        "reflective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Pepperidge Farm Remembers format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not make an unsupported everything-was-better claim."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/remembers.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gandalf",
+          "distinction": "Use Pepperidge Farm Remembers when a speaker recalls a once-common practice that others seem to have forgotten; use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar."
+        },
+        {
+          "template_id": "wddth",
+          "distinction": "Use Pepperidge Farm Remembers when a speaker recalls a once-common practice that others seem to have forgotten; use We Don't Do That Here when a familiar action violates the local norm and is matter-of-factly refused."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Remember when software had an undo button?",
+            "Pepperidge Farm remembers"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "remember this meme?",
+            "pepperidge farm remembers"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<forgotten practice>",
+            "<remembering reply>"
+          ]
+        }
+      ]
+    },
+    "ski": {
+      "template_id": "ski",
+      "name": "Super Cool Ski Instructor",
+      "semantic_family": "danger_warning",
+      "relationship_graph": {
+        "roles": [
+          "risky shortcut",
+          "calm warning"
+        ],
+        "relationships": [
+          "The warning must follow plausibly from the particular shortcut, not fear alone."
+        ]
+      },
+      "humor_mechanisms": [
+        "foreseeable_consequence",
+        "recognition"
+      ],
+      "affect": [
+        "cautionary",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Super Cool Ski Instructor format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not threaten the audience or joke about injury."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/ski.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "ackbar",
+          "distinction": "Use Super Cool Ski Instructor when a concrete risky shortcut receives a calm warning about the foreseeable hassle; use It's A Trap! when a tempting or harmless-looking situation contains an obvious hidden downside."
+        },
+        {
+          "template_id": "ants",
+          "distinction": "Use Super Cool Ski Instructor when a concrete risky shortcut receives a calm warning about the foreseeable hassle; use Do You Want Ants? when a repeated behavior is warned against because it predictably creates an unwanted outcome."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "If you skip testing the handoff",
+            "You're gonna have a bad time"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "you're gonna have a bad time"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<risky shortcut>",
+            "<calm warning>"
+          ]
+        }
+      ]
+    },
+    "spiderman": {
+      "template_id": "spiderman",
+      "name": "Spider-Man Pointing at Spider-Man",
+      "semantic_family": "equivalence_mirror",
+      "relationship_graph": {
+        "roles": [
+          "left actor",
+          "right actor"
+        ],
+        "relationships": [
+          "The two actors must have a meaningful shared trait or reciprocal behavior."
+        ]
+      },
+      "humor_mechanisms": [
+        "comparison",
+        "recognition",
+        "unexpected_similarity"
+      ],
+      "affect": [
+        "dry",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Spider-Man Pointing at Spider-Man format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not label unrelated opponents."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists spiderman pointing at spiderman with 64750 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "handshake",
+          "distinction": "Use Spider-Man Pointing at Spider-Man when two supposedly distinct actors discover their similarity or mirror each other's behavior; use Epic Handshake when two different groups or outcomes share one specific trait."
+        },
+        {
+          "template_id": "same",
+          "distinction": "Use Spider-Man Pointing at Spider-Man when two supposedly distinct actors discover their similarity or mirror each other's behavior; use They're the Same Picture when an observer treats two supposedly distinct things as functionally identical."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Agent waiting for approval",
+            "Manager waiting for the agent"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "me pointing at you",
+            "you pointing at me"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<left actor>",
+            "<right actor>"
+          ]
+        }
+      ]
+    },
+    "wddth": {
+      "template_id": "wddth",
+      "name": "We Don't Do That Here",
+      "semantic_family": "institutional_memory",
+      "relationship_graph": {
+        "roles": [
+          "norm violation",
+          "local refusal"
+        ],
+        "relationships": [
+          "The response rejects the first-line behavior as outside this setting's norm."
+        ]
+      },
+      "humor_mechanisms": [
+        "nostalgia",
+        "norm_inversion",
+        "recognition_failure"
+      ],
+      "affect": [
+        "wry",
+        "reflective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the We Don't Do That Here format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not exclude people based on identity or background."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/wddth.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gandalf",
+          "distinction": "Use We Don't Do That Here when a familiar action violates the local norm and is matter-of-factly refused; use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar."
+        },
+        {
+          "template_id": "remembers",
+          "distinction": "Use We Don't Do That Here when a familiar action violates the local norm and is matter-of-factly refused; use Pepperidge Farm Remembers when a speaker recalls a once-common practice that others seem to have forgotten."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Can we measure the old process first?",
+            "We don't do that here"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "when someone calls your phone without warning",
+            "We don't do that here."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<norm violation>",
+            "<local refusal>"
+          ]
+        }
+      ]
+    },
+    "xy": {
+      "template_id": "xy",
+      "name": "X all the Y",
+      "semantic_family": "escalation",
+      "relationship_graph": {
+        "roles": [
+          "sweeping action",
+          "universal target"
+        ],
+        "relationships": [
+          "Both lines form one grammatical imperative with exaggerated universal scope."
+        ]
+      },
+      "humor_mechanisms": [
+        "repetition",
+        "exaggeration",
+        "scale_shift"
+      ],
+      "affect": [
+        "incredulous",
+        "energetic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the X all the Y format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use this for a carefully bounded plan."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-2026-09-29/raw/xy.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "buzz",
+          "distinction": "Use X all the Y when a burst of enthusiasm becomes a sweeping demand to do one action to everything; use X, X Everywhere when one repeated thing has proliferated until it appears everywhere."
+        },
+        {
+          "template_id": "gb",
+          "distinction": "Use X all the Y when a burst of enthusiasm becomes a sweeping demand to do one action to everything; use Galaxy Brain when four approaches escalate from ordinary to increasingly clever or absurd."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Automate",
+            "All the workflows!"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "all the things!!!"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<sweeping action>",
+            "<universal target>"
+          ]
+        }
+      ]
+    },
+    "yodawg": {
+      "template_id": "yodawg",
+      "name": "Xzibit Yo Dawg",
+      "semantic_family": "recursive_absurdity",
+      "relationship_graph": {
+        "roles": [
+          "named activity",
+          "recursive addition"
+        ],
+        "relationships": [
+          "The same activity appears inside itself and occurs while it is already being performed."
+        ]
+      },
+      "humor_mechanisms": [
+        "recursion",
+        "repetition",
+        "nested_problem"
+      ],
+      "affect": [
+        "absurd",
+        "playful"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Xzibit Yo Dawg format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not list merely adjacent features."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Yo Dawg Heard You with 88250 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "patrick",
+          "distinction": "Use Xzibit Yo Dawg when a supposed improvement nests another instance of the same activity inside itself; use Push It Somewhere Else Patrick when relocating a thing is presented as the solution to the problem around it."
+        },
+        {
+          "template_id": "buzz",
+          "distinction": "Use Xzibit Yo Dawg when a supposed improvement nests another instance of the same activity inside itself; use X, X Everywhere when one repeated thing has proliferated until it appears everywhere."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Yo dawg, I heard you like agents",
+            "So your agent manages agents while you manage your agent"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "yo dawg",
+            "i heard you like memes"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<named activity>",
+            "<recursive addition>"
+          ]
+        }
+      ]
+    },
+    "cake": {
+      "template_id": "cake",
+      "name": "Office Space Milton",
+      "semantic_family": "expectation_reality",
+      "relationship_graph": {
+        "roles": [
+          "occasion",
+          "missing promise"
+        ],
+        "relationships": [
+          "The missing item must be something the setup explicitly led the subject to expect."
+        ]
+      },
+      "humor_mechanisms": [
+        "contradiction",
+        "disappointment",
+        "reaction"
+      ],
+      "affect": [
+        "frustrated",
+        "incredulous"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Office Space Milton format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use for a vague disappointment."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/cake.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "dbg",
+          "distinction": "Use Office Space Milton when a promised benefit or resource quietly fails to appear; use Expectation vs. Reality when an appealing expectation is immediately contradicted by the disappointing real experience."
+        },
+        {
+          "template_id": "facepalm",
+          "distinction": "Use Office Space Milton when a promised benefit or resource quietly fails to appear; use Facepalm when an obvious mistake or repeated misunderstanding leaves the observer speechless."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "The AI pilot kickoff",
+            "I was told there would be data access"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "I was told there would be cake"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<occasion>",
+            "<missing promise>"
+          ]
+        }
+      ]
+    },
+    "elf": {
+      "template_id": "elf",
+      "name": "You Sit on a Throne of Lies",
+      "semantic_family": "knowing_falsehood",
+      "relationship_graph": {
+        "roles": [
+          "false assurance",
+          "fixed rebuke"
+        ],
+        "relationships": [
+          "The post must contain evidence that makes the assurance false, not debatable."
+        ]
+      },
+      "humor_mechanisms": [
+        "wink",
+        "irony",
+        "shared_secret"
+      ],
+      "affect": [
+        "knowing",
+        "skeptical"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the You Sit on a Throne of Lies format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not accuse a named company or person of lying without strong evidence."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/elf.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "agnes",
+          "distinction": "Use You Sit on a Throne of Lies when a confident assurance is dismissed as obviously false; use Agnes Harkness Winking when a stated claim is knowingly untrue, and the wink admits the shared secret."
+        },
+        {
+          "template_id": "rollsafe",
+          "distinction": "Use You Sit on a Throne of Lies when a confident assurance is dismissed as obviously false; use Roll Safe when a person presents flawed logic as a clever workaround."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "The vendor says setup takes one day",
+            "You sit on a throne of lies"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "you sit on a throne of lies"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<false assurance>",
+            "<fixed rebuke>"
+          ]
+        }
+      ]
+    },
+    "friends": {
+      "template_id": "friends",
+      "name": "Are You Two Friends?",
+      "semantic_family": "equivalence_mirror",
+      "relationship_graph": {
+        "roles": [
+          "questioner",
+          "no party",
+          "yes party"
+        ],
+        "relationships": [
+          "One labeled party must plausibly answer yes and the other no to the same relationship question."
+        ]
+      },
+      "humor_mechanisms": [
+        "comparison",
+        "recognition",
+        "unexpected_similarity"
+      ],
+      "affect": [
+        "dry",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Are You Two Friends? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use for two parties who simply disagree on a topic."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/friends.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "handshake",
+          "distinction": "Use Are You Two Friends? when two parties give incompatible answers about whether they are aligned; use Epic Handshake when two different groups or outcomes share one specific trait."
+        },
+        {
+          "template_id": "same",
+          "distinction": "Use Are You Two Friends? when two parties give incompatible answers about whether they are aligned; use They're the Same Picture when an observer treats two supposedly distinct things as functionally identical."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Executive sponsor",
+            "Production ops",
+            "Pilot team"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Progressives",
+            "Republicans",
+            "Libertarians"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<questioner>",
+            "<no party>",
+            "<yes party>"
+          ]
+        }
+      ]
+    },
+    "headaches": {
+      "template_id": "headaches",
+      "name": "Types of Headaches",
+      "semantic_family": "complaint",
+      "relationship_graph": {
+        "roles": [
+          "worst pain"
+        ],
+        "relationships": [
+          "The custom condition must be plausibly more frustrating than the three fixed headache categories in the image."
+        ]
+      },
+      "humor_mechanisms": [
+        "specific_grievance",
+        "recognition"
+      ],
+      "affect": [
+        "frustrated",
+        "comic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Types of Headaches format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not joke about a person's illness."
+      },
+      "familiarity_tier": {
+        "tier": "current_top_100_proxy",
+        "evidence": "Imgflip top-100 snapshot lists Types of Headaches meme with 72500 generated captions.",
+        "source": "research/social-meme-template-catalog/raw/imgflip-popular-templates.json",
+        "date": "2026-08-11"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gears",
+          "distinction": "Use Types of Headaches when one process or condition causes pain far beyond the ordinary categories shown beside it; use You Know What Really Grinds My Gears? when the speaker tees up one specific recurring annoyance and complains about it."
+        },
+        {
+          "template_id": "center",
+          "distinction": "Use Types of Headaches when one process or condition causes pain far beyond the ordinary categories shown beside it; use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Re-keying orders"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Breaking Production"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<worst pain>"
+          ]
+        }
+      ]
+    },
+    "interesting": {
+      "template_id": "interesting",
+      "name": "The Most Interesting Man in the World",
+      "semantic_family": "habit_exception",
+      "relationship_graph": {
+        "roles": [
+          "rare behavior",
+          "distinctive habit"
+        ],
+        "relationships": [
+          "The second line must describe what reliably happens on the rare occasions named in line one."
+        ]
+      },
+      "humor_mechanisms": [
+        "fixed_exception",
+        "character_habit",
+        "self_portrait"
+      ],
+      "affect": [
+        "dry",
+        "self_aware"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the The Most Interesting Man in the World format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use as generic self-praise."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/interesting.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "say",
+          "distinction": "Use The Most Interesting Man in the World when a rare behavior is paired with the speaker's reliably distinctive way of doing it; use Say the Line, Bart! when a group pressures someone to repeat the predictable phrase they are known for."
+        },
+        {
+          "template_id": "bihw",
+          "distinction": "Use The Most Interesting Man in the World when a rare behavior is paired with the speaker's reliably distinctive way of doing it; use But It's Honest Work when a modest or unglamorous result is defended because it is real and legitimate."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "I don't always automate a process",
+            "But when I do, I keep the exception queue"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "I don't often drink beer",
+            "so you shouldn't value my opinion"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<rare behavior>",
+            "<distinctive habit>"
+          ]
+        }
+      ]
+    },
+    "jw": {
+      "template_id": "jw",
+      "name": "Probably Not a Good Idea",
+      "semantic_family": "danger_warning",
+      "relationship_graph": {
+        "roles": [
+          "reckless action",
+          "fixed verdict"
+        ],
+        "relationships": [
+          "The post must explain the foreseeable downside of the specific action."
+        ]
+      },
+      "humor_mechanisms": [
+        "foreseeable_consequence",
+        "recognition"
+      ],
+      "affect": [
+        "cautionary",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Probably Not a Good Idea format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not turn the warning into fear bait."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/jw.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "ackbar",
+          "distinction": "Use Probably Not a Good Idea when a concrete reckless action receives an understated warning after it is proposed or revealed; use It's A Trap! when a tempting or harmless-looking situation contains an obvious hidden downside."
+        },
+        {
+          "template_id": "ants",
+          "distinction": "Use Probably Not a Good Idea when a concrete reckless action receives an understated warning after it is proposed or revealed; use Do You Want Ants? when a repeated behavior is warned against because it predictably creates an unwanted outcome."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "You gave the agent production write access?",
+            "Probably not a good idea"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "you just went and made a new dinosaur?",
+            "probably not a good idea"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<reckless action>",
+            "<fixed verdict>"
+          ]
+        }
+      ]
+    },
+    "khaby-lame": {
+      "template_id": "khaby-lame",
+      "name": "Khaby Lame Shrug",
+      "semantic_family": "false_logic",
+      "relationship_graph": {
+        "roles": [
+          "overcomplicated method",
+          "obvious method"
+        ],
+        "relationships": [
+          "Both lines must pursue the same outcome, and the second must remove needless steps."
+        ]
+      },
+      "humor_mechanisms": [
+        "irony",
+        "self_defeating_logic",
+        "overconfidence"
+      ],
+      "affect": [
+        "cautionary",
+        "sarcastic"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Khaby Lame Shrug format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use for two mere preferences."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/khaby-lame.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "rollsafe",
+          "distinction": "Use Khaby Lame Shrug when an elaborate workaround loses to an obvious, simpler method; use Roll Safe when a person presents flawed logic as a clever workaround."
+        },
+        {
+          "template_id": "stonks",
+          "distinction": "Use Khaby Lame Shrug when an elaborate workaround loses to an obvious, simpler method; use Stonks when a foolish business or financial decision is presented as if it were obvious strategic competence."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Build a chatbot for every policy",
+            "Fix policy search"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Bad mood?",
+            "Laugh at memes"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<overcomplicated method>",
+            "<obvious method>"
+          ]
+        }
+      ]
+    },
+    "kramer": {
+      "template_id": "kramer",
+      "name": "Kramer, What's Going On In There?",
+      "semantic_family": "causal_reveal",
+      "relationship_graph": {
+        "roles": [
+          "symptom question",
+          "unexpected cause"
+        ],
+        "relationships": [
+          "The second line must actually explain the first line's visible anomaly."
+        ]
+      },
+      "humor_mechanisms": [
+        "specific_explanation",
+        "surprise_cause"
+      ],
+      "affect": [
+        "incredulous",
+        "curious"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Kramer, What's Going On In There? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use a generic 'AI is weird' explanation."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/kramer.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "aag",
+          "distinction": "Use Kramer, What's Going On In There? when a visible symptom prompts a question and receives an unexpectedly specific explanation; use Ancient Aliens Guy when a complicated or unexplained result is reduced to one overconfident magical cause."
+        },
+        {
+          "template_id": "morpheus",
+          "distinction": "Use Kramer, What's Going On In There? when a visible symptom prompts a question and receives an unexpectedly specific explanation; use Matrix Morpheus when a calm revelation challenges an assumption the audience took for granted."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Why is the queue turning red?",
+            "The agent approved its own exceptions"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "Kramer, what's going on in there?",
+            "It's a Chicken Roaster sign, right across from my window."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<symptom question>",
+            "<unexpected cause>"
+          ]
+        }
+      ]
+    },
+    "light": {
+      "template_id": "light",
+      "name": "Everything the Light Touches is Our Kingdom",
+      "semantic_family": "hidden_constraint",
+      "relationship_graph": {
+        "roles": [
+          "boundary question",
+          "scope answer"
+        ],
+        "relationships": [
+          "The excluded area must materially limit the broad scope implied by the image."
+        ]
+      },
+      "humor_mechanisms": [
+        "constraint_reveal",
+        "scale_mismatch"
+      ],
+      "affect": [
+        "incredulous",
+        "dry"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Everything the Light Touches is Our Kingdom format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use for an arbitrary disliked thing."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/light.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "mordor",
+          "distinction": "Use Everything the Light Touches is Our Kingdom when a proud claim of broad scope is immediately bounded by one conspicuous excluded area; use One Does Not Simply when a supposedly simple action is actually difficult or constrained."
+        },
+        {
+          "template_id": "center",
+          "distinction": "Use Everything the Light Touches is Our Kingdom when a proud claim of broad scope is immediately bounded by one conspicuous excluded area; use What Is This, a Center for Ants?! when an object or effort is mocked for being absurdly too small for its stated purpose."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "What about production exceptions?",
+            "That's beyond the pilot. You must never go there."
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "What about that shadowy place?",
+            "That's beyond our borders. You must never go there."
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<boundary question>",
+            "<scope answer>"
+          ]
+        }
+      ]
+    },
+    "philosoraptor": {
+      "template_id": "philosoraptor",
+      "name": "Philosoraptor",
+      "semantic_family": "semantic_paradox",
+      "relationship_graph": {
+        "roles": [
+          "premise",
+          "paradox question"
+        ],
+        "relationships": [
+          "The question must follow from the wording or logic of the premise, not merely share a topic."
+        ]
+      },
+      "humor_mechanisms": [
+        "wordplay",
+        "logical_twist",
+        "question"
+      ],
+      "affect": [
+        "playful",
+        "reflective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Philosoraptor format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use as a generic question card."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/philosoraptor.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "fry",
+          "distinction": "Use Philosoraptor when a familiar premise leads to a playful paradox or semantic question; use Futurama Fry when the observer cannot tell which of two suspicious explanations is true."
+        },
+        {
+          "template_id": "morpheus",
+          "distinction": "Use Philosoraptor when a familiar premise leads to a playful paradox or semantic question; use Matrix Morpheus when a calm revelation challenges an assumption the audience took for granted."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "If the AI learned from our old process",
+            "Is automation just faster institutional memory?"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "if the earth is the third planet from the sun",
+            "then isn't every country a third world country?"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<premise>",
+            "<paradox question>"
+          ]
+        }
+      ]
+    },
+    "spirit": {
+      "template_id": "spirit",
+      "name": "Fake Spirit Halloween Costume",
+      "semantic_family": "type_reveal",
+      "relationship_graph": {
+        "roles": [
+          "costume name",
+          "fixed includes",
+          "included one",
+          "included two",
+          "included three"
+        ],
+        "relationships": [
+          "The three included items must be distinct, concrete evidence of the named type."
+        ]
+      },
+      "humor_mechanisms": [
+        "trait_inventory",
+        "archetype_recognition"
+      ],
+      "affect": [
+        "satirical",
+        "knowing"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the Fake Spirit Halloween Costume format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not target a protected class or individual employee."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/spirit.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "3hd",
+          "distinction": "Use Fake Spirit Halloween Costume when a recognizable organizational type is packaged as a costume with a revealing inventory of traits; use Three-Headed Dragon when three supposed peers are compared, but one is conspicuously unserious."
+        },
+        {
+          "template_id": "reveal",
+          "distinction": "Use Fake Spirit Halloween Costume when a recognizable organizational type is packaged as a costume with a revealing inventory of traits; use Scooby Doo Reveal when a surface identity is unmasked as an underlying or meaningfully similar identity."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Enterprise AI pilot",
+            "Includes:",
+            "A polished demo",
+            "No data owner",
+            "Six steering committees"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "My Dad",
+            "Includes:",
+            "- Nothing",
+            "- Nothing",
+            "- Nothing"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<costume name>",
+            "<fixed includes>",
+            "<included one>",
+            "<included two>",
+            "<included three>"
+          ]
+        }
+      ]
+    },
+    "whatyear": {
+      "template_id": "whatyear",
+      "name": "What Year Is It?",
+      "semantic_family": "institutional_memory",
+      "relationship_graph": {
+        "roles": [
+          "anachronism",
+          "fixed question"
+        ],
+        "relationships": [
+          "The first line must establish why the present situation feels like a different era."
+        ]
+      },
+      "humor_mechanisms": [
+        "nostalgia",
+        "norm_inversion",
+        "recognition_failure"
+      ],
+      "affect": [
+        "wry",
+        "reflective"
+      ],
+      "audience_baggage": {
+        "cultural_context": "Recognition may depend on familiarity with the What Year Is It? format; this audience-specific recognition has not been measured.",
+        "selection_risk": "Do not use for a merely old technology still fit for purpose."
+      },
+      "familiarity_tier": {
+        "tier": "established_unmeasured",
+        "evidence": "Established in the reviewed local catalog, but absent from the preserved Imgflip top-100 snapshot; no current audience-frequency claim is made.",
+        "source": "research/social-meme-template-catalog/expansion-wave2-2026-09-29/raw/whatyear.html",
+        "date": "2026-09-29"
+      },
+      "near_neighbors": [
+        {
+          "template_id": "gandalf",
+          "distinction": "Use What Year Is It? when an outdated practice or uncanny recurrence makes the observer feel displaced in time; use Confused Gandalf when a supposedly familiar place or artifact suddenly feels unfamiliar."
+        },
+        {
+          "template_id": "remembers",
+          "distinction": "Use What Year Is It? when an outdated practice or uncanny recurrence makes the observer feel displaced in time; use Pepperidge Farm Remembers when a speaker recalls a once-common practice that others seem to have forgotten."
+        }
+      ],
+      "representative_caption_patterns": [
+        {
+          "source": "contract_operator_example",
+          "lines": [
+            "Copying orders from email into ERP",
+            "What year is it?"
+          ]
+        },
+        {
+          "source": "memegen_renderer_example",
+          "lines": [
+            "",
+            "what year is it?"
+          ]
+        },
+        {
+          "source": "contract_slot_pattern",
+          "lines": [
+            "<anachronism>",
+            "<fixed question>"
+          ]
+        }
+      ]
+    }
+  }
+}

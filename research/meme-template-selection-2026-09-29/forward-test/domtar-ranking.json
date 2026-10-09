@@ -1,0 +1,5 @@
+[
+  {"template":"panik-kalm-panik","angle":"reassurance-collapses","score":103,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"genie","angle":"capability-review-bottleneck","score":103,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"dbg","angle":"capability-review-bottleneck","score":100,"eligible":true,"hard_fail":false,"critical_pass":true}
+]

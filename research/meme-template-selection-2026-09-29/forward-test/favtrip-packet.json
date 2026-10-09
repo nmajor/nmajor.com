@@ -1,0 +1,81 @@
+{
+  "post_id": "personal-favtrip-invoice-agent",
+  "post": "app/linkedin/rockwell-knowledge-at-the-machine/personal-favtrip-invoice-agent.md",
+  "catalog_scan": {"active_templates_reviewed": 63, "source": ".skills/social-meme-campaign/references/template-contracts.json"},
+  "payload": {
+    "fact": "FavTrip says its staged-authority billing agent found a $25,000 fuel-invoice error after first operating read-only and later emailing vetted vendors with the owner copied.",
+    "expected": "A notable AI-agent win would come from an ambitious autonomous or customer-facing task.",
+    "actual": "The clearest reported win was checking a bill, with authority added in stages.",
+    "tension": "A mundane control task produced the memorable result while the agent remained bounded.",
+    "target": "The tendency to overlook small back-office checks while chasing flashy AI use cases.",
+    "reader_realization": "Useful AI can look like careful invoice reconciliation, not theatrical autonomy.",
+    "tone": "delighted",
+    "forbidden_targets": ["store employees", "vendor staff", "Babir Sultan"]
+  },
+  "angles": [
+    {"rank": 1, "id": "boring-work-real-win", "mechanism": "preference contrast", "line": "The memorable AI-agent result was the unglamorous work of checking a fuel bill.", "kept": true},
+    {"rank": 2, "id": "authority-with-guardrails", "mechanism": "hidden constraint", "line": "The agent could contact vendors only after read-only testing, and only from a vetted list with the owner copied.", "kept": true},
+    {"rank": 3, "id": "small-chain-large-catch", "mechanism": "scale mismatch", "line": "A three-store chain found a claimed $25,000 error by automating invoice reconciliation.", "kept": false},
+    {"rank": 4, "id": "autonomy-was-staged", "mechanism": "contradiction", "line": "The agent looked autonomous only after a sequence of narrow permissions and human visibility.", "kept": false},
+    {"rank": 5, "id": "invoice-agent-not-content", "mechanism": "misclassification", "line": "The valuable AI agent was an accounts-payable control, not a content machine.", "kept": false}
+  ],
+  "candidates": [
+    {
+      "template": "bihw", "angle": "boring-work-real-win", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 4, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The template values a modest, unglamorous result precisely because it is useful.",
+        "role_mapping": "Invoice checking is the modest work and the reported $25,000 correction supplies the legitimate payoff.",
+        "surprise": "The joke makes boring reconciliation, rather than autonomy theater, the hero.",
+        "instant_clarity": "The fixed honest-work line makes the editorial stance immediate.",
+        "operator_resonance": "Operators recognize that basic control work often carries measurable value.",
+        "caption_economy": "A short first line such as 'It ain't much, just checking the bill' fits the contract.",
+        "cultural_familiarity": "The template is established and its fixed phrase is readily understood.",
+        "freshness": "No other post in the batch uses the modest-work mechanism."
+      }
+    },
+    {
+      "template": "genie", "angle": "authority-with-guardrails", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 4, "cultural_familiarity": 3, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "An agent that can email vendors is bounded by a vetted list and owner visibility.",
+        "role_mapping": "Vendor outreach maps to the capability and the approved-list-plus-copy rule maps to its operational boundary.",
+        "surprise": "The autonomy story resolves into a simple permission design.",
+        "instant_clarity": "The two-level capability and constraint structure reads without explanation.",
+        "operator_resonance": "Staged permissions and escalation are recognizable deployment controls.",
+        "caption_economy": "The owner-copy detail may need to be dropped to stay within seven words.",
+        "cultural_familiarity": "The contrast is visually readable, though the template is less famous than Drakeposting.",
+        "freshness": "It would be the only guardrail joke in the batch."
+      }
+    },
+    {
+      "template": "morpheus", "angle": "boring-work-real-win", "hard_fail": false,
+      "scores": {"semantic_fit": 4, "role_mapping": 4, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 4, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The sourced $25,000 bill-checking claim can challenge assumptions about where AI value appears.",
+        "role_mapping": "The fixed invitation leads to the concrete fact, although the audience assumption remains implicit.",
+        "surprise": "A billing check is an unexpected answer to the AI-agent value question.",
+        "instant_clarity": "The fact can be stated in one short bottom caption.",
+        "operator_resonance": "Decision-makers recognize the contrast between flashy demos and control work.",
+        "caption_economy": "The revealing fact fits comfortably within nine words.",
+        "cultural_familiarity": "The catchphrase is well known even though it is not an actual film quote.",
+        "freshness": "The template is unused elsewhere in this batch."
+      }
+    },
+    {
+      "template": "drake", "angle": "boring-work-real-win", "hard_fail": true,
+      "hard_fail_reason": "The current caption adds a social-post option absent from the source and violates the same-actor invariant.",
+      "scores": {"semantic_fit": 4, "role_mapping": 2, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 5, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "Rejecting flashy AI work for invoice checking creates a clean preference contrast in the abstract.",
+        "role_mapping": "The post supplies no actor who rejected social-content generation and chose invoice checking, so the required same-person choice is invented.",
+        "surprise": "The mundane preferred option is more valuable than the flashy option.",
+        "instant_clarity": "The comparison reads instantly.",
+        "operator_resonance": "Leaders recognize the recurring content-versus-operations debate.",
+        "caption_economy": "Both options fit in short captions.",
+        "cultural_familiarity": "Drakeposting is one of the most familiar comparison templates.",
+        "freshness": "No other post in the batch uses Drakeposting, but familiarity cannot cure the unsupported choice."
+      }
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "retrieved": "2026-09-29",
+  "candidate_ids": [
+    "blb",
+    "box",
+    "cake",
+    "disastergirl",
+    "dragon",
+    "elf",
+    "friends",
+    "headaches",
+    "interesting",
+    "ive",
+    "jw",
+    "khaby-lame",
+    "kramer",
+    "light",
+    "nails",
+    "philosoraptor",
+    "spirit",
+    "spongebob",
+    "stop",
+    "vince",
+    "whatyear",
+    "wkh"
+  ],
+  "sources": {
+    "memegen-templates.json": {
+      "kind": "exact inherited source snapshot",
+      "source_file": "research/social-meme-template-catalog/raw/memegen-templates.json",
+      "file": "raw/memegen-templates.json",
+      "sha256": "eaf643fb441d3404db470dd08d66d6d45740427c58208f22a1b71b198c75e1f9"
+    },
+    "memefact-templates.csv": {
+      "kind": "exact inherited source snapshot",
+      "source_file": "research/social-meme-template-catalog/raw/memefact-templates.csv",
+      "file": "raw/memefact-templates.csv",
+      "sha256": "21a3f4117d647403be6dc99c302b9545406984f1fde99c39fee8cdd3877d73aa"
+    },
+    "memefact-readme.md": {
+      "kind": "exact inherited source snapshot",
+      "source_file": "research/social-meme-template-catalog/raw/memefact-readme.md",
+      "file": "raw/memefact-readme.md",
+      "sha256": "cd1e1199a2284dafeeaa8ea6c1d5ff46a3736de09512c11a144e0ae0de463451"
+    },
+    "memegen-license.txt": {
+      "kind": "exact inherited source snapshot",
+      "source_file": "research/social-meme-template-catalog/raw/memegen-license.txt",
+      "file": "raw/memegen-license.txt",
+      "sha256": "ea3aa69bd02490bb2f4096907cb16a4f0ae38df8d960285e5a6f4e11bbe7f1e9"
+    },
+    "blb": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/bad-luck-brian",
+      "final_url": "https://knowyourmeme.com/memes/bad-luck-brian",
+      "file": "raw/blb.html",
+      "sha256": "361a31f823caa3eaceceb5bb1ee90becb4ef7ff9b1e2cc589a9ac5bb45e7f2ed",
+      "bytes": 311791
+    },
+    "box": {
+      "kind": "cultural source response",
+      "requested_url": "https://screenrant.com/hilarious-se7en-memes/",
+      "final_url": "https://screenrant.com/hilarious-se7en-memes/",
+      "file": "raw/box.html",
+      "sha256": "3bbdd4a7f080c65bf65a48a3ece03b7c98ae026dcc87a26c9db845b32f791652",
+      "bytes": 263654
+    },
+    "cake": {
+      "kind": "cultural source response",
+      "requested_url": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+      "final_url": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+      "file": "raw/cake.html",
+      "sha256": "a5195e4f39c59be53622688214650ebac064c01f6bbe70216f7864f596684c92",
+      "bytes": 1296336
+    },
+    "disastergirl": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/disaster-girl",
+      "final_url": "https://knowyourmeme.com/memes/disaster-girl",
+      "file": "raw/disastergirl.html",
+      "sha256": "29d308349aa65b7252f7e1f47a188cef96b29325923a8d327da4dc8f60199d30",
+      "bytes": 292798
+    },
+    "dragon": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/photos/1052192-tumblr",
+      "final_url": "https://knowyourmeme.com/photos/1052192-for-christmas-i-want-a-dragon",
+      "file": "raw/dragon.html",
+      "sha256": "1ecbdab07a7bebfbc0a3640ce3c8fadcabd03df14685eb7a56c2733e84c6dfc0",
+      "bytes": 231870
+    },
+    "elf": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+      "final_url": "https://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+      "file": "raw/elf.html",
+      "sha256": "eec7297cf1e563ef006037b06218d7e0b85e4bcb05af2da0a7150592c3f2604b",
+      "bytes": 285712
+    },
+    "friends": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/are-you-two-friends",
+      "final_url": "https://knowyourmeme.com/memes/are-you-two-friends",
+      "file": "raw/friends.html",
+      "sha256": "863d202a0615bdfed46c326e479075b64ab27b3330b84ae8af66e0d62733641f",
+      "bytes": 285150
+    },
+    "headaches": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/types-of-headaches",
+      "final_url": "https://knowyourmeme.com/memes/types-of-headaches",
+      "file": "raw/headaches.html",
+      "sha256": "e9a9ae942d9c05441aa916a78ca80004132179b2123c14a7609c8429166d50f7",
+      "bytes": 274828
+    },
+    "interesting": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+      "final_url": "https://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+      "file": "raw/interesting.html",
+      "sha256": "50f43c771a1f828fc09ce9080115a06a474d0919934d61ac232684dea2aa1d63",
+      "bytes": 306173
+    },
+    "ive": {
+      "kind": "cultural source response",
+      "requested_url": "https://www.apple.com/pr/bios/jonathan-ive.html",
+      "final_url": "https://www.apple.com/newsroom/",
+      "file": "raw/ive.html",
+      "sha256": "af19b16244581a11d79d9659e6c3f0c624918f915bd0ef03780fd7b816721955",
+      "bytes": 122934
+    },
+    "jw": {
+      "kind": "cultural source response",
+      "requested_url": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+      "final_url": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+      "file": "raw/jw.html",
+      "sha256": "068a1bc7c635d44b6f39b128befa94da590ff95c7706765a2f7b757340fa5560",
+      "bytes": 1298542
+    },
+    "khaby-lame": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/khaby-lame-shrug-its-that-simple",
+      "final_url": "https://knowyourmeme.com/memes/khaby-lame-shrug-its-that-simple",
+      "file": "raw/khaby-lame.html",
+      "sha256": "d09d6cb0d895efcac05d02872f7642a9aea34e7771530cda8483b9b109c50490",
+      "bytes": 281282
+    },
+    "kramer": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+      "final_url": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+      "file": "raw/kramer.html",
+      "sha256": "1a3ea8dce196d03bf265cecfc2bc6f3f25d7ed9f9cc1207630f8a9ff42d392d2",
+      "bytes": 298673
+    },
+    "light": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/everything-the-light-touches-is",
+      "final_url": "https://knowyourmeme.com/memes/everything-the-light-touches-is",
+      "file": "raw/light.html",
+      "sha256": "7c1f516aa9a44acd2eadfadcd4859a586147004aa3a59ef05f7b31e8c72ecb54",
+      "bytes": 274831
+    },
+    "nails": {
+      "kind": "cultural source response",
+      "requested_url": "https://oldmeme.com/templates/guy-hammering-nails-into-sand/",
+      "final_url": "https://oldmeme.com/templates/guy-hammering-nails-into-sand/",
+      "file": "raw/nails.html",
+      "sha256": "c53917508aff1f880e4becd9dca4585e678c381320d2f9ca5fa1ee72ad5d1477",
+      "bytes": 86621
+    },
+    "philosoraptor": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/philosoraptor",
+      "final_url": "https://knowyourmeme.com/memes/philosoraptor",
+      "file": "raw/philosoraptor.html",
+      "sha256": "3a7c4a3873ec5eb91b220360d0cefd55609ed7a8e4b190206d2dddc0a8bb0bfe",
+      "bytes": 299044
+    },
+    "spirit": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+      "final_url": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+      "file": "raw/spirit.html",
+      "sha256": "c2fb78dc1f7b4360902ec13e746339ebf1772d60784b41d7fec196e2edbc6f6c",
+      "bytes": 232682
+    },
+    "spongebob": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/mocking-spongebob",
+      "final_url": "https://knowyourmeme.com/memes/mocking-spongebob",
+      "file": "raw/spongebob.html",
+      "sha256": "79baf62a4f0fc144f94d6f688872d843310dec07fba00b87caa06fec1a35f9b1",
+      "bytes": 299842
+    },
+    "stop": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+      "final_url": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+      "file": "raw/stop.html",
+      "sha256": "465b9673a1a0408aa485e26223fe562df4b4b9a09ebc854419bfb9286d1b88d6",
+      "bytes": 262802
+    },
+    "vince": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+      "final_url": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+      "file": "raw/vince.html",
+      "sha256": "2b62190b7e41b74ed1ee71bdb388e940ed0ad7bae291fd9bb714039bbe7dfd2b",
+      "bytes": 280863
+    },
+    "whatyear": {
+      "kind": "cultural source response",
+      "requested_url": "http://knowyourmeme.com/memes/what-year-is-it",
+      "final_url": "https://knowyourmeme.com/memes/what-year-is-it",
+      "file": "raw/whatyear.html",
+      "sha256": "17d69f047c775e6c1d35de9a218868f59859a259dd826546946269c6a5214f3f",
+      "bytes": 280129
+    },
+    "wkh": {
+      "kind": "cultural source response",
+      "requested_url": "https://knowyourmeme.com/memes/who-killed-hannibal",
+      "final_url": "https://knowyourmeme.com/memes/who-killed-hannibal",
+      "file": "raw/wkh.html",
+      "sha256": "6719616eecbdcefb707623519365ab95371a5020c98e3a81dd5a2ebbcc9f5f27",
+      "bytes": 289314
+    },
+    "candidate-renderer-rows": {
+      "kind": "lossless subset of preserved Memegen snapshot",
+      "file": "raw/candidate-renderer-rows.json",
+      "sha256": "3043257a1b723eb91c42c0869493a3fbf58b1cb4b9793675b21c94c60f1ecd57"
+    }
+  },
+  "failures": {}
+}

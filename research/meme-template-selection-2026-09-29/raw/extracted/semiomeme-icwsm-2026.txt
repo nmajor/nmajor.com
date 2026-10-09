@@ -1,0 +1,975 @@
+                  Proceedings of the Twentieth International AAAI Conference on Web and Social Media (ICWSM 2026)
+
+
+
+
+SemioMeme: A Symbolic–Subsymbolic Knowledge Graph Dataset for Multimodal
+                            Meme Analysis
+                                    Victoria Sherratt, Suzanne Elayan, Nina Dethlefs
+                                                       Loughborough University
+                                            {v.sherratt, s.elayan2, n.dethlefs}@lboro.ac.uk
+
+
+
+                            Abstract                                       meme culture (Afridi et al. 2020; Hermida and Santos 2023;
+                                                                           Sharma et al. 2022; Routhu and Baruah 2025). Few task-
+  Internet memes present a challenge for computational anal-
+  ysis as their meaning derives from cultural context exter-
+                                                                           agnostic resources capture the broader cultural position of
+  nal to their observable features; however, visually similar              internet memes to model relationships between meme con-
+  memes carry distinct cultural meanings, whilst semantically              cepts or their connection to the people, events and online
+  related memes may share no perceptual similarity resulting               communities which are central to their interpretation.
+  in a decoupling of format and meaning. To support anal-                     Encyclopedic resources like KnowYourMeme.com pro-
+  ysis requiring both, we present SemioMeme, a knowledge                   vide rich documentation of meme origins and cultural con-
+  graph providing symbolic representations of meme concepts                text, but this information exists primarily as unstructured
+  with their cultural connections alongside subsymbolic vision             text, embedded metadata or loosely organised categorical
+  and text embeddings connected via a dedicated property be-               tags; the cultural knowledge encoded in these descriptions
+  tween both. This supports hybrid queries that can surface
+  cultural associations accruing through graph proximity, of-
+                                                                           remains implicit in prose rather than explicitly modelled as
+  ten invisible to similarity search or explicit labelling alone.          queryable relationships.
+  The resource, including source data and code, is made openly                Knowledge graphs have previously been proposed as
+  available and covers 16,707 meme concepts, 507K meme in-                 a solution to structuring this encoded cultural knowledge
+  stances with multimodal embeddings, and 7.2M RDF triples.                (Sherratt 2022). However, existing resources that model
+                                                                           meme data in knowledge graph formats or leverage archival
+Datasets — https://doi.org/10.5281/zenodo.17826799                         sources like KnowYourMeme.com remain either limited in
+                                                                           scale and availability, or characterise memes as template-
+                                                                           based image-text objects rather than objects that operate
+                     1    Introduction                                     within a broader online cultural ecosystem (Ekron, Milo,
+Internet memes are forms of online communication widely                    and Youngmann 2017; Tommasini, Illievski, and Wijesiri-
+used to express opinions, humour and political commentary                  wardene 2023).
+on social media platforms (Sherratt 2022). Memes gener-                       We therefore introduce SemioMeme, a multi-component
+ate meaning through the interaction of their visual and text               knowledge graph and dataset resource for analysing internet
+modalities, interpreted alongside cultural knowledge, con-                 memes. SemioMeme is designed on the principle that meme
+text or lore external to the meme itself. This reliance on im-             meaning and appearance are decoupled; content-based sim-
+plicit context from their shared histories makes them sig-                 ilarity captures visual and textual patterns through learned
+nificant for understanding online discourse, yet difficult to              relationships, whilst semantic similarity reflects conceptual
+analyse computationally as information necessary for inter-                relationships, including associations that arise through cul-
+pretation is not fully contained within its observable features            tural proximity rather than visual resemblance or direct in-
+(Iloh 2021; Kiela et al. 2020; Polli and Sindoni 2024; Sher-               volvement. Neither representation alone suffices for compre-
+ratt 2022; Nguyen and Ng 2024).                                            hensive meme analysis.
+   Memes are extensively documented through archival
+                                                                              SemioMeme instead provides both semantic and percep-
+websites and visible on social media platforms, providing
+                                                                           tual representations through a symbolic RDF knowledge
+sources for researchers to collate data to study memes. How-
+                                                                           graph modelling meme relationships through metadata or
+ever, this information largely exists in fragmented formats;
+                                                                           unstructured text, and subsymbolic dense vector embed-
+machine-readable resources such as OCR-extracted text, im-
+                                                                           dings of meme images and text indexed for similarity search,
+ages or embeddings usually exist as task-specific datasets,
+                                                                           connected through an explicit bridge layer mapping sym-
+capturing memes at a certain point in time to address specific
+                                                                           bolic URIs and vector positions. This separation enables
+objectives such as harmful meme detection, and are there-
+                                                                           analyses that require both representations, such as tracing
+fore too thematically narrow to represent the diversity of
+                                                                           how cultural associations accumulate around entities, iden-
+Copyright © 2026, Association for the Advancement of Artificial            tifying where meme format and meaning diverge, or con-
+Intelligence (www.aaai.org). All rights reserved.                          straining similarity searches by semantic criteria.
+
+
+                                                                    2921
+                          Description                                                                                     Format    Location
+ Source Data
+ KYM meta data            Entry pages including descriptive text and meta data from KnowYourMeme.com (16,707)             CSV       Zenodo
+ Raw images               Confirmed and Submission meme images downloaded (757,331)                                       Images    On Request
+ Image URLs               URLs for Confirmed meme images used in embedding construction (507,127)                         CSV       Zenodo
+ OCR text                 Text extracted using Google Vision from meme images (419,482)                                   CSV       Zenodo
+ Knowledge Graph
+ Meta Layer               Semantic relationships modelled from KYM meta data                                              TTL       Zenodo
+ Corpus Layer             Meta Layer with instances from collected memes and bridge map to FAISS indices                  TTL       Zenodo
+ Bridge Map               Standalone file linking instances and meta data by URI FAISS indices                            JSON      Zenodo
+ Instance Graph           Graph of only meme instances and bridge map to FAISS indices                                    TTL       Zenodo
+ Ontology                 Formal schema from SemioMeme Meta and Corpus layers                                             OWL/TTL   Zenodo
+ Embeddings and Indices
+ Vision Embedding         SigLIP features of meme instances                                                               NPY       Zenodo
+ Text Embeddings          SentenceTransformer features of meme instances                                                  NPY       Zenodo
+ Vision Indices           Searchable FAISS indices built from fine-tuned SigLIP model                                     FAISS     Zenodo
+ Text Indices             Searchable FAISS indices built from fine-tuned SentenceTransformer model                        FAISS     Zenodo
+ Retrieval Models
+ SigLIP                   Fine-tuned SigLIP model for retrieval of similar memes                                          PyTorch   Zenodo
+ SentenceTransformer      Fine-tuned SentenceTransformer model for retrieval of similar memes                             PyTorch   Zenodo
+ Source Code
+ KYM Webscraper           Complete pipeline for collecting KYM entries and meme instances (knowledge graph source data)   Python    GitHub
+ SemioMeme - Meta         Complete pipeline for building the knowledge graph                                              Python    GitHub
+ SemioMeme - Retrieval    Complete training script for fine-tuning models and generating embeddings                       Python    GitHub
+ SemioMeme - Corpus       Complete pipeline for generating bridge mappings and corpus layer from embeddings               Python    GitHub
+
+                                                Table 1: Overview of available resources.
+
+
+   Alongside the knowledge graph, we release the complete                    extracted text from meme instances, entities extracted from
+source data, extraction pipelines, embeddings and fine-tuned                 text and a dedicated property (the bridge map) linking in-
+retrieval models to reproduce or extend this resource.                       stances to their corresponding vision or text indices.
+   In Section 2 we outline similar research with specific fo-                   Embedding Layer (Subsymbolic) FAISS-indexed dense
+cus on available resources for meme analysis. We then de-                    vector representations of meme instances (vision and text
+tail the collection of the source data in Section 3. In Section              embeddings), enabling subsymbolic similarity search linked
+4 we detail the construction of the RDF Meta Layer, and in                   to symbolic corpus nodes via bridge map in the Corpus
+Section 5 building the RDF node of meme instances for the                    Layer.
+Corpus Layer and bridge map to FAISS indices. In Section                        In Appendix A.1, we also show what information is avail-
+6 we demonstrate the unique capabilities of the three lay-                   able for a single meme instance from this resource.
+ers and resource, and discuss further uses and future work in
+Sections 7 and 8.                                                                       2       Related Work and Resources
+                                                                             Existing work on structured meme representations either
+1.1   Complete Resource                                                      uses external knowledge to improve specific tasks like clas-
+We present three modular resources comprising the core of                    sification and harmful content detection, or constructs ded-
+SemioMeme alongside source data, images, OCR-extracted                       icated knowledge graph resources. Graph-based methods
+text, source code and documentation to reconstruct the graph                 have used scene graphs, graph neural networks, and exter-
+and embeddings, outlined in Table 1. SemioMeme is avail-                     nal knowledge bases such as ConceptNet to improve meme
+able under a CC BY 4.0 license with a persistent identifier                  classification and harmful content detection (Kougia et al.
+and metadata for FAIR compliance, and employs standard                       2023; Shang et al. 2021; Lee et al. 2021; Garg et al. 2025;
+Semantic Web Technologies with established vocabularies                      Sharma et al. 2023; Grasso et al. 2024). Whilst these contri-
+(Wilkinson et al. 2016). SemioMeme’s three core compo-                       butions demonstrate the value of using external knowledge
+nents are:                                                                   like knowledge graphs to improve meme understanding, any
+   Meta Layer (Symbolic): knowledge graph of 664,043                         supporting resources released are task-specific.
+RDF triples (subject-predicate-object statements) covering                      Task-agnostic representations in knowledge graph for-
+16,707 meme concepts based on KnowYourMeme.com                               mats include SimMeme, an ontology-driven search engine
+(KYM.com) entries. The Meta Layer models conceptual                          with manual annotations, and the Internet Meme Knowl-
+meme types or categories and people, subcultures, events                     edge Graph (IMKG), which models template-based memes
+and sites associated with internet culture, connecting enti-                 with external knowledge integration (Ekron, Milo, and
+ties through available metadata on KYM, extracted relation-                  Youngmann 2017; Tommasini, Illievski, and Wijesiriwar-
+ships, or modelling series connections.                                      dene 2023). These systems address different research objec-
+   Corpus Layer (Bridge Map): an extended graph con-                         tives: SimMeme pioneered ontology-based retrieval at lim-
+taining individual meme instances categorised under each                     ited scale; IMKG enables large-scale analysis of template-
+KYM entry in the Meta Layer, extending the RDF graph                         based memes through extracted entities. SemioMeme differs
+to 7,460,955 triples. The Corpus Layer includes OCR-                         in three key respects (see Table 2 for detailed comparison):
+
+
+                                                                      2922
+        Metric                             SemioMeme (2025)               IMKG (2023)                    SimMeme (2019)
+        Graph Scale
+        Total nodes                        771,085                        4,850,636                      Not reported
+          KYM nodes                        771,085                        167,662                        -
+          Wikidata nodes                   3,295 (links)                  85,917 (subgraph)              -
+          ImgFlip nodes                    -                              4,698,912                      -
+        Total triples                      7,460,955                      Not reported                   Not reported
+        Total edges                        2,219,396                      16,549,810                     Not reported
+          KYM edges                        1,488,530                      914,941                        -
+          Wikidata edges                   3,295 (sameAs)                 504,781 (subgraph)             -
+          ImgFlip edges                    -                              15,129,606                     -
+        Content Coverage
+        Meme categories/types              16,707                         12,585                         Not reported
+        Individual memes                   507,127                        1,338,617                      10,000
+          From KYM                         507,127                        12,585                         -
+          From ImgFlip                     -                              1,326,032                      -
+          From Wikidata                    -                              242                            -
+        Entity types modelled              19 types                       3 core types                   2 core types
+        Multimodal Data
+        Vision and Text instances          318,668 (62.7%)                Majority                       Majority
+        Vision-only instances              188,461 (37.1%)                Not reported                   Not reported
+        Text-only instances                1,302 (0.3%)                   Not reported                   Not reported
+        OCR text coverage                  419,482 (82.7%)                Not reported                   Not reported
+        Vector index                       FAISS (vision + text)          -                              -
+        Multimodal retrieval               Vector similarity              Entity-based queries           Tag + structure
+        Knowledge Extraction
+        Entities extracted                 459,382                        3,780,975                      Manual annotation
+          From captions                    422,071                        3,344,941                      -
+          From images                      -                              388,579                        -
+          From descriptions                37,311                         47,455                         -
+        Extraction method                  REBEL                          DBpedia + Google Vision        Manual
+        Triples extracted                  7,460,955                      Not reported                   Not reported
+          From captions                    6,816,912                      Not reported                   -
+          From images                      -                              388,579                        -
+          From descriptions                664,043                        Not reported                   -
+        Architecture & Access
+        Storage format                     RDF + FAISS indices            RDF + Property Graph           Graph database
+        Layer separation                   3 explicit layers              Integrated                     Integrated
+        Query interface                    SPARQL + FAISS                 SPARQL or Cypher               Custom search
+        Public availability                Full (data + code)             Full (data + code)             Demo only
+   Notation: - = None/not applicable; Not reported = Information not available in published literature
+
+                                    Table 2: Comparison of Internet Meme Knowledge Graphs
+
+
+Architectural Approach: Whilst IMKG’s integrated ar-                     fers verified provenance that user-generated platforms typ-
+chitecture supports cross-modal queries and SimMeme’s flat               ically lack; whilst IMKG achieves greater total instance
+ontology enables straightforward retrieval, SemioMeme im-                volume through ImgFlip integration, SemioMeme provides
+plements a three-layer architecture that explicitly separates            substantially deeper coverage of KnowYourMeme content
+symbolic and subsymbolic representations. Separating con-                and leverages its rich metadata to connect meme concepts.
+ceptual knowledge from instance-level content whilst main-
+taining an explicit map supports cleaner analytical queries
+around high-level concepts, more accurate similarity search
+of instances, and a flexible hybrid combination of both with-            Cultural Ecosystem: SemioMeme models memes, peo-
+out collapsing representational layers.                                  ple, events, subcultures and sites. Combined with vector in-
+                                                                         dices, this enables hybrid queries chaining semantic filter-
+Data Focus: SemioMeme prioritises comprehensive mod-                     ing with perceptual similarity, such as finding memes vi-
+elling of KnowYourMeme’s editorially curated content, cap-               sually similar to a template that reference a specific polit-
+turing structured metadata which includes origin narratives,             ical event, or identifying subcultures sharing visual styles.
+temporal properties, and cross-cultural references. Exter-               Crucially, this structure often reveals cultural associations
+nal enrichment is targeted rather than importing external                through proximity rather than direct involvement, surfacing
+subgraphs, whilst remaining extensible for researchers re-               connections that neither approach captures alone. We ex-
+quiring broader integration. Curated encyclopedic data of-               plore this in Section 6.
+
+
+                                                                  2923
+                                                                                                                                   EXAMPLE QUERIES
+ META LAYER (Symbolic)
+                                                                                                                             Semantic Only:
+                                                                                         META LAYER                          "Find memes in 2019 about Brexit"
+     Ontology Classes                  Properties
+                                                                                                                             Use: Meta Layer SPARQL only
+     • smo:MemeEntry                   • smo:hasTag                               "Find memes about Brexit"
+     • smo:PersonEntry                 • smo:partOfSeries                          Returns: ex:brexit-meme
+     • smo:EventEntry                  • smo:mentions
+                                                                                                                             Similarity Only:
+     • smo:SiteEntry                   • smo:yearCreated
+                                                                                         smo:belongsTo                       "Find images similar to pepe_01.jpg"
+     • smo:SubcultureEntry             • owl:sameAs (Wikidata)                                                               Use: Embedding Layer FAISS only
+                                                                                        CORPUS LAYER
+                             smo:belongsTo                                                                                   Hybrid:
+ CORPUS LAYER
+                                                                                  ex:brexit-meme-inst-001 [...]              "Find memes about Brexit that look
+                                                                          faissVisionIndex: 42, faissTextIndex: 39 [...]     like Pepe"
+                                                                                                                             Use: Meta + Corpus + Embeddings
+   smo:MemeInstance                    Bridge Properties:
+                                                                                         Bridge Mapping
+   (subclass of smo:MemeEntry)         • smo:faissVisionIndex
+   • smo:belongsTo                     • smo:faissTextIndex
+   • smo:hasImagePath                  • smo:hasModality
+                                                                                     EMBEDDING LAYER
+   • smo:hasOCRText
+   • smo:kymID
+                                                                             Return: [idx: 89, idx: 134, idx: 267, ...]
+
+                             Bridge Mapping
+                                                                                    Resolve indices to URIs
+
+    Vision Embeddings                  Text Embeddings
+    FAISS Index (Type: IVF + PQ)       FAISS Index (Type: IVF + PQ)   FULL CONNECTED HYBRID QUERY
+                                                                      • Similar images [Embedding Layer]
+                                                                      • Similar image data (statistics, OCR text) [Corpus]
+                                                                      • Parent meme info and connections [Meta]
+EMBEDDING LAYER (Subsymbolic)
+
+
+                              Figure 1: SemioMeme Three-Layer design approach and example query paths.
+
+
+                     3       Data Collection                                       listing to the previously saved index to flag new pages
+                                                                                   that should be collected.
+The primary data source for the knowledge graph is the
+publicly accessible KnowYourMeme.com (KYM), a collab-                              Entry Collection: Performs extraction of individual
+orative, wiki-style website documenting internet phenom-                           pages based on the index and metadata, outlined in
+ena, viral content, digital culture and internet memes. ‘Entry                     Appendix A.2 Figure 7: main image URL, titles, se-
+pages’ document phenomena or groups of memes - that is,                            ries link, engagement metrics, entry type, metadata
+memes which have similar histories, context, visual styles                         (origin, year, region), community tags, descriptive
+or catch phrases. These entry pages constitute the primary                         text and image gallery links containing meme in-
+source data of the Meta Layer. Each ‘entry’ also contains                          stances. A rate limit of 31 seconds is applied to avoid
+example memes of the entry in image galleries; these meme                          server burden and entries are saved in batches to save
+instances constitute the Corpus Layer of the graph.                                progress.
+   KYM records editorial status as Confirmed (editorially                          Image Download: Collects the image URLs on each
+approved by moderators) or Submission (unreviewed). Sub-                           gallery page (Number 9 on Figure 7 in Appendix A.2)
+mission entries often lack sufficient documentation but re-                        of an entry, then downloads the media content.
+main connected to other entries through metadata. For the                         We use BeautifulSoup for HTML parsing and save a lo-
+purposes of our resource, all entries (Confirmed and Sub-                      cal copy of each page to enable offline re-collection. Failed
+mission) are included in the Meta Layer; the Corpus Layer                      entries are retried from cached HTML files or skipped if un-
+contains only Confirmed memes. Confirmed entries exhibit                       available. With the applied rate limit, full collection takes
+higher reliability in their metadata and relationships, while                  approximately 5 days. Downloaded images include .jpg,
+Submissions provide broader coverage at the cost of poten-                     .png, and .gif formats but exclude video formats. Unique
+tial noise particularly at instance-level. We outline our de-                  identifiers are generated when entries are collected, and im-
+cision on the impact on data quality of Submission memes                       ages are saved using the same unique identifier to ensure
+further in Section 5; however, we provide indices and em-                      they can be tracked, merged and analysed later.
+beddings for Submission memes are part of the resource.                           For the purposes of this knowledge graph, we collected
+   The collection pipeline consists of modular Python scripts                  KYM data in February 2023 initially, which included all
+executed sequentially:                                                         content from December 2008 (KYM’s first entry) up un-
+                                                                               til this date. To confirm reproducibility and robustness of
+   Index Collection: Retrieves paginated listings of en-                       the method, in July 2025 we re-collected newly Confirmed
+   tries and splits these into categories (memes, people,                      memes and meme images to add these to the knowledge
+   subcultures, events and sites) and collects their status                    graph. This recollection also enabled us to identify that
+   editorial status (Confirmed or Submission).                                 3,917 memes entries which were initially flagged as Sub-
+   Update Detection: Compares the current webpage                              mission and were promoted to Confirmed; thus, the resource
+
+
+                                                                       2924
+provided in this paper is based on memes collected and their            4.2   Ontology Development
+editorial status as of July 2025 from KYM.                              SemioMeme’s ontology (SMO) defines two root classes:
+   In total, this collection consists of 507,127 Confirmed              smo:KYMEntry for documented internet phenomena
+meme images and 250,179 Submission memes downloaded                     and smo:KYMMetadata for meta data and clas-
+(757,331 total), 13,161 meme entries, 345 site entries, 1,625           sification structures. smo:KYMEntry extends both
+events entries, 973 person entries and 603 cultures/subcul-             schema:CreativeWork            and    foaf:Document
+ture entries and their associated content.                              connecting Schema.org’s web publishing ecosystem to
+                                                                        the FOAF vocabulary for social web applications. The
+3.1      Text Extraction                                                ontology also defines smo:MemeInstance as a sub-
+                                                                        class of smo:MemeEntry, used in the Corpus Layer
+We extract the text of individual memes collected using                 (Section 5) to represent individual meme instances. Un-
+Google Vision’s API service1 . Although there is a cost as-             der smo:KYMEntry, we define 6 primary entity types
+sociated with using this service, we provide all extracted              reflecting KYM content categories:
+data as part of the available resource for other researchers
+to utilise. In Appendix A.3, we examine extraction consis-                 smo:MemeEntry: documentation about memes
+tency through cross-OCR comparison. Extracted OCR text                     smo:PersonEntry: individuals relevant to inter-
+is used in constructing the indices and extracting entities;               net culture
+at this stage we preprocess the text data to omit text which               smo:EventEntry: events that influenced meme
+is of insufficient length (less than two words) or contains                creation
+non-UTF-8 characters. The design of the graph, separating
+curated knowledge and user-generated data, isolates OCR-                   smo:SiteEntry: websites or platforms where
+derived content within the Corpus Layer. As detailed in Sec-               memes originate or spread
+tion 5, OCR-extracted text and entities can be filtered by                 smo:SubcultureEntry: online            communities
+excluding this property, enabling users to apply additional                that produce or consume specific meme types
+post-processing where required.                                            smo:Entity: fallback class for REBEL-extracted
+                                                                           entities not matching above categories (171,934 in-
+              4    Meta Layer Construction                                 stances).
+
+The Meta Layer is a formal RDF knowledge graph repre-                      Under smo:KYMMetadata, five subclasses cap-
+sentation of each entry page extracted from KYM. Extracted              ture KYM’s classification structure: smo:Tag (folk-
+data from KYM is used to model the intertextuality of inter-            sonomy tags), smo:Series (thematic groupings),
+net memes by connecting entries through their shared tags,              smo:MemeType (format classification, e.g., ‘image
+series attributes, temporal data, origins and via entities ex-          macro’), smo:Status (editorial status) and smo:Badge
+tracted from unstructured text. The Meta Layer can be used              (identifying ‘Not Safe for Work’ content). The ontology
+as a stand-alone graph or combined with instance level data             defines 34 properties organised into 8 object properties
+and indices for hybrid querying.                                        (relationships between entities) and 26 datatype properties
+                                                                        (attaching literal values such as temporal data, content and
+                                                                        engagement metrics, meta descriptions, or properties for
+4.1      Data Processing                                                provenance tracking of extracted data).
+We begin by building a URL-to-title mapping for all col-
+lated KYM entries. Entries reference each other inconsis-               4.3   Entity Extraction and Linking
+tently, for example series links use URLs, tags use entry               Beyond incorporating structured metadata from KYM, we
+names, and origin references vary in format. The mapping                extract additional entities and relationships from the text
+normalises these references, ensuring that connections like             data on entry pages using REBEL, a transformer-based ex-
+smo:PartofSeries resolve correctly regardless of how                    traction model (Huguet Cabot and Navigli 2021). For all de-
+the source data encodes them. A similar resolution process is           scriptive text on a KYM entry page, REBEL identifies entity
+applied to extracted entities (Section 4.3), ensuring multiple          mentions and semantic relationships to produce triples such
+mentions of the same concept link to a single node.                     as ⟨Elon Musk, creator, Tesla⟩. Extracted relations undergo
+   To create valid RDF URIs from meme titles, we generate a             canonicalisation to reduce semantic redundancy; relations
+‘URI Safe’ version of each title column. This transformation            appearing fewer than 5 times are mapped to more frequent
+(1) converts to lowercase for consistency, (2) replaces spaces          forms using string similarity where possible (e.g., “founded
+and hyphens with underscores, (3) removes characters which              by” → “founder”). Extracted entities are also linked to
+are not alphanumeric, (4) collapses consecutive underscores,            their parent KYM entry via smo:mentions. All REBEL-
+and (5) trims trailing underscores. Multi-valued properties             extracted predicates are marked with smo:extractedBy
+(tags, meme types) are parsed from comma-separated lists                ‘‘REBEL’’ provenance triples, enabling filtered queries to
+into individual RDF relationships. Duplicate entries are re-            exclude extracted content.
+moved based on unique identifiers.                                         Extracted entities are also resolved against existing KYM
+                                                                        entries based on the defined hierarchy. For example, where
+   1
+       https://cloud.google.com/vision                                  an extracted named entity matches an existing KYM entry
+
+
+                                                                 2925
+(e.g., ‘Elon Musk’ matches a PersonEntry page), the en-                  The text pipeline follows an identical structure; OCR-
+tity is linked to the smo:PersonEntry rather than cre-                 extracted text described previously in Section 3.1 is pro-
+ating a duplicate node. Entities without existing matches are          cessed through a SentenceTransformer with all-mpnet-base-
+typed as smo:Entity to distinguish curated documenta-                  v2 as the base model to produce 768-dimensional embed-
+tion from extracted entities.                                          dings (Reimers and Gurevych 2019). We also fine-tune the
+    Finally, we integrate the broader Linked Open Data                 projection head, improving retrieval recall@1 from 47% to
+ecosystem through Wikidata linking; for KYMEntry en-                   57%. Full fine-tuning experiments for both modalities are
+tities, the system queries Wikidata using label matching,              available in Appendix A.5.
+alias resolution, and name variation handling. Successful
+matches establish owl:sameAs links (3,925 entries en-                  5.2   Corpus Layer Construction
+riched), and type-specific enrichment adds supplementary
+properties: PersonEntry entities receive foaf:name, Even-              Once FAISS indices are generated the Corpus Layer is con-
+tEntry entities receive schema:eventName, and so on.                   structed as an RDF graph. For our design of the Corpus
+We attach only the Wikidata QID rather than importing con-             Layer, we opt only to use instances of Confirmed Memes;
+nected subgraphs to enrich only curated KYMEntry entities              as previously described, Submission memes have varying
+to avoid polluting the graph with extensive external linkage           quality despite being connected to Confirmed meme cate-
+and maintain focus on KYM’s curated collection. The source             gories, making them suitable for Meta Layer inclusion but
+code optionally enables enrichment of REBEL-extracted en-              detrimental to retrieval. Retrieval accuracy when including
+tities where preferred. Manual verification of 200 randomly            Confirmed and Submission memes in a combined indices
+sampled owl:sameAs links showed 98% unambiguously                      significantly reduced retrieval recall compared to using only
+correct, with 2% linking to valid but broader Wikidata en-             the Confirmed indices. We outline the impact of using com-
+tities. In Appendix A.4 we detail the sequence-level confi-            bined editorial status indices in Appendix A.5.
+dence scores of REBEL triple extraction.                                  Each meme with a FAISS position becomes
+                                                                       a smo:MemeInstance node, a subclass of
+                   5   Corpus Layer                                    smo:MemeEntry. Instance URIs are also generated
+                                                                       from the filename hash and KYM ID. Using the metadata
+The Corpus Layer represents individual meme instances col-             generated at the embedding stage, instances are matched
+lected from KYM image galleries, linking each instance to              with embeddings with smo:faissVisionIndex
+its parent entry in the Meta Layer and to positions in FAISS           and smo:faissTextIndex. Each instance includes
+indices. Each meme instance becomes an RDF node with                   smo:belongsTo linking to the parent Meta Layer entry
+properties referencing both the symbolic Meta Layer and                by title URI and smo:kymID linking by the generated ID,
+subsymbolic vector indices to enable hybrid querying, yet              smo:hasModality indicating what modalities the in-
+maintain clear distinction between conceptual knowledge                stance contains (vision, text or both), smo:datasetType
+and perceptual similarity. Construction occurs in two stages:          indicating editorial status and smo:popularity ranking
+FAISS indices are first built from image and text embeddings           based on the number of memes within a category. As
+of individual memes, and RDF nodes are constructed from                outlined previously in Section 1.1, we provide two graph
+these embeddings to reference index positions. We describe             outputs: a combined graph merging the Meta Layer entries
+each stage below.                                                      with the Corpus instances, and an instance-only graph for
+                                                                       researchers only requiring meme instances.
+5.1   Embedding Index Construction
+We extract embeddings from meme images using SigLIP’s                  5.3   Instance Entity Enrichment
+vision encoder to produce 768-dimensional vectors for each
+instance (Zhai et al. 2023). Metadata is preserved throughout          Beyond structural properties, we enrich meme instances
+which tracks filenames, KYM class identifiers (the KYM ID              with context extracted from text elements. For instances
+linking to parent entries) and editorial status (Confirmed or          with OCR data, we add smo:hasOCRText properties con-
+Submission).                                                           taining the extracted text as string literals, enabling di-
+   Optionally, retrieval accuracy can be improved by training          rect text queries without requiring index lookups. We also
+a linear projection head using supervised contrastive learn-           extract entities from OCR text using the same REBEL
+ing and meme classes as the labels. Fine-tuning SigLIP im-             pipeline described in Section 4.3, including entity resolu-
+proves recall@1 from 60% to 74% and recall@5 from 74%                  tion, enabling entity queries at instance level without em-
+to 85% over 507,127 memes across 8,597 classes in the Con-             beddings. All OCR-derived entities are marked with the
+firmed meme entries. We provide both raw embeddings and                same smo:extractedBy ‘REBEL’ provenance triples
+fine-tuned embeddings to enable researchers to optionally              as with the Meta Layer to allow exclusion of extracted data
+develop alternative fine-tuning approaches at this stage.              through simple SPARQL filters based on provenance.
+   We construct FAISS Inverted File indices with product
+quantisation and generate separate indices for Confirmed                              6   System Capabilities
+memes, Submission memes, and combined sets. Each in-
+dex maintains metadata mappings linking FAISS positions                We demonstrate core system capabilities through three
+to filenames, KYM identifiers, and popularity scores.                  query modes that highlight cultural research applications.
+
+
+                                                                2926
+                                                               Bitcoin                                             Gif
+
+
+                                                              Cryptocurrency                              Joe Rogan
+
+                                                                                Mario Kart
+                                                Russia         2014 Winter Oly...             Photoshop
+
+                               Pornhub                                     Elongated Muskr...                                               Rick And Morty
+
+                                                                                    Elon Musk Smoki...
+                                                     I Support The C...
+                                                                    Dogecoin
+                                                                                                              Twitter Changed...
+
+
+                                                 Elon Musk Comme...                                             Elon Musk Laugh...
+
+                                         Saturday Night ...                                                                 Absolute Unit
+
+
+
+                                                Goncharov                      Elon Musk                                    Ligma                  Ninja
+
+
+
+                                             Elonchan                                                                     Elon Musks Milk...
+
+                                                  Elon Musk Babyf...                                            Parody Elon Mus...
+                                                                                                                                     Fortnite
+
+
+                                                     Masterful Gambi...X A12         Reddit Island M...
+                                                                                                Elon Musk Buys ...
+
+                                                                            Tesla Roadster ...
+
+
+
+
+                        Target Entity                Person                      Site                                        Mentions                      Part of Series
+                        Meme Entry                   Event                       Subculture                                  Has Tag                       Secondary
+
+
+                          Figure 2: Elon Musk ‘Person Entry’ with top 20 connections by engagement.
+
+
+6.1   Semantic Queries                                                                       6.2                   Similarity Queries
+                                                                                             Using FAISS indices, similarity searches can be performed
+                                                                                             on meme text, images, or both modalities combined. Since
+We query the Meta Layer for the smo:PersonEntry                                              FAISS returns index positions of meme instances stored in
+‘Elon Musk’, which has 76 direct connections via tags, se-                                   the Corpus Layer, optionally for each similarity search the
+ries membership, and entity mentions extracted via REBEL.                                    parent entry information can be retrieved.
+Figure 2 shows the top 20 connections filtered by engage-
+ment metrics and one depth of secondary connections.                                                                Query
+
+   Even this filtered view shows secondary connections to
+                                                                                             Vision
+
+
+
+
+Site and Subcultures that indicate Musk acts as a bridge
+across platform-specific meme communities and disparate
+subcultures that rarely overlap. The connection types them-                                                                           Feels bad man [..] Pepe the Frog           Pepe the Frog
+
+selves indicate memes directly spawned from the target en-
+tity (‘series’ edges), while mentions and tags capture broader
+                                                                                                                    "Feels
+cultural associations connected to Elon Musk.
+                                                                                             Text
+
+
+
+
+                                                                                                                    Good"
+   The Goncharov connection, a fictional Scorsese film in-
+vented on Tumblr, exemplifies the latter; Goncharov has no                                                                             Feels Good Man         Feels Good Man     Feels Good Man
+                                                                                             Multimodal RRF
+
+
+
+
+actual involvement with Musk, yet the graph highlights how
+individuals in internet culture become linked by accumu-
+lating associations through shared community participation,
+temporal co-occurrence, or thematic proximity even with-                                                               +
+                                                                                                                 "Feels Good"
+out explicit relationships. In this case, the connection is ex-                                                                                              Awesome epic [..]
+                                                                                                                                      Feels Good Man                              Pepe the Frog
+tracted from the free-text descriptions as a ‘mentions’ entity
+from REBEL. Such connections would not surface through
+visual similarity search as there is no visual resemblance be-                                                           Figure 3: Similarity search query example.
+tween Elon Musk and Goncharov memes.
+
+
+                                                                                  2927
+                      Figure 4: Semantic context from Meta Layer from visual similarity to Kekistan flag.
+
+
+   Figure 3 shows results for an unseen Pepe variant as the
+query image and the text ‘feels good man’. Row 1 shows
+vision-only results, row 2 shows text-only results and row
+3 shows multimodal fusion. Multimodal retrieval uses mul-
+tiplicative Reciprocal Rank Fusion, scoring candidates as
+            1
+s = (k+rv )(k+r t)
+                   where rv and rt are ranks in each modal-
+ity, and candidates must rank well in both modalities to score
+highly.
+   The results demonstrate why separating perceptual and
+                                                                                                  Visual Matches
+semantic representations is important; visual similarity re-
+turns results spanning two distinct entries (’Feels Bad Man
+Sad Frog’and ‘Pepe the Frog’) that share visual features but
+different cultural meanings. Text similarity returns visually
+disparate images within a single entry (‘Feels Good Man’)
+which share the catchphrase but nothing visual. Conversely,
+                                                                                Winterchan     CNN Chyron Parodies     Kekistan
+multimodal fusion crosses three entries to retrieve memes
+that share both visual style and textual content.
+                                                                                   Figure 5: Kekistan Flag Visual Matches.
+6.3   Hybrid Querying
+Hybrid queries combine semantic filtering from the Meta
+Layer with similarity search in the Corpus Layer to either               We demonstrate the latter by searching for an unseen image
+retrieve information based on restrictive criteria, or add con-          of the ‘Kekistan’ flag, a satirical symbol associated with alt-
+ceptual and contextual information to similarity searches.               right communities and deeply connected to ‘Pepe the Frog’
+
+
+                                                                  2928
+during its height as a politically charged meme icon (Al-                    The Corpus Layer includes only Confirmed memes; re-
+Rawi 2020; de Keulenaar 2023; Tuters 2019).                               trieval accuracy degraded substantially when Submission
+   Figure 4 visualises the hybrid query semantic flow re-                 memes were included, reflecting inconsistent metadata and
+trieved, with Figure 5 showing example matching queries                   editorial quality, however we provide Submission embed-
+from a similarity search. Visual similarity, the left col-                dings separately for researchers requiring broader cover-
+umn of Figure 4, retrieves 50 similar memes spanning en-                  age. Similarly, all REBEL-extracted entities carry prove-
+tries grouped in the middle column (e.g., Kekistan: 14 vi-                nance triples, enabling queries to exclude or weight ex-
+sual matches, Winterchan: 12 visual matches).The right col-               tracted versus curated relationships. Potential OCR errors
+umn shows semantic connections reachable from each entry,                 remain isolated to the Corpus Layer and can be filtered for
+where 4chan, /pol/ and Pepe the Frog recur across multiple                downstream tasks requiring precision. As KYM is English-
+paths while outliers like Barbie Movie Posters reflect visual             language, coverage of non-English memes is limited and
+coincidence.                                                              SemioMeme inherits its source data’s cultural and language
+   The most revealing result is the proximity of the meme                 bias at present.
+entry Winterchan. Visual similarity places it with Kekistan                  Whilst processing for OCR text and REBEL occurs of-
+as a query, but also amongst visual coincidences like Barbie              fline, it is currently limited for live coverage due to associ-
+Movie Posters, with no basis to distinguish culturally sig-               ated costs; SemioMeme is currently designed for scheduled
+nificant matches from this coincide. Examining Winterchan                 updates outlined in the resource package rather than live up-
+in isolation, its tags contain no overtly hateful or extremist            dates.
+terminology, and OCR text yields only sparse results which                   Our example demonstrates SemioMeme provides inter-
+may warrant further investigation, but none of these signals              pretive context rather than automated detection, supporting
+alone would identify Winterchan as problematic.                           the close reading that cultural analysis requires; however,
+   However, graph traversal changes this by surfacing con-                SemioMeme equally supports automated approaches such
+nections that contextualise visual matches. Winterchan                    as graph-based risk scoring or lexicon-filtered retrieval at
+shares a /pol/ connection with Kekistan, the meme en-                     scale. The resource is intended to complement ethnographic
+try for the queried image, with secondary hops linking                    or platform-native analysis by supporting hypothesis gener-
+both to 4chan and Russia. Winterchan carries a unique                     ation and large-scale pattern discovery.
+tag referencing the European Migrant Crisis, and OCR                         Beyond content moderation, SemioMeme supports lon-
+text includes recurring ‘White Christmas’ terminology.                    gitudinal cultural analysis through KYM’s 17-year tempo-
+In combination, these signals warrant closer examination.                 ral coverage, platform migration studies via origin metadata,
+SemioMeme does not classify Winterchan as problematic;                    and genealogical research into meme evolution through se-
+rather, it surfaces the context necessary to interpret why a vi-          ries connections. The embedding data and KYM class labels
+sual match may be culturally significant. Conversely, coinci-             also provide training data for computational approaches and
+dental matches can be confirmed by sharing no cultural con-               an initial retrieval benchmark.
+nections (only perceptual similarity) to known harmful con-
+tent. Appendix A.6 reinforces proximity-based association                          8    Conclusion and Future Work
+discovery and demonstrates retrieved categories are graph-
+connected at 2.8× random baseline.                                        We presented SemioMeme, a multi-layer knowledge graph
+                                                                          and dataset resource for internet meme analysis. The re-
+                                                                          source comprises (1) a Meta Layer RDF knowledge graph
+                      7    Discussion                                     encoding cultural relationships between meme concepts,
+The query modes demonstrated in Section 6 show three dis-                 people, events, sites, and subcultures; (2) a Corpus Layer
+tinct analytical capabilities, where semantic queries reveal              linking over 500,000 meme instances to semantic context;
+how entities accumulate cultural associations through prox-               and (3) FAISS indices enabling visual and textual similarity
+imity rather than direct involvement (which keyword match-                search with explicit bridges to symbolic representations.
+ing cannot surface), or similarity search exposes the de-                    This architecture supports analyses such as tracing cul-
+coupling of format and meaning, where perceptually simi-                  tural associations that emerge through proximity rather
+lar instances span distinct cultural categories. Hybrid query-            than direct connection, identifying where meme format and
+ing combines both without collapsing semantic and percep-                 meaning diverge, and combining semantic constraints with
+tual representations, enabling practical applications such as             perceptual similarity search to make large-scale retrieval
+content moderation where problematic content rarely self-                 tractable for specific research questions. The complete re-
+identifies through explicit tagging.                                      source, including source data, construction pipelines and
+   This flexibility comes from the separation of symbolic                 fine-tuned retrieval models, is publicly available to support
+and subsymbolic representations, which requires synchroni-                reproducibility and extension.
+sation between layers and adds complexity compared to flat                   Future work includes integration with complementary re-
+approaches. However, this design enables each component                   sources like IMKG to expand corpus coverage, or incor-
+to function independently, for example the Meta Layer as a                porating additional sources beyond KYM such as harmful
+stand-alone cultural knowledge graph, the Corpus Layer for                meme datasets matched via similarity retrieval. Addition-
+instance-level similarity search, or both combined for hybrid             ally, SemioMeme could be extended to include visual en-
+queries that neither supports alone.                                      tity detection alongside OCR entity extraction, to identify
+
+
+                                                                   2929
+occurring characters, symbols and objects within meme in-                of the 29th ACM international conference on multimedia,
+stances. Visual entity detection would link instances directly           5138–5147.
+to Meta Layer context, enabling symbol propagation analy-                Nguyen, K. P.; and Ng, V. 2024. Computational meme un-
+sis. We omit this currently as accurate detection at scale re-           derstanding: A survey. In Proceedings of the 2024 Confer-
+mains cost-prohibitive but plan this as an extension as open             ence on Empirical Methods in Natural Language Process-
+methods mature.                                                          ing, 21251–21267.
+                                                                         Polli, C.; and Sindoni, M. G. 2024. Multimodal computa-
+                        References                                       tion or interpretation? Automatic vs. critical understanding
+Afridi, T. H.; Alam, A.; Khan, M. N.; Khan, J.; and Lee,                 of text-image relations in racist memes in English. Dis-
+Y.-K. 2020. A Multimodal Memes Classification: A Survey                  course, Context & Media, 57: 100755.
+and Open Research Issues. ArXiv:2009.08395 [cs].                         Reimers, N.; and Gurevych, I. 2019. Sentence-BERT: Sen-
+Al-Rawi, A. 2020. Kekistanis and the meme war on social                  tence Embeddings using Siamese BERT-Networks. In Pro-
+media. The Journal of Intelligence, Conflict, and Warfare,               ceedings of the 2019 Conference on Empirical Methods in
+3(1): 12–32.                                                             Natural Language Processing. Association for Computa-
+de Keulenaar, E. 2023. The affordances of extreme speech.                tional Linguistics.
+Big Data & Society, 10(2): 20539517231206810.                            Routhu, R. K.; and Baruah, U. 2025. Sentiment Analysis on
+Ekron, M.; Milo, T.; and Youngmann, B. 2017. SimMeme:                    Memes: A Review. Expert Systems, 42(11): e70133.
+Semantic-Based Meme Search. In Proceedings of the 2017                   Shang, L.; Youn, C.; Zha, Y.; Zhang, Y.; and Wang, D.
+ACM on Conference on Information and Knowledge Man-                      2021. KnowMeme: A Knowledge-enriched Graph Neural
+agement, 2455–2458. Singapore Singapore: ACM. ISBN                       Network Solution to Offensive Meme Detection. In 2021
+978-1-4503-4918-5.                                                       IEEE 17th International Conference on eScience (eScience),
+Garg, R.; Padhi, T.; Jain, H.; Kursuncu, U.; and Kumaraguru,             186–195. Innsbruck, Austria: IEEE. ISBN 978-1-66540-
+P. 2025. Just KIDDIN’ : Knowledge Infusion and Distilla-                 361-0.
+tion for Detection of INdecent Memes. In Che, W.; Nabende,               Sharma, S.; Alam, F.; Akhtar, S.; S., M.; Dimitrov, D.;
+J.; Shutova, E.; and Pilehvar, M. T., eds., Findings of the As-          San Martino, G.; Firooz, H.; Halevy, A.; Silvestri, F.; Nakov,
+sociation for Computational Linguistics: ACL 2025, 23067–                P.; and Chakraborty, T. 2022. Detecting and Understand-
+23086. Vienna, Austria: Association for Computational Lin-               ing Harmful Memes: A Survey’. In Proceedings of the
+guistics. ISBN 979-8-89176-256-5.                                        Thirty-First International Joint Conference on Artificial In-
+Grasso, B.; La Gatta, V.; Moscato, V.; and Sperlı̀, G.                   telligence Survey Track, volume 23-29, –22. Vienna.
+2024. KERMIT: Knowledge-EmpoweRed Model In harm-                         Sharma, S.; Arora, U.; Akhtar, M. S.; Chakraborty, T.;
+ful meme deTection. Information Fusion, 106: 102269.                     et al. 2023. MEMEX: Detecting Explanatory Evidence for
+Hermida, P. C. d. Q.; and Santos, E. M. d. 2023. Detect-                 Memes via Knowledge-Enriched Contextualization. arXiv
+ing hate speech in memes: a review. Artificial Intelligence              preprint arXiv:2305.15913.
+Review, 56(11): 12833–12851.                                             Sherratt, V. 2022. Towards Contextually Sensitive Analy-
+Huguet Cabot, P.-L.; and Navigli, R. 2021. REBEL: Re-                    sis of Memes: Meme Genealogy and Knowledge Base. In
+lation Extraction By End-to-end Language generation. In                  Proceedings of the Thirty-First International Joint Confer-
+Findings of the Association for Computational Linguistics:               ence on Artificial Intelligence, 5871–5872. Vienna, Austria:
+EMNLP 2021, 2370–2381. Punta Cana, Dominican Repub-                      International Joint Conferences on Artificial Intelligence Or-
+lic: Association for Computational Linguistics.                          ganization. ISBN 978-1-956792-00-3.
+Iloh, C. 2021. Do it for the culture: The case for memes                 Tommasini, R.; Illievski, F.; and Wijesiriwardene, T. 2023.
+in qualitative research. International Journal of Qualitative            IMKG: The Internet Meme Knowledge Graph. In Pesquita,
+Methods, 20: 16094069211025896.                                          C.; Jimenez-Ruiz, E.; McCusker, J.; Faria, D.; Dragoni, M.;
+                                                                         Dimou, A.; Troncy, R.; and Hertling, S., eds., The Seman-
+Kiela, D.; Firooz, H.; Mohan, A.; Goswami, V.; Singh, A.;                tic Web, volume 13870, 354–371. Cham: Springer Nature
+Ringshia, P.; and Testuggine, D. 2020. The Hateful Memes                 Switzerland. ISBN 978-3-031-33454-2 978-3-031-33455-9.
+Challenge: Detecting Hate Speech in Multimodal Memes.                    Series Title: Lecture Notes in Computer Science.
+In Advances in Neural Information Processing Systems, vol-
+ume 33, 2611–2624. Curran Associates, Inc.                               Tuters, M. 2019. LARPing & liberal tears: Irony, belief and
+                                                                         idiocy in the deep vernacular web.
+Kougia, V.; Fetzel, S.; Kirchmair, T.; Çano, E.; Baharlou,
+S. M.; Sharifzadeh, S.; and Roth, B. 2023. MemeGraphs:                   Wilkinson, M. D.; Dumontier, M.; Aalbersberg, I. J.; Apple-
+Linking Memes tonbsp;Knowledge Graphs. In Document                       ton, G.; Axton, M.; Baak, A.; Blomberg, N.; Boiten, J.-W.;
+Analysis and Recognition - ICDAR 2023: 17th International                da Silva Santos, L. B.; Bourne, P. E.; et al. 2016. The FAIR
+Conference, San José, CA, USA, August 21–26, 2023, Pro-                 Guiding Principles for scientific data management and stew-
+ceedings, Part I, 534–551. Berlin, Heidelberg: Springer-                 ardship. Scientific data, 3(1): 1–9.
+Verlag. ISBN 978-3-031-41675-0.                                          Zhai, X.; Mustafa, B.; Kolesnikov, A.; and Beyer, L.
+                                                                         2023. Sigmoid Loss for Language Image Pre-Training.
+Lee, R. K.-W.; Cao, R.; Fan, Z.; Jiang, J.; and Chong, W.-H.
+                                                                         arXiv:2303.15343.
+2021. Disentangling hate in online memes. In Proceedings
+
+
+                                                                  2930
+                    Paper Checklist                                      (e) Did you address potential biases or limitations in your
+1. For most authors...                                                        theoretical framework? NA
+                                                                          (f) Have you related your theoretical results to the existing
+ (a) Would answering this research question advance sci-                      literature in social science? NA
+      ence without violating social contracts, such as violat-
+                                                                         (g) Did you discuss the implications of your theoretical
+      ing privacy norms, perpetuating unfair profiling, exac-
+                                                                              results for policy, practice, or further research in the
+      erbating the socio-economic divide, or implying dis-
+                                                                              social science domain? NA
+      respect to societies or cultures? Yes, the resource en-
+      ables academic study of internet culture using publicly           3. Additionally, if you are including theoretical proofs...
+      available data.                                                    (a) Did you state the full set of assumptions of all theoret-
+ (b) Do your main claims in the abstract and introduction                    ical results? NA
+      accurately reflect the paper’s contributions and scope?            (b) Did you include complete proofs of all theoretical re-
+      Yes, we present SemioMeme as a dataset resource and                    sults? NA
+      clearly scope claims to what the architecture enables.
+                                                                        4. Additionally, if you ran machine learning experiments...
+ (c) Do you clarify how the proposed methodological ap-
+      proach is appropriate for the claims made? Yes, Sec-               (a) Did you include the code, data, and instructions
+      tion 6 demonstrates capabilities directly supporting                    needed to reproduce the main experimental results (ei-
+      claims about hybrid querying and cultural ecosystem                     ther in the supplemental material or as a URL)? Yes,
+      analysis.                                                               complete pipelines, trained models, and documenta-
+ (d) Do you clarify what are possible artifacts in the data                   tion are available at the provided GitHub and Zenodo
+      used, given population-specific distributions? Yes, we                  links in the main paper body.
+      discuss KYM’s editorial process (Confirmed vs Sub-                 (b) Did you specify all the training details (e.g., data splits,
+      mission), English-language bias inherent in the source,                 hyperparameters, how they were chosen)? Yes, Sec-
+      and temporal coverage limitations.                                      tion 5.1 describes fine-tuning procedure; full hyper-
+ (e) Did you describe the limitations of your work? Yes,                      parameters are available in the GitHub link provided
+      Section 7 discusses synchronisation complexity and                      in the main paper body. The Appendix further details
+      scope limitations.                                                      training parameters.
+                                                                         (c) Did you report error bars (e.g., with respect to the ran-
+  (f) Did you discuss any potential negative societal im-
+                                                                              dom seed after running experiments multiple times)?
+      pacts of your work? Yes, the Ethics Statement ad-
+                                                                              Yes, the Appendix further details training experiments
+      dresses offensive content and potential dual-use con-
+                                                                              on retrieval accuracy.
+      cerns.
+                                                                         (d) Did you include the total amount of compute and the
+ (g) Did you discuss any potential misuse of your work?
+                                                                              type of resources used (e.g., type of GPUs, internal
+      Yes, we acknowledge content moderation research
+                                                                              cluster, or cloud provider)? Yes, described in the Ap-
+      could theoretically inform evasion, though patterns are
+                                                                              pendix.
+      already public.
+                                                                         (e) Do you justify how the proposed evaluation is suffi-
+ (h) Did you describe steps taken to prevent or mitigate po-                  cient and appropriate to the claims made? Yes, Sec-
+      tential negative outcomes of the research, such as data                 tion 6 demonstrates capabilities through representative
+      and model documentation, data anonymization, re-                        queries; we do not claim state-of-the-art retrieval per-
+      sponsible release, access control, and the reproducibil-                formance.
+      ity of findings? Yes, we provide NSFW filtering via
+      badges, provenance triples enabling exclusion of ex-                (f) Do you discuss what is “the cost” of misclassifica-
+      tracted content, and comprehensive documentation.                       tion and fault (in)tolerance? NA, we release a resource
+                                                                              rather than a deployed classification system.
+  (i) Have you read the ethics review guidelines and en-
+      sured that your paper conforms to them? Yes.                      5. Additionally, if you are using existing assets (e.g., code,
+                                                                           data, models) or curating/releasing new assets...
+2. Additionally, if your study involves hypotheses testing...
+                                                                         (a) If your work uses existing assets, did you cite the cre-
+ (a) Did you clearly state the assumptions underlying all                    ators? Yes, we cite REBEL, SigLip, SentenceBERT,
+     theoretical results? NA, this is a dataset paper without                and FAISS.
+     hypothesis testing.
+                                                                         (b) Did you mention the license of the assets? Yes,
+ (b) Have you provided justifications for all theoretical re-                we mention the license of other tools and resources
+     sults? NA                                                               used to construct SemioMeme in the Section 7.1.
+ (c) Did you discuss competing hypotheses or theories that                   KnowYourMeme as a public data source is briefly dis-
+     might challenge or complement your theoretical re-                      cussed separately in the ethics statement.
+     sults? NA                                                           (c) Did you include any new assets in the supplemental
+ (d) Have you considered alternative mechanisms or expla-                    material or as a URL? Yes, complete dataset, models,
+     nations that might account for the same outcomes ob-                    and code are available from GitHub and Zenodo links
+     served in your study? NA                                                in the main paper body.
+
+
+                                                                 2931
+ (d) Did you discuss whether and how consent was ob-                   Offensive Content SemioMeme necessarily contains
+      tained from people whose data you’re using/curating?             such material because excluding it would misrepresent
+      Yes, KYM content is user-submitted to a public wiki;             meme culture and undermine the resource’s utility for study-
+      PersonEntry nodes concern public figures documented              ing online discourse, including research on hate speech
+      in their capacity as internet culture participants.              detection and content moderation. Filtering is enabled
+ (e) Did you discuss whether the data you are using/curat-             via smo:Badge (NSFW metadata), smo:datasetType
+      ing contains personally identifiable information or of-          (editorial status), and provenance triples (extracted vs cu-
+      fensive content? Yes, Ethics Statement addresses both;           rated content).
+      NSFW badges and provenance filtering enable respon-
+      sible use.                                                                             A    Appendix
+  (f) If you are curating or releasing new datasets, did you           A.1    Representative Graph Entry
+      discuss how you intend to make your datasets FAIR?
+      Yes, Section 1.1 introducing the resource details FAIR           A single meme instance is represented across three intercon-
+      compliance including persistent identifiers, standard            nected components, which broadly includes the following in
+      formats, and documentation.                                      the available resource: the image itself (available on request
+ (g) If you are curating or releasing new datasets, did you            from corresponding author), OCR-extracted text, image and
+      create a Datasheet for the Dataset? Yes, included in             text embeddings and all data modelled in the Corpus and
+      supplementary materials at Zenodo link in main paper             Meta Layer RDF graphs. We detail the information per layer
+      body.                                                            below and source data.
+6. Additionally, if you used crowdsourcing or conducted re-
+   search with human subjects...
+ (a) Did you include the full text of instructions given to
+     participants and screenshots? NA, no crowdsourcing
+     or human subjects research.
+ (b) Did you describe any potential participant risks, with
+     mentions of Institutional Review Board (IRB) ap-
+     provals? NA
+ (c) Did you include the estimated hourly wage paid to
+     participants and the total amount spent on participant
+     compensation? NA
+ (d) Did you discuss how data is stored, shared, and dei-
+     dentified? NA
+
+                   Ethics Statement
+External resources used include the following licences:
+REBEL (CC BY-NC-SA 4.0), SigLIP and SentenceTrans-
+formers (Apache 2.0), FAISS (MIT).
+   SemioMeme derives from KnowYourMeme.com, a public
+archive commonly used in meme research. Our collection
+applies rate limiting and respects robots.txt directives. The
+dataset necessarily contains content that may be offensive,
+including memes associated with extremist movements, but
+include available filtering methods to exclude this content
+below.
+   PersonEntry nodes document public figures; no private
+individuals are identified. OCR-extracted text may inadver-             Figure 6: Provided resources for a single meme instance.
+tently capture names; provenance triples enable exclusion
+where sensitivity requires. Hybrid querying could theoreti-
+cally inform content moderation evasion, but these cultural               The Corpus Layer represents individual meme instances
+associations are already implicit in public archives.                  with OCR-extracted text, image file references, popularity
+                                                                       scores, and bridge properties (smo:faissTextIndex,
+Image Distribution We release URLs rather than raw im-                 smo:faissVisionIndex) linking to FAISS index po-
+ages due to (1) UK Online Safety Act 2023 liability consid-            sitions. Each instance connects to its parent concept via
+erations, (2) hosting constraints, and (3) deferring to KYM            smo:belongsTo.
+for authoritative hosting and takedown compliance. Raw im-                The Meta Layer represents documented meme concepts
+ages are available upon request from the corresponding au-             with editorial metadata, semantic classification (types, tags),
+thor.                                                                  textual descriptions (origin, spread), and relational proper-
+
+
+                                                                2932
+ties (smo:mentions, smo:partOfSeries) linking to                              often used in internet memes. We note this comparison val-
+other entries.                                                                idates consistency of the chosen extraction method (Google
+   The Embedding Layer stores SigLIP vision and Sen-                          Vision) rather than accuracy against ground truth.
+tenceTransformer text embeddings indexed via FAISS, ac-
+cessible through the corpus layer bridge properties.                          A.4     REBEL Sequence-Level Confidence Scores
+   Finally, the Source Data includes the image upon request,                  To assess REBEL extraction quality, we computed con-
+OCR-extracted text, and image URL link to the filename                        fidence scores from the model’s token-level probabilities
+stored in the graph for researchers to download. Figure 6                     during generation. On a 10% sample of Meta Layer en-
+illustrates the complete resource structure for a single meme                 tries (n=1,695), median token-level confidence was 0.90
+instance.                                                                     and median sequence-level confidence was 0.84, indicat-
+                                                                              ing reliable extraction from curated descriptions. For OCR
+A.2        Example Entry Page and Collated Data                               text (n=60,608), confidence was lower (median token=0.82,
+The primary source of the Meta Layer are the entry pages                      median sequence=0.26), reflecting the fragmentary nature
+from KYM. Figure 7 illustrates an example entry from ‘Sur-                    of meme text—short phrases, slang, and intentional mis-
+prised Pikachu’2 and the collected data numbered. This in-                    spellings rather than complete sentences.
+cludes a: main image URL (1), titles (2), series link (3),
+engagement metrics (4), entry type (5), metadata (6), com-                    A.5     Retrieval Fine-tuning
+munity tags (7), descriptive text (8) and image gallery links                 Visual embeddings are extracted from SigLIP
+containing meme instances (9). The Corpus Layer is then                       (google/siglip-base-patch16-384) and textual embed-
+comprised of meme instances found under the image gallery                     dings from SentenceTransformer (all-mpnet-base-v2) on
+link (number 9 on Figure 7). The source data for all entries                  OCR-extracted text, both producing 768-dimensional
+is provided as part of the resource in a CSV file.                            representations.
+
+                                                                               Confirmed Memes     Metric   Raw     Fine-tuned   Improvement
+                                                           2
+                                                                               Vision              r@1      60.14   73.67        13.53
+                                                               3
+                                                                                                   r@5      73.88   84.81        10.93
+ 1                                                                 4
+                                                                                                   r@10     77.61   87.19        9.58
+                                                                                                   MMR      66.00   78.50        12.50
+                                                                               Text                r@1      46.55   56.97        10.42
+                                                                                                   r@5      57.27   68.29        11.02
+                           9                                                                       r@10     60.65   71.32        10.67
+            8                                                      5                               MMR      51.15   61.88        10.73
+                                                                               Submission Memes
+                                                                               Vision              r@1      40.61   43.32        2.71
+                                                                   6                               r@5      71.79   77.47        5.68
+                                                                                                   r@10     77.02   82.98        5.96
+                                                                                                   MMR      53.89   57.90        4.01
+ 1. Gallery Image
+                                                                               Text                r@1      32.81   32.76        0.05
+                                                               7                                   r@5      57.49   57.02        -0.47
+ 2. Entry Title
+ 3. Series' Link (smo: partofSeries)                                                               r@10     62.07   61.68        -0.39
+ 4. Engagement Metrics
+ 5. Entry Type (Meme, Person, Event, Site, Subculture)
+                                                                                                   MMR      43.39   43.17        -0.22
+ 6. Metadata (Editorial status, meme type, year, origin)                       Combined Indices
+ 7. Community tags                                                             Vision              r@1      45.12   50.12        5.00
+ 8. Descriptive Text
+ 9. Link to Image Gallery (meme instances)
+                                                                                                   r@5      69.48   74.72        5.24
+                                                                                                   r@10     74.34   79.23        4.89
+                                                                                                   MMR      55.47   60.58        5.11
+Figure 7: Example KYM entry page with collected data                           Text                r@1      35.11   36.11        0.99
+                                                                                                   r@5      54.04   54.84        0.80
+highlighted.                                                                                       r@10     58.28   58.93        0.65
+                                                                                                   MMR      43.19   44.17        0.98
+
+A.3        OCR Accuracy                                                         Table 3: Retrieval result comparison by editorial status.
+To assess OCR extraction consistency, we compared Google
+Cloud Vision output against EasyOCR, an independent                              We employ metric learning on frozen embeddings with
+open-source OCR system, on a 10% random sample of                             lightweight projection heads, trained on a single NVIDIA
+meme images (n=50,826). Median character error rate be-                       RTX 3090 Ti. On Confirmed memes, fine-tuning improves
+tween systems was 0.21, with median word-level Jaccard                        vision Recall@1 from 60.1% to 73.7% and text from 46.6%
+similarity of 0.64. This indicates moderate-to-good agree-                    to 57.0% (Table 3).
+ment between independent systems and consistent text ex-                         Submission memes degrade retrieval performance even
+traction; discrepancies are expected given the typographic                    with raw embeddings; combining both subsets drops vision
+variability of meme images, including non-standard fonts                      Recall@1 from 60.1% to 45.1%. This likely reflects lower
+                                                                              samples per class, variable image quality, and label overlap
+     2
+         https://knowyourmeme.com/memes/surprised-pikachu                     with Confirmed entries. We therefore use Confirmed-only
+
+
+                                                                       2933
+                                                                      Density
+                       Entries    Entities   Entities   Density
+          Query                                                        (Top-                    Top 5 Entries
+                       Spanned    (Top-1)    (Top-5)    (Top-5)
+                                                                        20)
+         Random
+                           –         –          –        17%            19%      –
+         Baseline
+
+                           1         23         23         –             –       Bad Luck Brian
+
+
+                                                                                 Winterchan; Kekistan; Loss; Fashtag; Check
+                          33         15         74       60%            9%
+                                                                                 Your Privilege
+
+
+                                                                                 Pepe the Frog; Feels Bad Man; MonkaS; Twitch
+                           9         34         75       80%            89%
+                                                                                 Emotes; Pepega
+
+                                                                                 SpongeBob Burning Paper; Stop Killing Alli-
+                          17         10         52       50%            28%      gators; Krusty Krab is Unfair; Gru’s Plan; Buff
+                                                                                 SpongeBob
+
+                                                                                 Quiz Kid; The Crash Wasn’t Your Fault; Hex
+                          14         16         49       30%            13%
+                                                                                 Nut; Surreal Memes; Does Bruno Mars
+
+                                                                                 Feels Good Man; Feels Bad Man; Brushie
+      feels good man       8         22         67       100%           86%
+                                                                                 Brushie; Approval Guy; Birthday Dog
+                                                                                 This Is Fine; Sonic Dreams Collection; It’s
+        this is fine       5         31         76       20%            20%      Been 84 Years; Giannopoulos Portrait; Lonely
+                                                                                 Theresa May
+       make america                                                              Make America Great Again; Amerimutt; OK
+                          10         72        135       50%            51%
+          great                                                                  Symbol; DarkMAGA; Senator Armstrong
+                                                                                 Not Bad Obama Face; You’re Gonna Have
+       not great not
+                          32         10         62       10%            18%      a Bad Time; Your Music’s Bad; Purah; Art
+         terrible
+                                                                                 Gallery Puking
+                                                                                 Does it spark joy; Trashcat Is Not Amused; Are
+       this does not
+                          23         11         92       40%            31%      You Not Entertained; Screaming Sun; Momo
+         spark joy
+                                                                                 Challenge
+
+Table 4: Hybrid query evaluation results. Entities counts unique semantic entities reachable at each cutoff. Density measures
+the proportion of category pairs sharing at least one entity.
+
+
+fine-tuned models for all retrieval experiments and Corpus            meme type classifications (smo:hasMemeType), se-
+Layer construction.                                                   ries membership (smo:partOfSeries), geographic
+                                                                      regions (smo:region), and typed entity mentions
+A.6   Hybrid Query Evaluation                                         (smo:mentions) from REBEL which includes people,
+                                                                      events, sites, subcultures, and related memes.
+We evaluate how effectively graph structure distinguishes
+culturally meaningful similarity matches from visual coin-               We report the entries a retrieval query spans and total
+cidences. Perceptual similarity is a noisy signal for seman-          unique entities accessible at cutoffs of 1, 5, and 20 entries
+tic relatedness; some visually similar memes share cultural           in Table 4. For coherence, we compute pairwise density as
+connections while others match coincidentally, contributing           the proportion of retrieved category pairs sharing at least one
+to the format-meaning decoupling of internet memes. If the            semantic entity. We evaluate on 10 queries (5 vision, 5 text)
+graph captures meaningful cultural structure, semantically            and, to establish a baseline, we compute pairwise density for
+related categories should share connections at rates above            100 meme entry samples selected at random. Random selec-
+chance.                                                               tion yields 17% density at top-5 and 19% at top-20.
+    To test this, for each query (image or text), we re-                 Meme entries retrieved from a similarity search substan-
+trieve the 50 nearest neighbours from the FAISS in-                   tially outperform this baseline. At top-5, similarity-based re-
+dex and map each instance to its parent MemeEntry                     trieval achieves on average 49% pairwise density, indicating
+via the smo:belongsTo relation, aggregating by cat-                   that retrieved categories share semantic connections nearly
+egory and ranking by instance count. For each re-                     half the time compared to 17% by chance. This drops at top-
+trieved category, we extract all connected semantic en-               20 which achieves on average 38% compared to only 19%
+tities from the knowledge graph: tags (smo:hasTag),                   at random. The highest coherence occurs for queries target-
+
+
+                                                               2934
+ing memes with dense derivative networks and few entries
+spanned; for example ‘feels good man’ achieves 100% den-
+sity while the Pepe image query reaches 80%. Conversely,
+generic text queries such as ‘not great not terrible’ achieves
+only 10% density, below the random baseline, indicating the
+embedding matched sentiment rather than meme concepts.
+   These results demonstrate that similarity search retrieves
+semantically related content at rates substantially above
+chance. That roughly half of matches remain coinciden-
+tal validates the format-meaning decoupling central to this
+work, and demonstrates perceptual similarity alone cannot
+reliably identify cultural relationships. Low density results
+signal queries where similarity matched surface features
+rather than cultural meaning, whilst high density results in-
+dicate retrieval of coherent cultural clusters.
+
+
+
+
+                                                                 2935
+

@@ -1,0 +1,785 @@
+{
+  "schema_version": "1.0",
+  "kind": "discovery-nominations",
+  "bundle_id": "b9103912892afa13",
+  "generated_at": "2026-09-22T13:39:59.248367Z",
+  "from_date": "2026-08-23",
+  "to_date": "2026-09-22",
+  "domain": "applied AI in traditional companies operations workflows",
+  "tier": "deep",
+  "mock": false,
+  "source_status": {
+    "digg": {
+      "source": "digg",
+      "state": "skipped-unconfigured",
+      "items_returned": 0,
+      "attempted": false,
+      "detail": "Source is not configured for discovery.",
+      "at": "2026-09-22T13:39:59.237081Z",
+      "fix_hint": "doctor"
+    },
+    "reddit": {
+      "source": "reddit",
+      "state": "no-results",
+      "items_returned": 0,
+      "attempted": true,
+      "at": "2026-09-22T13:39:57.430664Z"
+    },
+    "hackernews": {
+      "source": "hackernews",
+      "state": "no-results",
+      "items_returned": 0,
+      "attempted": true,
+      "at": "2026-09-22T13:39:58.153991Z"
+    },
+    "x": {
+      "source": "x",
+      "state": "ok",
+      "items_returned": 29,
+      "attempted": true,
+      "at": "2026-09-22T13:39:59.236823Z"
+    }
+  },
+  "context": {
+    "enrichment_source_boundary": null,
+    "requested_sources": null,
+    "lookback_days": 30
+  },
+  "nominations": [
+    {
+      "id": "n1",
+      "cluster_id": "cluster-1",
+      "heuristic_name": "Applied AI Doesn't Work",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 2289,
+          "replies": 138,
+          "reposts": 193
+        }
+      },
+      "nomination": {
+        "name": "Applied AI Doesn't Work",
+        "seed_score": 601.0692,
+        "summary": "Applied AI Doesn't Work",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X25",
+            "source": "x",
+            "title": "Applied AI Doesn't Work",
+            "body": "Applied AI Doesn't Work",
+            "url": "https://x.com/vasuman/status/2095999742031675738",
+            "author": "vasuman",
+            "published_at": "2026-09-04",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 2289,
+              "reposts": 193,
+              "replies": 138
+            },
+            "relevance_hint": 0.47,
+            "why_relevant": "",
+            "snippet": "Applied AI Doesn't Work",
+            "metadata": {},
+            "local_relevance": 0.47,
+            "freshness": 42,
+            "engagement_score": 100,
+            "source_quality": 0.68,
+            "local_rank_score": 0.5105
+          }
+        ]
+      }
+    },
+    {
+      "id": "n2",
+      "cluster_id": "cluster-2",
+      "heuristic_name": "10 People Money GPT-6 Astra",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 56,
+          "replies": 12,
+          "reposts": 7
+        }
+      },
+      "nomination": {
+        "name": "10 People Money GPT-6 Astra",
+        "seed_score": 79.5495,
+        "summary": "10 Ways People Are Making Money With GPT-6 Astra and Kimi K3",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X4",
+            "source": "x",
+            "title": "10 Ways People Are Making Money With GPT-6 Astra and Kimi K3",
+            "body": "10 Ways People Are Making Money With GPT-6 Astra and Kimi K3",
+            "url": "https://x.com/eng_khairallah1/status/2101969654830743790",
+            "author": "eng_khairallah1",
+            "published_at": "2026-09-21",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 56,
+              "reposts": 7,
+              "replies": 12
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "10 Ways People Are Making Money With GPT-6 Astra and Kimi K3",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 86,
+            "engagement_score": 46,
+            "source_quality": 0.68,
+            "local_rank_score": 0.261
+          }
+        ]
+      }
+    },
+    {
+      "id": "n3",
+      "cluster_id": "cluster-3",
+      "heuristic_name": "Agent Layer Operating System",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 76,
+          "replies": 32,
+          "reposts": 9
+        }
+      },
+      "nomination": {
+        "name": "Agent Layer Operating System",
+        "seed_score": 66.3328,
+        "summary": "The Agent Layer Is the New Operating System",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X17",
+            "source": "x",
+            "title": "The Agent Layer Is the New Operating System",
+            "body": "The Agent Layer Is the New Operating System",
+            "url": "https://x.com/HedgeyeComm/status/2100033989159600265",
+            "author": "HedgeyeComm",
+            "published_at": "2026-09-16",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 76,
+              "reposts": 9,
+              "replies": 32
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "The Agent Layer Is the New Operating System",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 74,
+            "engagement_score": 52,
+            "source_quality": 0.68,
+            "local_rank_score": 0.237
+          }
+        ]
+      }
+    },
+    {
+      "id": "n4",
+      "cluster_id": "cluster-4",
+      "heuristic_name": "Physical Work Becomes Programmable",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 82,
+          "replies": 20,
+          "reposts": 12
+        }
+      },
+      "nomination": {
+        "name": "Physical Work Becomes Programmable",
+        "seed_score": 64.6319,
+        "summary": "When Physical Work Becomes Programmable",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X16",
+            "source": "x",
+            "title": "When Physical Work Becomes Programmable",
+            "body": "When Physical Work Becomes Programmable",
+            "url": "https://x.com/bznotes/status/2100248067425579514",
+            "author": "bznotes",
+            "published_at": "2026-09-16",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 82,
+              "reposts": 12,
+              "replies": 20
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "When Physical Work Becomes Programmable",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 74,
+            "engagement_score": 53,
+            "source_quality": 0.68,
+            "local_rank_score": 0.238
+          }
+        ]
+      }
+    },
+    {
+      "id": "n5",
+      "cluster_id": "cluster-5",
+      "heuristic_name": "Inside Scoop HVAC Good Bad Ugly",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 37,
+          "replies": 10,
+          "reposts": 1
+        }
+      },
+      "nomination": {
+        "name": "Inside Scoop HVAC Good Bad Ugly",
+        "seed_score": 41.5692,
+        "summary": "The Inside Scoop on HVAC: The Good, The Bad, and The Ugly I became an HVAC installer just before my 35th birthday. Though I\u2019d hardly swung a hammer even once in my whole life, I decided to enter the trades after getting married and realizing that \u2014 if I wanted to live a traditional lifestyle in which the husband works outside the home and the wife works inside the home \u2014 my security guard wages were not going to cut it. I also wanted to embark on a career in which my work would genuinely help",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X6",
+            "source": "x",
+            "title": "The Inside Scoop on HVAC: The Good, The Bad, and The Ugly \n\nI became an HVAC installer just before my 35th birthday. Though I\u2019d hardly swung",
+            "body": "The Inside Scoop on HVAC: The Good, The Bad, and The Ugly \n\nI became an HVAC installer just before my 35th birthday. Though I\u2019d hardly swung a hammer even once in my whole life, I decided to enter the trades after getting married and realizing that \u2014 if I wanted to live a traditional lifestyle in which the husband works outside the home and the wife works inside the home \u2014 my security guard wages were not going to cut it. I also wanted to embark on a career in which my work would genuinely help",
+            "url": "https://x.com/BrotherAugusti2/status/2101793489642275326",
+            "author": "BrotherAugusti2",
+            "published_at": "2026-09-20",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 37,
+              "reposts": 1,
+              "replies": 10
+            },
+            "relevance_hint": 0.79,
+            "why_relevant": "",
+            "snippet": "The Inside Scoop on HVAC: The Good, The Bad, and The Ugly I became an HVAC installer just before my 35th birthday. Though I\u2019d hardly swung a hammer even once in my whole life, I decided to enter the trades after getting married and realizing that \u2014 if I wanted to live a traditional lifestyle in which the husband works outside the home and the wife works inside the home \u2014 my security guard wages were not going to cut it. I also wanted to embark on a career in which my work would genuinely help",
+            "metadata": {},
+            "local_relevance": 0.08,
+            "freshness": 84,
+            "engagement_score": 36,
+            "source_quality": 0.68,
+            "local_rank_score": 0.298
+          }
+        ]
+      }
+    },
+    {
+      "id": "n6",
+      "cluster_id": "cluster-6",
+      "heuristic_name": "Financial AI Becoming Operational Benchmarks Static",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 14,
+          "replies": 4,
+          "reposts": 8
+        }
+      },
+      "nomination": {
+        "name": "Financial AI Becoming Operational Benchmarks Static",
+        "seed_score": 17.4413,
+        "summary": "Financial AI Is Becoming Operational. Its Benchmarks Are Still Static",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X11",
+            "source": "x",
+            "title": "Financial AI Is Becoming Operational. Its Benchmarks Are Still Static",
+            "body": "Financial AI Is Becoming Operational. Its Benchmarks Are Still Static",
+            "url": "https://x.com/questflow/status/2100996494941921415",
+            "author": "questflow",
+            "published_at": "2026-09-18",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 14,
+              "reposts": 8,
+              "replies": 4
+            },
+            "relevance_hint": 0.31,
+            "why_relevant": "",
+            "snippet": "Financial AI Is Becoming Operational. Its Benchmarks Are Still Static",
+            "metadata": {},
+            "local_relevance": 0.31,
+            "freshness": 78,
+            "engagement_score": 32,
+            "source_quality": 0.68,
+            "local_rank_score": 0.4285
+          }
+        ]
+      }
+    },
+    {
+      "id": "n7",
+      "cluster_id": "cluster-7",
+      "heuristic_name": "Anthropic Threat Report Finds Attacks Cheaper",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 14,
+          "replies": 8,
+          "reposts": 3
+        }
+      },
+      "nomination": {
+        "name": "Anthropic Threat Report Finds Attacks Cheaper",
+        "seed_score": 15.3093,
+        "summary": "Anthropic's Threat Report Finds the Same Attacks, Just Cheaper and Faster",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X13",
+            "source": "x",
+            "title": "Anthropic's Threat Report Finds the Same Attacks, Just Cheaper and Faster",
+            "body": "Anthropic's Threat Report Finds the Same Attacks, Just Cheaper and Faster",
+            "url": "https://x.com/ReadOmniscient/status/2100712560748282188",
+            "author": "ReadOmniscient",
+            "published_at": "2026-09-17",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 14,
+              "reposts": 3,
+              "replies": 8
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "Anthropic's Threat Report Finds the Same Attacks, Just Cheaper and Faster",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 76,
+            "engagement_score": 30,
+            "source_quality": 0.68,
+            "local_rank_score": 0.22
+          }
+        ]
+      }
+    },
+    {
+      "id": "n8",
+      "cluster_id": "cluster-8",
+      "heuristic_name": "Time Crisis Mid-Market Finance Accounts Receivable",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 5,
+          "replies": 8,
+          "reposts": 0
+        }
+      },
+      "nomination": {
+        "name": "Time Crisis Mid-Market Finance Accounts Receivable",
+        "seed_score": 13.7886,
+        "summary": "The Time Crisis in Mid-Market Finance: Accounts Receivable vs. Strategy in 2026",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X3",
+            "source": "x",
+            "title": "The Time Crisis in Mid-Market Finance: Accounts Receivable vs. Strategy in 2026",
+            "body": "The Time Crisis in Mid-Market Finance: Accounts Receivable vs. Strategy in 2026",
+            "url": "https://x.com/DinoJVidiliCons/status/2101996521021403305",
+            "author": "DinoJVidiliCons",
+            "published_at": "2026-09-21",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 5,
+              "reposts": 0,
+              "replies": 8
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "The Time Crisis in Mid-Market Finance: Accounts Receivable vs. Strategy in 2026",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 86,
+            "engagement_score": 15,
+            "source_quality": 0.68,
+            "local_rank_score": 0.22999999999999998
+          }
+        ]
+      }
+    },
+    {
+      "id": "n9",
+      "cluster_id": "cluster-9",
+      "heuristic_name": "Rise of Engineer-Led Marketing",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 7,
+          "replies": 6,
+          "reposts": 1
+        }
+      },
+      "nomination": {
+        "name": "Rise of Engineer-Led Marketing",
+        "seed_score": 12.1244,
+        "summary": "The Rise of Engineer-Led Marketing",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X7",
+            "source": "x",
+            "title": "The Rise of Engineer-Led Marketing",
+            "body": "The Rise of Engineer-Led Marketing",
+            "url": "https://x.com/ParasMadan9/status/2101572252932411528",
+            "author": "ParasMadan9",
+            "published_at": "2026-09-20",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 7,
+              "reposts": 1,
+              "replies": 6
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "The Rise of Engineer-Led Marketing",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 84,
+            "engagement_score": 20,
+            "source_quality": 0.68,
+            "local_rank_score": 0.22999999999999998
+          }
+        ]
+      }
+    },
+    {
+      "id": "n10",
+      "cluster_id": "cluster-10",
+      "heuristic_name": "Thermo-Fischer Scientific Geico Krogers Blackstone AI",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 22,
+          "replies": 4,
+          "reposts": 1
+        }
+      },
+      "nomination": {
+        "name": "Thermo-Fischer Scientific Geico Krogers Blackstone AI",
+        "seed_score": 9.5459,
+        "summary": "In a world where frontier inference is controlled by a handful of labs, resources are concentrated in the hands of those labs by default. The reason is simple: if you have a workload that requires a frontier model, your only option is to pay the frontier lab for tokens. This is true for you and I in our homes, and it's also true for giants like Thermo-Fischer Scientific, Geico, Krogers, or even Blackstone. So the majority of AI investment that these companies are making is essentially bein",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X19",
+            "source": "x",
+            "title": "In a world where frontier inference is controlled by a handful of labs, resources are concentrated in the hands of those labs by default.",
+            "body": "In a world where frontier inference is controlled by a handful of labs, resources are concentrated in the hands of those labs by default. \n\nThe reason is simple: if you have a workload that requires a frontier model, your only option is to pay the frontier lab for tokens. \n\nThis is true for you and I in our homes, and it's also true for giants like Thermo-Fischer Scientific, Geico, Krogers, or even Blackstone. \n\nSo the majority of AI investment that these companies are making is essentially bein",
+            "url": "https://x.com/ZyMazza/status/2099870913831252315",
+            "author": "ZyMazza",
+            "published_at": "2026-09-15",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 22,
+              "reposts": 1,
+              "replies": 4
+            },
+            "relevance_hint": 0.79,
+            "why_relevant": "",
+            "snippet": "In a world where frontier inference is controlled by a handful of labs, resources are concentrated in the hands of those labs by default. The reason is simple: if you have a workload that requires a frontier model, your only option is to pay the frontier lab for tokens. This is true for you and I in our homes, and it's also true for giants like Thermo-Fischer Scientific, Geico, Krogers, or even Blackstone. So the majority of AI investment that these companies are making is essentially bein",
+            "metadata": {},
+            "local_relevance": 0.41,
+            "freshness": 70,
+            "engagement_score": 29,
+            "source_quality": 0.68,
+            "local_rank_score": 0.47050000000000003
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11",
+      "cluster_id": "cluster-11",
+      "heuristic_name": "AI Moving Screen Physical World",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 10,
+          "replies": 12,
+          "reposts": 3
+        }
+      },
+      "nomination": {
+        "name": "AI Moving Screen Physical World",
+        "seed_score": 8.8388,
+        "summary": "AI Is Moving From the Screen Into the Physical World",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X21",
+            "source": "x",
+            "title": "AI Is Moving From the Screen Into the Physical World",
+            "body": "AI Is Moving From the Screen Into the Physical World",
+            "url": "https://x.com/manojnandanwar_/status/2099681596161053034",
+            "author": "manojnandanwar_",
+            "published_at": "2026-09-15",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 10,
+              "reposts": 3,
+              "replies": 12
+            },
+            "relevance_hint": 0.32,
+            "why_relevant": "",
+            "snippet": "AI Is Moving From the Screen Into the Physical World",
+            "metadata": {},
+            "local_relevance": 0.32,
+            "freshness": 70,
+            "engagement_score": 28,
+            "source_quality": 0.68,
+            "local_rank_score": 0.41100000000000003
+          }
+        ]
+      }
+    },
+    {
+      "id": "n12",
+      "cluster_id": "cluster-12",
+      "heuristic_name": "Anthropic Alpha Gone Comes",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 13,
+          "replies": 20,
+          "reposts": 1
+        }
+      },
+      "nomination": {
+        "name": "Anthropic Alpha Gone Comes",
+        "seed_score": 7.8001,
+        "summary": "Anthropic\u2019s Alpha Is Gone. Now Comes the $2 Trillion Question.",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X26",
+            "source": "x",
+            "title": "Anthropic\u2019s Alpha Is Gone. Now Comes the $2 Trillion Question.",
+            "body": "Anthropic\u2019s Alpha Is Gone. Now Comes the $2 Trillion Question.",
+            "url": "https://x.com/JohnnyWestLive/status/2095901135512940578",
+            "author": "JohnnyWestLive",
+            "published_at": "2026-09-04",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 13,
+              "reposts": 1,
+              "replies": 20
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "Anthropic\u2019s Alpha Is Gone. Now Comes the $2 Trillion Question.",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 42,
+            "engagement_score": 28,
+            "source_quality": 0.68,
+            "local_rank_score": 0.133
+          }
+        ]
+      }
+    },
+    {
+      "id": "n13",
+      "cluster_id": "cluster-13",
+      "heuristic_name": "Jev",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 4,
+          "replies": 1,
+          "reposts": 0
+        }
+      },
+      "nomination": {
+        "name": "Jev",
+        "seed_score": 5.3033,
+        "summary": "You are not smart enough to understand the dangers of Jev",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X2",
+            "source": "x",
+            "title": "You are not smart enough to understand the dangers of Jev",
+            "body": "You are not smart enough to understand the dangers of Jev",
+            "url": "https://x.com/thePM_001/status/2102013227580162300",
+            "author": "thePM_001",
+            "published_at": "2026-09-21",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 4,
+              "reposts": 0,
+              "replies": 1
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "You are not smart enough to understand the dangers of Jev",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 86,
+            "engagement_score": 10,
+            "source_quality": 0.68,
+            "local_rank_score": 0.225
+          }
+        ]
+      }
+    },
+    {
+      "id": "n14",
+      "cluster_id": "cluster-14",
+      "heuristic_name": "NEXT GENERATION SOFTWARE WAIT OPEN APP",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 4,
+          "replies": 3,
+          "reposts": 0
+        }
+      },
+      "nomination": {
+        "name": "NEXT GENERATION SOFTWARE WAIT OPEN APP",
+        "seed_score": 5.25,
+        "summary": "\ud83c\udf9b\ufe0f\u26a1 THE NEXT GENERATION OF SOFTWARE WON\u2019T WAIT FOR YOU TO OPEN AN APP. IT WILL SENSE WHAT\u2019S HAPPENING \u2014 AND MOVE. Today\u2019s software is still built around a surprisingly old interaction: Human notices something. Human opens software. Human finds the right screen. Human enters information. Human decides what happens next. Human clicks: GO. AI agents are beginning to change that. But there\u2019s still a missing layer between: WHAT'S HAPPENING and: WHAT SHOULD HAPPEN NEXT. That\u2019s the oppor",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X8",
+            "source": "x",
+            "title": "\ud83c\udf9b\ufe0f\u26a1 THE NEXT GENERATION OF SOFTWARE WON\u2019T WAIT FOR YOU TO OPEN AN APP.\n\nIT WILL SENSE WHAT\u2019S HAPPENING \u2014 AND MOVE.\n\nToday\u2019s software is stil",
+            "body": "\ud83c\udf9b\ufe0f\u26a1 THE NEXT GENERATION OF SOFTWARE WON\u2019T WAIT FOR YOU TO OPEN AN APP.\n\nIT WILL SENSE WHAT\u2019S HAPPENING \u2014 AND MOVE.\n\nToday\u2019s software is still built around a surprisingly old interaction:\n\nHuman notices something.\n\nHuman opens software.\n\nHuman finds the right screen.\n\nHuman enters information.\n\nHuman decides what happens next.\n\nHuman clicks:\n\nGO.\n\nAI agents are beginning to change that.\n\nBut there\u2019s still a missing layer between:\n\nWHAT'S HAPPENING\n\nand:\n\nWHAT SHOULD HAPPEN NEXT.\n\nThat\u2019s the oppor",
+            "url": "https://x.com/UpHonestReal/status/2101278177230205174",
+            "author": "UpHonestReal",
+            "published_at": "2026-09-19",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 4,
+              "reposts": 0,
+              "replies": 3
+            },
+            "relevance_hint": 0.93,
+            "why_relevant": "",
+            "snippet": "\ud83c\udf9b\ufe0f\u26a1 THE NEXT GENERATION OF SOFTWARE WON\u2019T WAIT FOR YOU TO OPEN AN APP. IT WILL SENSE WHAT\u2019S HAPPENING \u2014 AND MOVE. Today\u2019s software is still built around a surprisingly old interaction: Human notices something. Human opens software. Human finds the right screen. Human enters information. Human decides what happens next. Human clicks: GO. AI agents are beginning to change that. But there\u2019s still a missing layer between: WHAT'S HAPPENING and: WHAT SHOULD HAPPEN NEXT. That\u2019s the oppor",
+            "metadata": {},
+            "local_relevance": 0.29,
+            "freshness": 82,
+            "engagement_score": 12,
+            "source_quality": 0.68,
+            "local_rank_score": 0.40549999999999997
+          }
+        ]
+      }
+    },
+    {
+      "id": "n15",
+      "cluster_id": "cluster-15",
+      "heuristic_name": "Tesla SpaceX Failure Feature",
+      "heuristic_junk": false,
+      "sources": [
+        "x"
+      ],
+      "engagement_by_source": {
+        "x": {
+          "likes": 7,
+          "replies": 0,
+          "reposts": 1
+        }
+      },
+      "nomination": {
+        "name": "Tesla SpaceX Failure Feature",
+        "seed_score": 4.899,
+        "summary": "Tesla and SpaceX: Failure Was the Feature",
+        "junk_shape": false,
+        "worthiness": null,
+        "items": [
+          {
+            "item_id": "X14",
+            "source": "x",
+            "title": "Tesla and SpaceX: Failure Was the Feature",
+            "body": "Tesla and SpaceX: Failure Was the Feature",
+            "url": "https://x.com/Bearlovesbull/status/2100529666775728286",
+            "author": "Bearlovesbull",
+            "published_at": "2026-09-17",
+            "date_confidence": "high",
+            "engagement": {
+              "likes": 7,
+              "reposts": 1,
+              "replies": 0
+            },
+            "relevance_hint": 0.0,
+            "why_relevant": "",
+            "snippet": "Tesla and SpaceX: Failure Was the Feature",
+            "metadata": {},
+            "local_relevance": 0.0,
+            "freshness": 76,
+            "engagement_score": 15,
+            "source_quality": 0.68,
+            "local_rank_score": 0.20500000000000002
+          }
+        ]
+      }
+    }
+  ]
+}

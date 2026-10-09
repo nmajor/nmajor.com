@@ -1,0 +1,66 @@
+{
+  "post_id": "personal-knowledge-at-the-machine",
+  "post": "app/linkedin/rockwell-knowledge-at-the-machine/personal-knowledge-at-the-machine.md",
+  "catalog_scan": {"active_templates_reviewed": 63, "source": ".skills/social-meme-campaign/references/template-contracts.json"},
+  "payload": {
+    "fact": "Rockwell interviewed technicians with 20 to 30 years of experience, structured their knowledge by symptom, cause, and response, combined it with records, and put a text-and-voice interface beside the machine; it reports average repair time fell from 18 to 12 minutes.",
+    "expected": "Putting maintenance knowledge behind a chatbot would mainly be a model-and-manuals project.",
+    "actual": "The result depended on extracting unwritten experience, structuring it for retrieval, and delivering it beside the failed machine.",
+    "tension": "The apparently simple chatbot required substantial knowledge-capture and interface work.",
+    "target": "The shortcut of treating knowledge retrieval as a chatbot installation.",
+    "reader_realization": "The model was the visible layer; making decades of experience retrievable was the work.",
+    "tone": "self-aware",
+    "forbidden_targets": ["technicians", "factory workers", "people whose knowledge was captured"]
+  },
+  "angles": [
+    {"rank": 1, "id": "simple-chatbot-hard-work", "mechanism": "hidden constraint", "line": "Putting 30 years of shop-floor knowledge in a chatbot sounds simple until the interviews, structure, and point-of-use interface show up.", "kept": true},
+    {"rank": 2, "id": "capability-needs-corpus", "mechanism": "hidden constraint", "line": "The conversational interface could answer at the machine only after Rockwell did the unglamorous work of capturing what veteran technicians knew.", "kept": true},
+    {"rank": 3, "id": "manuals-were-not-the-knowledge", "mechanism": "misclassification", "line": "The maintenance knowledge looked like a document-search problem until Rockwell interviewed the people carrying the unwritten part.", "kept": false},
+    {"rank": 4, "id": "stored-is-not-delivered", "mechanism": "contradiction", "line": "Knowledge in a corpus still was not job knowledge until the technician could reach it beside the broken machine.", "kept": false},
+    {"rank": 5, "id": "chatbot-credit", "mechanism": "ownership mismatch", "line": "Calling the result a chatbot gives the visible interface credit for the interviews and information design underneath it.", "kept": false}
+  ],
+  "candidates": [
+    {
+      "template": "mordor", "angle": "simple-chatbot-hard-work", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 5, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The contract is exactly a supposedly simple action hiding recognizable difficulty.",
+        "role_mapping": "The fixed setup leads directly to the sourced action of putting 30 years of knowledge in a chatbot.",
+        "surprise": "The caption turns a familiar AI shortcut into the harder organizational job described in the post.",
+        "instant_clarity": "Readers understand the difficult-action relationship before reading supporting prose.",
+        "operator_resonance": "Leaders recognize that interviewing experts and structuring knowledge are implementation work.",
+        "caption_economy": "The sourced tension fits the two slots in nine words after the fixed setup.",
+        "cultural_familiarity": "One Does Not Simply is widely legible to a LinkedIn business audience.",
+        "freshness": "No other retained post in this batch needs this difficult-action relationship."
+      }
+    },
+    {
+      "template": "genie", "angle": "capability-needs-corpus", "hard_fail": false,
+      "scores": {"semantic_fit": 4, "role_mapping": 4, "surprise": 4, "instant_clarity": 4, "operator_resonance": 5, "caption_economy": 4, "cultural_familiarity": 3, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "A conversational maintenance assistant is a large capability constrained by the need to capture unwritten knowledge first.",
+        "role_mapping": "The assistant maps to capability and the technician-interview requirement maps to the constraint, though the constraint is a workstream rather than one tiny limit.",
+        "surprise": "The glamorous interface depends on oral-history work.",
+        "instant_clarity": "The scale contrast reads quickly if both captions name the same system.",
+        "operator_resonance": "Knowledge capture is a common bottleneck in internal AI programs.",
+        "caption_economy": "Both concepts fit, but the six- and seven-word ceilings demand aggressive compression.",
+        "cultural_familiarity": "The image relationship is understandable but less universal than One Does Not Simply.",
+        "freshness": "The template is not otherwise recommended in this five-post batch."
+      }
+    },
+    {
+      "template": "reveal", "angle": "simple-chatbot-hard-work", "hard_fail": false,
+      "scores": {"semantic_fit": 4, "role_mapping": 4, "surprise": 4, "instant_clarity": 3, "operator_resonance": 5, "caption_economy": 3, "cultural_familiarity": 4, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The visible chatbot can be unmasked as interviews, structure, and an interface workflow.",
+        "role_mapping": "The surface and underlying identities are sourced, but the underlying work needs more than the six-word slot to state fully.",
+        "surprise": "The reveal shifts credit from the interface to the organizational work.",
+        "instant_clarity": "The four-panel sequence is slower and the compressed underlying label risks vagueness.",
+        "operator_resonance": "Business readers have seen AI products described by their front end rather than their implementation.",
+        "caption_economy": "Two fixed phrases consume panels and the underlying work resists a six-word summary.",
+        "cultural_familiarity": "The unmasking pattern is broadly familiar.",
+        "freshness": "The template is unused elsewhere in the batch."
+      }
+    }
+  ]
+}

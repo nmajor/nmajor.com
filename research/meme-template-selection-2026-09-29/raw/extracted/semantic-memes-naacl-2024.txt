@@ -1,0 +1,1011 @@
+           Social Meme-ing: Measuring Linguistic Variation in Memes
+
+                   Naitian Zhou,1 David Jurgens2 and David Bamman1
+                            1
+                              University of California, Berkeley
+                                  2
+                                    University of Michigan
+              {naitian,dbamman}@berkeley.edu, jurgens@umich.edu
+
+
+
+                      Abstract
+    Much work in the space of NLP has used com-
+    putational methods to explore sociolinguistic
+    variation in text. In this paper, we argue that
+    memes, as multimodal forms of language com-
+    prised of visual templates and text, also exhibit
+    meaningful social variation. We construct a
+    computational pipeline to cluster individual in-
+    stances of memes into templates and semantic
+    variables, taking advantage of their multimodal
+    structure in doing so. We apply this method to
+    a large collection of meme images from Red-
+    dit and make available the resulting S EMAN -
+    TIC M EMES dataset of 3.8M images clustered
+    by their semantic function. We use these clus-
+    ters to analyze linguistic variation in memes,
+    discovering not only that socially meaningful       Figure 1: Meme templates can be visually diverse, but
+    variation in meme usage exists between subred-      often provide the same semantic function; in this case,
+    dits, but that patterns of meme innovation and      all four templates show a scalar increase.
+    acculturation within these communities align
+    with previous findings on written language.
+                                                            Most of this work has focused on lexical or
+1   Introduction
+                                                        morphosyntactic variation in written texts. How-
+One objective in variationist sociolinguistics is to    ever, language exists beyond text or speech. In
+study how social factors contribute to differences      face-to-face interaction, multimodality in language
+in the way people use language. Work in natural         has been construed as features like co-speech ges-
+language processing has followed this tradition, of-    ture, facial expression or body movement (Perniss,
+fering large-scale analyses of how language use is      2018). In online communication, previous work
+conditioned on geography, (Eisenstein et al., 2010;     has extended the term to include the interplay be-
+Hovy and Purschke, 2018; Demszky et al., 2021),         tween images and text (Kress and Leeuwen, 2001;
+community (Del Tredici and Fernández, 2017; Zhu         Zhang et al., 2021; Hessel et al., 2023). Understand-
+and Jurgens, 2021b; Lucy and Bamman, 2021) and          ing text in isolation is insufficient to understanding
+time (Hamilton et al., 2016). This work is im-          how we communicate online.
+portant not only because language variation often           In the space of multimodal online language,
+exposes shortcomings in NLP tools, which are pri-       memes are interesting for their compositionality.
+marily developed for standard language varieties        They consist of a base image (the template) as
+(Blodgett et al., 2016), but also because variation     well as superimposed text (which we refer to as the
+often embeds social meaning. We make inferences         fill). For example, the “Drake” template depicted in
+about people’s social class, regionality, gender, and   figure 2 serves the semantic function of expressing
+much more based on the way they talk (Campbell-         a preference relation between the fills. This same
+Kibler, 2009; Zhang, 2005), and we strategically        Drake template can be used to express preference
+use language to actively construct and perform          relations between a range of fills; at the same time,
+identities (Labov, 1963; Bucholtz and Hall, 2005).      multiple different templates can share the same or
+                                  Template               created and posted online by specific people at spe-
+                       Keras                             cific moments in time. We create a pipeline that vi-
+                                                         sually clusters meme instances into templates (i.e.,
+                                                         the same memes that differ by variation in fills) by
+                                   Fill
+                     Pytorch
+                                                         exploiting the visual similarity between them; and
+                                                         linguistically clustering meme templates into se-
+                                                         mantic clusters by exploiting the similarity among
+Figure 2: Memes are multimodal constructions where       the fills used in different templates. Fig. 3 provides
+the base image template and additional text fills both   an overview of the process, which involves first
+have semantic value.                                     clustering instances into templates (§2.1), and then
+                                                         clustering templates into variables (§2.2).
+similar semantic function, as illustrated in fig. 1      2.1   Visually clustering instances
+for the function of “scalar increase.” We refer to
+this set of functionally equivalent templates as a       Our process starts with a set of meme instances,
+semantic cluster.                                        which we wish to group based on visual similarity;
+                                                         this process serves to group memes into their base
+   In this work, we follow the variationist sociolin-
+                                                         templates as well as filter out many non-meme
+guistics tradition by treating templates as variants
+                                                         images. This is difficult due to the massive number
+and semantic clusters as variables, observing how
+                                                         of images as well as the amount of variation in
+social factors might contribute to the distribution
+                                                         zoom, crop, borders and other visual details. We
+among these variants. To conduct this analysis, we
+                                                         lay out the steps of the process here, but provide
+develop a method for identifying semantic clusters
+                                                         further details and example images in Appendix A.
+by exploiting the visual structure of meme tem-
+                                                            We first preprocess images to remove any solid
+plates and the linguistic structure of meme fills. We
+                                                         color framing elements to isolate the base image,
+use this to create the S EMANTIC M EMES dataset of
+                                                         then follow Zannettou et al. (2018) and Morina and
+3.8M Reddit memes1 grouped into semantic clus-
+                                                         Bernstein (2022) in extracting templatized memes
+ters and validated with a human evaluation. Finally,
+                                                         by running a perceptual hashing algorithm.
+we use these semantic clusters to perform a series
+                                                            We then compute the pairwise Hamming dis-
+of case studies demonstrating their use in study-
+                                                         tance between hashes that occur more than 10
+ing linguistic variation, linguistic innovation, and
+                                                         times, discard any pairs where the distance was
+linguistic acculturation. We find that:
+                                                         greater than a cut-off dmax = 10. We use the
+    1. socially meaningful variation in template         Leiden clustering algorithm to perform clustering
+       choice exists between subreddits;                 (Traag et al., 2019).2 The Leiden algorithm iter-
+                                                         atively finds well-connected subgraphs; we con-
+    2. subreddits that first introduce a new template    struct a graph where image hashes were vertices
+       continue to use it more than others; and          and the edge weight was eij = dmax − dij + 1
+                                                         for vertices i and j, where dij was the Hamming
+    3. users who stay in a subreddit for longer tend     distance between them.
+       to use templates distinctive to that subreddit.      The clustering algorithm splits aggressively—
+                                                         instances with similar base images may be split
+These findings illustrate the ways in which memes        across multiple templates due to variations in the
+function as multimodal acts of communication, and        zoom, crop, and borders. We find the next step,
+how methods from computational sociolinguistics          which clusters based on the fill text, serves as a
+can shed light on meaningful variation within them.      remedy by placing many of these duplicate tem-
+                                                         plates into the same semantic cluster. Appendix A
+2       Methods
+                                                         contains examples of template clusters.
+To study variation in meme use, we need to identify
+                                                         2.2   Linguistically clustering templates
+the meme variables that organize a collection of
+meme instances—the individual memes that are             Given a set of meme templates, we want to iden-
+    1
+                                                         tify clusters of those templates that have a similar
+    We make data and code under available under
+                                                            2
+the MIT license at https://github.com/naitian/                We found that using DBSCAN, as was done in prior work,
+semantic-memes                                           resulted in many images being put into a single noisy cluster.
+                               pHash
+                                 and     Visually cluster
+                               cluster
+                                            templates              Fine-tune
+                                                                 RoBERTa / CLIP   Cluster
+                                                                    models      embeddings
+
+                               OCR
+
+                                         Extract fill text     Learn semantic
+             Scrape meme                                        embeddings
+                                                                                         Semantic clusters
+               instances
+
+Figure 3: We group visually identical meme instances into templates, and extract the fills using OCR. This data is
+used to learn semantic embedding representations of templates, which we use to generate semantic clusters.
+
+
+semantic function—i.e., that are used to assert a            a CLIP model (Radford et al., 2021) fined-tuned
+similar relation among the text in the fills (such as        on (fill text, image) pairs; the vector difference
+a comparison function exemplified by the Drake               between fine-tuned and pretrained CLIP embed-
+meme in fig. 2). These semantic clusters are the             dings (CLIP-diff); and concatenating CLIP-diff and
+linguistic variables of analysis: discrete sets of vari-     RoBERTa embeddings (Concat).
+ants which share a semantic function but vary in
+                                                             Text-only RoBERTa. In the text-only model, we
+the social meanings they index.
+                                                             fine-tune a RoBERTa model on a sequence classifi-
+   We apply the key intuition that people will use
+                                                             cation task to predict a distribution over templates
+certain templates to make certain classes of state-
+                                                             given the fill text as input. We separate text in dif-
+ments (comparison, declaration, surprise); as with
+                                                             ferent bounding boxes in a meme with a separator
+any other language, fills that are “grammatical” for
+                                                             token when passing it into the model to impose a
+one template may be nonsensical in another. Tem-
+                                                             rough, linear notion of space.
+plates that share similar sets of fills, then, may
+                                                                After fine-tuning, we take the weights of the fi-
+perform a similar function over them.
+                                                             nal classification layer W ∈ R768×N as the embed-
+   To cluster templates using this principle, we ex-
+                                                             dings, where N is the number of templates. Intu-
+tract the fill text from meme instances belonging to
+                                                             itively, RoBERTa is an encoder model that projects
+a template (§2.2.1), learn semantic representations
+                                                             the fill text into a latent semantic space. The final
+for templates based on the distribution of text fills
+                                                             classification layer can be thought of as a projec-
+(§2.2.2), and cluster those representations (§2.2.3).
+                                                             tion from that latent space into the discrete space
+2.2.1 Extracting fill text                                   of templates. Therefore, the transposition of the
+We extract text (along with the bounding boxes con-          weight matrix can be viewed as a mapping from
+taining it) from meme instances using EasyOCR.3              templates into the latent semantic space.
+We use the order of the bounding boxes as a rough            Multimodal CLIP. In learning the embeddings,
+signal for the position and ordering of the text,            the text-based RoBERTa model does not have di-
+but do not incorporate the bounding coordinates              rect access to the image features in the templates.
+directly into the models described below.                    We experiment with using both the image and text
+   Some meme templates contain text in the base              data by fine-tuning a CLIP model.
+image. To prevent these from trivializing the                    We fine-tune CLIP using a contrastive loss be-
+semantic embedding task, we remove bounding                  tween the embedding of a meme instance and its
+boxes with text that was identical in over 90% of            fill text. To prevent the model from cheating by
+the memes in a given template cluster.                       reading the text in the image, we sample a meme
+2.2.2 Learning semantic embeddings                           instance with different text but the same template.
+                                                             This fine-tuning step modifies the image embed-
+We examine four methods for learning semantic
+                                                             ding to align with fill text, which implicitly de-
+embeddings of memes, each described in more de-
+                                                             scribes the semantic function of the meme, instead
+tail below: a RoBERTa (Liu et al., 2019) classifier
+                                                             of with the pretraining dataset of image captions,
+fine-tuned to predict the template given the fill text;
+                                                             which explicitly describe the contents of the image.
+   3
+       https://github.com/JaidedAI/EasyOCR                       CLIP generates embeddings of meme instances.
+                     (a) Declaration                                    (b) Unpopular statement
+
+
+
+
+                  (c) Surprise narrative                             (d) Similarity / parts of a whole
+
+Figure 4: Examples from semantic clusters generated from RoBERTa embeddings; visually diverse clusters emerge
+even for complex semantic functions like a surprise narrative.
+
+
+To generate template embeddings, we randomly             weighting edges as a function of the ranked cosine
+sample up to ten instances of a template as input for    similarity. We provide details about this process
+the image embedding module. We then compute              in Appendix B. We generate semantic clusters by
+the average image embedding of those instances.          running the Leiden algorithm on this graph.
+We don’t embed the fill text for this step, since fill
+text greatly varies between meme instances that use      3   S EMANTIC M EMES Dataset
+the same template, but the image templates should
+                                                         We used the pipeline described above to gener-
+be more or less visually identical.
+                                                         ate semantic clusters from a dataset of 27.9M im-
+CLIP-diff. It is possible that the fine-tuned            ages collected from Reddit (Baumgartner et al.,
+model contains a notion of meme semantics that is        2020). We scraped image posts from the top 1000
+in tension with the pretraining task of image cap-       most active subreddits with “meme” in name (e.g.
+tioning. To isolate the meme-specific knowledge          r/HistoryMemes). Temporally, the dataset
+learned by fine-tuning, we calculate the difference      spans the decade between 2011 and mid-2021.
+between the fine-tuned CLIP embedding of an im-             We fine-tuned both the RoBERTa and CLIP mod-
+age and the embedding from the base CLIP model.          els for three epochs on memes whose template ap-
+                                                         peared at least 100 times in the dataset. We used an
+CLIP-diff + RoBERTa. Finally, we concatenate             80/10/10 split of train, dev and test data, ensuring
+the CLIP-diff and RoBERTa embeddings to incor-           there was no leakage of fill text between splits.
+porate both the visual features from CLIP as well           Using the pipeline with the RoBERTa model
+as the semantics learned by the RoBERTa model.           results in 784 semantic clusters spanning 6,384
+                                                         templates and over 3.8M meme instances. Figure 4
+2.2.3   Semantic clusters                                shows some templates that appear in the same se-
+To group templates into meme variables, we use           mantic cluster. The dataset includes posts to 655
+Leiden clustering on the template representations        subreddits by 908,917 users. We include exam-
+from the embedding models. Some prior work               ples and descriptive statistics for clusters generated
+has shown that embeddings from later layers of           with each of the embedding models in the appendix
+language models can contain “rogue dimensions”           (Figures 17–21).
+that dominate the dot product and lower represen-           A qualitative examination of the clusters showed
+tational quality. Following recommendations to           that the largest, most commonly occurring clusters
+mitigate this behavior, we first standardized the        were highly interpretable with clear semantics. For
+template embeddings before calculating the cosine        some of the less common clusters, it was more dif-
+similarity (Timkey and van Schijndel, 2021).             ficult to assign a clear semantic meaning, but even
+   We construct an adjacency matrix from the top         these clusters often had a coherent quality or affect.
+50 nearest neighbors for each template embedding,        A potential line of qualitative future work would
+be to better understand and identify the unifying             Model         Precision    Visual-adjusted
+features of these clusters.                                   RoBERTa            0.78               0.44
+                                                              CLIP               0.65              -0.09
+4   Evaluation                                                CLIP-diff          0.69               0.18
+                                                              Concat.            0.70               0.30
+We evaluate the coherence and visual diversity of
+semantic clusters derived from each model using           Table 1: Comparison of cluster quality for different
+human judgment. We design an evaluation task              embedding models. CLIP-based models yield clusters
+in which annotators are presented with a pair of          that are biased towards visual features.
+templates, and randomly vary if the templates are
+drawn from the same or different semantic clusters.
+   They are asked to evaluate whether the two tem-            Intuitively, this metric represents the extent to
+plates are 1) semantically similar and 2) visually        which the semantic clusters agree with annotator
+similar. We define semantic similarity as being able      judgments of semantic similarity while controlling
+to reasonably substitute the text from one template       for correlations with visual similarity. A negative
+into the other with minor changes. We define vi-          score means the model clusters based on visual sim-
+sual similarity to include sharing a similar art style    ilarity instead of semantic coherence.We calculate
+or source (e.g., two different templates featuring        metrics on the model judgments over the set of all
+Spongebob). We include example pairs in the ap-           annotated pairs across models. This not only allows
+pendix; one strong source of visual similarity (cf.       us to evaluate on a larger set of annotations, but
+Appendix Fig. 19) are sets of templates that are          also helps highlight differences between models.
+largely identical in their form but that exhibit slight       Table 1 presents the results of this evaluation.
+variation in size, crop, and margins.                     Introducing any visual features results in some
+   We collect judgments for the top ten semantic          clusters based on visual similarity instead of se-
+clusters from each model most commonly repre-             mantics; accordingly, RoBERTa clusters have the
+sented in our dataset as well as a random selection       highest visually-adjusted precision (significant w.r.t
+of ten clusters from each model. For each cluster,        to CLIP and CLIP-diff for a 95% bootstrap CI). We
+we sample 10 pairs, and the same human evaluators         present more results in Table 4 in the appendix.
+provided judgment across all the models. We find              Semantic clusters provide a strong separation
+strong interannotator agreement (Krippendorff’s           between content (the semantic cluster) and style
+α = 0.75, calculated across all models). We pro-          (the choice of template within a semantic cluster).
+vide more details on this process, including the          In other words, the choice of semantic cluster is
+agreement scores for each individual model, in Sec-       what a user is trying to say, and the choice of a
+tion C.1 of the appendix.                                 template within that cluster is how they are saying
+   From the human judgments, we calculate ps (the         it. In the remainder of the paper, we use the clusters
+probability that a pair of templates are semantically     generated from the RoBERTa embeddings, which
+similar if they appear in the same cluster) and pv        have the highest visual-adjusted precision, for our
+(the equivalent measurement for visual similarity)        case studies on linguistic variation and change.
+for each model. To measure variation, it is more
+important each semantic cluster is semantically co-       5   Linguistic variation
+herent and visually diverse, but less important that      The sociolinguistic study of variation centers
+all relevant templates are surfaced within the same       around the linguistic variable, which captures dif-
+cluster. Following this reasoning, we focus on eval-      ferent ways of saying the same thing. The spe-
+uating the semantic precision ps .                        cific choice a speaker make varies systematically
+   Our goal in this work is to explore meaningful         based on information such as the speaker’s identity,
+semantic variation across visually diverse memes,         their relationship to interlocutors, sociopragmatic
+since memes that are visually similar (e.g., slight       context, among many other factors (Tagliamonte,
+variations on the same template) have trivially sim-      2006). Through variation, language conveys social
+ilar semantics. Accordingly, we design a measure          meaning (Nguyen et al., 2021).
+of visually adjusted precision based on Cohen’s κ:
+                                                             There is a rich body of work that aims to analyze
+                           ps − pv                        linguistic variation computationally. Often, the fo-
+                  padj =           ,                      cus is on lexical variation (Bamman et al., 2014;
+                           1 − pv
+         r/memes          r/Animemes                      r/memes       r/dndmemes           r/MinecraftMemes
+
+
+
+
+                (a) Declarative                                        (b) Scalar increase
+                r/memes           r/prequelmemes r/dndmemes         r/Animemes       r/startrekmemes
+
+
+
+
+                                                 (c) Comparison
+
+Figure 5: Subreddits exhibit variation in the preferred templates within a semantic cluster. All are statistically
+significantly overrepresented in their respective subreddits, p < 0.05.
+
+
+Zhang et al., 2017; Zhu and Jurgens, 2021a); se-           index into a localized cultural knowledge, making
+mantic variation in online communities (Lucy and           cultural allusions to characters or celebrities.
+Bamman, 2021; Del Tredici and Fernández, 2018);               For example, the orange Drake template (fig. 5c,
+or orthographic variation in online text (Eisenstein,      left) is used frequently in general purpose meme
+2015; Stewart et al., 2017). In our view of memes          subreddits like r/memes, but alternatives are used
+as language, we ask the same kind of question:             in other subreddits. One version that is specific
+                                                           to r/dndmemes (which discusses the role play-
+RQ1: Does the template choice within a semantic            ing game Dungeons and Dragons) replaces Drake
+cluster vary systematically between communities?           with Matthew Mercer, a voice actor who stars in a
+Methods. The semantic clusters form our vari-              popular Dungeons and Dragons web series (fig. 5c,
+able context, and set of templates within any given        middle).
+semantic cluster form a discrete set of choices with          Linguistic variants usually become associated
+the same semantic value. We use the weighted log           with identities through a gradual process in which
+odds-ratio to compute the extent to which a tem-           the association slowly permeates public awareness
+plate is specific to a given subreddit compared to         (Eckert, 2008). In general, a phonological variable
+all other subreddits, relative to the other templates      does not inherently index any given identity. How-
+in a semantic cluster (Monroe et al., 2017; Jurafsky       ever, the multimodality of memes permits greater
+et al., 2014). We find the templates that have a           expressiveness—a meme in r/Animemes might
+statistically significant association with a subred-       use the anime art style, indexing into the aesthetic
+dit (z-score > 1.96); the semantic clusters these          of that community explicitly.
+templates belong to are in variation: a community
+                                                           6   Linguistic innovation
+prefers one variant over the others in this cluster.
+                                                           Equally as important as the study of synchronic lin-
+Results. We find 94 out of 784 semantic clus-
+                                                           guistic variation is the study of diachronic linguistic
+ters exhibit statistically significant variation, span-
+                                                           change. Language change has been heavily stud-
+ning 391 different templates. Figure 5 shows how
+                                                           ied in natural language processing (Rosenfeld and
+functionally similar memes take different forms in
+                                                           Erk, 2018; Martinc et al., 2020; Zhu and Jurgens,
+different communities.
+                                                           2021b). We focus on understanding the innovation
+   Speakers use language to construct their social         of meme templates within a semantic cluster.
+identities (Bucholtz and Hall, 2005). We find that,
+not only do subreddits prefer certain variants of a        RQ2: Do new meme templates co-exist with pre-
+template over others, but they choose templates that       existing templates in the semantic cluster, or does
+                                                                   2.5
+                                                                               Group
+          2.50                                                             Origin subreddit
+          2.25                                                             Other subreddits
+                                                                   2.0
+          2.00
+Entropy
+
+
+
+
+                                                            PPMI
+          1.75                                                     1.5
+          1.50
+                                                                   1.0
+          1.25
+          1.00                                                     0.5
+
+                 0   1   2      3      4       5    6   7                0.5           0.6       0.7         0.8          0.9
+                         Years after introduction                              % of first 100 posts in origin subreddit
+Figure 6: On average, semantic clusters diversify over      Figure 7: Communities that lead the introduction of a
+time. Very old semantic clusters are rarer, leading to      new template continue to use it more than others.
+larger confidence intervals in later years.
+
+                                                            RQ3: Do new templates diffuse widely or occupy
+the most popular template monopolize the cluster?           a niche?
+   When multiple templates that fulfill the same               Language change is often socially motivated;
+function appear, we expect there to be competition.         a community can opt to use a particular variant
+Prior work has observed this competition between            to distinguish themselves from others (Trudgill,
+lexical choices, with two outcomes: new words               1986; Giles and Powesland, 1975). Thus, we might
+replace old ones that serve the same function, but if       expect meme templates to be most specific to the
+similar words have discourse-relevant differences           subreddits in which they were first introduced.
+in meaning, they can coexist (Karjus et al., 2020).         Methods We measure the extent to which tem-
+                                                            plate variants are ultimately specific to the subred-
+Methods We measure the entropy of semantic
+                                                            dits that originated them.
+clusters over time. If meme templates ultimately
+                                                               We filter our dataset to templates which occur at
+co-exist, we would expect entropy to increase; if a
+                                                            least 200 times. For each template, we identify a
+subset of templates dominate, we would expect the
+                                                            set of “seed posts,” which we define as the first 100
+entropy to converge to a lower value.
+                                                            posts using the template. We then filter to templates
+   For each semantic cluster, we group posts by
+                                                            with a subreddit that comprises the majority of the
+the age of the semantic cluster in years at the time
+                                                            seed posts, which we call the “origin subreddit.”
+of posting. We define the “birth” of the cluster as
+                                                               We modify the method from (Zhang et al., 2017)
+when the first instance of a template in that cluster
+                                                            to measure the specificity of a template-subreddit
+was posted. Within each year, we calculate the
+                                                            pair by using the positive pointwise mutual infor-
+entropy of template distribution within each cluster.
+                                                            mation (PPMI) between templates and the subred-
+   It is possible that some clusters have low entropy       dits in which they are used, matching other work
+early on due to data sparsity. To account for this,         in NLP (Church and Hanks, 1990; Jurafsky and
+we filter to semantic clusters that have existed at         Martin, 2009). Formally, we calculate
+least 5 years with at least 30 posts in all years, and                                                     
+resample with replacement within each year such                                              P (t | s, c)
+                                                               PPMI(t; s | c) = max log                   ,0 ,
+that every year has the same number of posts. Ulti-                                           P (t | c)
+mately, we conduct our analysis over 146 semantic           where P (t | s, c) is the probability of template t
+clusters that span over 950K posts.                         appearing in subreddit s and semantic cluster c,
+                                                            P (t | c) is the probability of template t in that
+Results Entropy steadily increases in the years
+                                                            cluster globally, and templates are only compared
+following a semantic cluster’s initial introduction
+                                                            against others within the same semantic cluster. We
+(Figure 6). This suggests that no one meme tem-
+                                                            calculate the PPMI over non-seed posts to measure
+plate grows to become the de facto template for all
+                                                            the specificity of a template after its introduction.
+users; there is steady variation. This is supported
+by our findings in Section 5 that there are socially        Results For each template, we compare the PPMI
+meaningful differences between variants.                    for origin subreddits with the average PPMI of all
+other subreddits. Figure 7 shows a significant pos-
+itive correlation between the proportion of seed                1.4
+posts that originated in the origin subreddit and
+the eventual specificity of template. These re-                 1.3
+
+
+
+
+                                                         PPMI
+sults support previous findings that lexical inno-
+vations succeed when filling in a social niche (Alt-            1.2
+mann et al., 2011; MacWhinney, 1989). We also
+find that large, generic subreddits (like r/memes,              1.1
+r/dankmemes and r/meme) have a significantly
+lower eventual PPMI than subreddits with fewer                        0   1   2    3   4    5   6   7    8     9 10 11
+posts (p < 0.001, two-sample t-test), suggesting                                  Months since first comment
+that templates originating in these large subreddits
+                                                         Figure 8: Veteran (acculturated) users employ more
+diffuse more widely.
+                                                         subreddit-specific meme templates.
+
+7   Linguistic acculturation
+                                                         language and identity (Nissenbaum and Shifman,
+Finally, we study how users alter their meme post-
+                                                         2017).
+ing habits as they spend more time in a subred-
+dit. Previous work on linguistic acculturation show
+                                                         8       Related work
+that users adopt more community-specific language
+as they become enculturated within a community           Prior work on memes in NLP and social computing
+(Danescu-Niculescu-Mizil et al., 2013; Srivastava        has largely focused on two tasks: meme understand-
+et al., 2018). We can ask a similar question here:       ing and modeling how memes originate and spread.
+                                                         Our work offers novel methods and perspectives at
+RQ4: Do veteran users in a subreddit use more            the intersection of these areas of research.
+community-specific templates?
+                                                            Meme understanding encompasses a number of
+Methods To answer this question, we measure              discrete tasks, including classifying if memes con-
+the average specificity of a user’s posts in succes-     vey harmful messages (Kiela et al., 2021; Qu et al.,
+sive months after they enter a community. We once        2022), labeling emotion (Mishra et al., 2023), and
+again calculate the PPMI of templates as a measure       detecting humor (Tanaka et al., 2022) or figura-
+of specificity; this time, we calculate the value over   tive speech (Liu et al., 2022) within them. While
+the full range of the dataset.                           these can generally be framed as classification
+   For each user in a subreddit, we bin their posts by   tasks, other work generates open-ended explana-
+30-day windows starting with their first post in the     tions of visual humor using large multimodal lan-
+subreddit (i.e., for each month after they joined),      guage models (Hwang and Shwartz, 2023; Hessel
+and compute the average PPMI of their posts for          et al., 2023). Our work complements this existing
+that time period. We filter the dataset to users with    body of research by inferring semantic variables in
+at least 10 lifetime posts and subreddits with at        an unsupervised approach, leveraging the implicit
+least 30 such users. To prevent extremely popular        structure within memes by modeling template se-
+subreddits from unduly influencing the results, we       mantics separately from the fills.
+sample up to 100 users from each subreddit to com-          In modeling the internal structure of memes, our
+pute the average across all subreddits. This yields      work draws on existing research examining the
+a total of 3,174 users in 130 subreddits.                relationship between fills and templates to match
+                                                         semantic roles to entities within harmful memes
+Results We find that acculturated users use tem-         (Sharma et al., 2023a) and mapping fill text to ex-
+plates that are slightly more specific to the commu-     planatory background information (Sharma et al.,
+nities in which they post (Pearson’s r = 0.074, p <      2023b). We hope that our method of construing
+0.001), shown in Figure 8. This finding aligns           templates as semantic predicates can contribute to
+with existing literature on linguistic acculturation     this body of work.
+as well as theories in new media that memes are             In the social computing space, another line of
+cultural capital. The “correct” use of memes can         research focuses on understanding how memes
+demonstrate a user’s assimilation into a shared          originate (Morina and Bernstein, 2022) and spread
+across platforms (Zannettou et al., 2018). These         English-speaking. One should be cautious in ex-
+treat meme templates as discrete tokens. We model        trapolating these results to other settings in which
+template semantics, which have the granularity to        memes are used. However, our data pipeline and
+enable analysis of variation and social meaning. Qu      models are platform agnostic—the semantic clus-
+et al. uses CLIP to understand how memes evolve          ters can be generated from any set of memes. By
+as they spread. While they use the text in com-          making our code and models public, we hope to
+ments to model the high-level concepts indexed by        encourage other researchers to replicate and extend
+particular variants, we use the fill text of memes to    our analysis to other settings.
+model low-level template semantics.                         The meme clustering pipeline is also imperfect.
+                                                         As we note in the paper, the visual clustering is
+9    Conclusion                                          overly aggressive, resulting in the same base im-
+In this paper, we analyze memes as a form of lan-        age being split into multiple template clusters. Al-
+guage subject to the same kinds of sociolinguistic       though we show that the semantic clustering step
+variation as other modalities, such as written lan-      mostly addresses this issue, improving the visual
+guage and speech. We propose a new approach              clustering could yield more precise analysis. Addi-
+to understanding meme semantics, taking advan-           tionally, there are edge cases where a small visual
+tage of the multimodal structure of memes to learn       modification changes the semantic meaning (e.g.,
+semantic representations of templates from an un-        sometimes the order of panels is reversed). The
+labeled dataset. We use this method on a large           data pipeline does not always identify these visual
+dataset of memes scraped from Reddit, and demon-         differences.
+strate that it yields coherent, visually diverse clus-      Finally, the time series analyses are limited by
+ters of semantically similar memes. We make these        data sparsity in earlier years—this is due in part to
+clusters and the code publicly available for future      a smaller Reddit user-base, but also because many
+research. Finally, we use these clusters to study        images have been deleted or removed since they
+language variation and change in subreddits. We          were first posted. Though it is unlikely that this
+show that variations between meme template are           natural decay is systematic in a way that would sig-
+socially meaningful and memes often share usage          nificantly bias our estimates, it nonetheless reduces
+patterns with the textual language that has been         the precision of our analysis.
+studied in the past. We find that memes can be rich
+                                                         Acknowledgments
+resources for understanding social language use.
+                                                         The research reported in this article was supported
+10    Ethical considerations                             by funding from the National Science Foundation
+The data used in this work was collected from Red-       (Graduate Research Fellowship DGE-2146752 and
+dit in 2021 and is publicly available. To preserve       grant IIS-1942591) and from the Volkswagen Foun-
+the right to be forgotten, we release only the post      dation.
+IDs of the posts we used and the labels from the se-       We thank Nicholas Tomlin, Lucy Li and Isaac
+mantic clustering process. There may be offensive,       Bleaman for helpful suggestions and feedback.
+hateful, or sexual messages present in the memes
+and comments in this dataset.                            References
+   The models we trained are also publicly avail-
+                                                         Eduardo G. Altmann, Janet B. Pierrehumbert, and Adil-
+able. We use them only to better understand the
+                                                           son E. Motter. 2011. Niche as a Determinant of Word
+semantics of memes. We do not train any genera-            Fate in Online Groups. PLOS ONE, 6(5):e19009.
+tive models, and warn against training generative
+                                                         David Bamman, Jacob Eisenstein, and Tyler Schnoebe-
+models on the data without careful consideration of
+                                                           len. 2014. Gender identity and lexical variation in
+how to mitigate the toxic, offensive, or otherwise         social media. Journal of Sociolinguistics, 18(2):135–
+harmful outputs that might be generated.                   160.
+
+11    Limitations                                        Jason Baumgartner, Savvas Zannettou, Brian Keegan,
+                                                            Megan Squire, and Jeremy Blackburn. 2020. The
+We note several limitations to this work. First, we         pushshift reddit dataset. ArXiv, abs/2001.08435.
+only study memes posted to Reddit meme commu-            Su Lin Blodgett, Lisa Green, and Brendan O’Connor.
+nities, which are topically-focused and primarily          2016. Demographic dialectal variation in social
+  media: A case study of African-American English.            54th Annual Meeting of the Association for Compu-
+  In Proceedings of the 2016 Conference on Empiri-            tational Linguistics (Volume 1: Long Papers), pages
+  cal Methods in Natural Language Processing, pages           1489–1501, Berlin, Germany. Association for Com-
+  1119–1130, Austin, Texas. Association for Computa-          putational Linguistics.
+  tional Linguistics.
+                                                            Jack Hessel, Ana Marasovic, Jena D. Hwang, Lillian
+Mary Bucholtz and Kira Hall. 2005. Identity and in-            Lee, Jeff Da, Rowan Zellers, Robert Mankoff, and
+ teraction: A sociocultural linguistic approach. Dis-         Yejin Choi. 2023. Do androids laugh at electric
+ course Studies, 7(4-5):585–614.                               sheep? humor “understanding” benchmarks from
+                                                               the new yorker caption contest. In Proceedings of the
+Kathryn Campbell-Kibler. 2009. The nature of sociolin-         61st Annual Meeting of the Association for Compu-
+  guistic perception. Language Variation and Change,           tational Linguistics (Volume 1: Long Papers), pages
+  21(1):135–156.                                               688–714, Toronto, Canada. Association for Compu-
+                                                               tational Linguistics.
+Kenneth Ward Church and Patrick Hanks. 1990. Word
+  association norms, mutual information, and lexicog-       Dirk Hovy and Christoph Purschke. 2018. Capturing re-
+  raphy. Computational Linguistics, 16(1):22–29.              gional variation with distributed place representations
+                                                              and geographic retrofitting. In Proceedings of the
+Cristian Danescu-Niculescu-Mizil, Robert West, Dan            2018 Conference on Empirical Methods in Natural
+  Jurafsky, Jure Leskovec, and Christopher Potts. 2013.       Language Processing, pages 4383–4394, Brussels,
+  No country for old members: User lifecycle and lin-         Belgium. Association for Computational Linguistics.
+  guistic change in online communities. In Proceed-
+  ings of the 22nd International Conference on World        EunJeong Hwang and Vered Shwartz. 2023. MemeCap:
+  Wide Web, WWW ’13, pages 307–318, New York,                 A Dataset for Captioning and Interpreting Memes.
+  NY, USA. Association for Computing Machinery.               ArXiv:2305.13703 [cs].
+Marco Del Tredici and Raquel Fernández. 2017. Se-           Dan Jurafsky, Victor Chahuneau, Bryan R. Routledge,
+ mantic variation in online communities of practice.          and Noah A. Smith. 2014. Narrative framing of con-
+ In IWCS 2017 - 12th International Conference on              sumer sentiment in online restaurant reviews. First
+ Computational Semantics - Long papers.                       Monday.
+Marco Del Tredici and Raquel Fernández. 2018. Se-           Daniel Jurafsky and James H. Martin. 2009. Speech and
+ mantic Variation in Online Communities of Practice.          Language Processing (2nd Edition). Prentice-Hall,
+ arXiv:1806.05847 [cs].                                       Inc., USA.
+Dorottya Demszky, Devyani Sharma, Jonathan Clark,           Andres Karjus, Richard A. Blythe, Simon Kirby, and
+  Vinodkumar Prabhakaran, and Jacob Eisenstein.               Kenny Smith. 2020. Communicative need modulates
+  2021. Learning to recognize dialect features. In            competition in language change.
+  Proceedings of the 2021 Conference of the North
+  American Chapter of the Association for Computa-          Douwe Kiela, Hamed Firooz, Aravind Mohan, Vedanuj
+  tional Linguistics: Human Language Technologies,            Goswami, Amanpreet Singh, Pratik Ringshia, and
+  pages 2315–2338, Online. Association for Computa-           Davide Testuggine. 2021. The Hateful Memes Chal-
+  tional Linguistics.                                         lenge: Detecting Hate Speech in Multimodal Memes.
+                                                              ArXiv:2005.04790 [cs].
+Penelope Eckert. 2008. Variation and the indexical field.
+  Journal of Sociolinguistics, 12(4):453–476.               Gunther R. Kress and Theo Van Leeuwen. 2001. Multi-
+                                                              modal Discourse: The Modes and Media of Contem-
+Jacob Eisenstein. 2015. Systematic patterning in              porary Communication. Arnold; Oxford University
+   phonologically-motivated orthographic variation.           Press.
+  Journal of Sociolinguistics, 19(2):161–188.
+                                                            William Labov. 1963. The Social Motivation of a Sound
+Jacob Eisenstein, Brendan O’Connor, Noah A. Smith,            Change. WORD, 19(3):273–309.
+   and Eric P. Xing. 2010. A latent variable model for
+   geographic lexical variation. In Proceedings of the      Chen Liu, Gregor Geigle, Robin Krebs, and Iryna
+  2010 Conference on Empirical Methods in Natural             Gurevych. 2022. FigMemes: A dataset for figura-
+  Language Processing, pages 1277–1287, Cambridge,            tive language identification in politically-opinionated
+   MA. Association for Computational Linguistics.             memes. In Proceedings of the 2022 Conference on
+                                                              Empirical Methods in Natural Language Processing,
+Howard Giles and Peter F. Powesland. 1975. Accommo-           pages 7069–7086, Abu Dhabi, United Arab Emirates.
+  dation Theory. In Speech Style and Social Evaluation,       Association for Computational Linguistics.
+  Speech Style and Social Evaluation, pages 232–239.
+  Academic Press, Oxford, England.                          Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Man-
+                                                              dar Joshi, Danqi Chen, Omer Levy, Mike Lewis,
+William L. Hamilton, Jure Leskovec, and Dan Jurafsky.         Luke Zettlemoyer, and Veselin Stoyanov. 2019.
+  2016. Diachronic word embeddings reveal statisti-           Roberta: A robustly optimized bert pretraining ap-
+  cal laws of semantic change. In Proceedings of the          proach.
+Li Lucy and David Bamman. 2021. Characterizing En-         Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya
+   glish variation across social media communities with      Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sas-
+   BERT. Transactions of the Association for Computa-        try, Amanda Askell, Pamela Mishkin, Jack Clark,
+   tional Linguistics, 9:538–556.                            Gretchen Krueger, and Ilya Sutskever. 2021. Learn-
+                                                             ing transferable visual models from natural language
+Brian MacWhinney. 1989. Competition and lexical cat-         supervision.
+  egorization. In Roberta Corrigan, Fred R. Eckman,
+  and Michael Noonan, editors, Current Issues in Lin-      Alex Rosenfeld and Katrin Erk. 2018. Deep neural
+  guistic Theory, volume 61, page 195. John Benjamins        models of semantic shift. In Proceedings of the 2018
+  Publishing Company, Amsterdam.                             Conference of the North American Chapter of the
+                                                             Association for Computational Linguistics: Human
+Matej Martinc, Petra Kralj Novak, and Senja Pollak.          Language Technologies, Volume 1 (Long Papers),
+ 2020. Leveraging contextual embeddings for detect-          pages 474–484, New Orleans, Louisiana. Association
+ ing diachronic semantic shift. In Proceedings of the        for Computational Linguistics.
+ Twelfth Language Resources and Evaluation Confer-         Shivam Sharma, Atharva Kulkarni, Tharun Suresh, Hi-
+ ence, pages 4811–4819, Marseille, France. European          manshi Mathur, Preslav Nakov, Md. Shad Akhtar,
+ Language Resources Association.                             and Tanmoy Chakraborty. 2023a. Characterizing
+                                                             the entities in harmful memes: Who is the hero, the
+Shreyash Mishra, S. Suryavardan, Parth Patwa, Megha          villain, the victim? In Proceedings of the 17th Con-
+  Chakraborty, Anku Rani, Aishwarya Reganti, Aman            ference of the European Chapter of the Association
+  Chadha, Amitava Das, Amit Sheth, Manoj Chin-               for Computational Linguistics, pages 2149–2163,
+  nakotla, Asif Ekbal, and Srijan Kumar. 2023.               Dubrovnik, Croatia. Association for Computational
+  Memotion 3: Dataset on Sentiment and Emo-                  Linguistics.
+  tion Analysis of Codemixed Hindi-English Memes.
+  ArXiv:2303.09892 [cs].                                   Shivam Sharma, Ramaneswaran S, Udit Arora,
+                                                             Md. Shad Akhtar, and Tanmoy Chakraborty. 2023b.
+Burt L. Monroe, Michael P. Colaresi, and Kevin M.            MEMEX: Detecting explanatory evidence for memes
+  Quinn. 2017. Fightin’ Words: Lexical Feature Se-           via knowledge-enriched contextualization. In Pro-
+  lection and Evaluation for Identifying the Content of      ceedings of the 61st Annual Meeting of the Associa-
+  Political Conflict. Political Analysis, 16(4):372–403.     tion for Computational Linguistics (Volume 1: Long
+                                                             Papers), pages 5272–5290, Toronto, Canada. Associ-
+Durim Morina and Michael S. Bernstein. 2022. A               ation for Computational Linguistics.
+  web-scale analysis of the community origins of im-
+                                                           Sameer B. Srivastava, Amir Goldberg, V. Govind Ma-
+  age memes. Proc. ACM Hum.-Comput. Interact.,
+                                                             nian, and Christopher Potts. 2018. Enculturation
+  6(CSCW1).
+                                                             Trajectories: Language, Cultural Adaptation, and In-
+                                                             dividual Outcomes in Organizations. Management
+Dong Nguyen, Laura Rosseel, and Jack Grieve. 2021.           Science, 64(3):1348–1364.
+  On learning and representing social meaning in NLP:
+  a sociolinguistic perspective. In Proceedings of the     Ian Stewart, Stevie Chancellor, Munmun De Choudhury,
+  2021 Conference of the North American Chapter of            and Jacob Eisenstein. 2017. #Anorexia, #anarexia,
+  the Association for Computational Linguistics: Hu-          #anarexyia: Characterizing online community prac-
+  man Language Technologies, pages 603–612, Online.           tices with orthographic variation. In 2017 IEEE Inter-
+  Association for Computational Linguistics.                  national Conference on Big Data (Big Data), pages
+                                                              4353–4361.
+Asaf Nissenbaum and Limor Shifman. 2017. Internet
+  memes as contested cultural capital: The case of         S.A. Tagliamonte. 2006. Analysing Sociolinguistic Vari-
+  4chan’s /b/ board. New Media & Society, 19(4):483–         ation. Key Topics in Sociolinguistics. Cambridge
+  501.                                                       University Press.
+                                                           Kohtaro Tanaka, Hiroaki Yamane, Yusuke Mori, Yusuke
+Pamela Perniss. 2018. Why We Should Study Multi-             Mukuta, and Tatsuya Harada. 2022. Learning to
+  modal Language. Frontiers in Psychology, 9.                evaluate humor in memes based on the incongruity
+                                                             theory. In Proceedings of the Second Workshop on
+Jingnong Qu, Liunian Harold Li, Jieyu Zhao, Sunipa           When Creative AI Meets Conversational AI, pages
+   Dev, and Kai-Wei Chang. 2022. DisinfoMeme: A              81–93, Gyeongju, Republic of Korea. Association
+   Multimodal Dataset for Detecting Meme Intention-          for Computational Linguistics.
+   ally Spreading Out Disinformation.
+                                                           William Timkey and Marten van Schijndel. 2021. All
+Yiting Qu, Xinlei He, Shannon Pierson, Michael Backes,       bark and no bite: Rogue dimensions in transformer
+  Yang Zhang, and Savvas Zannettou. 2023. On the             language models obscure representational quality.
+   Evolution of (Hateful) Memes by Means of Multi-           In Proceedings of the 2021 Conference on Empiri-
+   modal Contrastive Learning. In 2023 IEEE Sympo-           cal Methods in Natural Language Processing, pages
+   sium on Security and Privacy (SP), pages 293–310.        4527–4546, Online and Punta Cana, Dominican Re-
+   IEEE Computer Society.                                    public. Association for Computational Linguistics.
+V. A. Traag, L. Waltman, and N. J. van Eck. 2019. From        A     Details on visually clustering templates
+   Louvain to Leiden: guaranteeing well-connected
+   communities. Scientific Reports, 9(1):5233. Number:
+   1 Publisher: Nature Publishing Group.                      A.1    Preprocessing
+
+Peter Trudgill. 1986. Dialects in Contact. Number 10          One common meme layout that would caused is-
+  in Language in Society. B. Blackwell, Oxford, UK ;          sues in the template clustering step was a text frame
+  New York, NY, USA.                                          around the source image, where there is a border
+Thomas Wolf, Lysandre Debut, Victor Sanh, Julien
+                                                              around a source image, as well as some text above
+  Chaumond, Clement Delangue, Anthony Moi, Pier-              or below (see Figure 9a for an example).
+  ric Cistac, Tim Rault, Remi Louf, Morgan Funtow-               For each image, we use a rectangular kernel to
+  icz, Joe Davison, Sam Shleifer, Patrick von Platen,
+  Clara Ma, Yacine Jernite, Julien Plu, Canwen Xu,            detect potential text patches, replace those patches
+  Teven Le Scao, Sylvain Gugger, Mariama Drame,               with the background color, and finally identify the
+  Quentin Lhoest, and Alexander Rush. 2020. Trans-            bounding box for the remaining source image with-
+  formers: State-of-the-art natural language processing.      out any excess borders. Figure 9 walks through the
+  In Proceedings of the 2020 Conference on Empirical
+  Methods in Natural Language Processing: System
+                                                              steps visually.
+  Demonstrations, pages 38–45, Online. Association
+  for Computational Linguistics.
+                                                              A.2    Image hashing
+Savvas Zannettou, Tristan Caulfield, Jeremy Blackburn,
+  Emiliano De Cristofaro, Michael Sirivianos, Gian-           We create a 64-bit perceptual hash for each pre-
+  luca Stringhini, and Guillermo Suarez-Tangil. 2018.         processed image in the dataset. The preprocessed
+  On the origins of memes by means of fringe web              images are only used for the hashing step; all other
+  communities. In Proceedings of the Internet Mea-
+  surement Conference 2018, IMC ’18, page 188–202,            steps use the original image. Figure 10 shows exam-
+  New York, NY, USA. Association for Computing                ples of images whose preprocessed versions have
+  Machinery.                                                  the same hash.
+Dongyu Zhang, Minghao Zhang, Heting Zhang, Liang
+  Yang, and Hongfei Lin. 2021. MultiMET: A multi-             A.3    Hash clustering
+  modal dataset for metaphor understanding. In Pro-
+  ceedings of the 59th Annual Meeting of the Associa-
+  tion for Computational Linguistics and the 11th Inter-      We first compute pairwise Hamming distance be-
+  national Joint Conference on Natural Language Pro-          tween all the hashes. Then, we discard any pairs
+  cessing (Volume 1: Long Papers), pages 3214–3225,           with a Hamming distance greater than 10. Then
+  Online. Association for Computational Linguistics.          we construct a network of hashes, where edges of
+                                                              the graph are calculated as 11 − dij for Hamming
+Justine Zhang, William L. Hamilton, Cristian Danescu-
+   Niculescu-Mizil, Dan Jurafsky, and Jure Leskovec.          distance dij between the ith and jth hashes before
+   2017. Community Identity and User Engagement in            finally using the Leiden algorithm to cluster hashes.
+   a Multi-Community Landscape. ArXiv:1705.09665              Figure 11 shows the top 18 most heavily repre-
+   [physics].                                                 sented hash clusters, with 4 sampled images from
+                                                              each.
+Qing Zhang. 2005. A Chinese yuppie in Beijing: Phono-
+  logical variation and the construction of a new profes-        We use the Leiden algorithm with the Constant
+  sional identity. Language in Society, 34(3):431–466.        Potts Model (CPM) as the quality function; we
+                                                              use a density of 1.0, but experiments with other
+Jian Zhu and David Jurgens. 2021a. Idiosyncratic but
+   not arbitrary: Learning idiolects in online registers      density values (0.01, 0.1, 10) yielded qualitatively
+   reveals distinctive yet consistent individual styles. In   similar or worse results. The algorithm results in
+   Proceedings of the 2021 Conference on Empirical            aggressively split clusters, where each cluster is
+   Methods in Natural Language Processing, pages 279–         coherent, but there are some memes that share a
+   297.
+                                                              base template but are split between two clusters
+Jian Zhu and David Jurgens. 2021b. The structure of           (e.g. Winnie the Pooh appears twice in Figure 11,
+   online social networks modulates the rate of lexical       among others).
+   change. In Proceedings of the 2021 Conference of
+   the North American Chapter of the Association for
+                                                                 We find that these duplicate hash clusters are
+   Computational Linguistics: Human Language Tech-            often merged when we generate the semantic clus-
+   nologies, pages 2201–2218.                                 ters.
+      (a) Original image           (b) Remove text         (c) Remove text artifacts     (d) Trim excess borders
+
+                   Figure 9: Example of the image preprocessing steps, described in Section 2.1
+
+
+
+
+                 (a) 8763e2636178d897
+
+
+
+
+                 (b) 9465a9596e1a66bc
+
+Figure 10: Examples of groups of meme instances with
+the same perceptual hash when processed.
+
+
+B     Details on the semantic clusters
+B.1    Training details
+The RoBERTa and CLIP models were fine-tuned
+using the Huggingface transformers library (Wolf
+et al., 2020). The RoBERTa model was fine-tuned            Figure 11: Sample images from the 18 most common
+                                                           perceptual hash clusters; each row contains two clusters
+on an NVIDIA A5000 GPU for 3 epochs (27 hours)
+                                                           with four sampled images.
+with a learning rate of 1e-6. The CLIP model
+was fine-tuned with mixed-precision on 8 NVIDIA
+A6000 GPUs for 3 epochs (27 hours) with a learn-
+ing rate of 4e-6. There was no hyperparameter
+tuning.
+
+B.2    Calculating edge weights.
+To prepare the data for clustering, we constructed a
+weighted adjacency matrix by keeping only the top
+10 nearest neighbors for each template embedding.
+        Model          # Clusters        Avg. Size
+        RoBERTa              784               8.7
+        CLIP                 657              10.4
+        CLIP-diff            617              11.1                           80
+        Concat.              685              10.0
+
+Table 2: Count and average sizes of semantic clusters                        60
+generated from each embedding model.
+
+
+
+
+                                                        Count
+                                                                             40
+We calculated the weight as
+
+                    wa (b) = λra (b) ,                                       20
+where wa (b) is the weight of the edge between
+templates b and a, ra (b) is the rank of the cosine                           0
+similarity between a and b, and λ is a discount                                   102             103                       104             105
+                                                                                                      Number of Posts
+factor (we set this to 0.9).
+   We chose to weight by a function of ranked sim-
+                                                          Figure 12: Distribution of semantic cluster coverage
+ilarity instead of cosine similarity directly because
+we found the cosine similarity was often low even
+for the embeddings of semantically equivalent tem-
+plates, resulting poor recall and many small clus-
+                                                                              1
+ters. Using the weighted ranking, we get more                                 0
+templates per cluster without introducing too many                            4
+                                                                             11
+false positives.                                                              3
+                                                          Semantic Cluster
+
+
+
+
+                                                                             14
+                                                                             18
+B.3    Outputs                                                               20
+                                                                             75
+There are 784 semantic clusters generated from the                            2
+RoBERTa embeddings—table 2 shows statistics for                              17
+                                                                              6
+cluster sizes for all of the models. We include more                         35
+                                                                             30
+extensive examples of the clusters in appendix D.                            19
+   The distribution of clusters is highly skewed.                             0.000     0.005         0.010            0.015        0.020
+                                                                                                  Proportion of posts
+Figure 12 shows the distribution of cluster sizes in
+our Reddit dataset, for the RoBERTa embeddings.         Figure 13: Proportion of posts using the 15 most com-
+The largest 103 clusters account for 50% of the         mon clusters
+posts the dataset. The largest 10 account for 12%—
+this distribution is shown in Figure 13. The median
+semantic cluster contains 2,587 posts; the smallest                                   memes
+                                                                                 dankmemes
+one in the dataset contains 122.                                                       meme
+   Similarly, posts in r/memes account for 38%                                 HistoryMemes
+                                                                                   memesITA
+of all posts in the dataset. Accordingly, most of                             PrequelMemes
+                                                                         Memes_Of_The_Dank
+                                                        Subreddit
+
+
+
+
+our analyses have employed stratified sampling or
+                                                                                   Animemes
+techniques to normalize by size. Figure 14 shows                       Gamemeneersubmissies
+that the top three most commonly occurring sub-                            wholesomememes
+                                                                                  dndmemes
+reddits are all generic meme subreddits; other more                         MinecraftMemes
+topically or geographically localized ones follow.                                 antimeme
+                                                                                 dank_meme
+                                                                             EDanonymemes
+C     Model evaluation details                                                                  0.0           0.1          0.2        0.3   0.4
+                                                                                                                    Proportion of posts
+Human annotators were presented with pairs of
+images with the following instructions:                 Figure 14: Proportion of posts in the 15 most common
+                                                        subreddits
+      You will be looking at pairs of memes;
+          Model         Krippendorff’s α
+          RoBERTa                   0.77
+          CLIP                      0.76
+          CLIP-diff                 0.67
+          Concat.                   0.76
+
+Table 3: Krippendorff’s α for the human evaluations,
+stratified by model.
+
+
+      for each pair, you will be answering two
+      yes/no questions.
+        1. is this pair semantically similar (can
+           you conceivably copy / paste the
+           text of one into the other with mi-
+           nor changes and have it still make                (a) Semantically and visually similar
+           sense)
+        2. is this pair visually similar (do they
+           have the same characters, art style,
+           etc? e.g. two harry potter memes. If
+           the layout is the same but the charac-
+           ters are different, you should mark
+           it as not visually similar)
+
+   The annotators were three student employees             (b) Semantically similar, visually different
+whose job responsibilities included such annota-
+tions. They were recruited at a large public univer-
+sity in the United States and paid above the min-
+imum wage for the geographic region they’re in.
+They were informed that their annotations would
+be used to evaluate different model outputs.
+
+C.1    Agreement
+For the RoBERTa and CLIP models, all three anno-
+                                                           (c) Semantically different, visually similar
+tators performed evaluations. For the CLIP-diff and
+Concat. models, which were evaluated later, two
+of the three annotators performed evaluations after
+we had verified high agreement on RoBERTa and
+CLIP. When calculating the Krippendorff’s α for
+each of the three models, the agreement is similar
+across all models with the exception of CLIP-diff,
+which had slightly lower agreement. Table 3 shows
+the agreement scores for each.
+                                                             (d) Semantically and visually different
+C.2    Examples and further discussion
+                                                       Figure 15: Example meme pairs for annotation
+Figure 15 includes examples of some of the im-
+age pairs presented to annotators, as well as the
+expected judgments for semantic and visual simi-
+larity.
+   We found that CLIP-based methods would in-
+clude clusters that were visually similar but seman-
+tically different. Figure 16 shows an example of a
+    Model           Precision     Visual-adjusted
+    All
+        RoBERTa           0.78                  0.44
+        CLIP              0.65                 -0.09
+        CLIP-diff         0.69                  0.18
+        Concat.           0.70                  0.30
+    Common
+        RoBERTa           0.81                  0.53
+        CLIP              0.80                  0.06
+        CLIP-diff         0.84                  0.47
+        Concat.           0.80                  0.42
+    Random
+        RoBERTa           0.67                  0.23
+        CLIP              0.46                 -0.22
+        CLIP-diff         0.45                 -0.13
+        Concat.           0.51                  0.17
+
+Table 4: Comparison of cluster quality for different em-
+bedding models, stratified by the random and common
+samples. CLIP-based models yield clusters that are bi-
+ased towards visual features.
+
+
+cluster generated with CLIP embeddings that con-
+tains meme templates that have different semantic
+functions, but almost all contain characters from
+the Star Wars franchise. This cluster had an visu-
+ally adjusted precision score of -2.08.
+   The failure case of over-indexing on visual simi-
+larity is not restricted to creating semantically in-
+coherent clusters with visual similarity. The CLIP-
+diff and, to a greater extent, Concat embeddings
+were good at surfacing less-used variants of tem-
+plates. However, they do so at the expense of split-
+ting into several stylistically delineated semantic
+clusters, which is detrimental to our desired anal-
+ysis on variation. Figure 17 shows how templates
+from the large RoBERTa cluster for declarative
+templates are divided into several Concat clusters.
+
+D     Further semantic cluster examples
+Figures 18,19,20,21 contain more examples of se-
+mantic clusters generated using the different em-
+bedding models. Content warning: though we tried
+to filter for toxic speech, these memes may still
+contain offensive content.
+                                                           Figure 16: This Concat cluster has a low visual-adjusted
+                                                           precision.
+                       (a) RoBERTa Cluster 0                           (b) Concat Cluster 2
+
+
+
+
+                        (c) Concat Cluster 31                         (d) Concat Cluster 134
+
+Figure 17: Templates that are clustered together by RoBERTa appear in stylistically delineated semantic clusters in
+the Concat clusters. Displayed are a sample of up to 16 templates from each cluster.
+(a) Cluster 0                                               (b) Cluster 1
+
+
+
+
+(c) Cluster 10                                              (d) Cluster 30
+
+                 Figure 18: Samples from RoBERTa clusters
+(a) Cluster 0                                            (b) Cluster 1
+
+
+
+
+(c) Cluster 36                                           (d) Cluster 23
+
+                 Figure 19: Samples from CLIP clusters
+(a) Cluster 0                                                (b) Cluster 1
+
+
+
+
+   (c) 32                                                    (d) Cluster 22
+
+                Figure 20: Samples from CLIP-diff clusters
+(a) Cluster 0                                         (b) Cluster 1
+
+
+
+
+(c) Cluster 15                                        (d) Cluster 29
+
+       Figure 21: Samples from CLIP-diff + RoBERTa clusters
+

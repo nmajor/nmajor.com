@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nick Major</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--ink:#0a0a0a;--dim:#737373;--line:#e8e8e8;--soft:#f6f6f4;--a:#2563eb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Geist,sans-serif}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.me{display:flex;align-items:center;gap:10px;font-weight:600}.me img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+nav ul{display:flex;gap:24px;list-style:none;font-size:14px;color:var(--dim)}
+.hero{padding:64px 0 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+h1{font-size:54px;line-height:1.05;font-weight:800;letter-spacing:-.035em;max-width:720px}
+h1 span{color:var(--dim)}
+.stats{display:flex;gap:36px;font-family:'Geist Mono';font-size:13px;color:var(--dim)}
+.stats b{display:block;font-family:Geist;font-size:30px;color:var(--ink);font-weight:700;letter-spacing:-.02em}
+.filters{display:flex;gap:8px;margin-bottom:20px;font-size:14px}
+.filters span{padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--dim)}
+.filters span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.p{border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.p .logo{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:18px}
+.p h3{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.p .dom{font-family:'Geist Mono';font-size:12px;color:var(--dim)}
+.p p{font-size:14px;color:#404040;flex:1}
+.p .ch{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:10px;font-family:'Geist Mono';font-size:12px}
+.dot{display:inline-flex;align-items:center;gap:6px}.dot::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
+.live{color:#16a34a}.test{color:#d97706}.build{color:var(--a)}
+.p.feature{grid-column:span 2;background:var(--soft)}
+.p.feature h3{font-size:22px}
+.p.add{border-style:dashed;align-items:center;justify-content:center;text-align:center;color:var(--dim);background:transparent}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;padding:72px 0}
+h2{font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:18px;display:flex;justify-content:space-between;align-items:baseline}
+h2 a{font-size:14px;font-weight:500;color:var(--a)}
+.post{padding:16px 0;border-top:1px solid var(--line)}
+.post .m{font-family:'Geist Mono';font-size:12px;color:var(--dim)}
+.post h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin-top:2px}
+.side{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.side .k{font-family:'Geist Mono';font-size:12px;color:#a3a3a3}
+.side h3{font-size:30px;font-weight:800;letter-spacing:-.03em;margin:6px 0 10px}
+.side p{color:#c7c7c7;font-size:15px}
+.side form{display:flex;gap:8px;margin-top:20px}.side input{flex:1;padding:12px 14px;border-radius:9px;border:0;font:15px Geist}
+.side button{background:#fff;color:var(--ink);border:0;padding:0 18px;border-radius:9px;font-weight:600}
+.side .about{display:flex;gap:14px;margin-top:28px;padding-top:22px;border-top:1px solid #262626;font-size:14px;color:#c7c7c7}
+.side .about img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;display:flex;justify-content:space-between;font-size:14px;color:var(--dim)}
+@media(max-width:800px){.hero{flex-direction:column;align-items:flex-start;padding:40px 0 28px}h1{font-size:38px}.wall{grid-template-columns:1fr}.p.feature{grid-column:auto}.stats{flex-wrap:wrap}.split{grid-template-columns:1fr;padding:48px 0}nav ul{display:none}.filters{flex-wrap:wrap}.wrap{padding:0 18px}.side form{flex-direction:column}.side button{padding:12px}footer{flex-direction:column;gap:8px}.stats{gap:24px}}
+</style></head><body>
+<div class="wrap">
+<nav><div class="me"><img src="nick.jpg" alt="">Nick Major</div><ul><li>Products</li><li>Writing</li><li>About</li><li>Newsletter</li></ul></nav>
+<div class="hero">
+ <h1>I build products with AI. <span>Now I'm learning to get them in front of people.</span></h1>
+ <div class="stats"><div><b>7</b>products live</div><div><b>3</b>distribution tests running</div><div><b>15</b>years writing code</div></div>
+</div>
+<div class="filters"><span class="on">All</span><span>Marketing tools</span><span>SEO sites</span><span>Consumer</span></div>
+<div class="wall">
+ <div class="p feature"><div class="logo" style="background:#ea580c">S</div><h3>Sites That Get Calls</h3><span class="dom">sitesthatgetcalls.com</span><p>Paste a Google Business Profile and get a site built to make the phone ring. My first marketing tool, and the one I'm putting the most into right now.</p><div class="ch"><span class="dot build">building in public</span><span>Marketing tool</span></div></div>
+ <div class="p"><div class="logo" style="background:#0f766e">E</div><h3>Every City in the USA</h3><span class="dom">everycityintheusa.com</span><p>A sortable database of U.S. cities with Census population and cost-of-living fields.</p><div class="ch"><span class="dot test">testing: SEO</span><span>SEO site</span></div></div>
+ <div class="p"><div class="logo" style="background:#4d7c0f">N</div><h3>National Sites Guide</h3><span class="dom">nationalsitesguide.com</span><p>Monthly crowd patterns for national parks, from official NPS data.</p><div class="ch"><span class="dot test">testing: SEO</span><span>SEO site</span></div></div>
+ <div class="p"><div class="logo" style="background:#7c3aed">S</div><h3>SupplierSignal</h3><span class="dom">suppliersignal.com</span><p>Paste an Amazon ASIN, get a ranked Alibaba supplier shortlist with profit math.</p><div class="ch"><span class="dot live">live</span><span>Tool</span></div></div>
+ <div class="p"><div class="logo" style="background:#db2777">V</div><h3>VeilBoard</h3><span class="dom">veilboard.com</span><p>A 60-second quiz that turns a wedding mood into six Pinterest boards.</p><div class="ch"><span class="dot test">testing: Pinterest</span><span>Consumer</span></div></div>
+ <div class="p"><div class="logo" style="background:#0284c7">T</div><h3>TangoLango</h3><span class="dom">tangolango.com</span><p>Language practice for the dialect around you.</p><div class="ch"><span class="dot live">live</span><span>Consumer</span></div></div>
+ <div class="p"><div class="logo" style="background:#525252">C</div><h3>Calculator Campus</h3><span class="dom">calculatorcampus.com</span><p>Free calculators with plain explanations.</p><div class="ch"><span class="dot live">live</span><span>SEO site</span></div></div>
+ <div class="p add"><b>Next one</b><span style="font-size:14px">Subscribers hear about it first</span></div>
+</div>
+
+<div class="split">
+ <div><h2>Writing <a href="#">All posts →</a></h2>
+  <div class="post"><div class="m">OCT 2026 · SEO</div><h3>I put 19,000 city pages on Google. Here's week three.</h3></div>
+  <div class="post"><div class="m">SEP 2026 · ESSAY</div><h3>Marketing for people who'd rather be in their editor</h3></div>
+  <div class="post"><div class="m">SEP 2026 · OUTREACH</div><h3>Cold outreach that sends a finished site instead of a pitch</h3></div>
+  <div class="post"><div class="m">SEP 2026 · AUTOMATION</div><h3>How I schedule a week of posts from one Claude Code command</h3></div>
+ </div>
+ <div class="side"><div class="k">THE NEWSLETTER</div><h3>Deploy to Humans</h3><p>Every week: the distribution test I ran on one of these products, what happened, and the tools I used.</p><form><input placeholder="you@example.com"><button>Subscribe</button></form>
+  <div class="about"><img src="nick.jpg" alt=""><span>I'm Nick. Fifteen years building software, four teaching it. Now I'm figuring out the other half.</span></div></div>
+</div>
+<footer><span>© 2026 Nick Major</span><span>Archive · RSS · X · LinkedIn · GitHub</span></footer>
+</div></body></html>

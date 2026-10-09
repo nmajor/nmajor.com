@@ -1,0 +1,2093 @@
+                                                   A Template Is All You Meme
+                       Luke Bates,1 Peter Ebert Christensen,2,3 Preslav Nakov,4 and Iryna Gurevych1
+                                      1
+                                        Ubiquitous Knowledge Processing Lab (UKP Lab)
+                           Department of Computer Science and Hessian Center for AI (hessian.AI)
+                                               Technical University of Darmstadt
+                     2
+                       Department of Computer Science, University of Copenhagen, 3 Pioneer Centre for AI
+                                   4
+                                     Mohamed bin Zayed University of Artificial Intelligence
+                                            https://www.ukp.tu-darmstadt.de/
+
+                                      Abstract
+                   Templatic memes, characterized by a seman-
+                   tic structure adaptable to the creator’s intent,
+                   represent a significant yet underexplored area            Figure 1: The meaning of templatic memes is customiz-
+                   within meme processing literature. With the               able via overlaid text or image(s), but remains grounded
+                   goal of establishing a new direction for com-             in the context of the template. The first panel suggests
+                   putational meme analysis, here we create a                that the NLP community thinks it can use ChatGPT to
+                   knowledge base composed of more than 5,200                generate data, while the second one suggests that Chat-
+                   meme templates, information about them, and               GPT can exploit the NLP community for data. The third
+                   54,000 examples of template instances (tem-               one uses overlaid images to reference Pokemon.
+                   platic memes). To investigate the semantic sig-
+                   nal of meme templates, we show that we can
+                   match memes in datasets to base templates con-            create novel memes. They can be difficult to parse
+                   tained in our knowledge base with a distance-             because they can be combined in different ways and
+                   based lookup. To demonstrate the power of                 each one has its own unique meaning, the specific
+                   meme templates, we create TSplit, a method to             semantics of which is customizable by the person
+                   reorganize datasets, where a template or tem-             posting the meme (the poster). The template and
+                   platic instance can only appear in either the             its message can be referenced by an image, but
+                   training or test split. Our re-split datasets en-
+                                                                             may not be directly related to that image. If the
+                   hance general meme knowledge and improve
+                   sample efficiency, leading to more robust mod-
+                                                                             viewer is not familiar with the template in question,
+                   els. Our examination of meme templates re-                they may not understand the meme’s meaning. For
+                   sults in state-of-the-art performance for every           example, in Figure 1, we see three instances of the
+                   dataset we consider, paving the way for analy-            popular Is This a Pigeon?2 template. This tem-
+                   sis grounded in templateness.1                            plate conveys the idea that the subject of the person
+                                                                             is misinterpreting the object of the butterfly due
+               WARNING: For demonstration purposes, we
+                                                                             to his own worldview or limited knowledge. The
+               show memes that some may find offensive.
+                                                                             meaning can be tuned by the poster using overlaid
+               1    Introduction                                             text or images. Importantly, such altered images
+                                                                             are considered instances of the same template. To
+               Memes are a form of communication capable of                  interpret memes, one must recognize the entities in
+               succinctly conveying complicated messages. They               the meme and the template the meme uses, if any.
+               have been defined as a unit of cultural transmission             It is important to distinguish between templatic
+               or of imitation and replication (Dawkins, 1976), but          memes and other meme types. Templatic memes
+               all memes possess the trait of referencing a cultural         reference a meme template, which is a commonly
+               moment shared by a group of people. Despite their             reused material (e.g., text, images, audio), to create
+               basis in Internet culture, they exhibit sociolinguistic       a novel instance that is still grounded in the meme
+               traits of in-group communication (Styler, 2020;               template’s semantics. Non-templatic memes can
+               Holm, 2021). A meme’s meaning can therefore be                be (visual) puns, jokes, or emphasis that might not
+               opaque to those who do not belong to the in-group.            directly reference a meme template and can be un-
+                  Meme templates are common patterns or ele-                 derstood without knowledge about meme templates
+               ments, such as text or images, that are used to
+                   1                                                             2
+                     Our code is available at https://github.com/UKPLa             https://knowyourmeme.com/memes/is-this-a-p
+               b/naacl2025-a-template-is-all-you-meme.                       igeon
+
+                                                                        10443
+Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies
+                                                       (Volume 1: Long Papers), pages 10443–10475
+                                         April 29 - May 4, 2025 ©2025 Association for Computational Linguistics
+              Figure 2: Example entry from KYM where we have labeled relevant data fields in red.
+
+
+or even memes (see Section A.9).                         KYMKB, enabling retrieval of meme-specific con-
+   Know Your Meme (KYM),3 the Internet Meme              text. This context is useful for prompting large
+Database, is a valuable resource for information re-     language models (LLMs) or multimodal Vision-
+lated to memes, and especially, to templatic memes.      LMs in a retrieval-augmented generation (RAG)
+Even people familiar with memes may not be aware         framework, as demonstrated in Section A.14.
+of a specific template and can look it up on KYM.           To investigate the effect meme templates have
+The meme entries provide the base template and           on modelling, we create a method for (re)splitting
+information about it, such as its meaning, origin,       meme datasets such that a template and its in-
+examples, etc. By reviewing entries of unfamiliar        stances can only appear in either the training or
+templates, users learn how to interpret and use the      test split, which we call the Template-Aware Split-
+template themselves to create novel instances for        ter (TSplit). TSplit (re)organizes dataset entries
+their specific communication needs.                      based on their distance in embedding space from
+   Memes are of interest to the machine learning         the KYMKB. We find that controlling for template
+community (Aggarwal et al., 2023) because they           awareness makes TSplit more sample-efficient than
+are difficult, but can still be formulated as classi-    standard fine-tuning or random sampling. We also
+fication or generation tasks (Peirson and Tolunay,       show that TSplit has strong regularization effects
+2018). They are also used to spread misinformation       in scenarios where models are likely to overfit.
+and hate speech (Pramanick et al., 2021a). Memes            Our analysis of meme templates results in state-
+usually express concepts humorously, and humor           of-the-art (SOTA) performance for all datasets we
+has been shown to increase the persuasiveness of         consider, establishing a robust foundation for future
+an idea (Walter et al., 2018). Thus, developing sys-     research grounded in templateness. Our contribu-
+tems that can understand memes is important to           tions are as follows:
+prevent the spread of harmful content. However,
+                                                             1. We suggest a new direction for future meme
+AI researchers and datasets treat memes as static
+                                                                analysis grounded in templates.
+images with text (Du et al., 2020; Qu et al., 2022)
+despite memes having their own unique character-             2. We construct a knowledge base of meme tem-
+istics, such as being templatic or not.                         plates and information about them.
+   Here, we analyze memes as memes, rather than
+as images, text, or a combination of both. To                3. We show meme templates are useful for a
+support this, we introduce the Know Your Meme                   number of tasks and can have marked effects
+Knowledge Base (KYMKB), a database of meme                      in fine-tuning experiments.
+templates and associated information sourced from
+                                                         2     Related Work
+KYM. We hypothesize that knowledge of meme
+templates provides valuable context for understand-      There has been a lot of work on analyzing memes
+ing memes. Using a distance-based lookup, we             in various task formulations.
+match templatic instances to base templates in the
+                                                          Memes as harmful content This includes
+   3
+       https://knowyourmeme.com/                         MultiOFF (Suryawanshi et al., 2020), a dataset
+                                                    10444
+of offensive memes related to the 2016 US presi-        analysis due to a lack of demonstrations.
+dential election. The MAMI dataset (Fersini et al.,
+                                                           The current work Our work focuses on the
+2022) is composed of two datasets from SemEval-
+                                                        meme-specific phenomenon of meme templates.
+2022: in subtask A, the goal is to identify misogyny
+                                                        To this end, we construct a knowledge base from
+in memes, while in subtask B, it is to determine
+                                                        KYM to ground our analysis in a meme-specific
+different types of misogyny expressed by a meme.
+                                                        context. The KYMKB is not a dataset and is not
+Lin et al. (2023) recognized that the surface-level
+                                                        labeled for a specific task, but contains information
+text and the image of memes are insufficient and
+                                                        about templatic memes, such as their title, mean-
+employed large language model (LLM) knowledge
+                                                        ing, and origin. We show that we can use CLIP
+distillation to classify dangerous memes.
+                                                        (Radford et al., 2021) and distanced-based lookup
+   Memes as a form of language Dimitrov et al.          algorithms “off the shelf” and match templates to
+(2021) pointed out that memes can be persuasive         memes in existing datasets. To investigate the ef-
+by exploiting more than 20 different propaganda         fect meme templates have on meme processing, we
+techniques. FigMemes (Liu et al., 2022) scraped         develop TSplit for (re)organizing datasets based
+images from a politically incorrect and infamously      on templateness, the Euclidean distance of meme-
+toxic board on 4chan, /pol/,4 and labeled over five     vector representations from the KYMKB. This has
+thousand memes with six different types of figura-      significant effects in fine-tuning experiments, es-
+tive language used in the meme, recognizing that        tablishing SOTA performance in multiple setups.
+memes are capable of expressing abstract and com-
+plicated messages. Mishra et al. (2023) released        3      The Know Your Meme Knowledge Base
+Memotion 3, which is composed of memes in Hindi         Know Your Meme, the “Internet Meme Database”,
+and English, labeled for sentiment, emotion detec-      can be thought of as the Wikipedia for memes.
+tion, and emotion intensity. Hwang and Shwartz          Users create web pages of a meme template and
+(2023) released a dataset of meme explanations to       document information about it, e.g., its meaning,
+aid in resolving metaphors in memes. Zhou et al.        and add examples of its usage (see Figure 2). The
+(2024) showed that memes and meme templates             community reviews and approves entries, updating
+can be clustered by their semantic function.            them as the template’s usage evolves.
+   Context for memes All the above work fine-               Template instances are important for meme un-
+tuned multimodal PLMs or prompted LLMs on               derstanding. In Figure 2, we see that the template
+their respective datasets, but did not use additional   can be altered via overlaid text and images to tune
+context in order to increase meme understanding.        it for a specific communication goal. Existing ap-
+This is a trend in meme-related ML research. One        proaches rely on OCR to extract the text and/or
+exception is MEMEX (Sharma et al., 2023). They          the named entities (Kougia et al., 2023), but this
+use Wikipedia and Quora to assemble explanations        would not work in many cases, e.g., if the entities
+to ask if an explanation document is relevant for       are images referencing a popular YouTube video.5
+a meme, formulating a novel task and multimodal             KYM is a valuable resource that has been under-
+model. Notably, this work uses meme-external in-        utilized by the AI community. To address this,
+formation (Wikipedia/Quora), but not meme knowl-        we create the KYMKB, a collection of meme
+edge, e.g., information about the template used by      templates, examples, and information about the
+the meme. We emphasize that the context they            meme’s usage. To ensure the quality of the entries,
+inject is common knowledge or knowledge about           we crawl templates from KYM that are approved
+named entities, not knowledge about memes.              by the community, scraping 5,220 base templates
+                                                        and 49,531 examples (see Section A.9).
+   General meme resources Tommasini et al.                  Memes may deviate from their template-based
+(2023) developed a knowledge graph of memes             origin, and the KYMKB accounts for this. Con-
+by scraping and querying different sources of in-       sider our running example of Is This a Pigeon?.
+formation, such as KYM, to connect memes to the         This template was popularized in 2011, but it then
+information they reference. However, they do not        had a resurgence in April of 2018. By June 2018, a
+leverage the graph in a downstream task, nor is it      female version of the template had emerged, which
+clear how their graph could be applied to meme              5
+                                                                https://www.youtube.com/watch?v=sXOdn6vLCuU&
+   4
+       https://boards.4chan.org/pol/                    t=8s
+
+                                                   10445
+     Figure 3: KYMKB templates (first row) vs. their nearest neighbor in the FigMemes dataset (second row).
+
+
+was interpreted by some users as an example of              Dataset       Base   Instance   Relevant   Irrelevant
+gender transitioning. Such usage and evolution is           MultiOff      10.4      30        21.3       38.3
+documented by KYM users in the form of both text            Memotion 3    13.4     48.2       11.6       26.8
+                                                            FigMemes      39.2     15.2       28.8       16.8
+and images. Popular template instances that differ
+                                                            MAMI           5.7     24.1       20.3       49.9
+from their origin often become their own template,
+such as Pepe the Frog6 vs. Feels Bad Man/Sad             Table 1: Percentages of memes grouped by visual simi-
+Frog.7 The former is a template originally used          larities to their nearest neighbor in the KYMKB.
+in a manner similar to emoticons, while the lat-
+ter is a popular instance of Pepe that became its           Figure 3 shows a sample of our template-meme
+own template expressing sorrow or disappointment.        pairs and Table 1 summarizes our groupings in per-
+By collecting examples, user-curated information,        centages. In many cases, the memes we find are our
+and distinct but related templates, the KYMKB is         base templates or distorted versions of them, such
+organized for the dynamic nature of memes.               as the first two columns in the figure. We observed
+                                                         many instances of templates tuned by the poster,
+4     Template-Meme Analysis
+                                                         such as the third column. To validate our grouping,
+To investigate the power of templates, we con-           we sampled 50 template-meme pairs and asked two
+ducted exploratory data analysis on four meme            of our colleagues to annotate them based on our
+datasets, MultiOff, Memotion 3, FigMemes, and            four categories. For the Base, Instance, Relevant,
+MAMI. Specifically, we encoded the KYMKB tem-            and Irrelevant groupings, we computed a Cohen’s
+plates, fit a nearest neighbor lookup, as this is an     Kappa of 1.0, 0.45, -0.11, and 0.80 respectively,
+intuitive and commonly used vector-similarity mea-       with the average being 0.54, moderate agreement.
+sure (Buitinck et al., 2013), query the 500 clos-        It is reasonable that our annotators could be con-
+est neighbors in the datasets, and manually in-          fused by the Instance and Relevant grouping as
+spect the similarities between template-meme pairs.      this distinction is subjective, however, we note the
+Henceforth, we use CLIP as our encoder as it is          perfect agreement and near perfect agreement we
+a commonly-used PLM for vision and language              captured for the Base and Irrelevant grouping.
+learning problems and memes (Pramanick et al.,           We are able to match templates to relevant instances
+2021b), but the encoding function is ultimately ar-      despite different appearances. For example, the
+bitrary and we refer to it as f . In our analysis, we    KYMKB includes Pepe the Frog, a template with
+group memes into four categories, detailed below:        many different versions, which is also a symbol
+                                                         of the alt-right movement (Glitsos and Hall, 2019).
+    1. Base - the meme is the base template or
+                                                         When we query FigMemes, we capture an instance
+       cropped/distorted version of it.
+                                                         of a happy Pepe inhaling gasoline, communicating
+    2. Instance - the meme is a templatic instance       the idea that only death can bring the poster hap-
+       customized with text or overlaid images.          piness. Going a step further, we see two templatic
+                                                         concepts merging into a single meme. Mocking
+    3. Relevant - the meme employs more than one         SpongeBob8 is a popular template, which is used
+       template or an obvious reference to a template.   to express contempt. The nearest neighbor to this
+    4. Irrelevant - the meme/image does not appear       template in FigMemes is an instance where Sponge-
+       related to its template pair.                     Bob has been amalgamated with the angry Pepe.
+     6                                                   Querying the KYMKB retrieves enough informa-
+     https://knowyourmeme.com/memes/pepe-the-frog
+     7                                                       8
+     https://knowyourmeme.com/memes/feels-bad-man                https://knowyourmeme.com/memes/mocking-spong
+-sad-frog                                                 ebob
+
+                                                    10446
+ Dataset      Original Training Size   TSplit Training Size   Original Validation Size    TSplit Validation Size   Original Test Size   TSplit Dummy Test Size
+ MultiOff             445                      381                      149                          96                   149                    117
+ Memotion 3           5600                    4674                     1400                        1169                  1500                   1157
+ FigMemes             3084                    2333                      515                         260                  1542                   1006
+ MAMI                 8000                    7353                     2000                        1839                  1000                    808
+
+
+Table 2: Original dataset split sizes and example TSplit dataset splits derived from training and validation data. The
+dummy test data was discarded. ViT-L/14@336px was used as the encoder. See Table 7 for other encoders.
+
+
+tion from the about sections to interpret this meme                              the maximum provides a lenient definition of a tem-
+as the alt-right angrily expressing derision, consis-                            plate instance, allowing greater visual variance (see
+tent with /pol/ (Hine et al., 2017), the domain from                             Figure 3), while the 25th percentile offers a stricter
+which FigMemes was created.                                                      interpretation. TSplit encodes a meme, matches it
+   KYMKB may match a meme or image that is                                       to the closest template in the KYMKB, and com-
+not a template instance. The 7th column shows                                    pares the distance to the template’s threshold. If
+the template of You Get Used To It9 matched to                                   the distance exceeds the threshold, the meme is
+a picture that appears to be a still from another                                assigned a unique identifier (UI); otherwise, it is
+anime.10 The FigMemes image is not an instance of                                recorded as an instance of the template. While our
+the aforementioned template, but this is subjective                              focus is on templatic memes, TSplit also handles
+as it is not possible to know every template nor                                 non-templatic memes via UIs.
+does the KYMKB encompass all meme knowledge.                                         We use TSplit to reorganize datasets and assign
+We note that for MAMI this especially seems to                                   memes to a template or declare them non-templatic.
+be the case, where for nearly half of the examples                               TSplit samples our templates and UIs without re-
+we considered, our template-meme pairs did not                                   placement, such that a template or UI cannot appear
+appear to be related (see Table 1). Not all memes                                in both the training and the test data. Our goal is
+reference a template and meme datasets contain                                   to decouple the data distribution from template ro-
+non-meme images (see Figure 6).                                                  bustness, inspired by work done in QA, NLI, and
+                                                                                 bias detection on adversarial dataset creation and
+5    Template-Aware Splitter                                                     modelling (Jia and Liang, 2017; Gururangan et al.,
+Given that we are able to successfully match                                     2018; Baly et al., 2020). Note that TSplit is task
+memes to templates in the KYMKB, we hypoth-                                      agnostic (see Section A.2).
+esize that many meme datasets are composed of                                        To examine the effect TSplit has on dataset
+nothing more than templatic instances, which may                                 sampling, we tested various versions of TSplit on
+already be contained within our knowledge base.                                  six meme classification datasets: FigMemes with
+This would then create a strong signal we could                                  seven labels of different types of figurative lan-
+leverage in a downstream task.                                                   guage, MultiOff a binary dataset where the labels
+    To investigate this, we demonstrate another use                              can be offensive or non-offensive, Memotion 3,
+case and develop a tool from the KYMKB called                                    where Task A has three labels for sentiment anal-
+the Template-Aware Splitter (TSplit), which quan-                                ysis and Task B has four for different types of
+tifies templateness by comparing base templates to                               emotion, and MAMI with Task A being binary
+their examples (see Figure 2). TSplit embeds a tem-                              misogyny detection and Task B having four labels
+plate (ref = f (KY M KB[i] )) and its examples                                   with different types of misogyny being expressed
+(examp = f (KY M KB[i][j] )), then computes                                      (see Tables 18 and 19). We choose these datasets
+the Euclidean distance between them (dists[i] =                                  because they were made to address the issue of
+dist(ref, examp[j] )). These distances are used                                  harmful meme detection and to frame our analysis
+to compute a threshold value, such as the median                                 of meme templates in the light of this important
+distance (threshold[i] = median(dists[i] )). We                                  goal. Each dataset used Google Vision to provide
+explore four threshold methods: maximum, me-                                     OCR text overlaid on memes.11
+dian, mean, and 25th percentile distances. Using                                     To avoid overlapping templates and unique iden-
+                                                                                 tifiers between dataset splits, we construct an array
+    9
+      https://knowyourmeme.com/memes/you-get-use                                 of distinct objects, meaning detected templates or
+d-to-it
+   10
+      https://en.wikipedia.org/wiki/Hyperdimension
+                                                                                         11
+_Neptunia                                                                                     https://cloud.google.com/use-cases/ocr
+
+                                                                          10447
+unique identifiers. We randomly shuffle the array          layer after the CLIP text and image encoders.
+and then create a test split index. Everything that        We also fine-tune the same model on our resplit
+appears before the index is an object that can appear      datasets. Training is performed for 20 epochs us-
+in the training data and everything after can appear       ing AdamW (Loshchilov and Hutter, 2019) with
+in the test data. We use the following formula to          a learning rate of 1e−5 . Test evaluation uses the
+create this index: ⌊( dtsize
+                        size
+                             ) ∗ osize ⌋, where tsize is   best-performing checkpoint on the validation split.
+the number of test examples in the original dataset,       For datasets without a validation split, we sample
+dsize is the total size of the dataset, and osize is       20% of the training data. We experiment over five
+the number of distinct detected objects (templates         seeds, reporting the mean and standard deviation.12
+or unique identifiers). We maintain the original
+                                                              Results and Discussion Table 3 summarizes
+dataset ratios (for example training 60%, validation
+                                                           our experimental results. While our baselines per-
+20%, and test 20%), but because we sample the
+                                                           formed strongly, TSplitmax with the largest en-
+resplit datasets based on detected templates, it is
+                                                           coder outperformed them, achieving an F1 score
+difficult to maintain the exact numbers.
+                                                           66.16 for MultiOff in the initial grouping, SOTA
+   Finally, it is possible that a template in the
+                                                           performance. For Memotion 3 (tasks A and
+KYMKB does not have any examples. In such
+                                                           B), performance remained consistent across con-
+cases, we use a global threshold value calculated
+                                                           figurations. Prior research highlights random
+by taking the maximum, median, mean, or 25th
+                                                           (down)sampling as a strong baseline (Ein-Dor et al.,
+percentile value of all template thresholds.
+                                                           2020; Lu et al., 2024), likely due to the "noise" it
+5.1 Down-sampling Experimental Setup                       introduces, which can enhance robustness.
+Here, we describe different experimental setups we            Fine-tuning on the original split also established
+investigated with TSplit. Our goal is to study the ef-     the state-of-the-art performance for FigMemes,
+fect of meme templates on modelling, specifically          achieving an F1 score of 47.79. However, this
+on the classification datasets we have examined            was subsequently surpassed by TSplitmax using
+thus far. In these experiments we fine-tuned three         the largest encoder, which achieved an F1 score of
+different CLIP encoders. We opted for fine-tuning          48.85. Notably, this dataset exhibited the greatest
+as prompting with (multimodal) LLMs does not re-           variance in model performance, with random down-
+sult in meme understanding (Hwang and Shwartz,             sampling proving to be comparatively less effective.
+2023), and this is supported by our own experi-            We attribute this disparity to the inherent difficulty
+ments (see Section A.14).                                  of the task and the highly templatic nature of the
+   In this first suite of experiments, we down-            dataset (see Section 4). The model benefits from
+sampled the training and validation data by using          either more data or template-based sampling, with
+TSplit to reorganize them but kept the original test       TSplit demonstrating both sample efficiency and
+split untouched and used it for evaluation. In other       strong overall performance.
+words, we constructed a training, validation, and             We observed that a variant of TSplit outper-
+dummy test split from the original training and            formed both of our baselines on four of the six
+validation split based on their size ratios relative       datasets analyzed, while TSplitmax from the first
+to the original sizes. We then used the resampled          grouping emerges as the overall strongest per-
+training data for fine-tuning and the resampled val-       former. By accounting for templateness, the model
+idation data for model selection, and discarded the        acquires more generalized meme knowledge that
+dummy test split, using the original test data for         transfers effectively across splits, achieving this
+the final evaluation. Therefore, less data was used        in an efficient manner. Notably, the sizes of the
+in this setting for model optimization compared to         TSplit dataset splits used for optimization are sig-
+the original data splits (see Table 2).                    nificantly smaller than the original dataset (see Ta-
+   We compare TSplit against two baselines: (1)            ble 2). Despite the reduction in data, this sampling
+CLIP fine-tuned on the original dataset splits             approach matches or exceeds the performance of
+(OriginalV iT −X ), using both OCR-extracted text          models trained on the full dataset. For FigMemes,
+and visual content, and (2) the same model with            as well as MAMI (tasks A and B), optimization
+the training and validation data randomly downsam-         was performed using nearly 1,000 fewer memes,
+pled to match TSplit’s split sizes (BaselineV iT −X ;        12
+                                                                We used 40 GB and 80 GB NVIDIA A100 Tensor Core
+see Table 2). Both baselines include a feed-forward        GPUs.
+
+                                                      10448
+         Split                      MultiOff    Memotion 3 (A)       Memotion 3 (B)        FigMemes    MAMI (A)    MAMI (B)     Overall
+                                                                 Encoder: ViT-L/14@336px
+         OriginalV iT −L/14@336px   63.642.31      26.381.57            81.72.33           47.791.43   71.824.05    56.61.56   57.9917.76
+         TSplitmax                  66.164.11      26.681.29            83.981.76          47.760.8    68.722.21   58.691.56   58.6617.98
+         TSplitmedian               64.543.0       28.351.73            82.933.15          48.851.31   68.631.25   58.192.13   58.5817.02
+         TSplitmean                 64.213.87      28.141.21            82.571.49          47.431.52   68.622.42   57.411.88   58.0617.12
+         TSplitpercentile           62.043.36      26.792.08            83.243.39          44.631.96   68.870.99   58.120.98   57.2817.89
+         BaselineV iT −L/14@336px   65.032.66      26.361.05            84.311.5           45.212.52   70.682.86   57.731.05   58.2218.56
+                                                                    Encoder: ViT-B/32
+         OriginalV iT −B/32         60.342.21      28.461.67            82.651.04          38.261.59   68.171.05    54.00.82   55.3118.03
+         TSplitmax                  60.42.17       26.020.72            82.02.44           37.441.3    67.591.54   55.281.37   54.7918.55
+         TSplitmedian               58.613.08      26.660.72            82.241.89          37.742.21   65.792.08   54.051.8    54.1818.12
+         TSplitmean                 58.242.17      25.980.94            84.352.22          38.980.83   65.612.75   54.611.85   54.6318.63
+         TSplitpercentile           60.092.15      25.830.84            81.612.05          39.222.15   67.162.79   54.491.81   54.7318.17
+         BaselineV iT −B/32         60.073.29      27.781.38            83.310.48          39.471.45   67.111.77    53.51.38   55.2118.06
+                                                                    Encoder: ViT-B/16
+         OriginalV iT −B/16         65.822.69      28.281.49            82.720.83          42.981.88   68.630.71   55.031.56   57.2417.79
+         TSplitmax                  62.873.14      26.71.91             83.71.64           40.192.6    68.431.53   55.241.62   56.1918.61
+         TSplitmedian               60.463.34      27.041.02            82.172.32          40.072.68   67.772.01   56.541.36   55.6817.96
+         TSplitmean                 63.963.24      25.920.73            83.381.93          39.881.21   67.611.9    56.180.75   56.1618.76
+         TSplitpercentile           61.881.25      26.130.83            82.621.33           41.31.82    67.62.6    54.841.65   55.7318.2
+         BaselineV iT −B/16         62.981.52      26.440.25            82.431.87          37.812.01   66.072.68    54.60.76   55.0618.48
+
+
+Table 3: Challenging setup: TSplit uses the original test sets for evaluation and much less data for both training
+and model selection (see Table 2). Templateness-based down-sampling compared against fine-tuning on the original
+dataset splits and against randomly downsampling to match the TSplit split sizes. We group results by their encoder
+(Original subscript), where encoders are organized by size in descending order. The best performer in each group is
+underlined, while the best for each dataset is in bold. See Table 18 for evaluation measures. The Overall column is
+the mean and standard deviation of each row for insight into aggregated performance.
+
+
+yet this reduction led to improved performance.                              5.1.1 Analysis: TSplitting the Entire Dataset
+   Controlling for templateness proves to be                                 To better understand sampling with TSplit, we ex-
+sample-efficient not only for datasets with a high                           amine the strength of templateness by applying
+proportion of templatic memes, such as FigMemes,                             TSplit and fine-tuning across the entire dataset. In
+but also for less templatic datasets like MAMI                               the previous section, we observed that we are able
+(see Section 4). TSplitmax , when paired with the                            to down-sample the training and validation splits
+largest encoder, performed well on MultiOff, Fig-                            with TSplit, and still fine-tune competitive models
+Memes, and MAMI (B), establishing itself as the                              evaluated on the same test data. Here, however, we
+overall strongest performer. TSplitmax implies a                             resample everything, comparing this model against
+high threshold for the maximum distance between                              OriginalV iT −X . Table 5 shows an example of the
+a template and its examples. This is intuitive, as                           TSplit split sizes across the entire dataset. Our
+templatic memes can vary greatly from their base                             fine-tuning procedure is the same.
+form (Figure 3), and even non-templatic memes
+may implicitly reference a template (Figure 6).                                 Results and Discussion Table 4 shows our re-
+   TSplit leverages the size and strong base perfor-                         sults. The TSplit versions of MultiOff appear more
+mance of the encoder. Among both the baselines                               challenging than the original. Looking into the orig-
+and TSplit configurations, ViT-L/14@336px—the                                inal test split revealed that it contained fewer tem-
+largest encoder—demonstrates the strongest over-                             platic memes, whereas the TSplit test split included
+all performance. Notably, random downsampling                                more. This suggests that templatic structures are
+with this encoder can outperform optimization on                             harder for the model to learn in smaller datasets
+the full dataset, which is markedly not the case for                         and that the original split was less challenging.
+the other CLIP models. TSplit utilizes this encoder                             For Memotion 3 (A), a difficult dataset with
+not only for classification but also to reorganize                           many templatic memes, previous work required the
+splits and selectively discard data. The model’s                             use of a “Hinglish” BERT-based model to reach an
+strong performance suggests a latent understanding                           F1 of 33.28 in Mishra et al. (2023). If we attempt
+of meme content, which TSplit naturally leverages.                           to decouple the distribution from templates, we get
+                                                                             multilingualism without even trying, attaining an
+                                                                             F1 of 35.3 with TSplitmean from the first grouping.
+                                                                                Controlling for template awareness makes dif-
+
+                                                                       10449
+         Split                      MultiOff    Memotion 3 (A)         Memotion 3 (B)        FigMemes    MAMI (A)    MAMI (B)     Overall
+                                                                 Encoder: ViT-L/14@336px
+         OriginalV iT −L/14@336px   63.642.31      26.381.57               81.72.33          47.791.43   71.824.05   56.61.56    57.9917.76
+         TSplitmax                  59.320.67       35.01.46              80.610.66          50.831.37   86.260.67   61.183.28    62.217.3
+         TSplitmedian               57.032.88       35.31.13              80.431.06          50.42.11    82.891.17   58.522.62   60.7616.59
+         TSplitmean                  60.82.85      35.271.34              80.990.29          50.222.66   85.631.79   59.671.46   62.117.22
+         TSplitpercentile           59.612.68      35.251.13              79.850.91          48.551.51   84.411.35   61.092.48   61.4616.94
+                                                                      Encoder: ViT-B/32
+         OriginalV iT −B/32         60.342.21      28.461.67              82.651.04          38.261.59   68.171.05   54.00.82    55.3118.03
+         TSplitmax                  58.534.08      32.132.07              81.290.89          40.982.67   82.471.83   58.362.53   58.9618.69
+         TSplitmedian               58.222.18      31.861.36              81.050.72          36.711.66   83.472.14   59.363.37   58.4419.65
+         TSplitmean                 57.424.11      31.351.92              80.970.55          37.172.31   81.692.96   59.613.26   58.0419.3
+         TSplitpercentile           54.576.21      30.911.93              79.840.88          39.243.95   83.091.59   56.452.9    57.3519.17
+                                                                      Encoder: ViT-B/16
+         OriginalV iT −B/16         65.822.69      28.281.49              82.720.83          42.981.88   68.630.71   55.031.56   57.2417.79
+         TSplitmax                   57.55.44      32.342.51              80.740.51          43.831.59   83.931.0    56.682.89   59.1718.45
+         TSplitmedian               56.192.73      33.112.48              80.790.41          43.852.97   82.51.79    56.770.92   58.8717.98
+         TSplitmean                  50.45.4       32.041.89              80.620.68          43.692.77   83.211.2    59.551.34   58.2518.64
+         TSplitpercentile           58.525.41      31.422.1               80.540.82          43.042.91   82.851.34   60.223.06   59.4318.48
+
+
+Table 4: Easy setup: TSplit resamples all data based on templatness, even resampling the test data. We compare
+TSplit against fine-tuning and evaluating on the original dataset splits (see Table 5).
+
+
+   Dataset       Training Size        Validation Size      Test Size           properties of TSplit. For this analysis, the models
+   MultiOff             473                  119                151            were fine-tuned over 20 epochs prior to the final
+   Memotion 3          5700                 1426               1374            evaluation and were therefore very likely overfit.
+   FigMemes            3246                  362               1533
+   MAMI                7996                 1999               1005            TSplitmax , when paired with the largest encoder,
+                                                                               once more emerged as the most robust performer
+Table 5: Example TSplit dataset split sizes derived from                       overall. Furthermore, we conducted experiments
+the entire dataset. The encoder was ViT-L/14@336px.                            involving the application of TSplit to the entire
+                                                                               dataset, followed by downsampling the optimiza-
+                                                                               tion data based either on templateness or through
+ficult tasks easier by forcing the model to learn
+                                                                               random downsampling of the reorganized splits to
+general, meme-specific properties. Aggarwal et al.
+                                                                               match the size of the original downsampling ex-
+(2024) recently achieved an F1 of 85.0 on MAMI
+                                                                               periments (see Table 2). Notably, downsampling
+(A) using OCR text, focusing their investigation on
+                                                                               based on templateness was capable of discarding
+hate speech in memes. Previously reported generic
+                                                                               up to 2,500 samples while achieving comparable, if
+results in Zhang and Wang (2022) relied on fine-
+                                                                               not superior, performance relative to random down-
+tuning and ensembling multimodal models, includ-
+                                                                               sampling or standard fine-tuning. These findings
+ing CLIP (see Table 18), suggesting that both tasks
+                                                                               provide further evidence of the sample efficiency
+are difficult, and our own results show that CLIP
+                                                                               of meme templates (see Section A.2).
+alone is a poor performer. While TSplit is based on
+the concept of meme templates, our UIs account                                 5.2        TSplit Error Analysis
+for non-templatic memes or images, common in                                   We performed error analysis by examining correct
+meme datasets. By removing meme/image concep-                                  and incorrect predictions made by TSplit on the
+tual overlap between the train and the test split, our                         FigMemes dataset. Note that we examined samples
+approach is general and the model cannot rely on                               that were misclassified by OriginalViT-L/14@336px ,
+leaked information or spurious artifacts, resulting                            i.e., difficult memes.
+in two tasks that no longer require ensembling.                                   TSplit appears to be robust to errors in the ex-
+   A tolerant view of template instances results in                            tracted OCR text, as it predicted the correct label
+consistent, strong performance, especially with the                            for the first and second entries in Figure 4, despite
+largest encoder, where once more TSplitmax is the                              the OCR text being incorrect and the memes being
+overall strongest system, consistent with our earlier                          arguably non-templatic. The model also excelled
+findings. The efficacy of TSplitmax is corroborated                            in cases involving templatic memes that follow
+not only by the results presented here but also by                             established formats or memes that employ a tem-
+two additional experimental setups. In the first set                           platic character, such as Pepe the Frog. For ex-
+of experiments, we investigated the regularization
+
+                                                                         10450
+  Figure 4: Representative examples of correct and incorrect predictions from TSplit on the FigMemes dataset.
+
+
+ample, "Galaxy Brain"13 memes were accurately            model missed. Incorporating culturally and histori-
+classified, demonstrating the model’s strength in        cally informed optimization data is an interesting
+recognizing hyperbolic and exaggerated content           topic we leave for future research.
+within familiar templates. Similarly, the "Pepe As-
+tronaut" meme was correctly classified as an allu-       6    Conclusion and Future Work
+sion. TSplit’s familiarity with memes like Pepe          We analyzed the power of meme templates. To
+made it robust to erroneous OCR text.                    anchor our analysis to memes, we created the
+   TSplit struggles with multilabel, non-templatic       KYMKB, containing more than 54,000 images
+memes, such as the first entry in the second row,        and 5,200 base templates with detailed information
+the model only predicted Allusion, missing the ad-       about each one. We first showed that a comparison
+ditional Metaphor/Simile label. Non-meme images          of templates to memes creates a strong signal that
+also pose an issue, such as the second entry, which      we can leverage in downstream tasks. We therefore
+appears to be a cartoon referencing Harry Potter.        proposed TSplit and found it is sample-efficient
+A similar misclassification arose with the "Look         and can result in robust models. It was not our goal
+at Me, I’m the Captain Now"14 meme, classified           to create state-of-the-art meme classifiers, but we
+as "Contrast" rather than "None". This template          believe our methods are convincing demonstrations
+relies on juxtaposition for humor, but the model         of the strength of meme templates – memes may
+appeared to over-rely on structural cues, misinter-      be difficult to analyze, but they are not random.
+preting its intent. This may be due to the meme             The potential applications of meme templates
+referencing an obscure Jordan Peterson interview15       are vast. Our findings demonstrate their significant
+and the template being heavily manipulated with          impact on topics such as retrieval (see Section 4),
+overlaid images of Cathy Newman and a lobster.           sample efficiency, model performance, and even
+   The most challenging cases involved non-              multilingual capabilities. However, our work repre-
+templatic memes or images that are arguably not          sents only an initial exploration of this area. Future
+memes. The World War II "Teams" meme illus-              research could further investigate these applica-
+trates this difficulty. While the model correctly        tions and other critical directions, contributing to
+identified "Allusion" based on the historical im-        a deeper understanding of the role and utility of
+agery, it failed to capture the metaphorical elements    meme templates in computational research.
+introduced by labels like "Blue Team," "Red Team",          Our resources provide unified, inexpensive tools
+and "Lurkers." These labels transform the meme           for future research grounded in meme knowledge,
+into a commentary on social dynamics of internet         and specifically, meme templates. In future work,
+subcultures, adding a layer of metaphor that the         we will apply the KYMKB to more datasets and
+   13
+      https://knowyourmeme.com/memes/galaxy-brain        languages in a cross-language setup and explore
+   14
+      https://knowyourmeme.com/memes/look-at-me-i        automatically augmenting the KYMKB with new
+m-the-captain-now                                        memes and with new templates.
+   15
+      https://www.youtube.com/watch?v=aMcjxSThD54
+
+                                                    10451
+Acknowledgments                                        not addressed the cultural or linguistic limitations
+                                                       or potential biases inherent in our approach or our
+We would like to thank Tobin Bates, Max Glock-
+                                                       knowledge base. Future work should include an
+ner, Derek Hommel, and Timour Igamberdiev for
+                                                       in-depth investigation of KYMKB’s diversity in
+sharing inspiring discussions with us and Irina
+                                                       terms of culture, language, and humor.
+Bigoulaeva and Seolhwa Lee for their invaluable
+                                                          There is an argument to made for template in-
+feedback on an early draft of our manuscript. LB
+                                                       stances being equally distributed between dataset
+and IG acknowledge the German Federal Ministry
+                                                       splits, as a model has no hope of interpreting a
+of Education and Research (BMBF) under the pro-
+                                                       novel template at test time. This is not our own
+motional reference 13N15897 (MISRIK) and the
+                                                       view because it is our belief that we should be test-
+Hessian Ministry of Science and the Arts (HMWK)
+                                                       ing model robustness on memes that are as novel
+within the projects "The Third Wave of Artificial
+                                                       as possible. However, we enable this functionality
+Intelligence - 3AI" (200009-62200024), hessian.AI
+                                                       in TSplit to encourage future research on model-
+and within their joint support of the National Re-
+                                                       template understanding.
+search Center for Applied Cybersecurity ATHENE.
+                                                          The distinction between different meme types
+PEC was supported by the Pioneer Centre for AI,
+                                                       is not always clear and is arguably subjective. In
+DNRF grant number P1.
+                                                       future work, we will use the KYMKB to develop
+Limitations                                            a taxonomy of memes in order to aid the develop-
+                                                       ment of meme-aware systems.
+KYM is in our view the best resource for meme-
+related knowledge, but this does not mean that it is   Ethics Statement
+the only resource, nor does it mean that all meme
+                                                       It is possible that the resources and insights we have
+posters necessarily agree on the interpretation of a
+                                                       developed and discussed may be misused to spread
+template or a meme. Like all forms of communi-
+                                                       harmful memes more effectively. Abuse is an un-
+cation, there is ambiguity in what a given instance
+                                                       fortunate drawback of all tools and technology. We
+means. Not all memes are templatic, but it is our
+                                                       hope that our work is used instead to create sys-
+belief that the most popular memes are, at least
+                                                       tems that have stronger meme understanding such
+based on how meme datasets are created. TSplit
+                                                       that we can automatically and accurately flag dan-
+quantifies the notion of templateness for the sake
+                                                       gerous memes to halt their spread on social media.
+of computation, however, we believe that truly de-
+                                                       To this end, we created and demonstrated how the
+termining the templateness of a given meme is not
+                                                       KYMKB can be used practically and analytically.
+trivial and it is certainly not the case that KYM
+                                                       To investigate model-meme understanding, we con-
+contains all known templates. We have devised a
+                                                       ducted thorough classification experiments with
+measure by which to determine templateness, but it
+                                                       adversarial meme datasets via TSplit and found
+is only applicable within the limited scope of ML,
+                                                       that we can use it to discourage models from tak-
+where memes are viewed as images (see Section
+                                                       ing undesirable shortcuts to meme understanding,
+A.1). We have performed an examination of mul-
+                                                       which results in more robust models. Throughout
+timodal LLM prompting performance and found
+                                                       this work, we have emphasized the dangers that
+such a paradigm to be insufficient for meme under-
+                                                       memes can present, pointed out how our field is
+standing (see Section A.14) and our findings are
+                                                       lacking in its approach to memes, and taken what
+consistent with Hwang and Shwartz (2023). More
+                                                       we believe are the first steps on a long road to intel-
+recent vision language models, such as Otter (Li
+                                                       ligent systems that understand memes.
+et al., 2023) or IDEFICS,16 might be stronger, we
+                                                           We do not publish data, but following simi-
+are skeptical due to their incremental nature and
+                                                       lar work that provided access to real-world con-
+the poor performance of LLaVA (Liu et al., 2023),
+                                                       tent (Fan et al., 2019; Hanselowski et al., 2019;
+even supplemented by the KYMKB. However, we
+                                                       Zlatkova et al., 2019), we make our scraping and or-
+did not test this ourselves. We have not consid-
+                                                       ganization code available to recreate the KYMKB
+ered pay-to-use corporate artifacts for reasons of
+                                                       and use Wayback Machine17 (WM) as a best effort
+reproducibility and accessibility.
+                                                       to ensure reproducibility, as the WM URLs will
+   While our analysis demonstrates that grounding
+                                                       not foreseeably change. If KYM does not wish
+in templates can have multilingual effects, we have
+   16                                                     17
+        https://huggingface.co/blog/idefics                    https://wayback-api.archive.org/
+
+                                                  10452
+for their content to be accessed via WM, they have         Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li,
+the option to opt out,18 such that their content is           and Fei-Fei Li. 2009. Imagenet: A large-scale hier-
+                                                              archical image database. In 2009 IEEE Computer
+removed.
+                                                              Society Conference on Computer Vision and Pattern
+                                                              Recognition (CVPR 2009), 20-25 June 2009, Miami,
+                                                              Florida, USA, pages 248–255. IEEE Computer Soci-
+References                                                    ety.
+Piush Aggarwal, Pranit Chawla, Mithun Das, Punyajoy        Jacob Devlin, Ming-Wei Chang, Kenton Lee, and
+   Saha, Binny Mathew, Torsten Zesch, and Animesh             Kristina Toutanova. 2019. BERT: Pre-training of
+   Mukherjee. 2023. Hateproof: Are hateful meme               deep bidirectional transformers for language under-
+   detection systems really robust? In Proceedings of         standing. In Proceedings of the 2019 Conference of
+   the ACM Web Conference 2023, WWW 2023, Austin,             the North American Chapter of the Association for
+  TX, USA, 30 April 2023 - 4 May 2023, pages 3734–           Computational Linguistics: Human Language Tech-
+   3743. ACM.                                                 nologies, Volume 1 (Long and Short Papers), pages
+Piush Aggarwal, Jawar Mehrabanian, Weigang Huang,            4171–4186, Minneapolis, Minnesota. Association for
+   Özge Alacam, and Torsten Zesch. 2024. Text or im-          Computational Linguistics.
+   age? what is more important in cross-domain gener-
+                                                           Dimitar Dimitrov, Bishr Bin Ali, Shaden Shaar, Firoj
+   alization capabilities of hate meme detection models?
+                                                             Alam, Fabrizio Silvestri, Hamed Firooz, Preslav
+   In Findings of the Association for Computational Lin-
+                                                             Nakov, and Giovanni Da San Martino. 2021.
+   guistics: EACL 2024, pages 104–117, St. Julian’s,
+                                                             SemEval-2021 task 6: Detection of persuasion tech-
+   Malta. Association for Computational Linguistics.
+                                                             niques in texts and images. In Proceedings of the
+Ramy Baly, Giovanni Da San Martino, James Glass,             15th International Workshop on Semantic Evaluation
+  and Preslav Nakov. 2020. We can detect your bias:          (SemEval-2021), pages 70–98, Online. Association
+  Predicting the political ideology of news articles. In     for Computational Linguistics.
+  Proceedings of the 2020 Conference on Empirical
+  Methods in Natural Language Processing (EMNLP),          Alexey Dosovitskiy, Lucas Beyer, Alexander
+  pages 4982–4991, Online. Association for Computa-          Kolesnikov, Dirk Weissenborn, Xiaohua Zhai,
+  tional Linguistics.                                        Thomas Unterthiner, Mostafa Dehghani, Matthias
+                                                             Minderer, Georg Heigold, Sylvain Gelly, Jakob
+Meghana Bhange and Nirant Kasliwal. 2020.                    Uszkoreit, and Neil Houlsby. 2021. An image
+ HinglishNLP at SemEval-2020 task 9: Fine-tuned              is worth 16x16 words: Transformers for image
+ language models for Hinglish sentiment detection.           recognition at scale. In 9th International Conference
+ In Proceedings of the Fourteenth Workshop on                on Learning Representations, ICLR 2021, Virtual
+ Semantic Evaluation, pages 934–939, Barcelona               Event, Austria, May 3-7, 2021. OpenReview.net.
+ (online). International Committee for Computational
+ Linguistics.                                              Yuhao Du, Muhammad Aamir Masood, and Kenneth
+                                                             Joseph. 2020. Understanding visual memes: An
+Lars Buitinck, Gilles Louppe, Mathieu Blondel, Fabian        empirical analysis of text superimposed on memes
+  Pedregosa, Andreas Mueller, Olivier Grisel, Vlad           shared on twitter. In Proceedings of the Interna-
+  Niculae, Peter Prettenhofer, Alexandre Gramfort,           tional AAAI Conference on Web and Social Media,
+  Jaques Grobler, Robert Layton, Jake VanderPlas, Ar-        volume 14, pages 153–164.
+  naud Joly, Brian Holt, and Gaël Varoquaux. 2013.
+  API design for machine learning software: experi-        Liat Ein-Dor, Alon Halfon, Ariel Gera, Eyal Shnarch,
+  ences from the scikit-learn project. In ECML PKDD          Lena Dankin, Leshem Choshen, Marina Danilevsky,
+  Workshop: Languages for Data Mining and Machine            Ranit Aharonov, Yoav Katz, and Noam Slonim. 2020.
+  Learning, pages 108–122.                                   Active Learning for BERT: An Empirical Study. In
+                                                             Proceedings of the 2020 Conference on Empirical
+Tianqi Chen and Carlos Guestrin. 2016. Xgboost: A            Methods in Natural Language Processing (EMNLP),
+  scalable tree boosting system. In Proceedings of the       pages 7949–7962, Online. Association for Computa-
+  22nd ACM SIGKDD International Conference on                tional Linguistics.
+  Knowledge Discovery and Data Mining, San Fran-
+  cisco, CA, USA, August 13-17, 2016, pages 785–794.       Angela Fan, Yacine Jernite, Ethan Perez, David Grang-
+  ACM.                                                       ier, Jason Weston, and Michael Auli. 2019. ELI5:
+                                                             Long form question answering. In Proceedings of
+Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El               the 57th Annual Meeting of the Association for Com-
+  Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, and                putational Linguistics, pages 3558–3567, Florence,
+  Jingjing Liu. 2020. Uniter: Universal image-text           Italy. Association for Computational Linguistics.
+  representation learning. In European Conference on
+  Computer Vision.                                         Elisabetta Fersini, Francesca Gasparini, Giulia Rizzi,
+                                                              Aurora Saibene, Berta Chulvi, Paolo Rosso, Alyssa
+R Dawkins. 1976. The Selfish Gene. Oxford University          Lees, and Jeffrey Sorensen. 2022. SemEval-2022
+  Press, Oxford, UK.                                          task 5: Multimedia automatic misogyny identifi-
+   18
+        https://help.archive.org                              cation. In Proceedings of the 16th International
+
+                                                      10453
+  Workshop on Semantic Evaluation (SemEval-2022),             Linking memes to knowledge graphs. In Document
+  pages 533–549, Seattle, United States. Association          Analysis and Recognition - ICDAR 2023, pages 534–
+  for Computational Linguistics.                              551, Cham. Springer Nature Switzerland.
+Laura Glitsos and James Hall. 2019. The pepe the           Patrick S. H. Lewis, Ethan Perez, Aleksandra Pik-
+  frog meme: an examination of social, political, and        tus, Fabio Petroni, Vladimir Karpukhin, Naman
+  cultural implications through the tradition of the         Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih,
+  darwinian absurd. Journal for Cultural Research,           Tim Rocktäschel, Sebastian Riedel, and Douwe
+  23(4):381–395.                                             Kiela. 2020. Retrieval-augmented generation for
+                                                             knowledge-intensive NLP tasks. In Advances in Neu-
+Suchin Gururangan, Swabha Swayamdipta, Omer Levy,            ral Information Processing Systems 33: Annual Con-
+  Roy Schwartz, Samuel Bowman, and Noah A. Smith.            ference on Neural Information Processing Systems
+  2018. Annotation artifacts in natural language infer-      2020, NeurIPS 2020, December 6-12, 2020, virtual.
+  ence data. In Proceedings of the 2018 Conference of
+  the North American Chapter of the Association for        Bo Li, Yuanhan Zhang, Liangyu Chen, Jinghao Wang,
+  Computational Linguistics: Human Language Tech-            Jingkang Yang, and Ziwei Liu. 2023. Otter: A
+  nologies, Volume 2 (Short Papers), pages 107–112,          multi-modal model with in-context instruction tuning.
+  New Orleans, Louisiana. Association for Computa-           ArXiv preprint, abs/2305.03726.
+  tional Linguistics.
+                                                           Hongzhan Lin, Ziyang Luo, Jing Ma, and Long Chen.
+Andreas Hanselowski, Christian Stab, Claudia Schulz,         2023. Beneath the surface: Unveiling harmful
+  Zile Li, and Iryna Gurevych. 2019. A richly anno-          memes with multimodal reasoning distilled from
+  tated corpus for different tasks in automated fact-        large language models. In Findings of the Associ-
+  checking. In Proceedings of the 23rd Conference on         ation for Computational Linguistics: EMNLP 2023,
+  Computational Natural Language Learning (CoNLL),           pages 9114–9128, Singapore. Association for Com-
+  pages 493–503, Hong Kong, China. Association for           putational Linguistics.
+  Computational Linguistics.
+                                                           Chen Liu, Gregor Geigle, Robin Krebs, and Iryna
+Pengcheng He, Xiaodong Liu, Jianfeng Gao, and                Gurevych. 2022. FigMemes: A dataset for figura-
+  Weizhu Chen. 2021. Deberta: decoding-enhanced              tive language identification in politically-opinionated
+  bert with disentangled attention. In 9th International     memes. In Proceedings of the 2022 Conference on
+  Conference on Learning Representations, ICLR 2021,         Empirical Methods in Natural Language Processing,
+  Virtual Event, Austria, May 3-7, 2021. OpenRe-             pages 7069–7086, Abu Dhabi, United Arab Emirates.
+  view.net.                                                  Association for Computational Linguistics.
+Gabriel Hine, Jeremiah Onaolapo, Emiliano De Cristo-       Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae
+  faro, Nicolas Kourtellis, Ilias Leontiadis, Riginos        Lee. 2023. Visual instruction tuning. In Advances in
+  Samaras, Gianluca Stringhini, and Jeremy Blackburn.        Neural Information Processing Systems 36: Annual
+  2017. Kek, cucks, and god emperor trump: A mea-            Conference on Neural Information Processing Sys-
+  surement study of 4chan’s politically incorrect forum      tems 2023, NeurIPS 2023, New Orleans, LA, USA,
+  and its effects on the web. Proceedings of the Inter-      December 10 - 16, 2023.
+  national AAAI Conference on Web and Social Media,
+  11(1):92–101.                                            Ilya Loshchilov and Frank Hutter. 2019. Decoupled
+                                                              weight decay regularization. In 7th International
+Cille Hvass Holm. 2021. What do you meme? the so-             Conference on Learning Representations, ICLR 2019,
+  ciolinguistic potential of internet memes. Leviathan:       New Orleans, LA, USA, May 6-9, 2019. OpenRe-
+  Interdisciplinary Journal in English, 7:1–20.               view.net.
+EunJeong Hwang and Vered Shwartz. 2023. MemeCap:           Yao Lu, Jiayi Wang, Raphael Tang, Sebastian Riedel,
+  A dataset for captioning and interpreting memes.           and Pontus Stenetorp. 2024. Strings from the library
+  In Proceedings of the 2023 Conference on Empir-            of babel: Random sampling as a strong baseline for
+  ical Methods in Natural Language Processing, pages         prompt optimisation. In Proceedings of the 2024
+  1433–1445, Singapore. Association for Computa-             Conference of the North American Chapter of the
+  tional Linguistics.                                        Association for Computational Linguistics: Human
+                                                             Language Technologies (Volume 1: Long Papers),
+Robin Jia and Percy Liang. 2017. Adversarial exam-           pages 2221–2231, Mexico City, Mexico. Association
+  ples for evaluating reading comprehension systems.         for Computational Linguistics.
+  In Proceedings of the 2017 Conference on Empiri-
+  cal Methods in Natural Language Processing, pages        Shreyash Mishra, S Suryavardan, Parth Patwa, Megha
+  2021–2031, Copenhagen, Denmark. Association for            Chakraborty, Anku Rani, Aishwarya Reganti, Aman
+  Computational Linguistics.                                 Chadha, Amitava Das, Amit Sheth, Manoj Chin-
+                                                             nakotla, Asif Ekbal, and Srijan Kumar. 2023. Mem-
+Vasiliki Kougia, Simon Fetzel, Thomas Kirchmair,             otion 3: Dataset on sentiment and emotion analysis
+  Erion Çano, Sina Moayed Baharlou, Sahand Shar-             of codemixed hindi-english memes. ArXiv preprint,
+  ifzadeh, and Benjamin Roth. 2023. Memegraphs:              abs/2303.09892.
+
+                                                      10454
+Abel L Peirson and E Meltem Tolunay. 2018. Dank           Shardul Suryawanshi, Bharathi Raja Chakravarthi, Mi-
+  learning: Generating memes using deep neural net-         hael Arcan, and Paul Buitelaar. 2020. Multimodal
+  works. ArXiv preprint, abs/1806.04510.                    meme dataset (MultiOFF) for identifying offensive
+                                                            content in image and text. In Proceedings of the
+Jeffrey Pennington, Richard Socher, and Christopher         Second Workshop on Trolling, Aggression and Cyber-
+   Manning. 2014. GloVe: Global vectors for word            bullying, pages 32–41, Marseille, France. European
+   representation. In Proceedings of the 2014 Confer-       Language Resources Association (ELRA).
+   ence on Empirical Methods in Natural Language Pro-
+   cessing (EMNLP), pages 1532–1543, Doha, Qatar.         Riccardo Tommasini, Filip Illievski, and Thilini Wije-
+   Association for Computational Linguistics.               siriwardene. 2023. IMKG: the internet meme knowl-
+                                                            edge graph. In The Semantic Web - 20th Interna-
+Shraman Pramanick, Dimitar Dimitrov, Rituparna              tional Conference, ESWC 2023, Hersonissos, Crete,
+  Mukherjee, Shivam Sharma, Md. Shad Akhtar,                Greece, May 28 - June 1, 2023, Proceedings, volume
+  Preslav Nakov, and Tanmoy Chakraborty. 2021a. De-         13870 of Lecture Notes in Computer Science, pages
+  tecting harmful memes and their targets. In Find-         354–371. Springer.
+  ings of the Association for Computational Linguis-
+  tics: ACL-IJCNLP 2021, pages 2783–2796, Online.         Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier
+  Association for Computational Linguistics.                Martinet, Marie-Anne Lachaux, Timothée Lacroix,
+                                                            Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal
+Shraman Pramanick, Shivam Sharma, Dimitar Dim-              Azhar, Aurelien Rodriguez, Armand Joulin, Edouard
+  itrov, Md. Shad Akhtar, Preslav Nakov, and Tanmoy         Grave, and Guillaume Lample. 2023. Llama: Open
+  Chakraborty. 2021b. MOMENTA: A multimodal                 and efficient foundation language models. ArXiv
+  framework for detecting harmful memes and their           preprint, abs/2302.13971.
+  targets. In Findings of the Association for Computa-
+  tional Linguistics: EMNLP 2021, pages 4439–4455,        Nathan Walter, Michael J Cody, Larry Zhiming Xu, and
+  Punta Cana, Dominican Republic. Association for           Sheila T Murphy. 2018. A Priest, a Rabbi, and a
+  Computational Linguistics.                                Minister Walk into a Bar: A Meta-Analysis of Hu-
+                                                            mor Effects on Persuasion. Human Communication
+Jingnong Qu, Liunian Harold Li, Jieyu Zhao, Sunipa          Research, 44(4):343–373.
+   Dev, and Kai-Wei Chang. 2022. DisinfoMeme: A
+   Multimodal Dataset for Detecting Meme Intention-       Lili Yu, Bowen Shi, Ramakanth Pasunuru, Benjamin
+   ally Spreading Out Disinformation. ArXiv preprint,        Muller, Olga Golovneva, Tianlu Wang, Arun Babu,
+   abs/2205.12617.                                           Binh Tang, Brian Karrer, Shelly Sheynin, Candace
+                                                             Ross, Adam Polyak, Russell Howes, Vasu Sharma,
+Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya           Puxin Xu, Hovhannes Tamoyan, Oron Ashual,
+  Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sas-         Uriel Singer, Shang-Wen Li, Susan Zhang, Richard
+  try, Amanda Askell, Pamela Mishkin, Jack Clark,            James, Gargi Ghosh, Yaniv Taigman, Maryam Fazel-
+  Gretchen Krueger, and Ilya Sutskever. 2021. Learn-         Zarandi, Asli Celikyilmaz, Luke Zettlemoyer, and
+  ing transferable visual models from natural language       Armen Aghajanyan. 2023. Scaling autoregressive
+  supervision. In Proceedings of the 38th International      multi-modal models: Pretraining and instruction tun-
+  Conference on Machine Learning, ICML 2021, 18-24           ing. ArXiv preprint, abs/2309.02591.
+  July 2021, Virtual Event, volume 139 of Proceedings
+  of Machine Learning Research, pages 8748–8763.          Jing Zhang and Yujin Wang. 2022. SRCB at SemEval-
+  PMLR.                                                      2022 task 5: Pretraining based image to text late
+                                                             sequential fusion system for multimodal misogy-
+Shivam Sharma, Ramaneswaran S, Udit Arora,                   nous meme identification. In Proceedings of the
+  Md. Shad Akhtar, and Tanmoy Chakraborty. 2023.             16th International Workshop on Semantic Evalua-
+  MEMEX: Detecting explanatory evidence for memes            tion (SemEval-2022), pages 585–596, Seattle, United
+  via knowledge-enriched contextualization. In Pro-          States. Association for Computational Linguistics.
+  ceedings of the 61st Annual Meeting of the Associa-
+  tion for Computational Linguistics (Volume 1: Long      Naitian Zhou, David Jurgens, and David Bamman. 2024.
+  Papers), pages 5272–5290, Toronto, Canada. Associ-        Social meme-ing: Measuring linguistic variation in
+  ation for Computational Linguistics.                      memes. In Proceedings of the 2024 Conference of
+                                                            the North American Chapter of the Association for
+Karen Simonyan and Andrew Zisserman. 2015. Very             Computational Linguistics: Human Language Tech-
+  deep convolutional networks for large-scale image         nologies (Volume 1: Long Papers), pages 3005–3024,
+  recognition. In 3rd International Conference on           Mexico City, Mexico. Association for Computational
+  Learning Representations, ICLR 2015, San Diego,           Linguistics.
+  CA, USA, May 7-9, 2015, Conference Track Proceed-
+  ings.                                                   Dimitrina Zlatkova, Preslav Nakov, and Ivan Koychev.
+                                                            2019. Fact-checking meets fauxtography: Verify-
+Will Styler. 2020. The linguistics of memes. https:         ing claims about images. In Proceedings of the
+ //wstyler.ucsd.edu/talks/meme_linguistics.                 2019 Conference on Empirical Methods in Natu-
+  html#/; accessed 26-June-2023.                            ral Language Processing and the 9th International
+                                                            Joint Conference on Natural Language Processing
+
+                                                     10455
+     (EMNLP-IJCNLP), pages 2099–2108, Hong Kong,         shortcoming of the literature. Templatic memes
+     China. Association for Computational Linguistics.   are only the tip of the iceberg when it comes to
+A         Appendix                                       understanding this form of communication and the
+                                                         KYMKB provides a wealth of knowledge we can
+A.1 What’s in a Meme?                                    utilize to create systems capable of interpreting
+Memes are not just images that sometimes have            memes.
+text. The KYMKB captures this fact and how far
+                                                         A.2     Template-Aware Splitter details
+we as a community are from meme understanding.
+Consider Leeroy Jenkins,19 a template that refer-        In this Appendix section, we provide additional re-
+ences a popular YouTube video20 where a player in        sults from fine-tuning with TSplit. Our experimen-
+World of Warcraft21 makes a brash decision while         tal conditions are the same as Section 5 except here
+yelling his name, Leeroy Jenkins. This results in a      we perform inference with the model fine-tuned
+party of players losing a fight to a monster.            for 20 epochs to highlight TSplit’s regularization
+    An instance of this template is not merely some      effects. These results can be found in Table 6.
+image, but rather hollering Leeroy Jenkins or using         In the case of MultiOff, we see that smaller en-
+the audio from the original template when perform-       coders struggle with our resplit datasets, while the
+ing a reckless act that will likely have negative        larger encoder overfits to the original split. In such
+consequences. A concrete example of this can be          cases, TSplit appears to have a regularization effect.
+seen in a recent YouTube video.22 We are unaware         For Memotion 3 (A), a difficult task with many tem-
+of any approach which considers memes in audio           platic memes, TSplit outperforms our baseline and
+form. Despite this template originating in 2005,         consistently attains scores of approximately 33–35,
+it is still referenced almost 20 years later, demon-     and we again get multilingualism without even try-
+strating the longevity of popular templates. The         ing. Task B tells a different story, where the TSplit
+video in question is a compilation of memes, but         datasets appear harder than the original.
+is not composed of still images sometimes with              FigMemes remains a challenging task, and the
+text, but rather audio and video. At the time of         largest models are required to be performant, but
+writing, this video has more than 6.6 million views,     are still prone to overfitting. We again note the regu-
+which we feel is compelling evidence that this is a      larization properties of TSplit, beating our baseline
+more realistic representation of memes than what         with an F1 of 47.91.
+can be found in the literature. This video is not        A.2.1    TSplitting the Enitre Dataset and
+an edge case either, but rather a case that has not               Downsampling
+been considered in previous work, exemplified by
+                                                         In this section, we present additional experiments
+the relevant YouTube channel having 18 other such
+                                                         to further investigate the efficacy of TSplit sam-
+videos, each with more than one million views.
+                                                         pling. Specifically, we resample the entire dataset
+Such examples may seem anomalous, but we argue
+                                                         using TSplit, followed by downsampling and selec-
+otherwise and we believe that such an interpreta-
+                                                         tive discarding of optimization data in two distinct
+tion is a consequence of the narrow scope of the
+                                                         ways: 1) by randomly downsampling to match
+literature. In Section A.12, we provide a detailed
+                                                         the sizes outlined in Table 10, and 2) by sam-
+discussion about additional edge case examples
+                                                         pling templates that may appear in the training
+contained within the KYMKB.
+                                                         or validation data based on dividing the random
+    In order to make our work digestible, we have
+                                                         downsampled size by the original training size, i.e.,
+conformed to the notion of memes that the AI com-                          downsample_size
+                                                         train_ratio = original_training_size . As detailed in Sec-
+munity has converged to. TSplit, for example, re-
+                                                         tion 5, we accomplish this by generating an array
+lies on the concept that memes are images in order
+                                                         of uniquely detected templates and unique identi-
+to perform classification, but our method is meant
+                                                         fiers (UIs) that are eligible to appear in the training
+to demonstrate the usefulness of templates and a
+     19
+                                                         data. This array is then shuffled, and a cutoff in-
+          https://knowyourmeme.com/memes/leeroy-jenki
+ns
+                                                         dex is determined. All detected templates or UIs
+     20
+          https://www.youtube.com/watch?v=mLyOj_QD4a4&   preceding the cutoff index is discarded, while the
+t=1s                                                     remaining data is used for training. Once we have
+     21
+      https://worldofwarcraft.blizzard.com               the ratio, we then multiply it by the number of
+     22
+      https://www.youtube.com/watch?v=UdWv202brqo
+(at 1:25).                                               detected training templates, as follows:
+
+                                                     10456
+             Split                        MultiOff     Memotion 3 (A)            Memotion 3 (B)             FigMemes       MAMI (A)      MAMI (B)       Overall
+                                                                          Encoder: ViT-L/14@336px
+             OriginalV iT −L/14@336px     59.773.14       26.771.04                 79.80.85                44.933.03       66.721.22    51.931.18     54.9916.75
+             TSplitmax                    62.162.14       32.961.26                 77.951.04               47.911.57       83.632.36    59.654.66      60.717.12
+             TSplitmedian                 58.272.57       34.731.15                 78.490.97               42.519.36       82.152.33    56.331.4      58.7517.24
+             TSplitmean                   61.573.98       35.041.46                 78.11.74                 45.363.5       81.222.62     56.73.35     59.6616.47
+             TSplitpercentile             63.583.0        33.532.59                 77.381.94               40.2610.87      80.520.92    53.322.93      58.117.56
+                                                                              Encoder: ViT-B/32
+             OriginalV iT −B/32           60.431.63       29.080.9                  80.261.3                35.922.34       66.061.99    51.971.23     53.9517.46
+             TSplitmax                    56.022.38       33.21.27                  78.041.27               37.961.52       79.741.42    55.533.04     56.7517.76
+             TSplitmedian                 53.194.32       33.921.64                 77.80.87                39.84.32        79.871.81    56.082.38     56.9218.97
+             TSplitmean                   57.733.44       32.541.39                 76.840.55               36.681.71       80.131.68    55.162.61     56.5117.99
+             TSplitpercentile             55.684.92       34.491.7                  76.412.2                38.252.72       77.173.65    55.311.94     56.2216.55
+                                                                              Encoder: ViT-B/16
+             OriginalV iT −B/16           64.652.12       27.280.65                 79.493.0                40.582.0        67.611.96    51.52.65      55.1817.51
+             TSplitmax                    58.234.87       34.951.42                 77.470.64               39.44.93         80.10.83    57.134.11     57.8817.06
+             TSplitmedian                 57.312.91       33.331.54                 78.341.59               40.960.7        80.741.29    54.362.69     57.5117.52
+             TSplitmean                   59.743.2        34.162.64                 77.281.83               40.163.19       80.311.21    55.993.38     57.9417.14
+             TSplitpercentile             59.46.11        34.51.89                  77.951.34               42.712.02       79.280.71    54.333.45     58.0316.95
+
+
+Table 6: TSplit compared against the original dataset. We group results by their encoder (Original subscript), where
+the encoders are organized by size in descending order. The best performer in each group is underlined. The best
+performer for each dataset is in bold. The Overall column is the mean and standard deviation of each row for insight
+into performance on aggregate.
+
+Dataset      ViT-B/16 Training Size     ViT-B/32 Training Size   ViT-B/16 Validation Size   ViT-B/32 Validation Size     ViT-B/16 Dummy Test Size    ViT-B/32 Dummy Test Size
+MultiOff               367                       354                        93                         90                          134                         150
+Memotion 3            4930                      4723                      1233                       1181                          837                        1096
+FigMemes              2293                      2327                       256                        260                         1050                        1012
+MAMI                  7213                      7295                      1804                       1824                          983                         881
+
+
+  Table 7: Example TSplit dataset split sizes for ViT-B/16 and ViT-B/32. The dummy test data was discarded.
+
+
+                                                                                            the strongest performance for MultiOff (63.6) and
+                                                                                            Memotion 3 (B) (81.7).
+      cutoff = ⌊train_templates × train_ratio⌋
+                                                                                               Template-based downsampling demonstrates no-
+   Similarly, to create the validation data, we sam-                                        table improvements, even for datasets that do not
+ple from the training data based on the ratio of                                            contain a high proportion of templates. For exam-
+the randomly downsampled split size to the size                                             ple, TSplitmax from the last grouping achieves the
+of the original split. This is an aggressive means                                          best performance for MAMI (A) (85.71). Simi-
+of downsampling the optimization data based on                                              larly, TSplitmedian stands out as the top performer
+templateness, where we might discard more then                                              for MAMI (B) (63.05) and achieves the highest
+2, 500 samples (see Table 8).                                                               overall mean score (61.92), highlighting its robust-
+                                                                                            ness across datasets.
+ Dataset             Training           Validation          Test       Discard                 Interestingly, for FigMemes, the improvements
+ MultiOff                461                 69            137              76              with template-based downsampling are marginal,
+ Memotion3              3650                913            1609           2328              but we see a boost if we first TSplit the entire
+ FigMemes               2683                143            1376            939
+ MAMI                   6145                1537            740           2578              dataset and combine this with random downsam-
+                                                                                            pling. In contrast, for Memotion 3 (A), TSplitmedian
+Table 8: Dataset sizes for MultiOff, Memotion3, Fig-                                        (35.51) performs best, underscoring that the opti-
+Memes, and MAMI with full TSplit downsampling.                                              mal sampling method may vary depending on the
+                                                                                            dataset’s characteristics.
+  Our experimental setup remains the same, but                                                 Overall, template-based TSplit methods tend to
+we only experimented with the ViT-L/14@336px                                                outperform random downsampling or even using
+CLIP model. We compare these two downsampled                                                more data for optimization, that is, standard fine-
+TSplit versions against fine-tuning on the original                                         tuning. These findings indicate that while fine-
+splits.                                                                                     tuning on the original splits remains competitive
+  The results presented in Table 9 reveal several                                           for certain datasets, template-based sampling offers
+notable trends across datasets and sampling meth-                                           a more sample-efficient and effective alternative.
+ods. Fine-tuning on the original splits achieves
+                                                                                  10457
+             Split                      MultiOff     Memotion 3 (A)          Memotion 3 (B)   FigMemes    MAMI (A)    MAMI (B)     Overall
+             OriginalV iT −L/14@336px   63.642.31        26.381.57              81.72.33      47.791.43   71.824.05    56.61.56   57.9917.76
+             Random Downsampling
+             TSplitmax                  60.211.9         35.121.0               80.740.62     48.343.17   84.323.36   61.452.88    61.717.13
+             TSplitmedian               58.187.07        33.132.03              80.340.45     50.152.19   82.091.73    59.32.9    60.5316.95
+             TSplitmean                 59.915.28        35.510.81              80.440.47     47.20.98    83.151.74   61.652.63   61.3116.88
+             TSplitpercentile           62.594.64        35.481.04              80.660.42     44.569.82   84.941.55   60.22.56    61.417.72
+             TSplit Downsampling
+             TSplitmax                  58.832.05        33.771.35              80.80.88      46.192.02   85.712.53   61.622.54   61.1518.11
+             TSplitmedian               60.143.57        35.682.06              80.360.62     48.452.63   83.851.75   63.053.18   61.9216.81
+             TSplitmean                 60.793.81        33.481.6               79.840.43     46.352.09   84.150.45   59.391.87   60.6717.63
+             TSplitpercentile           60.184.35        35.241.44              80.590.92     47.551.26   83.812.4    60.662.06   58.117.56
+
+
+Table 9: Fine-tuning on the original splits is compared against T-Splitting the entire dataset followed by random
+downsampling, and T-Splitting the entire dataset with downsampling based on templateness. The best performer
+within each group is underlined, and the best performer for each dataset is bolded. The Overall column represents
+the mean and standard deviation for each row, providing insight into the aggregate performance.
+
+
+A.2.2       Template-Split Analysis                                                  Man, which is frequently used on 4chan to mock
+                                                                                     political ideologies.23 This template’s flexibility
+  Split and threshold   MultiOff    Memotion 3    FigMemes       MAMI                in appearance suggests that a strict interpretation
+  Trainmax
+  Testmax
+                         228 / 4
+                         55 / 2
+                                    1407 / 141
+                                      303 / 28
+                                                  1335 / 59
+                                                   568 / 29
+                                                               1961 / 136
+                                                                198 / 11
+                                                                                     of template instances would naturally result in
+  Trainmedian           204 / 88    1170 / 2051   1155 / 547   1764 / 1191           its presence in both splits. Under TSplitpercentile ,
+  Testmedian             50 / 23     249 / 441    525 / 204     172 / 123
+  Trainmean             194 / 100   1106 / 2614   1122 / 655   1700 / 1510           while no explicit template overlap was noted, the
+  Testmean
+  Trainpercentile
+                         47 / 26
+                        167 / 176
+                                     228 / 569
+                                     890 / 3562
+                                                  497 / 264
+                                                  964 / 1198
+                                                                170 / 150
+                                                               1506 / 2789
+                                                                                     same templatic characters—such as Pepe, Picardía,
+  Testpercentile         41 / 44     205 / 748    419 / 506     138 / 291            SpongeBob, and Spiderman—appeared across both
+                                                                                     splits.24 Although these examples are not instances
+Table 10: Example of how TSplit reorganizes datasets,                                of a formal template, they evoke a similar emo-
+where we show the number of detected templates / num-
+                                                                                     tional resonance, akin to the templates they refer-
+ber of unique identifiers in each split for each thresh-
+olding method. ViT-L/14@336px was used as the CLIP                                   ence.
+encoder.
+                                                                                     A.3      Template-Label Counter
+   In this section, we examine how TSplit sam-                                       We hypothesize that many meme datasets are often
+ples templates and unique identifiers. As Table 10                                   nothing more than examples of popular templates
+shows, using the maximum distance from template                                      we have collected in the KYMKB. We should there-
+to examples as the threshold value for each tem-                                     fore be able to compare memes to templates, se-
+plate results in TSplit detecting more templates,                                    lect the most similar template, and obtain a meme-
+while using the 25th percentile results in more                                      specific context. To test this, we matched templates
+unique identifiers.                                                                  to memes in the training split of a dataset. We can
+   To empirically verify how TSplit resplits                                         then assign a meme’s label to another meme if they
+datasets, we sampled 1000 memes from FigMemes                                        share the same template, i.e., a novel meme in the
+from both the training and test split of our reorga-                                 test split of that dataset (see Figure 5).
+nized datasets. We then manually inspected the                                          Meme knowledge We again opted for nearest
+memes, looking for overlapping templates, tem-                                       neighbor indexing as a similarity measure and for-
+plate references, or meme-related artifacts. We did                                  malize this as a ranking task, where we first create
+this under all four thresholding techniques, where                                   a template reference, ref = f (XKY M KB ).
+the CLIP encoder was ViT-L/14@336px.
+   Under TSplitmax and TSplitmedian , we observed                                       Dataset knowledge To learn a dataset’s la-
+that certain templatic characters, such as Pepe the                                  beling scheme, we encode the training data,
+Frog, appeared in both splits. Pepe was present in                                   querytrain = f (Xtrain ), and query our index, se-
+another base template as well as in a non-templatic                                  lecting the closest template and recording the label
+meme, but no single template appeared across both                                    for each training instance. TLC then reduces each
+splits. In contrast, under TSplitmean , we noted sim-                                   23
+                                                                                           https://knowyourmeme.com/memes/picardia-thu
+ilar templatic characters and observed one over-                                     mbs-up-emoji-man
+                                                                                        24
+lapping template, Picardía / Thumbs Up Emoji                                               https://knowyourmeme.com/memes/spider-man-p
+                                                                                     ointing-at-spider-man
+
+                                                                              10458
+                                                             Nearest neighbor
+           1   Is This a Pigeon?                        1                                                      3
+                                                                    3              Aggregate                               2
+           2   Drakeposting           Template
+                                                               Z                                                      Z
+           3   Mocking SpongeBob      indices
+                                                                               1     pos, neg, neg
+
+                                                        2                      2     neg, pos, pos             1                      neg
+                                                                                                                                  1
+                                                                                     neg, neg, neg
+                                                                               3                                                  2   pos
+                                                                                                                                      neg
+                                                                                                                                  3
+                   Z               Representation              Z                                                      Z
+                                   vector
+                                                                                     1   neg
+
+                                                                                     2   pos
+                                                                         neg
+                CLIP               Encoder                                           3   neg                                   Drakeposting
+                                                             CLIP                                                   CLIP         2 → pos
+                                                                                   most frequent                                return pos
+
+
+                                                                           label
+
+
+
+
+               KYM Data                                     Train Data                                             Test Data
+
+         (1) Compute representations                (2) Find closest entry in KYM,                    (3) Find nearest neighbor in KYM
+         from KYM using CLIP and save               aggregate training labels to entry and            from test set, lookup assigned
+         each entry to a list                       reduce to most frequent label per entry           label and return answer
+
+Figure 5: TLC encodes the KYMKB and computes a nearest neighbor index. We then encode the training data
+and query our lookup, recording each template’s most frequent class. We query the index and assign the closest
+template’s label to test samples. As an example, we use pos and neg as labels for a sentimental analysis task.
+
+
+index (template) to the most frequent label:                                   text and the image representations vote separately
+                                                                               and we then aggregate. After the hyperparameter
+     arg max count(rank(ref, querytrain ))                                     values are set, TLC is deterministic (see Appendix
+        ref
+                                                                               A.5). Note that TLC is reliant on the KYMKB.
+Here our rank function sorts entries in the
+KYMKB in ascending order based on their Eu-                                    A.4             Classification Experiments
+clidean distance from a query vector.
+                                                                                  Baselines and experimental setup We test
+   Testing meme and dataset knowledge The                                      various versions of TLC on six meme classification
+final step is to encode test data, querytest =                                 datasets: FigMemes with seven labels of differ-
+f (Xtest ), and then query our lookup. We then                                 ent types of figurative language, MultiOff a binary
+assign the most frequent label for a template to                               dataset where the labels can be offensive or non-
+a test instance, ŷ = rank(ref, querytest ). If we                             offensive, Memotion 3, where Task A has three
+find a template not seen during training, we backoff                           labels for sentiment analysis and Task B has four
+to the most frequent label in the training data.                               for different types of emotion, and MAMI with
+                                                                               Task A being binary misogyny detection and Task
+   Hyperparameter values TLC has the option
+                                                                               B having four labels with different types of misog-
+to ignore the meme itself and instead to match the
+                                                                               yny being expressed (see Tables 18 and 19). We
+about section of templates to the OCR text of a
+                                                                               choose these datasets because they were made to
+novel meme. Alternatively, we can choose to con-
+                                                                               address the issue of harmful meme detection and to
+sider base templates or also examples for encoding
+                                                                               frame our analysis of meme templates in the light
+knowledge about the meme. Multiple neighbors
+                                                                               of this important goal. Our baseline is a majority
+can be searched over, selecting the most common
+                                                                               class classifier. Each dataset used Google Vision to
+template or label among them. We can also use
+                                                                               provide OCR text overlaid on memes.25
+multiple modalities, combining the about section
+from the template/example and the OCR text, re-                                   Results and Discussion Table 11 shows our
+spectively, with the template and the novel meme                               results. We display the best-performing version of
+embeddings. We experimented with concatenating                                 TLC, comparing embedding text versus templates
+the CLIP embeddings of both modalities, fusing                                 versus templates and examples. We also show the
+via the Hadamard product, normalizing and averag-                              best result from previous work, where a PLM was
+ing the two modalities as the final input vector (Yu
+et al., 2023), and a type of late fusion, where the                                    25
+                                                                                            https://cloud.google.com/use-cases/ocr
+
+                                                                         10459
+         Method                       MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MAMI (A)   MAMI (B)
+         Majority                      37.92          21.5            72.59          5.72       33.33      18.2
+         Best previous: text only       54.0          NA               NA           34.06       83.0       NA
+         Best previous: vision only     24.0          NA               NA           47.69       85.0       NA
+         Best previous: vision+text     50.0         33.28            74.74         46.69       83.4       73.1
+         TLCT ext                      51.83          35.4             77.6         21.14       61.86      35.93
+         TLCT emplates                 61.89         37.77            79.89          29.8       69.24      39.99
+         TLCT emplates+Instances       58.58         37.04            80.49         28.97        70.0      40.21
+
+Table 11: Classification results for the best-performing version of TLC (in bold) compared against the best
+performing method from the related work (in italics). Instances refers to template examples in the KYMKB. See
+Section A.7 for TLC hyperparameter configurations and Appendix A.13 for modelling information from previous
+work.
+
+
+fine-tuned on OCR text, the meme itself, or a mul-                 fied in the datasets or by reading the paper. Fig-
+timodal representation of the two. TLC beats our                   ure 1 in FigMemes shows an example of a visual
+majority class classifier, but this baseline is com-               metaphor/simile, which is a picture, not a meme
+petitive a fine-tuned PLM for Memotion 3 (B).                      (see (f)).
+   TLC’s performance consistently improves as we                      In Figure 1 of MAMI, all examples are not
+consider more modalities. Encoding the about sec-                  templatic memes and are understandable without
+tion of a template and the OCR text from a novel                   knowledge of memes (see Figure 6).This is sup-
+meme is strong on its own, especially in the case                  ported by our template-meme analysis, where we
+of Memotion 3. As we add template and meme                         saw that a large percentage of memes in MAMI are
+images, the performance improves by more than                      unrelated to templates (see Section 4).
+ten points for MultiOff. We find that concatenat-
+ing the image and the text modalities tends to be                  A.5    Template-Label Counter details
+the strongest TLC configuration, supporting our                    In this Appendix section, we provide additional
+hypothesis that the base semantics of a meme is                    details about TLC that could not be provided in
+explained in the about section, but is also captured               the main text due to space limitations. For TLC,
+by the template. We can naturally obtain a bet-                    each template is associated with an array of ob-
+ter representation of the exact meaning by using                   served training labels derived from instances of
+meme-specific information from OCR.                                that template. This array is then reduced to the
+   The base template is sufficient to encode meme                  most frequently occurring label, which serves as
+knowledge and is more efficient than also embed-                   the template’s representative label. When the same
+ding examples. For MultiOff, we see a boost of                     template appears again, such as in the test data, this
+more than two points when we only consider tem-                    representative label is assigned to any novel memes
+plates. In other cases, TLCT emplates is within one                associated with the template. There are actually
+point if not higher than TLCT emplates+Instances .                 multiple ways we can go about voting if we con-
+Encodng one-tenth of the available images re-                      sider multiple neighbors. First, we could consider
+sults in a strong model, demonstrating that meme                   multiple templates and then take their most com-
+datasets can be instances of the KYMKB templates.                  mon label, only keeping and recording that label.
+   In the case of Memotion 3 and MultiOff, our ap-                 We refer to this as template vote. In cases where
+proach is a stronger method than fine-tuning a PLM.                we only consider templates and not examples, this
+We further note that meme templates cross cul-                     would mean often backing off to the most majority
+tural and linguistic boundaries, as indicated by our               class in the dataset because we will find distinct
+strong performance on both Memotion 3 datasets, a                  templates. Alternatively, we could keep all labels
+multilingual dataset of memes in Hindi and English.                for a given template and then reduce to its most
+Templates give us multilinguality for free.                        frequent label, which we refer to as label vote. We
+   TLC assumes memes belong to a template,                         consider all cases. We find that the template style
+but our prediction has no meaning for a picture                    of voting is the strongest and it is about this config-
+(which is not a meme). Many meme datasets                          uration that we report results. The only exception
+are not curated to remove non-memes, contain-                      to this is MAMI, where we found label vote to be
+ing both memes and images. This can be veri-                       the best configuration. This finding is intuitive be-
+
+                                                             10460
+cause MAMI is composed largely of memes which                It is unsurprising that TLCnorm is the strongest
+are not templatic and therefore it is the label signal,   performer for both tasks of Memotion 3, as this
+not the template signal, which is most beneficial         dataset contains many templatic memes and TLC
+for classification. As we are not dealing with prob-      was already a strong performer here. FigMemes
+abilities but with a majority, this is reflected in our   continues to be a difficult dataset with a complex
+late fusion implementation. We use label vote for         labeling scheme which requires fine-tuning to be
+both the template and its about section, combine          performant. All versions of TLC continue to strug-
+all their labels, find the most common between the        gle with MAMI, which we attribute to the low ratio
+two, and keep that label as the final prediction for      of templatic memes in this dataset.
+a given template. If we come across a template
+not featured in the training data, we back off to the     A.7   Additional classification results
+most frequent label in the training split. For the        In this section, we provide additional results from
+datasets we explored, our implementation of late          our experiments that could not be put into the main
+fusion was not a strong performer. This is intuitive      text due to space limitations. Each table contains
+because, as we have shown, using text represen-           the results for a different type of modality or combi-
+tations is not as strong as image representations.        nation of modalities. Namely, we keep the modali-
+Voting independently and then aggregating both            ties separate, we concatenate the embeddings, we
+modalities weakens image performance and is not           fuse the embeddings via an element-wise product,
+as strong as other multimodal methods.                    or we normalize and average the embeddings. In
+   Additionally, in FigMemes, the authors tried           each setting, we search over one to five neigh-
+many different models, for example, fine-tuning           bors as described in Section A.4. In the tables
+BERT (Devlin et al., 2019), which yielded a macro-        below, we present results organized by encoder,
+averaged F1 of 32.62. TLCT emplates is competitive        different CLIP models, namely ViT-L/14@336px,
+with this model, but far cheaper. In Table 3 from         ViT-B/32, and ViT-B/16,26 organized in each ta-
+their work, we see a great deal of variation, demon-      ble in that order and also by the number of neigh-
+strating the difficulty of the task.                      bors used for voting. The best configuration was
+                                                          chosen for Table 11 in the main text. Note that
+A.6 Template Label Counter: Out of                        TLCAbout/OCR is only present in cases where the
+    Distribution                                          modalities are not combined, because in the other
+TLC’s main drawback is its assumption that an in-         cases text embeddings are combined with the tem-
+put meme or image is employs a meme template.             plate or the meme embeddings.
+In order overcome this, we add an additional imple-          We find that ViT-L/14@336px usually results in
+mentation of TLC that uses the same notion of tem-        the strongest performer, consistent with our find-
+plateness as TSplit. That is, if the meme exceeds         ings with TSplit, but there are exceptions. In the
+the maximum distance between template and exam-           case of MultiOff and Memotion 3 (B) and Memo-
+ples, we declare it non-templatic. In this case, we       tion 3 (A), for example, ViT-B/16 and ViT-B/32, re-
+back off to the most common label in the training         spectively, were the best backbones for our method.
+data or randomly choose a label from the training            It is only in cases where we consider both tem-
+data, which we refer to as TLCmaj and TLCrand ,           plates and examples (TLCT emplates+Instances ) that
+respectively. We compare this out of distribution         neighbor voting improves the final prediction. We
+implementation against making a prediction that           believe that this is an intuitive finding for two
+assumes all memes are templatic, which we refer           reasons: (i) similar templates have unique, but
+to as TLCnorm . This implementation also allows           broad semantics and convey concepts with related
+for more traditional hyperparameter search. We            emotion charges, e.g., negative or positive senti-
+ran extensive experiments with these alternative          ment. Therefore, templates that are similar would
+models, where we again examined performance               be nearby in the feature space. And (ii) template
+with different encoders, number of neighbors, and         instances are many, conveying a specific mean-
+combinations of features. Table 12 shows our re-          ing, and can be noisy or combinations of distinct
+sults, where we show performance on the test set          templates, as we demonstrated in Section 4. This
+based on best performance on the validation data.         crowded and noisy feature space results in neigh-
+If a validation split did not exist, we created one by       26
+                                                                https://github.com/openai/CLIP/blob/main/cli
+sampling 20% of the training data.                        p/clip.py
+
+                                                     10461
+         Method     MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MAMI (A)    MAMI (B)
+         TLCnorm     37.92         28.73            79.14         9.79        43.24        37.6
+         TLCmaj      52.78         18.88             77.6          9.08       52.92       29.89
+         TLCrand     54.2          24.25            78.43         15.84       48.66       28.91
+
+Table 12: Classification results for the best-performing versions of TLC OOD and TLCnorm (in bold) compared
+against each other.
+
+
+bors that may be nearby markedly different tem-
+plates.
+   We compute all evaluation measures using scikit-
+learn twice, where we set zero division equal to
+zero and to one, taking the max result between the
+two. We do this to avoid cases with zero in the de-
+nominator which can happen when precision (true
+positive + false positive) or recall (true positive +
+false negative) is equal to zero. This would make
+the f-score undefined. However, it is possible that
+this results in a sample-averaged F1 of 1.00 if we
+make no predictions for a given label, artificially
+inflating the weighted- or macro-averaged F1 score.
+In this case, we report the lower value.
+   In the earlier version of our work, we considered
+MEMEX in the main text, but removed it as it is no
+longer relevant to our analysis. However, we keep
+the results here for transparency.
+
+
+
+
+                                                   10462
+ Method                        MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MEMEX    MAMI (A)   MAMI (B)
+ ViT-L/14@336px
+ TLCAbout/OCR 1                 44.43         27.12            76.58         21.14      46.02     60.43      35.19
+ TLCT emplates 1                54.75         30.72            78.35         28.67      44.22     65.05      39.61
+ TLCT emplates+Instances   1    58.58         34.59            76.91         27.99      43.01     67.44      38.92
+ TLCT emplates+Instances   2    38.9          31.77            73.95         15.09      41.25     43.28      22.27
+ TLCT emplates+Instances   3    43.56         32.15            74.49         18.54      41.11     51.51      26.05
+ TLCT emplates+Instances   4    48.29         32.39            74.92         21.68      42.45     56.78      27.93
+ TLCT emplates+Instances   5    45.66          33.0            75.65         23.05      43.87     60.89      32.73
+ ViT-B/32
+ TLCAbout/OCR 1                 48.29         27.06             77.6         20.86      43.56     58.7        33.8
+ TLCT emplates 1                48.15         35.79            77.51         24.68      43.01     59.31       37.5
+ TLCT emplates+Instances   1    48.33         28.68            76.74          28.4      43.64     63.68      38.35
+ TLCT emplates+Instances   2    39.19         31.67            73.96         11.21      42.12     39.44      22.14
+ TLCT emplates+Instances   3    40.94         32.63            75.13         15.44      42.12     45.71      23.87
+ TLCT emplates+Instances   4    43.92          33.4            75.21         18.57      42.12     48.57      26.67
+ TLCT emplates+Instances   5    43.2          34.1             75.81         21.04      42.12     52.3       29.74
+ ViT-B/16
+ TLCAbout/OCR 1                 51.83          35.4             76.2         20.29      46.25     59.04      35.44
+ TLCT emplates 1                42.68         33.33            78.36         26.32      43.01     63.68      37.99
+ TLCT emplates+Instances   1    51.32         36.42            78.13         26.87      43.71     63.31      37.34
+ TLCT emplates+Instances   2    39.19         31.69            74.15         13.16       40.7     41.66      24.05
+ TLCT emplates+Instances   3    39.99         51.58            74.56         15.95      42.25     48.43      27.21
+ TLCT emplates+Instances   4    41.76         32.08            74.79         19.18      42.55     54.72      29.63
+ TLCT emplates+Instances   5    42.3          32.45            75.11         22.27      42.55     56.98      32.23
+
+
+Table 13: TLC classification results where the text and the image modalities are kept separate. The results are
+organized by encoder and the number of neighbors used for voting.
+
+
+
+
+ Method                        MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MEMEX    MAMI (A)   MAMI (B)
+ ViT-L/14@336px
+ TLCT emplates 1                43.64         37.77            77.51         25.04      44.56     65.29      39.99
+ TLCT emplates+Instances   1    45.29          28.5             78.6         23.81      41.07     69.09      38.07
+ TLCT emplates+Instances   2    38.9          26.04            74.09         14.15      43.47     50.47      23.67
+ TLCT emplates+Instances   3    43.2          27.07            75.57         18.24      42.88     54.58      27.92
+ TLCT emplates+Instances   4    48.78          28.4            77.39         21.42      43.15     57.19      31.76
+ TLCT emplates+Instances   5    48.74         29.18            77.36         23.53      43.33      60.4      34.74
+ ViT-B/32
+ TLCT emplates 1                52.56         27.62            76.35         26.59      44.84     60.42      37.87
+ TLCT emplates+Instances   1    51.35         29.75            77.32         25.75       42.4     64.1       37.51
+ TLCT emplates+Instances   2    41.61         33.02            74.95         12.99       40.7     46.44      23.86
+ TLCT emplates+Instances   3    46.59         34.4             75.56         17.83      43.58     53.05      28.68
+ TLCT emplates+Instances   4    52.24         34.45            76.25         19.59      42.38     57.71      31.84
+ TLCT emplates+Instances   5    53.09         32.86            76.24         22.47      42.86     58.51      33.42
+ ViT-B/16
+ TLCT emplates 1                61.89         34.65            76.56         25.74       41.3     61.59      38.41
+ TLCT emplates+Instances   1    53.98         35.76            78.65         23.65      43.77     62.33      37.09
+ TLCT emplates+Instances   2    47.01         32.6             74.75         13.16       40.7     48.06      24.14
+ TLCT emplates+Instances   3    49.07         33.44            76.06         18.48      43.37     53.84      29.29
+ TLCT emplates+Instances   4    49.06         27.28            76.89         19.54      42.12     57.64      31.2
+ TLCT emplates+Instances   5    50.83         35.28            77.62          20.8       43.0     59.78      33.17
+
+
+Table 14: TLC classification results where the text and the image modalities are concatenated. The results are
+organized by encoder and the number of neighbors used for voting.
+
+
+
+                                                           10463
+ Method                        MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MEMEX    MAMI (A)   MAMI (B)
+ ViT-L/14@336px
+ TLCT emplates 1                43.13         30.56            79.89         19.44      44.99     54.06      33.43
+ TLCT emplates+Instances   1    51.26         36.48            80.17         18.76      48.14     57.99       35.4
+ TLCT emplates+Instances   2    43.92         32.63            74.78         25.76      41.05     39.91      22.27
+ TLCT emplates+Instances   3    38.71         33.2             75.63         13.02       40.9     45.13      23.82
+ TLCT emplates+Instances   4    45.46         33.65            77.22         13.14      40.86     48.21      26.38
+ TLCT emplates+Instances   5    45.32         35.93            77.06         15.24       41.1     48.2       27.89
+ ViT-B/32
+ TLCT emplates 1                49.68         26.88            78.62         21.37      42.97     60.68      31.73
+ TLCT emplates+Instances   1    52.83         27.36            78.05         18.46       44.6     53.11      32.84
+ TLCT emplates+Instances   2    41.57         32.26            74.59         41.83      41.05     38.81      20.13
+ TLCT emplates+Instances   3    42.29         29.95            75.32         27.24      41.05     42.97      22.96
+ TLCT emplates+Instances   4    45.85         30.74            75.04         28.97       41.5     45.77      25.36
+ TLCT emplates+Instances   5    45.25         33.82            74.82         14.72      43.66     46.01      26.24
+ ViT-B/16
+ TLCT emplates 1                49.29         29.56            77.35         19.57      43.47      56.3      32.81
+ TLCT emplates+Instances   1    50.09         29.52            80.49         19.64      43.49     54.18      33.51
+ TLCT emplates+Instances   2    44.65         25.71            74.48         41.26       40.7     36.84      20.67
+ TLCT emplates+Instances   3    48.14         32.56            75.89          9.84       40.7     41.12      22.95
+ TLCT emplates+Instances   4    50.02         34.14            76.36          12.0      41.52     46.16      24.85
+ TLCT emplates+Instances   5    47.44         33.78            75.96         14.44      42.12     47.78      26.11
+
+
+Table 15: TLC classification results where the text and the image modalities are fused via the Hadamard product.
+The results are organized by encoder and the number of neighbors used for voting.
+
+
+
+
+ Method                        MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MEMEX    MAMI (A)   MAMI (B)
+ ViT-L/14@336px
+ TLCT emplates 1                48.72         27.81            76.88          29.8       44.4      62.7      37.77
+ TLCT emplates+Instances   1    52.89         37.04            77.58          25.5      46.01     63.01      36.57
+ TLCT emplates+Instances   2    46.48         33.06            75.84         16.43      44.21     51.55      27.12
+ TLCT emplates+Instances   3    40.96         26.11            75.96         18.78       45.2     58.25      30.93
+ TLCT emplates+Instances   4    46.07         26.63             75.5         22.08      45.52     61.23      32.41
+ TLCT emplates+Instances   5    47.9          25.99            77.13         23.45      45.36     62.79      33.83
+ ViT-B/32
+ TLCT emplates 1                57.09         33.55            78.04         25.07      42.45     60.65      35.95
+ TLCT emplates+Instances   1    49.07         35.22            77.75         23.36      43.99     63.21      36.96
+ TLCT emplates+Instances   2    43.2          32.18            74.07         13.71      41.1      50.66      28.94
+ TLCT emplates+Instances   3    42.12         32.55            75.27         16.76      42.15     56.41      28.41
+ TLCT emplates+Instances   4    41.71          25.7            75.96          19.2      42.31      59.1      32.54
+ TLCT emplates+Instances   5    44.02         25.37            76.46         20.08      42.93     63.12      33.12
+ ViT-B/16
+ TLCT emplates 1                47.54         34.57            75.15         24.39       42.6     64.43      38.72
+ TLCT emplates+Instances   1    47.7          27.46            78.59         24.04      42.82     61.49      35.41
+ TLCT emplates+Instances   2    50.02         33.25            74.88         13.41      43.84     51.08      24.79
+ TLCT emplates+Instances   3    44.36         32.12            76.03         18.93      43.97     56.67      28.13
+ TLCT emplates+Instances   4    49.19         25.41            76.11         20.61      44.34     58.51      30.04
+ TLCT emplates+Instances   5    49.22         33.77            77.29          22.0      44.34     59.34      32.06
+
+
+Table 16: TLC classification results where the text and the image modalities are normalized and averaged. The
+results are organized by encoder and the number of neighbors used for voting.
+
+
+
+
+                                                           10464
+Method           MultiOff   Memotion 3 (A)   Memotion 3 (B)   FigMemes   MAMI (A)   MAMI (B)
+TLCbest           61.89         37.77            80.49          29.8       70.0       40.21
+TLCT Split   1    37.12          22.8            70.93          5.96       29.5       18.08
+TLCT Split   2    49.27          29.7            72.84         15.86       63.82      28.54
+TLCT Split   3    45.05         32.08            76.75         21.46       69.12      32.99
+TLCT Split   4    51.81          28.8            74.78         28.67        75.2      37.53
+TLCT Split   5    48.7          31.62            77.39         29.55       75.73      37.35
+
+                                                                                               Figure 6: Examples of non-template images found in
+Table 17: TLC classification results after TSplit prepro-                                      FigMemes.
+cessing (the highest result is in bold).
+
+                                                                                               A.9      Non-Templatic Memes
+A.8 TSplit then TLC                                                                            In this Appendix section, we provide examples
+In this Appendix section, we present TLC results                                               of images/memes which we consider to be non-
+after preprocessing via TSplit (see Table 17). We                                              templatic (see Figure 6). The first and third exam-
+searched over one to five neighbors, using only the                                            ples are a visual joke and pun respectively. The first
+base template. We took a tolerant view of what                                                 does make reference to the Doggo27 and language
+constitutes a template instance, using TSplitmax .                                             from the Cheezburger28 templates. The second is a
+   TLC assumes all memes are templatic and re-                                                 still from a .gif that references the film The Sword
+lies on the template signal, assuming that the most                                            in the Stone29 and can actually be found on KYM.
+common label for a given template in the training                                                 This is a bit of an edgecase, but we believe this
+data is the correct label for an instance of that tem-                                         communicates the idea of confusion or realization
+plate in the test data. However, TSplit ensures that                                           triggered by the text above the image, which is in-
+templates do not overlap between dataset splits, ef-                                           terpretable without knowledge of a template. The
+fectively removing TLC’s predictive power. Under                                               fourth example is arguably not a meme and we
+these conditions, TLC is far more likely to assign                                             actually are not sure of the interpretation without
+the wrong template and therefore likely the wrong                                              additional context. A possible reading, given the
+label.                                                                                         domain of FigMemes, is a criticism of users who
+   When a dataset contains many templatic memes,                                               comment on YouTube, forcing their views of so-
+such as Multioff or Memotion 3, we see that TLC’s                                              cial norms on the politically incorrect, but this a
+performance drops markedly, even if we consider                                                forced interpretation. The fifth example is a still
+additional base templates (additional neighbors).                                              from the movie Tremors II: Aftershock, where the
+However, when a dataset does not contain as many                                               image is the correct character but the text is quoted
+templatic memes, MAMI, or is very difficult, Fig-                                              anachronistically from another part of the film. All
+Memes, the effect on performance is not as dra-                                                information relevant to the scraping process is pre-
+matic, and voting with multiple templates allows                                               served in a .json file, linking templates to their
+us to achieve similar if not improved performance                                              examples (see Figure 7).
+relative to the best performing version of TLC from
+Table 11. In the case of MAMI, this is because                                                 A.10      Scraping details
+TLC alone was already assigning templates erro-                                                We use WM for all scraping and use the most recent
+neously most of the time. For FigMemes, this is                                                snapshots available. We first visit the main page
+due to the difficulty of the task, where assigning                                             of KYM on WM with Selenium30 and autoscroll
+a fixed interpretation for a given template is too                                             through the entire meme table. We collect and
+simple an approach for a nuanced labeling system                                               write .htmls files for each cell in the template table.
+(see Section A.13) and also a nuanced means of                                                 We then process the .html files, parsing each meme
+communication like memes.                                                                      template and collecting the text appearing in the
+   We searched over one to five neighbors and in-                                              table with Beautiful Soup.31 We collect all urls
+clude the best TLC results from Table 11 for refer-                                            seen and write them to a .json file. This ensures
+ence. Performance suffers when a dataset is highly                                             that we do not revisit seen pages if the scraper is
+templatic, while it is not as affected or even im-                                                27
+                                                                                                       https://knowyourmeme.com/memes/doggo
+proves when the dataset does not contain as many                                                  28
+                                                                                                       https://knowyourmeme.com/memes/sites/cheezbu
+templatic memes. ViT-L/14@336px was used as                                                    rger
+                                                                                                  29
+                                                                                                     https://en.wikipedia.org/wiki/The_Sword_in_t
+the CLIP encoder.                                                                              he_Stone
+                                                                                                  30
+                                                                                                     https://selenium-python.readthedocs.io/
+                                                                                                  31
+                                                                                                     https://beautiful-soup-4.readthedocs.io/en/l
+                                                                                               atest/
+
+                                                                                         10465
+        {Template title: Is This a Pigeon?                                                                      {Template title: Mocking SpongeBob
+                                                        {Template title: Drakeposting
+        About: …                                                                                                About: …
+                                                        About: …
+        Origin: …                                                                                               Origin: …
+                                                        Origin: …
+        URL: www….                                                                                              URL: www….
+                                                        URL: www….
+        Example URLs: {www..., www…,www …}                                                                      Example URLs: {www..., www…,www …}
+                                                        Example URLs: {www..., www…,www …}
+        Template image local directory: …                                                                       Template local directory: …
+                                                        Template image local directory: …
+        Example images local directory:{…, …, …}                                                                Examples local directory:{…, …, …}
+                                                        Examples image local directory:{…, …, …}
+        etc}                                                                                                    etc}
+                                                        etc}
+         Templates
+                                                   template information linked to
+                                     info.json                                              template/examples
+                                                   templates and examples
+
+         Examples
+
+
+
+
+Figure 7: The KYMKB records all textual information about a meme in a .json file, including the text found
+on KYM, the URLs used in the scraping process, and local locations of all template and example images in the
+knowledge base.
+
+
+interrupted and it very likely will be. To collect                                For example, FigMemes was collected from 4chan
+template instances (examples), we look at each                                    /pol/, and by investigating cluster centroids we unin-
+image url and determine if WM has a snapshot                                      tentionally arrived at the /pol/ template. We empha-
+available and collect the image and write to disk if                              size that we did nothing but consider the template
+it exists. Again, we record all visited urls to avoid                             closest to a centroid and arrive at a template we
+revisiting and associate each image with its parent                               ourselves were previously unaware of. Details can
+template see Figure 7.                                                            be found below.
+   WM’s snapshots of the Internet are incomplete,
+                                                                                     Retrieval Here we provide further examples
+making it impossible to completely capture KYM
+                                                                                  and details regarding the retrieval-based examina-
+via WM; of the roughly 8,400 confirmed entries at
+                                                                                  tion of the KYMKB from the main text, Section 4.
+the time of writing, we were only able to scrape
+                                                                                  After querying the 500 closest neighbors, we then
+5,220. However, we are passionate about memes
+                                                                                  randomly select k pairs, where k is equal to the
+and we are devoted to making the KYMKB as com-
+                                                                                  number of labels in a given dataset. The pairs, as
+plete as possible. We therefore release all our scrap-
+                                                                                  in the main text, are composed of the template and
+ing code such that other members of the commu-
+                                                                                  its nearest neighbor in the dataset. For conciseness,
+nity can contribute to and improve meme analysis
+                                                                                  we only consider FigMemes here as it is a difficult
+grounded in templates.
+                                                                                  dataset with the most labels.
+A.11 More template-meme analysis                                                     Figure 8 shows a sample of our findings. Com-
+In this Appendix section, we showcase additional                                  bining embeddings via fusion or normalizing and
+examples of how the KYMKB can be easily used                                      averaging the vectors results in matches where the
+with simple, well-known algorithms, such as near-                                 relation between a template and a meme is nuanced
+est neighbor indexing and k-means clustering to                                   or nonexistent.
+gain insight into a meme dataset. Specifically, we                                   We again find that either only considering the
+can use retrieval to examine how well templates in                                image modality or concatenating the image and the
+our knowledge base map onto memes in a dataset.                                   text representations results in the strongest signal,
+Often we find that the memes in a dataset are simply                              and indeed, using this configuration for retrieval
+the base templates or examples already contained                                  makes it difficult to appear as though we are not
+in the knowledge base. We argue that examination                                  cherry-picking. We clearly match either a base tem-
+of cluster centroids yields insight into which tem-                               plate to a meme or a base template to an obvious
+plates best reflect the type of memes in a dataset.                               instance of that template. In cases when it is not
+
+                                                                         10466
+                  Figure 8: KYMKB templates matched via similarity search to FigMemes images.
+
+
+so obvious, we match text or characters, such as                     Clustering In order to investigate the saliency
+Why So Serious or the Joker,32 or concepts that ex-               of templatic memes in the context of meme
+ist in only meme or Internet culture. For example,                datasets, we conduct distance-based clustering us-
+consider the first column under the concatenation                 ing KMeans where we fit the algorithm on both
+setting in Figure 8. We observe the character of                  the KYMKB, with or without examples, and on
+Wojak in the I Support the Current Thing meme                     the dataset in question, encoding all memes using
+template,33 34 a template that criticizes social me-              CLIP. We then manually examine the closest meme
+dia users for being a simpleton or lacking critical               or template to each centroid, respectively. We set k
+thinking skills. We match this template to a meme                 to be equal to the number of labels in each dataset
+criticizing Trump supporters for the same faults, de-             (see Table 18). Here, for conciseness, we consider
+spite drastically different appearances. In the sixth             only templates and FigMemes, as we consider it a
+column, we match the template of White Knight                     difficult dataset and it has the most labels/.
+to an image that derides White Knighting.35 This                     Figures 9 and 10 show a sample of our results.
+template and its entry in the KYMKB provide suffi-                If we attempt to combine the image and the text
+cient background to interpret the FigMemes image,                 embeddings, either via fusion or normalization and
+which is arguably not even a meme. Finally, in the                averaging, we find that this often results in repeated
+seventh column, we match the template of /pol/ to                 images, that is, a meme or a template is close to
+a meme obviously about the 4chan board.36 We                      multiple centroids. However, if we concatenate the
+share this information not to explain memes, but                  embeddings or only use the images representation,
+to demonstrate the ease and the power of using the                we find that we are left with centroids that point to
+KYMKB to retrieve information about not only                      k distinct image files, where k is again equal to the
+memes, but also images related to Internet culture.               number of labels in a given dataset: seven in the
+If one is not familiar with these concepts, it is diffi-          case of FigMemes.
+cult to even know what to search for; however, this                  Naturally, when we consider centroids fit on
+is different with KYMKB.                                          KYMKB, their closest meme in FigMemes reflects
+                                                                  the nature of that dataset. These memes express
+    32
+       Note that this text and character have taken on lives on
+                                                                  sexist or politically charged, but still toxic rhetoric,
+their own in meme culture. https://knowyourmeme.com/m             which 4chan /pol/ is known for. Somewhat sur-
+emes/why-so-serious
+    33
+                                                                  prisingly, when we determine the centroids from
+       https://knowyourmeme.com/memes/npc-wojak
+    34                                                            the dataset and query the closest template in the
+       https://knowyourmeme.com/memes/i-support-the
+-current-thing                                                    KYMKB, we again see the nature of the dataset
+    35
+       https://knowyourmeme.com/memes/white-knight                reflected, where we had expected to be met with
+    36
+       https://knowyourmeme.com/memes/sites/pol
+
+                                                             10467
+Figure 9: In the first row, we show the templates closest to seven KMeans centroids fit on the FigMemes, while in
+the second row, we show FigMeme images closest to seven centroids derived from KYMKB. We combine the text
+and the image representations by normalizing and averaging the two modalities. This results in multiple centroids
+close to the same meme/template.
+
+
+
+
+Figure 10: In the first row, we show the templates closest to seven KMeans centroids fit on the FigMemes, while in
+the second row, we show FigMeme images closest to seven centroids derived from the KYMKB. We only use the
+image modality, which results in seven distinct images.
+
+
+potentially political, but not toxic templates. The re-    KYMKB that defy the narrow scope of memes
+sulting image files express salient traits of derision,    being static images. The templates we discuss are
+sexism, or conservative political beliefs. Interest-       by no means exhaustive and we provide this section
+ingly, if we combine modalities or only consider           purely as additional motivation for our argument
+image representations, one meme centroid is clos-          that the AI community must not limit itself simply
+est to the same template in both cases, that is the        to static images.
+Is He /Our Guy/? template.37 This 4chan-specific              One of the oldest templates is Rickroll,38 which
+template is used to confirm whether a celebrity            can involve posting an image of Rick Astley from
+shares similar beliefs as the “politically incorrect”      the Never Going to Give You Up music video,39
+community, e.g., supporting Nazism. It is surpris-         but more frequently an instance of this template
+ing that an examination of centroids in this way           is a bait-and-switch prank where posters trick oth-
+provides such a succinct summary of the domain             ers into viewing the music video. This has since
+of the dataset.                                            evolved where the prank is now to trick others into
+                                                           stating the title of the song.40 We would argue this
+   Annotation In this Appendix section, we pro-
+                                                           is an intertextual meme instance referencing the
+vide additional details on the annotation conducted
+                                                           Rickroll template.
+in Section 4. Our annotators were two colleagues
+                                                              Loss41 is another famous template where an in-
+of ours that are knowledgeable about memes. They
+                                                           stance is an action, not an image. The template
+were warned that the template-meme pairs might
+                                                           is a reference to the Ctrl+Alt+Del Comic42 gam-
+be offensive.
+                                                           ing webcomic, which made an uncharacteristically
+A.12 Meme “edge cases”                                        38
+                                                                 https://knowyourmeme.com/memes/rickroll
+Below, we provide a discussion and background                 39
+                                                                 https://www.youtube.com/watch?v=dQw4w9WgXcQ
+                                                              40
+on examples of meme templates contained in the                   https://knowyourmeme.com/photos/1901413-ric
+                                                           kroll
+     37                                                       41
+          https://knowyourmeme.com/memes/is-he-our-g             https://knowyourmeme.com/memes/loss
+                                                              42
+uy                                                               https://cad-comic.com/
+
+                                                     10468
+Figure 11: The first image is the original template of Loss, while the other three images are Loss instances, all
+of which are visual puns that cannot be understood without knowing the original template. The second image is
+another intertextual meme where Loss and Is This a Pigeon? have been amalgamated.
+
+
+serious update about a miscarriage. The idea that          their respective label inventories, distributions, and
+this webcomic could approach such a serious topic          reported inter-annotator agreement scores. We also
+amused many social media users, and they began             provide information on the models reported in the
+mocking the strip by posting references to the panel       respective work. We do this for ease of reference
+as a joke, bringing it to its meme status. The strip       and simply reproduce reported information where
+was referenced so ubiquitously that the positions of       possible. When this information is not available,
+the characters in the strip, that is, one vertical line,   we report the information we are able to access.
+two vertical lines of different heights, two vertical         MultiOff is a binary classification task, offen-
+lines of the same height, and one vertical and one         sive (40%) vs. not offensive (60%), composed of
+horizontal line became an instance of this template.       memes related to the 2016 US Presidential Election.
+The phrase Is this Loss? became a meme by itself,          They report two Fleiss Kappas both before and af-
+as users wondered whether certain posts or memes           ter getting feedback from their annotators. The first
+were instances of the Loss template (see Figure 11).       is between 0.2 and 0.3 (fair agreement), while the
+   Instances of the Planking43 template is again           other, after feedback, is between 0.4 and 0.5 (mod-
+a behavior where a person lies flat on their stom-         erate agreement). Their text-based model is a com-
+ach with their arms to their sides in an unusual           bination of GloVe embeddings (Pennington et al.,
+place, has their photo taken, and uploads this for         2014) and a CNN, while their image-based model
+the amusement of others.                                   was VGG 16 (Simonyan and Zisserman, 2015) pre-
+   Another tricky template is that of Thinking Face        trained on ImageNet (Deng et al., 2009), and their
+Emoji.44 An instance of this template would be             multimodal method consistent of a stacked LSTM
+ironically or sarcastically posting a thinking face        (text) and VGG 16 (image) combined via early
+emoji. However, this could be simply using the             fusion.
+Unicode "U+1F914" or posting a picture of the                 Memotion 3 is composed of two multilabel tasks
+emoticon for extra emphasis.                               (A and B). The test split is not publicly available, so
+   A recent example of a meme that is not an image         we consider only the training and validation split.
+is the OOF / Roblox Death Sound template.45 An             Task A is sentiment analysis for memes, where la-
+instance of this template is featuring or remixing         bels can be very positive (5%), positive (26%), neu-
+the audio clip in videos or music, referencing an          tral (42%), negative (23%), or very negative (5%).
+amusing sound effect from the popular MMORPG               Task B considers memes with humorous (39%),
+Roblox.46 Players of this game found the audio             sarcastic (37%), offensive (19%), and motivational
+clip so amusing that it is referenced to suggest hu-       (5%) messages. They do not report inter-annotator
+morously express empathy for another’s misfortune          agreement scores, settling disagreements via major-
+and shared experience.                                     ity vote. This work reports only multimodal results,
+                                                           fusing and fine-tuning a BERT-based Hindi and
+A.13 Datasets and previous work details                    English model (Bhange and Kasliwal, 2020) for
+In this Appendix section, we provide additional in-        textual features and the ViT model (Dosovitskiy
+formation about the datasets we examined, such as          et al., 2021) for image features. Note that their test
+   43
+      https://knowyourmeme.com/memes/planking
+                                                           split is not public at time of writing.
+   44
+      https://knowyourmeme.com/memes/thinking-fac             FigMemes is a multilabel task of determining the
+e-emoji                                                    type of figurative language used in a meme. There
+   45
+      https://knowyourmeme.com/memes/oof-roblox-d          are seven labels, composed of Allusion (17%),
+eath-sound
+   46
+      https://www.roblox.com/                              Exaggeration (19%), Irony (20%), Anthropomor-
+
+                                                      10469
+ Dataset              Task                   Number of Labels       Size      Multilabel?   Multilingual?   Evaluation Measure
+ FigMemes             Figurative Language             7            5141          Yes            No                Macro-F1
+ MultiOff             Offensive Language              2             743          No             No                Macro-F1
+ MAMI Task A          Misogyny Detection              2             11k          No             No                Macro-F1
+ MAMI Task B          Types of Misogyny               4             11k          Yes            No               Weighted-F1
+ Memotion 3 Task A    Sentiment Analysis              3             10k          No             Yes              Weighted-F1
+ Memotion 3 Task B    Types of Emotion                4             10k          Yes            Yes              Weighted-F1
+
+                                  Table 18: Summary of the previous work we examine.
+
+ Dataset             Text Model     Vision Model                       Multimodal Model                              Agreement
+ FigMemes             DeBERTa          CLIP                                 CLIP                                          0.42
+ MultiOff            GloVe + CNN      VGG 16       Stacked LSTM + GloVe (text) / VGG 16 (image) (early fusion)   0.2 - 0.3 to 0.4 - 0.5
+ MAMI Task A             NA             NA              Ensemble of XGBoost + CLIP + UNITER + BERT                      0.5767
+ MAMI Task B             NA             NA              Ensemble of XGBoost + CLIP + UNITER + BERT                      0.3373
+ Memotion 3 Task A       NA             NA                    Hinglish BERT (text) / ViT (image)                    Majority vote
+ Memotion 3 Task B       NA             NA                    Hinglish BERT (text) / ViT (image)                    Majority vote
+
+Table 19: Continued summary of the previous work we examine. In the case of multimodal models, we provide them
+as text model / vision model. For agreement, we provide multiple scores to indicate that the researchers consulted
+their annotators, which led to an increase in agreement.
+
+
+phism (9%), Metaphor (20%), Contrast (10%), and                    (ICL) experiments using one completion and three
+None (30%) (see the work for more information).                    examples for text-only modality inputs, as the
+They report a Fleiss Kappa of 0.42, indicating mod-                model has not been trained to handle multiple input
+erate agreement. The authors fine-tuned DeBERTa                    images. We investigate the following scenarios,
+(He et al., 2021) for their text classifier and used               with and without RAG-style (Lewis et al., 2020)
+various CLIP fine-tuning strategies for their image                prompting:
+and multimodal experiments.
+   Task A in MAMI looks at whether memes are                           • Which input modality is the most useful? Text,
+misogynous or not. The task has a balanced binary                        image, or both?
+label distribution and the authors report a Fleiss-                    • Does providing a description of the labels in
+k of 0.5767. Task B examines different types of                          the prompt help? (i.e the meaning of "anthro-
+misogyny expressed in a meme. There are four                             pomorphic" in FigMemes)
+labels, Shaming (17%), Stereotype (38%), Objecti-
+fication (31%), Violence (13%), and the remaining                      • Does performance increase if we retrieve the
+do not express misogyny. The authors report a                            nearest meme template title and add it to the
+Fleiss-k of 0.3373, showing that is too is quite a                       prompt? (i.e Drakeposting,47 Is This a Pi-
+difficult task. The best performing methods on this                      geon?, etc.)
+dataset are reported in Zhang and Wang (2022),
+which involved multimodal fine-tuning and ensem-                       • Does LLM performance increase when we
+bling of XGBoost (Chen and Guestrin, 2016), CLIP,                        consider all examples of a template and not
+UNITER (Chen et al., 2020), and BERT.                                    just the base template as candidates for re-
+   See Tables 18 and 19 above for a summary of                           trieval?
+this information.                                                      • Does it help to discard retrieved meme infor-
+A.14 Prompting with LLMs                                                 mation from the KYMKB if a given input
+                                                                         meme is too different (not considered in distri-
+We now explore if the KYMKB can also be used
+                                                                         bution) from its closest entry in the KYMKB?
+to aid a vision language model by grounding the
+model in a meme-specific context. We experi-                           • Does the inclusion of the retrieved template
+ment with LLaVA (Liu et al., 2023) which employs                         about section in the prompt improve LLM
+LLaMA (Touvron et al., 2023) and CLIP to com-                            performance?
+bine both the textual and visual input modalities.
+   We mainly conduct few-shot in-context-learning
+                                                                       47
+                                                                            https://knowyourmeme.com/memes/drakeposting
+
+                                                            10470
+  We perform an extensive ablations to answer the          • "the meme ""distracted boyfriend"" can be
+above questions and the main results are shown in            classified as an example of anthrop, metaphor,
+Table 20. Our overall setup is illustrated in Fig-           and contrast. in this meme, the man in the
+ure 12. We highlight the following results by an-            image represents the ""distracted boyfriend""
+swering the points raised above when grounding               metaphorically, as he appears to be looking at
+LLaVA in the KYMKB:                                          another woman rather than pay"
+
+   • Model performance is higher when we ex-               • "the meme follows the label set of allusion,
+     clude the input image but use the extracted             exaggeration, and irony. the labels "i once was
+     OCR on the input meme.                                  blind but now i see " seem to be an allusion to
+                                                             the popular song "i used to be blind""
+   • Adding the nearest template title improves
+     performance.                                          Discussion Table 20 shows our results. In the
+                                                        case of MultiOff and Memotion 3 (B), we see that
+   • Adding an explanation of target labels hurts       grounding our LLaVA model in the KYMKB im-
+     performance.                                       proves performance and that the textual modality
+   • Excluding information from retrieved               alone is better than including visual inputs. We
+     KYMKB entities for input memes that are            believe this is because the offensive or emotional
+     too dissimilar improves performance. Similar       charge signal is stronger in the text. This finding
+     to TSplit, dissimilar here means exceeds the       is consistent with (Aggarwal et al., 2024), who
+     threshold value from template to example in        showed that text alone is enough to detect hate
+     the KYMKB.                                         speech in memes. Additional meme-context from
+                                                        the KYMKB can naturally aid in this. For Mem-
+   • Including the About section of the nearest         otion 3 (A) and FigMemes on the other hand are
+     neighbor in the KYMKB as input to LLaVA            more challenging tasks. The model struggles, even
+     aids in understanding.                             with the aid of the KYMKB. This is consistent
+                                                        with our findings for TSplit. In general, LLaVA
+   Parsing LLM output To calculate the F1               performs worse than TSplit, thus motivating further
+score from the LLM output and ground truth labels,      study into learning more robust models.
+we convert the output and ground truth into binary         The only exception to the overall trend is MAMI
+arrays with n elements with n being the number of       (A) which we believe is due to the LLaMA’s strong
+classes for the given multilabel task. For multiclass   understanding of misogyny in text. KYMKB is
+and binary classification tasks, we instead operate     inherently not a knowledge base of misogyny and
+with n − 1 labels. To ensure the model does not         not a suitable resource for such a message and for
+start to regurgitate the answer list and input, we      the non-templatic memes in MAMI.
+restrict decoding to 64 tokens. Similarly, we also      A.14.1 Classification Experiments
+ask the model to output the answer "none" if no
+                                                        In this section, we investigate several ablations in-
+category is suitable and that "The Assistant must
+                                                        cluding how to format the prompt. We examine the
+only answer by listing the labels that describe the
+                                                        following:
+meme and nothing else.". Finally, if the model does
+output all the labels, an erroneous answer is given,       • How do different input modalities impact
+or no output is recorded, we opt for returning a list        downstream tasks?
+of n elements each being 0.
+                                                           • Should there be a threshold mechanism for
+  Examples of LLaVA output To illustrate the                 selecting which memes are relevant for meme
+content of the output, we show three examples of             retrieval?
+LLaVA output on the FigMemes dataset below:
+                                                           • Does including more information from KYM
+   • "the meme follows the label set of allusion,            help downstream tasks and do multiple exam-
+     exaggeration, and irony. it is not clear which          ples help ICL?
+     of these labels best fit the ""who killed hanni-
+     bal?"" meme in this specific image."
+
+
+                                                   10471
+                              Cosine Distance                                                                                      1.Label description
+           3                                              3     Closest            Closest                                         2.Meme title
+                        2     To various examples                                  template
+                                                                example                                                            3.Template examples
+                  Z                                                                                                                4.Filter memes
+                                                                                                                                   5.About section
+
+
+            1                                                                                                      Not Harmful
+
+
+
+                  Z                                                                                      Language model (LLAMA)
+                            0.5,         0.8,       3.4
+                                                                                                                           VL connector (MLP)
+                                                                                                     Tokenizer &
+                                                          2   {Template title: Drakeposting          embedding
+                                                                                                                          Vision encoder (CLIP)
+                                                              About: […]
+                                                          5
+                CLIP          Input image is                  Origin: …
+                              within distribution                                             OCR: Accepting hate speech
+                              As distance to                  URL: www….                      Labels: harmful: cause harm to a
+                                                                                              person, not harmful: doesn’t         1
+                              various examples
+                                                              Example URLs: {www...,www …}    With template title: Drakeposting
+                              is lower than                                                   About: […]
+                              threshold                       Template-Example Cosine
+                                                          4   distance threshold: 8.6
+                                                              }
+                                                                                              Accepting hate speech
+
+
+
+                KYMKB
+                                   Task: Harmful or Not Harmful meme?                           Input text                         Input image
+
+
+
+Figure 12: The complete setup of using LLAVA with KYMKB. All experiments are with multiple examples as
+illustrated in Figure 21. Initially, both the OCR text and input meme are passed to LLaVA alongside k examples
+with ground truth labels and a selection of labels to choose from. Then we add 5 steps with further modifications as
+shown in the top right corner of this figure and according to the additional steps in Table 20. In Step 1, we add a
+description of each label as a prefix to LLaVA, the 2nd step is RAG in that we look up the nearest neighbor with
+CLIP in the KYMKB and retrieve its meme template name, and add this to the text prompt. As a 3rd step, we
+increase the number of entries in the KYMKB by adding each template example, increasing the coverage of memes
+we want to look up. We then filter out retrieved results that are larger than the allowed threshold for each meme
+template. This is measured by comparing the maximum distance between the base template and examples and the
+distance between the input meme and the base template. In the fifth and final step, we include the retrieved about
+section in the prompt too.
+
+
+A.14.2 Prompt ablations                                                         without retrieving external knowledge by prompt-
+Before investigating how LLAVA (Liu et al., 2023)                               ing the model with either 1) the OCR text (OR),
+might best perform in prompting experiments on                                  2) the original image (IM), or 3) both. We also
+memes, we will describe the overall prompting                                   include explanations of the target labels (LD) to
+setup. To make LLaVA suitable for different tasks                               examine if this improves performance. We report
+on memes without fine-tuning, we perform few-                                   the micro-averaged F1 for each class per task and
+shot in context learning with 3 randomly drawn                                  the average and weighted F1 micro score for all
+examples and ground truth answers. These are                                    classes. We examine MultiOff, FigMemes, and
+given to the model when inferring the answer for a                              both MAMI tasks.
+given input. The process is illustrated in Table 21
+                                                                                  Method      All.      Exa.       Iro.     Ant.       Met.   Con.       F1     F1(W)
+However the model struggles with multiple images,                                 OC          22.7      25.2       29.9     11.5       18.2   12.4       22.8   21.6
+even when training and evaluated on the same do-                                  OC+LD       26.4      24.1       31.6     14.2        5.4   16.3       23.0   20.6
+main. As such we restrict ourselves to providing                                  IM          20.0      29.2       27.7     13.4       17.5   16.3       22.5   21.9
+                                                                                  IM+LD       20.2      30.7       26.2     12.9       21.8   18.0       23.2   22.9
+the few-shot examples as text input only.
+                                                                                  IM+OC       21.1      30.8       32.7     15.6       17.4   17.1       25.6   23.8
+   We write a prompt that instructs the model to                                  IM+OC+LD    22.4      25.6       28.1     16.5       11.0   19.5       21.1   21.1
+choose between one or multiple choices from a
+list of possible answers, which are the labels for a                            Table 22: LLaVA performance in terms of F1 scores
+given classification task.                                                      on FigMemes. "OC" refers to the text in the meme,
+                                                                                "IM" is the meme itself, "ID" refers to our predicted
+A.14.3 Non-retrieval ablations                                                  meme template title, "LD" is the label description, i.e
+In this section, we focus our attention on whether                              a description of what each label means. The differ-
+both image and OCR text or if either one would                                  ent categories are All(usion), Exa(ggeration), Iro(ny),
+                                                                                Ant(hropopomorphism), Met(aphor) and Con(trast).
+suffice in helping LLaVA in its downstream clas-
+sification task. We investigate model performance
+                                                                      10472
+ Method                   MultiOff      Memotion 3 (A)         Memotion 3 (B)     FigMemes            MAMI (A)               MAMI (B)
+ ICL: Vision and text          41.6            26.8                   73.8              25.6              48.9                  35.1
+ ICL: Vision only               43             26.6                   72.1              22.5              47.6                  33.8
+ ICL: text only                 49             27.3                   71.3              22.8              47.7                  34.2
+ Using text only
+ + Label description            45             27.7                   72.4               23               49.4                  33.8
+ + Template title               49             27.1                   74.1              22.3              51.4                  36.6
+ + Template examples            47             29.7                   73.4               23               48.6                  34.4
+ + Filter OOD memes            53.7            30.5                   74.8              24.7              53.7                  36.4
+ + About section               56.4            31.1                   75.7              25.4              56.8                  37.3
+
+Table 20: Classification results for the best performing version of LLaVA grounded in the KYMKB (in bold)
+compared against the best-performing method from related work (in italics). + refers to adding additional input
+information to the previous row (i.e + template title also includes giving LLaVA the label description in addition to
+the template title). See remaining tables for full ablations.
+
+
+          Few-shot ICL                                                Method             Of.          N-Of.          F1.       F1(W)
+  Shot    You are given the following memes with input
+          Optical Character Recognition text: [Text]                  OC                38.7          56.3          49.0        45.6
+          Input Image: [Image]                                        OC+LD             19.6          58.2          45.0        34.6
+          and the following labels [Label]
+          with explanation [Label Detail]                             IM                17.5          56.4          43.0        36.9
+          The meme can be described as [GT Labels]                    IM+LD              2.1          51.2          34.9        21.2
+
+  Shot    The next meme has the following input
+                                                                      IM+OC             10.3          56.7          41.6        28.4
+          ...                                                         IM+OC+LD           8.2          55.0          39.6        26.4
+
+  Input  The final meme has the following input                   Table 24: LLaVA performance in terms of F1 scores
+         OCR: [Text]                                              on MultiOff. "OC" refers to the text on the meme,
+  Answer The meme can be described as⋆ <answer>                   "IM" refers to usage of the image itself, "ID" refers
+                                                                  to our predicted meme template title, "LD" refers to
+Table 21: Prompt setup for zero-shot and few-shot                 label description, i.e a description of what each label
+prompting with LLaVA                                              means. The two categories to predict are Of(fensive)
+                                                                  and Non-offensive (N-Of)
+
+ Method         sh.     st.     ob.    vi.    F1.     F1(W)       A.14.4 Clip-based template retrieval
+ OC            24.3     44.4    39.6   7.0    34.2    34.1        As an additional ablation, we test if increasing
+ OC+LD         24.4     45.6    35.7   9.7    33.8    33.5
+                                                                  the size of the CLIP model used for retrieval af-
+ IM            22.2     37.9    43.2   21.1   33.8    34.8        fects the performance of LLaVA. This model uses
+ IM+LD         23.9     42.9    42.4   18.9   34.5    36.3
+                                                                  a 14x14 patch size on a downscale image of resolu-
+ IM+OC         22.4     41.2    43.9   15.9   35.1    35.5        tion 336x336,
+ IM+OC+LD      27.8     42.5    46.4   19.3   37.0    38.1
+                                                                   Method        All.   Exa.   Iro.    Ant.   Met.    Con.    F1     F1(W)
+Table 23: LLaVA performance in terms of F1 scores                  OC+ID+LD      27.3   24.5   30.2    13.6   5.3     12.8    22.3   20.1
+on MAMI (B). "OC" refers to the text on the meme,                  IM+ID+LD      21.3   27.9   26.7    16.6   8.4     19.7    21.2   20.5
+"IM" refers to usage of the image itself, "ID" refers to           IM+OC+ID+LD   20.2   25.7   26.8    18.5   10.6    16.7    20.8   20.2
+our predicted meme template title, "LD" refers to label
+description, i.e a description of what each label means.          Table 25: LLaVA performance in terms of F1 scores
+The categories to predict are Sh(aming), St(ereotype),            on FigMemes. "OC" refers to the text in the meme,
+Ob(jectification) and Vi(olence). We measure the F1               "IM" refers to usage of the image itself, "ID" refers to
+score and the Weighted F1 score, F1(W)                            our predicted meme template title, "LD" refers to label
+                                                                  description, i.e a description of what each label means.
+
+
+
+
+                                                              10473
+ Method               sh.      st.     ob.      vi.          R        F1(W)        Method          sh.     st.   ob.     vi.     F1.     F1(W)
+ OC+ID+LD             24.1    47.7    42.5     13.0      36.6          37.1        OC             22.3    46.3   38.8    5.0     33.9     33.8
+                                                                                   OC+ID          20.3    44.3   43.6    2.6     34.3     34.1
+ IM+ID+LD             23.1    42.7    45.4     20.5      35.4          37.4
+                                                                                   OC+ID+LD       24.8    46.9   36.8    9.7     34.8     34.4
+ IM+OC+ID+LD          22.8    38.6    46.2     22.4      34.7          36.5
+                                                                                   IM+ID          20.8    38.9   43.5    20.9    34.1     35.0
+                                                                                   IM+ID+LD       24.0    41.7   43.4    20.6    34.8     36.2
+Table 26: LLaVA performance in terms of F1 scores on
+MAMI (B)                                                                           IM+OC+ID       19.7    41.9   46.6    17.4    35.9     36.5
+                                                                                   IM+OC+ID+LD    25.6    40.2   45.0    14.8    34.9     35.8
+
+                                                                                  Table 29: LLaVA performance in terms of F1 scores on
+  Method                      Of.     N-Of.           F1.         F1(W)           the MAMI dataset (Sub-Task B).
+  OC+ID+LD                   42.4      54.2         49.0              47.1
+  IM+ID+LD                   15.7      56.2         42.3              31.4
+                                                                                       Method            Of.     N-Of.         F1.      F1(W)
+  IM+OC+ID+LD                21.6      53.5         41.6              34.1
+                                                                                       OC                38.7    56.3      49.0         45.6
+                                                                                       OC+ID             28.1    55.4      45.0         38.7
+Table 27: LLaVA performance in terms of F1 scores on
+MultiOff                                                                               OC+ID+LD          34.7    55.4      47.0         42.8
+                                                                                       IM+ID             13.5    53.6      39.6         29.1
+                                                                                       IM+ID+LD          15.7    56.1      42.3         31.4
+A.14.5 Extended clip based template retrieval
+                                                                                       IM+OC+ID          10.2    56.0      40.9         28.1
+As memes can deviate from their template (see Fig-                                     IM+OC+ID+LD       17.3    55.7      42.3         32.3
+ure 3, we ask ourselves if including examples of
+templates from the KYMKB can be used to aid                                       Table 30: LLaVA performance in terms of F1 scores on
+LLaVA in its downstream classification task. To                                   the MultiOff dataset.
+do this, we include both KYMKB templates and
+example as candidates for retrieval, as the exam-                                 A.14.6 Clip-based template retrieval filtering
+ples may be more similar to the meme in a dataset.
+                                                                                  When we also include the examples of a tem-
+Note that we can still access the same information,
+                                                                                  plate from the KYMKB, another question natu-
+such as the about section, as when using the base
+                                                                                  rally arises: what if there are no suitable entries
+template entry because of the KYMKB’s structure.
+                                                                                  for a given prompt? To handle such a scenario,
+ Method        All.    Exa.    Iro.   Ant.   Met.     Con.       F1    F1(W)
+                                                                                  we create several filters based on the distance be-
+ OC            22.7    25.2    29.9   11.5   18.2     12.4   22.8       21.6      tween the base template and its instances. We base
+ OC+ID         25.2    26.2    32.0    6.1   17.2      9.2   23.6       21.7      this on summary statistics like the interquartile
+ OC+ID+LD      26.4    24.1    31.6   14.2    5.4     16.3   23.0       20.6
+ IM+ID         20.2    30.7    26.2   12.9   21.7     18.0   23.2       22.9
+                                                                                  range (IQR), three sigma, mean absolute deviation
+ IM+ID+LD      18.1    26.0    27.4   16.8   5.0      14.4   19.5       18.5      (MAD), and the maximum distance from template
+ IM+OC+ID      20.1    30.4    30.2   11.3   20.5     15.6   24.3       23.0      to example, which we find to be the most useful.
+ IM+OC+ID+LD   18.8    24.7    28.2   14.2   9.0      14.0   19.0       19.1
+                                                                                  This corresponds to step 4 in 12. That is, for each
+Table 28: LLaVA performance in terms of F1 scores                                 template we detect, is this meme in fact within the
+for FigMemes. "OC" refers to the text on the meme,                                distribution of this template. Note that here we do
+"IM" refers to usage of the image itself, "ID" refers to                          not use the template examples to detect the tem-
+our predicted meme template title, "LD" refers to label                           plate at first, only the templates. We do however
+description, i.e a description of what each label means.                          use the template examples to make our calcula-
+                                                                                  tions, which is done using each pairwise distance
+                                                                                  between the meme template and their examples.
+
+
+
+
+                                                                               10474
+ Method        All.     Exa.    Iro.   Ant.   Met.    Con.   F1      F1(W)      A.14.7 Extended meme information
+ IQR
+ IM+OC+ID      18.0     30.8   31.5    16.4   18.5    14.4   24.7     22.9
+                                                                                We choose the maximum distance algorithm as the
+ Three Sigma                                                                    default method of selecting relevant meme content
+ IM+OC+ID      17.8     31.2   30.8    15.1   21.3    14.6   24.8     23.2      based on its simplicity and performance in filtering
+ MAD                                                                            experiments above. We now investigate including
+ IM+OC+ID      20.8     31.3   30.8    14.7   20.2    16.1   25.2     23.7
+                                                                                the about section as additional information to add
+ Max
+ IM+OC+ID      20.5     32.0   31.4    15.5   20.2    14.2   25.4     23.8      to our prompt and if this grounds the LLM in meme
+                                                                                knowledge.
+Table 31: LLaVA performance in terms of F1 scores
+on FigMemes. "OC" refers to the text in the meme,                                Method          All.    Exa.   Iro.    Ant.    Met.     Con.     F1      F1(W)
+"IM" refers to using the meme itself, "ID" refers to                             IQR
+our retrieved meme template title, "LD" refers to label                          OC+ID+KYM       24.7    28.2   33.3    14.3    20.0     16.5     25.4    24.4
+description, i.e a description of what each label means.                         Max
+                                                                                 IM+OC+ID+KYM    20.3    30.4   30.1    12.2    20.6     19.1     24.9    23.6
+
+
+                                                                                Table 34: LLaVA performance in terms of F1 scores on
+ Method               sh.      st.      ob.     vi.      F1.        F1(W)       FigMemes. "OC" refers to the text in the meme, "IM"
+ IQR                                                                            refers to usage of the meme itself, "ID" refers to our
+ IM+OC+ID             22.5     41.9    46.7    14.8      36.4        36.6       retrieved template title, "LD" is the label description, i.e
+ Three Sigma                                                                    a description of what each label means.
+ IM+OC+ID             22.2     43.1    45.2    14.5      36.0        36.4
+ MAD
+ IM+OC+ID             21.4     42.6    45.4    15.1      35.9        36.3        Method                 sh.     st.      ob.       vi.          F1.      F1(W)
+                                                                                 IQR
+ Max
+                                                                                 OC+ID+KYM              24.9    45.3     47.2      8.3       37.8        37.3
+ IM+OC+ID             19.7     42.8    49.0     8.1      36.4        36.3
+                                                                                 IM+OC+ID+KYM           21.5    41.0     43.7     14.3       34.5        35.0
+
+Table 32: LLaVA performance in terms of F1 scores on                            Table 35: LLaVA performance in terms of F1 score on
+the MAMI dataset (Sub-Task B).                                                  the MAMI dataset (Sub-Task B).
+
+
+  Method                     Of.       N-Of.          F1.       F1(W)                Method               Of.          N-Of.           F1.            F1(W)
+  IQR                                                                                IQR
+  OC+ID+LD                   43.9       60.6         53.7           50.4             OC+ID+KYM           55.2          57.5            56.4            56.1
+  IM+OC+ID                   12.3       57.0         42.3           29.7
+                                                                                Table 36: LLaVA performance in terms of F1 scores on
+  Three Sigma
+                                                                                the MultiOff dataset (Sub-Task B).
+  OC+ID+LD                   46.3       56.1         51.7           50.1
+  IM+OC+ID                    8.3       56.4         40.9           27.1
+  MAD
+  OC+ID+LD                   42.4       54.2         49.0           47.1
+  IM+OC+ID                   12.0       55.6         40.9           29.0
+  Max
+  OC+ID+LD                   35.4       50.0         43.6           41.1
+  IM+OC+ID                   10.1       55.3         40.2           32.7
+
+Table 33: LLaVA performance in terms of F1 scores on
+the MultiOff dataset.
+
+
+
+
+                                                                             10475
+

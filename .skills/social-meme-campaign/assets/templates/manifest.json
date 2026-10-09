@@ -1,16 +1,34 @@
 {
   "version": 2,
   "contract_version": 2,
-  "contract_sha256": "3f35a10e199aaa54464e5712e94d84d949c5f15416f1a228446473456f912ad1",
+  "contract_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
   "admission_counts": {
-    "active": 50,
-    "hold": 15,
-    "rejected": 14
+    "active": 75,
+    "hold": 27,
+    "rejected": 21
   },
   "catalog": "https://api.memegen.link/templates/",
-  "retrieved": "2026-08-11",
+  "retrieved": "2026-09-29",
   "rights_note": "Memegen is an open-source renderer. Its software license does not license the individual template images; default status is fair-use-review.",
   "templates": {
+    "3hd": {
+      "name": "Three-Headed Dragon",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/3hd.jpg",
+      "source_url": "https://knowyourmeme.com/memes/three-headed-dragon",
+      "catalog_example": [
+        "Pepperoni",
+        "Mushroom",
+        "Pineapple"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/3hd/Pepperoni/Mushroom/Pineapple.jpg",
+      "keywords": [
+        "King Ghidorah"
+      ],
+      "admission": "active",
+      "sha256": "ae9174f5522b8186e893521f39f70c07d8281657d3c5125dc760b16e1f984636",
+      "rights_status": "fair-use-review"
+    },
     "ackbar": {
       "name": "It's A Trap!",
       "lines": 2,
@@ -27,6 +45,408 @@
       ],
       "admission": "active",
       "sha256": "d127e20802f824a78d533431b5234955bcbe44578ab8626c566e6fc3ab5a3c38",
+      "rights_status": "fair-use-review"
+    },
+    "gru": {
+      "name": "Gru's Plan",
+      "lines": 4,
+      "blank_url": "https://api.memegen.link/images/gru.jpg",
+      "source_url": "https://knowyourmeme.com/memes/grus-plan",
+      "catalog_example": [
+        "Learn how to make memes.",
+        "Make a meme.",
+        "No one likes it.",
+        "No one likes it."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/gru/Learn_how_to_make_memes./Make_a_meme./No_one_likes_it./No_one_likes_it..jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "680758e84c73e46850b66980a06b8451126ff8fb50e4c68be8940c9cd779b414",
+      "rights_status": "fair-use-review"
+    },
+    "buzz": {
+      "name": "X, X Everywhere",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/buzz.jpg",
+      "source_url": "https://imgflip.com/memetemplate/X-Everywhere",
+      "catalog_example": [
+        "memes",
+        "memes everywhere"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/buzz/memes/memes_everywhere.webp",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "05cc323092f4fd9bc59c863de53473194b30db3cb3551940e1790588edf19ea7",
+      "rights_status": "fair-use-review"
+    },
+    "fry": {
+      "name": "Futurama Fry",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/fry.jpg",
+      "source_url": "http://knowyourmeme.com/memes/futurama-fry-not-sure-if",
+      "catalog_example": [
+        "not sure if trolling",
+        "or just stupid"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/fry/not_sure_if_trolling/or_just_stupid.webp",
+      "keywords": [
+        "Philip J. Fry"
+      ],
+      "admission": "active",
+      "sha256": "f22cd6a609f382d5f0ecb5bbf9f875902c50f20b5bfd140edd40f2b1d1eb6d38",
+      "rights_status": "fair-use-review"
+    },
+    "seagull": {
+      "name": "Inhaling Seagull",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/seagull.jpg",
+      "source_url": "https://knowyourmeme.com/memes/inhaling-seagull",
+      "catalog_example": [
+        "some",
+        "BODY ONCE TOLD ME THE THE WORLD WAS GONNA ROLL ME!!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/seagull/some/BODY_ONCE_TOLD_ME_THE_THE_WORLD_WAS_GONNA_ROLL_ME!!.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "172a6e35ca3aea9ef515acc39acaa78f6806d1a28ad62ced1e87f95cb220f4a8",
+      "rights_status": "fair-use-review"
+    },
+    "wonka": {
+      "name": "Condescending Wonka",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/wonka.jpg",
+      "source_url": "http://knowyourmeme.com/memes/condescending-wonka-creepy-wonka",
+      "catalog_example": [
+        "oh, you just graduated?",
+        "you must know everything"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/wonka/oh,_you_just_graduated~q/you_must_know_everything.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "0220f5b2898a19b57666fe07e46560e0a24fbd7580dc3da1784a272e3d52cc5c",
+      "rights_status": "fair-use-review"
+    },
+    "spiderman": {
+      "name": "Spider-Man Pointing at Spider-Man",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/spiderman.jpg",
+      "source_url": "https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man",
+      "catalog_example": [
+        "me pointing at you",
+        "you pointing at me"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/spiderman/me_pointing_at_you/you_pointing_at_me.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "bc004441df5d428a38b885331ba44b9aff47dbd7b160841b7228d5a9ea0f8eae",
+      "rights_status": "fair-use-review"
+    },
+    "kombucha": {
+      "name": "Kombucha Girl",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/kombucha.jpg",
+      "source_url": "https://www.buzzfeed.com/daniellaemanuel/woman-trying-kombucha-meme",
+      "catalog_example": [
+        "Trying a thing.",
+        "Trying a thing again."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/kombucha/Trying_a_thing./Trying_a_thing_again..jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "ccd4df5e1e447a69411721dbcb68becdbb8fb76ff32f3ddb01d5a5dc61276efb",
+      "rights_status": "fair-use-review"
+    },
+    "crowd": {
+      "name": "Soccer Celebration In A Bar",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/crowd.jpg",
+      "source_url": "https://knowyourmeme.com/memes/soccer-celebration-in-a-bar",
+      "catalog_example": [
+        "Push to CI",
+        "It turns green"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/crowd/Push_to_CI/It_turns_green.webp",
+      "keywords": [
+        "English football fans",
+        "Wales"
+      ],
+      "admission": "hold",
+      "sha256": "4613d22215c4a46c4b21ec3bf54be50bb71fdefdba3a2270874290fb023688fc",
+      "rights_status": "fair-use-review"
+    },
+    "officespace": {
+      "name": "That Would Be Great",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/officespace.jpg",
+      "source_url": "http://knowyourmeme.com/memes/that-would-be-great",
+      "catalog_example": [
+        "yeah...",
+        "that'd be great"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/officespace/yeah.../that'd_be_great.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "8ca81e6a38bb5962c335ad973ef39f0c02e1716727ac90e8ac4ea7d7852e2f8f",
+      "rights_status": "fair-use-review"
+    },
+    "wddth": {
+      "name": "We Don't Do That Here",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/wddth.jpg",
+      "source_url": "https://knowyourmeme.com/memes/we-dont-do-that-here",
+      "catalog_example": [
+        "when someone calls your phone without warning",
+        "We don't do that here."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/wddth/when_someone_calls_your_phone_without_warning/We_don't_do_that_here..jpg",
+      "keywords": [
+        "Black Panther"
+      ],
+      "admission": "active",
+      "sha256": "f2276ad2b0b054de82de155e8d054072275a06b253f91296dc98c8ab0287022a",
+      "rights_status": "fair-use-review"
+    },
+    "firsttry": {
+      "name": "First Try!",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/firsttry.jpg",
+      "source_url": "https://www.youtube.com/watch?v=44-RsrF_V_w",
+      "catalog_example": [
+        "",
+        "first try!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/firsttry/_/first_try!.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "9895a4ddef5081f8bd67feba69487887d0e017758c04bdd3d0e7cc5ea9cb156f",
+      "rights_status": "fair-use-review"
+    },
+    "nice": {
+      "name": "So I Got That Goin' For Me, Which is Nice",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/nice.jpg",
+      "source_url": "http://knowyourmeme.com/memes/so-i-got-that-goin-for-me-which-is-nice",
+      "catalog_example": [
+        "",
+        "so i got that goin' for me, which is nice"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/nice/_/so_i_got_that_goin'_for_me,_which_is_nice.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "d025cc9a6e9151af8e9f424688e6b5a7e563d4a91e88bd907ed58bd7f2f648b5",
+      "rights_status": "fair-use-review"
+    },
+    "afraid": {
+      "name": "Afraid to Ask Andy",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/afraid.jpg",
+      "source_url": "http://knowyourmeme.com/memes/afraid-to-ask-andy",
+      "catalog_example": [
+        "i don't know what this meme is for",
+        "and at this point i'm too afraid to ask"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/afraid/i_don't_know_what_this_meme_is_for/and_at_this_point_i'm_too_afraid_to_ask.jpg",
+      "keywords": [
+        "Parks and Recreation"
+      ],
+      "admission": "active",
+      "sha256": "44f88d4940f102e790638ece68dd07c13e3e47a0175ddf3b9f048df86258309e",
+      "rights_status": "fair-use-review"
+    },
+    "millers": {
+      "name": "You Guys Are Getting Paid?",
+      "lines": 4,
+      "blank_url": "https://api.memegen.link/images/millers.jpg",
+      "source_url": "https://knowyourmeme.com/photos/1712302-you-guys-are-getting-paid",
+      "catalog_example": [
+        "",
+        "You are making 500 thousand dollars and you were only gonna pay me 30?",
+        "You're getting 30 grand? I'm getting a thousand!",
+        "You guys are getting paid?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/millers/_/You_are_making_500_thousand_dollars_and_you_were_only_gonna_pay_me_30~q/You're_getting_30_grand~q_I'm_getting_a_thousand!/You_guys_are_getting_paid~q.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "9b785827154f3f7f1d6677e60f1e693360c88f93cab84611de7b8fb76079c261",
+      "rights_status": "fair-use-review"
+    },
+    "agnes": {
+      "name": "Agnes Harkness Winking",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/agnes.jpg",
+      "source_url": "https://knowyourmeme.com/memes/agnes-harkness-winking",
+      "catalog_example": [
+        "",
+        "i have read and agree to the terms and conditions"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/agnes/_/i_have_read_and_agree_to_the_terms_and_conditions.jpg",
+      "keywords": [
+        "WandaVision"
+      ],
+      "admission": "active",
+      "sha256": "16bb1950482f2a6159c84d54c43b5609b8b2af42cf6975aaf5e331c449a843ad",
+      "rights_status": "fair-use-review"
+    },
+    "gears": {
+      "name": "You Know What Really Grinds My Gears?",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/gears.jpg",
+      "source_url": "http://knowyourmeme.com/memes/you-know-what-really-grinds-my-gears",
+      "catalog_example": [
+        "you know what really grinds my gears?",
+        "when people post images of cogs that don't mesh"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/gears/you_know_what_really_grinds_my_gears~q/when_people_post_images_of_cogs_that_don't_mesh.jpg",
+      "keywords": [
+        "Family Guy"
+      ],
+      "admission": "active",
+      "sha256": "3b7a96433b23650ef8e59e734b4ff7e42d61a4e9878f53ec74fc18aa0c579d8c",
+      "rights_status": "fair-use-review"
+    },
+    "home": {
+      "name": "We Have Food at Home",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/home.jpg",
+      "source_url": "https://knowyourmeme.com/memes/we-have-food-at-home",
+      "catalog_example": [
+        "Me: Can we stop and get food?",
+        "Mom: We have food at home.",
+        "Food at home:"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/home/Me:_Can_we_stop_and_get_food~q/Mom:_We_have_food_at_home./Food_at_home:.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "fb1ad2125433d534d98398798ffc9d5d2e3b7f1e4bb92d631c89c1213056781a",
+      "rights_status": "fair-use-review"
+    },
+    "bus": {
+      "name": "Two Guys on a Bus",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/bus.jpg",
+      "source_url": "https://knowyourmeme.com/memes/two-guys-on-a-bus",
+      "catalog_example": [
+        "Postseason",
+        "Preseason"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/bus/Postseason/Preseason.jpg",
+      "keywords": [
+        "Genildo Ronchi"
+      ],
+      "admission": "active",
+      "sha256": "30cc0f2b58fbd5faf55365a42f37bf52dc08392bfcd5abbd948e8429bee86a78",
+      "rights_status": "fair-use-review"
+    },
+    "hagrid": {
+      "name": "I Should Not Have Said That",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/hagrid.jpg",
+      "source_url": "https://www.youtube.com/watch?v=498HkRM77gg",
+      "catalog_example": [
+        "",
+        "i should not have said that"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/hagrid/_/i_should_not_have_said_that.jpg",
+      "keywords": [
+        "Harry Potter"
+      ],
+      "admission": "hold",
+      "sha256": "6b034c41cd79daaa6dd51ee54a17a19ab07ca0d878b24dc8a3cdebdeeba70e4b",
+      "rights_status": "fair-use-review"
+    },
+    "inigo": {
+      "name": "Inigo Montoya",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/inigo.jpg",
+      "source_url": "http://knowyourmeme.com/memes/you-keep-using-that-word-i-do-not-think-it-means-what-you-think-it-means",
+      "catalog_example": [
+        "you keep using that word",
+        "i do not think it means what you think it means"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/inigo/you_keep_using_that_word/i_do_not_think_it_means_what_you_think_it_means.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "9c4f389eaf4a2ddabb1b2495241be0e3d4f1230d46ce01f8145f2129e2ed7aa6",
+      "rights_status": "fair-use-review"
+    },
+    "touch": {
+      "name": "Principal Skinner",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/touch.jpg",
+      "source_url": "https://knowyourmeme.com/memes/am-i-out-of-touch",
+      "catalog_example": [
+        "Am I so out of touch?",
+        "No, it's the children who are wrong."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/touch/Am_I_so_out_of_touch~q/No,_it's_the_children_who_are_wrong..jpg",
+      "keywords": [
+        "Am I Out Of Touch?",
+        "The Simpsons"
+      ],
+      "admission": "active",
+      "sha256": "b7774920f14a58b2c93798b71bdcb90db553776eb85f453049fa788fa8105d53",
+      "rights_status": "fair-use-review"
+    },
+    "bihw": {
+      "name": "But It's Honest Work",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/bihw.jpg",
+      "source_url": "https://knowyourmeme.com/memes/but-its-honest-work",
+      "catalog_example": [
+        "it ain't much",
+        "but it's honest work"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/bihw/it_ain't_much/but_it's_honest_work.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "651940fbe82e77fdd959d228892add2e80ac4e8d8595a95fa41d764773a6a141",
+      "rights_status": "fair-use-review"
+    },
+    "genie": {
+      "name": "Genie Lamp",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/genie.jpg",
+      "source_url": "https://imgflip.com/memetemplate/205390462",
+      "catalog_example": [
+        "phenomenal cosmic power",
+        "itty bitty living space"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/genie/phenomenal_cosmic_power/itty_bitty_living_space.jpg",
+      "keywords": [
+        "Aladin"
+      ],
+      "admission": "active",
+      "sha256": "e4022124fbf0cf8b904d9261ab2365c606f23d14896ea8e28eba2c78352d0db6",
+      "rights_status": "fair-use-review"
+    },
+    "pooh": {
+      "name": "Tuxedo Winnie the Pooh",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/pooh.jpg",
+      "source_url": "https://knowyourmeme.com/memes/tuxedo-winnie-the-pooh",
+      "catalog_example": [
+        "Burger King",
+        "The Monarch of Hamburg"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/pooh/Burger_King/The_Monarch_of_Hamburg.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "559598454a09fa366f6a15d8f8d3d85ee67c4b68265e7d969c0719d8914906a8",
+      "rights_status": "fair-use-review"
+    },
+    "crazypills": {
+      "name": "I Feel Like I'm Taking Crazy Pills",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/crazypills.jpg",
+      "source_url": "http://knowyourmeme.com/memes/i-feel-like-im-taking-crazy-pills",
+      "catalog_example": [
+        "",
+        "i feel like i'm taking crazy pills"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/crazypills/_/i_feel_like_i'm_taking_crazy_pills.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "a3c991966e33b2f7fbb527b15f9d89983e889b480893d194ad583110fa1c3be8",
       "rights_status": "fair-use-review"
     },
     "astronaut": {
@@ -46,65 +466,69 @@
       "sha256": "03fe65a7ebe0c87d66165de326245d15d76203e849c2a3340c60d13f6e8e3c36",
       "rights_status": "fair-use-review"
     },
-    "db": {
-      "name": "Distracted Boyfriend",
+    "drowning": {
+      "name": "Drowning High Five",
       "lines": 3,
-      "blank_url": "https://api.memegen.link/images/db.jpg",
-      "source_url": "https://knowyourmeme.com/memes/distracted-boyfriend",
+      "blank_url": "https://api.memegen.link/images/drowning.jpg",
+      "source_url": "https://knowyourmeme.com/memes/drowning-high-five",
       "catalog_example": [
-        "Socialism",
-        "The Youth",
-        "Capitalism"
+        "Me Asking for Help",
+        "Online Commenter",
+        "I'm having that problem too."
       ],
-      "catalog_example_url": "https://api.memegen.link/images/db/Socialism/The_Youth/Capitalism.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "da70f5f77d39f2a810a5c733aa725f3b3967ebf00dcab861bb83859e0f71c61d",
-      "rights_status": "fair-use-review"
-    },
-    "drake": {
-      "name": "Drakeposting",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/drake.jpg",
-      "source_url": "http://knowyourmeme.com/memes/drakeposting",
-      "catalog_example": [
-        "left on unread",
-        "left on read"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/drake/left_on_unread/left_on_read.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "7002f63565bd809d26eb828da342bcf6918bb07aecc57dd14cc212342f0d3413",
-      "rights_status": "fair-use-review"
-    },
-    "ds": {
-      "name": "Daily Struggle",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/ds.jpg",
-      "source_url": "https://knowyourmeme.com/memes/daily-struggle",
-      "catalog_example": [
-        "The dress is black and blue.",
-        "The dress is gold and white."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/ds/The_dress_is_black_and_blue./The_dress_is_gold_and_white..jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "8cb01339ea01a42ce771a28226c0907c5303cfa9f2e9ddab43c7cf4e153fe54b",
-      "rights_status": "fair-use-review"
-    },
-    "fine": {
-      "name": "This is Fine",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/fine.jpg",
-      "source_url": "http://gunshowcomic.com/648",
-      "catalog_example": [
-        "",
-        "this is fine"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/fine/_/this_is_fine.webp",
+      "catalog_example_url": "https://api.memegen.link/images/drowning/Me_Asking_for_Help/Online_Commenter/I'm_having_that_problem_too..jpg",
       "keywords": [],
       "admission": "rejected",
-      "sha256": "ce972d2b25eb7fef0ed7027ee713d1e32bb8821f66d6ad7b230532fa1360e9c0",
+      "sha256": "efccf58f2aeec75a1e455b4ace01d7c0b264e82264396928f0fd702e324c1230",
+      "rights_status": "fair-use-review"
+    },
+    "boat": {
+      "name": "I Should Buy a Boat Cat",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/boat.jpg",
+      "source_url": "http://knowyourmeme.com/memes/i-should-buy-a-boat-cat",
+      "catalog_example": [
+        "",
+        "i should buy a boat"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/boat/_/i_should_buy_a_boat.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "4222ae37ded99e6b19fed6bd7cb0e4c2ca5c679bb5cfa98b6e2475a526ede21a",
+      "rights_status": "fair-use-review"
+    },
+    "same": {
+      "name": "They're The Same Picture",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/same.jpg",
+      "source_url": "https://knowyourmeme.com/memes/theyre-the-same-picture",
+      "catalog_example": [
+        "\u03c0",
+        "3",
+        "The Bible"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/same/\u03c0/3/The_Bible.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "408b10cddb6e52d5b7c608348e5cf62c9bd9bf28e9e73b01bdda94400f0097c6",
+      "rights_status": "fair-use-review"
+    },
+    "pool": {
+      "name": "Mother Ignoring Kid Drowning In A Pool",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/pool.jpg",
+      "source_url": "https://knowyourmeme.com/memes/mother-ignoring-kid-drowning-in-a-pool",
+      "catalog_example": [
+        "Posts in Hot",
+        "Posts in New",
+        "Redditors"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/pool/Posts_in_Hot/Posts_in_New/Redditors.jpg",
+      "keywords": [
+        "my cousins learning to swim"
+      ],
+      "admission": "rejected",
+      "sha256": "44fa03284e5808183eb4c8cf6def1ea295a994af9df467e8ddedaceccc56934b",
       "rights_status": "fair-use-review"
     },
     "gb": {
@@ -124,21 +548,130 @@
       "sha256": "31de71796c0982b353e5329ba62b20556a582fc883718f95c35e4fad744d1790",
       "rights_status": "fair-use-review"
     },
-    "gru": {
-      "name": "Gru's Plan",
-      "lines": 4,
-      "blank_url": "https://api.memegen.link/images/gru.jpg",
-      "source_url": "https://knowyourmeme.com/memes/grus-plan",
+    "bender": {
+      "name": "I'm Going to Build My Own Theme Park",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/bender.jpg",
+      "source_url": "http://knowyourmeme.com/memes/im-going-to-build-my-own-theme-park-with-blackjack-and-hookers",
       "catalog_example": [
-        "Learn how to make memes.",
-        "Make a meme.",
-        "No one likes it.",
-        "No one likes it."
+        "i'm going to build my own theme park",
+        "with blackjack and hookers"
       ],
-      "catalog_example_url": "https://api.memegen.link/images/gru/Learn_how_to_make_memes./Make_a_meme./No_one_likes_it./No_one_likes_it..jpg",
+      "catalog_example_url": "https://api.memegen.link/images/bender/i'm_going_to_build_my_own_theme_park/with_blackjack_and_hookers.jpg",
+      "keywords": [
+        "Futurama"
+      ],
+      "admission": "active",
+      "sha256": "d2728f0a7b203dcc875b1760538e4b11cdfb80476bdde077c071174822a90326",
+      "rights_status": "fair-use-review"
+    },
+    "midwit": {
+      "name": "Midwit",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/midwit.jpg",
+      "source_url": "https://knowyourmeme.com/memes/iq-bell-curve-midwit",
+      "catalog_example": [
+        "if it's good I do it",
+        "NOOOOO you have to have complex reasons for what you're doing. what is the point. what is your goal.",
+        "if it's good I do it"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/midwit/if_it's_good_I_do_it/NOOOOO_you_have_to_have_complex_reasons_for_what_you're_doing._what_is_the_point._what_is_your_goal./if_it's_good_I_do_it.jpg",
+      "keywords": [
+        "IQ Bell Curve / Midwit"
+      ],
+      "admission": "rejected",
+      "sha256": "2dfe12278fcc4903de9b42570cc2e2b318df1700bec079571de2bcc6b4eafcb2",
+      "rights_status": "fair-use-review"
+    },
+    "both": {
+      "name": "Why Not Both?",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/both.jpg",
+      "source_url": "http://knowyourmeme.com/memes/why-not-both-why-dont-we-have-both",
+      "catalog_example": [
+        "hard or soft tacos",
+        "why not both?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/both/hard_or_soft_tacos/why_not_both~q.webp",
       "keywords": [],
       "admission": "active",
-      "sha256": "680758e84c73e46850b66980a06b8451126ff8fb50e4c68be8940c9cd779b414",
+      "sha256": "4e562f21433381d260be4920d940ddb34873005bf30c40fb2e4145a4d87f8b6b",
+      "rights_status": "fair-use-review"
+    },
+    "exit": {
+      "name": "Left Exit 12 Off Ramp",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/exit.jpg",
+      "source_url": "https://knowyourmeme.com/memes/left-exit-12-off-ramp",
+      "catalog_example": [
+        "The Pins",
+        "The Gutter",
+        "Bowling Ball"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/exit/The_Pins/The_Gutter/Bowling_Ball.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "e542d3b7f67a4fbdbbfb3a17a42262ed1fc6c7a627e1a76d1201ad8a049cfc63",
+      "rights_status": "fair-use-review"
+    },
+    "noidea": {
+      "name": "I Have No Idea What I'm Doing",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/noidea.jpg",
+      "source_url": "http://knowyourmeme.com/memes/i-have-no-idea-what-i-m-doing",
+      "catalog_example": [
+        "i have no idea",
+        "what i'm doing"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/noidea/i_have_no_idea/what_i'm_doing.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "17ca32f4e908532571f0152cf7606ceac3640ccbdba6c44797f4bc360af36e54",
+      "rights_status": "fair-use-review"
+    },
+    "success": {
+      "name": "Success Kid",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/success.jpg",
+      "source_url": "http://knowyourmeme.com/memes/success-kid-i-hate-sandcastles",
+      "catalog_example": [
+        "don't know a question on the test",
+        "answer is in another question"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/success/don't_know_a_question_on_the_test/answer_is_in_another_question.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "78d5516464f6ba845dddefce21559d0d2a068b822a53d69ccd193e4e53a4a79d",
+      "rights_status": "fair-use-review"
+    },
+    "biw": {
+      "name": "Baby Insanity Wolf",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/biw.jpg",
+      "source_url": "http://knowyourmeme.com/memes/baby-insanity-wolf",
+      "catalog_example": [
+        "gets iced coffee",
+        "in the winter"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/biw/gets_iced_coffee/in_the_winter.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "5072a9f2e93597d1e3eadcb770a1b4980c2d099e42a2a25479daae5db9cb94ee",
+      "rights_status": "fair-use-review"
+    },
+    "rollsafe": {
+      "name": "Roll Safe",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/rollsafe.jpg",
+      "source_url": "http://knowyourmeme.com/memes/roll-safe",
+      "catalog_example": [
+        "can't get fired",
+        "if you don't have a job"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/rollsafe/can't_get_fired/if_you_don't_have_a_job.webp",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "2bbb299e327567fcd9c3425722787f8dac95891b0b595227c5e9a798548b24cb",
       "rights_status": "fair-use-review"
     },
     "handshake": {
@@ -160,50 +693,34 @@
       "sha256": "a2841ae288c84674a8d7bb527c4c925763b9c1e32fcf65dbf71fbe690163bb2b",
       "rights_status": "fair-use-review"
     },
-    "kermit": {
-      "name": "But That's None of My Business",
+    "ch": {
+      "name": "Captain Hindsight",
       "lines": 2,
-      "blank_url": "https://api.memegen.link/images/kermit.jpg",
-      "source_url": "http://knowyourmeme.com/memes/but-thats-none-of-my-business",
+      "blank_url": "https://api.memegen.link/images/ch.jpg",
+      "source_url": "http://knowyourmeme.com/memes/captain-hindsight",
       "catalog_example": [
-        "",
-        "but that's none of my business"
+        "if you wanted to avoid the friend zone",
+        "you should have made your intentions known from the start"
       ],
-      "catalog_example_url": "https://api.memegen.link/images/kermit/_/but_that's_none_of_my_business.jpg",
+      "catalog_example_url": "https://api.memegen.link/images/ch/if_you_wanted_to_avoid_the_friend_zone/you_should_have_made_your_intentions_known_from_the_start.jpg",
       "keywords": [],
-      "admission": "rejected",
-      "sha256": "fd0b93b2374f9eba91d321f9ccaaa2b64000089ef0a1f54918e7d39186a6c316",
+      "admission": "hold",
+      "sha256": "7881dc199168dedb96ff804831132035b684b5c89f09d26998ae88bd65875a5a",
       "rights_status": "fair-use-review"
     },
-    "mordor": {
-      "name": "One Does Not Simply Walk into Mordor",
+    "harold": {
+      "name": "Hide the Pain Harold",
       "lines": 2,
-      "blank_url": "https://api.memegen.link/images/mordor.jpg",
-      "source_url": "http://knowyourmeme.com/memes/one-does-not-simply-walk-into-mordor",
+      "blank_url": "https://api.memegen.link/images/harold.jpg",
+      "source_url": "https://knowyourmeme.com/memes/hide-the-pain-harold",
       "catalog_example": [
-        "one does not simply",
-        "walk into mordor"
+        "when the boss sees",
+        "your meme tab"
       ],
-      "catalog_example_url": "https://api.memegen.link/images/mordor/one_does_not_simply/walk_into_mordor.jpg",
+      "catalog_example_url": "https://api.memegen.link/images/harold/when_the_boss_sees/your_meme_tab.jpg",
       "keywords": [],
-      "admission": "active",
-      "sha256": "2433ee241f07181f63f35529444b080066024a058b4cf3e57048b212a8b90150",
-      "rights_status": "fair-use-review"
-    },
-    "panik-kalm-panik": {
-      "name": "Panik Kalm Panik",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/panik-kalm-panik.jpg",
-      "source_url": "https://knowyourmeme.com/memes/panik-kalm",
-      "catalog_example": [
-        "You hear a sound downstairs",
-        "It's just a cat",
-        "You don't have a cat"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/panik-kalm-panik/You_hear_a_sound_downstairs/It's_just_a_cat/You_don't_have_a_cat.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "24ce68c021e5c524696586ab848598495fdd26d20dd62254f94f15d716686531",
+      "admission": "hold",
+      "sha256": "e2032fafdf126ba0ece5621732c1a773dab0f0226c3633fb5e32b889e028bef4",
       "rights_status": "fair-use-review"
     },
     "pigeon": {
@@ -222,271 +739,6 @@
       "sha256": "785a8705983cb0df562708b2763a9865218c8bb1a196beb9e9ff3870e67b042b",
       "rights_status": "fair-use-review"
     },
-    "rollsafe": {
-      "name": "Roll Safe",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/rollsafe.jpg",
-      "source_url": "http://knowyourmeme.com/memes/roll-safe",
-      "catalog_example": [
-        "can't get fired",
-        "if you don't have a job"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/rollsafe/can't_get_fired/if_you_don't_have_a_job.webp",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "2bbb299e327567fcd9c3425722787f8dac95891b0b595227c5e9a798548b24cb",
-      "rights_status": "fair-use-review"
-    },
-    "saltbae": {
-      "name": "Salt Bae",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/saltbae.jpg",
-      "source_url": "http://knowyourmeme.com/memes/saltbae",
-      "catalog_example": [
-        "",
-        "pours salt on it"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/saltbae/_/pours_salt_on_it.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "1dff25850a1abc279fabd42881e8d271d8155e628168cb81d52c5e2777f7ff4e",
-      "rights_status": "fair-use-review"
-    },
-    "3hd": {
-      "name": "Three-Headed Dragon",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/3hd.jpg",
-      "source_url": "https://knowyourmeme.com/memes/three-headed-dragon",
-      "catalog_example": [
-        "Pepperoni",
-        "Mushroom",
-        "Pineapple"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/3hd/Pepperoni/Mushroom/Pineapple.jpg",
-      "keywords": [
-        "King Ghidorah"
-      ],
-      "admission": "active",
-      "sha256": "ae9174f5522b8186e893521f39f70c07d8281657d3c5125dc760b16e1f984636",
-      "rights_status": "fair-use-review"
-    },
-    "aag": {
-      "name": "Ancient Aliens Guy",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/aag.jpg",
-      "source_url": "http://knowyourmeme.com/memes/ancient-aliens",
-      "catalog_example": [
-        "",
-        "aliens"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/aag/_/aliens.jpg",
-      "keywords": [
-        "History Channel"
-      ],
-      "admission": "active",
-      "sha256": "3c0df3a4c358b8aea2d9a973e16bd3320483ec0a62b94fde755831808dc3e206",
-      "rights_status": "fair-use-review"
-    },
-    "afraid": {
-      "name": "Afraid to Ask Andy",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/afraid.jpg",
-      "source_url": "http://knowyourmeme.com/memes/afraid-to-ask-andy",
-      "catalog_example": [
-        "i don't know what this meme is for",
-        "and at this point i'm too afraid to ask"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/afraid/i_don't_know_what_this_meme_is_for/and_at_this_point_i'm_too_afraid_to_ask.jpg",
-      "keywords": [
-        "Parks and Recreation"
-      ],
-      "admission": "active",
-      "sha256": "44f88d4940f102e790638ece68dd07c13e3e47a0175ddf3b9f048df86258309e",
-      "rights_status": "fair-use-review"
-    },
-    "aint-got-time": {
-      "name": "Sweet Brown",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/aint-got-time.jpg",
-      "source_url": "https://knowyourmeme.com/memes/sweet-brown-aint-nobody-got-time-for-that",
-      "catalog_example": [
-        "memes?",
-        "ain't nobody got time fo' that"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/aint-got-time/memes~q/ain't_nobody_got_time_fo'_that.jpg",
-      "keywords": [
-        "Ain't Nobody Got Time For That"
-      ],
-      "admission": "rejected",
-      "sha256": "669c6061e8fad18f6efe991de043da679c7a53c295e9e6b908abb513633f7806",
-      "rights_status": "fair-use-review"
-    },
-    "ants": {
-      "name": "Do You Want Ants?",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/ants.jpg",
-      "source_url": "http://knowyourmeme.com/memes/do-you-want-ants",
-      "catalog_example": [
-        "do you want ants?",
-        "because that's how you get ants"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/ants/do_you_want_ants~q/because_that's_how_you_get_ants.jpg",
-      "keywords": [
-        "Archer"
-      ],
-      "admission": "active",
-      "sha256": "d1318a5b8b7a181b3ce0822d8e08a0b2d1802f2ff811658abae90bbdae0c0fbe",
-      "rights_status": "fair-use-review"
-    },
-    "away": {
-      "name": "Life... Finds a Way",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/away.jpg",
-      "source_url": "https://www.youtube.com/watch?v=dMjQ3hA9mEA",
-      "catalog_example": [
-        "life...",
-        "finds a way"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/away/life.../finds_a_way.jpg",
-      "keywords": [
-        "Jurassic Park"
-      ],
-      "admission": "hold",
-      "sha256": "3fde9c576a01c13ed78661953a8d00908b130b61fd41323233bc02c375dba6f3",
-      "rights_status": "fair-use-review"
-    },
-    "badchoice": {
-      "name": "Milk Was a Bad Choice",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/badchoice.jpg",
-      "source_url": "https://www.youtube.com/watch?v=DeY0yPqibb0",
-      "catalog_example": [
-        "milk",
-        "was a bad choice"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/badchoice/milk/was_a_bad_choice.jpg",
-      "keywords": [
-        "Anchorman"
-      ],
-      "admission": "hold",
-      "sha256": "17f7e7dbf39547d8d138aaf5a1e241945c9e91665c33575ff07fa8680c3e2b74",
-      "rights_status": "fair-use-review"
-    },
-    "balloon": {
-      "name": "Running Away Balloon",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/balloon.jpg",
-      "source_url": "https://knowyourmeme.com/memes/running-away-balloon",
-      "catalog_example": [
-        "Opportunities",
-        "Opportunities",
-        "Shyness"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/balloon/Opportunities/Opportunities/Shyness.jpg",
-      "keywords": [
-        "Superlmer"
-      ],
-      "admission": "active",
-      "sha256": "5adff9679704a202ecabd5fb177e2e93a5103715baa038762c721bab271f9267",
-      "rights_status": "fair-use-review"
-    },
-    "bender": {
-      "name": "I'm Going to Build My Own Theme Park",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/bender.jpg",
-      "source_url": "http://knowyourmeme.com/memes/im-going-to-build-my-own-theme-park-with-blackjack-and-hookers",
-      "catalog_example": [
-        "i'm going to build my own theme park",
-        "with blackjack and hookers"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/bender/i'm_going_to_build_my_own_theme_park/with_blackjack_and_hookers.jpg",
-      "keywords": [
-        "Futurama"
-      ],
-      "admission": "active",
-      "sha256": "d2728f0a7b203dcc875b1760538e4b11cdfb80476bdde077c071174822a90326",
-      "rights_status": "fair-use-review"
-    },
-    "bihw": {
-      "name": "But It's Honest Work",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/bihw.jpg",
-      "source_url": "https://knowyourmeme.com/memes/but-its-honest-work",
-      "catalog_example": [
-        "it ain't much",
-        "but it's honest work"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/bihw/it_ain't_much/but_it's_honest_work.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "651940fbe82e77fdd959d228892add2e80ac4e8d8595a95fa41d764773a6a141",
-      "rights_status": "fair-use-review"
-    },
-    "bilbo": {
-      "name": "Why Shouldn't I Keep It",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/bilbo.jpg",
-      "source_url": "https://knowyourmeme.com/memes/after-all-why-not-why-shouldnt-i-keep-it",
-      "catalog_example": [
-        "After all... why not?",
-        "Why shouldn't I keep it?"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/bilbo/After_all..._why_not~q/Why_shouldn't_I_keep_it~q.jpg",
-      "keywords": [
-        "Lord of the Rings",
-        "Bilbo Baggins"
-      ],
-      "admission": "active",
-      "sha256": "0be54c5bde4c3a1ca4f482808ad40739caf235cf526468b790c3cf090dd3a446",
-      "rights_status": "fair-use-review"
-    },
-    "both": {
-      "name": "Why Not Both?",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/both.jpg",
-      "source_url": "http://knowyourmeme.com/memes/why-not-both-why-dont-we-have-both",
-      "catalog_example": [
-        "hard or soft tacos",
-        "why not both?"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/both/hard_or_soft_tacos/why_not_both~q.webp",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "4e562f21433381d260be4920d940ddb34873005bf30c40fb2e4145a4d87f8b6b",
-      "rights_status": "fair-use-review"
-    },
-    "bus": {
-      "name": "Two Guys on a Bus",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/bus.jpg",
-      "source_url": "https://knowyourmeme.com/memes/two-guys-on-a-bus",
-      "catalog_example": [
-        "Postseason",
-        "Preseason"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/bus/Postseason/Preseason.jpg",
-      "keywords": [
-        "Genildo Ronchi"
-      ],
-      "admission": "active",
-      "sha256": "30cc0f2b58fbd5faf55365a42f37bf52dc08392bfcd5abbd948e8429bee86a78",
-      "rights_status": "fair-use-review"
-    },
-    "buzz": {
-      "name": "X, X Everywhere",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/buzz.jpg",
-      "source_url": "https://imgflip.com/memetemplate/X-Everywhere",
-      "catalog_example": [
-        "memes",
-        "memes everywhere"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/buzz/memes/memes_everywhere.webp",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "05cc323092f4fd9bc59c863de53473194b30db3cb3551940e1790588edf19ea7",
-      "rights_status": "fair-use-review"
-    },
     "captain": {
       "name": "I am the Captain Now",
       "lines": 2,
@@ -500,734 +752,6 @@
       "keywords": [],
       "admission": "hold",
       "sha256": "785a8423086f2acc9a6b4d756472a59bcd9c537f2061697d8dfaeb0f289c7e10",
-      "rights_status": "fair-use-review"
-    },
-    "cbb": {
-      "name": "Communist Bugs Bunny",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/cbb.jpg",
-      "source_url": "https://knowyourmeme.com/memes/communist-bugs-bunny",
-      "catalog_example": [
-        "",
-        "our memes!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/cbb/_/our_memes!.jpg",
-      "keywords": [],
-      "admission": "rejected",
-      "sha256": "b8ea80291275cc5719f6aab8c8c9d1be8625476769127b45f15ff8f5646c748d",
-      "rights_status": "fair-use-review"
-    },
-    "center": {
-      "name": "What is this, a Center for Ants?!",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/center.jpg",
-      "source_url": "http://knowyourmeme.com/memes/what-is-this-a-center-for-ants",
-      "catalog_example": [
-        "what is this",
-        "a center for ants"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/center/what_is_this/a_center_for_ants.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "0e3512c112a4e945328e3ee3674c13cc287b4d9ffef877f00b7a4c40e2148441",
-      "rights_status": "fair-use-review"
-    },
-    "chair": {
-      "name": "American Chopper Argument",
-      "lines": 6,
-      "blank_url": "https://api.memegen.link/images/chair.jpg",
-      "source_url": "https://knowyourmeme.com/memes/american-chopper-argument",
-      "catalog_example": [
-        "Let's expand safety nets",
-        "Socialism never works!",
-        "Scandinavia is socialist and they're doing great!",
-        "They're not socialist. They're capitalist with strong welfare policies!",
-        "Then let's adopt those!",
-        "No that's socialism!!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/chair/Let's_expand_safety_nets/Socialism_never_works!/Scandinavia_is_socialist_and_they're_doing_great!/They're_not_socialist._They're_capitalist_with_strong_welfare_policies!/Then_let's_adopt_those!/No_that's_socialism!!.jpg",
-      "keywords": [],
-      "admission": "rejected",
-      "sha256": "4635792bb6112bca454270ed90edf431f53789b1599941d945d820ff5605a009",
-      "rights_status": "fair-use-review"
-    },
-    "chosen": {
-      "name": "You Were the Chosen One!",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/chosen.jpg",
-      "source_url": "http://knowyourmeme.com/memes/you-were-the-chosen-one",
-      "catalog_example": [
-        "you were the chosen one!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/chosen/you_were_the_chosen_one!.jpg",
-      "keywords": [],
-      "admission": "rejected",
-      "sha256": "9362f7e5ba3e58dae4e9c584276ec69b2be306ab870d271049321b7aaa8a1bb2",
-      "rights_status": "fair-use-review"
-    },
-    "cmm": {
-      "name": "Change My Mind",
-      "lines": 1,
-      "blank_url": "https://api.memegen.link/images/cmm.jpg",
-      "source_url": "https://knowyourmeme.com/memes/steven-crowders-change-my-mind-campus-sign",
-      "catalog_example": [
-        "pineapples don't belong on pizza"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/cmm/pineapples_don't_belong_on_pizza.jpg",
-      "keywords": [],
-      "admission": "rejected",
-      "sha256": "1610a0638e29760d8cd78db4322bfceab7d49d19009d581c464a7313b636f416",
-      "rights_status": "fair-use-review"
-    },
-    "crazypills": {
-      "name": "I Feel Like I'm Taking Crazy Pills",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/crazypills.jpg",
-      "source_url": "http://knowyourmeme.com/memes/i-feel-like-im-taking-crazy-pills",
-      "catalog_example": [
-        "",
-        "i feel like i'm taking crazy pills"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/crazypills/_/i_feel_like_i'm_taking_crazy_pills.jpg",
-      "keywords": [],
-      "admission": "rejected",
-      "sha256": "a3c991966e33b2f7fbb527b15f9d89983e889b480893d194ad583110fa1c3be8",
-      "rights_status": "fair-use-review"
-    },
-    "dbg": {
-      "name": "Expectation vs. Reality",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/dbg.jpg",
-      "source_url": "https://knowyourmeme.com/memes/disappointed-black-guy",
-      "catalog_example": [
-        "Clicking the 'X' on a mobile ad",
-        "The 'X' is part of the ad"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/dbg/Clicking_the_'X'_on_a_mobile_ad/The_'X'_is_part_of_the_ad.jpg",
-      "keywords": [
-        "Disappointed Black Guy"
-      ],
-      "admission": "active",
-      "sha256": "5458e07d6bd9f9c72e947a8ac03a622f2b06be1231965b7d28c63d2ea0aeb9a4",
-      "rights_status": "fair-use-review"
-    },
-    "dodgson": {
-      "name": "See? Nobody Cares",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/dodgson.jpg",
-      "source_url": "http://knowyourmeme.com/memes/see-nobody-cares",
-      "catalog_example": [
-        "we've got dodgson here!",
-        "see? nobody cares"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/dodgson/we've_got_dodgson_here!/see~q_nobody_cares.webp",
-      "keywords": [
-        "Jurassic Park"
-      ],
-      "admission": "rejected",
-      "sha256": "369ea3f2da3f60881860fc08ea50d3a67f2865545b5e72d04818918b8c3a9158",
-      "rights_status": "fair-use-review"
-    },
-    "dwight": {
-      "name": "Schrute Facts",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/dwight.jpg",
-      "source_url": "http://knowyourmeme.com/memes/schrute-facts",
-      "catalog_example": [
-        "love is all you need?",
-        "false. you need water and rations."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/dwight/love_is_all_you_need~q/false._you_need_water_and_rations..jpg",
-      "keywords": [
-        "The Office"
-      ],
-      "admission": "active",
-      "sha256": "2f16c02b1ff3bb546fa49e503398aef63518707cdc8e932040f03de85fef77df",
-      "rights_status": "fair-use-review"
-    },
-    "exit": {
-      "name": "Left Exit 12 Off Ramp",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/exit.jpg",
-      "source_url": "https://knowyourmeme.com/memes/left-exit-12-off-ramp",
-      "catalog_example": [
-        "The Pins",
-        "The Gutter",
-        "Bowling Ball"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/exit/The_Pins/The_Gutter/Bowling_Ball.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "e542d3b7f67a4fbdbbfb3a17a42262ed1fc6c7a627e1a76d1201ad8a049cfc63",
-      "rights_status": "fair-use-review"
-    },
-    "facepalm": {
-      "name": "Facepalm",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/facepalm.jpg",
-      "source_url": "http://knowyourmeme.com/memes/facepalm",
-      "catalog_example": [
-        "",
-        "I can't even"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/facepalm/_/I_can't_even.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "adfea8b4577e56cf45c6cc673233c426e00b72d2595ba7958f28109d6fd0a97d",
-      "rights_status": "fair-use-review"
-    },
-    "fetch": {
-      "name": "Stop Trying to Make Fetch Happen",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/fetch.jpg",
-      "source_url": "http://knowyourmeme.com/memes/stop-trying-to-make-fetch-happen",
-      "catalog_example": [
-        "stop trying to make fetch happen",
-        "it's not going to happen"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/fetch/stop_trying_to_make_fetch_happen/it's_not_going_to_happen.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "a52bd97165a853b0ac6e4cf71747fc048fbb0c7412b2d64b766dd0d1d4d5c477",
-      "rights_status": "fair-use-review"
-    },
-    "firsttry": {
-      "name": "First Try!",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/firsttry.jpg",
-      "source_url": "https://www.youtube.com/watch?v=44-RsrF_V_w",
-      "catalog_example": [
-        "",
-        "first try!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/firsttry/_/first_try!.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "9895a4ddef5081f8bd67feba69487887d0e017758c04bdd3d0e7cc5ea9cb156f",
-      "rights_status": "fair-use-review"
-    },
-    "fry": {
-      "name": "Futurama Fry",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/fry.jpg",
-      "source_url": "http://knowyourmeme.com/memes/futurama-fry-not-sure-if",
-      "catalog_example": [
-        "not sure if trolling",
-        "or just stupid"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/fry/not_sure_if_trolling/or_just_stupid.webp",
-      "keywords": [
-        "Philip J. Fry"
-      ],
-      "admission": "active",
-      "sha256": "f22cd6a609f382d5f0ecb5bbf9f875902c50f20b5bfd140edd40f2b1d1eb6d38",
-      "rights_status": "fair-use-review"
-    },
-    "gears": {
-      "name": "You Know What Really Grinds My Gears?",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/gears.jpg",
-      "source_url": "http://knowyourmeme.com/memes/you-know-what-really-grinds-my-gears",
-      "catalog_example": [
-        "you know what really grinds my gears?",
-        "when people post images of cogs that don't mesh"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/gears/you_know_what_really_grinds_my_gears~q/when_people_post_images_of_cogs_that_don't_mesh.jpg",
-      "keywords": [
-        "Family Guy"
-      ],
-      "admission": "active",
-      "sha256": "3b7a96433b23650ef8e59e734b4ff7e42d61a4e9878f53ec74fc18aa0c579d8c",
-      "rights_status": "fair-use-review"
-    },
-    "genie": {
-      "name": "Genie Lamp",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/genie.jpg",
-      "source_url": "https://imgflip.com/memetemplate/205390462",
-      "catalog_example": [
-        "phenomenal cosmic power",
-        "itty bitty living space"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/genie/phenomenal_cosmic_power/itty_bitty_living_space.jpg",
-      "keywords": [
-        "Aladin"
-      ],
-      "admission": "active",
-      "sha256": "e4022124fbf0cf8b904d9261ab2365c606f23d14896ea8e28eba2c78352d0db6",
-      "rights_status": "fair-use-review"
-    },
-    "gone": {
-      "name": "And It's Gone",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/gone.jpg",
-      "source_url": "https://knowyourmeme.com/memes/and-its-gone",
-      "catalog_example": [
-        "we'll just invest that money",
-        "...aaaand it's gone"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/gone/we'll_just_invest_that_money/...aaaand_it's_gone.jpg",
-      "keywords": [
-        "South Park"
-      ],
-      "admission": "active",
-      "sha256": "209162b8fe2a592b1bf98b2e9d75d82dc66ad142e15b3973d934cdf72c4779c1",
-      "rights_status": "fair-use-review"
-    },
-    "hagrid": {
-      "name": "I Should Not Have Said That",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/hagrid.jpg",
-      "source_url": "https://www.youtube.com/watch?v=498HkRM77gg",
-      "catalog_example": [
-        "",
-        "i should not have said that"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/hagrid/_/i_should_not_have_said_that.jpg",
-      "keywords": [
-        "Harry Potter"
-      ],
-      "admission": "hold",
-      "sha256": "6b034c41cd79daaa6dd51ee54a17a19ab07ca0d878b24dc8a3cdebdeeba70e4b",
-      "rights_status": "fair-use-review"
-    },
-    "harold": {
-      "name": "Hide the Pain Harold",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/harold.jpg",
-      "source_url": "https://knowyourmeme.com/memes/hide-the-pain-harold",
-      "catalog_example": [
-        "when the boss sees",
-        "your meme tab"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/harold/when_the_boss_sees/your_meme_tab.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "e2032fafdf126ba0ece5621732c1a773dab0f0226c3633fb5e32b889e028bef4",
-      "rights_status": "fair-use-review"
-    },
-    "home": {
-      "name": "We Have Food at Home",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/home.jpg",
-      "source_url": "https://knowyourmeme.com/memes/we-have-food-at-home",
-      "catalog_example": [
-        "Me: Can we stop and get food?",
-        "Mom: We have food at home.",
-        "Food at home:"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/home/Me:_Can_we_stop_and_get_food~q/Mom:_We_have_food_at_home./Food_at_home:.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "fb1ad2125433d534d98398798ffc9d5d2e3b7f1e4bb92d631c89c1213056781a",
-      "rights_status": "fair-use-review"
-    },
-    "inigo": {
-      "name": "Inigo Montoya",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/inigo.jpg",
-      "source_url": "http://knowyourmeme.com/memes/you-keep-using-that-word-i-do-not-think-it-means-what-you-think-it-means",
-      "catalog_example": [
-        "you keep using that word",
-        "i do not think it means what you think it means"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/inigo/you_keep_using_that_word/i_do_not_think_it_means_what_you_think_it_means.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "9c4f389eaf4a2ddabb1b2495241be0e3d4f1230d46ce01f8145f2129e2ed7aa6",
-      "rights_status": "fair-use-review"
-    },
-    "kombucha": {
-      "name": "Kombucha Girl",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/kombucha.jpg",
-      "source_url": "https://www.buzzfeed.com/daniellaemanuel/woman-trying-kombucha-meme",
-      "catalog_example": [
-        "Trying a thing.",
-        "Trying a thing again."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/kombucha/Trying_a_thing./Trying_a_thing_again..jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "ccd4df5e1e447a69411721dbcb68becdbb8fb76ff32f3ddb01d5a5dc61276efb",
-      "rights_status": "fair-use-review"
-    },
-    "made": {
-      "name": "I Made This",
-      "lines": 5,
-      "blank_url": "https://api.memegen.link/images/made.jpg",
-      "source_url": "https://knowyourmeme.com/memes/i-made-this",
-      "catalog_example": [
-        "The Internet",
-        "Everyone",
-        "I made this.",
-        "You made this?",
-        "I made this."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/made/The_Internet/Everyone/I_made_this./You_made_this~q/I_made_this..jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "3c256daef577432be36a4c1ec0af418e961e919f0d089071454231bfbbdefd5e",
-      "rights_status": "fair-use-review"
-    },
-    "michael-scott": {
-      "name": "Michael Scott No God No",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/michael-scott.jpg",
-      "source_url": "https://www.youtube.com/watch?v=31g0YE61PLQ",
-      "catalog_example": [
-        "no, god! no god please no!",
-        "noooooooooooooooo!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/michael-scott/no,_god!_no_god_please_no!/noooooooooooooooo!.jpg",
-      "keywords": [
-        "The Office"
-      ],
-      "admission": "hold",
-      "sha256": "6167cd26e2409f42b374d07cc379e1843182b3d9483cd71fd31f75092df5d29d",
-      "rights_status": "fair-use-review"
-    },
-    "midwit": {
-      "name": "Midwit",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/midwit.jpg",
-      "source_url": "https://knowyourmeme.com/memes/iq-bell-curve-midwit",
-      "catalog_example": [
-        "if it's good I do it",
-        "NOOOOO you have to have complex reasons for what you're doing. what is the point. what is your goal.",
-        "if it's good I do it"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/midwit/if_it's_good_I_do_it/NOOOOO_you_have_to_have_complex_reasons_for_what_you're_doing._what_is_the_point._what_is_your_goal./if_it's_good_I_do_it.jpg",
-      "keywords": [
-        "IQ Bell Curve / Midwit"
-      ],
-      "admission": "rejected",
-      "sha256": "2dfe12278fcc4903de9b42570cc2e2b318df1700bec079571de2bcc6b4eafcb2",
-      "rights_status": "fair-use-review"
-    },
-    "millers": {
-      "name": "You Guys Are Getting Paid?",
-      "lines": 4,
-      "blank_url": "https://api.memegen.link/images/millers.jpg",
-      "source_url": "https://knowyourmeme.com/photos/1712302-you-guys-are-getting-paid",
-      "catalog_example": [
-        "",
-        "You are making 500 thousand dollars and you were only gonna pay me 30?",
-        "You're getting 30 grand? I'm getting a thousand!",
-        "You guys are getting paid?"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/millers/_/You_are_making_500_thousand_dollars_and_you_were_only_gonna_pay_me_30~q/You're_getting_30_grand~q_I'm_getting_a_thousand!/You_guys_are_getting_paid~q.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "9b785827154f3f7f1d6677e60f1e693360c88f93cab84611de7b8fb76079c261",
-      "rights_status": "fair-use-review"
-    },
-    "money": {
-      "name": "Shut Up and Take My Money!",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/money.jpg",
-      "source_url": "http://knowyourmeme.com/memes/shut-up-and-take-my-money",
-      "catalog_example": [
-        "shut up and",
-        "take my money!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/money/shut_up_and/take_my_money!.webp",
-      "keywords": [
-        "Futurama",
-        "Philip J. Fry"
-      ],
-      "admission": "active",
-      "sha256": "b53478c2a1b979a90aa2e9f0473aa2f2d3960a1ae6d4113a84f76159c72c35a1",
-      "rights_status": "fair-use-review"
-    },
-    "mouth": {
-      "name": "Woman Holding Dog's Mouth",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/mouth.jpg",
-      "source_url": "https://knowyourmeme.com/memes/women-holding-dogs-mouth",
-      "catalog_example": [
-        "Sales Team presenting the solution in PowerPoint",
-        "Excited Customer",
-        "Engineering Team knowing the solution is not technically possible"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/mouth/Sales_Team_presenting_the_solution_in_PowerPoint/Excited_Customer/Engineering_Team_knowing_the_solution_is_not_technically_possible.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "e3e33db37b3c9608edd99466700be2a37f0284d6e28784d7df19c6e5f59efc9a",
-      "rights_status": "fair-use-review"
-    },
-    "nice": {
-      "name": "So I Got That Goin' For Me, Which is Nice",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/nice.jpg",
-      "source_url": "http://knowyourmeme.com/memes/so-i-got-that-goin-for-me-which-is-nice",
-      "catalog_example": [
-        "",
-        "so i got that goin' for me, which is nice"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/nice/_/so_i_got_that_goin'_for_me,_which_is_nice.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "d025cc9a6e9151af8e9f424688e6b5a7e563d4a91e88bd907ed58bd7f2f648b5",
-      "rights_status": "fair-use-review"
-    },
-    "noidea": {
-      "name": "I Have No Idea What I'm Doing",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/noidea.jpg",
-      "source_url": "http://knowyourmeme.com/memes/i-have-no-idea-what-i-m-doing",
-      "catalog_example": [
-        "i have no idea",
-        "what i'm doing"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/noidea/i_have_no_idea/what_i'm_doing.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "17ca32f4e908532571f0152cf7606ceac3640ccbdba6c44797f4bc360af36e54",
-      "rights_status": "fair-use-review"
-    },
-    "ntot": {
-      "name": "No Take, Only Throw",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/ntot.jpg",
-      "source_url": "https://knowyourmeme.com/memes/no-take-only-throw",
-      "catalog_example": [
-        "Pls throw??",
-        "NO TAKE!!",
-        "ONLY THROW"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/ntot/Pls_throw~q~q/NO_TAKE!!/ONLY_THROW.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "b9a2560587c5940dc15c50593c85d4461ff240c227366dd3338b8a4fd7536ba4",
-      "rights_status": "fair-use-review"
-    },
-    "officespace": {
-      "name": "That Would Be Great",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/officespace.jpg",
-      "source_url": "http://knowyourmeme.com/memes/that-would-be-great",
-      "catalog_example": [
-        "yeah...",
-        "that'd be great"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/officespace/yeah.../that'd_be_great.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "8ca81e6a38bb5962c335ad973ef39f0c02e1716727ac90e8ac4ea7d7852e2f8f",
-      "rights_status": "fair-use-review"
-    },
-    "older": {
-      "name": "An Older Code Sir, But It Checks Out",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/older.jpg",
-      "source_url": "http://knowyourmeme.com/memes/its-an-older-meme-but-it-checks-out",
-      "catalog_example": [
-        "it's an older meme sir",
-        "but it checks out"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/older/it's_an_older_meme_sir/but_it_checks_out.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "5d211d75094d001e8b7955c98a756e209937d76c06c9800f1a8dd33d9f86b270",
-      "rights_status": "fair-use-review"
-    },
-    "patrick": {
-      "name": "Push it somewhere else Patrick",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/patrick.jpg",
-      "source_url": "http://knowyourmeme.com/memes/push-it-somewhere-else-patrick",
-      "catalog_example": [
-        "why don't we take all the memes",
-        "and put them on memegen"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/patrick/why_don't_we_take_all_the_memes/and_put_them_on_memegen.webp",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "8243e12f0c03914e1497d9be8af76440cb61887c5a399a2970ba00073357be55",
-      "rights_status": "fair-use-review"
-    },
-    "perfection": {
-      "name": "Perfection",
-      "lines": 6,
-      "blank_url": "https://api.memegen.link/images/perfection.jpg",
-      "source_url": "https://knowyourmeme.com/memes/perfection",
-      "catalog_example": [
-        "Sebastian Shaw",
-        "I prefer the real Darth Vader.",
-        "Hayden Christensen",
-        "I said, the real Darth Vader.",
-        "Jake Lloyd",
-        "Perfection."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/perfection/Sebastian_Shaw/I_prefer_the_real_Darth_Vader./Hayden_Christensen/I_said,_the_real_Darth_Vader./Jake_Lloyd/Perfection..jpg",
-      "keywords": [
-        "I Prefer the Real Raven"
-      ],
-      "admission": "active",
-      "sha256": "d40c0b925b6e875c0733306a1d6716704afb55fdc45d90dbe6d76f1d32f5f947",
-      "rights_status": "fair-use-review"
-    },
-    "pooh": {
-      "name": "Tuxedo Winnie the Pooh",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/pooh.jpg",
-      "source_url": "https://knowyourmeme.com/memes/tuxedo-winnie-the-pooh",
-      "catalog_example": [
-        "Burger King",
-        "The Monarch of Hamburg"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/pooh/Burger_King/The_Monarch_of_Hamburg.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "559598454a09fa366f6a15d8f8d3d85ee67c4b68265e7d969c0719d8914906a8",
-      "rights_status": "fair-use-review"
-    },
-    "regret": {
-      "name": "I Immediately Regret This Decision!",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/regret.jpg",
-      "source_url": "https://www.youtube.com/watch?v=gd9ltJGykYc",
-      "catalog_example": [
-        "",
-        "i immediately regret this decision"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/regret/_/i_immediately_regret_this_decision.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "a3fdc0882575e91d6e4c924b75982aefda9cfe8ee8b366b3a41a85c015cf38a6",
-      "rights_status": "fair-use-review"
-    },
-    "reveal": {
-      "name": "Scooby Doo Reveal",
-      "lines": 4,
-      "blank_url": "https://api.memegen.link/images/reveal.jpg",
-      "source_url": "https://knowyourmeme.com/memes/lets-see-who-this-really-is",
-      "catalog_example": [
-        "Villain",
-        "Let's see who you really are...",
-        "Protagonist",
-        "I knew it!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/reveal/Villain/Let's_see_who_you_really_are.../Protagonist/I_knew_it!.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "0dd9d2904684160fc83282415e4220da191c9844959b35601893ee2bfb3a8f1b",
-      "rights_status": "fair-use-review"
-    },
-    "right": {
-      "name": "Anakin and Padme Change the World For the Better",
-      "lines": 5,
-      "blank_url": "https://api.memegen.link/images/right.jpg",
-      "source_url": "https://www.reddit.com/r/MemeTemplatesOfficial/comments/nia6wu/im_going_to_change_the_world_for_the_better_right/",
-      "catalog_example": [
-        "Senior Developer",
-        "Junior Developer",
-        "Put it in the backlog.",
-        "So we can fix it later, right?",
-        "So we can fix it later, right?"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/right/Senior_Developer/Junior_Developer/Put_it_in_the_backlog./So_we_can_fix_it_later,_right~q/So_we_can_fix_it_later,_right~q.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "c3ef0c75f45ad8e0516a00dcb053b960dad2dd5d8e17c13203939880a41cfa20",
-      "rights_status": "fair-use-review"
-    },
-    "same": {
-      "name": "They're The Same Picture",
-      "lines": 3,
-      "blank_url": "https://api.memegen.link/images/same.jpg",
-      "source_url": "https://knowyourmeme.com/memes/theyre-the-same-picture",
-      "catalog_example": [
-        "\u03c0",
-        "3",
-        "The Bible"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/same/\u03c0/3/The_Bible.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "408b10cddb6e52d5b7c608348e5cf62c9bd9bf28e9e73b01bdda94400f0097c6",
-      "rights_status": "fair-use-review"
-    },
-    "say": {
-      "name": "Say the Line, Bart!",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/say.jpg",
-      "source_url": "https://knowyourmeme.com/memes/say-the-line-bart",
-      "catalog_example": [
-        "Say the line, Senior Engineer!",
-        "It depends."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/say/Say_the_line,_Senior_Engineer!/It_depends..jpg",
-      "keywords": [
-        "The Simpsons",
-        "Bart Simpson"
-      ],
-      "admission": "active",
-      "sha256": "8f222f48f81afc2b08c3680ff80a4fe5acdd220f176110f55dbd1312058512d9",
-      "rights_status": "fair-use-review"
-    },
-    "seagull": {
-      "name": "Inhaling Seagull",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/seagull.jpg",
-      "source_url": "https://knowyourmeme.com/memes/inhaling-seagull",
-      "catalog_example": [
-        "some",
-        "BODY ONCE TOLD ME THE THE WORLD WAS GONNA ROLL ME!!"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/seagull/some/BODY_ONCE_TOLD_ME_THE_THE_WORLD_WAS_GONNA_ROLL_ME!!.jpg",
-      "keywords": [],
-      "admission": "hold",
-      "sha256": "172a6e35ca3aea9ef515acc39acaa78f6806d1a28ad62ced1e87f95cb220f4a8",
-      "rights_status": "fair-use-review"
-    },
-    "stonks": {
-      "name": "Stonks",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/stonks.jpg",
-      "source_url": "https://knowyourmeme.com/memes/stonks",
-      "catalog_example": [
-        "",
-        "stonks"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/stonks/_/stonks.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "b9784953388f33b23690bace6ae2a41351226a8d6ccf04affdb609cccf929d73",
-      "rights_status": "fair-use-review"
-    },
-    "success": {
-      "name": "Success Kid",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/success.jpg",
-      "source_url": "http://knowyourmeme.com/memes/success-kid-i-hate-sandcastles",
-      "catalog_example": [
-        "don't know a question on the test",
-        "answer is in another question"
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/success/don't_know_a_question_on_the_test/answer_is_in_another_question.jpg",
-      "keywords": [],
-      "admission": "active",
-      "sha256": "78d5516464f6ba845dddefce21559d0d2a068b822a53d69ccd193e4e53a4a79d",
-      "rights_status": "fair-use-review"
-    },
-    "touch": {
-      "name": "Principal Skinner",
-      "lines": 2,
-      "blank_url": "https://api.memegen.link/images/touch.jpg",
-      "source_url": "https://knowyourmeme.com/memes/am-i-out-of-touch",
-      "catalog_example": [
-        "Am I so out of touch?",
-        "No, it's the children who are wrong."
-      ],
-      "catalog_example_url": "https://api.memegen.link/images/touch/Am_I_so_out_of_touch~q/No,_it's_the_children_who_are_wrong..jpg",
-      "keywords": [
-        "Am I Out Of Touch?",
-        "The Simpsons"
-      ],
-      "admission": "active",
-      "sha256": "b7774920f14a58b2c93798b71bdcb90db553776eb85f453049fa788fa8105d53",
       "rights_status": "fair-use-review"
     },
     "wallet": {
@@ -1251,34 +775,275 @@
       "sha256": "d6aa5ac4a3d0fbac540206fc34d4193feb6a46ea4bcfc6a8a01e865737835e88",
       "rights_status": "fair-use-review"
     },
-    "woman-cat": {
-      "name": "Woman Yelling at a Cat",
+    "gandalf": {
+      "name": "Confused Gandalf",
       "lines": 2,
-      "blank_url": "https://api.memegen.link/images/woman-cat.jpg",
-      "source_url": "https://knowyourmeme.com/memes/woman-yelling-at-a-cat",
+      "blank_url": "https://api.memegen.link/images/gandalf.jpg",
+      "source_url": "http://knowyourmeme.com/memes/confused-gandalf",
       "catalog_example": [
-        "Mom telling me how useless I am",
-        "12 year old me playing Minecraft"
+        "",
+        "I have no memory of this place"
       ],
-      "catalog_example_url": "https://api.memegen.link/images/woman-cat/Mom_telling_me_how_useless_I_am/12_year_old_me_playing_Minecraft.jpg",
-      "keywords": [],
-      "admission": "rejected",
-      "sha256": "2ed56c7b82545b8ffd01f417ca00496144f1366133a2e1d777ee6af3d89bf08c",
+      "catalog_example_url": "https://api.memegen.link/images/gandalf/_/I_have_no_memory_of_this_place.jpg",
+      "keywords": [
+        "Lord of the Rings"
+      ],
+      "admission": "active",
+      "sha256": "38d448dee01e5c1120e86778c3a95ef0d3d59df97b16cf39447ca02c59861430",
       "rights_status": "fair-use-review"
     },
-    "wonka": {
-      "name": "Condescending Wonka",
+    "lrv": {
+      "name": "Laundry Room Viking",
       "lines": 2,
-      "blank_url": "https://api.memegen.link/images/wonka.jpg",
-      "source_url": "http://knowyourmeme.com/memes/condescending-wonka-creepy-wonka",
+      "blank_url": "https://api.memegen.link/images/lrv.jpg",
+      "source_url": "http://knowyourmeme.com/memes/laundry-room-viking",
       "catalog_example": [
-        "oh, you just graduated?",
-        "you must know everything"
+        "do the laundry they said",
+        "it will be fun they said"
       ],
-      "catalog_example_url": "https://api.memegen.link/images/wonka/oh,_you_just_graduated~q/you_must_know_everything.jpg",
+      "catalog_example_url": "https://api.memegen.link/images/lrv/do_the_laundry_they_said/it_will_be_fun_they_said.jpg",
       "keywords": [],
       "admission": "rejected",
-      "sha256": "0220f5b2898a19b57666fe07e46560e0a24fbd7580dc3da1784a272e3d52cc5c",
+      "sha256": "3dc5642bfd9173936b3d585c11511e070b4040e76d9327930e0a6f3e2ba117d4",
+      "rights_status": "fair-use-review"
+    },
+    "away": {
+      "name": "Life... Finds a Way",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/away.jpg",
+      "source_url": "https://www.youtube.com/watch?v=dMjQ3hA9mEA",
+      "catalog_example": [
+        "life...",
+        "finds a way"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/away/life.../finds_a_way.jpg",
+      "keywords": [
+        "Jurassic Park"
+      ],
+      "admission": "hold",
+      "sha256": "3fde9c576a01c13ed78661953a8d00908b130b61fd41323233bc02c375dba6f3",
+      "rights_status": "fair-use-review"
+    },
+    "fetch": {
+      "name": "Stop Trying to Make Fetch Happen",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/fetch.jpg",
+      "source_url": "http://knowyourmeme.com/memes/stop-trying-to-make-fetch-happen",
+      "catalog_example": [
+        "stop trying to make fetch happen",
+        "it's not going to happen"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/fetch/stop_trying_to_make_fetch_happen/it's_not_going_to_happen.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "a52bd97165a853b0ac6e4cf71747fc048fbb0c7412b2d64b766dd0d1d4d5c477",
+      "rights_status": "fair-use-review"
+    },
+    "drake": {
+      "name": "Drakeposting",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/drake.jpg",
+      "source_url": "http://knowyourmeme.com/memes/drakeposting",
+      "catalog_example": [
+        "left on unread",
+        "left on read"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/drake/left_on_unread/left_on_read.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "7002f63565bd809d26eb828da342bcf6918bb07aecc57dd14cc212342f0d3413",
+      "rights_status": "fair-use-review"
+    },
+    "panik-kalm-panik": {
+      "name": "Panik Kalm Panik",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/panik-kalm-panik.jpg",
+      "source_url": "https://knowyourmeme.com/memes/panik-kalm",
+      "catalog_example": [
+        "You hear a sound downstairs",
+        "It's just a cat",
+        "You don't have a cat"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/panik-kalm-panik/You_hear_a_sound_downstairs/It's_just_a_cat/You_don't_have_a_cat.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "24ce68c021e5c524696586ab848598495fdd26d20dd62254f94f15d716686531",
+      "rights_status": "fair-use-review"
+    },
+    "aint-got-time": {
+      "name": "Sweet Brown",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/aint-got-time.jpg",
+      "source_url": "https://knowyourmeme.com/memes/sweet-brown-aint-nobody-got-time-for-that",
+      "catalog_example": [
+        "memes?",
+        "ain't nobody got time fo' that"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/aint-got-time/memes~q/ain't_nobody_got_time_fo'_that.jpg",
+      "keywords": [
+        "Ain't Nobody Got Time For That"
+      ],
+      "admission": "rejected",
+      "sha256": "669c6061e8fad18f6efe991de043da679c7a53c295e9e6b908abb513633f7806",
+      "rights_status": "fair-use-review"
+    },
+    "patrick": {
+      "name": "Push it somewhere else Patrick",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/patrick.jpg",
+      "source_url": "http://knowyourmeme.com/memes/push-it-somewhere-else-patrick",
+      "catalog_example": [
+        "why don't we take all the memes",
+        "and put them on memegen"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/patrick/why_don't_we_take_all_the_memes/and_put_them_on_memegen.webp",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "8243e12f0c03914e1497d9be8af76440cb61887c5a399a2970ba00073357be55",
+      "rights_status": "fair-use-review"
+    },
+    "fine": {
+      "name": "This is Fine",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/fine.jpg",
+      "source_url": "http://gunshowcomic.com/648",
+      "catalog_example": [
+        "",
+        "this is fine"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/fine/_/this_is_fine.webp",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "ce972d2b25eb7fef0ed7027ee713d1e32bb8821f66d6ad7b230532fa1360e9c0",
+      "rights_status": "fair-use-review"
+    },
+    "ds": {
+      "name": "Daily Struggle",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/ds.jpg",
+      "source_url": "https://knowyourmeme.com/memes/daily-struggle",
+      "catalog_example": [
+        "The dress is black and blue.",
+        "The dress is gold and white."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/ds/The_dress_is_black_and_blue./The_dress_is_gold_and_white..jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "8cb01339ea01a42ce771a28226c0907c5303cfa9f2e9ddab43c7cf4e153fe54b",
+      "rights_status": "fair-use-review"
+    },
+    "aag": {
+      "name": "Ancient Aliens Guy",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/aag.jpg",
+      "source_url": "http://knowyourmeme.com/memes/ancient-aliens",
+      "catalog_example": [
+        "",
+        "aliens"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/aag/_/aliens.jpg",
+      "keywords": [
+        "History Channel"
+      ],
+      "admission": "active",
+      "sha256": "3c0df3a4c358b8aea2d9a973e16bd3320483ec0a62b94fde755831808dc3e206",
+      "rights_status": "fair-use-review"
+    },
+    "yodawg": {
+      "name": "Xzibit Yo Dawg",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/yodawg.jpg",
+      "source_url": "http://knowyourmeme.com/memes/xzibit-yo-dawg",
+      "catalog_example": [
+        "yo dawg",
+        "i heard you like memes"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/yodawg/yo_dawg/i_heard_you_like_memes.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "e3250e3d1d999e07dbe1e94bd939238795649de0f9de22a19cfb74f79a1b7d87",
+      "rights_status": "fair-use-review"
+    },
+    "saltbae": {
+      "name": "Salt Bae",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/saltbae.jpg",
+      "source_url": "http://knowyourmeme.com/memes/saltbae",
+      "catalog_example": [
+        "",
+        "pours salt on it"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/saltbae/_/pours_salt_on_it.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "1dff25850a1abc279fabd42881e8d271d8155e628168cb81d52c5e2777f7ff4e",
+      "rights_status": "fair-use-review"
+    },
+    "badchoice": {
+      "name": "Milk Was a Bad Choice",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/badchoice.jpg",
+      "source_url": "https://www.youtube.com/watch?v=DeY0yPqibb0",
+      "catalog_example": [
+        "milk",
+        "was a bad choice"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/badchoice/milk/was_a_bad_choice.jpg",
+      "keywords": [
+        "Anchorman"
+      ],
+      "admission": "hold",
+      "sha256": "17f7e7dbf39547d8d138aaf5a1e241945c9e91665c33575ff07fa8680c3e2b74",
+      "rights_status": "fair-use-review"
+    },
+    "dbg": {
+      "name": "Expectation vs. Reality",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/dbg.jpg",
+      "source_url": "https://knowyourmeme.com/memes/disappointed-black-guy",
+      "catalog_example": [
+        "Clicking the 'X' on a mobile ad",
+        "The 'X' is part of the ad"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/dbg/Clicking_the_'X'_on_a_mobile_ad/The_'X'_is_part_of_the_ad.jpg",
+      "keywords": [
+        "Disappointed Black Guy"
+      ],
+      "admission": "active",
+      "sha256": "5458e07d6bd9f9c72e947a8ac03a622f2b06be1231965b7d28c63d2ea0aeb9a4",
+      "rights_status": "fair-use-review"
+    },
+    "made": {
+      "name": "I Made This",
+      "lines": 5,
+      "blank_url": "https://api.memegen.link/images/made.jpg",
+      "source_url": "https://knowyourmeme.com/memes/i-made-this",
+      "catalog_example": [
+        "The Internet",
+        "Everyone",
+        "I made this.",
+        "You made this?",
+        "I made this."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/made/The_Internet/Everyone/I_made_this./You_made_this~q/I_made_this..jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "3c256daef577432be36a4c1ec0af418e961e919f0d089071454231bfbbdefd5e",
+      "rights_status": "fair-use-review"
+    },
+    "regret": {
+      "name": "I Immediately Regret This Decision!",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/regret.jpg",
+      "source_url": "https://www.youtube.com/watch?v=gd9ltJGykYc",
+      "catalog_example": [
+        "",
+        "i immediately regret this decision"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/regret/_/i_immediately_regret_this_decision.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "a3fdc0882575e91d6e4c924b75982aefda9cfe8ee8b366b3a41a85c015cf38a6",
       "rights_status": "fair-use-review"
     },
     "worst": {
@@ -1294,6 +1059,951 @@
       "keywords": [],
       "admission": "rejected",
       "sha256": "e56f3e5baee6f41bd674fd8d81809af84a7b792af0f150146a98faa8a59b2760",
+      "rights_status": "fair-use-review"
+    },
+    "bilbo": {
+      "name": "Why Shouldn't I Keep It",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/bilbo.jpg",
+      "source_url": "https://knowyourmeme.com/memes/after-all-why-not-why-shouldnt-i-keep-it",
+      "catalog_example": [
+        "After all... why not?",
+        "Why shouldn't I keep it?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/bilbo/After_all..._why_not~q/Why_shouldn't_I_keep_it~q.jpg",
+      "keywords": [
+        "Lord of the Rings",
+        "Bilbo Baggins"
+      ],
+      "admission": "active",
+      "sha256": "0be54c5bde4c3a1ca4f482808ad40739caf235cf526468b790c3cf090dd3a446",
+      "rights_status": "fair-use-review"
+    },
+    "stonks": {
+      "name": "Stonks",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/stonks.jpg",
+      "source_url": "https://knowyourmeme.com/memes/stonks",
+      "catalog_example": [
+        "",
+        "stonks"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/stonks/_/stonks.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "b9784953388f33b23690bace6ae2a41351226a8d6ccf04affdb609cccf929d73",
+      "rights_status": "fair-use-review"
+    },
+    "oprah": {
+      "name": "Oprah You Get a Car",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/oprah.jpg",
+      "source_url": "http://knowyourmeme.com/memes/oprah-you-get-a-car",
+      "catalog_example": [
+        "Top Line",
+        "Bottom Line"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/oprah/Top_Line/Bottom_Line.webp",
+      "keywords": [
+        "everybody gets",
+        "you win"
+      ],
+      "admission": "active",
+      "sha256": "190fe0a8350cf50ad6a4470e559fb6bd4617a95fc6f6b0f74bfc425bab06a9da",
+      "rights_status": "fair-use-review"
+    },
+    "gone": {
+      "name": "And It's Gone",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/gone.jpg",
+      "source_url": "https://knowyourmeme.com/memes/and-its-gone",
+      "catalog_example": [
+        "we'll just invest that money",
+        "...aaaand it's gone"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/gone/we'll_just_invest_that_money/...aaaand_it's_gone.jpg",
+      "keywords": [
+        "South Park"
+      ],
+      "admission": "active",
+      "sha256": "209162b8fe2a592b1bf98b2e9d75d82dc66ad142e15b3973d934cdf72c4779c1",
+      "rights_status": "fair-use-review"
+    },
+    "db": {
+      "name": "Distracted Boyfriend",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/db.jpg",
+      "source_url": "https://knowyourmeme.com/memes/distracted-boyfriend",
+      "catalog_example": [
+        "Socialism",
+        "The Youth",
+        "Capitalism"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/db/Socialism/The_Youth/Capitalism.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "da70f5f77d39f2a810a5c733aa725f3b3967ebf00dcab861bb83859e0f71c61d",
+      "rights_status": "fair-use-review"
+    },
+    "sb": {
+      "name": "Scumbag Brain",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/sb.jpg",
+      "source_url": "http://knowyourmeme.com/memes/scumbag-brain",
+      "catalog_example": [
+        "remembers the face",
+        "but not the name"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/sb/remembers_the_face/but_not_the_name.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "98a79c2a9501c876096f3781e4a42a79857c1b116a125812eab033fa847a7ea3",
+      "rights_status": "fair-use-review"
+    },
+    "right": {
+      "name": "Anakin and Padme Change the World For the Better",
+      "lines": 5,
+      "blank_url": "https://api.memegen.link/images/right.jpg",
+      "source_url": "https://www.reddit.com/r/MemeTemplatesOfficial/comments/nia6wu/im_going_to_change_the_world_for_the_better_right/",
+      "catalog_example": [
+        "Senior Developer",
+        "Junior Developer",
+        "Put it in the backlog.",
+        "So we can fix it later, right?",
+        "So we can fix it later, right?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/right/Senior_Developer/Junior_Developer/Put_it_in_the_backlog./So_we_can_fix_it_later,_right~q/So_we_can_fix_it_later,_right~q.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "c3ef0c75f45ad8e0516a00dcb053b960dad2dd5d8e17c13203939880a41cfa20",
+      "rights_status": "fair-use-review"
+    },
+    "money": {
+      "name": "Shut Up and Take My Money!",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/money.jpg",
+      "source_url": "http://knowyourmeme.com/memes/shut-up-and-take-my-money",
+      "catalog_example": [
+        "shut up and",
+        "take my money!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/money/shut_up_and/take_my_money!.webp",
+      "keywords": [
+        "Futurama",
+        "Philip J. Fry"
+      ],
+      "admission": "active",
+      "sha256": "b53478c2a1b979a90aa2e9f0473aa2f2d3960a1ae6d4113a84f76159c72c35a1",
+      "rights_status": "fair-use-review"
+    },
+    "dodgson": {
+      "name": "See? Nobody Cares",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/dodgson.jpg",
+      "source_url": "http://knowyourmeme.com/memes/see-nobody-cares",
+      "catalog_example": [
+        "we've got dodgson here!",
+        "see? nobody cares"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/dodgson/we've_got_dodgson_here!/see~q_nobody_cares.webp",
+      "keywords": [
+        "Jurassic Park"
+      ],
+      "admission": "rejected",
+      "sha256": "369ea3f2da3f60881860fc08ea50d3a67f2865545b5e72d04818918b8c3a9158",
+      "rights_status": "fair-use-review"
+    },
+    "chosen": {
+      "name": "You Were the Chosen One!",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/chosen.jpg",
+      "source_url": "http://knowyourmeme.com/memes/you-were-the-chosen-one",
+      "catalog_example": [
+        "you were the chosen one!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/chosen/you_were_the_chosen_one!.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "9362f7e5ba3e58dae4e9c584276ec69b2be306ab870d271049321b7aaa8a1bb2",
+      "rights_status": "fair-use-review"
+    },
+    "woman-cat": {
+      "name": "Woman Yelling at a Cat",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/woman-cat.jpg",
+      "source_url": "https://knowyourmeme.com/memes/woman-yelling-at-a-cat",
+      "catalog_example": [
+        "Mom telling me how useless I am",
+        "12 year old me playing Minecraft"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/woman-cat/Mom_telling_me_how_useless_I_am/12_year_old_me_playing_Minecraft.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "2ed56c7b82545b8ffd01f417ca00496144f1366133a2e1d777ee6af3d89bf08c",
+      "rights_status": "fair-use-review"
+    },
+    "reveal": {
+      "name": "Scooby Doo Reveal",
+      "lines": 4,
+      "blank_url": "https://api.memegen.link/images/reveal.jpg",
+      "source_url": "https://knowyourmeme.com/memes/lets-see-who-this-really-is",
+      "catalog_example": [
+        "Villain",
+        "Let's see who you really are...",
+        "Protagonist",
+        "I knew it!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/reveal/Villain/Let's_see_who_you_really_are.../Protagonist/I_knew_it!.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "0dd9d2904684160fc83282415e4220da191c9844959b35601893ee2bfb3a8f1b",
+      "rights_status": "fair-use-review"
+    },
+    "xy": {
+      "name": "X all the Y",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/xy.jpg",
+      "source_url": "http://knowyourmeme.com/memes/x-all-the-y",
+      "catalog_example": [
+        "all the things!!!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/xy/all_the_things!!!.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "c7c00358091ef39d63168402060f2ffd24a235a29826fab012f17348002dc579",
+      "rights_status": "fair-use-review"
+    },
+    "balloon": {
+      "name": "Running Away Balloon",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/balloon.jpg",
+      "source_url": "https://knowyourmeme.com/memes/running-away-balloon",
+      "catalog_example": [
+        "Opportunities",
+        "Opportunities",
+        "Shyness"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/balloon/Opportunities/Opportunities/Shyness.jpg",
+      "keywords": [
+        "Superlmer"
+      ],
+      "admission": "active",
+      "sha256": "5adff9679704a202ecabd5fb177e2e93a5103715baa038762c721bab271f9267",
+      "rights_status": "fair-use-review"
+    },
+    "ants": {
+      "name": "Do You Want Ants?",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/ants.jpg",
+      "source_url": "http://knowyourmeme.com/memes/do-you-want-ants",
+      "catalog_example": [
+        "do you want ants?",
+        "because that's how you get ants"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/ants/do_you_want_ants~q/because_that's_how_you_get_ants.jpg",
+      "keywords": [
+        "Archer"
+      ],
+      "admission": "active",
+      "sha256": "d1318a5b8b7a181b3ce0822d8e08a0b2d1802f2ff811658abae90bbdae0c0fbe",
+      "rights_status": "fair-use-review"
+    },
+    "cmm": {
+      "name": "Change My Mind",
+      "lines": 1,
+      "blank_url": "https://api.memegen.link/images/cmm.jpg",
+      "source_url": "https://knowyourmeme.com/memes/steven-crowders-change-my-mind-campus-sign",
+      "catalog_example": [
+        "pineapples don't belong on pizza"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/cmm/pineapples_don't_belong_on_pizza.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "1610a0638e29760d8cd78db4322bfceab7d49d19009d581c464a7313b636f416",
+      "rights_status": "fair-use-review"
+    },
+    "ptj": {
+      "name": "Phoebe Teaching Joey",
+      "lines": 8,
+      "blank_url": "https://api.memegen.link/images/ptj.jpg",
+      "source_url": "https://knowyourmeme.com/photos/1846826-phoebe-teaching-joey",
+      "catalog_example": [
+        "Cast it",
+        "Cast it",
+        "into",
+        "into",
+        "the fire",
+        "the fire",
+        "Cast it into the fire.",
+        "Keep the Ring of Power!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/ptj/Cast_it/Cast_it/into/into/the_fire/the_fire/Cast_it_into_the_fire./Keep_the_Ring_of_Power!.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "a8862b929ae04f34aa421c71832c00a4c4fa7ee998a6e80c4d4b18053bd033dd",
+      "rights_status": "fair-use-review"
+    },
+    "facepalm": {
+      "name": "Facepalm",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/facepalm.jpg",
+      "source_url": "http://knowyourmeme.com/memes/facepalm",
+      "catalog_example": [
+        "",
+        "I can't even"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/facepalm/_/I_can't_even.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "adfea8b4577e56cf45c6cc673233c426e00b72d2595ba7958f28109d6fd0a97d",
+      "rights_status": "fair-use-review"
+    },
+    "mouth": {
+      "name": "Woman Holding Dog's Mouth",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/mouth.jpg",
+      "source_url": "https://knowyourmeme.com/memes/women-holding-dogs-mouth",
+      "catalog_example": [
+        "Sales Team presenting the solution in PowerPoint",
+        "Excited Customer",
+        "Engineering Team knowing the solution is not technically possible"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/mouth/Sales_Team_presenting_the_solution_in_PowerPoint/Excited_Customer/Engineering_Team_knowing_the_solution_is_not_technically_possible.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "e3e33db37b3c9608edd99466700be2a37f0284d6e28784d7df19c6e5f59efc9a",
+      "rights_status": "fair-use-review"
+    },
+    "older": {
+      "name": "An Older Code Sir, But It Checks Out",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/older.jpg",
+      "source_url": "http://knowyourmeme.com/memes/its-an-older-meme-but-it-checks-out",
+      "catalog_example": [
+        "it's an older meme sir",
+        "but it checks out"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/older/it's_an_older_meme_sir/but_it_checks_out.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "5d211d75094d001e8b7955c98a756e209937d76c06c9800f1a8dd33d9f86b270",
+      "rights_status": "fair-use-review"
+    },
+    "scc": {
+      "name": "Sudden Clarity Clarence",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/scc.jpg",
+      "source_url": "http://knowyourmeme.com/memes/sudden-clarity-clarence",
+      "catalog_example": [
+        "oh my god",
+        "those weren't listerine breath strips"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/scc/oh_my_god/those_weren't_listerine_breath_strips.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "8acc7d41e7bc211ff223ef4a93bc0b1f551352868e6c639527d290b8b5403d34",
+      "rights_status": "fair-use-review"
+    },
+    "kermit": {
+      "name": "But That's None of My Business",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/kermit.jpg",
+      "source_url": "http://knowyourmeme.com/memes/but-thats-none-of-my-business",
+      "catalog_example": [
+        "",
+        "but that's none of my business"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/kermit/_/but_that's_none_of_my_business.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "fd0b93b2374f9eba91d321f9ccaaa2b64000089ef0a1f54918e7d39186a6c316",
+      "rights_status": "fair-use-review"
+    },
+    "michael-scott": {
+      "name": "Michael Scott No God No",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/michael-scott.jpg",
+      "source_url": "https://www.youtube.com/watch?v=31g0YE61PLQ",
+      "catalog_example": [
+        "no, god! no god please no!",
+        "noooooooooooooooo!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/michael-scott/no,_god!_no_god_please_no!/noooooooooooooooo!.jpg",
+      "keywords": [
+        "The Office"
+      ],
+      "admission": "hold",
+      "sha256": "6167cd26e2409f42b374d07cc379e1843182b3d9483cd71fd31f75092df5d29d",
+      "rights_status": "fair-use-review"
+    },
+    "say": {
+      "name": "Say the Line, Bart!",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/say.jpg",
+      "source_url": "https://knowyourmeme.com/memes/say-the-line-bart",
+      "catalog_example": [
+        "Say the line, Senior Engineer!",
+        "It depends."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/say/Say_the_line,_Senior_Engineer!/It_depends..jpg",
+      "keywords": [
+        "The Simpsons",
+        "Bart Simpson"
+      ],
+      "admission": "active",
+      "sha256": "8f222f48f81afc2b08c3680ff80a4fe5acdd220f176110f55dbd1312058512d9",
+      "rights_status": "fair-use-review"
+    },
+    "ski": {
+      "name": "Super Cool Ski Instructor",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/ski.jpg",
+      "source_url": "http://knowyourmeme.com/memes/super-cool-ski-instructor",
+      "catalog_example": [
+        "",
+        "you're gonna have a bad time"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/ski/_/you're_gonna_have_a_bad_time.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "faa54e1d45f5046533bf20b8e7d1a9bfee07445fbf6b249c38e646db60b7451d",
+      "rights_status": "fair-use-review"
+    },
+    "ntot": {
+      "name": "No Take, Only Throw",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/ntot.jpg",
+      "source_url": "https://knowyourmeme.com/memes/no-take-only-throw",
+      "catalog_example": [
+        "Pls throw??",
+        "NO TAKE!!",
+        "ONLY THROW"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/ntot/Pls_throw~q~q/NO_TAKE!!/ONLY_THROW.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "b9a2560587c5940dc15c50593c85d4461ff240c227366dd3338b8a4fd7536ba4",
+      "rights_status": "fair-use-review"
+    },
+    "center": {
+      "name": "What is this, a Center for Ants?!",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/center.jpg",
+      "source_url": "http://knowyourmeme.com/memes/what-is-this-a-center-for-ants",
+      "catalog_example": [
+        "what is this",
+        "a center for ants"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/center/what_is_this/a_center_for_ants.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "0e3512c112a4e945328e3ee3674c13cc287b4d9ffef877f00b7a4c40e2148441",
+      "rights_status": "fair-use-review"
+    },
+    "jim": {
+      "name": "Jim Halpert Pointing to Whiteboard",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/jim.jpg",
+      "source_url": "https://knowyourmeme.com/memes/jim-halpert-pointing-to-whiteboard",
+      "catalog_example": [
+        "It's OK to like trashy shows and movies",
+        "If it makes you happy then it's not a waste of time"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/jim/It's_OK_to_like_trashy_shows_and_movies/If_it_makes_you_happy_then_it's_not_a_waste_of_time.jpg",
+      "keywords": [
+        "The Office"
+      ],
+      "admission": "hold",
+      "sha256": "126a4ab56735053ab1057d8d7f2654205928aa985d65c69eb68e8da03775ebdd",
+      "rights_status": "fair-use-review"
+    },
+    "morpheus": {
+      "name": "Matrix Morpheus",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/morpheus.jpg",
+      "source_url": "http://knowyourmeme.com/memes/matrix-morpheus",
+      "catalog_example": [
+        "what if I told you that",
+        "reality was an illusion?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/morpheus/what_if_I_told_you_that/reality_was_an_illusion~q.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "3988715011fc33fe356ebd95fbe89c596ea3f136ece74f42f73575fe8a0185b5",
+      "rights_status": "fair-use-review"
+    },
+    "mordor": {
+      "name": "One Does Not Simply Walk into Mordor",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/mordor.jpg",
+      "source_url": "http://knowyourmeme.com/memes/one-does-not-simply-walk-into-mordor",
+      "catalog_example": [
+        "one does not simply",
+        "walk into mordor"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/mordor/one_does_not_simply/walk_into_mordor.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "2433ee241f07181f63f35529444b080066024a058b4cf3e57048b212a8b90150",
+      "rights_status": "fair-use-review"
+    },
+    "perfection": {
+      "name": "Perfection",
+      "lines": 6,
+      "blank_url": "https://api.memegen.link/images/perfection.jpg",
+      "source_url": "https://knowyourmeme.com/memes/perfection",
+      "catalog_example": [
+        "Sebastian Shaw",
+        "I prefer the real Darth Vader.",
+        "Hayden Christensen",
+        "I said, the real Darth Vader.",
+        "Jake Lloyd",
+        "Perfection."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/perfection/Sebastian_Shaw/I_prefer_the_real_Darth_Vader./Hayden_Christensen/I_said,_the_real_Darth_Vader./Jake_Lloyd/Perfection..jpg",
+      "keywords": [
+        "I Prefer the Real Raven"
+      ],
+      "admission": "active",
+      "sha256": "d40c0b925b6e875c0733306a1d6716704afb55fdc45d90dbe6d76f1d32f5f947",
+      "rights_status": "fair-use-review"
+    },
+    "glasses": {
+      "name": "Peter Parker's Glasses",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/glasses.jpg",
+      "source_url": "https://knowyourmeme.com/memes/peter-parkers-glasses",
+      "catalog_example": [
+        "Virginity is cool, stay pure",
+        "I am utterly incapable of getting laid"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/glasses/Virginity_is_cool,_stay_pure/I_am_utterly_incapable_of_getting_laid.jpg",
+      "keywords": [
+        "Spider Man",
+        "Peter Parker"
+      ],
+      "admission": "active",
+      "sha256": "d3eda7ad5b31e25c9e668278f88ef2cdf24331f7301b0cdae1f753ccdbb8fd67",
+      "rights_status": "fair-use-review"
+    },
+    "remembers": {
+      "name": "Pepperidge Farm Remembers",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/remembers.jpg",
+      "source_url": "http://knowyourmeme.com/memes/pepperidge-farm-remembers",
+      "catalog_example": [
+        "remember this meme?",
+        "pepperidge farm remembers"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/remembers/remember_this_meme~q/pepperidge_farm_remembers.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "5440dd9caefb5f5ccf8eaa7a0cbccfdf0eb66d90f2f2a80da1fb267e8b050816",
+      "rights_status": "fair-use-review"
+    },
+    "cbb": {
+      "name": "Communist Bugs Bunny",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/cbb.jpg",
+      "source_url": "https://knowyourmeme.com/memes/communist-bugs-bunny",
+      "catalog_example": [
+        "",
+        "our memes!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/cbb/_/our_memes!.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "b8ea80291275cc5719f6aab8c8c9d1be8625476769127b45f15ff8f5646c748d",
+      "rights_status": "fair-use-review"
+    },
+    "dwight": {
+      "name": "Schrute Facts",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/dwight.jpg",
+      "source_url": "http://knowyourmeme.com/memes/schrute-facts",
+      "catalog_example": [
+        "love is all you need?",
+        "false. you need water and rations."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/dwight/love_is_all_you_need~q/false._you_need_water_and_rations..jpg",
+      "keywords": [
+        "The Office"
+      ],
+      "admission": "active",
+      "sha256": "2f16c02b1ff3bb546fa49e503398aef63518707cdc8e932040f03de85fef77df",
+      "rights_status": "fair-use-review"
+    },
+    "chair": {
+      "name": "American Chopper Argument",
+      "lines": 6,
+      "blank_url": "https://api.memegen.link/images/chair.jpg",
+      "source_url": "https://knowyourmeme.com/memes/american-chopper-argument",
+      "catalog_example": [
+        "Let's expand safety nets",
+        "Socialism never works!",
+        "Scandinavia is socialist and they're doing great!",
+        "They're not socialist. They're capitalist with strong welfare policies!",
+        "Then let's adopt those!",
+        "No that's socialism!!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/chair/Let's_expand_safety_nets/Socialism_never_works!/Scandinavia_is_socialist_and_they're_doing_great!/They're_not_socialist._They're_capitalist_with_strong_welfare_policies!/Then_let's_adopt_those!/No_that's_socialism!!.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "4635792bb6112bca454270ed90edf431f53789b1599941d945d820ff5605a009",
+      "rights_status": "fair-use-review"
+    },
+    "blb": {
+      "name": "Bad Luck Brian",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/blb.jpg",
+      "source_url": "http://knowyourmeme.com/memes/bad-luck-brian",
+      "catalog_example": [
+        "falls asleep in class",
+        "has a wet dream"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/blb/falls_asleep_in_class/has_a_wet_dream.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "7a7655601ed73864ca0a58da14419bc3c337e746d5eea51e918573088c336f7e",
+      "rights_status": "fair-use-review"
+    },
+    "box": {
+      "name": "What's in the box!?",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/box.jpg",
+      "source_url": "https://screenrant.com/hilarious-se7en-memes/",
+      "catalog_example": [
+        "",
+        "What's in the box!?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/box/_/What's_in_the_box!~q.webp",
+      "keywords": [
+        "Seven"
+      ],
+      "admission": "rejected",
+      "sha256": "b602f8333bed5aaac0d68d155fdb82b215e67e06dfab0bf8a34db1f7646e1ed3",
+      "rights_status": "fair-use-review"
+    },
+    "cake": {
+      "name": "Office Space Milton",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/cake.jpg",
+      "source_url": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+      "catalog_example": [
+        "",
+        "I was told there would be cake"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/cake/_/I_was_told_there_would_be_cake.webp",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "cc761fc54a32681b087335391f9faff5311674e5b4ffbe9ce3e71845964c5748",
+      "rights_status": "fair-use-review"
+    },
+    "disastergirl": {
+      "name": "Disaster Girl",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/disastergirl.jpg",
+      "source_url": "http://knowyourmeme.com/memes/disaster-girl",
+      "catalog_example": [
+        "",
+        "just as I planned..."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/disastergirl/_/just_as_I_planned....jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "91f4742e2b3003fbc554b6707f6ba996eda1cf116d2a5fb29ca3748b896df753",
+      "rights_status": "fair-use-review"
+    },
+    "dragon": {
+      "name": "What Color Do You Want Your Dragon",
+      "lines": 1,
+      "blank_url": "https://api.memegen.link/images/dragon.jpg",
+      "source_url": "https://knowyourmeme.com/photos/1052192-tumblr",
+      "catalog_example": [
+        "OK I want a boyfriend"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/dragon/OK_I_want_a_boyfriend.jpg",
+      "keywords": [
+        "wish"
+      ],
+      "admission": "hold",
+      "sha256": "7e3f03e559ba23ffb5df5c38dab8aabf193d4976feeb0802e1be2e968d66a800",
+      "rights_status": "fair-use-review"
+    },
+    "elf": {
+      "name": "You Sit on a Throne of Lies",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/elf.jpg",
+      "source_url": "http://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+      "catalog_example": [
+        "",
+        "you sit on a throne of lies"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/elf/_/you_sit_on_a_throne_of_lies.jpg",
+      "keywords": [
+        "Elf"
+      ],
+      "admission": "active",
+      "sha256": "39fe36835b9c338278ae730fc16a0b3867d8f61fa957ba9421249bc1725c1e15",
+      "rights_status": "fair-use-review"
+    },
+    "friends": {
+      "name": "Are You Two Friends?",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/friends.jpg",
+      "source_url": "https://knowyourmeme.com/memes/are-you-two-friends",
+      "catalog_example": [
+        "Progressives",
+        "Republicans",
+        "Libertarians"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/friends/Progressives/Republicans/Libertarians.jpg",
+      "keywords": [
+        "Star Trek"
+      ],
+      "admission": "active",
+      "sha256": "059934b9fe9e7b8cb52583bfe6ae1747152bc26c495582922002bb711bde9d77",
+      "rights_status": "fair-use-review"
+    },
+    "headaches": {
+      "name": "Types of Headaches",
+      "lines": 1,
+      "blank_url": "https://api.memegen.link/images/headaches.jpg",
+      "source_url": "https://knowyourmeme.com/memes/types-of-headaches",
+      "catalog_example": [
+        "Breaking Production"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/headaches/Breaking_Production.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "5e4eb91da5c67c8f2f7ba002f1d5c7fb6a5eb37f4de3905a8473019974c3e92b",
+      "rights_status": "fair-use-review"
+    },
+    "interesting": {
+      "name": "The Most Interesting Man in the World",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/interesting.jpg",
+      "source_url": "http://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+      "catalog_example": [
+        "I don't often drink beer",
+        "so you shouldn't value my opinion"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/interesting/I_don't_often_drink_beer/so_you_shouldn't_value_my_opinion.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "fe15ae9bdbbd2fd2358252ac16c12c9745595b9b45db0bb34e956ed186cf23b9",
+      "rights_status": "fair-use-review"
+    },
+    "ive": {
+      "name": "Jony Ive Redesigns Things",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/ive.jpg",
+      "source_url": "https://www.apple.com/pr/bios/jonathan-ive.html",
+      "catalog_example": [
+        "we think",
+        "you'll love it"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/ive/we_think/you'll_love_it.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "6f464610dd28b3e12e35ef688080f69e712dac53e57a94408302f06e8289c5f3",
+      "rights_status": "fair-use-review"
+    },
+    "jw": {
+      "name": "Probably Not a Good Idea",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/jw.jpg",
+      "source_url": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+      "catalog_example": [
+        "you just went and made a new dinosaur?",
+        "probably not a good idea"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/jw/you_just_went_and_made_a_new_dinosaur~q/probably_not_a_good_idea.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "f4525f2d1c2af07b76772fc731a5486605027280f3f73d942ddf1f13f2bedc20",
+      "rights_status": "fair-use-review"
+    },
+    "khaby-lame": {
+      "name": "Khaby Lame Shrug",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/khaby-lame.jpg",
+      "source_url": "https://knowyourmeme.com/photos/2132291-khaby-lame-shrug-its-that-simple",
+      "catalog_example": [
+        "Bad mood?",
+        "Laugh at memes"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/khaby-lame/Bad_mood~q/Laugh_at_memes.jpg",
+      "keywords": [
+        "It's That Sample"
+      ],
+      "admission": "active",
+      "sha256": "d61edfa8e169b56149d4fdb7102b80f8402607a1f3f0b88479b200f4896a04ba",
+      "rights_status": "fair-use-review"
+    },
+    "kramer": {
+      "name": "Kramer, What's Going On In There?",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/kramer.jpg",
+      "source_url": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+      "catalog_example": [
+        "Kramer, what's going on in there?",
+        "It's a Chicken Roaster sign, right across from my window."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/kramer/Kramer,_what's_going_on_in_there~q/It's_a_Chicken_Roaster_sign,_right_across_from_my_window..jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "31b507e0e804c214ff2909d1a789a3222df28c8809fa6f0f2056959222cf9d24",
+      "rights_status": "fair-use-review"
+    },
+    "light": {
+      "name": "Everything the Light Touches is Our Kingdom",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/light.jpg",
+      "source_url": "https://www.youtube.com/watch?v=JawCb15MWLc",
+      "catalog_example": [
+        "What about that shadowy place?",
+        "That's beyond our borders. You must never go there."
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/light/What_about_that_shadowy_place~q/That's_beyond_our_borders._You_must_never_go_there..jpg",
+      "keywords": [
+        "Lion King",
+        "Mufasa and Simba"
+      ],
+      "admission": "active",
+      "sha256": "0839cd577baca5063b79aa9314fd7e1acbc329532f0e6fc89c56adc59bd8330e",
+      "rights_status": "fair-use-review"
+    },
+    "nails": {
+      "name": "Guy Hammering Nails Into Sand",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/nails.jpg",
+      "source_url": "https://keepmeme.com/meme/when-the-boss-coming-and-you-need-to-pretend-doing-something-hammering-nails-into-the-sand-beach-meme",
+      "catalog_example": [
+        "Humanity",
+        "Language",
+        "The inherently indescribably nature of the universe"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/nails/Humanity/Language/The_inherently_indescribably_nature_of_the_universe.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "23821f21c9f3e6add8b4f42fccabbdaae229f305c278273c462b36543f74828d",
+      "rights_status": "fair-use-review"
+    },
+    "philosoraptor": {
+      "name": "Philosoraptor",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/philosoraptor.jpg",
+      "source_url": "http://knowyourmeme.com/memes/philosoraptor",
+      "catalog_example": [
+        "if the earth is the third planet from the sun",
+        "then isn't every country a third world country?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/philosoraptor/if_the_earth_is_the_third_planet_from_the_sun/then_isn't_every_country_a_third_world_country~q.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "4610fa28f5d19f76f45cc74d0f4c03ad5966893ab0f7b4deda0391284b148ddb",
+      "rights_status": "fair-use-review"
+    },
+    "spirit": {
+      "name": "Fake Spirit Halloween Costume",
+      "lines": 5,
+      "blank_url": "https://api.memegen.link/images/spirit.jpg",
+      "source_url": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+      "catalog_example": [
+        "My Dad",
+        "Includes:",
+        "- Nothing",
+        "- Nothing",
+        "- Nothing"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/spirit/My_Dad/Includes:/--_Nothing/--_Nothing/--_Nothing.jpg",
+      "keywords": [
+        "adult size costume"
+      ],
+      "admission": "active",
+      "sha256": "3ba21d6caad803b2ce234d12976acd464d0a47d5861348ebe37e333e90d87750",
+      "rights_status": "fair-use-review"
+    },
+    "spongebob": {
+      "name": "Mocking Spongebob",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/spongebob.jpg",
+      "source_url": "http://knowyourmeme.com/memes/mocking-spongebob",
+      "catalog_example": [
+        "BF: I don't even know her like that",
+        "Me: i DoN'T eVeN KnOw HeR lIkE tHaT"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/spongebob/BF:_I_don't_even_know_her_like_that/Me:_i_DoN'T_eVeN_KnOw_HeR_lIkE_tHaT.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "45179cd748901814a5f54c3dddcde4e4390240ee51f237e59d5bea81eb2ca077",
+      "rights_status": "fair-use-review"
+    },
+    "stop": {
+      "name": "Stop It Patrick You're Scaring Him",
+      "lines": 6,
+      "blank_url": "https://api.memegen.link/images/stop.jpg",
+      "source_url": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+      "catalog_example": [
+        "I'm claustrophobic.",
+        "What does \"claustrophobic\" mean?",
+        "It means he's afraid of Santa Claus.",
+        "No, it doesn't.",
+        "HO-HO-HO",
+        "Stop it, Patrick, you're scaring him!"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/stop/I'm_claustrophobic./What_does_''claustrophobic''_mean~q/It_means_he's_afraid_of_Santa_Claus./No,_it_doesn't./HO--HO--HO/Stop_it,_Patrick,_you're_scaring_him!.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "8bae21ab3da99ce97214eff5462dc94d534cb05625dcbd9b20c6bf44044c8fe1",
+      "rights_status": "fair-use-review"
+    },
+    "vince": {
+      "name": "Vince McMahon Reaction",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/vince.jpg",
+      "source_url": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+      "catalog_example": [
+        "2-Day Delivery",
+        "Overnight Shipping",
+        "Shopping at the Store"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/vince/2--Day_Delivery/Overnight_Shipping/Shopping_at_the_Store.jpg",
+      "keywords": [],
+      "admission": "hold",
+      "sha256": "fdf015efa180c7b2b4fa0de2a191eb870ca838d87f562f5f68a37cf194bb34f1",
+      "rights_status": "fair-use-review"
+    },
+    "whatyear": {
+      "name": "What Year Is It?",
+      "lines": 2,
+      "blank_url": "https://api.memegen.link/images/whatyear.jpg",
+      "source_url": "http://knowyourmeme.com/memes/what-year-is-it",
+      "catalog_example": [
+        "",
+        "what year is it?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/whatyear/_/what_year_is_it~q.jpg",
+      "keywords": [],
+      "admission": "active",
+      "sha256": "5cfdc4774de295cdcc491fa76dcbdcb49b5b59888d299f4c8528ae59b1757a80",
+      "rights_status": "fair-use-review"
+    },
+    "wkh": {
+      "name": "Who Killed Hannibal?",
+      "lines": 3,
+      "blank_url": "https://api.memegen.link/images/wkh.jpg",
+      "source_url": "https://knowyourmeme.com/memes/who-killed-hannibal",
+      "catalog_example": [
+        "Twin Towers",
+        "George Bush",
+        "Why would Al-Qaeda do this?"
+      ],
+      "catalog_example_url": "https://api.memegen.link/images/wkh/Twin_Towers/George_Bush/Why_would_Al--Qaeda_do_this~q.jpg",
+      "keywords": [],
+      "admission": "rejected",
+      "sha256": "49eaf10d0dc2cec5d7358910e4a51b53d19d231f0e5b1acfb8d6845d8270f935",
       "rights_status": "fair-use-review"
     }
   }

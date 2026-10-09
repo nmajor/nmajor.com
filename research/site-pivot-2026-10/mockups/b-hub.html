@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nick Major</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf7f0;--ink:#1d1b18;--dim:#6b655c;--o:#ff5a1f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;letter-spacing:-.02em}.logo span{color:var(--o)}
+nav ul{display:flex;gap:26px;list-style:none;font-weight:500;font-size:15px;align-items:center}
+nav .cta{background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px}
+.intro{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:center;padding:64px 0 56px}
+.hi{display:inline-block;background:var(--o);color:#fff;font-weight:600;padding:4px 12px;border-radius:999px;font-size:14px;margin-bottom:18px}
+h1{font-family:'Bricolage Grotesque';font-size:64px;line-height:1.02;font-weight:800;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,#ffd23f 62%)}
+.intro p{font-size:19px;color:var(--dim);margin-top:20px;max-width:600px}
+.face{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:10px 10px 0 var(--o)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tile{position:relative;border-radius:18px;padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:6px 6px 0 var(--ink);border:2px solid var(--ink)}
+.tile .n{font-family:'Bricolage Grotesque';font-weight:800;font-size:30px;line-height:1.05;letter-spacing:-.02em}
+.tile p{font-size:15px;margin-top:8px;opacity:.85;padding-right:56px}.t1 p{padding-right:0}.tile .n{padding-right:60px}.t1 .n{padding-right:0}
+.tile .go{font-weight:600;font-size:14px}
+.big{grid-column:span 2}
+.t1{background:var(--ink);color:#fff}.t1 .n{font-size:44px}.t1 .n span{color:#ffd23f}
+.t2{background:#ffd23f}.t3{background:#7cd6b5}.t4{background:#ff8fb1}.t5{background:#9db7ff}.t6{background:#fff}
+.t1 form{display:flex;gap:10px;margin-top:18px}
+.t1 input{flex:1;padding:13px 16px;border-radius:999px;border:0;font:15px Inter}
+.t1 button{background:var(--o);color:#fff;border:0;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px}
+.shape{position:absolute;right:22px;top:22px;width:54px;height:54px;border:2px solid var(--ink);border-radius:12px;background:#fff8;transform:rotate(8deg)}
+.t3 .shape{border-radius:50%}.t4 .shape{transform:rotate(45deg);border-radius:6px}
+h2{font-family:'Bricolage Grotesque';font-size:34px;font-weight:800;letter-spacing:-.02em;margin:72px 0 22px}
+.posts{display:grid;gap:12px}
+.post{display:flex;justify-content:space-between;align-items:center;background:#fff;border:2px solid var(--ink);border-radius:14px;padding:18px 22px}
+.post h3{font-size:18px;font-weight:600}.post span{font-size:13px;color:var(--dim);white-space:nowrap;margin-left:20px}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;margin-right:10px;border:1.5px solid var(--ink)}
+footer{margin-top:80px;padding:36px 0 48px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;font-size:14px;color:var(--dim)}
+@media(max-width:700px){.t1 form{flex-direction:column}.t1 button{padding:12px}.t1 .n{font-size:34px}h1{word-break:break-word}.intro{grid-template-columns:1fr;padding:32px 0}.face{width:140px;height:140px;order:-1}h1{font-size:44px}.tiles{grid-template-columns:1fr}.big{grid-column:auto}nav ul li:not(.c){display:none}.post{flex-direction:column;align-items:flex-start;gap:6px}.post span{margin:0}footer{flex-direction:column;gap:8px}}
+</style></head><body>
+<div class="wrap">
+<nav><div class="logo">nick major<span>.</span></div><ul><li>Experiments</li><li>Writing</li><li>Tools</li><li>About</li><li class="c"><span class="cta">Newsletter</span></li></ul></nav>
+<div class="intro">
+ <div><span class="hi">Hey, I'm Nick 👋</span>
+ <h1>Software engineer figuring out <em>distribution</em>.</h1>
+ <p>I can build almost anything. Getting people to use it is the part I'm learning. I test marketing and growth tactics on my own products, mostly with AI doing the grunt work, and share what works and what doesn't.</p></div>
+ <img class="face" src="nick.jpg" alt="Nick Major">
+</div>
+
+<div class="tiles">
+ <div class="tile t1 big"><div><div class="n">Deploy to <span>Humans</span></div><p>Shipping is easy. Deploying to humans is the hard part. One email a week with the experiment I ran, what happened, and the tools I used.</p>
+ <form><input placeholder="you@example.com"><button>Subscribe</button></form></div></div>
+ <div class="tile t2"><div class="shape"></div><div><div class="n">Experiments</div><p>Every growth test I run, with the results. Including the flops.</p></div><span class="go">See the log →</span></div>
+ <div class="tile t3"><div class="shape"></div><div><div class="n">Writing</div><p>Longer posts on building and shipping products.</p></div><span class="go">Read →</span></div>
+ <div class="tile t4"><div class="shape"></div><div><div class="n">Things I'm building</div><p>Marketing tools I made for myself. Some are for you too.</p></div><span class="go">Products →</span></div>
+ <div class="tile t5"><div class="shape"></div><div><div class="n">Tools I use</div><p>The stack behind every experiment, and why.</p></div><span class="go">The stack →</span></div>
+</div>
+
+<h2>Latest</h2>
+<div class="posts">
+ <div class="post"><h3><span class="chip">Experiment</span>Programmatic SEO on 19,000 city pages: week 3</h3><span>Oct 6 · 7 min</span></div>
+ <div class="post"><h3><span class="chip">Writing</span>Marketing for people who'd rather be in their editor</h3><span>Sep 30 · 9 min</span></div>
+ <div class="post"><h3><span class="chip">Experiment</span>I launched on Product Hunt and got 3 upvotes</h3><span>Sep 14 · 5 min</span></div>
+ <div class="post"><h3><span class="chip">Tools</span>How I schedule a week of posts from one Claude Code command</h3><span>Sep 9 · 6 min</span></div>
+</div>
+
+<footer><span>© 2026 Nick Major</span><span>Archive (2018–2026) · RSS · X · LinkedIn · GitHub</span></footer>
+</div></body></html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meme angle selector"
+  short_description: "Match funny angles to established meme templates"
+  default_prompt: "Find the strongest defensible meme angle, rank established templates by semantic fit, and recommend the best candidate first."

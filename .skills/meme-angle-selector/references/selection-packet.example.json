@@ -1,0 +1,56 @@
+{
+  "version": 2,
+  "post_id": "example",
+  "catalog_scan": {
+    "active_count": 75,
+    "contracts_sha256": "dd5fe857b8d9d07708dde43bede3f20c309cc1e9ce6a53f773ad9b1e9294e1fd",
+    "selection_index_sha256": "9fe8a640b03e284a1dbf4162d4e8ff0def3f29b4e77b92dd65fa15272640b64f"
+  },
+  "payload": {
+    "fact": "The system produced one day of data that took 32 weeks to review.",
+    "expected": "More sensors would make failures easier to prevent.",
+    "actual": "The review queue exceeded the team's capacity.",
+    "tension": "Technical capability created an operational bottleneck.",
+    "target": "The implementation decision, not the maintenance worker.",
+    "reader_realization": "Instrumentation without review capacity is not a monitoring system.",
+    "tone": "cautionary",
+    "forbidden_targets": ["maintenance workers"]
+  },
+  "angles": [
+    {"rank": 1, "id": "capability-constraint", "mechanism": "hidden_constraint", "line": "The impressive sensor deployment created a comically impossible review queue.", "truth_check": "Both sensor count and review-time estimate appear in the source.", "decision": "keep"},
+    {"rank": 2, "id": "reassurance-reversal", "mechanism": "reversal", "line": "The sensors briefly reassure us before the review burden makes the situation worse.", "truth_check": "The post supports the failed motor, sensor deployment, and review burden.", "decision": "keep"},
+    {"rank": 3, "id": "data-scale", "mechanism": "scale_mismatch", "line": "One day of data creates thirty-two weeks of work.", "truth_check": "The source attributes this estimate to the reliability engineer.", "decision": "reject"},
+    {"rank": 4, "id": "system-label", "mechanism": "misclassification", "line": "A monitoring system without review capacity is called predictive maintenance.", "truth_check": "This is an editorial interpretation, not a quoted company label.", "decision": "reject"}
+  ],
+  "retrieval": [
+    {"query": "large technical capability constrained by impossible human review queue", "mechanism": "hidden_constraint", "returned_templates": ["genie", "mordor", "center"]},
+    {"query": "alarm briefly reassured then made worse by next operational fact", "mechanism": "reversal", "returned_templates": ["panik-kalm-panik", "gru", "dbg"]}
+  ],
+  "candidates": [
+    {
+      "template": "genie",
+      "angle": "capability-constraint",
+      "slot_map": {"grand_capability": "The 450 AI-assisted sensors", "tiny_constraint": "The 32-week review estimate"},
+      "slots": {"grand_capability": "450 AI-ASSISTED SENSORS", "tiny_constraint": "32 WEEKS TO REVIEW ONE DAY"},
+      "render": {"asset": "research/linkedin-weekly/2026-09-29-rockwell-knowledge-at-the-machine/variants/images/domtar-capability-genie.jpg", "asset_sha256": "6195cd95e2732884cf9a07dfac89c54d464b5f3eef73a52184ade37932dedc84", "full_size_qa": "pass", "phone_size_qa": "pass"},
+      "hard_fail": false,
+      "hard_fail_reason": null,
+      "scores": {"relationship_fit": 3, "surprise_coherence": 3, "compression": 3, "operator_recognition": 3, "audience_familiarity": 2, "voice_target": 3, "visual_fluency": 3},
+      "reasons": {
+        "relationship_fit": "The contract contrasts a grand capability with a small constraint.",
+        "surprise_coherence": "The larger technical system produces a smaller human bottleneck.",
+        "compression": "Both sourced facts fit in short lines.",
+        "operator_recognition": "Leaders recognize capacity planning as an implementation problem.",
+        "audience_familiarity": "The pattern is established but less universal than Drakeposting.",
+        "voice_target": "The joke targets the operating design, not the engineer.",
+        "visual_fluency": "The render passed full-size and phone-size inspection."
+      }
+    }
+  ],
+  "recommendation": {
+    "template": "genie",
+    "reason": "It maps the capability and bottleneck directly, with no invented actor or event.",
+    "confidence": "high",
+    "alternative": null
+  }
+}

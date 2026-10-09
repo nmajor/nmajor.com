@@ -1,0 +1,742 @@
+{
+  "agnes": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds knowingly false reassurance, distinct from genuine confusion or misclassification.",
+    "origin": "WandaVision trailer and episode reaction; source explicitly documents open secrets and obvious lies.",
+    "source_url": "https://knowyourmeme.com/memes/agnes-harkness-winking",
+    "semantic_source_url": "https://knowyourmeme.com/memes/agnes-harkness-winking",
+    "representative_uses": [
+      "Accepting unread terms in Memegen's example",
+      "Chekhov writing a conspicuous gun into a play in KYM's documented tweet",
+      "Reaction to The Bachelor in KYM's documented tweet"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "situation",
+        "role": "Top caption supplies the context for the wink."
+      },
+      {
+        "key": "obvious_falsehood",
+        "role": "Bottom caption is the claim the wink contradicts."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/agnes.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "biw": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds gentle self-owning rebellion without attacking an employee.",
+    "origin": "Wolf-cub advice animal; KYM defines minor acts of defiance.",
+    "source_url": "http://knowyourmeme.com/memes/baby-insanity-wolf",
+    "semantic_source_url": "http://knowyourmeme.com/memes/baby-insanity-wolf",
+    "representative_uses": [
+      "Iced coffee in winter in Memegen",
+      "Shopping at Costco without a cart in MemeFact",
+      "Telling a host the whole party has arrived early in MemeFact"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "8950984"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "ordinary_action",
+        "role": "Top caption names the small act."
+      },
+      {
+        "key": "tiny_defiance",
+        "role": "Bottom caption makes its supposed rebelliousness comically minor."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/biw.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "boat": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds impulsive scope expansion rather than an abstract preferred option.",
+    "origin": "Cat reading newspaper from Bjork's Triumph of the Heart music video.",
+    "source_url": "http://knowyourmeme.com/memes/i-should-buy-a-boat-cat",
+    "semantic_source_url": "http://knowyourmeme.com/memes/i-should-buy-a-boat-cat",
+    "representative_uses": [
+      "Buying a boat, the original caption",
+      "Writing a book after a few comment upvotes in KYM",
+      "Buying a horse mask in KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "1367068"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "triggering_observation",
+        "role": "Top line is the observation prompting the idea."
+      },
+      {
+        "key": "new_desire",
+        "role": "Bottom line is the cat's new plan."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/boat.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "ch": {
+    "proposed_admission": "hold",
+    "admission_rationale": "Useful retrospective relationship, but disaster-origin satire and victim-blaming drift need a separate safety decision.",
+    "origin": "South Park character introduced around the Deepwater Horizon response; source documents hindsight snowclone.",
+    "source_url": "http://knowyourmeme.com/memes/captain-hindsight",
+    "semantic_source_url": "http://knowyourmeme.com/memes/captain-hindsight",
+    "representative_uses": [
+      "Free trial asking for card details in MemeFact",
+      "Packing the night before an early trip in MemeFact",
+      "Paid software labeled free in MemeFact"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "101708"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "realized_problem",
+        "role": "Top line establishes an outcome that already happened."
+      },
+      {
+        "key": "belated_precaution",
+        "role": "Bottom line gives hindsight, too late to help."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "hold",
+    "render_file": "rendered/ch.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "crowd": {
+    "proposed_admission": "hold",
+    "admission_rationale": "Hold: exact Memegen two-slot JPEG overlays both captions on the same screen. The proposed waiting/celebration panel mapping was false.",
+    "origin": "England football fans watching a 2016 goal, remixed to celebrate innocuous clips.",
+    "source_url": "https://knowyourmeme.com/memes/soccer-celebration-in-a-bar",
+    "semantic_source_url": "https://knowyourmeme.com/memes/soccer-celebration-in-a-bar",
+    "representative_uses": [
+      "DVD logo hits screen corner in KYM",
+      "Yule-log video in KYM",
+      "CI run turns green in Memegen"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "anticipation",
+        "role": "First renderer caption on the TV screen, not a separate anticipation panel."
+      },
+      {
+        "key": "small_payoff",
+        "role": "Second renderer caption on the same TV screen; it overlaps the first in the audited JPG."
+      }
+    ],
+    "visual_qa": "FAIL: both captions overlap on one TV screen. No separate anticipation or celebration panels exist in this renderer.",
+    "final_admission": "hold",
+    "render_file": "rendered/crowd.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "gandalf": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds loss of familiarity and undocumented work, distinct from never understanding a role.",
+    "origin": "Gandalf in Moria; KYM documents office return and forgotten codebase uses.",
+    "source_url": "http://knowyourmeme.com/memes/confused-gandalf",
+    "semantic_source_url": "http://knowyourmeme.com/memes/confused-gandalf",
+    "representative_uses": [
+      "Returning to the office after holiday break in KYM",
+      "No memory of a codebase in KYM",
+      "Child returning after mother cleaned their room in KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "673439"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "familiar_context",
+        "role": "Top caption explains what the returning observer should recognize."
+      },
+      {
+        "key": "no_memory_reaction",
+        "role": "Bottom caption is the observer's recognition failure."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/gandalf.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "glasses": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds reinterpretation of a single artifact, unlike Drake's separate choices.",
+    "origin": "Spider-Man film scene became a two-reading comparison.",
+    "source_url": "https://knowyourmeme.com/memes/peter-parkers-glasses",
+    "semantic_source_url": "https://knowyourmeme.com/memes/peter-parkers-glasses",
+    "representative_uses": [
+      "Goat and James Harden comparison documented in KYM",
+      "Star Wars wrist-rockets variation documented in KYM",
+      "Memegen's public claim versus admitted motive example"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "first_reading",
+        "role": "Upper-right object panel pairs with the first glasses pose."
+      },
+      {
+        "key": "revised_reading",
+        "role": "Lower-right object panel pairs with the changed glasses pose."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/glasses.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "jim": {
+    "proposed_admission": "hold",
+    "admission_rationale": "Short example is readable, but broad claim-and-explanation semantics add a thesis poster rather than a distinct joke. Hold until the contract has a useful, bounded selection rule.",
+    "origin": "The Office scene; KYM preserves explanatory and request variants rather than one fixed argument structure.",
+    "source_url": "https://knowyourmeme.com/memes/jim-halpert-pointing-to-whiteboard",
+    "semantic_source_url": "https://knowyourmeme.com/memes/jim-halpert-pointing-to-whiteboard",
+    "representative_uses": [
+      "Government composed of unchecked people, KYM example",
+      "Request to revisit favorite 2010s memes, KYM example",
+      "Enjoyment justifies watching trashy shows, Memegen example"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "claim",
+        "role": "First board presents the proposition."
+      },
+      {
+        "key": "reason_or_complication",
+        "role": "Second board develops or undercuts that proposition."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "hold",
+    "render_file": "rendered/jim.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "lrv": {
+    "proposed_admission": "rejected",
+    "admission_rationale": "The recognizable background is a real Hurricane Irene flood, violating the disaster gate.",
+    "origin": "Facebook photo of a man in a flooded laundry room after Hurricane Irene.",
+    "source_url": "http://knowyourmeme.com/memes/laundry-room-viking",
+    "semantic_source_url": "http://knowyourmeme.com/memes/laundry-room-viking",
+    "representative_uses": [
+      "Laundry will be fun, original quote documented in KYM",
+      "Olympic rowing will be fun in MemeFact",
+      "Memegen repeats the original laundry setup"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "25147"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "quoted_instruction",
+        "role": "Top caption repeats the advice."
+      },
+      {
+        "key": "quoted_promise",
+        "role": "Bottom caption repeats the false promise."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "rejected",
+    "render_file": "rendered/lrv.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "morpheus": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds assumption correction through a calm reveal; constrained to systems, not personal belittling.",
+    "origin": "Matrix reaction macro; KYM notes the phrase is not spoken in the films.",
+    "source_url": "http://knowyourmeme.com/memes/matrix-morpheus",
+    "semantic_source_url": "http://knowyourmeme.com/memes/matrix-morpheus",
+    "representative_uses": [
+      "Mac screenshot shortcut in KYM",
+      "USB orientation advice in KYM",
+      "Cat cannot catch red dot in KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "100947"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "revelation_invitation",
+        "role": "Top line invites reconsideration."
+      },
+      {
+        "key": "revealing_fact",
+        "role": "Bottom line supplies the counterintuitive correction."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/morpheus.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "oprah": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds indiscriminate distribution, distinct from enthusiasm to buy one product.",
+    "origin": "2004 TV car giveaway and its repeated distribution catchphrase.",
+    "source_url": "http://knowyourmeme.com/memes/oprah-you-get-a-car",
+    "semantic_source_url": "http://knowyourmeme.com/memes/oprah-you-get-a-car",
+    "representative_uses": [
+      "Original car giveaway documented in KYM",
+      "Upvotes for everybody in KYM and MemeFact",
+      "Points-triggered upvoting in MemeFact"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "28251713"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "individual_allocation",
+        "role": "Top caption gives one audience member the item."
+      },
+      {
+        "key": "universal_allocation",
+        "role": "Bottom caption extends that item to everyone."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/oprah.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "remembers": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds organizational memory and disappearing product expectations without asserting old technology is superior.",
+    "origin": "Family Guy parody of bakery advertisements, used for nostalgic recollection.",
+    "source_url": "http://knowyourmeme.com/memes/pepperidge-farm-remembers",
+    "semantic_source_url": "http://knowyourmeme.com/memes/pepperidge-farm-remembers",
+    "representative_uses": [
+      "Cartoon Network showing cartoons, KYM",
+      "MTV and Ja Rule nostalgia, KYM",
+      "Earlier Reddit content norms, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "1232104"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "forgotten_practice",
+        "role": "Top caption asks about the vanished practice."
+      },
+      {
+        "key": "remembering_reply",
+        "role": "Bottom caption preserves the commercial-parody line."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/remembers.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "sb": {
+    "proposed_admission": "hold",
+    "admission_rationale": "Documented suicide-support origin and insulting framing require separate safety review; do not silently activate as ordinary memory humor.",
+    "origin": "Brain advice animal; KYM traces earliest known use to a suicide-support community.",
+    "source_url": "http://knowyourmeme.com/memes/scumbag-brain",
+    "semantic_source_url": "http://knowyourmeme.com/memes/scumbag-brain",
+    "representative_uses": [
+      "Remembers old song lyrics but not a new idea, MemeFact",
+      "Finds witty comeback after conversation, MemeFact",
+      "Forgets keys despite complex old memories, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "100941"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "unhelpful_success",
+        "role": "Top caption names the mind's useless success."
+      },
+      {
+        "key": "useful_failure",
+        "role": "Bottom caption names the needed capability it withholds."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "hold",
+    "render_file": "rendered/sb.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "scc": {
+    "proposed_admission": "hold",
+    "admission_rationale": "Real stock-photo subject and AAP-associated provenance need an exact-image review; no automatic admission from an epiphany title.",
+    "origin": "Party photograph documented by KYM as stock imagery supplied to Australian Associated Press.",
+    "source_url": "http://knowyourmeme.com/memes/sudden-clarity-clarence",
+    "semantic_source_url": "http://knowyourmeme.com/memes/sudden-clarity-clarence",
+    "representative_uses": [
+      "Original dislike of dubstep, KYM",
+      "Recognition of personal good fortune, KYM",
+      "Hot computer freezes, MemeFact"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "100948"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "epiphany_reaction",
+        "role": "Top caption is the sudden reaction."
+      },
+      {
+        "key": "mundane_insight",
+        "role": "Bottom caption reveals the simple realization."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "hold",
+    "render_file": "rendered/scc.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "ski": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds a concise preventive warning, distinct from a hidden trap or after-the-fact blame.",
+    "origin": "South Park ski instructor became a general risky-choice warning macro.",
+    "source_url": "http://knowyourmeme.com/memes/super-cool-ski-instructor",
+    "semantic_source_url": "http://knowyourmeme.com/memes/super-cool-ski-instructor",
+    "representative_uses": [
+      "Chasing meme points instead of enjoyment, MemeFact",
+      "Trying to influence religious views in comment threads, MemeFact",
+      "Broken-watch bad-time wordplay, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "100951"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "risky_shortcut",
+        "role": "Top caption states the preventable behavior."
+      },
+      {
+        "key": "calm_warning",
+        "role": "Bottom caption is the fixed warning."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/ski.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "spiderman": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds reciprocal dependency and mirrored behavior between actors.",
+    "origin": "1960s Spider-Man impersonation scene; later similarity captions.",
+    "source_url": "https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man",
+    "semantic_source_url": "https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man",
+    "representative_uses": [
+      "Similar-style rappers meeting, KYM",
+      "Partner adopting one's speech, KYM",
+      "Spider-Man actors recreating the image, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "left_actor",
+        "role": "Caption on the left Spider-Man."
+      },
+      {
+        "key": "right_actor",
+        "role": "Caption on the right Spider-Man."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/spiderman.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "wddth": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds local organizational taboo, distinct from a forced trend failing to catch on.",
+    "origin": "Black Panther stops Bruce Banner bowing in Avengers: Infinity War.",
+    "source_url": "https://knowyourmeme.com/memes/we-dont-do-that-here",
+    "semantic_source_url": "https://knowyourmeme.com/memes/we-dont-do-that-here",
+    "representative_uses": [
+      "Bowing to the king in the film, KYM",
+      "Writer asked about outlines and planning, KYM",
+      "Unexpected phone calls, Memegen"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "norm_violation",
+        "role": "Top caption supplies the attempted action."
+      },
+      {
+        "key": "local_refusal",
+        "role": "Bottom caption preserves the response."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/wddth.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "xy": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds indiscriminate action rather than identical resource allocation.",
+    "origin": "Allie Brosh's Hyperbole and a Half comic about bursts of enthusiasm for adult responsibilities.",
+    "source_url": "http://knowyourmeme.com/memes/x-all-the-y",
+    "semantic_source_url": "http://knowyourmeme.com/memes/x-all-the-y",
+    "representative_uses": [
+      "Clean all the things, original comic",
+      "Upvote all the memes, MemeFact",
+      "All Things Considered parody, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "61533"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "sweeping_action",
+        "role": "Top caption names the imperative verb."
+      },
+      {
+        "key": "universal_target",
+        "role": "Bottom caption gives the all-the-things target."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/xy.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "yodawg": {
+    "proposed_admission": "active",
+    "admission_rationale": "Adds explicit recursive delegation, useful for redundant tools and agent hierarchies.",
+    "origin": "Xzibit publicity portrait and recursive Pimp My Ride-derived caption pattern.",
+    "source_url": "http://knowyourmeme.com/memes/xzibit-yo-dawg",
+    "semantic_source_url": "http://knowyourmeme.com/memes/xzibit-yo-dawg",
+    "representative_uses": [
+      "Standard X inserted into Y to do Z while Z, KYM",
+      "Repetitive X inside X to X while X, KYM",
+      "Meme about memes about memes, MemeFact"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [
+      "101716"
+    ],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "named_activity",
+        "role": "Top caption introduces the activity the recipient likes."
+      },
+      {
+        "key": "recursive_addition",
+        "role": "Bottom caption nests the activity and repeats it."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "active",
+    "render_file": "rendered/yodawg.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "ptj": {
+    "proposed_admission": "hold",
+    "admission_rationale": "Eight small dialogue panels remain too dense for the default phone-size contact sheet. Semantic evidence does not resolve legibility.",
+    "origin": "Friends scene about repeating French fragments; full semantic entry supplements Memegen's photo-page pointer.",
+    "source_url": "https://knowyourmeme.com/photos/1846826-phoebe-teaching-joey",
+    "semantic_source_url": "https://knowyourmeme.com/memes/phoebe-teaching-joey",
+    "representative_uses": [
+      "Original French fragments then mangled sentence, KYM",
+      "Stay-home components then contrary conclusion, KYM",
+      "Cast it into the fire then keep the ring, Memegen"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "first_component",
+        "role": "First-row teacher turn."
+      },
+      {
+        "key": "first_repeat",
+        "role": "First-row learner repeats."
+      },
+      {
+        "key": "second_component",
+        "role": "Second-row teacher turn."
+      },
+      {
+        "key": "second_repeat",
+        "role": "Second-row learner repeats."
+      },
+      {
+        "key": "third_component",
+        "role": "Third-row teacher turn."
+      },
+      {
+        "key": "third_repeat",
+        "role": "Third-row learner repeats."
+      },
+      {
+        "key": "combined_instruction",
+        "role": "Last-row teacher combines all components."
+      },
+      {
+        "key": "failed_combination",
+        "role": "Last-row learner contradicts the combined instruction."
+      }
+    ],
+    "visual_qa": "HOLD: all eight turns visible, but final row small at 360px; needs a defined short-copy phone-size acceptance test.",
+    "final_admission": "hold",
+    "render_file": "rendered/ptj.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "drowning": {
+    "proposed_admission": "rejected",
+    "admission_rationale": "Drowning danger is the image's essential mechanism; inappropriate even for harmless operational captions.",
+    "origin": "Gudim comic published on Instagram in 2017.",
+    "source_url": "https://knowyourmeme.com/memes/drowning-high-five",
+    "semantic_source_url": "https://knowyourmeme.com/memes/drowning-high-five",
+    "representative_uses": [
+      "Online problem report answered by same problem, Memegen",
+      "ProgrammerHumor object-label variant, KYM",
+      "Reaction-image use celebrating another's failure, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "requester",
+        "role": "Person represented by hand reaching from water."
+      },
+      {
+        "key": "responder",
+        "role": "Other hand offering a high five."
+      },
+      {
+        "key": "unhelpful_response",
+        "role": "Label on the gesture instead of rescue."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "rejected",
+    "render_file": "rendered/drowning.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "pool": {
+    "proposed_admission": "rejected",
+    "admission_rationale": "Real children and apparent drowning distress are central to the photo; use a non-distress allocation pattern instead.",
+    "origin": "Family swimming photograph later used for differential-attention labels.",
+    "source_url": "https://knowyourmeme.com/memes/mother-ignoring-kid-drowning-in-a-pool",
+    "semantic_source_url": "https://knowyourmeme.com/memes/mother-ignoring-kid-drowning-in-a-pool",
+    "representative_uses": [
+      "Hot versus New posts and Redditors, Memegen",
+      "Math-equation labels, KYM",
+      "Norse-god variation with added skeleton, KYM"
+    ],
+    "examples_file": "raw/candidate-examples.json",
+    "memefact_row_ids": [],
+    "example_caveat": "Uses are paraphrases or descriptions of preserved source examples, not recommended captions; some raw captions are unsafe or off-pattern.",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Source and dataset access do not grant publication rights.",
+    "slot_mapping": [
+      {
+        "key": "favored_recipient",
+        "role": "Lifted child receives attention."
+      },
+      {
+        "key": "neglected_recipient",
+        "role": "Other child is struggling."
+      },
+      {
+        "key": "attention_giver",
+        "role": "Adult decides which child receives attention."
+      }
+    ],
+    "visual_qa": "PASS: captions and image roles readable in the exact 360px contact-sheet tile. Keep word ceilings; safety and semantic holds are separate.",
+    "final_admission": "rejected",
+    "render_file": "rendered/pool.jpg",
+    "reviewed_at": "2026-09-29"
+  }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nick Major</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#efeae2;--ink:#1a1714;--dim:#6e665c;--line:#d3cbbf;--a:#c2410c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 'Inter Tight',sans-serif}
+.top{display:grid;grid-template-columns:46% 54%;min-height:100vh}
+.photo{background:url(nick.jpg) center 30%/cover;position:relative;filter:saturate(.9)}
+.photo span{position:absolute;left:28px;bottom:24px;color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.right{padding:36px 64px 56px;display:flex;flex-direction:column}
+nav{display:flex;justify-content:flex-end;gap:28px;font-size:15px;color:var(--dim)}
+.name{font-family:'Instrument Serif';font-size:132px;line-height:.9;letter-spacing:-.02em;margin-top:auto}
+.name i{color:var(--a)}
+.line{font-size:26px;line-height:1.3;margin-top:24px;max-width:560px;font-weight:500}
+.bio{color:var(--dim);margin-top:18px;max-width:540px}
+.now{margin-top:44px;border-top:1px solid var(--ink);padding-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.now h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:6px}
+.now p{font-size:15px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+section{padding:80px 0;border-top:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:280px 1fr;gap:48px}
+h2{font-family:'Instrument Serif';font-size:48px;line-height:1;font-weight:400}
+h2 small{display:block;font-family:'Inter Tight';font-size:15px;color:var(--dim);margin-top:12px;line-height:1.5}
+.essay{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.essay:first-child{padding-top:0}
+.essay .d{font-size:14px;color:var(--dim);padding-top:6px}
+.essay h3{font-family:'Instrument Serif';font-size:32px;line-height:1.1;font-weight:400}
+.essay p{color:var(--dim);font-size:16px;margin-top:4px}
+.tl{list-style:none}
+.tl li{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tl b{font-weight:600}.tl span{color:var(--dim)}
+.tl li:last-child b{color:var(--a)}
+.nl{background:var(--ink);color:var(--bg);border-radius:4px;padding:44px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.nl h3{font-family:'Instrument Serif';font-size:44px;font-weight:400;line-height:1}
+.nl p{color:#b9b0a4;margin-top:10px;font-size:16px}
+.nl form{display:flex;gap:10px}.nl input{flex:1;padding:14px 16px;border:0;border-radius:3px;font:16px 'Inter Tight'}
+.nl button{background:var(--a);color:#fff;border:0;padding:0 22px;border-radius:3px;font-weight:600;font-size:16px}
+footer{padding:36px 0 56px;display:flex;justify-content:space-between;font-size:14px;color:var(--dim)}
+@media(max-width:800px){.top{grid-template-columns:1fr;min-height:0}.photo{height:420px}.right{padding:28px 22px 40px}nav{display:none}.name{font-size:76px;margin-top:0}.line{font-size:21px}.now{grid-template-columns:1fr;gap:14px}.wrap{padding:0 22px}.sh{grid-template-columns:1fr;gap:24px}h2{font-size:38px}.essay{grid-template-columns:1fr;gap:2px}.essay h3{font-size:26px}.tl li{grid-template-columns:1fr;gap:0}.nl{grid-template-columns:1fr;padding:28px 22px}.nl form{flex-direction:column}.nl button{padding:13px}footer{flex-direction:column;gap:8px}}
+</style></head><body>
+<div class="top">
+ <div class="photo"></div>
+ <div class="right">
+  <nav><span>Writing</span><span>Projects</span><span>Now</span><span>About</span><span>Newsletter</span></nav>
+  <h1 class="name">Nick<br><i>Major</i></h1>
+  <p class="line">Software engineer figuring out distribution.</p>
+  <p class="bio">Fifteen years building software, four teaching it. Now I build my own products with AI and spend most of my time on the part I used to skip: getting people to use them. I write down what works and what doesn't.</p>
+  <div class="now">
+   <div><h4>Building</h4><p>Sites That Get Calls, a site generator for local businesses</p></div>
+   <div><h4>Testing</h4><p>Programmatic SEO on a free U.S. city dataset</p></div>
+   <div><h4>Learning</h4><p>Cold outreach that doesn't feel like cold outreach</p></div>
+  </div>
+ </div>
+</div>
+
+<div class="wrap">
+<section class="sh"><h2>Writing<small>Long posts on building and shipping products, and the marketing experiments I run on them.</small></h2>
+ <div>
+  <div class="essay"><span class="d">Oct 2026</span><div><h3>Marketing for people who'd rather be in their editor</h3><p>Treating distribution like an engineering problem.</p></div></div>
+  <div class="essay"><span class="d">Sep 2026</span><div><h3>I put 19,000 city pages on Google. Here's week three.</h3><p>What got indexed, what didn't, and what I changed.</p></div></div>
+  <div class="essay"><span class="d">Sep 2026</span><div><h3>The boring SEO setup I put on every new project</h3><p>Sitemaps, IndexNow, OG images, and what I stopped doing by hand.</p></div></div>
+ </div>
+</section>
+
+<section class="sh"><h2>How I got here<small>The short version.</small></h2>
+ <ul class="tl">
+  <li><b>2010s</b><span>Full-stack engineer. React, Node, serverless, whatever the job needed.</span></li>
+  <li><b>Teaching</b><span>Four years teaching people to code.</span></li>
+  <li><b>2025</b><span>Home lab Kubernetes, infrastructure, and a lot of side projects nobody used.</span></li>
+  <li><b>Now</b><span>Shipping products with AI and learning distribution in public.</span></li>
+ </ul>
+</section>
+
+<section><div class="nl"><div><h3>Deploy to Humans</h3><p>My weekly newsletter. One marketing or growth experiment, what happened, and the tools I used.</p></div><form><input placeholder="you@example.com"><button>Subscribe</button></form></div></section>
+
+<footer><span>© 2026 Nick Major</span><span>Projects · Archive · RSS · X · LinkedIn · GitHub</span></footer>
+</div></body></html>

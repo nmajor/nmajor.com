@@ -33,6 +33,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     default = Path(__file__).resolve().parents[1] / "assets" / "templates"
     parser.add_argument("--output-dir", type=Path, default=default)
+    parser.add_argument("--id", action="append", dest="template_ids", help="Sync only these contracted IDs; preserve and verify all other assets")
+    parser.add_argument("--catalog-file", type=Path, help="Use a preserved raw Memegen catalog snapshot for reproducible sync")
     args = parser.parse_args()
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -46,13 +48,32 @@ def main() -> int:
         for status, template_ids in contract_document["admission"].items()
         for template_id in template_ids
     }
-    template_ids = list(contracts)
+    template_ids = list(dict.fromkeys(args.template_ids or contracts))
+    unknown = sorted(set(template_ids) - set(contracts))
+    if unknown:
+        raise ValueError("Uncontracted template IDs: " + ", ".join(unknown))
+    retained = {}
+    if args.template_ids:
+        old_path = output / "manifest.json"
+        old = json.loads(old_path.read_text(encoding="utf-8")) if old_path.exists() else {"templates": {}}
+        for template_id in set(contracts) - set(template_ids):
+            item = old.get("templates", {}).get(template_id)
+            path = output / f"{template_id}.jpg"
+            if not item or not path.is_file():
+                raise ValueError(f"{template_id}: missing retained asset; include it with --id")
+            if sha256(path.read_bytes()) != item.get("sha256"):
+                raise ValueError(f"{template_id}: retained asset hash mismatch")
+            if item.get("lines") != len(contracts[template_id]["slots"]):
+                raise ValueError(f"{template_id}: retained slot count changed; include it with --id")
+            if item.get("rights_status") != "fair-use-review":
+                raise ValueError(f"{template_id}: unexpected retained rights status")
+            retained[template_id] = {**item, "admission": admission_by_id[template_id]}
 
-    catalog = json.loads(request(API))
+    catalog = json.loads(args.catalog_file.read_bytes() if args.catalog_file else request(API))
     by_id: dict[str, dict] = {}
     for item in catalog:
         template_id = item["id"]
-        if template_id in contracts and template_id in by_id and item != by_id[template_id]:
+        if template_id in template_ids and template_id in by_id and item != by_id[template_id]:
             raise ValueError(f"Memegen returned conflicting rows for `{template_id}`")
         by_id.setdefault(template_id, item)
     missing = [template_id for template_id in template_ids if template_id not in by_id]
@@ -73,7 +94,7 @@ def main() -> int:
             "Memegen is an open-source renderer. Its software license does not license "
             "the individual template images; default status is fair-use-review."
         ),
-        "templates": {},
+        "templates": retained,
     }
     for template_id in template_ids:
         item = by_id[template_id]

@@ -1,0 +1,81 @@
+{
+  "post_id": "personal-odyssey-legacy-modernization",
+  "post": "app/linkedin/rockwell-knowledge-at-the-machine/personal-odyssey-legacy-modernization.md",
+  "catalog_scan": {"active_templates_reviewed": 63, "source": ".skills/social-meme-campaign/references/template-contracts.json"},
+  "payload": {
+    "fact": "Cognizant says AI-assisted modernization saved 37% against budget, while a seven-person team delivered the work and a technical lead or architect reviewed every change before merge.",
+    "expected": "An autonomous coding-agent result would mean the agent replaced much of the normal delivery structure.",
+    "actual": "The agent operated inside a conventional accountable team with mandatory review.",
+    "tension": "The autonomous headline and the supervised delivery mechanism describe the same project very differently.",
+    "target": "The headline framing that lets the agent swallow the delivery team.",
+    "reader_realization": "The result may be real, but it was produced by an agent-plus-team system rather than an unsupervised coder.",
+    "tone": "dry",
+    "forbidden_targets": ["the seven-person delivery team", "reviewers", "Odyssey employees"]
+  },
+  "angles": [
+    {"rank": 1, "id": "autonomy-unmasked", "mechanism": "contradiction", "line": "The autonomous AI-engineering headline resolves into a seven-person team and mandatory review of every change.", "kept": true},
+    {"rank": 2, "id": "agent-review-boundary", "mechanism": "hidden constraint", "line": "The coding agent could convert, test, and document the system, but every change still stopped at a technical reviewer.", "kept": true},
+    {"rank": 3, "id": "same-project-two-readings", "mechanism": "reluctant update", "line": "The same deployment looks less autonomous when the seven-person team and per-change review enter the frame.", "kept": false},
+    {"rank": 4, "id": "headline-owns-teamwork", "mechanism": "ownership mismatch", "line": "The agent gets the headline while the delivery team and reviewers remain inside the result.", "kept": false},
+    {"rank": 5, "id": "savings-with-controls", "mechanism": "false choice", "line": "Reported cost savings and ordinary engineering controls coexisted in the same project.", "kept": false}
+  ],
+  "candidates": [
+    {
+      "template": "reveal", "angle": "autonomy-unmasked", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 5, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 4, "cultural_familiarity": 4, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The surface identity of autonomous AI engineering is unmasked as a supervised team delivery process.",
+        "role_mapping": "The headline framing and the sourced seven-person-team-plus-review reality fill the surface and underlying roles.",
+        "surprise": "The reveal keeps the reported result while changing who and what produced it.",
+        "instant_clarity": "The mask-off relationship is obvious if the underlying label stays concrete.",
+        "operator_resonance": "Leaders routinely need to distinguish product headlines from delivery mechanisms.",
+        "caption_economy": "The fixed lines add length, but the two substantive labels can stay under six words.",
+        "cultural_familiarity": "The Scooby-Doo unmasking structure is broadly familiar.",
+        "freshness": "No other post in this batch uses an unmasking relationship."
+      }
+    },
+    {
+      "template": "genie", "angle": "agent-review-boundary", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 3, "freshness": 4},
+      "reasons": {
+        "semantic_fit": "Broad coding capability is bounded by the concrete rule that every change needs review.",
+        "role_mapping": "Conversion, tests, pipelines, and documentation form the capability; mandatory technical review is the constraint.",
+        "surprise": "The autonomous label collides with a review gate on every change.",
+        "instant_clarity": "The two roles can be read without knowing the project details.",
+        "operator_resonance": "Mandatory review is a familiar and defensible engineering control.",
+        "caption_economy": "Both the capability and review boundary fit in short lines.",
+        "cultural_familiarity": "The template is legible but less famous than the current handshake image.",
+        "freshness": "Two other stories support a Genie relationship, so batch selection would need to reserve it for the strongest one."
+      }
+    },
+    {
+      "template": "glasses", "angle": "same-project-two-readings", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 3, "freshness": 4},
+      "reasons": {
+        "semantic_fit": "The contract supports two readings of the same deployment rather than two products.",
+        "role_mapping": "'Autonomous modernization' and 'seven people, every change reviewed' describe one project from headline and delivery perspectives.",
+        "surprise": "The second reading restores the human system hidden by the headline.",
+        "instant_clarity": "The paired labels are direct, though the lower caption will require tight editing to meet five words.",
+        "operator_resonance": "Decision-makers often revise vendor claims after seeing staffing and controls.",
+        "caption_economy": "The five-word limit is restrictive but workable with 'Team plus mandatory review.'",
+        "cultural_familiarity": "The image is known, but its corrected-reading convention is less universal than Scooby-Doo.",
+        "freshness": "STG also supports a stronger two-reading use, reducing batch freshness here."
+      }
+    },
+    {
+      "template": "handshake", "angle": "agent-review-boundary", "hard_fail": true,
+      "hard_fail_reason": "The AI agent was part of the seven-person team, not a distinct peer group, and 'needs a technical lead' does not naturally describe the whole team as a shared trait.",
+      "scores": {"semantic_fit": 3, "role_mapping": 2, "surprise": 3, "instant_clarity": 4, "operator_resonance": 4, "caption_economy": 4, "cultural_familiarity": 5, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The source supports coexistence, but not two separate groups sharing a trait.",
+        "role_mapping": "The agent sits inside the seven-person team and the center label does not apply to both sides in the same way.",
+        "surprise": "The human-review reminder is useful but the forced symmetry weakens it.",
+        "instant_clarity": "The familiar image reads fast even though its implied relationship is wrong.",
+        "operator_resonance": "Readers understand that agents still need accountable review.",
+        "caption_economy": "The existing three labels are short.",
+        "cultural_familiarity": "Epic Handshake is broadly recognized.",
+        "freshness": "The batch does not otherwise use it, but uniqueness cannot repair the role mismatch."
+      }
+    }
+  ]
+}

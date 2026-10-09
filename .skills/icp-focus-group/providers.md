@@ -11,8 +11,9 @@ provider is judged with a **native subagent**, the other two via **their CLI**.
 > - **claude:** the host is authed via the Claude subscription/OAuth. Never rely on `ANTHROPIC_API_KEY`.
 > - **codex:** `codex login status` must show "Logged in using ChatGPT". Never run
 >   `codex login --with-api-key` and never authenticate with `OPENAI_API_KEY`.
-> - **gemini:** must use the logged-in Google account (subscription/OAuth). Never authenticate with
->   `GEMINI_API_KEY` or `GOOGLE_API_KEY`; keep them unset so the CLI uses the login.
+> - **antigravity:** the Google-family seat must use the logged-in Antigravity
+>   subscription/OAuth. Never authenticate with `GEMINI_API_KEY` or `GOOGLE_API_KEY`; keep them
+>   unset so the CLI uses the login.
 >
 > If a provider is not logged in via its subscription, treat that seat as **unavailable** and tell
 > Nick to log in interactively. Never silently fall back to an API key.
@@ -20,14 +21,14 @@ provider is judged with a **native subagent**, the other two via **their CLI**.
 ## Host-agnostic seat mapping
 
 There are three providers: **anthropic** (`claude`), **openai** (`codex`), **google**
-(`gemini`). Whichever one is hosting the skill is the host.
+(`antigravity`, running a Gemini model). Whichever one is hosting the skill is the host.
 
 - **Host provider's seat(s):** spawn a **native subagent** in the host agent.
   - In **Claude Code**: the Task/Agent tool. Pass the per-seat prompt; instruct it to act
     read-only and return only the JSON object.
   - In **Codex**: its subagent equivalent. Same contract.
-  - In **Gemini** (if it ever hosts): its subagent equivalent, else fall back to invoking the
-    `gemini` CLI locally as for any other provider.
+  - In a **Google-family host** (if one ever hosts): use its subagent equivalent, else fall back
+    to invoking the `antigravity` CLI locally as for any other provider.
 - **Each other provider's seat(s):** shell out to that provider's CLI (commands below).
 
 This holds regardless of which of the three is the host. Detect the host from the environment
@@ -44,10 +45,9 @@ reading this knows its own identity — assign its own provider to the native-su
 Write each per-seat prompt to its own temp file, then run wrapped in `timeout` (e.g.
 `timeout 240`). A hung CLI is a failure — let it fall through. Run all seats in parallel.
 
-> **Verified in this repo on 2026-06-29:** all three commands below run end-to-end here —
-> `claude-opus-4-8` (host), `gpt-5.5` (codex), and `gemini-3.1-pro-preview` (gemini) all
-> resolved and returned clean output. Models still rot over time, so keep treating "model not
-> found / invalid model" as a fallback trigger (walk the chain); see "Overrides" to verify/pin.
+> **Verified in this repo on 2026-09-23:** Antigravity 1.2.9 resolved
+> `gemini-3.1-pro-high` and returned a clean authenticated response. Models still rot over time,
+> so keep treating "model not found / invalid model" as a fallback trigger.
 
 ### anthropic — `claude`  (best: `claude-opus-4-8`, alias `opus`)
 
@@ -91,43 +91,48 @@ cat prompt.txt | timeout 240 codex exec - \
   availability via `codex login status` (not the presence of `OPENAI_API_KEY`); `OPENAI_API_KEY`
   in the env is irrelevant and must not be used to authenticate codex.
 
-### google — `gemini`  (best: `gemini-3.1-pro-preview`, fallbacks `gemini-3-pro-preview` → `gemini-2.5-pro`)
+### google — `antigravity` (best: `gemini-3.1-pro-high`)
 
 ```bash
-cat prompt.txt | timeout 240 gemini \
-  -m gemini-3.1-pro-preview \
-  -o json \
-  --approval-mode plan
+env -u GEMINI_API_KEY -u GOOGLE_API_KEY timeout 240 mise exec agy -- antigravity \
+  --model gemini-3.1-pro-high \
+  --sandbox \
+  --disable-slash-commands \
+  --output-format json \
+  --print-timeout 230s \
+  --print="$(<prompt.txt)"
 ```
 
-- `--approval-mode plan` = read-only. Parse the envelope: `jq -r '.response'` for the answer;
-  the `.response` content may itself be JSON wrapped in ```json fences — strip fences, then
-  parse.
-- **Failure** = non-zero exit (1 = API/rate failure, 42 = bad input, 53 = turn limit), OR
-  `.error != null` / `.response == null`.
-- **Auth — HARD RULE: use the logged-in Google account (subscription), NEVER an API key.** Keep
-  `GEMINI_API_KEY` and `GOOGLE_API_KEY` **unset** so the CLI uses the interactive login; if gemini
-  is not logged in, treat it as unavailable and tell Nick to run `gemini` and sign in. Never
-  authenticate gemini with a key.
-- **Access / model gating:** Gemini 3 / 3.1 Pro access depends on the logged-in account; if the
-  preview id is rejected, fall back. Chain: `gemini-3.1-pro-preview` → `gemini-3-pro-preview` →
-  `gemini-2.5-pro` (broadly available).
+- Run from a temporary directory and keep the prompt entirely in `--print`; Antigravity otherwise
+  treats the next flag as the prompt. `--sandbox` is required. `--disable-slash-commands` prevents
+  skill expansion during a jury call.
+- Parse the envelope with `jq -r '.response'`. Success requires `.status == "SUCCESS"` and a
+  non-empty `.response`; strip JSON fences before validating the juror schema.
+- **Auth — HARD RULE: use Antigravity's logged-in subscription, NEVER an API key.** Keep
+  `GEMINI_API_KEY` and `GOOGLE_API_KEY` unset. If the smoke test fails authentication, treat the
+  seat as unavailable and tell Nick to authenticate Antigravity. Never fall back to Gemini CLI.
+- **Model gating:** list the authenticated catalog with `mise exec agy -- antigravity models`.
+  Prefer the highest available Google Pro model, then the highest Google Flash High model. Do
+  not use Antigravity's Claude or GPT-OSS models for this seat because those duplicate another
+  provider family.
 
 ## Preflight (before building the lineup)
 
 1. **Identify the host** (its provider's seat goes native).
 2. **For each non-host provider, check availability:**
-   - CLI present: `command -v claude` / `codex` / `gemini`.
-   - Authed: `claude` host is already authed. For **gemini**, confirm it is logged in via the Google subscription (`GEMINI_API_KEY` and `GOOGLE_API_KEY` must be unset).
+   - CLI present: `command -v claude` / `codex`; for Antigravity use
+     `mise exec agy -- antigravity --version` because mise owns the executable.
+   - Authed: `claude` host is already authed. For **antigravity**, keep `GEMINI_API_KEY` and
+     `GOOGLE_API_KEY` unset and run the one-line smoke test through its subscription login.
      For **codex**, `OPENAI_API_KEY` being set is **not** enough — confirm `codex login status`
      shows logged-in (see the codex auth gotcha above). If unsure, the one-line smoke prompt
      (below) is the real test: it confirms reachability, auth, and the model id at once.
-3. **Optional smoke test** per provider (cheap, also verifies the model id):
-   `printf 'Reply with the single word OK.' | <the provider command>` and confirm a clean
-   parse. A model-not-found error here is your cue to walk the fallback chain *before* the real
-   run, so a bad id never costs you a juror mid-panel.
-4. **Build the lineup** and tell the user the roster (provider + resolved model + ICP per seat)
-   *before* dispatching.
+3. **Optional smoke test** per provider (cheap, also verifies the model id): use that provider's
+   documented prompt form (`stdin` for Claude/Codex; `--print='Reply with the single word OK.'`
+   for Antigravity) and confirm a clean parse. A model-not-found error here is your cue to walk
+   the fallback chain *before* the real run, so a bad id never costs you a juror mid-panel.
+4. **Build the lineup.** In standalone mode, tell the user the roster before dispatching. In
+   inherited-context mode, record it in the run manifest and continue without pausing.
 
 ## Fallback policy (applied during collect)
 
@@ -140,20 +145,19 @@ malformed JSON after **one** retry:
 3. If no provider can take it, **drop the seat**.
 4. **Always report** the final lineup and **every substitution/drop** in the output.
 
-If fewer than **2 distinct providers** end up usable, the cross-provider debiasing is lost —
-warn the user explicitly and ask whether to proceed with a single-family panel (which is
-biased toward its own family and runs leniency-high) or to abort and fix auth.
+If fewer than **2 distinct providers** end up usable, the cross-provider debiasing is lost. In
+standalone mode, warn the user and ask whether to proceed with a single-family panel or abort and
+fix auth. In inherited-context mode, continue, mark the panel `degraded: true`, list every missing
+family and substitution, and do not describe the result as cross-provider.
 
 ## Overrides
 
 - **Pin or change models** if an id is stale or you want a cheaper/stronger run: keep a small
   per-provider override at the top of the run (e.g. `ANTHROPIC_MODEL=opus`,
-  `OPENAI_MODEL=gpt-5.4`, `GEMINI_MODEL=gemini-2.5-pro`) and substitute into the commands. The
+  `OPENAI_MODEL=gpt-5.4`, `GOOGLE_MODEL=gemini-3.1-pro-high`) and substitute into the commands. The
   alias `opus` always resolves to the latest Anthropic Opus and is the safest anthropic pin.
-- **Verify a current id** without a list subcommand (none of the three expose a clean one):
-  run the smoke test above; an "invalid model / not found" error means try the next id. The
-  `/model` slash command inside an interactive session of any of the three also lists what the
-  current auth can actually reach.
+- **Verify a current id:** use `antigravity models` for the Google seat. For Claude and Codex,
+  run the smoke test; an "invalid model / not found" error means try the next id.
 - **Temperature:** keep scoring near 0 for stability where the host lets you set it; the CLIs
   above don't all expose a temperature flag headlessly, so rely on the deterministic-leaning
   defaults and the anchored rubric rather than sampling tricks.

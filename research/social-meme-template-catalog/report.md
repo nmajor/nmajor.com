@@ -1,5 +1,7 @@
 # Social meme template catalog: v2 admission audit
 
+The historical 79-template audit below is preserved unchanged. The [first September 29 expansion](expansion-2026-09-29/report.md) and [second expansion wave](expansion-wave2-2026-09-29/report.md) each add 22 researched contracts after source and render inspection. The current catalog has 123 contracts: 75 active, 27 hold, 21 rejected. Exact background art remains `fair-use-review`.
+
 **Audit date:** 2026-08-11  
 **Decision scope:** the 79 contracts currently under `templates` in
 [`template-contracts.json`](../../.skills/social-meme-campaign/references/template-contracts.json),

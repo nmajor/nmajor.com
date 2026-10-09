@@ -1,6 +1,6 @@
 ---
 name: content-discovery
-description: Find fresh, deep-cut applied-AI story candidates and hand Nick a ranked digest to review. Use when Nick wants ideas to write about, a weekly scan of what's worth covering, a "what's happening in applied AI right now" sweep, or a hunt for named-company AI case studies (process integration, or replacing an expensive SaaS bill with an in-house vibecoded tool) to stock the running case-study library at research/case-studies/. Pulls free sources (Hacker News, Lobsters, arXiv, GitHub, Hugging Face papers, web search) plus Exa neural search and findSimilar for the deep cuts keyword sources miss, plus vendor customer-story indexes, industry trade press, conference recaps and earnings calls. Ranks for relevance, non-obviousness, breakout potential (whether a story can feed a LinkedIn post that escapes Nick's network — see research/linkedin-breakout/report.md), and how strong an opinionated first-person take Nick could hang on it, writes a digest, and accretes verified case studies into a permanent library. Nick picks one and brain-dumps into the content-builder skill.
+description: Find fresh, deep-cut applied-AI story candidates for essays or the autonomous weekly LinkedIn newsroom. Use for idea discovery, a current applied-AI sweep, or named-company case studies about process integration, failure, cost, or replacing SaaS with an internal AI-built tool. Searches free technical and news sources, Exa, vendor customer stories, trade press, conference recaps, and earnings calls. Saves raw results, ranks for relevance, non-obviousness, and breakout potential, writes a digest, and adds verified cases to research/case-studies/. For essays, Nick picks a story and hands it to content-builder. For a content-repurposing newsroom run, return evidence-backed pitches directly without writing posts.
 ---
 
 # Content discovery: surface deep-cut story candidates
@@ -378,3 +378,9 @@ Keep blurbs to one line. Nick is scanning to pick, not reading prose.
 This finds candidates. It does not research a chosen topic in depth or write anything for
 publication. Once Nick picks a candidate and brings a take, switch to
 `content-builder`, which does the capture, deep research, drafting, audit, and publish.
+
+One explicit handoff bypasses the essay-selection step: when `content-repurposing` invokes this
+skill for its weekly newsroom, return evidence-backed applied-AI pitches directly to that run.
+Search the durable beat rather than the newsletter's theme, include the standing cautionary desk,
+and save the raw results under the weekly run directory. `content-repurposing` owns selection,
+copy, and review; this skill still does not write posts.

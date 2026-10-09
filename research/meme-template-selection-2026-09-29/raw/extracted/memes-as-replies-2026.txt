@@ -1,0 +1,810 @@
+                                              Memes-as-Replies: Can Models Select Humorous Manga Panel Responses?
+
+                                                                                       Ryosuke Kohita, Seiichiro Yoshioka
+                                                                                                      CyberAgent
+                                                                                 {kohita ryosuke, yoshioka seiichiro}@cyberagent.co.jp
+
+
+
+
+                                                                     Abstract                                      SNS Post                      (a) Memes-as-Replies
+arXiv:2602.15842v1 [cs.LG] 21 Jan 2026
+
+
+
+
+                                                                                                                    Osamu
+                                                                                                                                                               Meme reply on SNS
+                                           Memes are a popular element of modern web communica-                     @0sa6hand2ka                                 Budao
+                                                                                                                                                                 @dubaduba0
+                                           tion, used not only as static artifacts but also as interactive
+                                                                                                                 Goodbye, holey socks!
+                                           replies within conversations. While computational research
+                                                                                                                 You've served me well but
+                                           has focused on analyzing the intrinsic properties of memes,
+                                                                                                                 it's time to let go 👋
+                                           the dynamic and contextual use of memes to create humor                                                                  (YOU‘RE GIVING UP ON HER?)
+                                           remains an understudied area of web science. To address this
+                                                                                                                 (b) Meme Reply Selection                     (c) MAME-RE Benchmark
+                                           gap, we introduce the Meme Reply Selection task and present
+                                           M A M E -R E (Manga Meme Reply Benchmark),1 a benchmark                       Given a context,                    Exhaustive humor annotations
+                                                                                                                 select the funniest meme reply                for all context-meme pairs
+                                           of 100,000 human-annotated pairs (500,000 total annotations                                                              via crowdsourcing
+                                           from 2,325 unique annotators) consisting of openly licensed             Context
+                                           Japanese manga panels and social media posts. Our analysis
+                                           reveals three key insights: (1) large language models (LLMs)
+                                           show preliminary evidence of capturing complex social cues
+                                           such as exaggeration, moving beyond surface-level seman-
+                                           tic matching; (2) the inclusion of visual information does not          Candidate memes
+                                           improve performance, revealing a gap between understanding              (multiple possible replies)
+
+                                           visual content and effectively using it for contextual humor;
+                                           (3) while LLMs can match human judgments in controlled
+                                           settings, they struggle to distinguish subtle differences in wit
+                                           among semantically similar candidates. These findings sug-
+                                           gest that selecting contextually humorous replies remains an
+                                           open challenge for current models.
+
+                                                                                                                    Selected meme
+                                                                 Introduction
+                                         Memes are a popular element of modern web communica-
+                                         tion (Joshi, Ilievski, and Luceri 2024). People frequently use
+                                         memes not just as static content, but as interactive replies
+                                         within conversations (Wang et al. 2019; Fei et al. 2021). This       Figure 1: Overview of memes-as-replies. (a) Example of meme
+                                         practice enables creative and nuanced expressions that are           use on SNS. (b) Visualization of the Meme Reply Selection task.
+                                         difficult to convey through text alone (Grundlingh 2018). For        (c) M A M E -R E benchmark with crowdsourced humor labels.
+                                         example, in Figure 1(a), a user posts about their worn-out
+                                         socks. In response, another user replies with a manga panel
+                                         that dramatically asks, “YOU’RE GIVING UP ON HER?”                   This gap between widespread human practice and limited
+                                         This reply creates humor by repurposing the manga panel to           computational understanding motivates our work to system-
+                                         treat the socks as a person. Such meme replies can express           atically analyze this core web phenomenon.
+                                         a wide range of humor, from playful teasing to irony, all of
+                                         which rely on a deep understanding of context and implicit              Most computational research on memes treats them as
+                                         cultural knowledge (Davison 2012; Yus 2018; Sharma et al.            static content, like an isolated photograph, for analyzing in-
+                                         2022). While humans can intuitively grasp the social cues            trinsic properties for tasks like harmfulness detection or hu-
+                                         required for such humor, it reveals a significant limitation of      morous captioning (Shah et al. 2024; Sharma et al. 2020;
+                                         current computational approaches (Nguyen and Ng 2024).               Wang and Lee 2024; Loakman, Thorne, and Lin 2025). In
+                                                                                                              contrast, our work focuses on the interactive function of
+                                           1                                                                  memes as replies within a conversation. As illustrated in Fig-
+                                             https://will.be.published.soon. Pronounced as /meIm ri:/
+                                         (Maym-Re).                                                           ure 1(b), we define the Meme Reply Selection task, where the
+goal is to choose the funniest meme given a conversational                               Related Work
+context. This perspective recognizes that humor is not an in-
+trinsic property of the meme itself, but an emergent quality       Our research lies at the intersection of web communication,
+of its interaction with context. This distinguishes our task       multimodal analysis, and computational humor. This section
+from other forms of dialogue media selection, such as emo-         moves from the broad context of online social interaction
+jis or stickers, which typically prioritize simple semantic rel-   down to the specific, unaddressed challenge of modeling hu-
+evance (Wang and Jurgens 2021; Lu et al. 2023). We argue           morous meme replies.
+that modeling this dynamic and interactive use is essential
+to fully understand the role of memes in online communica-         Web Communication and Multimodal Signals. Early
+tion.                                                              studies of online interaction explored how users creatively
+    We lay the foundation by formalizing the Meme Reply            adapt text-based media to convey rich socioemotional in-
+Selection task, making the nuanced act of humorous replies         formation, compensating for the lack of non-verbal cues
+computationally tractable by defining the necessary data           (Walther 1992, 1996; Dresner and Herring 2010). With the
+properties and a systematic evaluation framework. To sup-          rise of social media, this adaptation has accelerated through
+port this task, we introduce the M A M E -R E benchmark il-        the widespread integration of non-textual elements into dig-
+lustrated in Figure 1(c). The quality and scale of the bench-      ital conversations (Highfield and Leaver 2016). Simple vi-
+mark are ensured through a rigorous crowdsourcing pro-             sual cues like emojis and GIFs have become integral to on-
+cess, yielding annotations from five workers for each of the       line expression, helping users manage interpersonal dynam-
+100,000 pairs. Also, its exhaustive pairing design, where          ics and convey subtle emotional nuances (Hu et al. 2017;
+every context is matched with every meme, allows for a             Jiang, Fiesler, and Brubaker 2018). Memes represent a more
+unique analysis of how a single image’s humorous potential         advanced form of this multimodal practice and have evolved
+changes with context. Finally, its openly licensed foundation      into a sophisticated medium for communication. They are
+ensures free redistribution and modification, fostering future     used for a wide range of purposes, including not only hu-
+research.                                                          mor (Wu, Weber, and Müller 2025; Zhong et al. 2024) and
+    To demonstrate the challenges, our experiments show how        hate speech (Kiela et al. 2020), but also political state-
+current models handle contextual humor. Our analysis re-           ments (Kulkarni 2017; Beskow, Kumar, and Carley 2020),
+veals that methods using large language models (LLMs)              social commentary (Alam et al. 2024), and marketing (Mal-
+show an emerging ability to capture complex social cues in         odia et al. 2022).
+humor. Our qualitative analysis suggests that LLMs perform
+better because they can capture humorous strategies such as        From Static Content to Interactive Replies. Computa-
+irony and exaggeration. In contrast, embedding-based meth-         tional research has predominantly treated memes as static
+ods focus on surface-level semantic similarity, producing          artifacts for content analysis (Sharma et al. 2020; Pramanick
+replies that are contextually relevant but often lack the el-      et al. 2021; Hossain, Sharif, and Hoque 2022; Wang and Lee
+ement of surprise essential to humor. Our analysis also iden-      2024; Hwang and Shwartz 2023). This paradigm has proven
+tified several fundamental challenges. Current models found        valuable, advancing detection of harmful content (Zhuang
+it difficult to effectively leverage visual information, with      et al. 2025), understanding meme contexts (Sharma et al.
+performance sometimes degrading when it was provided.              2023b), and generating humorous captions (Zhang et al.
+Furthermore, while models perform well and can sometimes           2024). However, the focus on intrinsic properties of memes
+match human judgment when the humorous option is clearly           overlooks another key aspect of how memes function in on-
+distinguishable, they struggle with the more difficult and re-     line communication: as an interactive reply. In this view, the
+alistic task of selecting the best reply from a set of semanti-    meaning and humorous effect are not contained within the
+cally similar candidates. These results indicate that the core     meme itself, but are generated by the interaction between
+challenges for this task lie in understanding multimodal hu-       the meme and the conversational context.
+mor cues, as well as discerning the subtle differences in wit
+that make a reply truly effective.                                 Humor Mechanisms in Memes and Dialogue. The land-
+    The main contributions of this paper are as follows:           scape of memes is diverse, ranging from reaction GIFs
+ • We propose treating memes as a form of interactive web          that convey a short story (Wang and Jurgens 2021) to pho-
+   communication, broadening the scope from the analysis           tographic templates that derive new meaning from user-
+   of static artifacts to the dynamics of online conversation.     generated captions (Chen et al. 2024). A useful lens for
+                                                                   understanding meme replies is recontextualization (Bauman
+ • We provide the foundational infrastructure for this             and Briggs 1990), the act of taking a piece of media with a
+   paradigm: the formal Meme Reply Selection task and              fixed meaning and placing it in a new conversational con-
+   M A M E -R E, a benchmark featuring 100,000 human-              text to create a surprising juxtaposition. While some dia-
+   annotated context-meme pairs, built entirely with openly        logue system research has explored selecting visual replies
+   licensed materials to ensure broad reusability.                 like stickers or emojis, these studies have primarily focused
+ • We present the first comprehensive analysis of this             on semantic relevance (Lu et al. 2023; Wang et al. 2019;
+   benchmark, identifying fundamental challenges for cur-          Wang and Jurgens 2021), rather than evaluating the humor-
+   rent models in understanding nuanced, multimodal hu-            ous quality of the reply. This leaves the specific challenge of
+   mor.                                                            generating humorous replies largely unaddressed.
+                 Problem Formulation
+In this section, we formally define the task of meme reply se-
+lection, specify the dataset requirements, and propose eval-
+uation metrics for assessing model performance.
+Task Definition. Let the context be a natural-language ut-
+terance c ∈ C, where C is the set of arbitrary contexts in natu-
+ral language. Given a set of memes M = {m1 , . . . , m|M| },
+the task is to select the funniest meme for a given context:
+                  m̂(c) = arg max s(c, m),
+                               m∈M
+
+where s(c, m) is a scoring function that measures the funni-
+ness of meme m given the context c.
+                                                                     [Overview]
+Dataset Requirements. To evaluate models for this task,              - This task involves evaluating the humor of image replies
+                                                                       to SNS posts.
+we require a dataset D that consists of a finite set of contexts     - You will be shown an SNS post and an image reply to that post.
+CD = {c1 , . . . , c|CD | } ⊂ C, a finite set of memes MD =          - Judge whether the image reply is funny or not as a response
+                                                                       to the SNS post.
+{m1 , . . . , m|MD | } ⊂ M, and a real-valued scoring function       - Please answer intuitively, without overthinking.
+                                                                     - Please answer as instructed for quality control questions.
+r : CD × MD → R, which assigns a funniness score to each             - If your answers differ from the instructions on these
+context–meme pair. Thus, the dataset is represented as a set           questions, your work may not be approved,
+
+of annotated triples:                                                (Example)
+
+        D = {(c, m, r(c, m)) | c ∈ CD , m ∈ MD }.                    [Agreement]
+                                                                     ${CONSENT_STATEMENT}
+
+Evaluation Metric. To evaluate model performance, we
+define Score@1 as the average reference funniness score of          Figure 2: Crowdworker annotation interface and full task instruc-
+selected memes:                                                     tion for the funniness scoring task in M A M E -R E. Top: interface
+                          1 X                                       screenshot. Bottom: instruction text shown to annotators.
+            Score@1 =              r(c, m̂(c)),
+                        |CD |
+                                 c∈CD
+
+where r(c, m) denotes the reference funniness score from            and emotions. For each panel, the in-panel speech text was
+the dataset. This metric directly evaluates our objective of        transcribed, and GPT-4.1 was used to generate a visual de-
+selecting the most humorous meme reply for each given con-          scription. We also prepared 250 synthetic social media con-
+text.                                                               texts, generated by GPT-4.1 to mimic posts on X (formerly
+                                                                    Twitter) and screened for relevance and diversity. We chose
+ M A M E -R E: Manga Meme Reply Benchmark                           synthetic contexts instead of real posts to ensure privacy
+                                                                    safety and open licensing, avoiding the ethical risks of scrap-
+This section introduces M A M E -R E, a dataset for the meme
+                                                                    ing real tweets while maintaining the dataset’s reusability.
+reply selection task. It is designed to serve as a fundamental
+                                                                    We chose manga because its humor often arises from re-
+resource for this new research area. To ensure data consis-
+                                                                    contextualizing original scenes without alteration, enabling
+tency and reusability, we focused on a single meme domain,
+                                                                    a focused study of humor as an emergent property of the
+Japanese manga panels taken from a single copyright-free
+                                                                    interaction between meme and context. Since both the im-
+source, Black Jack ni Yoroshiku.2 The benchmark comprises
+                                                                    ages and the generated texts are based on freely licensed or
+250 synthetically generated social media contexts and 400
+                                                                    synthetic content, the dataset is openly available and easy to
+manga panels, which form 100,000 unique context-meme
+                                                                    reuse for further research.
+pairs. Each pair was evaluated by five independent crowd-
+workers on a binary funniness scale, yielding a total of            Funniness Annotation. To obtain ground-truth labels for
+500,000 annotations.                                                humor, we conducted a crowdsourcing task involving 2,325
+Content Collection and Curation. We created the bench-              unique annotators on Yahoo! Crowdsourcing3 in which an-
+mark content with a focus on reusability and variety within a       notators were shown a context–meme pair and asked to
+specific domain. We extracted 400 panels from Black Jack ni         make a binary judgment: funny or not funny. The annotation
+Yoroshiku (Give My Regards to Black Jack in English), pro-          interface displayed the context, meme image, and a binary
+vided by Sato Manga Works Ltd. under a free-use license             choice, with full task instructions shown to annotators (Fig-
+that allows both commercial and non-commercial reproduc-            ure 2). This controlled annotation setup allows us to isolate
+tion, public transmission, and a broad range of derivative          the humor signal from social factors such as post popularity
+uses, provided that attribution of the original title is main-      or user influence. To ensure high-quality data, we included
+tained. The panels cover a wide range of characters, scenes,        quality-control questions with explicit instructions and dis-
+                                                                    carded submissions from annotators who failed them. Anno-
+   2
+     https://densho810.com/free/. All data and annotations are in
+                                                                       3
+Japanese; English translations are provided for clarity.                   https://crowdsourcing.yahoo.co.jp/
+tators were informed that responses would be used for aca-                  [Instructions]
+                                                                            You will be given a post and a set of meme candidates.
+demic research and provided consent through the platform                    Select the funniest reply to the post from the candidates.
+interface. No personal or demographic information (e.g.,                    Meme candidates appear in CSV with the columns: ${FORMAT}
+                                                                            Choose the single option that will be the funniest.
+age, gender, cultural background) was collected, as such in-
+formation was not available through the crowdsourcing plat-                 [Output Format]
+                                                                            Output only the ID.
+form; only aggregate, anonymized responses were used.4                      Do not include any extra wording or markup.
+The final funniness score for each pair is defined as the pro-              [Candidates]
+portion of annotators who judged it to be funny. We adopted                 ${CANDIDATES}
+the binary format, simply asking whether a reply is funny or                --------------
+not, based on preliminary experiments.5                                     post: {context}
+
+
+Dataset Statistics. The M A M E -R E dataset consists of
+250 contexts and 400 manga panels, forming 100,000                       Figure 3: Prompt template. ${FORMAT} has “id, speech” or “id,
+                                                                         speech, description” and ${CANDIDATES} have meme candi-
+unique context-meme pairs with five annotations each,
+                                                                         dates in the corresponding csv format.
+yielding a total of 500,000 annotations. The overall inter-
+annotator agreement, measured by Fleiss’ κ, is -0.022, re-
+flecting the profound subjectivity of humor. However, this
+low overall agreement does not imply that the annotations                                                             
+                                                                                    m̂(c) = arg max cos fc (c), fm (m) .
+are random noise. Crucially, a substantial portion of the data                                    m∈M
+reached high levels of consensus: 20.4% of pairs achieved                   The embedding fm (m) can use speech text, panel de-
+unanimous agreement (a score of 0.0 or 1.0), and an addi-                scription, or the image. In our experiments, we imple-
+tional 21.8% had high agreement (a score of 0.2 or 0.8). This            ment fm with four model types: text embeddings (Text-
+demonstrates that while many pairs are subjective, a signif-             Emb), LLM embeddings (LLM-Emb), multimodal embed-
+icant subset elicits consistent judgments, providing a solid             dings (Multi-Emb), and vision-language model embeddings
+foundation for evaluating models.                                        (VLM-Emb). For text inputs, we use either speech text alone
+                                                                         or with the panel description. Multi-Emb uses only the im-
+                Reply Selection Methods                                  age, while VLM-Emb incorporates both speech text and
+We investigate two different strategies for meme reply se-               panel image.
+lection: (i) similarity-based selection, which relies on indi-           Preference-based        Selection       (pref-select).
+rect semantic matching, and (ii) preference-based selection,             Preference-based selection directly estimates the fun-
+which directly models funniness given the context.                       niness of each candidate given the context, rather than
+Similarity-based Selection (sim-select). This ap-                        relying on vector proximity. Specifically, given a context
+proach selects memes by measuring cosine similarity be-                  c and meme set M, a preference function fp evaluates
+tween the context and each candidate meme in embedding                   candidates and selects the meme judged funniest by the
+space. This score serves as an indirect proxy for funni-                 model:
+ness, relying on the assumption that similar memes are more
+likely to be suitable and funny replies. Specifically, we use                                m̂(c) = fp (c, M).
+a text encoder fc to obtain fc (c) ∈ Rd for the context, and               In our experiments, we implement fp using LLMs with
+text or multimodal encoders fm to obtain fm (m) ∈ Rd for                 prompts instructing the model to choose the funniest meme
+the memes. The meme with the highest cosine similarity to                (Figure 3), corresponding to the standard multiple-choice
+the context is selected:                                                 question answering (Hendrycks et al. 2021; Robinson and
+                                                                         Wingate 2023). For meme information in the prompts, we
+   4
+       Annotators were compensated at approximately 200 JPY per          use either speech text alone or with the panel description,
+hour (10 JPY per batch of 50 annotations, with an average com-           mirroring the sim-select setting.
+pletion time of three minutes per batch). This rate was set with
+reference to the standard for simple questionnaire crowdsourcing
+tasks in Japan (typically 50-300 JPY per hour) and was two-four                                 Experiments
+times higher than the compensation for other comparable tasks on         Our experiments are designed as a sequential investiga-
+the same platform. This study was deemed exempt from IRB re-             tion to identify the core challenges in humorous meme re-
+view as minimal-risk research using only anonymized, aggregated          ply selection. We begin in Exp1 with a broad comparison
+responses with no collection of personal information.                    of sim-select and pref-select methods to estab-
+     5
+       We initially considered a multi-level Likert scale for graded     lish baseline performance. Finding that pref-select is
+humor ratings. However, pilot annotations revealed that distin-          promising but limited, we test a standard retrieve-and-rerank
+guishing fine-grained degrees of funniness was difficult for annota-
+tors, resulting in inconsistent and noisy labels. The higher cognitive
+                                                                         architecture in Exp2, which surprisingly fails to improve
+load required for ranking also appeared to degrade annotation qual-      performance. To understand this failure, Exp3 simplifies the
+ity. In contrast, the binary judgment of funny or unfunny is intuitive   task to test if models can select a clearly humorous meme
+and easy to answer, and aligns well with our goal of selecting a         from a set of non-humorous ones. After confirming that the
+funny reply. Given these findings and the exploratory nature of this     models can, Exp4 directly tests our final hypothesis: that per-
+benchmark, we opted for the simpler binary approach.                     formance drops when models must choose from a pool of
+semantically similar candidates. Finally, our case study pro-    This finding, combined with the poor performance of mod-
+vides a qualitative analysis of the models’ humor generation     els that directly process images, highlights a significant chal-
+strategies.                                                      lenge: current models struggle to use visual information ef-
+                                                                 fectively, whether it is provided as text or as pixels.
+Overall Settings                                                    To address concerns about annotation reliability raised
+We used Score@1 as our primary evaluation metric, which          by low overall agreement, we evaluated models on a high-
+directly measures how often the system selects a meme re-        agreement subset where ground truth is defined strictly as
+ply judged to be funny in each context. To account for the       pairs with a funniness score ≥ 0.8 (unanimous or near-
+inherent subjectivity of humor, we also report the Consen-       unanimous agreement). The Consensus Hit Rate (CHR)
+sus Hit Rate (CHR), defined as the rate of selecting memes       (the proportion of universally funny memes selected by
+that all five annotators unanimously judged as funny, and        each model) is shown in Figure 4a. GPT-5 with description
+nDCG to evaluate model performance from a retrieval and          achieved the highest consensus hit rate of 0.052 (±0.016),
+ranking perspective. For similarity-based selection, we eval-    which is approximately 3.5 times higher than the random
+uated 21 model variants across four model types, focus-          baseline (0.015) and 2.2 times higher than Sarashina-Text-
+ing on Japanese-optimized models. In this section, we re-        Emb without description (0.024, ±0.019). This demon-
+port results from the top-performing models in each cate-        strates that LLMs maintain their advantage even when eval-
+gory: Sarashina-Text-Emb and OpenAI-Text-Emb for Text-           uated on the most reliable subset of annotations, validating
+Emb; Calm2-LLM-Emb and Qwen2.5-LLM-Emb for LLM-                  our findings in a noise-free setting. However, the absolute
+Emb; LAION-CLIP-Multi-Emb and Jina-CLIP-Multi-Emb                performance remains low (only 5.2% of universally funny
+for Multi-Emb; EvoVLM-VLM-Emb and Sarashina-VLM-                 memes are selected), highlighting the persistent challenge
+Emb for VLM-Emb. For preference-based selection, we              of humor detection.
+used six production-grade LLMs: GPT-5, GPT-5-mini, GPT-             To better understand model behavior, we analyzed the dis-
+OSS, Gemini 2.5 Pro, Gemini 2.5 Flash, and Claude 4 Son-         tribution of funniness scores for the memes selected by each
+net.6                                                            model. Figure 4c shows the score distributions for the LLMs
+                                                                 used in the pref-select approach. GPT-5 and GPT-5-
+Exp1: Main Results                                               mini effectively avoided completely unfunny memes (score
+Figure 4a shows the results of Exp1. The pref-select             of 0.0), selecting them less than 10% of the time. These
+method using GPT-5 achieved a Score@1 of 0.325 when              models also selected funny memes (scores ¿ 0.6) more of-
+using panel descriptions. For sim-select methods,                ten than the other LLMs. In contrast, Claude 4 was more
+Sarashina-Text-Emb achieved 0.320 without descriptions.          likely to choose memes with a score of zero and less likely
+Calm2-LLM-Emb (LLM-Emb) achieved 0.306, while mul-               to select highly rated ones. These different patterns suggest
+timodal and vision-language models showed lower scores:          that LLMs have varying abilities to understand and select for
+Jina-CLIP-Multi-Emb (0.282) and EvoVLM-VLM-Emb                   humor.
+(0.263). This pattern reveals that methods capable of reason-       Figure 4d presents the distributions for the sim-select
+ing about contextual humor (pref-select) outperform              models. The Text-Emb and LLM-Emb models show an ad-
+those relying on semantic similarity alone, and that visual      vantage in avoiding zero-score memes compared to mul-
+information does not consistently improve performance. To        timodal models. At the higher end of the funniness scale,
+assess the ranking quality of the sim-select methods, we         the differences were less pronounced, though Text-Emb and
+also calculated nDCG@5. While these scores were broadly          LLM-Emb models performed slightly better. This suggests
+consistent with the Score@1 rankings, the performance dif-       that text-based similarity is effective at capturing enough se-
+ferences among the top models were marginal.                     mantic relevance to avoid completely inappropriate replies.
+   Figure 4b shows the effect of including textual panel de-     Conversely, the frequent selection of such memes by mul-
+scriptions on model performance. Overall, the results indi-      timodal models may indicate a fundamental difficulty in
+cate that providing these descriptions did not consistently      grasping contextual relevance from visual information for
+improve scores. For the pref-select and Text-Emb                 this task.
+models, performance slightly decreased when descriptions
+were included. Only the LLM-Emb models showed a minor            Exp2: Retrieve-and-Rerank Approach
+benefit. Since the score ranges with and without descriptions    Settings In this experiment, we examined a hybrid
+largely overlap, this additional text offered limited benefit.   retrieve-and-rerank approach, combining the sim-select
+                                                                 and pref-select methods. This method first utilizes
+   6
+     Model details: sarashina-embedding-v1-1b and text-          sim-select to retrieve the top-k similar candidates for
+embedding-3-large for Text-Embs, CLIP-ViT-H-14-frozen-           a given context. Subsequently, a pref-select model is
+xlm-roberta-large-laion5B-s13B-b90k and jina-clip-v2 for         employed to identify the most humorous option from this
+Multimodal-Embs, Calm2-7b and Qwen2.5-7B for LLM-Embs,
+                                                                 reduced set. For the retrieval step, we used Sarashina-Text-
+and sarashina2-vision-8b and Llama-3-EvoVLM-JP-v2 for VLM-
+Embs. gpt-5-2025-08-07, gpt-5-mini-2025-08-07, gpt-oss-120b,     Emb, the top-performing similarity-based model from Exp1.
+gemini-2.5-flash, gemini-2.5-pro, and claude-sonnet-4-20250514   For the selection step, we evaluated three large language
+for LLMs. For compute resources, preference-based selection      models chosen from our Exp1 results to represent a range of
+used commercial APIs (OpenAI, Google, Anthropic), while          top-performing proprietary and open models: GPT-5, Gem-
+similarity-based models were run on a single NVIDIA A100 GPU.    ini 2.5 Pro, and GPT-OSS. To better interpret their perfor-
+                                                                                                                                                 0.34                                                        w/ Description
+   Model                                               Desc               Score@1                     CHR          nDCG@5                        0.32
+                                                                                                                                                                                                             w/o Description
+
+   GPT-5 (P)                                                Y          0.325 (±0.014)             0.052 (±0.016)   -                             0.30
+
+
+
+
+                                                                                                                                    Score
+   GPT-5 mini (P)                                           N          0.322 (±0.014)             0.045 (±0.015)   -                             0.28
+   Sarashina-Text-Emb (S)                                   N          0.320 (±0.022)             0.024 (±0.019)   0.317                         0.26
+   GPT-5 (P)                                                N          0.314 (±0.014)             0.048 (±0.015)   -
+                                                                                                                                                 0.24
+   OpenAI-Text-Emb (S)                                      N          0.307 (±0.024)             0.032 (±0.022)   0.321
+                                                                                                                                                 0.22
+   Calm2-LLM-Emb (S)                                        Y          0.306 (±0.024)             0.028 (±0.020)   0.284                                      (P)                 )                  )
+                                                                                                                                                        LLM                 mb (S        -Emb
+                                                                                                                                                                                              (S                b (S)    -Emb
+                                                                                                                                                                                                                              (S)
+                                                                                                                                                                     Text-
+                                                                                                                                                                           E                               i-Em
+   GPT-5 mini (P)                                           Y          0.300 (±0.013)             0.024 (±0.011)   -                                                                  LLM             Mult           VLM
+                                                                                                                                                                                       Models
+   Qwen2.5-LLM-Emb (S)                                      Y          0.299 (±0.023)             0.032 (±0.022)   0.278
+   Gemini 2.5 Flash (P)                                     N          0.296 (±0.014)             0.029 (±0.012)   -                                                (b) By description
+   Calm2-LLM-Emb (S)                                        N          0.295 (±0.023)             0.024 (±0.019)   0.294                         50
+   Gemini 2.5 Pro (P)                                       Y          0.294 (±0.014)             0.033 (±0.013)   -                             40
+                                                                                                                                                                                                                  GPT-5
+                                                                                                                                                                                                                  Gemini 2.5 Pro
+   GPT-OSS (P)                                              N          0.292 (±0.014)             0.035 (±0.013)   -                                                                                              GPT-OSS
+
+
+
+
+                                                                                                                                   Percent (%)
+                                                                                                                                                 30                                                               GPT-5-mini
+   Gemini 2.5 Pro (P)                                       N          0.286 (±0.014)             0.032 (±0.013)   -                                                                                              Gemini 2.5 Flash
+                                                                                                                                                 20                                                               Claude 4
+   OpenAI-Text-Emb (S)                                      Y          0.285 (±0.024)             0.020 (±0.017)   0.314
+                                                                                                                                                 10
+   Sarashina-Text-Emb (S)                                   Y          0.285 (±0.023)             0.012 (±0.013)   0.294
+   GPT-OSS (P)                                              Y          0.284 (±0.014)             0.024 (±0.011)   -                              0
+                                                                                                                                                        0.0          0.2         0.4           0.6          0.8          1.0
+   Jina-CLIP-Multi-Emb (S)                                  N          0.282 (±0.025)             0.020 (±0.017)   0.294                                                               Score
+
+
+   LAION-CLIP-Multi-Emb (S)                                 N          0.280 (±0.025)             0.028 (±0.020)   0.289                                               (c) By LLMs
+   Claude 4 (P)                                             N          0.280 (±0.013)             0.041 (±0.046)   -
+                                                                                                                                                 50
+   Qwen2.5-LLM-Emb (S)                                      N          0.279 (±0.023)             0.016 (±0.016)   0.289                                                                                               Text-Emb
+                                                                                                                                                 40                                                                    LLM-Emb
+   Gemini 2.5 Flash (P)                                     Y          0.276 (±0.014)             0.023 (±0.011)   -                                                                                                   Multi-Emb
+
+
+
+
+                                                                                                                                   Percent (%)
+   EvoVLM-VLM-Emb (S)                                       N          0.263 (±0.022)             0.012 (±0.013)   0.262                         30                                                                    VLM-Emb
+
+   Claude 4 (P)                                             Y          0.261 (±0.013)             0.000 (±0.000)   -                             20
+
+   Sarashina-VLM-Emb (S)                                    N          0.261 (±0.023)             0.020 (±0.017)   0.280                         10
+
+                                                                                                                                                  0
+   Random                                                   -          0.255 (±0.001)             0.015 (±0.015)   0.271                                0.0          0.2         0.4           0.6          0.8          1.0
+                                                                                                                                                                                       Score
+
+
+                                                   (a) Performance ranking (Exp1).                                                                              (d) By embeddings
+
+
+Figure 4: Main experimental results for Exp1. (a) Table showing the performance ranking across models and methods. S/P:
+similarity/preference-based; Y/N: with/without descriptions; CHR: Consensus Hit Rate; values in parentheses denote 95%
+confidence intervals. (b)–(d) Plots of score distributions categorized by panel descriptions, LLMs, and embedding models
+respectively.
+
+
+                                                                                                            tween the oracle upper bound and the actual performance of
+         0.8
+                    GPT-5                   Oracle
+                                                                              0.85    0.87                  the pref-select models. The rising oracle baseline in-
+                    Gemini 2.5 Pro          Random                     0.82
+                    GPT-OSS                                     0.76                                        dicates that the initial retrieval phase successfully included
+                                                     0.70
+         0.6                                0.64                                                            high-quality candidates in the selection pool, even for small
+                                     0.60
+                         0.55                                                                               values of k; for example, Score@1 reached 0.48 at k = 4
+ Score
+
+
+
+
+               0.48
+         0.4
+                                                                         Embedding (k=1): 0.320
+                                                                                                            and 0.55 at k = 8. However, the models did not effectively
+               0.30
+                                                                                                            leverage this advantage.
+                         0.29        0.29   0.29     0.28       0.28   0.27
+         0.2                                                                  0.26    0.25
+                                                                                                               The performance of the pref-select models re-
+                                                                                                            mained near or below the dashed line representing the stan-
+         0.0
+                4         8          12      16       32        64      128    256    400
+                                                                                                            dalone sim-select baseline of 0.320. This suggests that
+                                             Candidate size (k)                                             adding a pref-select step did not yield a consistent
+                                                                                                            improvement over the simpler retrieval method. The mod-
+                                                                                                            els showed different behaviors as the candidate pool size
+Figure 5: Performance of the retrieve-and-rerank approach                                                   k varied. The performance of GPT-5 was highly stable,
+(Exp2).                                                                                                     with scores showing little variation around 0.31 regardless
+                                                                                                            of k. In contrast, Gemini 2.5 Pro and GPT-OSS showed a
+                                                                                                            tendency for their performance to degrade as k increased.
+mance, we established two baselines: Random, which ran-                                                     Specifically, their scores dropped at k ≥ 256.
+domly selects a meme from the k candidates, and Oracle,
+                                                                                                               This result indicates a mixed pattern of behavior. The sta-
+which serves as an oracle upper bound by always choosing
+                                                                                                            bility of GPT-5 suggests that for some models, the task’s dif-
+the candidate with the highest ground-truth funniness score
+                                                                                                            ficulty is not a function of the number of candidates, which
+within the retrieved set.
+                                                                                                            appears to contradict the common lost-in-the-middle prob-
+Results Figure 5 shows the results of our retrieve-and-                                                     lem in LLMs (Li et al. 2024; Liu et al. 2024). Conversely,
+rerank approach. A key observation is the notable gap be-                                                   the performance decline of other models suggests a degree
+                                                                                                                                          Candidate Similarity
+                                                          GPT-5                   GPT-5 Vision
+                                                                                                                 k    Model                                         ∆
+          0.8
+                                                          Gemini 2.5 Pro          Gemini 2.5 Pro Vision                                  Low      Mid     High
+                                                          GPT-OSS                 Human
+          0.6                                             Embedding                                                   GPT-5             0.457    0.459   0.437    -0.020
+                .46.46.44.43                                                                                     4    Gemini 2.5 Pro    0.467    0.468   0.444    -0.023
+  Score
+
+
+
+
+                                        .41   .41.40.41
+          0.4                                             .36            .36   .37.37.37.35            .35            GPT-OSS           0.457    0.456   0.385    -0.072
+                                                                .24.24                        .24.24                  GPT-5             0.396    0.416   0.379    -0.017
+                               .20.21
+          0.2                                                                                                    8    Gemini 2.5 Pro    0.389    0.400   0.375    -0.014
+                                                                                                                      GPT-OSS           0.402    0.386   0.348    -0.054
+          0.0
+                          4                                8                             12
+                                                                                                                      GPT-5             0.365    0.365   0.356    -0.009
+                                               Candidate size (k)                                                12   Gemini 2.5 Pro    0.370    0.371   0.356    -0.014
+                                                                                                                      GPT-OSS           0.371    0.355   0.341    -0.030
+
+Figure 6: Performance on selecting from distinguishable candi-                                               Table 1: LLM performance under different candidate similarities.
+dates (Exp3). Human and vision-language models are included as                                               ∆ represents the performance change between the Low and High
+baselines.                                                                                                   similarity conditions. (Exp4).
+
+
+of sensitivity to context length. Overall, these results sug-
+                                                                                                             the average human performance on this task. This success
+gest that the limited improvement may not stem from the
+                                                                                                             was not replicated by the vision-language models, whose
+retrieval process itself, but rather from the difficulty of dis-
+                                                                                                             poor performance indicated that a deep understanding of vi-
+tinguishing subtle differences in humor among semantically
+                                                                                                             sual humor remains a challenge. The experiment highlights
+similar candidates.
+                                                                                                             a key distinction: while models can approach human per-
+Exp3: Distinguishable Candidate Selection                                                                    formance on tasks with clear signals, their ability to navi-
+                                                                                                             gate more complex, real-world scenarios has not yet been
+Settings To better understand why the retrieve-and-rerank                                                    demonstrated.
+approach from Exp2 was limited, we designed a controlled
+experiment with a simplified task. The goal was to test two                                                  Exp4: Sensitivity to Candidate Similarity
+basic hypotheses under controlled conditions: (1) that mod-
+els can reliably select a distinctly humorous meme from a set                                                Settings In Exp3, we observed that LLMs performed well
+of less funny alternatives, and (2) that performance would                                                   when funny memes were clearly distinguishable from less
+decrease as the number of candidates k increases. To do this,                                                funny ones. Building on this observation, we examined how
+we constructed test sets where each contained one funny                                                      LLM performance changes when the candidate memes be-
+meme (score ≥ 0.8), half the candidates (k/2) were unfunny                                                   come more similar to each other, extending the controlled
+memes (score ≤ 0.2), and the remaining ones were some-                                                       setting of Exp3. This follows the implication from Exp2 that
+what funny (0.2 < score < 0.8).                                                                              the retrieve-and-rerank approach may have been limited by
+   In addition to the models from our previous experiments,                                                  the high similarity among retrieved candidates, creating a
+we included two additional baselines for a comprehensive                                                     hard negative scenario that makes it difficult for the reranker
+comparison. First, we collected human performance data                                                       to identify the single best option.
+through a crowdsourced selection task to serve as a practical                                                   To test this hypothesis, we modified the evaluation sets
+reference. Second, to assess the role of visual understanding,                                               from Exp3. We retained the funny candidates (score ≥ 0.8)
+we evaluated vision-language models (GPT-5 Vision, Gem-                                                      and resampled the other candidates based on their similar-
+ini 2.5 Pro Vision). For these models, all candidate images                                                  ity to the funny one, using the similarity threshold t. We se-
+for a given context were combined into a single grid image,                                                  lected only candidates whose similarity score with the funny
+and the model was prompted to select the best option from                                                    meme exceeded this threshold. This approach allowed us to
+this composite image.                                                                                        control the similarity within the candidate pool. We used
+                                                                                                             three thresholds (t={-2,0,2}), based on the standardized co-
+Results As shown in Figure 6, the results from this con-                                                     sine similarity from Sarashina-Text-Emb embeddings, de-
+trolled experiment were consistent with the hypotheses.                                                      noting these conditions as Low, Mid, and High, respectively.
+First, the LLMs were effective at identifying the target funny                                               The Low condition contains a diverse set of candidates,
+meme, with scores up to 0.46. Second, unlike in Exp2, there                                                  whereas the High condition requires the model to distinguish
+was a clear decrease in performance as k increased for both                                                  the funny meme from a pool of semantically similar yet un-
+the models and the human reference. For instance, the scores                                                 funny alternatives.
+for GPT-5 were 0.46, 0.41, and 0.37 for k=4, 8, and 12, re-
+spectively.                                                                                                  Results Table 1 shows the results. As hypothesized, LLM
+   While the artificial setting of this experiment limits                                                    performance generally decreased as the similarity between
+its real-world applicability, it reveals important aspects of                                                candidates increased. This effect was most pronounced for
+model behavior. The results show that when a humorous op-                                                    smaller candidate pools (k=4), suggesting that high simi-
+tion was clearly distinguishable, the pref-select mod-                                                       larity makes it more difficult for the models to identify the
+els were close to, and in some cases slightly higher than,                                                   funniest meme. As k increased, the performance drop be-
+                                           47.6
+                                  43.6                                                    Sarashina-Text-Emb
+                                                                                          GPT-5                       Context             Sarashina-Text-           GPT-5
+               40
+                                                  34.0
+                                                                                                                                               Emb            (Preference-based)
+                                                           29.2
+                                                                                                                                         (Similarity-based)
+ Percent (%)
+
+
+
+
+               30
+
+
+               20
+                                                                                                                                         ✓ (0.8)              ✓ (0.8)
+                                                                  12.8 11.6
+               10   7.2
+                                                                                                               (A) The Wi-Fi at my
+                            6.4
+                                                                                      4.5                      new place is seriously
+                                                                              2.0                     0.7
+                                                                                              0.4              fast!
+                0
+                          0.0            0.2             0.4           0.6          0.8             1.0
+                                                               Score
+
+
+Figure 7: Score distributions of Sarashina-Text-Emb and GPT-5.
+                                                                                                                                         ✓ (1.0)              ✗ (0.2)
+
+came smaller. This suggests that the challenge of processing                                                   (B) I think I’m lost...
+a larger number of candidates may outweigh the difficulty
+caused by their similarity. This effect was also stronger for
+GPT-OSS, which, as a less powerful model, was more af-
+fected by this hard negative scenario.
+                                                                                                                                         ✓ (0.6)              ✗ (0.2)
+   These findings suggest that LLMs struggle to distinguish
+subtle differences in humor among semantically similar can-                                                    (C) I’m done. I give
+didates. This observation offers a plausible explanation for                                                   up.
+the limited performance of the retrieve-and-rerank approach
+in Exp2. It is possible that the initial retrieval step in that ex-
+periment created a pool of highly similar candidates, making
+it difficult for LLMs to discern the most humorous option.                                                                               ✗ (0.2)              ✓ (0.8)
+                                                                                                               (D) Just found a
+Case Study                                                                                                     10-year-old pudding
+                                                                                                               in the back of my
+This section analyzes how the sim-select and                                                                   fridge...
+pref-select approaches create humor by examin-
+ing their patterns of success and failure. We focus on
+the outputs of Sarashina-Text-Emb and GPT-5, the best-
+                                                                                                                                         ✗ (0.2)              ✓ (0.8)
+performing models from each method. An analysis of                                                             (E) Rumor has it that
+their overall performance in Figure 7 reveals two distinct                                                     chocolate makes you
+behavioral patterns. The approach of Sarashina-Text-Emb                                                        3x more productive
+is reliable but conservative; it tended to select memes that                                                   when studying.
+are moderately funny but semantically close to the context.
+In contrast, GPT-5 showed a high-risk, high-reward pattern,
+more frequently selecting very funny replies. To understand                                                                              ✗ (0.2)              ✓ (1.0)
+the mechanisms that produce these different outcomes, we
+now examine specific examples in Table 2.                                                                      (F) Maybe life with-
+   The sim-select model, Sarashina-Text-Emb, suc-                                                              out a smartphone
+ceeds when its keyword-matching mechanism produces un-                                                         isn’t so bad after all.
+expectedly complex humor like personification or irony. In
+case (A), a simple match for “fast” selects the meme “HE’S
+JUST SO FAST...” The humor arose not from the word match
+itself, but because the reply personifies the Wi-Fi with an                                                                              ✗ (0.2)              ✗ (0.2)
+overly dramatic, human-like reaction. This pattern contin-                                                     (G) Whoops, I gamed
+ued in case (B), where a more subtle match for “lost” selects                                                  straight through to
+“LATELY I DON’T UNDERSTAND MYSELF.” This reply                                                                 the morning.
+unexpectedly reinterprets a simple problem as a deep philo-
+sophical one, producing humor through its sudden exagger-
+ation. Finally, in case (C), a literal match for “I give up”                                                   Table 2: Examples of selected replies by Sarashina-Text-Emb
+resulted in a blunt, agreeing reply (“GIVE UP.”). The hu-                                                      (similarity-based) and GPT-5 (preference-based). Numbers in
+mor here comes from its cold, dismissive tone, which is the                                                    parentheses represent funniness score.
+opposite of the supportive reaction expected from a typical
+conversational agent.
+   In contrast, the pref-select model GPT-5 excels at              velop an ability to reason about the social and contextual na-
+understanding context that goes beyond simple keywords.            ture of humor as it is used on the web. These results suggest
+This contextual inference is clear in case (D). While the          that LLMs can represent some social cues, but how these
+sim-select model failed due to a superficial connection            representations translate into explicit humor judgments re-
+between “fridge” and “cool,” GPT-5 infers the dangerous na-        mains an open question.
+ture of the “10-year-old pudding” and provided the fitting
+reply, “THIS IS POISON.”. Another key strength of GPT-             The Gap Between Understanding and Using Multimodal
+5 was its ability to create a humorous persona. This was           Memes Through our experiments, we identified the dif-
+illustrated in case (E), where the simple association made         ficulty of using visual information. Providing visual infor-
+by Sarashina-Text-Emb between “studying” and related key-          mation, either as text descriptions or direct images, failed
+words like “memory,” “history,” or “subject” was not effec-        to improve performance. It was particularly ineffective for
+tive. GPT-5, however, adopts the persona of a confident ex-        models that process images directly. This points to a critical
+pert making an overconfident claim. The core of the humor          distinction between understanding and using visual humor.
+lies in its statement, “15 TIMES.”. It directly builds on the      While prior work shows that models can achieve some suc-
+“3x” in the context, absurdly escalating it with a larger, base-   cess in interpretation tasks like classifying a meme’s senti-
+less number. This overconfidence makes the reply far fun-          ment or explaining its humor (Sharma et al. 2023a), our find-
+nier. Likewise, in case (F), the direct “I REFUSE” to living       ings suggest this understanding does not easily translate into
+without a smartphone created another strong, humorous per-         effective action. The difficulty seems to arise when models
+sonality. In these instances, the humor arose from the char-       must actively use socio-cultural cues from an image, such as
+acter the reply embodies, making it more effective than the        exaggerated expressions or ironic situations, to distinguish
+simple associations of the sim-select model.                       the wittiest reply from a set of plausible candidates. Closing
+   However, both models can fail when a contextually rele-         this gap between passive understanding and active contex-
+vant reply is too obvious and lacks an element of surprise.        tual use remains a fundamental challenge as web communi-
+This is evident in case (G), where for the context “gamed          cation becomes increasingly visual.
+straight through to the morning,” both models had selected            We hypothesize that three fundamental mismatches may
+the most predictable meme: “I ONLY SLEPT 2 HOURS...”.              explain why visual information fails to improve perfor-
+While this reply is perfectly relevant, it is also highly pre-     mance. First, there may be an objective mismatch: mod-
+dictable and therefore received a low humor score. This            els are trained on semantic similarity (matching objects
+highlights a core challenge for automated humor generation:        and scenes), whereas humor requires pragmatic alignment
+models need to distinguish simple contextual relevance from        through recontextualization, the act of placing fixed visual
+genuine, surprising humor.                                         content in a new conversational context to create surprising
+                                                                   juxtaposition. Second, there may be a data mismatch: pre-
+   In summary, these case studies show that the
+                                                                   training relies on descriptive captions that state explicit facts
+sim-select method provides reliable relevance but
+                                                                   about images, while humor depends on implicit contextual
+struggles to create high-impact humor consistently. The
+                                                                   cues that are not present in the image itself. Third, there may
+pref-select approach shows greater potential for more
+                                                                   be a domain mismatch: the uniform visual style of manga
+complex, context-aware humor, but it must also avoid
+                                                                   makes it difficult for general-purpose models to distinguish
+predictable responses to be truly effective.
+                                                                   the fine-grained facial expressions and subtle visual cues that
+                                                                   are essential for humor. Further investigation is needed to
+                        Discussion                                 validate these hypotheses. We also note that these findings
+In this section, we discuss what our findings reveal about         may be specific to our manga-based benchmark, and results
+the broader challenges of modeling humor in online com-            could differ with other meme formats such as photographic
+munication. We focus on two complementary perspectives:            memes or reaction GIFs.
+(1) what these results suggest about multimodal and social            Addressing this limitation may require new objectives or
+understanding in current systems, and (2) how they inform          architectures that couple visual recognition with contextual
+future directions for building more contextually aware con-        inference, rather than simply scaling multimodal encoders.
+versational models.
+                                                                   From Simple Choices to Nuanced Judgments Finally,
+                                                                   our experiments identify the core challenge for current
+Implications for Computational Humor                               models: distinguishing subtle differences in wit among se-
+LLMs Show Preliminary Evidence of Capturing So-                    mantically similar candidates. While the models demon-
+cial Cues Our results show that pref-select methods                strated near-human performance in controlled situations
+using LLMs demonstrate advantages over sim-select                  with clearly distinguishable choices (Exp3), their ability to
+methods. While the difference in scores was small, our case        select the best option decreased in more realistic scenarios,
+studies suggest this advantage comes from a more advanced          such as the retrieve-and-rerank approach in Exp2 or when
+capability. LLMs appear to capture complex social cues such        candidate similarity was high in Exp4. This suggests that
+as irony and exaggeration, going beyond the surface-level          the retrieve-and-rerank architecture itself is a promising ap-
+semantic relevance that sim-select methods rely on.                proach. The initial retrieval is effective at narrowing the
+This finding suggests that computational models are mov-           pool to relevant and often humorous content. The main dif-
+ing beyond simple relevance matching and are starting to de-       ficulty, therefore, lies in the final selection step. Future work
+should focus on designing evaluation settings that better cap-                             Conclusion
+ture these subtle humor distinctions, enabling more reliable        Humor is a defining element of human communication, and
+progress across models.                                             our work takes an early step toward enabling machines to
+                                                                    recognize and participate in this social form of expression.
+Limitations and Future Directions                                   In this work, we proposed a new research direction for com-
+                                                                    putational meme analysis, shifting the focus from static con-
+Scope of the Benchmark The design of our benchmark                  tent to dynamic, interactive communication. To support this
+involves intentional scope limitations. First, we focused on        direction, we introduced the Meme Reply Selection task and
+a single domain: freely licensed Japanese manga panels.             the M A M E -R E benchmark. This work establishes a system-
+This choice was made to isolate humor signals in a con-             atic framework for studying contextual humor in online con-
+trolled setting: unlike generative memes, manga panels have         versations. Our analysis revealed several fundamental chal-
+fixed content, which is ideal for isolating selection capabil-      lenges for current models. These include the gap between
+ities rather than generation. As subjectivity was high even         passively understanding and actively using visual humor,
+in this controlled setting, adding cultural diversity prema-        and the difficulty of distinguishing subtle differences in wit
+turely would have made consensus impossible. This con-              among similar candidates. We offer M A M E -R E as a bench-
+trolled framework can serve as a baseline for future cross-         mark to measure progress on these fundamental challenges
+cultural studies. Online meme formats are diverse, and each         and to advance research on how AI systems understand and
+creates humor through different conventions, such as image-         participate in humor within human communication.
+macro captions or ongoing narratives. A key direction for
+future work is to expand this scope to other formats, like                                 References
+GIFs or reaction photos, to analyze how each generates its          Alam, F.; Hasnat, A.; Ahmad, F.; Hasan, M. A.; and
+own unique humorous social dynamics. Second, we used                Hasanain, M. 2024. ArMeme: Propagandistic Content in
+a binary “funny/not funny” scale. This approach bases the           Arabic Memes. In Proc. EMNLP, 21071–21090.
+subjective task of humor evaluation on a clearer, more ob-
+                                                                    Bauman, R.; and Briggs, C. L. 1990. Poetics and perfor-
+servable reaction (whether the content elicits a laugh), which
+                                                                    mance as critical perspectives on language and social life.
+simplifies judgment for annotators and reduces subjective
+                                                                    Annual Review of Anthropology.
+variance. Future benchmarks could use more detailed anno-
+tations to gain deeper insights. For example, graded scales         Beskow, D. M.; Kumar, S.; and Carley, K. M. 2020. The
+could be used to analyze humor intensity, while the cate-           evolution of political memes: Detecting and characterizing
+gorization of humor types could allow for a more detailed           internet memes with multi-modal deep learning. Informa-
+analysis of which humorous strategies are most effective in         tion Processing & Management, 57(2): 102170.
+different contexts.                                                 Chen, Y.; Yan, S.; Zhu, Z.; Li, Z.; and Xiao, Y. 2024. XMe-
+   Ultimately, this research aims to enable systems that can        Cap: Meme Caption Generation with Sub-Image Adaptabil-
+produce genuinely funny replies in real-world interactions.         ity. In Proc. ACM MM, 3352–3361.
+While our use of synthetic contexts provides a controlled           Davison, P. 2012. The language of internet memes. The
+setting for this initial investigation, validating these findings   Social Media Reader, 120–134.
+in naturalistic environments remains an important next step.        Dresner, E.; and Herring, S. C. 2010. Functions of the Non-
+                                                                    verbal in CMC: Emoticons and Illocutionary Force. Com-
+Towards More Socially Aware Agents The practical im-                munication Theory, 20: 249–268.
+plication of this research lies in improving how conversa-          Fei, Z.; Li, Z.; Zhang, J.; Feng, Y.; and Zhou, J. 2021.
+tional systems respond to social and multimodal cues in on-         Towards Expressive Communication with Internet Memes:
+line communication. A natural next step is to generate or se-       A New Multimodal Conversation Dataset and Benchmark.
+lect visual replies that align with contextual humor, extend-       arXiv preprint arXiv:2109.01839.
+ing beyond the simple retrieve-and-rank baseline explored           Grundlingh, L. 2018. Memes as speech acts. Social Semi-
+in this study. To make such systems practical, several open         otics, 28(2): 147–168.
+challenges remain. These include modeling user and cul-
+                                                                    Hendrycks, D.; Burns, C.; Basart, S.; Zou, A.; Mazeika, M.;
+tural context, integrating multimodal reasoning across text
+                                                                    Song, D.; and Steinhardt, J. 2021. Measuring Massive Mul-
+and images, and handling the temporal dynamics of memes,
+                                                                    titask Language Understanding. In Proc. ICLR.
+whose formats and popularity change rapidly over time.
+Further progress will also depend on developing evalua-             Highfield, T.; and Leaver, T. 2016. Instagrammatics and dig-
+tion frameworks that reflect these evolving conditions rather       ital methods: studying visual social media, from selfies and
+than static benchmarks alone. Beyond these technical chal-          GIFs to memes and emoji. Communication Research and
+lenges, practical deployment also requires attention to po-         Practice, 2(1): 47–62.
+tential risks, such as selecting inappropriate or offensive         Hossain, E.; Sharif, O.; and Hoque, M. M. 2022. MUTE: A
+content in sensitive contexts; human oversight and context-         Multimodal Dataset for Detecting Hateful Memes. In Proc.
+aware filtering will be essential. The M A M E -R E benchmark       AACL-IJCNLP SRW, 32–39.
+provides a foundation for addressing these issues under con-        Hu, T.; Guo, H.; Sun, H.; vy Thi Nguyen, T.; and Luo, J.
+trolled conditions, serving as a bridge between computa-            2017. Spice Up Your Chat: The Intentions and Sentiment
+tional humor research and socially aware dialogue systems.          Effects of Using Emojis. In Proc. ICWSM, 102–111.
+Hwang, E.; and Shwartz, V. 2023. MemeCap: A Dataset             generating explanations for visual semantic role labelling in
+for Captioning and Interpreting Memes. In Proc. EMNLP,          memes. In Proc. AAAI.
+1433–1445.                                                      Sharma, S.; Alam, F.; Akhtar, M. S.; Dimitrov, D.;
+Jiang, J. A.; Fiesler, C.; and Brubaker, J. R. 2018. ‘The       Da San Martino, G.; Firooz, H.; Halevy, A.; Silvestri, F.;
+Perfect One’: Understanding Communication Practices and         Nakov, P.; and Chakraborty, T. 2022. Detecting and Under-
+Challenges with Animated GIFs. Proc. ACM Hum.-Comput.           standing Harmful Memes: A Survey. In Proc. IJCAI, 5597–
+Interact., 2(CSCW).                                             5606.
+Joshi, S.; Ilievski, F.; and Luceri, L. 2024. Contextualizing   Sharma, S.; S, R.; Arora, U.; Akhtar, M. S.; and
+Internet Memes Across Social Media Platforms. In Com-           Chakraborty, T. 2023b. MEMEX: Detecting Explanatory
+panion Proc. WWW, 1831–1840.                                    Evidence for Memes via Knowledge-Enriched Contextual-
+Kiela, D.; Firooz, H.; Mohan, A.; Goswami, V.; Singh, A.;       ization. In Proc. ACL, 5272–5290.
+Ringshia, P.; and Testuggine, D. 2020. The hateful memes        Walther, J. B. 1992. Interpersonal Effects in Computer-
+challenge: detecting hate speech in multimodal memes. In        Mediated Interaction: A Relational Perspective. Communi-
+Proc. NeurIPS.                                                  cation Research, 19(1): 52–90.
+Kulkarni, A. 2017. Internet meme and Political Discourse:       Walther, J. B. 1996. Computer-Mediated Communication:
+A study on the impact of internet meme as a tool in commu-      Impersonal, Interpersonal, and Hyperpersonal Interaction.
+nicating political satire. Journal of Content, Community &      Communication Research, 23(1): 3–43.
+Communication, 6.                                               Wang, H.; and Lee, R. K.-W. 2024. MemeCraft: Contextual
+Li, J.; Wang, M.; Zheng, Z.; and Zhang, M. 2024. LooGLE:        and Stance-Driven Multimodal Meme Generation. In Proc.
+Can Long-Context Language Models Understand Long                WWW, 4642–4652.
+Contexts? In Proc. ACL, 16304–16333.                            Wang, X.; and Jurgens, D. 2021. An animated picture says
+Liu, N. F.; Lin, K.; Hewitt, J.; Paranjape, A.; Bevilacqua,     at least a thousand words: Selecting Gif-based Replies in
+M.; Petroni, F.; and Liang, P. 2024. Lost in the Middle: How    Multimodal Dialog. In Findings of EMNLP, 3228–3257.
+Language Models Use Long Contexts. Trans. Assoc. Com-           Wang, Y.; Li, Y.; Gui, X.; Kou, Y.; and Liu, F. 2019.
+put. Linguistics, 12: 157–173.                                  Culturally-Embedded Visual Literacy: A Study of Impres-
+Loakman, T.; Thorne, W.; and Lin, C. 2025. Who’s Laugh-         sion Management via Emoticon, Emoji, Sticker, and Meme
+ing Now? An Overview of Computational Humour Genera-            on Social Media in China. Proc. ACM Hum.-Comput. Inter-
+tion and Explanation. arXiv preprint arXiv:2509.21175.          act., 3(CSCW).
+Lu, H.; Guo, Z.; Li, C.; Yang, Y.; He, H.; and Bao, S. 2023.    Wu, Z.; Weber, T.; and Müller, F. 2025. One Does Not Sim-
+Towards Building an Open-Domain Dialogue System In-             ply Meme Alone: Evaluating Co-Creativity Between LLMs
+corporated With Internet Memes. IEEE/ACM Trans. Audio           and Humans in the Generation of Humor. In Proc. IUI,
+Speech Lang. Process., 32: 721–726.                             1082–1092.
+                                                                Yus, F. 2018. Identity-related issues in meme communica-
+Malodia, S.; Dhir, A.; Bilgihan, A.; Sinha, P.; and Tikoo,
+                                                                tion. Internet Pragmatics, 1(1): 113–133.
+T. 2022. Meme marketing: How can marketers drive better
+engagement using viral memes? Psychology & Marketing,           Zhang, J.; Jain, L. K.; Guo, Y.; Chen, J.; Zhou, K. L.; Suresh,
+39(9): 1775–1801.                                               S.; Wagenmaker, A.; Sievert, S.; Rogers, T. T.; Jamieson, K.;
+                                                                Mankoff, B.; and Nowak, R. D. 2024. Humor in AI: Mas-
+Nguyen, K. P. N.; and Ng, V. 2024. Computational Meme
+                                                                sive Scale Crowd-Sourced Preferences and Benchmarks for
+Understanding: A Survey. In Proc. EMNLP, 21251–21267.
+                                                                Cartoon Captioning. In NeurIPS Datasets and Benchmarks
+Pramanick, S.; Dimitrov, D.; Mukherjee, R.; Sharma, S.;         Track.
+Akhtar, M. S.; Nakov, P.; and Chakraborty, T. 2021. De-         Zhong, S.; Huang, Z.; Gao, S.; Wen, W.; Lin, L.; Zitnik, M.;
+tecting Harmful Memes and Their Targets. In Findings of         and Zhou, P. 2024. Let’s Think Outside the Box: Exploring
+ACL, 2783–2796.                                                 Leap-of-Thought in Large Language Models with Creative
+Robinson, J.; and Wingate, D. 2023. Leveraging Large Lan-       Humor Generation. In Proc. CVPR, 13246–13257.
+guage Models for Multiple Choice Question Answering. In         Zhuang, Y.; Guo, K.; Wang, J.; Jing, Y.; Xu, X.; Yi, W.;
+Proc. ICLR.                                                     Yang, M.; Zhao, B.; and Hu, H. 2025. I know what you
+Shah, S. B.; Shiwakoti, S.; Chaudhary, M.; and Wang, H.         MEME! Understanding and Detecting Harmful Memes with
+2024. MemeCLIP: Leveraging CLIP Representations for             Multimodal Large Language Models. In Proc. NDSS.
+Multimodal Meme Classification. In Proc. EMNLP, 17320–
+17332.
+Sharma, C.; Bhageria, D.; Scott, W.; PYKL, S.; Das, A.;
+Chakraborty, T.; Pulabaigari, V.; and Gambäck, B. 2020.
+SemEval-2020 Task 8: Memotion Analysis— the Visuo-
+Lingual Metaphor! In Proc. SemEval, 759–773.
+Sharma, S.; Agarwal, S.; Suresh, T.; Nakov, P.; Akhtar,
+M. S.; and Chakraborty, T. 2023a. What do you MEME?
+

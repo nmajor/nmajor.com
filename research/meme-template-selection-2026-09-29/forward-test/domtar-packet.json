@@ -1,0 +1,66 @@
+{
+  "post_id": "personal-domtar-sensor-overload",
+  "post": "app/linkedin/rockwell-knowledge-at-the-machine/personal-domtar-sensor-overload.md",
+  "catalog_scan": {"active_templates_reviewed": 63, "source": ".skills/social-meme-campaign/references/template-contracts.json"},
+  "payload": {
+    "fact": "Domtar had 450 AI-assisted sensors, yet a motor failed; its reliability engineer estimated that one day of vibration data would take 32 weeks to analyze.",
+    "expected": "Hundreds of predictive-maintenance sensors would make equipment failures easier to prevent.",
+    "actual": "The sensors produced a review queue far beyond one engineer's capacity until Domtar changed its support routine.",
+    "tension": "The monitoring capability created more information than the operating process could use.",
+    "target": "The deployment decision that treated instrumentation as a complete maintenance system.",
+    "reader_realization": "More detection did not help until Domtar staffed a routine for interpreting and acting on it.",
+    "tone": "cautionary",
+    "forbidden_targets": ["maintenance workers", "Matthew McLaughlin", "people affected by equipment failure"]
+  },
+  "angles": [
+    {"rank": 1, "id": "reassurance-collapses", "mechanism": "reversal", "line": "A motor failure looked less alarming because Domtar had 450 AI sensors, until one day of their data turned into 32 weeks of review.", "kept": true},
+    {"rank": 2, "id": "capability-review-bottleneck", "mechanism": "hidden constraint", "line": "The impressive sensor network was constrained by one engineer facing an impossible review queue.", "kept": true},
+    {"rank": 3, "id": "more-data-less-monitoring", "mechanism": "contradiction", "line": "More maintenance data produced less usable monitoring because nobody could review it in time.", "kept": false},
+    {"rank": 4, "id": "sensor-plan-failure", "mechanism": "false shortcut", "line": "Installing more sensors became a plan for preventing failures without a plan for reading what they produced.", "kept": false},
+    {"rank": 5, "id": "instrumentation-not-system", "mechanism": "misclassification", "line": "The sensor deployment looked like a maintenance system until the missing analyst routine became visible.", "kept": false}
+  ],
+  "candidates": [
+    {
+      "template": "panik-kalm-panik", "angle": "reassurance-collapses", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 5, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 4, "cultural_familiarity": 5, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "The sourced facts form the contract's exact alarm, reassurance, and worse-reveal sequence.",
+        "role_mapping": "The failed motor, 450 sensors, and 32-week review estimate each map cleanly to one panel.",
+        "surprise": "The reassuring sensor count becomes the source of the worse operational problem.",
+        "instant_clarity": "All three captions are concrete numbers or events and need no explanation.",
+        "operator_resonance": "Leaders recognize technology purchases that outrun the operating process.",
+        "caption_economy": "The three facts fit the limits, though it uses more text than a two-panel alternative.",
+        "cultural_familiarity": "The escalating reaction sequence is widely understood.",
+        "freshness": "No other story in the batch has an honest three-stage reversal."
+      }
+    },
+    {
+      "template": "genie", "angle": "capability-review-bottleneck", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 5, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 3, "freshness": 5},
+      "reasons": {
+        "semantic_fit": "Hundreds of AI-assisted sensors are directly constrained by the human review capacity.",
+        "role_mapping": "The sensor deployment is the grand capability and 32 weeks to review one day is the cramped boundary.",
+        "surprise": "The larger technical system produces a much larger queue rather than usable foresight.",
+        "instant_clarity": "The 450-versus-32-weeks contrast lands in two short captions.",
+        "operator_resonance": "Capacity planning is an immediately recognizable implementation failure.",
+        "caption_economy": "It expresses the core tension with fewer words and panels than the reversal candidate.",
+        "cultural_familiarity": "The visual scale contrast is readable, but the template is less established than Panik Kalm Panik.",
+        "freshness": "The relationship is unique in the batch even if another story could technically use Genie."
+      }
+    },
+    {
+      "template": "dbg", "angle": "capability-review-bottleneck", "hard_fail": false,
+      "scores": {"semantic_fit": 5, "role_mapping": 5, "surprise": 4, "instant_clarity": 5, "operator_resonance": 5, "caption_economy": 5, "cultural_familiarity": 4, "freshness": 4},
+      "reasons": {
+        "semantic_fit": "Predictive monitoring and an impossible review queue are expectation and realized experience of the same deployment.",
+        "role_mapping": "The expected sensor benefit and actual 32-week workload fit the two panels without role changes.",
+        "surprise": "The reality undercuts a plausible expectation, though it loses the motor-failure reversal.",
+        "instant_clarity": "The two comparable states are immediate.",
+        "operator_resonance": "The gap between purchased capability and operational use is common.",
+        "caption_economy": "Both sides fit within the short slot limits.",
+        "cultural_familiarity": "Expectation versus reality is universally legible.",
+        "freshness": "STG has an even stronger claim on this relationship, so selecting it here would repeat the batch."
+      }
+    }
+  ]
+}

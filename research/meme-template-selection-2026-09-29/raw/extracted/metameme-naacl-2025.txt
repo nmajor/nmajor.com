@@ -1,0 +1,615 @@
+                          MetaMeme: A Dataset for Meme Template and Meta-Category
+                                                Classification
+
+                            Benjamin Lambright∗ and Jordan Youner∗ and Constantine Lignos∗∗
+                                           Michtom School of Computer Science
+                                                    Brandeis University
+                          bwlambright@gmail.com, jordan.youner@gmail.com, lignos@brandeis.edu
+
+
+
+                                         Abstract                            a combination of the the Multi-Scale Structural
+                                                                             Similarity (MS-SSIM) index and a color histogram
+                   This paper introduces a new dataset for clas-
+                   sifying memes by their template and com-
+                                                                             between the input and template image (Wang et al.,
+                   municative intent. It includes a broad selec-             2003) to match memes to their templates. Even
+                   tion of meme templates and examples scraped               with their small dataset of 385 memes and 137
+                   from Imgflip and a smaller hand-annotated set             templates, they achieved an accuracy of 92.25%.
+                   of memes scraped from Reddit. The Reddit                     This paper offers a similar methodology for ob-
+                   memes have been annotated for meta-category               taining the dataset to Courtois and Frissen (2023),
+                   using a novel annotation scheme that classifies           but with a larger and more varied set of templates.
+                   memes by the structure of the perspective they
+                                                                             While Gleason et al. (2019) provides promising
+                   are being used to communicate. YOLOv11
+                   and ChatGPT 4o are used to provide baseline               results for a small dataset, we expect our tem-
+                   modeling results. We find that YOLO strug-                plate identification task to be much more diffi-
+                   gles with template classification on real-world           cult, with over 2,000 template classes compared
+                   data, but outperforms ChatGPT in classifying              to their 137. Additionally, Gleason et al. (2019)
+                   meta-categories.                                          likely reached near-ceiling performance because
+                                                                             all of their memes were generated using the exact
+               1    Introduction and Related Work                            same source images for templates, but the reality
+                                                                             of meme usage across the internet is that there is
+               The majority of the previous research on the au-              more room for variation, as they are often not made
+               tomatic classification of memes revolves around               using generators with consistent template images.
+               specific domains like the detection of politics or               Along with examples from Imgflip (a meme gen-
+               hate speech or classifying memes by humor “type”              erator website), we also include memes sourced
+               (Courtois and Frissen, 2023). Little work addresses           from Reddit. In total, our dataset covers 2,059
+               task of identifying which template—not necessary              meme templates with a collection of 274,748 ex-
+               a single literal image, but a recognizable reference          amples scraped from Imgflip and a collection of
+               format for the meme—a meme falls into, but Cour-              242 hand-annotated memes from Reddit. With the
+               tois and Frissen offer one of the most promising              inclusion of social media-obtained memes, we ex-
+               recent attempts to do so. Their work uses two                 pose our model to examples of a given template
+               datasets: a dataset of randomly selected memes                that are likely much more diverse than those found
+               and hand-annotated templates from one of the                  exclusively on generator websites, which gives a
+               most widely used meme documentation websites,                 better window into performance on real-world data.
+               KnowYourMeme, and a dataset of memes paired                      To support the annotation of the Reddit memes,
+               with their templates scraped from the aggregator              we introduce an ontology of meta-categories meant
+               website 9gag. Their method for template identifica-           to explore the communicative intent behind memes.
+               tion involved CNNs for detecting features common              Recent work has used LLMs and VL (vision lan-
+               across examples, calculating accuracy with a geo-             guage) models to identify the metaphors repre-
+               metric mean given that parts of their datasets had            sented by a given meme, as well as explaining the
+               templates not seen in training.                               entire joke itself (Hwang and Shwartz, 2023). As
+                  Along similar lines, Gleason et al. (2019) at-             an alternative to this, we explore a structure-based
+               tempt simple meme template detection. They use                approach with the assumption that an understand-
+                   ∗
+                       Equal contribution. ∗∗ Corresponding author.          ing of the desired intent in using a meme can be
+                                                                         356
+Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies
+                                                 (Volume 4: Student Research Workshop), pages 356–367
+                                         April 30 - May 1, 2025 ©2025 Association for Computational Linguistics
+identified without requiring any context. Between                           Meta-category               Count
+the meta-category classification task and the more
+traditional meme template classification task, this                         Reaction                      100
+dataset contributions a novel resource for the study                        Exploitable                    89
+of meme creation and usage.1                                                Image Macro                     7
+                                                                            Duality                        30
+2    Dataset                                                                Escalating Progression          9
+                                                                            None                            7
+2.1 Data Sources
+2.1.1 Imgflip                                                      Table 1: Counts of the various meta-categories in our
+                                                                   annotated Reddit data, including examples that were
+The large amount of unannotated data that we col-                  annotated as having no meta-category.
+lect for the purpose of identifying meme templates
+was collected from imgflip by modifying an open-
+source codebase.2 Imgflip was the best website for
+this dataset for two reasons: it is easy to scrape
+memes and their corresponding templates, and the
+website documents thousands of templates.
+   Our dataset contains 1,992 template classes from
+the “Top All Time” page from imgflip. While there
+were initially more classes, we found that some
+of the templates on imgflip were duplicates. In
+order to handle this, we used an image hashing
+algorithm to remove duplicates. Some template
+duplicates were also removed manually, if image
+hashing could not identify them.
+   All additional template classes come from our
+Reddit data. In order to ensure that our model has
+trained on all templates represented in the Red-
+dit data, we scraped 67 additional templates from
+Imgflip that appeared in the Reddit data but were
+not in the original top 2,000 classes. In total, this
+dataset includes 274,748 meme examples from
+                                                                   Figure 1: An example of a meme template. “Drake-
+2,059 templates.
+                                                                   posting” or “Drake Hotline Bling” is a meme whose
+   The dataset is organized in two ways. For image                 template involves two frames of Drake from the Hotline
+classification tasks, each template is a directory                 Bling music video that are set up to rate something as
+that includes all the image files for the template                 bad and something else as good. The user of the tem-
+class. The dataset also includes a json file of all the            plate then fills in the whitespace with two images or
+metadata for each example meme, including the                      pieces of text to pair with the Drake ones.
+image url, post url, captioning for the meme, and
+other metadata.
+2.1.2 Reddit
+In order to have data that reflects more real-world                time, 100 from the top of the month scraped on
+usage than output from meme generator websites,                    November 13th 2024, and 50 from the top of the
+we also scraped images from Reddit’s r/memes                       month scraped on December 13th 2024. For each
+community (subreddit).3 We scraped the follow-                     example, the annotators identified the correspond-
+ing from Reddit: 100 memes from the top of all                     ing imgflip template (if one could be found) and
+   1
+     Our dataset and the code used in this paper are available     selected the meta-category that best fits the meme.
+in this repository: https://github.com/BenLambright/               In total, there were 242 annotated examples,4 74
+Meme-template-classification.
+   2                                                               of which did not have a template and 20 that had
+     https://github.com/schesa/ImgFlip575K_
+Dataset/tree/master                                                an identifiable template, but that template was not
+   3
+     https://www.reddit.com/r/memes                                documented on imgflip.
+                                                                 357
+2.2 Task Definitions                                          and decided to create two distinct categories that
+2.2.1 Meme Template Classification                            capture similar structural information but mainly
+                                                              differ in terms of semantic content (and enable cat-
+The primary task of this dataset is to identify the           egorization of such memes without referring to a
+template a meme is built from. A meme template is             specific example template). With these selections,
+a recognizable joke format that the user fills in the         we feel that we were able to encompass nearly all
+details of when they create a meme. Figure 1 gives            memes and enable capturing of some semantic in-
+an example template. The task involves mapping a              formation.
+human-created meme to the template that was used
+                                                                 The inter-annotator agreement for our meta-
+when creating it.
+                                                              categories was consistently around 70%. This
+2.2.2 Meta-category Classification                            section provides a description of our ontology
+                                                              and a summary of the annotation approach. The
+In order to facilitate capturing the semantic and
+                                                              full guidelines along with examples of all meta-
+pragmatic content of memes, we developed an on-
+                                                              categories and the guidance for annotation edge
+tology of meta-category categories which define
+                                                              cases can be found in the Appendix. Counts for
+formats and structures that are common across tem-
+                                                              each meta-category annotated are given in Table 1.
+plates. This can potentially augment meme tem-
+plate detection and offer a way to group memes                Image Macro Image macros can be thought of as
+of unseen templates. This set of categories is                memes for which the setup of the joke is given by
+in part derived from the ontology presented by                the image, and the text fills in the details and punch-
+knowyourmeme.com. Consequently, an alterna-                   line. For our purposes, we consider image macros
+tive task for this dataset is to classify these general       as consisting of a single image. The most typical
+categories of memes in order to classify their senti-         presentation of these memes involves a picture of
+ment.                                                         some kind of entity, often an animal or person, with
+                                                              white text in impact font on the top and bottom of
+2.3 Annotation Ontology and Results
+                                                              the image.
+The annotators for this project are two male gradu-
+ate students at Brandeis University between 20-30             Reaction Image Reaction images are, in a sense,
+years old, receiving course credit for their annota-          an inversion of image macros. Instead of the im-
+tion work. They were asked to annotate 250 images             age setting up the joke and the text filling in the
+scraped from Reddit and the top 100 most popular              punchline, the joke is set up by a text caption that
+template images from Imgflip. The former were                 is almost always above or below the image content.
+annotated for both templates and meta-categories,             The punchline is the image. The images in these
+while the latter were only annotated for the most             memes are usually of people emoting or reacting
+common meta-category that meme template would                 in some fashion, and the humor often derives in
+have. For the Reddit dataset, the template annota-            part from the fact that the text caption completely
+tions were almost always consistent between the               recontextualizes the image from its origin.
+two annotators. In the few cases they were not, the
+                                                              Exploitable An exploitable is a meme in which
+annotators discussed the difference and performed
+                                                              an existing image such as a comic, or still frame(s)
+adjudication jointly.
+                                                              from a movie is augmented by adding or replacing
+   These meta-categories are derived from some
+                                                              text or characters to tell a joke. The idea is that
+of the higher-level categories presented in the
+                                                              there is some extant structure inside the original
+KnowYourMeme ontology. While the website con-
+                                                              image that is “exploited” using additional text or
+tains hundreds of categories, the ones we chose to
+                                                              images.
+use more as they were presented on the website
+(image macro, exploitable, reaction) are compara-             Duality A meme exhibiting duality is one that
+bly more general and high-level. For duality and              compares two (or more) situations or contexts that
+escalating progression, we came across the Drake-             are related across some dimension in opposition to
+posting category, which describes memes that re-              each other. The typical components of a duality
+semble the duality/escalating progression structure,          meme are a set of discrete contexts and a set of
+   4
+    Some images were removed due to broken links, deleted     images that visualize the relationship between the
+posts, or offensive subject matter.                           contexts. A common format is a “4-panel” layout
+                                                            358
+in which a pair of contexts and images are stacked               Task/Dataset                   Accuracy
+vertically.
+                                                                 Imgflip Data Template                99.8
+Escalating Progression Escalating progression                    Reddit Data Template                 40.5
+memes are those that express a reaction to points
+                                                                 Imgflip Data Meta-category           51.5
+sampled along a continuum of context. Unlike in
+                                                                 Reddit Data Meta-category            68.8
+duality where the situations are connected in terms
+of directly opposing each other (bad vs. good),           Table 2: Accuracies for the YOLO model on the classifi-
+with escalating progression there is an intensifica-      cation tasks: template identification and meta-category
+tion between each state along an axis (good, better,      identification.
+best). Typically these memes have at least 3 sets of
+image-context pairs, but it is not required as long
+as there is an obvious sense of continuum between         hand-annotated since the template used to gener-
+the contexts.                                             ate is not given automatically through the scraping
+                                                          process (unlike the imgflip data).
+None While the previous categories are designed              The imgflip data was split into train, validation,
+to cover as much of the semantic-pragmatic space          and test portions using a 90-5-5 split. For the Red-
+of memes as is feasible, there are examples that do       dit data, we used an 85-15 train-test split.
+not align well with any of them. Annotators were
+always encouraged to mark a category, but it was          3.2     Models
+permissible to label the meta-category as “none” if       We use two different models to provide baseline
+they felt strongly that none of them fit. There exist     results for our dataset: YOLOv11’s image classifi-
+other “genres” of memes such as surreal, “deep-           cation model and ChatGPT 4o.
+fried” or anti-memes which are not addressed by
+the ontology because they exist in small niches.          3.2.1    YOLOv11
+One could realistically add several more categories       We chose to use YOLOv11 because YOLO has
+to this ontology, but the point of this ontology is for   consistently strong performance on image classi-
+it to be small and representative of most existing        fication tasks (Khanam and Hussain, 2024) and
+memes.                                                    focuses on data examples beyond ImageNet. We
+                                                          fine-tuned the model on scraped data from imgflip.
+3   Experiments                                           After fine-tuning the model with optimized hyper-
+                                                          parameters,5 we evaluated the model on a test set
+3.1 Experiment Design
+                                                          from imgflip and Reddit. By evaluating these two
+For template classification, we divided our dataset       test sets separately, we are able to see how the
+into the images annotated from Reddit and the im-         model predicts images that are the same as the
+ages scraped from imgflip. From these, we further         training data with different text (imgflip), versus
+split the imgflip data into train, dev, and test sets     images that are conceptually similar, but often vary
+using a 90-5-5 split. We treated the Reddit data          significantly from the training data (Reddit).
+as a unique test set, because this would allow us            As shown in Table 2, while the template classifi-
+to test on data which the model mostly likely has         cation YOLO model reaches near-100% accuracy
+never seen before, unlike the test set of the imgflip     when testing on the imgflip test data, it struggles
+data, which was normally the same images with             with the Reddit data. This is because the memes
+different text overlayed on it.                           posted on Reddit do not always use the same im-
+   Along with classifying the specific templates          ages that define the template on imgflip, especially
+for each image, we also classified meta-categories        in the cases where they were not directly gener-
+(image macro, reaction image, exploitable, dual-          ated from an imgflip template. As a result, these
+ity, escalating progression, and none). In order to       “in the wild” examples 6 are much harder for the
+do this, we train on two different datasets to see        YOLO model to identify. The imgflip meme tem-
+which can best identify the meta-categories. For          plate classification task is very simple because it is
+the imgflip data, each template is annotated with a
+                                                             5
+meta-category and the label is transferred to all im-          Values:      patience=2,   image size=640, opti-
+                                                          mizer="AdamW", learning rate=0.01, momentum=0.937,
+ages that were generated using that template. For         weight decay=0.0005.
+the Reddit data, each image has its meta-category            6
+                                                               See the appendix for examples.
+
+                                                      359
+almost always the same image with different text       describes each of the meta-category categories in
+overlayed on it.                                       a few sentences as text, based on the annotation
+   As for the Reddit template identification, 40.5%    guidelines. In the second experiment, we prompt
+accuracy indicates that the model is still able to     with an image example for each meta-category cat-
+identify the template some of the time. There are      egory and explain why that image is an example of
+2,059 meme templates for the classifier to select      the meta-category. In the third experiment, we give
+from, so this indicates some level of understand-      the prompts from both the first and second experi-
+ing, even if it does not match the performance of      ments together. All of these prompts are recorded
+other models trained on fewer classes in prior work    in the Appendix. Because this model is nondeter-
+(Gleason et al., 2019).                                ministic, we ran these experiments three times and
+   In terms of meta-category classification, YOLO      calculated the mean score and standard error of the
+performed reasonably when trained and tested on        mean.
+imgflip data (51.5%), and even better when tested         As shown in Tables 4 and 5, ChatGPT performed
+on the Reddit data (68.8%), where a random selec-      significantly better on the Reddit data than the
+tion of classes would ne expected to produce 16.7%     imgflip data, but the specific prompt style used
+accuracy.                                              did not have much impact. Given that these two
+   However, Table 3 indicates that there was a sig-    datasets were annotated by the same annotators
+nificant amount of overfitting due to dataset im-      with the same guidelines, this suggests that the
+balance. The less common classes (none, image          memes in the Reddit dataset were easier for the
+macro, duality, and escalating progression) were       model to interpret. Having both text and image
+classified correctly significantly less frequently     examples in the prompt likely caused the model to
+than the common classes of exploitable and reac-       have too much information to properly process it
+tion Image. Reaction images were correctly clas-       all, but providing text or image prompts provided
+sified 82% of the time, and exploitables 89.5% of      the same mean score.7
+the time, indicating that at least as a binary clas-      While it be reasonable to expect that ChatGPT
+sification task these two classes can be correctly     would be better at reasoning how to classify meta-
+understood by the model.                               categories if it necessitates understanding the se-
+   These results indicate that the YOLO model is       mantics of the meme, ChatGPT was still not very
+learning some sort of structural information that      successful at identifying the meta-categories. Im-
+allows it to predict at least the most common meta-    portantly, the model did not always guess the same
+categories with reasonable accuracy. Furthermore,      category, it simply chose a different wrong category
+the fact that the Reddit dataset had a much larger     most of the time. This suggests that this was still
+number of templates relative to the number of ex-      a difficult task for the model, even if the prompts
+amples of each may have pushed the model away          could be improved, and the model was not overfit-
+from relying on direct relationships between tem-      ting.
+plates and meta-categories.
+                                                       4   Future Work and Conclusion
+3.3 ChatGPT 4o
+                                                       While the ChatGPT results were disappointing, the
+In addition to testing our data using the YOLOv11      consistency of the poor results could suggest that
+model, we also used ChatGPT’s 4o API. Because of       the model might need something more complex
+the complexity of identifying the semantic structure   than just prompts. For example, using chain-of-
+of memes, we posited that an LLM might be well         thought or reinforcement learning might help the
+suited for the task. In all of these experiments,      model improve perform performance by allowing
+we always started with the exact same initial and      it to reason more. For the same reason, ChatGPT’s
+final prompt, which can be found in the Appendix.      o1 pro model, which now has vision capabilities,
+Additionally, we kept the prompting parameters,        might show stronger results as well (Noda et al.,
+temperature and top P, at their default values: 1.00   2025). As for the YOLO models, it suggests that
+and 1.00.                                              the meta-category ontology can be predicted, with
+   We performed three different few-shot experi-       reasonable accuracy, using a pure computer vision
+ments with this model: text-based few-shot prompt-         7
+                                                             The individual scores for text and image prompts gen-
+ing, image-based few-shot prompting, and a combi-      erally varied between 40% and 43%; they never produced
+nation of both. In our first experiment, the prompt    exactly the same result.
+
+                                                   360
+                                                                    Predicted
+      Actual                   None     Exploitable   Image Macro    Duality    Escalating Progression   Reaction
+      None                      0           2             0             0                 0                1
+      Exploitable               0           76            2             0                 0                 7
+      Image Macro               0            2            1             0                 0                 6
+      Duality                   0           18            0             4                 0                 7
+      Escalating Progression    0            5            0             1                 0                 5
+      Reaction                  0           17            1             0                 0                82
+
+Table 3: Confusion Matrix for the predictions from the YOLO model on the Reddit data meta-category identification
+task
+
+
+     Task                                Accuracy             still meme template classes that could be combined,
+                                                              and would likely improve the performance of the
+     Imgflip Data Meta-category           29.6±1.8            YOLO model on meme template classification.
+     Reddit Data Meta-category            47.7±0.2
+                                                              5     Limitations
+Table 4: Mean accuracies and standard errors for Chat-
+GPT meta-category classification with image prompts           Some templates that are functionally duplicates
+on different datasets.                                        (such as two examples of “Drakeposting” using
+                                                              slightly different stills from the video) may not
+            Prompt Content     Mean Score                     have been discarded from our image hashing algo-
+                                                              rithm, potentially causing a dip in accuracy. We
+            Text                      42.2±1.1                recommend using a deep learning model to iden-
+            Image                     42.2±0.6                tify these near-duplicate templates in the future.
+            Both                      37.8±1.6                Also, the total amount of annotated Reddit data
+                                                              is very small, making both learning and inference
+Table 5: Mean accuracies and standard errors for Chat-
+GPT meta-category classification across all test sets
+                                                              more difficult. A larger group of annotators com-
+using different prompting strategies.                         bine with a more varied set of data would allow
+                                                              for greater exploration of the machine-learnability
+                                                              of meta-categories, and would also enable further
+approach. This could help classify the semantic               refinement of the ontology. This dataset was even
+meaning of a meme without requiring the context               smaller when testing on specifically the meme tem-
+of an entire joke.                                            plate classification task, because 74 memes could
+   Knowing that annotators considered the text                not be included because the annotators marked
+when annotating memes, it would likely also be                them as not having a template.
+helpful for the text to be included in the pipeline
+for meta-category classification. It would be easy            6     Ethical Considerations and Broader
+to prompt for this with ChatGPT, asking to include                  Impact
+this information in its final inference.                      The authors would like to state that while they made
+   The best way to improve the performance of both            efforts to comb through the data and remove memes
+tasks is likely to be getting more data. Scraping             with questionable or offensive content, they cannot
+from more sources than imgflip and Reddit would               guarantee that every example in this dataset is free
+provide a more diverse dataset, as well as being              from such content, and furthermore would like to
+able to handle more meme formats, like GIFs.                  state that they do not endorse anything that may be
+   The Reddit dataset was also very small due to              expressed by memes included in this dataset. Be-
+the limited amount of annotator time available, and           yond the nature of the memes’ content, it is also im-
+more data would likely have improved the perfor-              portant to consider that the sources of the scraped
+mance of our models. On a similar note, in the                memes (imgflip and the r/memes subReddit) may
+imgflip dataset, there were meme templates that               limit perspectives in terms of their respective user-
+were extremely similar to each other, as discussed            bases, and future work should endeavor to capture
+further in the Appendix. While we removed exact               memes from a wider variety of creators.
+duplicates in data preprocessing, there are likely
+                                                         361
+References                                                         template that is ideally the most prominently
+Cedric Courtois and Thomas Frissen. 2023. Computer                 featured and most easily recognizable in the
+  vision and internet meme genealogy: An evaluation                image. If there are no recognizable templates
+  of image feature matching as a technique for pattern             in the image, leave the link section blank.
+  detection. Communication Methods and Measures,
+  17(1):17–39.
+                                                               3. Choose one of the associated meta-categories
+Cole Gleason, Amy Pavel, Xingyu Liu, Patrick Car-                 according to the ontology. While it is possible
+  rington, Lydia B. Chilton, and Jeffrey P. Bigham.
+  2019. Making memes accessible. In Proceedings                   to leave this selection blank, it is generally
+  of the 21st International ACM SIGACCESS Confer-                 recommended to avoid this unless one feels
+  ence on Computers and Accessibility, ASSETS ’19,                very strongly that none of the associated meta-
+  page 367–376, New York, NY, USA. Association for                categories fit at all.
+  Computing Machinery.
+EunJeong Hwang and Vered Shwartz. 2023. MemeCap:             A.1    Image Macro Example
+  A dataset for captioning and interpreting memes.
+  In Proceedings of the 2023 Conference on Empir-
+  ical Methods in Natural Language Processing, pages
+  1433–1445, Singapore. Association for Computa-
+  tional Linguistics.
+Rahima Khanam and Muhammad Hussain. 2024.
+  YOLOv11: An Overview of the Key Architectural
+  Enhancements. Preprint, arXiv:2410.17725.
+Ryunosuke Noda, Chiaki Yuasa, Fumiya Kitano,
+  Daisuke Ichikawa, and Yugo Shibagaki. 2025. Per-
+  formance of o1 pro and GPT-4 in Self-Assessment
+  Questions for Nephrology Board Renewal. medRxiv.
+Z. Wang, E.P. Simoncelli, and A.C. Bovik. 2003. Mul-
+   tiscale structural similarity for image quality assess-
+   ment. In The Thrity-Seventh Asilomar Conference           This example involves an image of a cat in a suit
+   on Signals, Systems & Computers, 2003, volume 2,          sitting at a table as if it were looking up from read-
+   pages 1398–1402 Vol.2.                                    ing the newspaper with a shocked expression. With
+A     Annotation Guidelines                                  the image as the context, the caption continues the
+                                                             (presumably meta) joke by delivering an announce-
+For each annotation in the project, perform the              ment about banned meme posts.
+following steps:
+    1. Transcribe the text in the meme. Each section         A.2    Reaction Image Example
+       of text (either split up as labels, lines of di-
+       alogue, or other obvious spacing) should be
+       typed into the box followed by the enter key.
+    2. Attempt to identify the meme template.
+       If it is immediately recognized, find
+       the corresponding link to the template
+       (i.e imgflip.com/memetemplate/. . . and not
+       imgflip.com/memegenerator/. . . ) if one ex-
+       ists. Otherwise if it is unrecognized, query
+       search engines with a description of the image
+       and the word “meme.” If all else fails, obtain
+       the link to the source image (through Label
+       Studio) and input it into Google’s search by          In this example, the joke is derived from the situa-
+       image feature to obtain a name or description         tion set up in the caption “when you donate 1$ to a
+       that would lead one to an associated imgflip          streamer” and the punchline in the reaction image
+       template. Note that in the case of multiple tem-      of Walter White from Breaking Bad saying “Now
+       plates in an image, one should choose a single        say my name.”
+                                                         362
+A.3 Exploitable Example                                 cartoon Regular Show express a neutral-positive re-
+                                                        action to the first situation and a disgusted reaction
+                                                        to the second.
+
+                                                        A.5   Escalating Progression Example
+
+
+
+
+This example is using a scene from the cartoon          The example shown here demonstrates the escalat-
+Scooby Doo, Where Are You! in which the character       ing progression of deciding when to purchase and
+Fred is revealing the identity of the villain. The      play a video game. The first context, “pre-order a
+masked villain is labeled as “Being able to cook,”      game” is the neutral (“good”) state, associated with
+and then once unmasked, labeled as “Just following      the normal image of Winnie the Pooh. The second,
+the recipe.”                                            “buy the game when it releases,” is the next step
+                                                        up (“better”), and the corresponding image is Pooh
+A.4 Duality Example                                     in fancy dress. The final context, “wait almost a
+                                                        decade so you can get it for free,” is the “best” de-
+                                                        cision, and as a result the corresponding Pooh is
+                                                        dressed in even fancier clothing to communicate
+                                                        this.
+
+                                                        A.6   “None” meta-category Example
+
+
+
+
+This example shows the duality between two situ-
+ations in a video game. The first one is where the
+player of a game is able to heal their character sev-
+eral times, and the second is where the boss heals      This example is not much more than a picture with
+a single time. The images of Mordecai from the          a caption. There does not appear to be any larger
+                                                    363
+structural relationship between the text and image         Template                         Confidence
+beyond that.
+                                                           odd1sout-vs-computer-chess               0.09
+                                                           Running-Away-Balloon                     0.09
+B   Differences Between Imgflip and
+                                                           hello-human-resources                    0.05
+    Reddit Memes
+                                                           Apu-takes-bullet                         0.04
+Often, memes that are obtained from sources other          how-i-sleep-homer-simpson                0.04
+than generator websites (i.e “in the wild”) look           American-Chopper-Argument                0.10
+very different from the prototypical template im-          thanos-what-did-it-cost                  0.06
+age from which the meme is derived. As an illus-           Squidward                                0.04
+trative example, consider the "Sad Hulk" meme.             Hide-the-Pain-Harold                     0.04
+The template image is that of two frames of the            Out-of-line-but-hes-right                0.04
+Incredible Hulk with tears in his eyes. Typically,
+examples of this meme will use the exact same          Table 6: Top 5 template labels by confidence from the
+image of the Hulk, only having the text changed.       YOLO model for the Incredible Krunk (top) and Hulk
+                                                       Hogan (bottom) examples.
+
+
+
+
+This is the same image as that which is found on the
+Crying Hulk template on imgflip. However, there
+are other examples that are clearly referencing the
+same template without using the exact same picture.
+
+
+
+
+                                                       While both of these examples are using very differ-
+                                                       ent images from the template, they are still clearly
+                                                       derived from the original in terms of the joke being
+                                                       made (especially since the first picture is a parody
+                                                       of the Hulk and the second is a picture of Hulk
+                                                       Hogan). Given how different these images are com-
+                                                       pared to any output from the Crying Hulk meme
+                                                       generator, it stands to reason that these would be
+                                                       especially difficult for a simple CV model to de-
+                                                       termine that they should be classified as the same
+                                                       template. Accordingly, our YOLO model did not
+                                                       put Crying Hulk in the top 5 for either example.
+
+                                                       C    Meta-category Edge Cases
+                                                       Sometimes it is not clear which meta-category la-
+                                                       bel is appropriate for a given meme. This section
+                                                     364
+provides some examples encountered by the anno-         C.3   Exploitable vs. Reaction
+tators along with discussion of the relevant labels
+to hopefully elucidate what the ontology is trying
+to capture.
+
+C.1 Image Macro vs. Reaction
+
+
+
+
+This meme structurally resembles a reaction (the
+text on top separate from the image) but the actual     While the image on the bottom of the meme is often
+relationship between the text and image is that of      deployed as a reaction, in this case the structure of
+an image macro because the joke is a play on a          the meme is derived from multiple frames of the
+well-known phrase from the character pictured.          actual scene, so it is an exploitable.
+
+C.2 Reaction vs. Exploitable                            C.4   Duality vs. Exploitable
+
+
+
+
+Even though the image is from an established piece
+of media (the Thriller music video), the structure      Even though the source for the images in this meme
+in this meme comes from outside the scene. The          is the TV show Tom and Jerry, it is not considered
+image essentially functions as a reaction to the        an exploitable because the two frames are from
+setup in the text.                                      entirely different parts of the TV show, and the
+                                                      365
+structure of the meme is as a result not derived from     person) with white text in impact font on the top
+the scene. The duality comes from the comparison          and bottom of the image.”
+between the two image-caption pairs.                         Reaction Images: “Reaction images are in a
+                                                          sense an inversion of image macros. Instead of
+C.5 Duality vs. Escalating progression                    the image setting up the joke and the text filling in
+                                                          the punchline, the joke is set up by a text caption
+                                                          (almost always separated from the image portion)
+                                                          and then the punchline is the image. The images in
+                                                          these memes are usually of people emoting or react-
+                                                          ing in some fashion, and the humor often derives in
+                                                          part from the fact that the text caption completely
+                                                          recontextualizes the image from its origin.”
+                                                             Escalating Progression: “Escalating progres-
+                                                          sion memes are those that express a reaction to
+                                                          points sampled along a continuum of context. Un-
+                                                          like in duality where the situations are related in
+                                                          terms of opposing each other (e.g good thing vs.
+                                                          bad thing), with escalating progression there is an
+                                                          intensification between each state (e.g good thing
+                                                          vs. better thing vs. best thing). Typically, these
+                                                          memes have at least 3 sets of image-context pairs,
+                                                          but it is not required as long as there is an obvi-
+The images in this meme communicate two oppos-            ous sense of continuity between the contexts. It
+ing emotional states occurring across the various         does not have to be 3+ images, like it can still be
+stages described by the captions. Rather than being       one, the difference is that it represents something
+a continuum, they express discrete negative and           escalating, rather than a good or bad. It has a con-
+positive emotions. As a result, despite having more       tinuum moving in a consistent and intensifyingly
+than two parts, this meme is an example of duality        humorous direction.”
+and not escalating progression.                              Duality: “A meme exhibiting duality is one that
+                                                          compares two (or more) situations or contexts that
+D   ChatGPT 4o API Prompts                                are related across some dimension, usually in op-
+                                                          position to each other. The typical components of
+Initial prompt: “You will be given a list of exam-
+                                                          a duality meme are a set of discrete contexts and
+ple images for image macro, reaction, escalating
+                                                          a set of images (most often variations on the same
+progression, duality, and exploitable memes, and
+                                                          image) that visualize the relationship between the
+afterwards you will have to classify them”
+                                                          contexts. A common format is a ’4-panel’ layout in
+   Final prompt: “Given the descriptions of
+                                                          which two pairs of contexts and images are stacked
+memes from before, how would you describe the
+                                                          vertically.”
+following meme? Select a response for the follow-
+                                                             Exploitable: “An exploitable is a meme in
+ing list and only use the words from this list: image
+                                                          which an existing image (such as a comic, or one
+macro, reaction, escalating progression, duality, or
+                                                          or more scenes from a movie) of some sort is aug-
+exploitable. Only output the template class you
+                                                          mented by adding and/or replacing some set of
+decided.”
+                                                          things (like dialogue, characters, labels etc.) to tell
+                                                          a joke. The idea is that there is some extant struc-
+D.1 Experiment 1: Text Prompts
+                                                          ture inside an image that is ’exploited’ using text
+Image Macros: “Image macros can be thought of             or additional pictures within the bounds of the orig-
+as memes for which the setup of the joke is given         inal image (unlike a caption in a reaction image,
+by the image, and the text fills in the details and       which is typically outside it).”
+punchline. For our purposes, we consider image
+macros as consisting of a single image. The most          D.2   Experiment 2: Image Prompts
+typical presentation of these memes involves a pic-       Image Macros: “Here is an example of an image
+ture of some kind of entity (often an animal or           macro, where you have the classic text on top and
+                                                        366
+below, where the entire joke could be understood
+without the image:”
+   url: “https://imgflip.com/i/3yhgyo”
+   Reaction Images: “Here is an example of a
+reaction, where the monkey looks awkwardly in re-
+action to the text which follows a ’me-when’ style:”
+   url: “https://i.imgflip.com/4zv2v9.jpg”
+   Escalating Progression: “Here is an example
+of an escalating progression, where the brain gets
+bigger and bigger as the text describes something
+smarter and smarter:”
+   url: “https://i.imgflip.com/4iyi3q.jpg”
+   Duality: “Here is an example of an duality,
+where drake at first thinks it’s bad, but then thinks
+it’s good:”
+   url: “https://i.imgflip.com/4izfsm.jpg”
+   Exploitable: “Here is an example of an ex-
+ploitable, where the text is overlayed over all of the
+people, representing who they are in the context of
+the joke:”
+   url: “https://i.imgflip.com/3fys88.jpg”
+
+
+
+
+                                                     367
+

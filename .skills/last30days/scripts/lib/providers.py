@@ -259,6 +259,17 @@ def resolve_runtime(config: dict[str, Any], depth: str) -> tuple[schema.Provider
                 x_search_backend=_resolve_x_backend(config),
             ), None
 
+    # Allow callers with a host-side query plan to keep ranking deterministic and
+    # avoid selecting any remote reasoning provider. This is useful in repositories
+    # whose local security policy forbids API-key-backed model calls from the CLI.
+    if provider_name == "local":
+        return schema.ProviderRuntime(
+            reasoning_provider="local",
+            planner_model="deterministic",
+            rerank_model="local-score",
+            x_search_backend=_resolve_x_backend(config),
+        ), None
+
     planner_model, rerank_model = _resolve_model_pins(config, depth, provider_name)
 
     if provider_name == "gemini":

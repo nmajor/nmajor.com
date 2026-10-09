@@ -66,6 +66,13 @@ Before changing admission, read the candidate-specific evidence and blocker in
 `research/social-meme-template-catalog/report.md` and preserve any new raw source
 that resolves it.
 
+For every newly researched template, the report and contract evidence must also record the exact
+renderer ID and box count, cultural-source URL and retrieval date, origin and meaning summary, at
+least three representative uses when available, slot-to-image mapping confirmed from an actual
+render, phone-size legibility, safety risks, rights status and provenance, admission decision, and
+the specific reason for active, hold, or rejected status. An active contract is incomplete if
+another agent would still need to research how the joke works before writing valid copy.
+
 ## Catalog maintenance
 
 ```bash
@@ -78,3 +85,11 @@ python .skills/social-meme-campaign/scripts/render_template_catalog.py
 
 Review the generated contact sheets under `scratch/social-meme-template-catalog/`.
 Do not promote a contract merely to hit a target count.
+
+For a bounded expansion, use repeated `--id` arguments with `sync_templates.py` to
+download only newly contracted assets. `--catalog-file <preserved-json>` uses the
+raw snapshot instead of a changing live response. Retained assets are hash-checked;
+selected IDs with conflicting upstream metadata fail closed. Pass the same IDs to
+`render_template_catalog.py`, inspect every example, and only then set admission.
+The September 29 expansion and its exact render audit live in
+`research/social-meme-template-catalog/expansion-2026-09-29/`.

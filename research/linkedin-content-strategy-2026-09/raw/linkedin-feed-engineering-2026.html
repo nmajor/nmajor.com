@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+
+    
+
+    
+    <html lang="en">
+      <head>
+        <meta name="pageKey" content="d_lithograph_content">
+<!----><!----><!---->        <meta name="locale" content="en_US">
+<!---->        <meta id="config" data-app-id="lithograph" data-app-version="0.0.2138" data-call-tree-id="AAZcnZGkE4bbnZKKJvHN5A==" data-multiproduct-name="lithograph-publish-frontend" data-service-name="lithograph-publish-frontend" data-browser-id="ce4571c5-c267-4df2-824c-5bac5d597029" data-is-bot="false" data-page-instance="urn:li:page:d_lithograph_content;UOQs/sYDRlSIzOYaWaqktg==" data-disable-jsbeacon-pagekey-suffix="false" data-dna-member-lix-treatment="control" data-human-member-lix-treatment="control" data-dfp-member-lix-treatment="control" data-sync-apfc-headers-lix-treatment="control" data-sync-apfc-cb-lix-treatment="control" data-recaptcha-v3-integration-lix-value="control" data-network-interceptor-lix-value="control" data-is-epd-audit-event-enabled="false" data-is-feed-sponsored-tracking-kill-switch-enabled="false" data-sequence-auto-redirect-before-request-enabled="true">
+
+        <link rel="canonical" href="https://www.linkedin.com/blog/engineering/feed/engineering-the-next-generation-of-linkedins-feed">
+<!----><!---->
+<!---->
+<!---->
+<!---->
+<!---->
+          <link rel="icon" href="https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca">
+
+
+        <script>
+          function getDfd() {let yFn,nFn;const p=new Promise(function(y, n){yFn=y;nFn=n;});p.resolve=yFn;p.reject=nFn;return p;}
+          window.lazyloader = getDfd();
+          window.tracking = getDfd();
+          window.impressionTracking = getDfd();
+          window.ingraphTracking = getDfd();
+          window.appDetection = getDfd();
+          window.pemTracking = getDfd();
+          window.appRedirectCompleted = getDfd();
+        </script>
+
+<!---->
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+    <title>Engineering the next generation of LinkedIn’s Feed</title>
+    <!---->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Engineering the next generation of LinkedIn’s Feed">
+    <!---->
+    <meta property="og:url" content="https://www.linkedin.com/blog/engineering/feed/engineering-the-next-generation-of-linkedins-feed">
+    <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4D08AQFW9lIiGlcc0Q/croft-frontend-shrinkToFit767/B4DZziayZiIYAU-/0/1773325199591?e=2147483647&amp;v=beta&amp;t=MMqDLeS0CJuiXnNLPl3ce7vfuCHawD4qyRPky2e0qS0">
+    <meta name="twitter:title" content="Engineering the next generation of LinkedIn’s Feed">
+    <meta name="twitter:site" content="@linkedin">
+    <!---->
+    <!---->
+    <meta name="robots" content="noarchive">
+
+    <meta name="linkedin:pageTag" content="/blog/engineering/feed/engineering-the-next-generation-of-linkedins-feed">
+    <meta name="litmsProfileName" content="lithograph">
+  
+
+        
+<!---->        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="asset-url" id="artdeco/static/images/icons.svg" content="https://static.licdn.com/aero-v1/sc/h/6sz1e821vgereyxaakx87tt4z ">
+        <link rel="stylesheet" href="https://static.licdn.com/aero-v1/sc/h/lbz6744ddd0wsc02ey2a3dhx">
+<!---->      
+      
+<!---->      </head>
+      <body dir="ltr">
+<!---->          
+          
+    
+
+    <a href="#lithograph-app" class="skip-link btn-md btn-primary absolute z-11 -top-[100vh] focus:top-0">
+      Skip to main content
+    </a>
+  
+          
+      
+    <div id="artdeco-global-alert-container" aria-live="assertive" role="alert" class="global-alert-banner">
+<!---->    </div>
+      <div id="artdeco-global-alerts-cls-offset">
+          
+    <div class="artdeco-global-alert artdeco-global-alert--NOTICE artdeco-global-alert--COOKIE_CONSENT" alert-id="urn:li:alert:10" aria-hidden="true" severity="NOTICE" type="COOKIE_CONSENT">
+      <section class="artdeco-global-alert__body">
+        <li-icon class="artdeco-global-alert__icon">
+          <!---->
+          <!---->
+          
+    <span>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24" width="24">
+            <path d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10c5.5,0,10-4.5,10-10C22,6.5,17.5,2,12,2zM12,20.2c-4.5,0-8.2-3.7-8.2-8.2S7.5,3.8,12,3.8s8.2,3.7,8.2,8.2S16.5,20.2,12,20.2zM11,10h2v8h-2V10zM11,6h2v2h-2V6z" fill="#fff"></path>
+        </svg>
+    </span>  
+        </li-icon>
+        <div class="artdeco-global-alert__responsive-container">
+            <h2>LinkedIn respects your privacy</h2>
+          <div class="artdeco-global-alert__responsive-content-container">
+            <div class="artdeco-global-alert__content">
+              <p>LinkedIn and 3rd parties use essential and non-essential cookies to provide, secure, analyze and improve our Services, and to show you relevant ads (including <b>professional and job ads</b>) on and off LinkedIn. Learn more in our <a href="https://www.linkedin.com/legal/cookie-policy">Cookie Policy</a>.</p><p>Select Accept to consent or Reject to decline non-essential cookies for this use. You can update your choices at any time in your <a href="https://www.linkedin.com/mypreferences/g/guest-cookies">settings</a>.</p>
+            </div>
+          </div>
+          <div class="artdeco-global-alert-action__wrapper">
+                <button class="artdeco-global-alert-action artdeco-button artdeco-button--inverse artdeco-button--2 artdeco-button--primary" action-url action-type="ACCEPT" data-tracking-control-name="urn:li:control:ga-cookie.consent.accept.v4" data-control-name="urn:li:control:ga-cookie.consent.accept.v4">
+                Accept
+                </button>
+                <button class="artdeco-global-alert-action artdeco-button artdeco-button--inverse artdeco-button--2 artdeco-button--primary" action-url action-type="DENY" data-tracking-control-name="urn:li:control:ga-cookie.consent.deny.v4" data-control-name="urn:li:control:ga-cookie.consent.deny.v4">
+                Reject
+                </button>
+          </div>
+        </div>
+<!---->      </section>
+    </div>  
+      </div>
+  
+  
+
+        
+
+          
+
+    
+    
+
+    <div class="page-header__wrapper page-header__wrapper--margin" data-custom-nav-wrapper="true">
+      <div class="page-header__container">
+        <header id="page-header" class="page-header page-header--hide-dropshadow">
+          <div class="page-header__content-container">
+            <div class="header__logo">
+              <a href="https://www.linkedin.com/blog/engineering" class="custom-nav__logo-link">
+                <img class="header__linkedin-logo header__full-logo" src="https://static.licdn.com/aero-v1/sc/h/6zm111mce7vohqze950ilreo4" alt="LinkedIn Logo">
+                <img class="header__linkedin-logo header__in-bug" src="https://static.licdn.com/aero-v1/sc/h/5g0hjlcng3j5pgn50n2et1ca2" alt="LinkedIn Logo">
+                <span class="t-17 t-black t-bold default-header-title">
+                  Engineering Blog
+                </span>
+              </a>
+            </div>
+
+<!---->
+<!---->
+              <button class="stripped header__expand-nav-button" data-mobile-header-navigation-button data-header-expand-navigation-button aria-expanded="false">
+                <li-icon class="header__expand-nav-icon" a11y-text="Open navigation" type="hamburger-icon"></li-icon>
+              </button>
+              <button class="stripped header__expand-nav-button hidden" data-mobile-header-navigation-button data-header-collapse-navigation-button aria-expanded="false">
+                <li-icon class="header__expand-nav-icon" a11y-text="Close navigation" type="cancel-icon"></li-icon>
+                </button>
+          </div>
+        </header>
+      </div>
+
+        
+    
+
+    <nav class="header-nav fixed" aria-label="main" data-header-navigation>
+      <ul class="header-nav__list">
+          <li>
+            
+
+    
+    <div class="artdeco-dropdown">
+      <div class="artdeco-dropdown__trigger">
+        <a href="https://www.linkedin.com/blog/engineering/data" class="t-sans t-black--light t-semibold header-nav__toplink" target="_self">
+          Data
+        </a>
+
+          <button class="header-navigation__button" aria-label="Expand to show more links for Data" aria-expanded="false" data-trigger-dropdown-menu type="button">
+            <li-icon size="small" type="caret-filled-down-icon"></li-icon>
+          </button>
+          
+
+    <div class="artdeco-dropdown__content header-nav__dropdown-offset">
+      <ul>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/graph-systems" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Graph System</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/economic-graph" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Economic Graph</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/skills-graph" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Skills Graph</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/knowledge" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Knowledge Graph</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/data-management" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Data Management</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/data-streaming-processing" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Data Streams/Processing</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/data-science" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Data Science</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/research" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Research</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/ab-testing-experimentation" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">A/B Testing/Experimentation</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+          </li>
+          <li>
+            
+
+    
+    <div class="artdeco-dropdown">
+      <div class="artdeco-dropdown__trigger">
+        <a href="https://www.linkedin.com/blog/engineering/artificial-intelligence" class="t-sans t-black--light t-semibold header-nav__toplink" target="_self">
+          AI
+        </a>
+
+          <button class="header-navigation__button" aria-label="Expand to show more links for AI" aria-expanded="false" data-trigger-dropdown-menu type="button">
+            <li-icon size="small" type="caret-filled-down-icon"></li-icon>
+          </button>
+          
+
+    <div class="artdeco-dropdown__content header-nav__dropdown-offset">
+      <ul>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/machine-learning" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Machine Learning</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/natural-language-processing" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Natural Language Processing</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/generative-ai" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Generative AI</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/data-modeling" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Data Modeling</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/responsible-ai" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Responsible AI</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+          </li>
+          <li>
+            
+
+    
+    <div class="artdeco-dropdown">
+      <div class="artdeco-dropdown__trigger">
+        <a href="https://www.linkedin.com/blog/engineering/trust-and-safety" class="t-sans t-black--light t-semibold header-nav__toplink" target="_self">
+          Trust & Safety
+        </a>
+
+          <button class="header-navigation__button" aria-label="Expand to show more links for Trust &amp;amp; Safety" aria-expanded="false" data-trigger-dropdown-menu type="button">
+            <li-icon size="small" type="caret-filled-down-icon"></li-icon>
+          </button>
+          
+
+    <div class="artdeco-dropdown__content header-nav__dropdown-offset">
+      <ul>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/fairness" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Fairness</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/verification" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Verification </a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/security" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Security</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+          </li>
+          <li>
+            
+
+    
+    <div class="artdeco-dropdown">
+      <div class="artdeco-dropdown__trigger">
+        <a href="https://www.linkedin.com/blog/engineering/product-design" class="t-sans t-black--light t-semibold header-nav__toplink" target="_self">
+          Product Design
+        </a>
+
+          <button class="header-navigation__button" aria-label="Expand to show more links for Product Design" aria-expanded="false" data-trigger-dropdown-menu type="button">
+            <li-icon size="small" type="caret-filled-down-icon"></li-icon>
+          </button>
+          
+
+    <div class="artdeco-dropdown__content header-nav__dropdown-offset">
+      <ul>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/marketing" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Marketing </a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/sales" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Sales</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/learning" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Learning</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/hiring" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Hiring</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/profile" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Profile</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/messaging-notifications" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Messaging/Notifications</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/feed" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Feed</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/profile" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Profile</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/groups" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Groups</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/accessibility" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Accessibility</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/member-customer-experience" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Member/Customer Experience</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/search" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Search</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/recommendations" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Recommendations</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/skills" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Skills</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+          </li>
+          <li>
+            
+
+    
+    <div class="artdeco-dropdown">
+      <div class="artdeco-dropdown__trigger">
+        <a href="https://www.linkedin.com/blog/engineering/infrastructure" class="t-sans t-black--light t-semibold header-nav__toplink" target="_self">
+          Infrastructure
+        </a>
+
+          <button class="header-navigation__button" aria-label="Expand to show more links for Infrastructure" aria-expanded="false" data-trigger-dropdown-menu type="button">
+            <li-icon size="small" type="caret-filled-down-icon"></li-icon>
+          </button>
+          
+
+    <div class="artdeco-dropdown__content header-nav__dropdown-offset">
+      <ul>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/code" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Code</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/scalability" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Scalability</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/distributed-systems" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Distributed Systems</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/graph-systems" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Graph Systems</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/architecture" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Architecture</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/analytics" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Analytics</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/automation" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Automation</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/platform-platformization" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Platforms/Platformization</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/cloud-computing" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Cloud Computing</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/open-source" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Open Source</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/additional-innovations" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Additional Innovations</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+          </li>
+          <li>
+            
+
+    
+    <div class="artdeco-dropdown">
+      <div class="artdeco-dropdown__trigger">
+        <a href="https://www.linkedin.com/blog/engineering/talent" class="t-sans t-black--light t-semibold header-nav__toplink" target="_self">
+          Talent
+        </a>
+
+          <button class="header-navigation__button" aria-label="Expand to show more links for Talent" aria-expanded="false" data-trigger-dropdown-menu type="button">
+            <li-icon size="small" type="caret-filled-down-icon"></li-icon>
+          </button>
+          
+
+    <div class="artdeco-dropdown__content header-nav__dropdown-offset">
+      <ul>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/culture" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Culture</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/developer-experience-productivity" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Developer Experience/Productivity</a>
+            </div>
+          </li>
+          <li>
+            <div class="artdeco-dropdown__item">
+              <a href="https://www.linkedin.com/blog/engineering/leadership" class="t-14 t-sans t-black t-bold header-nav__link" target="_self">Leadership</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+          </li>
+      </ul>
+    </nav>
+  
+
+      
+    
+
+    <nav class="custom-header__nav--mobile invisible" data-mobile-navigation="true" aria-label="main">
+        
+    <ul class="custom-header__list--mobile">
+        <li class="custom-header__list-item--mobile" data-mobile-navigation-list-item="true">
+          
+    
+    
+
+    <a href="https://www.linkedin.com/blog/engineering/data" class="t-16 t-sans t-black t-semibold header-nav__toplink" target="_self">
+      Data
+    </a>
+
+      <button class="header-navigation__button" aria-label="Expand to show more links for Data" aria-expanded="false" data-label-expand="Expand to show more links for Data" data-label-collapse="Collapse to show less links for Data" data-mobile-dropdown-trigger type="button">
+        <li-icon size="small" type="chevron-down-icon"></li-icon>
+      </button>
+      
+    <ul class="custom-header__dropdownlink-list--mobile hidden" data-dropdownlinks-list="true">
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/graph-systems" class="t-sans t-black t-normal header-nav__link" target="_self">Graph System</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/economic-graph" class="t-sans t-black t-normal header-nav__link" target="_self">Economic Graph</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/skills-graph" class="t-sans t-black t-normal header-nav__link" target="_self">Skills Graph</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/knowledge" class="t-sans t-black t-normal header-nav__link" target="_self">Knowledge Graph</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/data-management" class="t-sans t-black t-normal header-nav__link" target="_self">Data Management</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/data-streaming-processing" class="t-sans t-black t-normal header-nav__link" target="_self">Data Streams/Processing</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/data-science" class="t-sans t-black t-normal header-nav__link" target="_self">Data Science</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/research" class="t-sans t-black t-normal header-nav__link" target="_self">Research</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/ab-testing-experimentation" class="t-sans t-black t-normal header-nav__link" target="_self">A/B Testing/Experimentation</a>
+        </li>
+    </ul>
+  
+
+        </li>
+        <li class="custom-header__list-item--mobile" data-mobile-navigation-list-item="true">
+          
+    
+    
+
+    <a href="https://www.linkedin.com/blog/engineering/artificial-intelligence" class="t-16 t-sans t-black t-semibold header-nav__toplink" target="_self">
+      AI
+    </a>
+
+      <button class="header-navigation__button" aria-label="Expand to show more links for AI" aria-expanded="false" data-label-expand="Expand to show more links for AI" data-label-collapse="Collapse to show less links for AI" data-mobile-dropdown-trigger type="button">
+        <li-icon size="small" type="chevron-down-icon"></li-icon>
+      </button>
+      
+    <ul class="custom-header__dropdownlink-list--mobile hidden" data-dropdownlinks-list="true">
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/machine-learning" class="t-sans t-black t-normal header-nav__link" target="_self">Machine Learning</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/natural-language-processing" class="t-sans t-black t-normal header-nav__link" target="_self">Natural Language Processing</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/generative-ai" class="t-sans t-black t-normal header-nav__link" target="_self">Generative AI</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/data-modeling" class="t-sans t-black t-normal header-nav__link" target="_self">Data Modeling</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/responsible-ai" class="t-sans t-black t-normal header-nav__link" target="_self">Responsible AI</a>
+        </li>
+    </ul>
+  
+
+        </li>
+        <li class="custom-header__list-item--mobile" data-mobile-navigation-list-item="true">
+          
+    
+    
+
+    <a href="https://www.linkedin.com/blog/engineering/trust-and-safety" class="t-16 t-sans t-black t-semibold header-nav__toplink" target="_self">
+      Trust &amp; Safety
+    </a>
+
+      <button class="header-navigation__button" aria-label="Expand to show more links for Trust &amp;amp; Safety" aria-expanded="false" data-label-expand="Expand to show more links for Trust &amp;amp; Safety" data-label-collapse="Collapse to show less links for Trust &amp;amp; Safety" data-mobile-dropdown-trigger type="button">
+        <li-icon size="small" type="chevron-down-icon"></li-icon>
+      </button>
+      
+    <ul class="custom-header__dropdownlink-list--mobile hidden" data-dropdownlinks-list="true">
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/fairness" class="t-sans t-black t-normal header-nav__link" target="_self">Fairness</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/verification" class="t-sans t-black t-normal header-nav__link" target="_self">Verification </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/security" class="t-sans t-black t-normal header-nav__link" target="_self">Security</a>
+        </li>
+    </ul>
+  
+
+        </li>
+        <li class="custom-header__list-item--mobile" data-mobile-navigation-list-item="true">
+          
+    
+    
+
+    <a href="https://www.linkedin.com/blog/engineering/product-design" class="t-16 t-sans t-black t-semibold header-nav__toplink" target="_self">
+      Product Design
+    </a>
+
+      <button class="header-navigation__button" aria-label="Expand to show more links for Product Design" aria-expanded="false" data-label-expand="Expand to show more links for Product Design" data-label-collapse="Collapse to show less links for Product Design" data-mobile-dropdown-trigger type="button">
+        <li-icon size="small" type="chevron-down-icon"></li-icon>
+      </button>
+      
+    <ul class="custom-header__dropdownlink-list--mobile hidden" data-dropdownlinks-list="true">
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/marketing" class="t-sans t-black t-normal header-nav__link" target="_self">Marketing </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/sales" class="t-sans t-black t-normal header-nav__link" target="_self">Sales</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/learning" class="t-sans t-black t-normal header-nav__link" target="_self">Learning</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/hiring" class="t-sans t-black t-normal header-nav__link" target="_self">Hiring</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/profile" class="t-sans t-black t-normal header-nav__link" target="_self">Profile</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/messaging-notifications" class="t-sans t-black t-normal header-nav__link" target="_self">Messaging/Notifications</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/feed" class="t-sans t-black t-normal header-nav__link" target="_self">Feed</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/profile" class="t-sans t-black t-normal header-nav__link" target="_self">Profile</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/groups" class="t-sans t-black t-normal header-nav__link" target="_self">Groups</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/accessibility" class="t-sans t-black t-normal header-nav__link" target="_self">Accessibility</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/member-customer-experience" class="t-sans t-black t-normal header-nav__link" target="_self">Member/Customer Experience</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/search" class="t-sans t-black t-normal header-nav__link" target="_self">Search</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/recommendations" class="t-sans t-black t-normal header-nav__link" target="_self">Recommendations</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/skills" class="t-sans t-black t-normal header-nav__link" target="_self">Skills</a>
+        </li>
+    </ul>
+  
+
+        </li>
+        <li class="custom-header__list-item--mobile" data-mobile-navigation-list-item="true">
+          
+    
+    
+
+    <a href="https://www.linkedin.com/blog/engineering/infrastructure" class="t-16 t-sans t-black t-semibold header-nav__toplink" target="_self">
+      Infrastructure
+    </a>
+
+      <button class="header-navigation__button" aria-label="Expand to show more links for Infrastructure" aria-expanded="false" data-label-expand="Expand to show more links for Infrastructure" data-label-collapse="Collapse to show less links for Infrastructure" data-mobile-dropdown-trigger type="button">
+        <li-icon size="small" type="chevron-down-icon"></li-icon>
+      </button>
+      
+    <ul class="custom-header__dropdownlink-list--mobile hidden" data-dropdownlinks-list="true">
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/code" class="t-sans t-black t-normal header-nav__link" target="_self">Code</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/scalability" class="t-sans t-black t-normal header-nav__link" target="_self">Scalability</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/distributed-systems" class="t-sans t-black t-normal header-nav__link" target="_self">Distributed Systems</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/graph-systems" class="t-sans t-black t-normal header-nav__link" target="_self">Graph Systems</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/architecture" class="t-sans t-black t-normal header-nav__link" target="_self">Architecture</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/analytics" class="t-sans t-black t-normal header-nav__link" target="_self">Analytics</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/automation" class="t-sans t-black t-normal header-nav__link" target="_self">Automation</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/platform-platformization" class="t-sans t-black t-normal header-nav__link" target="_self">Platforms/Platformization</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/cloud-computing" class="t-sans t-black t-normal header-nav__link" target="_self">Cloud Computing</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/open-source" class="t-sans t-black t-normal header-nav__link" target="_self">Open Source</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/additional-innovations" class="t-sans t-black t-normal header-nav__link" target="_self">Additional Innovations</a>
+        </li>
+    </ul>
+  
+
+        </li>
+        <li class="custom-header__list-item--mobile" data-mobile-navigation-list-item="true">
+          
+    
+    
+
+    <a href="https://www.linkedin.com/blog/engineering/talent" class="t-16 t-sans t-black t-semibold header-nav__toplink" target="_self">
+      Talent
+    </a>
+
+      <button class="header-navigation__button" aria-label="Expand to show more links for Talent" aria-expanded="false" data-label-expand="Expand to show more links for Talent" data-label-collapse="Collapse to show less links for Talent" data-mobile-dropdown-trigger type="button">
+        <li-icon size="small" type="chevron-down-icon"></li-icon>
+      </button>
+      
+    <ul class="custom-header__dropdownlink-list--mobile hidden" data-dropdownlinks-list="true">
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/culture" class="t-sans t-black t-normal header-nav__link" target="_self">Culture</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/developer-experience-productivity" class="t-sans t-black t-normal header-nav__link" target="_self">Developer Experience/Productivity</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/blog/engineering/leadership" class="t-sans t-black t-normal header-nav__link" target="_self">Leadership</a>
+        </li>
+    </ul>
+  
+
+        </li>
+    </ul>
+  
+
+      <div class="custom-header__button-share-container--mobile">
+<!---->
+      </div>
+    </nav>
+  
+    </div>
+  
+
+        <main role="main">
+          
+        <div id="lithograph-app">
+          
+
+    <section id="component-container" data-attach-collapse-behavior="true">
+      
+
+      <div id class="component component-articleHeadline" data-component-type="articleHeadline">
+        
+
+        
+
+    <div class="article-headline-container">
+        <p class="article-headline__topic">
+          <a class="t-14" href="https://www.linkedin.com/blog/engineering/feed">Feed</a>
+        </p>
+
+      <h1 class="article-headline t-40" data-article-title="Engineering the next generation of LinkedIn’s Feed">Engineering the next generation of LinkedIn’s Feed</h1>
+      <div class="article-meta t-14 article-meta__hairline">
+        <div class="article-meta__byline-container">
+            
+
+    
+    
+    
+    
+
+          <div class="author-profile__author-container">
+                <img class="author-profile__author-image" srcset="https://media.licdn.com/dms/image/v2/D4D03AQF30MjcyWINzQ/profile-displayphoto-scale_400_400/B4DZkSKtb6HYAg-/0/1756946422922?e=2147483647&amp;v=beta&amp;t=L9rYVEieqOsbpim7qdeaZGpxQEl338fwrupgO-w3AHM 400w,https://media.licdn.com/dms/image/v2/D4D03AQF30MjcyWINzQ/profile-displayphoto-scale_200_200/B4DZkSKtb6HYAY-/0/1756946422922?e=2147483647&amp;v=beta&amp;t=EOMzG_pFWvr0SmiyVhE2580RpwUM6iDHoE8XkYqBtzY 200w,https://media.licdn.com/dms/image/v2/D4D03AQF30MjcyWINzQ/profile-displayphoto-crop_800_800/B4DZkSKtb6HYAI-/0/1756946422724?e=2147483647&amp;v=beta&amp;t=9JqG9nGjNDJ78AhbzrViJXMv3TGaXhWtd_4M1RmOq-k 800w,https://media.licdn.com/dms/image/v2/D4D03AQF30MjcyWINzQ/profile-displayphoto-scale_100_100/B4DZkSKtb6HYAc-/0/1756946422922?e=2147483647&amp;v=beta&amp;t=geCX0jmb0r1y1lsm7Kvy0PWyCammOVA-As3fiTeb23k 100w," sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 1920px" src="https://media.licdn.com/dms/image/v2/D4D03AQF30MjcyWINzQ/profile-displayphoto-scale_100_100/B4DZkSKtb6HYAc-/0/1756946422922?e=2147483647&amp;v=beta&amp;t=geCX0jmb0r1y1lsm7Kvy0PWyCammOVA-As3fiTeb23k" alt="Hristo Danchev">
+              <div class="author-profile__author-text-container">
+                <a href="https://www.linkedin.com/in/hristodanchev" target="_blank" class="t-14 t-bold"><span class="screen-reader">Authored by</span>Hristo Danchev</a>
+<!---->
+                  <p class="t-14 t-black--light" data-published-date="2026-3-12">
+                    March 12, 2026
+                  </p>
+              </div>
+          </div>
+<!---->  
+        </div>
+          
+
+    
+    
+    
+    
+    
+
+    <div class="social-share">
+      <ul class="social-share__list share-list" title="Share via" data-share-list>
+        
+
+    <li class="share-list__item share-item">
+      <a href="#" class="share-item__link medium-round-muted-tertiary-button" role="button" data-tracking-control-name="_linkedin_share" data-share-type="linkedin" aria-label="Share on LinkedIn, New window will open">
+          <li-icon class="share-item__icon" type="linkedin-icon"></li-icon>
+      </a>
+    </li>
+        
+
+    <li class="share-list__item share-item">
+      <a href="#" class="share-item__link medium-round-muted-tertiary-button" role="button" data-tracking-control-name="_facebook_share" data-share-type="facebook" aria-label="Share on Facebook, New window will open">
+          <li-icon class="share-item__icon" type="facebook-icon"></li-icon>
+      </a>
+    </li>
+        
+
+    <li class="share-list__item share-item">
+      <a href="#" class="share-item__link medium-round-muted-tertiary-button" role="button" data-tracking-control-name="_twitter_share" data-share-type="twitter" aria-label="Share on X, New window will open">
+          <svg class="share-item__icon share-item__icon--twitter" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" focusable="false" aria-hidden="true" role="none">
+            <path d="M13.9 10.47L21.35 2h-1.76l-6.46 7.35L7.96 2H2l7.81 11.12L2 22h1.76l6.83-7.77L16.04 22H22l-8.1-11.53zm-2.42 2.75l-.79-1.11L4.4 3.3h2.71l5.08 7.11.79 1.11 6.6 9.24h-2.71l-5.39-7.54z"></path>
+          </svg>
+      </a>
+    </li>
+      </ul>
+    </div>
+  
+      </div>
+    </div>
+  
+  
+      </div>
+      <div id class="component component-richText" data-component-type="richText">
+        
+
+        
+    <div class="rich-text global-paragraph-style--reader">
+      <p>The LinkedIn Feed serves more than 1.3 billion professionals, each on a unique career journey. Whether members are building their brand, sharing expertise, exploring new ideas, or learning from trusted voices, they come to LinkedIn to connect and grow. We want to connect every member to insights, ideas, and inspiration that move them forward. The most valuable content is timely, relevant to their professional goals, and grounded in trust.<br>
+</p><p>While the Feed has long been AI-powered, recent LLM advances gave us the opportunity to rethink what's possible. That’s why we’re <a rel="" href="https://www.linkedin.com/pulse/updates-linkedin-feed-focusing-authentic-relevant-tim-jurka-umwnc/" target="_blank">rolling out</a> a new advanced ranking system, powered by LLMs and GPUs, that better understands what a post is actually about and how it relates to a member's evolving interests and career goals. By learning from past LinkedIn activities, it delivers more accurate and helpful recommendations than ever before.&nbsp;<br>
+</p><p>We’re thrilled to share how we built our new system with state-of-the-art LLMs and transformer AI models to create a more engaging, personalized, and timely Feed experience that surfaces genuinely valuable content, whether it comes from your immediate network or professionals you’ve never connected with before.<br>
+</p><p>In this blog, we’ll explore the nuances of engineering and scaling our next-generation Feed.<br>
+</p><h2>The challenge: serving over one billion professionals at scale</h2><p>Every time you open LinkedIn and scroll through your Feed, you’re experiencing one of the largest-scale recommendation systems in the industry. Our challenge at hand is to deliver personalized content at speed, balancing content from your network, who you follow, and the <a rel="" href="https://economicgraph.linkedin.com/" target="_self">LinkedIn Economic Graph</a> more broadly (i.e. suggested content).</p><p>There is a complex decision behind every post you see. Our systems evaluate a number of signals, like&nbsp;information you’ve chosen to share on your own profile such as industry, experience, skills and geography. Then, the system looks at how you engage with content over time, including what you’ve read, liked, commented on, returned back to, or simply scrolled past. These historical interactions, namely what do you engage with or repeatedly skip, and how are these engagement patterns changing over time, combined with the aforementioned profile signals are parsed by the models to deliver a personalized Feed just for YOU –&nbsp;all within a blink of an eye. Under the hood we rank millions of posts at any given time, while balancing freshness with relevance across a constantly evolving content bank.</p><p>Our traditional approach used multiple retrieval sources - trending content, collaborative filtering, and embedding-based systems, each maintaining separate infrastructure. This created engineering complexity and made holistic optimization difficult. Meanwhile, our ranking model treated each impression independently, missing the sequential patterns in how professionals actually consume content over time.<br>
+</p><p>After some experimentation we converged onto a <em>hybrid </em>complementary relevance solution - a unified retrieval system leveraging advances in LLMs to generate a high-quality representation of our members and content, and a sequential ranking model that captures how professionals engage with content over time, all while efficiently utilizing our GPU fleet.<br>
+</p><h2>Unified retrieval through fine-tuned LLMs</h2><p>For years, the LinkedIn Feed retrieval relied on a heterogeneous architecture. When you opened your Feed, content came from multiple specialized sources: a chronological index of your network's activities, trending posts in your geography, collaborative filtering based on similar members' interests, industry-specific trending content, and several embedding-based retrieval systems. Each source had its own infrastructure, index structure, and optimization strategy. This architecture worked and it enabled us to surface diverse, relevant content, but it came with substantial maintenance costs of separate systems for trending content, collaborative filtering, historical feeds, and topic-based retrieval.&nbsp;</p><p>So we asked ourselves: what if we could replace this multi-source complexity with a single, unified retrieval system powered by LLM-generated embeddings? And what if those embeddings could capture an understanding so rich that they understood not just keyword matches, but the <em>deeper</em> professional interests that make content relevant?</p><p>In practical terms, if you happen to be interested in "electrical engineering" but engage heavily with posts about “small modular reactors,” traditional keyword-based systems might miss the connection. Our LLM-based retrieval understands these topics are semantically related because the underlying language model brings world knowledge learned from its massive pretraining corpus - it knows that electrical engineers often work on power grid optimization, renewable energy integration, and the infrastructure challenges. This knowledge proves especially powerful for cold-start scenarios: this is when a new member joins LinkedIn with only a profile headline and job title, the LLM can deduce likely interests and relevant content areas based on member-provided information without waiting for engagement history to accumulate. For contrast, our non-LLM embedding could understand shallow semantic correlation like power, energy, electronics, etc., but not as deep as the renewable energy one, which only comes from world knowledge from the LLM.</p><p>Central to this effort is our commitment to <a rel="" href="https://www.linkedin.com/blog/engineering/feed/putting-members-first-testing-and-measuring-how-content-appears-in-your-feed" target="_self">responsible AI</a>. We regularly and rigorously audit our models to check two things: that posts from different creators compete on equal footing, and that the scrolling experience, i.e. what you see in the feed, is consistent across audiences.&nbsp;</p><p><strong>Key engineering insight</strong>: LLM embeddings generalize beyond observed behavior. Assessing latent interests from world knowledge where collaborative filtering and keyword matching fall short, especially critical for cold-start users and sparse content niches.</p><p>For you, this means discovering content from authors you don't follow, on topics you care about, expressed in different terminology than you might use - dramatically expanding your access to relevant professional insights.</p>
+    </div>  
+  
+      </div>
+      <div id class="component component-standaloneImage" data-component-type="standaloneImage">
+        
+
+        
+
+    <div class="standalone-image-component standalone-image-component--original-width">
+        <figure>
+          <img class="standalone-image-component__image" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 1920px" data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQE5hnrnC5V9DA/croft-frontend-shrinkToFit1200/B4DZzea9LuIMAg-/0/1773258135107?e=2147483647&amp;v=beta&amp;t=YB-lVcXdruwbXwIM0YLxeUGh08YXIZvOG4gafoo1B9U" alt="Online system for retrieval and ranking of unconnected content">
+            <figcaption class="t-16 t-black--light standalone-image-component__caption">Figure 1: Online system for retrieval and ranking of unconnected content</figcaption>
+        </figure>
+    </div>
+  
+      </div>
+      <div id class="component component-richText" data-component-type="richText">
+        
+
+        
+    <div class="rich-text global-paragraph-style--reader">
+      <h3>From structured data to effective prompts</h3><p>The first hurdle of <a rel="" href="https://arxiv.org/pdf/2510.14223" target="_self">large scale retrieval</a>: converting structured data into text that LLMs can process effectively. We built a "prompt library" that transforms features into templated sequences. For posts, we include format, author information (name, headline, company, industry), engagement counts, article metadata, and post text. For members, we incorporate profile information, skills, work history, education, and crucially - a chronologically ordered sequence of posts they've previously engaged with, which we refer to as “member engagement history.”<br>
+</p><p>One of our most important discoveries came from experimenting with numerical features. Initially, we passed raw engagement counts as raw unprocessed features, so the model treated them just like any other text tokens. For example: a post with 12,345 views would simply appear as “views:12345” in the prompt. The model treated these digits just like any other text token, resulting in sub-par performance, as we observed near zero correlation (-0.004) between item popularity counts and the cosine similarly scores between member and item embeddings. This was alarming because item popularity is such a strong relevance signal: posts that many people find valuable are more likely to be found as such to any given member.<br>
+</p><p>To overcome this problem, we took a different approach by breaking these counts into percentile buckets and then wrapped them with special tokens so that the model can distinguish them from unstructured text tokens. This turned “views:12345” into &lt;view_percentile&gt;71&lt;/view_percentile&gt;,” indicating that this post is in the 71st percentile of view counts. The model could then learn stable representations for low popularity (0-20%), average (40-60%), high (90%+).<br>
+</p><p>With values between 1-100, most percentiles tokenize as a single token or at most two tokens. This aligns with how <a rel="" href="https://arxiv.org/pdf/2407.21783" target="_self">tokenizer</a> works by representing counts as single tokens, the model encodes them meaningfully in embeddings. A percentile of "71" becomes a single token, making it easier for the model to learn that this token indicates "above average” popularity. The correlation between popularity features and embedding similarity jumped 30x, while perhaps more importantly - recall@10 improved by 15%, suggesting that better feature encoding translates directly to better retrieval quality. Naturally, we applied the same strategy to other numerical features, such as engagement rates, recency signals, affinity scores, etc.&nbsp;<br>
+</p><p><strong>Key engineering insight</strong>: LLMs don’t inherently understand magnitude, so raw numerical features tokenize poorly and lose ordinal meaning. Converting continuous values to percentile buckets wrapped in special tokens gives the model a stable, learnable vocabulary for quantity.</p><h3>Training dual encoders at scale</h3><p>We distilled and fine-tuned a LLM using millions of member-to-item pairs from Feed engagement data. The dual encoder <a rel="" href="https://arxiv.org/pdf/2004.04906" target="_self">architecture</a> uses a LLM to process both the member and item prompts, and in return it generates embeddings that are compared via cosine similarity. We optimized for retrieval using <a rel="" href="https://arxiv.org/pdf/1807.03748" target="_self">InfoNCE loss</a> with sophisticated negative sampling. Each <em>positive</em> member-item pair is contrasted against two types of negatives: easy and hard.</p>
+    </div>  
+  
+      </div>
+      <div id class="component component-standaloneImage" data-component-type="standaloneImage">
+        
+
+        
+
+    <div class="standalone-image-component standalone-image-component--original-width">
+        <figure>
+          <img class="standalone-image-component__image" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 1920px" data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQEPsH9jYtazpQ/croft-frontend-shrinkToFit1024/B4DZzek3vHKEAc-/0/1773260734048?e=2147483647&amp;v=beta&amp;t=J6U9oPk37TpQPytL32GPnZNoQ6W14SPNOpj2JRvPmIw" alt="Dual encoder architecture utilizing a shared LLM for text-based retrieval">
+            <figcaption class="t-16 t-black--light standalone-image-component__caption">Figure 2: Dual encoder architecture utilizing a shared LLM for text-based retrieval</figcaption>
+        </figure>
+    </div>
+  
+      </div>
+      <div id class="component component-richText" data-component-type="richText">
+        
+
+        
+    <div class="rich-text global-paragraph-style--reader">
+      <p><strong>Easy negatives</strong> are randomly sampled posts that weren't shown to this member; these provide weak but stable contrastive signals. <strong>Hard negatives</strong> are posts that were actually impressed to the member but received no engagement, which turned out to be challenging cases where the model must learn nuanced distinctions between "relevant but not quite right" and "genuinely valuable." Adding just <a rel="" href="https://arxiv.org/pdf/2510.14223" target="_self">two hard negatives</a> per member improved recall by +3.6%, which is a significant gain from a simple change.</p>
+    </div>  
+  
+      </div>
+      <div id class="component component-htmlTable" data-component-type="htmlTable">
+        
+
+        
+
+    <div class="html-table__container" data-html-table>
+<!---->      <table class="table--full-width"><tbody><tr><td><strong>Hard Negative Configuration</strong></td><td><strong>Recall@10 vs. Baseline</strong></td></tr><tr><td>Easy negatives only</td><td>Baseline</td></tr><tr><td>Easy + 1 hard negative/member</td><td>+2.0%</td></tr><tr><td>Easy + 2 hard negative/member</td><td>+3.6%</td></tr></tbody></table>
+    </div>
+  
+  
+      </div>
+      <div id class="component component-richText" data-component-type="richText">
+        
+
+        
+    <div class="rich-text global-paragraph-style--reader">
+      <p>We also discovered that carefully curating what goes into the member's interaction history is crucial. Initially, we included all impressed posts — both those members engaged with and those they scrolled past. This turned out to not only hurt model performance, but also was a lot more expensive in terms of compute capacity, since GPU compute is quadratically proportional to context length. When we filtered to include only posts that received <em>positive</em> engagement, the model learned much more effectively.&nbsp;</p><p>In our production configuration with 8 H100 GPUs for training, the positives-only approach enabled:</p><ul><li>37% reduction in per-sequence memory footprint at equivalent history depth</li><li>Ability to process 40% more training sequences per batch given fixed GPU memory</li><li>2.6× faster training iteration due to reduced sequence length and improved batching efficiency</li></ul><p>These efficiency gains compound: faster training enables more experimentation, more experimentation enables better hyperparameter tuning, and better tuning enables better final models. The positives-only insight thus contributed both directly (better signal quality) and indirectly (more efficient experimentation) to our final model quality. Furthermore, the positives-only approach with the same context budget uses significantly less GPU memory, while achieving better recall.</p><p><strong>Key engineering insight: </strong>The model learns better from understanding what you chose to engage with than from the full set of what you were shown. Hard negatives matter more, while a curated training signal beats scaling it. When a single change improves signal quality and reduces compute cost, the gains compound multiplicatively, so consider prioritizing those changes first.</p><p><strong>What this means for your Feed experience</strong>: If you've spent the week engaging with posts about hospital operations, then like an article about cybersecurity risk, the system evaluates both your interest in operational responsibilities and your concern about digital infrastructure. The next post you see might be about “protecting patient data at scale,” connecting both threads in a way that keyword matching never could.</p><h3>Online serving: freshness at scale</h3><p>The embedding approach enables a powerful production architecture. We maintain three nearline pipelines running continuously:</p><ol><li><strong>Prompt generation</strong> captures what’s happening on LinkedIn as it unfolds in near-realtime such as item creations, updates, and member activities. When a post is published or gains engagement, we update its <em>item</em> prompt to reflect the new state. When you update your profile or engage with content, we update your <em>member</em> prompt to reflect your evolving interests. These prompts are pushed to key-value stores for online access during retrieval, and simultaneously sent to a nearline stream processor for generating embeddings. The entire process happens within minutes, ensuring that what you see reflects the latest activity across the platform.</li><li><strong>Embedding generation</strong> feeds these fresh prompts through LLM inference servers running on clusters of GPUs. We batch updates in configurable time windows, trading off GPU efficiency against embedding freshness. For new posts, we generate embeddings in near-real time. For existing posts gaining engagement, we dynamically refresh embeddings, ensuring popularity signals stay current.</li><li><strong>GPU-accelerated indexing</strong> ingests item embeddings into a specialized index optimized for exhaustive nearest neighbor search on GPUs. When you open your Feed, we fetch your member embedding and run k-nearest-neighbor search against this index, retrieving the top candidates in sub-50ms despite the index containing millions of posts. This architecture achieves what initially seemed contradictory: sub-second retrieval latency serving thousands of queries per second while maintaining embeddings fresh enough to capture trending content and your evolving interests throughout the day.</li></ol><p><strong>Key engineering insight</strong>: Freshness and latency are not inherently at odds. Decoupling the system into nearline pipelines (prompt generation, embedding inference, and index updates) lets each stage optimize independently for its own latency-throughput tradeoff while keeping the end-to-end system fresh within minutes.</p><p><strong>What does this look like in practice</strong>: When industry news breaks and relevant posts start getting traction, you see them within minutes, not hours. When you engage with content signaling a new professional interest, subsequent Feed visits reflect that updated understanding almost immediately. The system feels responsive because it is continuously updating its understanding of both content and member interests.</p><h3>Consolidating complexity</h3><p>The impact of this unified retrieval system extends beyond quality metrics. By replacing multiple separate retrieval sources with a single embedding-based approach, we cut down engineering complexity. Teams can now iterate on retrieval quality by improving the embeddings through better prompts, training objectives, or model architectures, rather than optimizing heterogeneous systems independently.</p><p>This simplification also benefits the ranking layer. Instead of receiving candidates from disparate sources with different biases and quality profiles, ranking receives a coherent set of candidates all selected through semantic similarity. This makes ranking's job easier and its optimizations more effective.<br>
+</p><h2>Ranking: understanding your professional journey</h2><p>While retrieval determines which posts reach the ranking stage, ranking determines what a member actually sees in their Feed. Traditional ranking models evaluate each impression independently: given a member and a post, predict the likelihood of various engagement actions. This approach works but misses something fundamental: how you engage with content isn't random, rather it follows patterns that emerge from your professional journey.</p><p>So we built a <a rel="" href="https://www.arxiv.org/pdf/2602.12354" target="_self">Generative Recommender</a> (GR) model for LinkedIn’s Feed that reimagines ranking by treating your feed interaction history as a sequence - a professional story told through the posts you've engaged with over time. Instead of scoring each post in isolation, GR processes more than a thousand of your historical interactions to understand temporal patterns and long-term interests. As with retrieval, the ranking model relies on professional signals and engagement patterns, never demographic attributes, and is regularly audited for equitable treatment across our member base.</p><p><strong>The real-world difference in your Feed</strong>: When you engage with a post about machine learning on Monday, then interact with distributed systems content on Tuesday, and open LinkedIn again on Wednesday, our model understands these aren't random events. It's the natural continuation of a learning journey. Traditional models see three independent decisions; a sequential model understands the trajectory.</p><p>For newer members, GR sequential learning means the system gets smarter with every interaction. Your first few engagements on LinkedIn immediately start shaping your Feed, helping you discover relevant content and communities faster than conventional approaches that require extensive interaction history to make good predictions.</p><p><strong>Key engineering insigh</strong>t: Treating interactions as an ordered sequence rather than independent events lets the model capture trajectory, not just preference. This is especially high-leverage for sparse users: a sequential model extracts more signal from fewer interactions than a pointwise model ever can.</p><h3>Teaching transformers to recommend</h3><p>The GR model uses industry leading transformer architecture with causal attention, processing your posts chronologically alongside your actions on each post. We capture rich features such as viewer information (profile, headline, company, industry), content embeddings, engagement signals, and post metadata, while your actions (long dwells, likes, comments, shares) are embedded and interleaved with post representations, creating a unified sequence that captures both what you saw and how you engaged.</p><p>These interleaved post-action pairs flow through multiple transformer layers with causal attention, meaning each position can only attend to previous positions-mimicking the actual temporal flow of how you experienced content. The transformer's self-attention mechanism allows the model to weigh different parts of your history based on relevance: recent posts might matter more for predicting immediate interests, but posts from two weeks ago about a specific technology might suddenly become relevant if recent activity suggests renewed interest in that area.</p><p>After the transformer layer, we employ a technique called <em>late fusion</em>, where we concatenate the transformer output with per-timestep context features such as device type, member profile embeddings, and aggregated count/affinity features. This fused representation is then processed by a Multi-gate Mixture-of-Experts (<a rel="" href="https://dl.acm.org/doi/pdf/10.1145/3219819.3220007" target="_self">MMoE</a>) prediction head, with shared DCNv2 experts gated per task. Because the transformer has already captured feature interactions through self-attention, the head's bottleneck shifts to task-specific routing: passive tasks (click, skip, long-dwell) and active tasks (like, comment, share) get specialized gating, while sharing the same powerful sequential representations.</p><p>Although sequential recommenders may work well without count features in some scenarios, we found them to be still very effective for our use case. Not only did they allow us to keep the sequence length under control, they were also very effective at capturing the viewer’s affinity to other actors. Including these features in the sequence pathway would inflate computational cost without clear benefit, so by fusing them after sequence processing, we get the best of both worlds: rich sequential understanding plus important contextual signals that drive relevance.</p><p><strong>Key engineering insigh</strong>t: Not every feature benefits from <em>full</em> self-attention. Late fusion, injecting count and affinity signals after the transformer, avoids quadratic cost inflation on features whose value comes from independent signal strength, not sequential interaction. Place features where they pay for themselves computationally.</p>
+    </div>  
+  
+      </div>
+      <div id class="component component-standaloneImage" data-component-type="standaloneImage">
+        
+
+        
+
+    <div class="standalone-image-component standalone-image-component--original-width">
+        <figure>
+          <img class="standalone-image-component__image" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 1920px" data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQFP3fNSZVnQ6Q/croft-frontend-shrinkToFit1920/B4DZzeLnJMI4AU-/0/1773254112668?e=2147483647&amp;v=beta&amp;t=Cu8U7DPncD2fjQpZ89gpwkwOGPX2dFmhFZYOTMb5OJs" alt="GR online inference at scale">
+            <figcaption class="t-16 t-black--light standalone-image-component__caption">Figure 3: GR online inference at scale</figcaption>
+        </figure>
+    </div>
+  
+      </div>
+      <div id class="component component-richText" data-component-type="richText">
+        
+
+        
+    <div class="rich-text global-paragraph-style--reader">
+      <p><strong>What you’ll notice when scrolling</strong>: The posts you see aren't just "relevant to your profile," rather they reflect where your professional interests are heading based on recent activity. If you've been exploring a new area, the Feed leans into that exploration, surfacing progressively deeper content. If your interests shift, the model adapts within the same session, making the Feed feel dynamic and responsive to your current mindset.</p><h2>Engineering for production scale</h2><p>The most sophisticated models are useless if they can't serve real traffic. Our third major innovation addresses a fundamental challenge: how do you deploy transformer models requiring massive GPU resources at LinkedIn's scale while maintaining millisecond latencies?</p><h3>The GPU economics challenge</h3><p>Our historical ranking models ran on CPUs, leveraging decades of optimization for dense layer computations. Transformers are fundamentally different. The self-attention scales quadratically with sequence length, and the massive parameter counts (billions) require high-bandwidth memory only available on GPUs. But GPUs are expensive, and cost-per-inference becomes critical at our scale.</p><p>For you as a member, this isn't just an infrastructure detail - it determines whether we can afford to give everyone the benefit of sophisticated AI models, or only serve them to high-engagement users. Our goal: make state of the art models economically viable at scale, ensuring every professional gets the best possible experience.</p><h4>Training</h4><p>Training sequential models on millions of member histories, each containing hundreds or thousands of interactions, generates enormous computational demands. We invested heavily in training infrastructure to make this practical.</p><ul><li>A custom C++ data loader eliminates Python's multiprocessing overhead by fusing padding, batching, and packing operations at the native code level, reducing training step time substantially. Custom CUDA kernels for multi-label AUC computation drop metric calculation time from being a significant bottleneck to negligible overhead. Fused optimizer implementations reduce gradient descent step time by eliminating redundant GPU synchronizations.<br>
+</li><li>For evaluation, we parallelized across all checkpoints simultaneously rather than serializing evaluation runs. This fully utilizes GPU memory and substantially reduces overall pipeline time, enabling faster iteration on model architectures and training strategies.</li></ul><p>These optimizations collectively make the difference between "interesting research idea" and "production-grade system." Without them, training times would be prohibitively expensive and iteration cycles would be too slow for rapid experimentation.</p><h4>Serving</h4><p>The sequential architecture presents serving challenges. Processing 1,000+ historical interactions through multiple transformer layers requires substantial computation-far more than traditional point-wise ranking models. Meeting our sub-second latency requirement demanded custom infrastructure.</p><ul><li>Disaggregated architecture that separates CPU-bound feature processing from GPU-heavy model inference.</li><li>Shared context batching approach computing the history representation once, then scoring all candidates in parallel using custom attention masks. Custom attention kernels logic optimized for our specific use case.&nbsp;</li><li>PyTorch-native inference serving stack with I/O and compute optimizations achieved through zero-copy data movement, columnar layouts, and SIMD vectorization, enabling thousands of operations per second and significantly boosting production throughput.</li><li>Optimized attention computation with GRMIS (Generative Recommender Multi-Item Scoring), a custom <a rel="" href="https://arxiv.org/pdf/2205.14135" target="_self">Flash Attention</a> variant that natively supports our attention pattern, delivering an additional 2× speedup over PyTorch's standard scaled dot-product attention implementation.</li></ul><p><strong>Key engineering insight:</strong> The bottleneck is rarely the model architecture, it's everything around it. On the training side, consider optimizing the scaffolding before scaling the compute. On the serving side, look for problem-specific invariants before reaching for generic compression. Invest in infrastructure that accelerates iteration; production efficiency comes from specialization.</p><p>All of these achievements serve a single purpose: delivering a smarter, faster, more responsive Feed without you ever noticing the complexity underneath. The models are more sophisticated than ever, yet your experience remains seamless-content loads instantly, recommendations feel more relevant, and trending conversations reach you while they still matter.</p>
+    </div>  
+  
+      </div>
+      <div id class="component component-standaloneImage" data-component-type="standaloneImage">
+        
+
+        
+
+    <div class="standalone-image-component standalone-image-component--content-width">
+        <figure>
+          <img class="standalone-image-component__image" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 1920px" data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQFgEOkqGOPN4g/croft-frontend-shrinkToFit1920/B4DZzebESuIcAU-/0/1773258164232?e=2147483647&amp;v=beta&amp;t=B_CT9LPcZJOqt4sUqzmc-Bp9U3Mv03IS1HFk480IFOk" alt="GR infrastructure stack">
+            <figcaption class="t-16 t-black--light standalone-image-component__caption">Figure 4: GR infrastructure stack</figcaption>
+        </figure>
+    </div>
+  
+      </div>
+      <div id class="component component-richText" data-component-type="richText">
+        
+
+        
+    <div class="rich-text global-paragraph-style--reader">
+      <h2>Conclusion</h2><p>When you open LinkedIn tomorrow and find that perfect post about a topic you care about - perhaps from someone outside your network, but whose expertise is exactly what you need - that's the result of transformer models processing thousands of interactions, embeddings learned from millions of examples, and systems optimized to serve predictions in milliseconds.</p><p>The Feed you see today is smarter, more personal, and more relevant than ever. These systems represent more than incremental improvements, moreso they demonstrate significant evolution in how we approach building recommendation systems at scale, combining the semantic understanding of large language models with production-grade engineering to deliver better experiences for professionals worldwide.</p><p>We're excited about where this technology can take us next, and we're committed to continuing to innovate on behalf of the 1.3 billion professionals who rely on LinkedIn every day.</p><h2>Acknowledgements</h2><p>Special thanks to the many teams across AI Modeling, Product Engineering and Infra, who dreamt big and pushed the boundaries daily to turn this vision a reality! Bravo!</p>
+    </div>  
+  
+      </div>
+      <div id class="component component-postList" data-component-type="postList">
+        
+
+        
+
+    <section id="postList0FocusPoint" class="component__content-container list-layout" data-post-list>
+        <section class="simple-topic-list">
+          <p class="t-14 t-bold">Topics:
+              <a class="simple-topic-list__topic" href="https://www.linkedin.com/blog/engineering/feed">
+                Feed
+              </a>
+              <a class="simple-topic-list__topic" href="https://www.linkedin.com/blog/engineering/ai">
+                AI
+              </a>
+              <a class="simple-topic-list__topic" href="https://www.linkedin.com/blog/engineering/artificial-intelligence">
+                Artificial intelligence
+              </a>
+              <a class="simple-topic-list__topic" href="https://www.linkedin.com/blog/engineering/member-customer-experience">
+                Member/Customer Experience
+              </a>
+          </p>
+        </section>
+
+<!---->
+        <section class="list-layout__headline-container">
+          
+
+        <p class="list-layout__headline t-32 t-sans">Related articles</p>
+        
+          
+
+<!---->  
+        </section>
+
+        <ul class="list-layout__posts">
+              
+
+    <li class="post-list__item list-post">
+      <div class="list-post__content-container">
+          <p class="list-post__content-container__topic">
+            <a class="t-14 t-bold" href="https://www.linkedin.com/blog/engineering/infrastructure">
+              Infrastructure
+            </a>
+          </p>
+
+        <div class="list-post__content-container__title">
+          <a class="list-post__link t-20 t-black" href="https://www.linkedin.com/blog/engineering/infrastructure/infrastructure-efficiency-how-a-classic-math-problem-helped-reduced-our-capacity-buffers">
+            Infrastructure efficiency: How a classic math problem helped r...
+          </a>
+        </div>
+
+        <div class="list-post__content-container__byline">
+              <p class="list-post__content-container__author t-14 t-bold t-black">
+                  Rahul Yadav
+              </p>
+<!---->
+            <p class="list-post__content-container__date t-14 t-black--light">
+              Sep 14, 2026
+            </p>
+        </div>
+      </div>
+
+      <div class="list-post__image-container">
+        <figure class="post__image-figure">
+          
+
+        <img class="post__image" alt data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQEu0tMuh9OPXA/croft-frontend-shrinkToFit600/B4DaCRRmPgHcAU-/0/1789143705725?e=2147483647&amp;v=beta&amp;t=EgpkoP6MZtAtS_NIW58yCqcXOzOB_yzvmoYJRlLpqIU" data-ghost-url="https://static.licdn.com/aero-v1/sc/h/8pouyb1ly746xtru0x7p2axm0" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 480px">
+  
+        </figure>
+      </div>
+    </li>
+  
+              
+
+    <li class="post-list__item list-post">
+      <div class="list-post__content-container">
+          <p class="list-post__content-container__topic">
+            <a class="t-14 t-bold" href="https://www.linkedin.com/blog/engineering/culture">
+              Culture
+            </a>
+          </p>
+
+        <div class="list-post__content-container__title">
+          <a class="list-post__link t-20 t-black" href="https://www.linkedin.com/blog/engineering/culture/announcing-our-linkedin-cornell-2026-grant-recipients">
+            Announcing Our LinkedIn-Cornell 2026 Grant Recipients
+          </a>
+        </div>
+
+        <div class="list-post__content-container__byline">
+              <p class="list-post__content-container__author t-14 t-bold t-black">
+                  Balaji Krishnapuram
+              </p>
+
+            <p class="list-post__content-container__date t-14 t-black--light">
+              Sep 2, 2026
+            </p>
+        </div>
+      </div>
+
+      <div class="list-post__image-container">
+        <figure class="post__image-figure">
+          
+
+        <img class="post__image" alt data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQH8YG6ibq_vrQ/croft-frontend-shrinkToFit1920/B4DaBj_ohcJcAM-/0/1788384021549?e=2147483647&amp;v=beta&amp;t=5_MlFJRZVQ2EGZXXiCR5VAgUDLrzaNMliKsLpp3EH3A" data-ghost-url="https://static.licdn.com/aero-v1/sc/h/8pouyb1ly746xtru0x7p2axm0" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 480px">
+  
+        </figure>
+      </div>
+    </li>
+  
+              
+
+    <li class="post-list__item list-post">
+      <div class="list-post__content-container">
+          <p class="list-post__content-container__topic">
+            <a class="t-14 t-bold" href="https://www.linkedin.com/blog/engineering/member-customer-experience">
+              Member/Customer Experience
+            </a>
+          </p>
+
+        <div class="list-post__content-container__title">
+          <a class="list-post__link t-20 t-black" href="https://www.linkedin.com/blog/engineering/member-customer-experience/building-linkedin-premium-all-in-one-unified-ai-powered-workflows-for-small-businesses">
+            Building LinkedIn Premium All‑in‑One: Unified AI‑Powered Workf...
+          </a>
+        </div>
+
+        <div class="list-post__content-container__byline">
+              <p class="list-post__content-container__author t-14 t-bold t-black">
+                  Vasudeva Nagaraja
+              </p>
+<!----><!---->
+            <p class="list-post__content-container__date t-14 t-black--light">
+              Aug 27, 2026
+            </p>
+        </div>
+      </div>
+
+      <div class="list-post__image-container">
+        <figure class="post__image-figure">
+          
+
+        <img class="post__image" alt data-delayed-url="https://media.licdn.com/dms/image/v2/D4D08AQGoxXvYnSJRjg/croft-frontend-shrinkToFit767/B4DaAfwmEtIQAI-/0/1787239228531?e=2147483647&amp;v=beta&amp;t=9IYVflgtlZfN-U_30IJdC3Oauua-ujVHboifRLyIn5w" data-ghost-url="https://static.licdn.com/aero-v1/sc/h/8pouyb1ly746xtru0x7p2axm0" sizes="(max-width: 480px) 480px, (max-width: 767px) 767px, (max-width: 1024px) 1024px, 480px">
+  
+        </figure>
+      </div>
+    </li>
+  
+        </ul>
+
+<!---->    </section>
+  
+  
+      </div>
+  
+
+<!---->    </section>  
+        </div>
+
+        <script src="https://static.licdn.com/aero-v1/sc/h/8hfbuq1ftcvnnx4dd5067pi0t" async></script>
+        <script src="https://static.licdn.com/aero-v1/sc/h/bknx7jzs0ylu540sn4wuo6bue" async></script>
+        <script src="https://static.licdn.com/aero-v1/sc/h/egqq1vs0784qd3h3801e2w9lr" async></script>
+      
+        </main>
+
+        
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    <footer class="li-footer bg-transparent w-full ">
+      <ul class="li-footer__list flex flex-wrap flex-row items-start justify-start w-full h-auto min-h-[50px] my-[0px] mx-auto py-3 px-2 papabear:p-0">
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        
+          <span class="sr-only">LinkedIn</span>
+          <icon class="li-footer__copy-logo text-color-logo-brand-alt inline-block self-center h-[14px] w-[56px] mr-1" data-delayed-url="https://static.licdn.com/aero-v1/sc/h/5mebydpuuijm3uhv1q375inqh"></icon>
+          <span class="li-footer__copy-text flex items-center">&copy; 2026</span>
+        
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://about.linkedin.com?trk=content_footer-about" data-tracking-control-name="content_footer-about" data-tracking-will-navigate>
+          
+          About
+        
+        </a>
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/accessibility?trk=content_footer-accessibility" data-tracking-control-name="content_footer-accessibility" data-tracking-will-navigate>
+          
+          Accessibility
+        
+        </a>
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/legal/user-agreement?trk=content_footer-user-agreement" data-tracking-control-name="content_footer-user-agreement" data-tracking-will-navigate>
+          
+          User Agreement
+        
+        </a>
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/legal/privacy-policy?trk=content_footer-privacy-policy" data-tracking-control-name="content_footer-privacy-policy" data-tracking-will-navigate>
+          
+          Privacy Policy
+        
+        </a>
+  </li>
+
+<!---->        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/legal/cookie-policy?trk=content_footer-cookie-policy" data-tracking-control-name="content_footer-cookie-policy" data-tracking-will-navigate>
+          
+          Cookie Policy
+        
+        </a>
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/legal/copyright-policy?trk=content_footer-copyright-policy" data-tracking-control-name="content_footer-copyright-policy" data-tracking-will-navigate>
+          
+          Copyright Policy
+        
+        </a>
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://brand.linkedin.com/policies?trk=content_footer-brand-policy" data-tracking-control-name="content_footer-brand-policy" data-tracking-will-navigate>
+          
+          Brand Policy
+        
+        </a>
+  </li>
+
+          
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/psettings/guest-controls?trk=content_footer-guest-controls" data-tracking-control-name="content_footer-guest-controls" data-tracking-will-navigate>
+          
+            Guest Controls
+          
+        </a>
+  </li>
+
+        
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        <a class="li-footer__item-link flex items-center font-sans text-xs font-bold text-color-text-solid-secondary hover:text-color-link-hover focus:text-color-link-focus" href="https://www.linkedin.com/help/linkedin/answer/34593?trk=content_footer-community-guide" data-tracking-control-name="content_footer-community-guide" data-tracking-will-navigate>
+          
+          Community Guidelines
+        
+        </a>
+  </li>
+
+        
+<!---->
+          
+          
+  <li class="li-footer__item font-sans text-xs text-color-text-solid-secondary flex flex-shrink-0 justify-start p-1 relative w-50% papabear:justify-center papabear:w-auto">
+        
+              
+
+    
+    
+
+    
+
+    
+
+    <div class="collapsible-dropdown collapsible-dropdown--footer collapsible-dropdown--up flex items-center relative hyphens-auto language-selector z-2">
+<!---->
+        <ul class="collapsible-dropdown__list hidden container-raised absolute w-auto overflow-y-auto flex-col items-stretch z-[9999] bottom-[100%] top-auto" role="menu" tabindex="-1">
+          
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="العربية (Arabic)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-ar_AE" data-locale="ar_AE" role="menuitem" lang="ar_AE">
+                العربية (Arabic)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="বাংলা (Bangla)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-bn_IN" data-locale="bn_IN" role="menuitem" lang="bn_IN">
+                বাংলা (Bangla)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Čeština (Czech)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-cs_CZ" data-locale="cs_CZ" role="menuitem" lang="cs_CZ">
+                Čeština (Czech)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Dansk (Danish)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-da_DK" data-locale="da_DK" role="menuitem" lang="da_DK">
+                Dansk (Danish)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Deutsch (German)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-de_DE" data-locale="de_DE" role="menuitem" lang="de_DE">
+                Deutsch (German)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Ελληνικά (Greek)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-el_GR" data-locale="el_GR" role="menuitem" lang="el_GR">
+                Ελληνικά (Greek)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="English (English) selected" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link--selected" data-tracking-control-name="language-selector-en_US" data-locale="en_US" role="menuitem" lang="en_US">
+                <strong>English (English)</strong>
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Español (Spanish)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-es_ES" data-locale="es_ES" role="menuitem" lang="es_ES">
+                Español (Spanish)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="فارسی (Persian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-fa_IR" data-locale="fa_IR" role="menuitem" lang="fa_IR">
+                فارسی (Persian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Suomi (Finnish)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-fi_FI" data-locale="fi_FI" role="menuitem" lang="fi_FI">
+                Suomi (Finnish)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Français (French)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-fr_FR" data-locale="fr_FR" role="menuitem" lang="fr_FR">
+                Français (French)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="हिंदी (Hindi)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-hi_IN" data-locale="hi_IN" role="menuitem" lang="hi_IN">
+                हिंदी (Hindi)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Magyar (Hungarian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-hu_HU" data-locale="hu_HU" role="menuitem" lang="hu_HU">
+                Magyar (Hungarian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Bahasa Indonesia (Indonesian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-in_ID" data-locale="in_ID" role="menuitem" lang="in_ID">
+                Bahasa Indonesia (Indonesian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Italiano (Italian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-it_IT" data-locale="it_IT" role="menuitem" lang="it_IT">
+                Italiano (Italian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="עברית (Hebrew)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-iw_IL" data-locale="iw_IL" role="menuitem" lang="iw_IL">
+                עברית (Hebrew)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="日本語 (Japanese)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-ja_JP" data-locale="ja_JP" role="menuitem" lang="ja_JP">
+                日本語 (Japanese)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="한국어 (Korean)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-ko_KR" data-locale="ko_KR" role="menuitem" lang="ko_KR">
+                한국어 (Korean)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="मराठी (Marathi)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-mr_IN" data-locale="mr_IN" role="menuitem" lang="mr_IN">
+                मराठी (Marathi)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Bahasa Malaysia (Malay)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-ms_MY" data-locale="ms_MY" role="menuitem" lang="ms_MY">
+                Bahasa Malaysia (Malay)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Nederlands (Dutch)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-nl_NL" data-locale="nl_NL" role="menuitem" lang="nl_NL">
+                Nederlands (Dutch)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Norsk (Norwegian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-no_NO" data-locale="no_NO" role="menuitem" lang="no_NO">
+                Norsk (Norwegian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="ਪੰਜਾਬੀ (Punjabi)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-pa_IN" data-locale="pa_IN" role="menuitem" lang="pa_IN">
+                ਪੰਜਾਬੀ (Punjabi)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Polski (Polish)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-pl_PL" data-locale="pl_PL" role="menuitem" lang="pl_PL">
+                Polski (Polish)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Português (Portuguese)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-pt_BR" data-locale="pt_BR" role="menuitem" lang="pt_BR">
+                Português (Portuguese)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Română (Romanian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-ro_RO" data-locale="ro_RO" role="menuitem" lang="ro_RO">
+                Română (Romanian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Русский (Russian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-ru_RU" data-locale="ru_RU" role="menuitem" lang="ru_RU">
+                Русский (Russian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Svenska (Swedish)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-sv_SE" data-locale="sv_SE" role="menuitem" lang="sv_SE">
+                Svenska (Swedish)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="తెలుగు (Telugu)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-te_IN" data-locale="te_IN" role="menuitem" lang="te_IN">
+                తెలుగు (Telugu)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="ภาษาไทย (Thai)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-th_TH" data-locale="th_TH" role="menuitem" lang="th_TH">
+                ภาษาไทย (Thai)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Tagalog (Tagalog)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-tl_PH" data-locale="tl_PH" role="menuitem" lang="tl_PH">
+                Tagalog (Tagalog)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Türkçe (Turkish)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-tr_TR" data-locale="tr_TR" role="menuitem" lang="tr_TR">
+                Türkçe (Turkish)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Українська (Ukrainian)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-uk_UA" data-locale="uk_UA" role="menuitem" lang="uk_UA">
+                Українська (Ukrainian)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="Tiếng Việt (Vietnamese)" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-vi_VN" data-locale="vi_VN" role="menuitem" lang="vi_VN">
+                Tiếng Việt (Vietnamese)
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="简体中文 (Chinese (Simplified))" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-zh_CN" data-locale="zh_CN" role="menuitem" lang="zh_CN">
+                简体中文 (Chinese (Simplified))
+            </button>
+          </li>
+          <li class="language-selector__item" role="presentation">
+            <!-- Adding aria-label to both the li and the button because screen reader focus goes to button on desktop and li on mobile-->
+            <button aria-label="正體中文 (Chinese (Traditional))" class="font-sans text-xs link block py-[5px] px-2 w-full hover:cursor-pointer hover:bg-color-action hover:text-color-text-on-dark focus:bg-color-action focus:text-color-text-on-dark
+                language-selector__link !font-regular" data-tracking-control-name="language-selector-zh_TW" data-locale="zh_TW" role="menuitem" lang="zh_TW">
+                正體中文 (Chinese (Traditional))
+            </button>
+          </li>
+<!---->      
+        </ul>
+
+          
+        <button class="language-selector__button select-none relative pr-2 font-sans text-xs font-bold text-color-text-low-emphasis hover:text-color-link-hover hover:cursor-pointer focus:text-color-link-focus focus:outline-dotted focus:outline-1" aria-expanded="false" data-tracking-control-name="footer-lang-dropdown_trigger">
+          <span class="language-selector__label-text mr-0.5 break-words">
+            Language
+          </span>
+          <icon class="language-selector__label-chevron w-2 h-2 absolute top-0 right-0" data-delayed-url="https://static.licdn.com/aero-v1/sc/h/cyolgscd0imw2ldqppkrb84vo"></icon>
+        </button>
+      
+    </div>
+  
+  
+          
+  </li>
+
+      </ul>
+
+<!---->    </footer>
+  
+      
+
+            <script src="https://static.licdn.com/aero-v1/sc/h/e69gtg8c61dzqklxridy0htl9" async></script>
+<!---->          
+          
+<!----><!---->  
+      </body>
+    </html>
+  
+  
+  

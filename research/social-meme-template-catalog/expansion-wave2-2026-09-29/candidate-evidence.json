@@ -1,0 +1,786 @@
+{
+  "blb": {
+    "renderer_id": "blb",
+    "renderer_lines": 2,
+    "proposed_admission": "hold",
+    "admission_rationale": "The failure relationship is useful, but its default human target conflicts with the operator-not-fool rule.",
+    "origin": "Advice-animal macro built around Kyle Craven's school portrait and a run of catastrophically unlucky outcomes.",
+    "source_url": "http://knowyourmeme.com/memes/bad-luck-brian",
+    "semantic_source_url": "https://knowyourmeme.com/memes/bad-luck-brian",
+    "source_file": "raw/blb.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Headache worsens after sleeping, KYM gallery",
+      "Following every protocol then testing positive on vacation, KYM gallery",
+      "Winning a console that immediately fails, KYM gallery"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "The template historically humiliates a named-looking person. Hold until the selector can enforce project or self-directed targets.",
+    "slot_mapping": [
+      {
+        "key": "reasonable_attempt",
+        "role": "Top caption names the normal attempt."
+      },
+      {
+        "key": "unlucky_result",
+        "role": "Bottom caption gives the disproportionate failure."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "hold",
+    "render_file": "rendered/blb.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "box": {
+    "renderer_id": "box",
+    "renderer_lines": 2,
+    "proposed_admission": "rejected",
+    "admission_rationale": "The violence is not incidental to the template's suspense, so it fails the injury and disaster gate.",
+    "origin": "Reaction from the climax of the film Se7en, whose concealed box contains evidence of a murder.",
+    "source_url": "https://screenrant.com/hilarious-se7en-memes/",
+    "semantic_source_url": "https://screenrant.com/hilarious-se7en-memes/",
+    "source_file": "raw/box.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "The original Se7en reveal",
+      "ScreenRant's collection of Se7en caption variants",
+      "Memegen's fixed 'What's in the box!?' rendering"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "The recognizable meaning depends on a violent murder reveal.",
+    "slot_mapping": [
+      {
+        "key": "opaque_package",
+        "role": "Top caption names the package whose contents are unclear."
+      },
+      {
+        "key": "fixed_question",
+        "role": "Bottom caption is the fixed demand to see inside."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "rejected",
+    "render_file": "rendered/box.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "cake": {
+    "renderer_id": "cake",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds broken organizational promises in a workplace-native format.",
+    "origin": "Milton's repeated cake complaint in the 1999 workplace comedy Office Space.",
+    "source_url": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+    "semantic_source_url": "https://www.youtube.com/watch?v=mDOKGa92NRo",
+    "source_file": "raw/cake.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Milton expects birthday cake in the film clip",
+      "The fixed 'I was told there would be cake' catalog render",
+      "Phrase reused for an expected attraction or benefit that never appears"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Fictional workplace character. Keep the target on a missing organizational promise, not employee exclusion.",
+    "slot_mapping": [
+      {
+        "key": "occasion",
+        "role": "Top caption names the event or promise."
+      },
+      {
+        "key": "missing_promise",
+        "role": "Bottom caption begins with the fixed complaint."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/cake.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "disastergirl": {
+    "renderer_id": "disastergirl",
+    "renderer_lines": 2,
+    "proposed_admission": "rejected",
+    "admission_rationale": "Directly conflicts with the catalog's disaster gate.",
+    "origin": "A 2005 photograph of a child watching firefighters conduct a controlled burn, later edited into disaster scenes.",
+    "source_url": "http://knowyourmeme.com/memes/disaster-girl",
+    "semantic_source_url": "https://knowyourmeme.com/memes/disaster-girl",
+    "source_file": "raw/disastergirl.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "The fixed 'just as I planned' fire image",
+      "Edits placing the subject before larger disasters",
+      "KYM's documented 'I told you she was no good' variation"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "The joke depends on fire and implied responsibility for destruction.",
+    "slot_mapping": [
+      {
+        "key": "destructive_result",
+        "role": "Top caption names the destructive result."
+      },
+      {
+        "key": "smug_admission",
+        "role": "Bottom caption implies it was planned."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "rejected",
+    "render_file": "rendered/disastergirl.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "dragon": {
+    "renderer_id": "dragon",
+    "renderer_lines": 1,
+    "proposed_admission": "hold",
+    "admission_rationale": "The impossible-constraints relationship is useful, but the editable bubble is too small at the audited 360px width.",
+    "origin": "An illustrated Tumblr exchange in which a request for a boyfriend is judged less realistic than a dragon.",
+    "source_url": "https://knowyourmeme.com/photos/1052192-tumblr",
+    "semantic_source_url": "https://knowyourmeme.com/photos/1052192-for-christmas-i-want-a-dragon",
+    "source_file": "raw/dragon.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Asking for a boyfriend instead of a dragon, original comic",
+      "Asking two political parties to respect each other, KYM gallery",
+      "Accidentally upgrading to Windows 11, KYM gallery"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Illustrated fictional exchange. Avoid stereotypes about relationships or protected traits.",
+    "slot_mapping": [
+      {
+        "key": "impossible_request",
+        "role": "The editable speech bubble contains the request rejected as unrealistic."
+      }
+    ],
+    "visual_qa": "FAIL: the editable speech bubble remains too small at the audited 360px width, even with a short example.",
+    "final_admission": "hold",
+    "render_file": "rendered/dragon.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "elf": {
+    "renderer_id": "elf",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds blunt evidence-backed contradiction, stronger than Agnes's knowing wink.",
+    "origin": "Buddy confronts a department-store Santa in the 2003 film Elf; the phrase became a reaction to false statements.",
+    "source_url": "http://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+    "semantic_source_url": "https://knowyourmeme.com/memes/you-sit-on-a-throne-of-lies",
+    "source_file": "raw/elf.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Calling clickbait advertising false, KYM gallery",
+      "Rejecting a coach's promise of easy practice, KYM gallery",
+      "Rejecting a professor's promise of an easy final, KYM gallery"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Fictional confrontation. Restrict accusations to substantiated claims or generic/self-directed examples.",
+    "slot_mapping": [
+      {
+        "key": "false_assurance",
+        "role": "Top caption states the contradicted assurance."
+      },
+      {
+        "key": "fixed_rebuke",
+        "role": "Bottom caption preserves the established rebuke."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/elf.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "friends": {
+    "renderer_id": "friends",
+    "renderer_lines": 3,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds asymmetric alignment, a common source of failed internal AI programs.",
+    "origin": "A Star Trek: Voyager exchange in which Tuvok says he and Paris are friends while Paris says they are not.",
+    "source_url": "https://knowyourmeme.com/memes/are-you-two-friends",
+    "semantic_source_url": "https://knowyourmeme.com/memes/are-you-two-friends",
+    "source_file": "raw/friends.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Liberals say yes while leftists say no, KYM",
+      "Paladin says yes while rogue says no, KYM",
+      "Vegetarian says yes while vegan says no, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Fictional dialogue. Use organizational roles, not protected groups or political caricatures.",
+    "slot_mapping": [
+      {
+        "key": "questioner",
+        "role": "First overlay labels the person asking about the relationship."
+      },
+      {
+        "key": "no_party",
+        "role": "Second overlay labels the left character, who answers no."
+      },
+      {
+        "key": "yes_party",
+        "role": "Third overlay labels the right character, who answers yes."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/friends.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "headaches": {
+    "renderer_id": "headaches",
+    "renderer_lines": 1,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds a compact way to show cumulative operational pain.",
+    "origin": "A headache-location infographic turned into a four-panel comparison with a fully red final head.",
+    "source_url": "https://knowyourmeme.com/memes/types-of-headaches",
+    "semantic_source_url": "https://knowyourmeme.com/memes/types-of-headaches",
+    "source_file": "raw/headaches.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Living in the UK as the worst headache, KYM",
+      "Needing to find the Avatar, KYM",
+      "Minor criticism as the worst headache, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Medical imagery, but no victim or injury. Keep the comparison figurative and work-related.",
+    "slot_mapping": [
+      {
+        "key": "worst_pain",
+        "role": "The editable fourth label names the outsized operational pain."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/headaches.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "interesting": {
+    "renderer_id": "interesting",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds a strong fixed syntax for revealing an uncommon but consistent operating habit.",
+    "origin": "Advice-animal macro based on Jonathan Goldsmith's Dos Equis advertisement and its 'I don't always ... but when I do' line.",
+    "source_url": "http://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+    "semantic_source_url": "https://knowyourmeme.com/memes/the-most-interesting-man-in-the-world",
+    "source_file": "raw/interesting.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Checking the time twice because it was forgotten, MemeFact",
+      "Carrying groceries until keys are inaccessible, MemeFact",
+      "Taking out recycling and looking like a heavy drinker, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Commercial character and actor likeness. Avoid implying endorsement or copying beer branding into the caption.",
+    "slot_mapping": [
+      {
+        "key": "rare_behavior",
+        "role": "Top caption begins the fixed rarity setup."
+      },
+      {
+        "key": "distinctive_habit",
+        "role": "Bottom caption completes the fixed exception."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/interesting.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "ive": {
+    "renderer_id": "ive",
+    "renderer_lines": 2,
+    "proposed_admission": "hold",
+    "admission_rationale": "Hold until a cultural source and three documented uses verify the redesign relationship.",
+    "origin": "Memegen attributes the image to Apple's former design chief, but its source points to an Apple biography rather than a cultural-history page.",
+    "source_url": "https://www.apple.com/pr/bios/jonathan-ive.html",
+    "semantic_source_url": "https://www.apple.com/newsroom/",
+    "source_file": "raw/ive.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Memegen's 'we think / you'll love it' render",
+      "Minimal product-copy parody",
+      "Removing a needed feature while presenting it as refinement"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Real identifiable executive. The current evidence does not establish the template's mutation or accepted caption structure.",
+    "slot_mapping": [
+      {
+        "key": "removed_function",
+        "role": "Top caption names what the redesign removed."
+      },
+      {
+        "key": "polished_assurance",
+        "role": "Bottom caption gives the confident product-language reassurance."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "hold",
+    "render_file": "rendered/ive.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "jw": {
+    "renderer_id": "jw",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds dry understatement after a concrete risky decision.",
+    "origin": "Chris Pratt's Jurassic World character reacts to the creation of a new dinosaur in the film's 2014 trailer.",
+    "source_url": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+    "semantic_source_url": "https://www.youtube.com/watch?v=RFinNxS5KN4&t=86",
+    "source_file": "raw/jw.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Creating a new dinosaur, Memegen",
+      "Going to a movie before Black Friday shopping, KYM photo",
+      "Question followed by the fixed understated warning"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Fictional film character. Avoid using it for vague catastrophe predictions.",
+    "slot_mapping": [
+      {
+        "key": "reckless_action",
+        "role": "Top caption asks whether the risky action really happened."
+      },
+      {
+        "key": "fixed_verdict",
+        "role": "Bottom caption is the understated fixed judgment."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/jw.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "khaby-lame": {
+    "renderer_id": "khaby-lame",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds a familiar overengineering-versus-direct-fix relationship.",
+    "origin": "Khaby Lame's 2021 reaction to a contrived pizza life hack, followed by a shrug toward the obvious method.",
+    "source_url": "https://knowyourmeme.com/photos/2132291-khaby-lame-shrug-its-that-simple",
+    "semantic_source_url": "https://knowyourmeme.com/memes/khaby-lame-shrug-its-that-simple",
+    "source_file": "raw/khaby-lame.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Pulling pizza apart instead of using a plastic saver, original",
+      "Simple programming swap, KYM",
+      "Paying workers more instead of debating a labor shortage, KYM gallery"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Real creator likeness. Keep the contrast on methods and never on identity or ability.",
+    "slot_mapping": [
+      {
+        "key": "overcomplicated_method",
+        "role": "Top-left caption names the unnecessary workaround."
+      },
+      {
+        "key": "obvious_method",
+        "role": "Bottom-left caption names the direct alternative indicated by the shrug."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/khaby-lame.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "kramer": {
+    "renderer_id": "kramer",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds symptom-to-unexpected-cause storytelling.",
+    "origin": "A Seinfeld apartment scene whose red light is repeatedly relabeled with strange fictional causes.",
+    "source_url": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+    "semantic_source_url": "https://knowyourmeme.com/memes/kramer-whats-going-on-in-there",
+    "source_file": "raw/kramer.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "A dimensional merge causes the red light, KYM",
+      "Arrakis causes the red light, KYM",
+      "A Balrog causes the red light, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Fictional sitcom scene. Keep explanations about systems, not groups or people.",
+    "slot_mapping": [
+      {
+        "key": "symptom_question",
+        "role": "Top dialogue asks what is causing the visible anomaly."
+      },
+      {
+        "key": "unexpected_cause",
+        "role": "Bottom dialogue gives the specific, surprising cause."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/kramer.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "light": {
+    "renderer_id": "light",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds explicit scope boundaries, a recurring truth in AI pilots.",
+    "origin": "The Lion King scene defining the kingdom and warning Simba away from the shadowy place became a scope and gatekeeping macro.",
+    "source_url": "https://www.youtube.com/watch?v=JawCb15MWLc",
+    "semantic_source_url": "https://knowyourmeme.com/memes/everything-the-light-touches-is",
+    "source_file": "raw/light.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Warning newcomers away from 4chan, early example documented by KYM",
+      "Relabeling the shadowy place as a forbidden fandom, KYM",
+      "Questioning whether the light really covers everything, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Animated fictional characters. Avoid political or protected-group gatekeeping.",
+    "slot_mapping": [
+      {
+        "key": "boundary_question",
+        "role": "First dialogue asks about the conspicuous excluded area."
+      },
+      {
+        "key": "scope_answer",
+        "role": "Second dialogue states that the area is outside the claimed scope."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/light.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "nails": {
+    "renderer_id": "nails",
+    "renderer_lines": 3,
+    "proposed_admission": "hold",
+    "admission_rationale": "Hold until a cultural source establishes familiarity and the three-label relation beyond isolated catalog examples.",
+    "origin": "A photograph cataloged by Memegen, Imgflip, and OldMeme; no reliable cultural-origin account was found.",
+    "source_url": "https://keepmeme.com/meme/when-the-boss-coming-and-you-need-to-pretend-doing-something-hammering-nails-into-the-sand-beach-meme",
+    "semantic_source_url": "https://oldmeme.com/templates/guy-hammering-nails-into-sand/",
+    "source_file": "raw/nails.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Language trying to bound an indescribable universe, Memegen",
+      "Pretending to work when the boss arrives, catalog tag",
+      "Programming data structures trying to capture fluid reality, Reddit description"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "No obvious harmful subject, but the source and established caption relationship remain weakly documented.",
+    "slot_mapping": [
+      {
+        "key": "actor",
+        "role": "First label names who is trying to impose order."
+      },
+      {
+        "key": "method",
+        "role": "Second label names the rigid tool or representation."
+      },
+      {
+        "key": "unstable_medium",
+        "role": "Third label names what cannot hold the imposed boundary."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "hold",
+    "render_file": "rendered/nails.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "philosoraptor": {
+    "renderer_id": "philosoraptor",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds genuine premise-to-paradox wordplay.",
+    "origin": "Advice-animal illustration of a contemplative velociraptor used for absurd philosophical questions and paradoxes.",
+    "source_url": "http://knowyourmeme.com/memes/philosoraptor",
+    "semantic_source_url": "https://knowyourmeme.com/memes/philosoraptor",
+    "source_file": "raw/philosoraptor.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Dropped soap: is the floor clean or soap dirty, KYM",
+      "Expecting the unexpected makes it expected, KYM",
+      "A night guard at Samsung as a Guardian of the Galaxy, MemeFact"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Illustrated animal. Avoid laundering misinformation as a clever question.",
+    "slot_mapping": [
+      {
+        "key": "premise",
+        "role": "Top caption states the familiar premise."
+      },
+      {
+        "key": "paradox_question",
+        "role": "Bottom caption asks the playful consequence."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/philosoraptor.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "spirit": {
+    "renderer_id": "spirit",
+    "renderer_lines": 5,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds an inventory joke that can expose the ingredients of a familiar failure pattern.",
+    "origin": "Edits of Spirit Halloween costume packaging became a format for labeling a character type and listing its recognizable contents.",
+    "source_url": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+    "semantic_source_url": "https://knowyourmeme.com/photos/2466845-fake-spirit-halloween-costumes",
+    "source_file": "raw/spirit.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Random person in direct messages with stock messages, KYM",
+      "Hiring manager costume with impossible candidate requirements, KYM",
+      "Qualified candidate costume listing contradictory requirements, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Corporate parody is acceptable. Avoid protected groups, appearance, or demeaning employee stereotypes.",
+    "slot_mapping": [
+      {
+        "key": "costume_name",
+        "role": "First line names the organizational type on the package."
+      },
+      {
+        "key": "fixed_includes",
+        "role": "Second line preserves the package label."
+      },
+      {
+        "key": "included_one",
+        "role": "Third line is the first concrete included trait."
+      },
+      {
+        "key": "included_two",
+        "role": "Fourth line is the second concrete included trait."
+      },
+      {
+        "key": "included_three",
+        "role": "Fifth line is the third concrete included trait."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/spirit.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "spongebob": {
+    "renderer_id": "spongebob",
+    "renderer_lines": 2,
+    "proposed_admission": "rejected",
+    "admission_rationale": "Conflicts with the operator-not-fool rule and rewards unsupported sneering.",
+    "origin": "A SpongeBob reaction image used specifically to mimic and ridicule another person's statement.",
+    "source_url": "http://knowyourmeme.com/memes/mocking-spongebob",
+    "semantic_source_url": "https://knowyourmeme.com/memes/mocking-spongebob",
+    "source_file": "raw/spongebob.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Repeating a boyfriend's denial in alternating case, MemeFact",
+      "Mocking a warning about calculators, KYM",
+      "Mocking a Star Wars line, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Its established mechanism is humiliation rather than clarification.",
+    "slot_mapping": [
+      {
+        "key": "original_claim",
+        "role": "Top caption quotes the statement."
+      },
+      {
+        "key": "mocked_repeat",
+        "role": "Bottom caption repeats it in alternating case."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "rejected",
+    "render_file": "rendered/spongebob.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "stop": {
+    "renderer_id": "stop",
+    "renderer_lines": 6,
+    "proposed_admission": "hold",
+    "admission_rationale": "Hold pending an exact phone-size render that proves six short lines remain readable without identity jokes.",
+    "origin": "A six-panel SpongeBob exchange about misunderstanding claustrophobia as fear of Santa Claus.",
+    "source_url": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+    "semantic_source_url": "https://knowyourmeme.com/memes/stop-it-patrick-youre-scaring-him",
+    "source_file": "raw/stop.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Claustrophobia misunderstood as fear of Santa, original",
+      "Germaphobia misunderstood as fear of Germany, KYM",
+      "A game role misunderstood as fear of everything, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "The original hinges on fear and the six captions risk unreadable mobile text.",
+    "slot_mapping": [
+      {
+        "key": "self_label",
+        "role": "First dialogue states the condition or role."
+      },
+      {
+        "key": "definition_question",
+        "role": "Second dialogue asks what it means."
+      },
+      {
+        "key": "wrong_definition",
+        "role": "Third dialogue gives the comic misunderstanding."
+      },
+      {
+        "key": "correction",
+        "role": "Fourth dialogue rejects that definition."
+      },
+      {
+        "key": "trigger",
+        "role": "Fifth dialogue performs the misunderstood trigger."
+      },
+      {
+        "key": "fixed_warning",
+        "role": "Sixth dialogue tells Patrick to stop."
+      }
+    ],
+    "visual_qa": "FAIL: six independent dialogue captions are too small to scan at the audited 360px width.",
+    "final_admission": "hold",
+    "render_file": "rendered/stop.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "vince": {
+    "renderer_id": "vince",
+    "renderer_lines": 3,
+    "proposed_admission": "hold",
+    "admission_rationale": "Useful escalation structure, but hold because the recognizable subject now carries distracting safety baggage.",
+    "origin": "Reaction sequence built from WWE footage of Vince McMahon showing escalating amazement.",
+    "source_url": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+    "semantic_source_url": "https://knowyourmeme.com/memes/vince-mcmahon-reaction",
+    "source_file": "raw/vince.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Gas stoves to LCDs to solid-state drives to plasma TVs, KYM",
+      "Tired to warm blanket to cool pillow to rain, KYM",
+      "Delivery speed escalating to immediate store purchase, Memegen"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Real executive likeness. The source footage objectifies a performer, and current allegations create unrelated public-figure baggage.",
+    "slot_mapping": [
+      {
+        "key": "good_option",
+        "role": "First panel labels the good option."
+      },
+      {
+        "key": "better_option",
+        "role": "Second panel labels the stronger option."
+      },
+      {
+        "key": "best_option",
+        "role": "Third panel labels the strongest option."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "hold",
+    "render_file": "rendered/vince.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "whatyear": {
+    "renderer_id": "whatyear",
+    "renderer_lines": 2,
+    "proposed_admission": "active",
+    "admission_rationale": "Adds a concise anachronism reaction well suited to legacy workflows.",
+    "origin": "Robin Williams's newly freed character in Jumanji asks the year after 26 years trapped in the game.",
+    "source_url": "http://knowyourmeme.com/memes/what-year-is-it",
+    "semantic_source_url": "https://knowyourmeme.com/memes/what-year-is-it",
+    "source_file": "raw/whatyear.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "A Bush and Clinton running while Jurassic Park leads the box office, KYM",
+      "Blink-182 and Pokemon returning together, KYM",
+      "Gas below a remembered price, MemeFact"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "Actor likeness. Keep the joke on outdated processes, not the actor or mental state.",
+    "slot_mapping": [
+      {
+        "key": "anachronism",
+        "role": "Top caption names the practice that feels out of time."
+      },
+      {
+        "key": "fixed_question",
+        "role": "Bottom caption preserves the fixed disoriented question."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "active",
+    "render_file": "rendered/whatyear.jpg",
+    "reviewed_at": "2026-09-29"
+  },
+  "wkh": {
+    "renderer_id": "wkh",
+    "renderer_lines": 3,
+    "proposed_admission": "rejected",
+    "admission_rationale": "Fails the campaign's violence and injury gate despite its useful blame-shifting relationship.",
+    "origin": "An Eric Andre Show sketch in which Andre shoots Hannibal Buress and asks who killed him.",
+    "source_url": "https://knowyourmeme.com/memes/who-killed-hannibal",
+    "semantic_source_url": "https://knowyourmeme.com/memes/who-killed-hannibal",
+    "source_file": "raw/wkh.html",
+    "retrieved": "2026-09-29",
+    "representative_uses": [
+      "Schools harm student health then blame video games, MemeFact",
+      "Humanity damages the environment then blames cold weather, KYM",
+      "A meme community ruins its own format then blames newcomers, KYM"
+    ],
+    "examples_file": "raw source page plus preserved renderer and MemeFact snapshots",
+    "rights_status": "fair-use-review",
+    "rights_basis": "No compatible licence or exact-asset permission identified. Catalog access and renderer licensing do not clear the template art.",
+    "safety": "The visible shooting is inseparable from the established self-caused-blame joke.",
+    "slot_mapping": [
+      {
+        "key": "harmed_result",
+        "role": "First label names what the actor damages."
+      },
+      {
+        "key": "responsible_actor",
+        "role": "Second label names the actor causing the damage."
+      },
+      {
+        "key": "false_blame",
+        "role": "Third caption blames someone else."
+      }
+    ],
+    "visual_qa": "PASS: every caption and image role remains readable in the exact 360px contact-sheet tile.",
+    "final_admission": "rejected",
+    "render_file": "rendered/wkh.jpg",
+    "reviewed_at": "2026-09-29"
+  }
+}

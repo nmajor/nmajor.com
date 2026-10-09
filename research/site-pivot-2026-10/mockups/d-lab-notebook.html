@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nick Major</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Permanent+Marker&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdfdf8;--ink:#14213d;--dim:#5c6478;--grid:#e6ecf5;--hl:#fff36b;--g:#1a9e5c;--r:#d7372f;--y:#c98a00}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg) linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 28px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%;background-color:var(--bg);color:var(--ink);font:16px/1.6 'Space Grotesk',sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav b{font-size:20px}nav ul{display:flex;gap:26px;list-style:none;font-weight:500}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;padding:64px 0 48px;align-items:center}
+.label{font-family:'IBM Plex Mono';font-size:13px;color:var(--dim)}
+h1{font-size:70px;line-height:1;font-weight:700;letter-spacing:-.03em;margin:14px 0 20px}
+.mark{background:linear-gradient(100deg,transparent 2%,var(--hl) 4%,var(--hl) 96%,transparent 98%);padding:0 6px}
+.hero p{font-size:19px;color:var(--dim);max-width:560px}
+.scrawl{font-family:'Permanent Marker';color:var(--r);font-size:22px;transform:rotate(-3deg);display:inline-block;margin-top:18px}
+.signup{background:var(--ink);color:#fff;padding:28px;border-radius:4px;box-shadow:8px 8px 0 var(--hl);position:relative}
+.signup img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;position:absolute;top:-28px;right:24px}
+.signup .label{color:#9fb0d0}.signup h3{font-size:30px;margin:6px 0 8px;line-height:1.1}.signup p{color:#c9d3e6;font-size:15px}
+.signup form{display:flex;gap:8px;margin-top:18px}.signup input{flex:1;padding:12px 14px;border:0;border-radius:3px;font:15px 'Space Grotesk'}
+.signup button{background:var(--hl);border:0;padding:0 18px;font-weight:700;border-radius:3px;font-size:15px}
+h2{font-size:30px;font-weight:700;margin:56px 0 6px}
+.h2sub{color:var(--dim);margin-bottom:24px}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.exp{background:#fff;border:1.5px solid var(--ink);padding:22px;position:relative;box-shadow:3px 3px 0 var(--ink)}
+.exp:nth-child(2){transform:rotate(.6deg)}.exp:nth-child(4){transform:rotate(-.5deg)}
+.exp .no{font-family:'IBM Plex Mono';font-size:12px;color:var(--dim)}
+.exp h3{font-size:20px;line-height:1.2;margin:6px 0 12px;padding-right:8px}.exp .no{display:block;margin-bottom:22px}
+.exp dl{font-size:14px;display:grid;grid-template-columns:90px 1fr;gap:4px 10px}
+.exp dt{font-family:'IBM Plex Mono';color:var(--dim);font-size:12px;padding-top:2px}
+.stamp{position:absolute;top:16px;right:14px;font-family:'Permanent Marker';font-size:16px;padding:2px 10px;border:2.5px solid;border-radius:4px;transform:rotate(6deg)}
+.stamp.ok{color:var(--g)}.stamp.no{color:var(--r)}.stamp.run{color:var(--y)}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+.list a{display:block;padding:14px 0;border-bottom:1.5px dashed #b9c2d4;color:var(--ink);text-decoration:none;font-size:18px;font-weight:500}
+.list a span{display:block;font-family:'IBM Plex Mono';font-size:12px;color:var(--dim)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}.tools span{background:#fff;border:1.5px solid var(--ink);padding:6px 12px;font-size:14px;font-weight:500}
+footer{margin-top:80px;padding:28px 0 48px;border-top:1.5px solid var(--ink);display:flex;justify-content:space-between;font-size:14px;color:var(--dim)}
+@media(max-width:700px){.signup form{flex-direction:column}.signup button{padding:12px}.exp{transform:none!important}h1{font-size:42px!important}.wrap{padding:0 20px}.hero,.cols{grid-template-columns:1fr}h1{font-size:46px}.board{grid-template-columns:1fr}nav ul{display:none}footer{flex-direction:column;gap:8px}}
+</style></head><body>
+<div class="wrap">
+<nav><b>Nick Major</b><ul><li>Experiments</li><li>Writing</li><li>Products</li><li>Tools</li></ul></nav>
+<div class="hero">
+ <div><div class="label">LAB NOTEBOOK · VOL. 1</div>
+ <h1>Software engineer figuring out <span class="mark">distribution</span>.</h1>
+ <p>I build products with AI, then test marketing and growth tactics on them like I'd test code. Hypothesis, run, result. I publish all of it, including the ones that flop.</p>
+ <div class="scrawl">← mostly the ones that flop</div></div>
+ <div class="signup"><img src="nick.jpg" alt=""><div class="label">THE NEWSLETTER</div><h3>Deploy to Humans</h3><p>Shipping is easy. Deploying to humans is the hard part. One experiment a week, with the numbers.</p>
+ <form><input placeholder="you@example.com"><button>Subscribe</button></form></div>
+</div>
+
+<h2>The experiment board</h2><p class="h2sub">What I'm testing, what I expected, what actually happened.</p>
+<div class="board">
+ <div class="exp"><span class="stamp run">RUNNING</span><div class="no">EXP-014</div><h3>Programmatic SEO on 19,000 city pages</h3><dl><dt>BET</dt><dd>A free dataset site can rank with zero backlinks.</dd><dt>SO FAR</dt><dd>Week 3 of 8. Indexing slowly.</dd></dl></div>
+ <div class="exp"><span class="stamp ok">WORKED</span><div class="no">EXP-013</div><h3>One-command weekly social schedule</h3><dl><dt>BET</dt><dd>Claude Code plus Postiz can run a week of posts.</dd><dt>RESULT</dt><dd>2 hours a week down to 15 minutes.</dd></dl></div>
+ <div class="exp"><span class="stamp no">FLOPPED</span><div class="no">EXP-012</div><h3>Product Hunt launch for a calculator site</h3><dl><dt>BET</dt><dd>A launch day would bring a traffic spike.</dd><dt>RESULT</dt><dd>3 upvotes. Here's why.</dd></dl></div>
+</div>
+
+<div class="cols">
+ <div><h2>Writing</h2><div class="list">
+  <a href="#"><span>SEP 30 · ESSAY</span>Marketing for people who'd rather be in their editor</a>
+  <a href="#"><span>SEP 22 · TEARDOWN</span>The boring SEO setup I put on every new project</a>
+  <a href="#"><span>SEP 09 · HOW I DO IT</span>Cold outreach that sends a finished site instead of a pitch</a></div></div>
+ <div><h2>Tools in the lab</h2><p class="h2sub">What I use to build and market. Some of these I made.</p><div class="tools"><span>Sites That Get Calls ★</span><span>Claude Code</span><span>Cloudflare</span><span>Astro</span><span>Buttondown</span><span>Postiz</span><span>Rybbit</span><span>DataForSEO</span></div></div>
+</div>
+
+<footer><span>© 2026 Nick Major</span><span>Archive (2018–2026) · RSS · X · LinkedIn · GitHub</span></footer>
+</div></body></html>

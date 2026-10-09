@@ -1,0 +1,6 @@
+[
+  {"template":"dbg","angle":"five-minutes-sixty-percent","score":101,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"glasses","angle":"same-task-two-readings","score":100,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"morpheus","angle":"five-minutes-sixty-percent","score":92,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"pigeon","angle":"same-task-two-readings","score":70,"eligible":false,"hard_fail":true,"critical_pass":false}
+]

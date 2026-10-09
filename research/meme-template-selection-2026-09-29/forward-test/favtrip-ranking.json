@@ -1,0 +1,6 @@
+[
+  {"template":"bihw","angle":"boring-work-real-win","score":101,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"genie","angle":"authority-with-guardrails","score":98,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"morpheus","angle":"boring-work-real-win","score":92,"eligible":true,"hard_fail":false,"critical_pass":true},
+  {"template":"drake","angle":"boring-work-real-win","score":85,"eligible":false,"hard_fail":true,"critical_pass":false}
+]

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nick Major</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f0e;--panel:#151816;--line:#252a27;--ink:#e8ece9;--dim:#8a938d;--g:#3ddc84;--y:#f5c542;--r:#ff6b5b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,sans-serif}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+nav .logo{font-family:'JetBrains Mono';font-weight:600}nav .logo b{color:var(--g)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--dim)}
+nav .cta{color:var(--bg);background:var(--g);padding:7px 14px;border-radius:6px;font-weight:600}
+.hero{padding:96px 0 72px;display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center}
+.prompt{font-family:'JetBrains Mono';color:var(--dim);font-size:15px;margin-bottom:22px}.prompt b{color:var(--g);font-weight:400}
+h1{font-size:76px;line-height:1;font-weight:800;letter-spacing:-.03em}
+.tag{font-size:24px;line-height:1.35;margin-top:22px;color:var(--ink);max-width:560px}
+.tag span{color:var(--g)}
+.sub{color:var(--dim);margin-top:16px;max-width:540px;font-size:17px}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-family:'JetBrains Mono';font-size:13px}
+.term .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}.term .bar i{width:10px;height:10px;border-radius:50%;background:#333}
+.term pre{padding:18px;line-height:1.8;color:var(--dim);white-space:pre-wrap}
+.term .ok{color:var(--g)}.term .w{color:var(--y)}.term .e{color:var(--r)}.term .i{color:var(--ink)}
+.sub-form{margin-top:34px;display:flex;gap:10px;max-width:520px}
+.sub-form input{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:14px 16px;border-radius:8px;font:15px 'JetBrains Mono'}
+.sub-form button{background:var(--g);border:0;padding:0 22px;border-radius:8px;font-weight:700;font-size:15px}
+.note{font-size:13px;color:var(--dim);margin-top:10px;font-family:'JetBrains Mono'}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-family:'JetBrains Mono';font-size:14px;font-weight:600;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;display:flex;justify-content:space-between}
+h2 a{color:var(--g);text-transform:none;letter-spacing:0}
+.log{display:grid;gap:0}
+.row{display:grid;grid-template-columns:110px 110px 1fr 160px;gap:20px;padding:18px 0;border-bottom:1px dashed var(--line);align-items:baseline}
+.row .d{font-family:'JetBrains Mono';font-size:13px;color:var(--dim)}
+.pill{font-family:'JetBrains Mono';font-size:12px;padding:2px 8px;border-radius:4px;justify-self:start}
+.pill.ok{background:#3ddc8422;color:var(--g)}.pill.run{background:#f5c54222;color:var(--y)}.pill.no{background:#ff6b5b22;color:var(--r)}
+.row h3{font-size:18px;font-weight:700}.row p{color:var(--dim);font-size:14px}
+.row .m{font-family:'JetBrains Mono';font-size:13px;text-align:right;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px}
+.card h3{font-size:20px;margin-bottom:6px}.card p{color:var(--dim);font-size:15px}
+.card .k{font-family:'JetBrains Mono';font-size:12px;color:var(--g);margin-bottom:10px}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tools span{font-family:'JetBrains Mono';font-size:14px;border:1px solid var(--line);padding:8px 14px;border-radius:6px}
+.about{display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center}
+.about img{width:120px;height:120px;border-radius:12px;object-fit:cover;filter:grayscale(.2)}
+.about p{font-size:18px;max-width:700px}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--dim);font-size:14px;display:flex;justify-content:space-between}
+footer a{color:var(--dim)}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding:56px 0}h1{font-size:52px}.tag{font-size:20px}nav ul li:not(.c){display:none}.row{grid-template-columns:1fr auto;gap:6px}.row .d{grid-column:1}.row .m{text-align:left}.grid2{grid-template-columns:1fr}.about{grid-template-columns:1fr}footer{flex-direction:column;gap:10px}}
+</style></head><body>
+<div class="wrap">
+<nav><div class="logo">nick<b>@</b>major:~$</div><ul><li>Experiments</li><li>Writing</li><li>Products</li><li>Tools</li><li class="c"><span class="cta">Subscribe</span></li></ul></nav>
+<div class="hero">
+ <div>
+  <div class="prompt"><b>$</b> whoami</div>
+  <h1>Nick Major</h1>
+  <p class="tag">Software engineer figuring out <span>distribution</span>.</p>
+  <p class="sub">I build with AI, run marketing and growth experiments on my own products, and write up what works and what doesn't.</p>
+  <form class="sub-form"><input placeholder="you@domain.dev"><button>Deploy to me</button></form>
+  <p class="note">Deploy to Humans · one email a week · unsubscribe anytime</p>
+ </div>
+ <div class="term"><div class="bar"><i></i><i></i><i></i></div><pre><span class="i">$ deploy --target=humans</span>
+building product...      <span class="ok">done (easy part)</span>
+writing landing page...  <span class="ok">done</span>
+finding users...         <span class="w">in progress</span>
+  ↳ seo           <span class="ok">✓ indexing</span>
+  ↳ cold email    <span class="w">~ testing</span>
+  ↳ product hunt  <span class="e">✗ 3 upvotes</span>
+  ↳ ai content    <span class="w">~ testing</span>
+<span class="i">logging results to newsletter</span> <span class="ok">▌</span></pre></div>
+</div>
+
+<section><h2>Experiment log <a href="#">All experiments →</a></h2>
+<div class="log">
+ <div class="row"><span class="d">2026-10-06</span><span class="pill run">RUNNING</span><div><h3>Programmatic SEO on 19,000 city pages</h3><p>Every City in the USA. Can a free dataset site rank without backlinks?</p></div><span class="m">week 3 of 8</span></div>
+ <div class="row"><span class="d">2026-09-28</span><span class="pill ok">WORKED</span><div><h3>Automating my LinkedIn posting with Postiz and Claude Code</h3><p>A week of posts drafted, scheduled, and tracked from one command.</p></div><span class="m">2 hrs → 15 min/wk</span></div>
+ <div class="row"><span class="d">2026-09-14</span><span class="pill no">FLOPPED</span><div><h3>Launching a calculator site on Product Hunt</h3><p>What I'd skip next time, and the one thing that did bring traffic.</p></div><span class="m">3 upvotes</span></div>
+ <div class="row"><span class="d">2026-09-02</span><span class="pill run">RUNNING</span><div><h3>Cold outreach to local businesses with AI-built demo sites</h3><p>Sites That Get Calls. Sending a finished site instead of a pitch.</p></div><span class="m">40 sent so far</span></div>
+</div></section>
+
+<section><h2>Writing <a href="#">All posts →</a></h2>
+<div class="grid2">
+ <div class="card"><div class="k">ESSAY · 9 MIN</div><h3>Marketing for people who'd rather be in their editor</h3><p>Treating distribution like an engineering problem: inputs, logs, and things you can automate.</p></div>
+ <div class="card"><div class="k">TEARDOWN · 6 MIN</div><h3>The boring SEO setup I put on every new project</h3><p>Sitemaps, IndexNow, OG images, and the parts I stopped doing by hand.</p></div>
+</div></section>
+
+<section><h2>Marketing tools I'm building</h2>
+<div class="grid2">
+ <div class="card"><div class="k">sitesthatgetcalls.com</div><h3>Sites That Get Calls</h3><p>Paste a Google Business Profile, get a site built to make the phone ring.</p></div>
+ <div class="card"><div class="k">coming soon</div><h3>Next tool, built in public</h3><p>Subscribers get early access and a say in what it does.</p></div>
+</div></section>
+
+<section><h2>Stack I actually use</h2>
+<div class="tools"><span>Claude Code</span><span>Cloudflare Workers</span><span>Astro</span><span>Buttondown</span><span>Postiz</span><span>Rybbit</span><span>DataForSEO</span><span>Exa</span></div></section>
+
+<section><div class="about"><img src="nick.jpg" alt=""><p>I spent fifteen years writing software and almost none of it learning how to get people to use it. This site is me fixing that in public.</p></div></section>
+
+<footer><span>© 2026 Nick Major</span><span><a href="#">Archive (2018–2026)</a> · <a href="#">RSS</a> · <a href="#">X</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a></span></footer>
+</div></body></html>

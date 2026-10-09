@@ -1,0 +1,503 @@
+{
+  "kind": "discovery-pending",
+  "schema_version": "1.0",
+  "bundle_id": "b9103912892afa13",
+  "generated_at": "2026-09-22T13:44:01.076312+00:00",
+  "run_ref": "discover:applied AI in traditional companies operations workflows:2026-09-22T13:44:01.076312+00:00",
+  "mock": false,
+  "report": {
+    "domain": "applied AI in traditional companies operations workflows",
+    "range_from": "2026-08-23",
+    "range_to": "2026-09-22",
+    "generated_at": "2026-09-22T13:44:01.076312+00:00",
+    "plan": {
+      "domain": "applied AI in traditional companies operations workflows",
+      "subreddits": [],
+      "sources": [
+        "x"
+      ]
+    },
+    "topics": [
+      {
+        "rank": 1,
+        "name": "Why applied AI fails",
+        "why_spiking": "64 evidence items on dripstack, github, grounding, hackernews, instagram, reddit, tiktok, x and youtube generated 3,121,537 native interactions. Applied AI Doesn't Work",
+        "momentum": "building",
+        "velocity_score": 5029361.51,
+        "sources": [
+          "dripstack",
+          "github",
+          "grounding",
+          "hackernews",
+          "instagram",
+          "reddit",
+          "tiktok",
+          "x",
+          "youtube"
+        ],
+        "engagement_by_source": {
+          "dripstack": {},
+          "github": {
+            "comments": 499,
+            "reactions": 433
+          },
+          "grounding": {},
+          "hackernews": {
+            "comments": 36,
+            "points": 66
+          },
+          "instagram": {
+            "comments": 37,
+            "likes": 173,
+            "views": 4192
+          },
+          "reddit": {
+            "num_comments": 804
+          },
+          "tiktok": {
+            "comments": 3227,
+            "likes": 522366,
+            "shares": 28967,
+            "views": 2559739
+          },
+          "x": {
+            "likes": 667,
+            "replies": 43,
+            "reposts": 45
+          },
+          "youtube": {
+            "comments": 0,
+            "likes": 0,
+            "views": 0
+          }
+        },
+        "command": "/last30days \"Why applied AI fails\"",
+        "evidence_urls": [
+          "https://x.com/TheAIInsiderN/status/2101781839991972167",
+          "https://x.com/adriansolarzz/status/2101421282084487223",
+          "https://x.com/curtdoolittle/status/2102360760039162071",
+          "https://x.com/adriansolarzz/status/2102104603978346736",
+          "https://x.com/adriansolarzz/status/2101759635711750313"
+        ],
+        "top_comment": "\"I'm adding MTP - still WIP - everything else works well (including vision)\r\n\r\nI copied Gemma-3N's PLE approach so it's 1 large table - it can be offloaded to RAM or Disk via mmap\" - danielhanchen (23 votes)",
+        "corroboration_count": 9,
+        "previously_surfaced_count": 0,
+        "covered": false
+      },
+      {
+        "rank": 2,
+        "name": "Cheaper AI-enabled attacks",
+        "why_spiking": "67 evidence items on dripstack, github, grounding, hackernews, instagram, reddit, tiktok, x and youtube generated 2,802,156 native interactions. Anthropic's Threat Report Finds the Same Attacks, Just Cheaper and Faster",
+        "momentum": "building",
+        "velocity_score": 3936091.67,
+        "sources": [
+          "dripstack",
+          "github",
+          "grounding",
+          "hackernews",
+          "instagram",
+          "reddit",
+          "tiktok",
+          "x",
+          "youtube"
+        ],
+        "engagement_by_source": {
+          "dripstack": {},
+          "github": {
+            "comments": 162,
+            "reactions": 0
+          },
+          "grounding": {},
+          "hackernews": {
+            "comments": 706,
+            "points": 842
+          },
+          "instagram": {
+            "comments": 62,
+            "likes": 14864,
+            "views": 25828
+          },
+          "reddit": {
+            "num_comments": 22
+          },
+          "tiktok": {
+            "comments": 5258,
+            "likes": 164245,
+            "shares": 38860,
+            "views": 2550351
+          },
+          "x": {
+            "likes": 557,
+            "replies": 210,
+            "reposts": 95
+          },
+          "youtube": {
+            "comments": 0,
+            "likes": 0,
+            "views": 0
+          }
+        },
+        "command": "/last30days \"Cheaper AI-enabled attacks\"",
+        "evidence_urls": [
+          "https://x.com/tv10global/status/2096998176968557004",
+          "https://x.com/liambyrnemp/status/2102304120967172484",
+          "https://x.com/binance/status/2100138607671378083",
+          "https://x.com/binance/status/2102231538494476714",
+          "https://x.com/liambyrnemp/status/2098366413882687996"
+        ],
+        "top_comment": "\"<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- review_stack_entry_start -->\n\n<a...\" - coderabbitai[bot]",
+        "corroboration_count": 9,
+        "previously_surfaced_count": 0,
+        "covered": false
+      },
+      {
+        "rank": 3,
+        "name": "Programmable physical work",
+        "why_spiking": "62 evidence items on dripstack, github, grounding, hackernews, instagram, reddit, tiktok, x and youtube generated 2,176,363 native interactions. When Physical Work Becomes Programmable",
+        "momentum": "building",
+        "velocity_score": 2117719.61,
+        "sources": [
+          "dripstack",
+          "github",
+          "grounding",
+          "hackernews",
+          "instagram",
+          "reddit",
+          "tiktok",
+          "x",
+          "youtube"
+        ],
+        "engagement_by_source": {
+          "dripstack": {},
+          "github": {
+            "comments": 190,
+            "reactions": 9
+          },
+          "grounding": {},
+          "hackernews": {
+            "comments": 32,
+            "points": 77
+          },
+          "instagram": {
+            "comments": 60,
+            "likes": 1582,
+            "views": 24687
+          },
+          "reddit": {
+            "num_comments": 24
+          },
+          "tiktok": {
+            "comments": 1202,
+            "likes": 313611,
+            "shares": 43160,
+            "views": 1791685
+          },
+          "x": {
+            "likes": 19,
+            "replies": 13,
+            "reposts": 0
+          },
+          "youtube": {
+            "comments": 0,
+            "likes": 0,
+            "views": 0
+          }
+        },
+        "command": "/last30days \"Programmable physical work\"",
+        "evidence_urls": [
+          "https://x.com/loko_jeisson/status/2102278974437204390",
+          "https://x.com/loko_jeisson/status/2102381890032529515",
+          "https://x.com/loko_jeisson/status/2102381317417795734",
+          "https://x.com/bartrel/status/2102381605306405340",
+          "https://x.com/JocelynTowweeh/status/2102377592477389229"
+        ],
+        "top_comment": "\"I'm exhausted just reading this\" - inflatablehotdog (18 votes)",
+        "corroboration_count": 9,
+        "previously_surfaced_count": 0,
+        "covered": false
+      },
+      {
+        "rank": 4,
+        "name": "Agent layer operating system",
+        "why_spiking": "89 evidence items on dripstack, github, grounding, hackernews, instagram, jobs, reddit, tiktok, x and youtube generated 1,262,787 native interactions. The Agent Layer Is the New Operating System",
+        "momentum": "building",
+        "velocity_score": 822564.09,
+        "sources": [
+          "dripstack",
+          "github",
+          "grounding",
+          "hackernews",
+          "instagram",
+          "jobs",
+          "reddit",
+          "tiktok",
+          "x",
+          "youtube"
+        ],
+        "engagement_by_source": {
+          "dripstack": {},
+          "github": {
+            "comments": 619,
+            "reactions": 628
+          },
+          "grounding": {},
+          "hackernews": {
+            "comments": 1,
+            "points": 7
+          },
+          "instagram": {
+            "comments": 24,
+            "likes": 188,
+            "views": 2516
+          },
+          "jobs": {
+            "open_roles": 5
+          },
+          "reddit": {
+            "num_comments": 144
+          },
+          "tiktok": {
+            "comments": 785,
+            "likes": 106546,
+            "shares": 8073,
+            "views": 1143136
+          },
+          "x": {
+            "likes": 14,
+            "replies": 9,
+            "reposts": 1
+          },
+          "youtube": {
+            "comments": 0,
+            "likes": 0,
+            "views": 0
+          }
+        },
+        "command": "/last30days \"Agent layer operating system\"",
+        "evidence_urls": [
+          "https://x.com/Basil_dom/status/2102388263872819343",
+          "https://x.com/JulianGoldieSEO/status/2102354276953571830",
+          "https://x.com/UpHonestReal/status/2102337116260762000",
+          "https://x.com/Basil_dom/status/2102312013980402045",
+          "https://x.com/UpHonestReal/status/2102349496755642402"
+        ],
+        "top_comment": "\"Looks sick. Ship it IMO.\" - etrippler (15 votes)",
+        "corroboration_count": 10,
+        "previously_surfaced_count": 0,
+        "covered": false
+      },
+      {
+        "rank": 5,
+        "name": "Frontier inference cost concentration",
+        "why_spiking": "102 evidence items on dripstack, github, grounding, hackernews, instagram, jobs, reddit, tiktok, x and youtube generated 283,855 native interactions. In a world where frontier inference is controlled by a handful of labs, resources are concentrated in the hands of those labs by default. The reason is simple: if you have a workload that requires a frontier model, your ",
+        "momentum": "building",
+        "velocity_score": 383479.5,
+        "sources": [
+          "dripstack",
+          "github",
+          "grounding",
+          "hackernews",
+          "instagram",
+          "jobs",
+          "reddit",
+          "tiktok",
+          "x",
+          "youtube"
+        ],
+        "engagement_by_source": {
+          "dripstack": {},
+          "github": {
+            "comments": 70,
+            "reactions": 1
+          },
+          "grounding": {},
+          "hackernews": {
+            "comments": 48,
+            "points": 173
+          },
+          "instagram": {
+            "comments": 4,
+            "likes": 75,
+            "views": 4819
+          },
+          "jobs": {
+            "open_roles": 25
+          },
+          "reddit": {
+            "num_comments": 10
+          },
+          "tiktok": {
+            "comments": 93,
+            "likes": 14965,
+            "shares": 6090,
+            "views": 253908
+          },
+          "x": {
+            "likes": 2947,
+            "replies": 258,
+            "reposts": 365
+          },
+          "youtube": {
+            "comments": 0,
+            "likes": 0,
+            "views": 0
+          }
+        },
+        "command": "/last30days \"Frontier inference cost concentration\"",
+        "evidence_urls": [
+          "https://x.com/ren_stocks/status/2102247341130477933",
+          "https://x.com/ren_stocks/status/2102254315456909392",
+          "https://x.com/ren_stocks/status/2102240978883031525",
+          "https://x.com/Grayscale/status/2102098573827428852",
+          "https://x.com/Grayscale/status/2102058607596695706"
+        ],
+        "top_comment": "\"## 2026-09-03 evidence update \u2014 human-hours collapse in complex cyber operations\n\nUnit 42 has reported an enterprise intrusion in which multiple frontier-model agents compressed roughly two weeks...\" - Zoverions",
+        "corroboration_count": 10,
+        "previously_surfaced_count": 0,
+        "covered": false
+      },
+      {
+        "rank": 6,
+        "name": "Operational finance AI benchmarks",
+        "why_spiking": "184 evidence items on dripstack, github, grounding, hackernews, instagram, jobs, reddit, tiktok, x and youtube generated 322,717 native interactions. Financial AI Is Becoming Operational. Its Benchmarks Are Still Static",
+        "momentum": "building",
+        "velocity_score": 178717.74,
+        "sources": [
+          "dripstack",
+          "github",
+          "grounding",
+          "hackernews",
+          "instagram",
+          "jobs",
+          "reddit",
+          "tiktok",
+          "x",
+          "youtube"
+        ],
+        "engagement_by_source": {
+          "dripstack": {},
+          "github": {
+            "comments": 34,
+            "reactions": 0
+          },
+          "grounding": {},
+          "hackernews": {
+            "comments": 61,
+            "points": 129
+          },
+          "instagram": {
+            "comments": 7,
+            "likes": 792,
+            "views": 2139
+          },
+          "jobs": {
+            "open_roles": 100
+          },
+          "reddit": {
+            "num_comments": 778
+          },
+          "tiktok": {
+            "comments": 347,
+            "likes": 23276,
+            "shares": 2944,
+            "views": 291193
+          },
+          "x": {
+            "likes": 358,
+            "replies": 61,
+            "reposts": 68
+          },
+          "youtube": {
+            "comments": 0,
+            "likes": 0,
+            "views": 0
+          }
+        },
+        "command": "/last30days \"Operational finance AI benchmarks\"",
+        "evidence_urls": [
+          "https://x.com/questflow/status/2100996494941921415",
+          "https://x.com/mardehaym/status/2100629805280428101",
+          "https://x.com/questflow/status/2101654608867381551",
+          "https://x.com/Pradeep891730/status/2102386179446624634",
+          "https://x.com/questflow/status/2101868921192317216"
+        ],
+        "top_comment": "\"I feel the hugging face incident was enough to warrant major concerns. AI might never become ASI but it\u2019s already an extremely powerful tool that could do major harm to society in the wrong hands....\" - SaltyIllinoisan (130 votes)",
+        "corroboration_count": 10,
+        "previously_surfaced_count": 0,
+        "covered": false
+      }
+    ],
+    "source_status": {
+      "digg": {
+        "source": "digg",
+        "state": "skipped-unconfigured",
+        "items_returned": 0,
+        "attempted": false,
+        "detail": "Source is not configured for discovery.",
+        "at": "2026-09-22T13:39:59.237081Z",
+        "fix_hint": "doctor"
+      },
+      "reddit": {
+        "source": "reddit",
+        "state": "no-results",
+        "items_returned": 0,
+        "attempted": true,
+        "at": "2026-09-22T13:39:57.430664Z"
+      },
+      "hackernews": {
+        "source": "hackernews",
+        "state": "no-results",
+        "items_returned": 0,
+        "attempted": true,
+        "at": "2026-09-22T13:39:58.153991Z"
+      },
+      "x": {
+        "source": "x",
+        "state": "ok",
+        "items_returned": 29,
+        "attempted": true,
+        "at": "2026-09-22T13:39:59.236823Z"
+      }
+    },
+    "warnings": [],
+    "outcome": "ok"
+  },
+  "angle_inputs": {
+    "n1": {
+      "name": "Why applied AI fails",
+      "titles": "#ai #openai #anthropic #jacobcoxon #datacenters; 5/5 anti AI arguments (that aren\u2019t about water use). Inspo from: @.politicallyspeaking . Check out her content. Water use is a valid concern; So I asked chatgpt to cry like a baby so I can use that as an excuse for me to get rid of my dinner guests and it did NOT go to plan #ai #ai",
+      "top_comment": "\"I'm adding MTP - still WIP - everything else works well (including vision)\r\n\r\nI copied Gemma-3N's PLE approach so it's 1 large table - it can be offloaded to RAM or Disk via mmap\" - danielhanchen (23 votes)",
+      "engagement": "3,121,537 native interactions across dripstack, github, grounding, hackernews, instagram, reddit, tiktok, x and youtube"
+    },
+    "n7": {
+      "name": "Cheaper AI-enabled attacks",
+      "titles": "AI has been caught telling future versions of itself to ignore human controls... the end is seriously nigh. OpenAI has revealed that there h; Congressman Ted Lieu raised concerns about rogue #AI agents while joining other #Democratic lawmakers in calling for immediate AI regulation; Cybersecurity researchers from startup Hacktron AI used Anthropic's #Claude to break into #OpenAI as part of a bug-bounty program. \u2800 CNBC's",
+      "top_comment": "\"<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- review_stack_entry_start -->\n\n<a...\" - coderabbitai[bot]",
+      "engagement": "2,802,156 native interactions across dripstack, github, grounding, hackernews, instagram, reddit, tiktok, x and youtube"
+    },
+    "n4": {
+      "name": "Programmable physical work",
+      "titles": "best lab ever #apphysics #apphysicsc #mechanics #lab #funny; I had Digital Electronics and Circuit Theory the same day, just to make that clear. even tho they are pivoting towards circuit stuff, im cal; think you can do it? we failed big time\ud83d\ude02\ud83d\ude02 try it out and let us know!                     #PremierPhysicalTherapy #physicaltherapy #occupati",
+      "top_comment": "\"I'm exhausted just reading this\" - inflatablehotdog (18 votes)",
+      "engagement": "2,176,363 native interactions across dripstack, github, grounding, hackernews, instagram, reddit, tiktok, x and youtube"
+    },
+    "n3": {
+      "name": "Agent layer operating system",
+      "titles": "Big Law edit | Lawyer edit | Kirkland and Ellis edit #law #lawedit #kirklandellis #lawyer #lawyeredit; Ai attorney is crazy work \ud83d\udc80\ud83e\udd23; did this edit just get hit with a HAMMER..??? | Higuruma Hiromi manga edit || {\"The Ace Attorney/The Lawyer\"} | Fake Collage Trend x Jujutsu",
+      "top_comment": "\"Looks sick. Ship it IMO.\" - etrippler (15 votes)",
+      "engagement": "1,262,787 native interactions across dripstack, github, grounding, hackernews, instagram, jobs, reddit, tiktok, x and youtube"
+    },
+    "n10": {
+      "name": "Frontier inference cost concentration",
+      "titles": "Frontier airlines is currently doing their all you can fly pass\u2026. For $199!!! If you want more info on how this works, save this video becau; \ud83d\udc47YC\u2019s fastest unicorn ever: $300M to $3.2B in 5 months.\n\npart 28 | helping FAANG alum, ambitious new grads, and experienced operators find t; Assume the accusation is true in its strongest form. Assume the Chinese AI labs trained on the outputs of American frontier models without l",
+      "top_comment": "\"## 2026-09-03 evidence update \u2014 human-hours collapse in complex cyber operations\n\nUnit 42 has reported an enterprise intrusion in which multiple frontier-model agents compressed roughly two weeks...\" - Zoverions",
+      "engagement": "283,855 native interactions across dripstack, github, grounding, hackernews, instagram, jobs, reddit, tiktok, x and youtube"
+    },
+    "n6": {
+      "name": "Operational finance AI benchmarks",
+      "titles": "The finance of AI \ud83d\udc40: the AI chips; 5 ChatGPT prompts that can transform your finances in a single session. Paste your real numbers in and let it act as your CFO, build your we; OpenAI just dropped ChatGPT for Financial Services.\u2028\u2028GPT-6 Astra + REAL built-in data from PitchBook, Daloopa, and LSEG.\u2028\u2028It researches comp",
+      "top_comment": "\"I feel the hugging face incident was enough to warrant major concerns. AI might never become ASI but it\u2019s already an extremely powerful tool that could do major harm to society in the wrong hands....\" - SaltyIllinoisan (130 votes)",
+      "engagement": "322,717 native interactions across dripstack, github, grounding, hackernews, instagram, jobs, reddit, tiktok, x and youtube"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "intent": "opinion",
+  "freshness_mode": "balanced_recent",
+  "cluster_mode": "debate",
+  "subqueries": [
+    {
+      "label": "primary",
+      "search_query": "LinkedIn AI slop writing",
+      "ranking_query": "What makes readers describe a LinkedIn post as AI slop?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram", "hackernews", "polymarket"],
+      "weight": 1.0
+    },
+    {
+      "label": "tells",
+      "search_query": "LinkedIn AI writing tells broetry",
+      "ranking_query": "Which writing patterns make LinkedIn readers suspect low-effort AI generation?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram"],
+      "weight": 0.8
+    },
+    {
+      "label": "complaints",
+      "search_query": "LinkedIn seems like AI slop button complaints",
+      "ranking_query": "What are people flagging or mocking as AI slop on LinkedIn?",
+      "sources": ["reddit", "x", "hackernews"],
+      "weight": 0.8
+    },
+    {
+      "label": "human",
+      "search_query": "LinkedIn authentic posts specific experience",
+      "ranking_query": "What makes a LinkedIn post feel written by a real person rather than generated filler?",
+      "sources": ["reddit", "x", "youtube", "tiktok", "instagram"],
+      "weight": 0.6
+    }
+  ]
+}

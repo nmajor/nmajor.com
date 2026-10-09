@@ -1,0 +1,114 @@
+{
+  "captured_at": "2026-09-29",
+  "purpose": "Primary and authoritative sources for designing an established-meme template retrieval and ranking system.",
+  "sources": [
+    {
+      "file": "papers/template-all-you-meme-naacl-2025.pdf",
+      "url": "https://aclanthology.org/2025.naacl-long.525.pdf",
+      "type": "peer-reviewed paper",
+      "use": "KYMKB template knowledge base, template semantics, retrieval and classification evidence"
+    },
+    {
+      "file": "repos/kymkb-readme.md",
+      "url": "https://raw.githubusercontent.com/UKPLab/naacl2025-a-template-is-all-you-meme/main/README.md",
+      "type": "authors' code repository",
+      "use": "Reproducibility and available scraping and retrieval code"
+    },
+    {
+      "file": "papers/semantic-memes-naacl-2024.pdf",
+      "url": "https://aclanthology.org/2024.naacl-long.166.pdf",
+      "type": "peer-reviewed paper",
+      "use": "Semantic clustering of visually different templates from their caption usage"
+    },
+    {
+      "file": "papers/metameme-naacl-2025.pdf",
+      "url": "https://aclanthology.org/2025.naacl-srw.35.pdf",
+      "type": "peer-reviewed student research paper",
+      "use": "Template-independent communicative structures and model limitations"
+    },
+    {
+      "file": "repos/metameme-readme.md",
+      "url": "https://raw.githubusercontent.com/BenLambright/Meme-template-classification/main/README.md",
+      "type": "authors' code repository",
+      "use": "Dataset and annotation implementation"
+    },
+    {
+      "file": "papers/semiomeme-icwsm-2026.pdf",
+      "url": "https://ojs.aaai.org/index.php/ICWSM/article/download/42792/50352",
+      "type": "peer-reviewed dataset paper",
+      "use": "Hybrid semantic and similarity retrieval, current large-scale resource"
+    },
+    {
+      "file": "papers/memebot-2020.pdf",
+      "url": "https://arxiv.org/pdf/2004.14571",
+      "type": "research preprint",
+      "use": "Supervised template selection baseline and human evaluation design"
+    },
+    {
+      "file": "papers/memes-as-replies-2026.pdf",
+      "url": "https://arxiv.org/pdf/2602.15842",
+      "type": "research preprint",
+      "use": "Retrieval versus preference reranking and the limits of automated humor selection"
+    },
+    {
+      "file": "papers/humor-preprint-2026.pdf",
+      "url": "https://arxiv.org/pdf/2512.24555",
+      "type": "research preprint",
+      "use": "Within-template pairwise preference learning and hierarchical intent reasoning"
+    },
+    {
+      "file": "papers/computational-creativity-meme-generation-iccc-2024.pdf",
+      "url": "https://computationalcreativity.net/iccc24/papers/ICCC24_paper_189.pdf",
+      "type": "peer-reviewed conference paper",
+      "use": "FAISS-based proof of concept and documented selection weaknesses"
+    },
+    {
+      "file": "papers/memecraft-www-2024.pdf",
+      "url": "https://arxiv.org/pdf/2403.14652",
+      "type": "peer-reviewed conference paper",
+      "use": "Large template pool, random-template baseline, and human meme evaluation dimensions"
+    },
+    {
+      "file": "papers/memearena-emnlp-2025.pdf",
+      "url": "https://aclanthology.org/2025.emnlp-main.890.pdf",
+      "type": "peer-reviewed paper",
+      "use": "Pairwise judging, multiple perspectives, and ranking methodology; task is harmfulness rather than humor"
+    },
+    {
+      "file": "papers/simmeme-authoritative-page.html",
+      "url": "https://cris.technion.ac.il/en/publications/simmeme-semantic-based-meme-search/",
+      "type": "university publication record",
+      "use": "Ontology, textual, visual, and structural meme search precedent"
+    },
+    {
+      "file": "papers/average-is-boring-scirep-2014.html",
+      "url": "https://www.nature.com/articles/srep06477",
+      "type": "peer-reviewed paper",
+      "use": "Historical evidence that semantic distinctiveness correlated with meme popularity in one platform dataset"
+    },
+    {
+      "file": "apis/fluency-coherence-humor-crossref.json",
+      "url": "https://api.crossref.org/works/10.1016/j.jesp.2026.104970",
+      "type": "publisher metadata and abstract",
+      "use": "Experimental evidence on processing fluency, coherence, and humor appreciation"
+    },
+    {
+      "file": "apis/memegen-templates-2026-09-29.json",
+      "url": "https://api.memegen.link/templates/",
+      "type": "live renderer API snapshot",
+      "use": "Established renderable template inventory and box structure"
+    },
+    {
+      "file": "apis/imgflip-popular-2026-09-29.json",
+      "url": "https://api.imgflip.com/get_memes",
+      "type": "live catalog API snapshot",
+      "use": "Current volatile popularity and familiarity signal"
+    }
+  ],
+  "notes": [
+    "PDF-to-text outputs under raw/extracted are mechanical, unedited extractions of the preserved PDFs.",
+    "SHA256SUMS records the captured artifacts.",
+    "The meme-generation preprints are useful design evidence but are not treated as settled validation.",
+    "No source establishes a proven, general-purpose system for choosing the funniest template for a professional LinkedIn post."
+  ]
+}

@@ -12,7 +12,7 @@ tags:
 hero: "/uploads/2018/07/25/Action Cable.png"
 
 ---
-This article uses ActionCable as the websocket library. If you want to see a version of this article using socket.io, [click here.](/posts/using-socket-io-with-redux-websocket-redux-middleware "/posts/using-socket-io-with-redux-websocket-redux-middleware")
+This article uses ActionCable as the websocket library. If you want to see a version of this article using socket.io, [click here.](/archive/engineering/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware/ "/archive/engineering/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware/")
 
 ***
 

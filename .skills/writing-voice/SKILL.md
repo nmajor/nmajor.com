@@ -1,6 +1,6 @@
 ---
 name: writing-voice
-description: How Nick writes on nmajor.com — his personal, opinionated writing voice. Use for ANY reader- or customer-facing text — website copy, page headings, buttons, form and error messages, meta descriptions, emails, newsletter issues (Actual Intelligence), essays, takes, and social posts. Every agent that writes a word anyone outside the team will read follows this.
+description: How Nick writes on nmajor.com — his personal, opinionated writing voice. Use for ANY reader- or customer-facing text — website copy, page headings, buttons, form and error messages, meta descriptions, emails, newsletter issues (Deploy to Humans), blog posts, experiment write-ups, and social posts. Every agent that writes a word anyone outside the team will read follows this.
 ---
 
 # Nick's writing voice
@@ -11,15 +11,15 @@ no "this is just a button." Consistency is the point: every word should feel lik
 came from the same hand — Nick's.
 
 Read `overview.md` for who this is and who we write for. The short version: nmajor.com
-is Nick Major's personal brand — a named person with a real point of view on AI, writing
-first-person and opinionated, and allowed to pull readers toward the consultancy (a
-tasteful commercial pull, never a hype push). Readers are decision-makers (owners, CEOs,
-CIOs, COOs, operators) figuring out how to actually use AI. They are busy, skeptical, and
-have read enough hype for a lifetime.
+is Nick Major's personal brand: a software engineer figuring out distribution, building
+with AI, testing marketing and growth tactics on his own products, and sharing what works
+and what doesn't. He writes first-person and opinionated, and may point readers to his own
+products and tools (a tasteful pull, never a hype push). Readers are indie hackers and
+developers who are more comfortable building than marketing. They are busy, skeptical of
+growth-guru content, and have read enough "10x your MRR" threads for a lifetime.
 
-This voice is *more* opinionated and more first-person than the neutral sibling orgs.
-Keep the anti-hype, plain, specific, honest core below; the difference is that here Nick
-takes a side, writes as himself, and can point to the work he does.
+Keep the anti-hype, plain, specific, honest core below. Nick takes a side, writes as
+himself, shows his real numbers (including the bad ones), and can point to the work he does.
 
 ## The voice in one line
 
@@ -43,9 +43,9 @@ the way a brochure sells to you.
 5. **Vary the rhythm.** Mix short sentences with long ones. Some one-line paragraphs.
    AI writing has a metronome cadence; human writing does not.
 
-## Compact and dense (the reader is a busy CEO)
+## Compact and dense (the reader is busy)
 
-Our reader is a decision-maker with no time. Posts are short, information-dense, and get to
+Our reader is a developer with no time. Posts are short, information-dense, and get to
 the point fast. This is not optional.
 
 - **Get to the point in the first line.** No wind-up, no "in this post," no setup. The first
@@ -144,11 +144,11 @@ writing has not earned. End the sentence at the fact.
 **Homepage / landing copy.** Lead with what Nick does and why it's worth the reader's
 time, in concrete terms. Benefits grounded in proof, not adjectives. Trust signals (a
 named person, real numbers, sources) carry the credibility, not hype words. Short. Every
-section should survive the question "would a skeptical CEO keep reading?"
+section should survive the question "would a skeptical developer keep reading?"
 
-**Essays and takes.** An essay is the substantive piece — it is the blog post, the
-newsletter issue (Actual Intelligence, by Nicholas Major), and the source for LinkedIn
-atomization, all one body of writing. A take is a short, one-line opinion. Open on the
+**Posts and experiments.** A post is the substantive piece on nmajor.com. An experiment
+write-up says what Nick tried, what he expected, what happened (with numbers), and whether
+he'd do it again; flops get written up as honestly as wins. Open on the
 point or a concrete detail, never "In today's world." One genuine position per piece,
 stated as Nick's own. Cite sources inline and name them. Vary structure. End when you're
 done, not with a summary.
@@ -163,9 +163,9 @@ required to identify where AI can actually make a difference" is the intended re
 **Email.** One email, one ask. The subject line is honest, not clickbait, and reads
 like a person wrote it. Conversational and direct. Signed by Nick.
 
-**Commercial pull (not push).** This is the one place in the system where pointing
-toward the consultancy belongs. Keep it honest and low-key: earn trust with the writing,
-then let a plain pointer ("this is the kind of thing I help companies with") do the work.
+**Commercial pull (not push).** Nick may point to his own products, tools, and partners.
+Keep it honest and low-key: earn trust with the writing, then let a plain pointer ("I built
+a tool for this") do the work. Disclose any stake or affiliate relationship next to the link.
 No hype, no hard sell, no urgency tricks. A pull the reader chooses to follow, never a
 push. When in doubt, under-sell.
 

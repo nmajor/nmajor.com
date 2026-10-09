@@ -1,0 +1,27 @@
+---
+// Archived 2026 applied-AI essays (the "Actual Intelligence" newsletter). Old
+// /writing/<slug>/ URLs 301 here (worker.js). Content is unchanged.
+import Base from '../../../layouts/Base.astro';
+import ArchivedNote from '../../../components/ArchivedNote.astro';
+import { getCollection, render } from 'astro:content';
+import { isLive } from '../../../lib/publish.js';
+import { shortDate, readingMinutes } from '../../../lib/format';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays', ({ data }) => isLive(data));
+  return essays.map((essay) => ({ params: { slug: essay.id }, props: { essay } }));
+}
+
+const { essay } = Astro.props;
+const { Content } = await render(essay);
+const mins = readingMinutes(essay.body, essay.data.readingMinutes);
+---
+<Base title={`${essay.data.title} · Nick Major`} description={essay.data.summary} ogImage={`/og/writing/${essay.id}.png`}>
+  <article class="article">
+    <ArchivedNote what="an essay from Actual Intelligence, my 2026 newsletter on applied AI in business" />
+    <p class="article__meta">{shortDate(essay.data.pubDate)} · {mins} min read</p>
+    <h1 class="article__title">{essay.data.title}</h1>
+    <div class="prose"><Content /></div>
+    <a href="/archive/ai/" class="article__back">← All applied-AI essays</a>
+  </article>
+</Base>

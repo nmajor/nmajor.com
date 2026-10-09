@@ -31,3 +31,8 @@ export function relativeShort(d: Date, now: Date = new Date()): string {
   if (days < 365) return `${months}mo ago`;
   return `${Math.round(days / 365)}y ago`;
 }
+
+/** "Oct 6, 2026" */
+export function shortDate(d: Date): string {
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}

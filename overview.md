@@ -3,585 +3,126 @@
 > **Canonical, always-current.** This is the single source of truth for what this
 > project is, where it stands, and what's next. Keep it clean: update or delete
 > stale sections as the project changes — do not let it drift.
+>
+> History before the 2026-10-09 pivot (the "Actual Intelligence" applied-AI brand,
+> the Institute/Association/consultancy ecosystem framing, the LinkedIn newsroom) is
+> preserved in `archive/pivot-2026-10/overview-before-pivot.md` and the git tag
+> `archive/actual-intelligence-2026-10`.
 
 ## Purpose
 
-**nmajor.com is Nick Major's personal brand site** — the human, opinionated,
-personality-driven channel in the founders' ecosystem. It is where Nick's personal
-point of view on AI lives (AI hot takes, a blog, a personal newsletter), aimed at
-building an audience of the consultancy's ideal ICP and converting that attention into
-trust that *pulls* people toward the consultancy.
+**nmajor.com is Nick Major's personal site.** The brand is the person:
 
-This is a rebuild. The current nmajor.com is a senior-developer portfolio/blog on
-**Vercel** ("NMajor Studios": an About, Projects, a Shakespeare-bug homepage poem, and
-one article series — *Home Lab Kubernetes Cluster*, 5 posts, April 2025). We are
-rebuilding it from the ground up on **Cloudflare Workers** with an AI-decision-maker
-brand, reusing the proven stack already running for the sister projects.
+> Nick Major. Software engineer figuring out distribution. Building with AI. Testing
+> marketing and growth tactics. Sharing what works and what doesn't.
 
-### Audience (ICP)
+Nick wants to be the developer turned distributor: marketing approached the way a
+developer would, automating, measuring, and using AI to skip the busywork. The model
+he's borrowing from is Edward Sturm (edwardsturm.com), minus the course. Nick does
+**not** plan to sell a course.
 
-The consultancy's ideal customer: **AI decision-makers at medium-to-large
-businesses** — owners, CEOs, CIOs, COOs navigating how to actually implement AI in
-their org. Same lane as the Institute and Association, approached through one named
-person's opinionated voice.
+**Audience:** indie hackers and developers who are more comfortable building than
+marketing. **Goal:** an engaged audience (target ~10k weekly newsletter readers) that
+can test, try, and pay for the marketing tools Nick builds for himself, and that makes
+tool partnerships worthwhile.
 
-## Role in the ecosystem (read this first)
+## The pieces
 
-nmajor.com is part of a deliberate four-part structure run by brothers **Nick Major**
-(nick@nmajor.com) and **Isaac Major**. The full write-up is the workspace playbook:
-`../../playbooks/institute-association-flywheel.md`. The other three:
+- **nmajor.com (this repo):** personal hub. Experiments, long-form writing, projects,
+  tools, about. Design is direction B ("hub"), mockup at
+  `research/site-pivot-2026-10/mockups/b-hub.html`.
+- **Deploy to Humans:** Nick's weekly newsletter ("Shipping is easy. Deploying to
+  humans is the hard part."). Nick bought **deploytohumans.com**; it will get its own
+  landing site, built separately. Until then `nmajor.com/subscribe/` is its signup
+  page. Don't link to deploytohumans.com until it serves something (as of
+  2026-10-09 it has Cloudflare NS but no site).
+- **Projects:** seven products listed on `/projects/` (Sites That Get Calls, Every
+  City in the USA, National Sites Guide, Calculator Campus, TangoLango, VeilBoard,
+  SupplierSignal). Each doubles as a place to test a distribution idea.
 
-- **Institute of Applied AI** (`appliedartificialintelligence.org`) — the proof /
-  content engine. Neutral research. **Strictly non-commercial, no CTAs.**
-- **Association for Executive AI Leadership** (`executiveaileadership.org`) — the
-  relationship / demand engine. Invite-only roundtables. **Strictly non-commercial.**
-- **The consultancy** (a distinct commercial entity, name TBD) — the *actual
-  business*. The only place selling happens.
+## Site map
 
-**Where nmajor.com sits: outside the firewall, on purpose.** The Institute and
-Association never sell and carry no commercial CTAs. Their governing docs explicitly
-re-home the **personal point of view and the commercial nurture to "Nick's personal
-channel and the consultancy."** That personal channel is this site. So nmajor.com is
-the one node in the system where Nick's opinions *and* commercial pull toward the
-consultancy are both allowed and intended.
+| Path | What |
+|---|---|
+| `/` | Hub: intro + photo, tiles (newsletter signup, Experiments, Writing, Projects, Tools), Latest (hidden until a post exists) |
+| `/blog/`, `/blog/<slug>/` | Current long-form posts (`posts` collection) |
+| `/experiments/` | Posts with `kind: experiment`, with a status chip (running/worked/flopped/mixed) |
+| `/projects/`, `/tools/`, `/about/`, `/subscribe/` | Static pages |
+| `/archive/` | Index of everything from before the pivot |
+| `/archive/ai/<slug>/` | 13 archived Actual Intelligence essays (`essays` collection) |
+| `/archive/takes/` | 30 archived one-line AI takes (`takes` collection) |
+| `/archive/engineering/<slug>/` | 20 archived engineering posts, 2018 + 2025 (`building` collection) |
+| `/rss.xml` | Current posts only |
 
-| Channel | Voice | Sells? |
-|---|---|---|
-| Institute | Neutral research | No (firewall) |
-| Association | Neutral convening | No (firewall) |
-| **nmajor.com** | **Nick, personal + opinionated** | Pulls to consultancy |
-| Isaac's channel (later) | Isaac, personal | Pulls to consultancy |
-| Consultancy site | "We" (Nick + Isaac) | Yes |
+**Legacy URLs 301 in one hop** via `legacyRedirect()` in `app/worker.js`:
+`/writing/*` → `/archive/ai/*`, `/posts/*` (dated and the 2018 undated form) →
+`/archive/engineering/*`, `/takes` → `/archive/takes/`, `/posts`, `/building`,
+`/engineering` → `/archive/engineering/`, `/work-with-me` → `/about/`. Archived
+essays keep their OG images at `/og/writing/<slug>.png`. Covered by
+`app/test/worker.test.mjs`. Do not use Astro `redirects` (static output makes
+meta-refresh pages, not 301s).
 
-**The lead path is pull, not push:** someone reads Nick's takes, comes to trust him,
-looks him up, finds the consultancy, reaches out. nmajor.com builds the reputation and
-audience; the consultancy is where the commercial conversation happens.
+## How to publish a post
 
-## Decisions (settled 2026-06-30)
+1. Write `app/src/content/posts/<slug>.md` (schema in `app/src/content.config.ts`):
+   `title`, `summary`, `pubDate`, optional `kind` (`writing` | `experiment` | `tools`),
+   `status` (experiments), `draft`.
+2. Follow the `writing-voice` skill for every reader-facing word.
+3. Deploy: `npm --prefix app run deploy` (builds, then `wrangler deploy`).
 
-- **Personal brand, not a neutral newsletter brand.** Lean fully into Nick's personal
-  brand. Rejected: spinning up a separate neutrally-named co-branded newsletter.
-  Rationale: the audience strategy already bet on Nick's *personal* profile as the
-  reach engine (personal profiles out-reach company pages 5-8x; the
-  `content-repurposing` pipeline atomizes each issue into personal-profile posts), the
-  neutral-publication lane is already filled by the Institute, decision-makers buy from
-  people not publications, and named single-human bylines are what the credibility
-  research rewards. A neutral media brand would duplicate the Institute and throw away
-  the personal-reach advantage.
-- **Isaac fits via his own channel + the joint consultancy, not by co-branding this
-  site.** Co-branding one personal channel between two people dilutes the single-voice
-  advantage. The brand Nick and Isaac *share* is the consultancy. Isaac builds his own
-  personal presence later (he leads GTM/enterprise — a complementary buyer-side voice).
-  Guest posts / cross-posts on nmajor.com are fine; the primary voice and byline stay
-  Nick's.
-- **Domain: nmajor.com stays canonical.** The root brand/domain remains `nmajor.com`
-  even though the website's canonical host is now `www.nmajor.com` and the naked host
-  301s there. Rejected `nickmajor.com` (already owned by a
-  *different* Nick Major; it 301-redirects to that person's Linktree, so it is not
-  available). Even if it were free, `nmajor` is the established root of the whole
-  system: `nick@nmajor.com` is the contact/sender/forwarding address across the
-  Institute and Association, and the self-hosted infra lives on `nmajor.net`
-  (`chatwoot.`, `rybbit.`, `hc.`). Don't fragment the root. The site does the
-  personal-brand work via wordmark/face/byline; the short domain is fine. (Optional
-  cheap hedge if desired: grab `nickmajor.ai`/`.co` and 301 it here; do not make it
-  canonical.)
-- **Old K8s/DevOps articles: keep their URLs, tuck in an archive.** Migrate the 5
-  *Home Lab Kubernetes Cluster* posts so their existing URLs keep working (preserves
-  any SEO/backlinks), but do not feature them. House them under an `/engineering` or
-  `/archive` section so the brand front is all-AI while the engineer-to-AI-advisor
-  credibility (called a real advantage in the Institute's `audience-strategy` research)
-  stays visible. Anything not migrated should 301 to home rather than 404.
-- **Newsletter: nmajor.com gets its own, separate from the Institute's.** This is
-  Nick's *personal* newsletter (hot takes + commercial nurture), which the firewall
-  docs explicitly route to the personal channel, distinct from the Institute's neutral
-  research cadence. Likely a separate Buttondown newsletter on the existing account.
-  **Note: the Buttondown account has several newsletters — never reuse the
-  Institute-scoped API key; create/scope a key for this one.**
-  - **Name (settled 2026-07-01): "Actual Intelligence."** The A.I. wordplay flipped
-    from *artificial* to *actual* — it winks at "AI" while meaning the real, honest,
-    non-hype thing, so the name reinforces the brand instead of fighting it. It is a
-    **title under Nick's personal brand** ("Actual Intelligence, by Nicholas Major"),
-    **not a separate brand or its own domain.** Rationale (decided after weighing the
-    Camp-A personal-name vs Camp-B publication-brand split): the whole strategy bets on
-    the *person* as the reach engine, so the newsletter is a named product under
-    `nmajor.com`, visually identical to the site, always with Nick's byline. The one
-    distinct brandable name in the system belongs to the *consultancy*, not the
-    newsletter. Optional cheap hedge: own a vanity domain and 301 it to nmajor.com;
-    never make it the canonical home.
-  - **Sending domain (settled 2026-07-01): `newsletter.nmajor.com`, from `nick@newsletter.nmajor.com`.**
-    A dedicated sub-domain isolates bulk-send reputation from Nick's real Google
-    Workspace mail on the `nmajor.com` root (which we never touch). Rejected a longer
-    `actual-intelligence.nmajor.com` (clunky in-inbox) and Buttondown's shared domain.
-    From-name **"Nicholas Major"** (personal, matches the byline); **reply-to
-    `nick@nmajor.com`** so replies land in Nick's monitored inbox — the funnel converts
-    on conversations, so a human sender + real reply target is deliberate. **No Buttondown
-    managed-DNS / NS delegation** (explicit: never delegate the sub-domain to Buttondown).
-    DNS is **manual records** in Cloudflare (Buttondown → Postmark under the hood):
-    `pm-bounces.newsletter…` CNAME → `pm.mtasv.net` (Return-Path/SPF alignment),
-    `track.newsletter…` CNAME → `webhook-consumer.buttondown.email`, `_dmarc.newsletter…`
-    TXT (Buttondown's recommended `p=quarantine; rua=…@inbound.postmarkapp.com` — reports
-    feed Buttondown's deliverability monitoring; safe since the sub-domain sends only
-    Buttondown mail with aligned DKIM+SPF), plus the domain-specific **DKIM TXT**
-    (`…pm._domainkey.newsletter`). **All records live in Cloudflare and resolving.** The
-    DKIM key exists only in the Buttondown dashboard (no API), so it was pasted in once
-    by hand; everything else was set programmatically. Final step: click **Verify** in
-    Buttondown once DNS propagates.
-  - **Buttondown branding set via API** to match the site (Direction 4a): tint
-    `#e5391f`, the "AI" monogram as icon/avatar, a generated 1200×630 OG card (Archivo
-    Black, vermillion accent), socials → nmajor.com + LinkedIn.
-  - **Buttondown does not publish publicly.** Public archive disabled (`enabled_features`
-    = `api` + `portal` only); the canonical home for every issue is `nmajor.com/writing`.
-    No RSS-to-email automation (0 automations) — sending stays script-driven so it can't
-    double-send.
-- **Stack: rebuild fresh, do not port Vercel.** Reuse the sister projects' proven
-  blueprint: **Astro → Cloudflare Workers** (static build served by a custom
-  `worker.js`), Buttondown + Cloudflare Turnstile for the newsletter, the
-  scheduled-publishing queue, build-time OG image generation, self-hosted Rybbit
-  analytics, and a Turnstile-gated contact path. Copy patterns from
-  `../appliedartificialintelligence.org/app/`, do not migrate the old Next/Vercel code.
+A post is live when `draft: false` and `pubDate <= now` (`app/src/lib/publish.js`),
+evaluated **at build time**. The daily publish cron was retired with the old
+pipeline, so a future-dated post only appears after the next deploy past its date.
+If scheduled posts are wanted, add a small scheduled build-and-deploy workflow.
+
+Nothing auto-sends email or social posts anymore. The old queue, Buttondown send
+script, LinkedIn scheduler, and takes scheduler are archived in
+`archive/pivot-2026-10/app/scripts/`.
+
+## Infrastructure (unchanged by the pivot)
+
+- **Stack:** Astro (static) → Cloudflare Workers static assets + `app/worker.js`.
+  Deploy with `app/deploy.sh` (creds from the gitignored root `.env`). `www.nmajor.com`
+  is canonical; the naked domain 301s to www. Custom domains are managed in Cloudflare,
+  not as `routes` (see `app/wrangler.jsonc`).
+- **Newsletter signup:** `POST /api/subscribe` → Turnstile verify (action
+  `nmajor_subscribe`, exact hostname) → Buttondown, double opt-in. It still posts to
+  the existing Buttondown list (the one created as "Actual Intelligence"). **Open:**
+  rename that list to Deploy to Humans or create a new one before deploytohumans.com
+  launches; both sites should feed the same list. `BUTTONDOWN_API_KEY` is scoped to
+  that list only. Sending domain `newsletter.nmajor.com` (manual DNS in Cloudflare, no
+  NS delegation to Buttondown).
+- **Analytics:** self-hosted Rybbit, site id 17 (`rybbit.nmajor.net`). Custom event
+  `newsletter_subscribe` with `source` (homepage, subscribe_page, post, about,
+  empty_state) and `form`.
+- **Search:** `sc-domain:nmajor.com` in Google Search Console, managed with
+  `scripts/gsc.py` (creds in gitignored `.env.gsc`). IndexNow key file
+  `app/public/e70c55cfbfc05af0911a2af8cda5cc21.txt`.
+- **OG cards:** generated at build by `app/src/og/card.ts` (satori + resvg), Bricolage
+  Grotesque + Inter, with Nick's photo.
 
 ## State
 
-- **2026-10-07: LinkedIn connection repaired; all five approved meme posts shifted one day.**
-  Nick confirmed the connection fix and authorized rescheduling. Independent Postiz API verification
-  confirms all five existing IDs in `QUEUE` on his enabled personal `nmajor` integration:
-  October 7 at 21:37 UTC, October 8 at 20:00 UTC, October 9 at 21:00 UTC,
-  October 10 at 19:00 UTC and October 12 at 21:00 UTC (Nick moved the last post back to Monday). The approved text and visuals are unchanged.
-  The companion's two October 6 publishing attempts failed; it is now queued for October 7.
-  The J.P. Morgan newsletter remains live at `/writing/jpmorgan-ai-in-the-mailroom/` and
-  Buttondown confirmed it sent October 6. One deduplicated site take is scheduled for October 8.
-  Approval, delivery IDs and retry history are in
-  `research/linkedin-weekly/2026-10-06-jpmorgan/release.md`.
-
-- **2026-09-29: The weekly LinkedIn workflow is now autonomous at generation time.** The
-  `content-repurposing` skill is the single command after a newsletter story is settled. It can
-  finish without weekly input from Nick, or absorb his opinion when he has time. It reports 12-18
-  candidates across the full applied-AI beat, always runs a cautionary desk, selects one Tuesday
-  newsletter companion plus zero to six independent stories, and targets five without padding.
-  Every retained post receives a rendered meme-first image recommendation and optional alternatives
-  in the research packet. Hooks, audience review, and visual recommendation now have delegated
-  modes, so they no longer stop for routine choices. Publishing remains fail-closed: each exact
-  post and visual still needs Nick's explicit approval. New versioned batches have seven daily
-  slots, a true issue-time-plus-60-minutes companion schedule, and a dedicated weekly lint. The
-  independent slots now resolve through a minute-precise UTC weekday map in
-  `app/linkedin.config.json`, initially tuned as a US-heavy professional-audience prior from the
-  raw-first study in `research/linkedin-posting-times-2026-09/`. It is explicitly an eight-week
-  test and should yield to Nick's own 48-hour and seven-day post analytics.
-  workflow and independent Astra/Fable reviews live in
-  `research/linkedin-workflow-redesign-2026-09/`. Historical performance ingestion is ready as an
-  optional lane once Nick provides the real export; no pattern has been inferred in advance.
-- **2026-09-29: Meme catalog expanded and variant handoff clarified.** The catalog now holds 123
-  researched contracts: 75 active, 27 held, and 21 rejected. Two 22-candidate expansion waves
-  preserve source, meaning, usage examples, slot mapping, phone-size inspection, safety, rights
-  status, and an admission decision under `research/social-meme-template-catalog/`; 25 were admitted.
-  The second wave focused on missing business and applied-AI joke relationships, and its audit lives
-  under `expansion-wave2-2026-09-29/`. Weekly review packets now list one named, recommended
-  post-and-image pair first and add
-  a second pair only when it makes a materially different editorial argument. Silence never grants
-  publication approval. Meme recommendations must use established templates. The workflow does not
-  generate imitation versions of familiar meme images.
-- **2026-09-29: Meme selection is now a separate, evidence-backed step.** The
-  `meme-angle-selector` skill extracts the factual tension first, generates several joke mechanisms,
-  retrieves established templates by semantic relationship, maps source facts to exact visual
-  slots, renders a shortlist, and pairwise-ranks the survivors. It can return `NO_MEME_FIT` instead
-  of forcing an image. Its selection index covers all 75 active templates with semantic families,
-  relationships, usage patterns, differentiated neighbors, cultural baggage, and dated familiarity
-  evidence. The research and blind five-post test live under
-  `research/meme-template-selection-2026-09-29/`.
-- **2026-09-29: Rockwell knowledge-retention issue published and emailed.** “Rockwell put 30
-  years of knowledge at the machine” is live at `/writing/rockwell-knowledge-at-the-machine/`
-  and was sent through the Actual Intelligence Buttondown list. Nick explicitly approved this
-  essay in chat. The issue argues that LLMs make experiential knowledge economically retrievable,
-  while the hard organizational work remains capture, maintenance, structure, and delivery in the
-  interface where the decision is made. Nick approved the five recommended LinkedIn post-and-meme
-  pairs and accepted the fair-use risk for established meme templates as a standing policy. The
-  exact assets carry that dated acceptance without being misrepresented as licensed. All five are
-  attached and scheduled to his verified personal LinkedIn profile: the Rockwell companion
-  published successfully at 2026-09-29 14:48 UTC
-  (`https://www.linkedin.com/feed/update/urn:li:share:7510711954991263744`), then FavTrip Wednesday
-  20:00 UTC, Domtar Thursday 21:00 UTC, Odyssey
-  Friday 19:00 UTC, and STG Monday 21:00 UTC. Each post carries its Postiz idempotency lock.
-- **2026-09-23: Social visuals are now meme-first.** Future social-image selection uses a fixed
-  preference order: a classic meme whenever a familiar template communicates the concept cleanly;
-  otherwise a real source screenshot with a crude circle around the exact claim; otherwise a
-  synthetic workbench photo. Boxes, arrows, and highlights are fallback annotations when a circle
-  is not legible. Meme-heavy weeks are allowed when the concepts genuinely support
-  them. Variety cannot displace a strong meme, but repeated templates and forced jokes remain
-  disallowed. The three-format limit, rights checks, separate visual approval, and attachment gate
-  are unchanged.
-- **2026-09-23: LinkedIn AI-slop audit added to the writing gate.** A raw-first scan of 96
-  items across Reddit, X, YouTube, TikTok, Instagram, and Hacker News now lives under
-  `research/linkedin-ai-slop/`. The operational finding is that readers mainly reject polished,
-  low-effort copy with no checkable claim, attributable judgment, or substance; em dashes,
-  broetry, forced threes, stock contrasts, engagement bait, and tidy conclusions only amplify the
-  suspicion and are not proof of AI authorship. `content-repurposing` now requires one checkable
-  claim, a source-specific receipt near the top, one judgment Nick could own, uncertainty attached
-  to the claim, and a final accusation test. The four Farmers follow-up posts were revised against
-  that gate and each has an owned synthetic workbench photo with complete prompt and source
-  provenance. Nick explicitly approved all four post-and-visual pairs. They are attached and
-  scheduled through Postiz to his verified personal LinkedIn profile for September 23, 24, 25,
-  and 28 at 18:00 UTC; each file carries its machine `pushedAt` and `postizId` lock.
-- **2026-09-23: Social visual system and Antigravity provider migration.** The weekly LinkedIn
-  workflow now requires one purposeful visual candidate per post and permits exactly three
-  formats: real source screenshots with crude annotation, classic memes, and synthetic workbench
-  photos of notebooks, whiteboards, scratch calculations, or marked-up generic printouts. Cards,
-  charts, diagrams, timelines, carousels, and general illustrations are retired. Workbench photos
-  are recorded as generated illustrations and can never masquerade as source evidence or Nick's
-  real workspace. Every format shares a campaign ledger with source, rights,
-  post-body, and asset hashes. Selection, visual approval, post approval, and attachment remain
-  separate states. A guarded attachment command fails closed on changed copy, stale assets,
-  review-only rights, missing explicit approval, existing media, or an already-pushed post. The
-  four Farmers follow-up posts have now cleared those gates and are scheduled with owned synthetic
-  workbench photos. The earlier raw source captures remain research/review artifacts only. The
-  Google-family focus-group seat now uses the authenticated Antigravity CLI
-  through mise; the retired Gemini CLI is no longer a fallback.
-- **2026-09-22: Farmers Insurance issue published and emailed.** Nick chose Farmers'
-  Agency Servicing Efficiency 35 program for the restart issue and set two standing
-  editorial rules: case studies should show what the company did well and why it worked,
-  then let readers infer the takeaway. Do not append prescriptive advice, diagnostic
-  questions, or a spelled-out lesson. Also ban evaluative "the X part" preambles such as
-  "the useful part," "the interesting part," and "the best part." Both rules are now in
-  `writing-voice`. Raw evidence and a claim-checked brief live in
-  `research/farmers-insurance-ai/`. A blind comparison found GLM 5.3 Flash and MiniMax M3
-  strongest and Kimi K3 substantially weaker; Nick selected GLM 5.3 Flash as the default
-  newsletter drafter until he instructs otherwise. The final article angle is that
-  Farmers' disclosed AI is an internal search assistant inside a broader operations program.
-  Five comparable deployments now support a narrower angle: useful internal support-search
-  tools can produce measurable returns, but Farmers has not shown that askfarmers.ai produced
-  its 16.4 million-hour headline. Nick approved the original reveal meme and its final caption.
-  The post was scheduled through Postiz for 2026-09-22 15:38:23 UTC on Nick's verified personal
-  LinkedIn profile and Facebook page; both files carry their machine `pushedAt` locks so the
-  newsletter workflow cannot duplicate them. The 667-word essay at
-  `app/src/content/essays/farmers-built-a-support-bot.md` was explicitly approved, deployed,
-  and sent through the Actual Intelligence Buttondown list. The live article is
-  `https://www.nmajor.com/writing/farmers-built-a-support-bot/`; Buttondown email
-  `em_2vsmpkyzp08vtrcbntcvs54tkz` reports `sent`. Three derived takes are scheduled for
-  September 24, 26, and 28. Research for the remaining four LinkedIn slots is complete. Four
-  drafts now exist for review; no remaining post has been approved or scheduled.
-- **2026-09-22: Dormancy ended; Hermes handoff deferred.** The project had been dormant since
-  2026-08-18, but the Farmers issue restarted publishing on 2026-09-22. Buttondown is active
-  and remains the settled newsletter platform. Nick asked to focus on the working editorial
-  and distribution loop before returning to Hermes. All existing workflows remain a starting
-  point that can change, and the newsletter-drafting and LinkedIn workflows in particular are
-  still being tested. The queue is empty after the direct same-day Farmers release. The new
-  workstation has a healthy, repository-managed Hermes setup, but no nmajor.com content
-  profile exists yet. The existing profiles are separate agents for Cascais Newsletter, PR
-  Outreach, and YNAB. Local secret files exist at the repo root; finish any missing values
-  directly in those ignored files.
-  `research/newsletter-workflows/report.md` now synthesizes the 78 captured sources. It
-  recommends a four-issue pilot: Hermes owns candidate collection, research, drafting,
-  claim checks, review packets, and measurement; Nick chooses the topic, supplies or
-  confirms the argument, and approves the essay and each post. Five to seven LinkedIn posts
-  are a target, never a quota. The first implementation should use a two-week rolling
-  cadence, content-hash-bound approvals, no more than two model-led revision passes, and a
-  fail-closed preflight before any external effect. No Hermes profile or unattended send
-  path should be created until Buttondown is active and Nick authorizes the new Telegram bot
-  and isolated Bitwarden project. See `HANDOFF.md` for the remaining takeover
-  steps.
-- **2026-09-22: Active content reset.** At Nick's direction, all active-path unpublished
-  content was moved to `archive/content-reset-2026-09-22/`: two essay drafts, 23 unpushed
-  social posts, three derived takes, and the dedicated unfinished research from the abandoned
-  cycle. The active essay collection now contains no drafts and the active LinkedIn tree
-  contains no unpushed posts. Published work and research shared with published work remain
-  in place. Archived approvals do not carry forward.
-- **2026-09-22: Astro security upgrade deployed.** The app now runs Astro 7.3.3 and
-  Wrangler 4.136.2; `sanitize-html` and the remaining direct dependencies were updated, and
-  Satori is pinned to 0.32.0 to avoid the vulnerable `fflate` version pulled by the next
-  release. All 36 tests, the production build, queue, LinkedIn, and takes checks pass. Both
-  the production-only and full npm audits report zero vulnerabilities. Cloudflare Worker
-  version `c38e101f-d7a3-4c26-96c5-6289b649f5e0` is live; the home page, writing index, RSS
-  feed, and latest published essay returned HTTP 200 after deployment.
-- **2026-07-23 — Recovered the missed 2026-07-21 issue and identified the cause.**
-  GitHub Actions did run successfully on Tuesday, but `your-ai-made-an-offer`, its
-  approval, and its queue entry existed only in an uncommitted local worktree. The
-  runner checked out `main`, where the queue was empty, so it correctly published,
-  emailed, and scheduled nothing. The essay has now been published with
-  `pubDate: 2026-07-21T14:00:00Z`, deployed to the site, recorded as sent in
-  Buttondown with the same backdated publish time, and its three approved personal
-  LinkedIn posts have been pushed to Postiz. **Operational rule:** an approval and
-  queue change are not ready for automation until the relevant essay, distribution
-  files, and queue/config changes are committed and pushed to `main`.
-- **2026-07-09 — Google Search Console management is configured locally.** The repo root
-  has a gitignored `.env.gsc` for the `nick@nmajor.com` Supertools OAuth client (mode 600)
-  and a stdlib-only CLI at `scripts/gsc.py` for token checks, property listing, sitemap
-  submission/listing, domain verification, and generic GSC API calls. Verified scopes:
-  `webmasters` + `siteverification`; `list-sites` shows the expected shared-account
-  properties including `sc-domain:nmajor.com`. Submitted
-  `https://www.nmajor.com/sitemap-index.xml` to `sc-domain:nmajor.com`; GSC downloaded it
-  as a sitemap index with 0 warnings and 0 errors.
-- **2026-07-09 — IndexNow configured.** The root key file is
-  `app/public/e70c55cfbfc05af0911a2af8cda5cc21.txt`, served at
-  `https://www.nmajor.com/e70c55cfbfc05af0911a2af8cda5cc21.txt`. Use that key for
-  IndexNow submissions for `www.nmajor.com`.
-- **2026-07-02 — Analytics live (self-hosted Rybbit).** Registered as **site id 17** in
-  the shared Rybbit instance (`rybbit.nmajor.net`, org "Critical AI test" —
-  `eHFGe7uW6m7ljg9u3BmzrGFuvKuarNZj`, same org/host/key as the Institute). Cookieless
-  (salted user ids, bot-blocking), with pageviews, outbound-link, URL-param, Web Vitals
-  and JS-error tracking on. Script loaded site-wide in `app/src/layouts/Base.astro`
-  (`data-site-id="17"`). **Newsletter conversion is tracked as a custom event
-  `newsletter_subscribe`** fired on a successful subscribe (props: `source` =
-  `homepage`/`subscribe_page`, `form` = which form, `status` = `new`/`already`) — wired in
-  `index.astro` and `subscribe.astro` on the `/api/subscribe` success branch. `RYBBIT_*`
-  creds + `RYBBIT_SITE_ID` in `.env`. (A Rybbit "goal" for the event must be created in the
-  dashboard — the org API key can't create goals; the events themselves already flow.)
-- **2026-06-30:** Project scaffolded via `scripts/new-project.sh`. Strategy decisions
-  above settled. Production was still the old Vercel build at this point (DNS
-  `nmajor.com` → Vercel; code now archived, see below). **Superseded 2026-07-02: DNS
-  cut over to the Cloudflare Worker — see Build progress.**
-- **2026-06-30 — repos consolidated into one canonical repo.** This project now
-  pushes to **`github.com/nmajor/nmajor.com`** (`origin`, default branch `main` = this
-  rebuild). The old sites are preserved losslessly as archive branches and the
-  redundant repos were archived read-only on GitHub:
-  - `archive/jekyll-2020` — the old 2020 Jekyll/Forestry nmajor.com.
-  - `archive/next-vercel` — the **live** Next.js/Vercel site (was `nmajor/nmajor-site`,
-    now archived read-only). Holds the 5 Home-Lab-K8s posts to migrate. One 2018
-    example Facebook token was scrubbed from this branch's history to pass GitHub push
-    protection (literal replaced with `EAA_EXAMPLE_TOKEN_REDACTED`; full commit history
-    otherwise intact, and the untouched original remains in the archived
-    `nmajor-site` repo).
-    - `archive/portfolio-2017` — the 2017 static portfolio (was `nmajor/nmajor-portfolio`,
-    now archived read-only).
-  - Pre-existing `legacy` (2019 Jekyll) and `gh-pages` (built output) branches left in
-    place, untouched.
-- **Deploy path verified.** Cloudflare creds (shared account `Nick@nmajor.com`) reused
-  from the sister project into this project's gitignored `.env`; `wrangler whoami`
-  authenticates. No localhost in this workspace — we iterate against a live Worker
-  (a `nmajor` Worker on its `workers.dev` preview URL until cutover).
-
-## Design (settled 2026-07-01)
-
-- **Home page = direction "4a"**, designed by Nick in his Claude Design project
-  *AI Profile Redesign* and implemented 1:1 in `app/` at `/`. Look: **clean paper
-  hero + black newsletter block, Archivo, vermillion `#e5391f` accent** — a distinct
-  personal brand, deliberately *not* a sibling of the Institute's Newsreader/navy.
-  Byline uses **"Nicholas Major"**, tagline *"plain-English AI for people who run
-  things."* Five earlier prototype directions live at `/v1`–`/v5` (v1 = the "billboard"
-  Nick first liked) with a temporary version switcher across them; these are scratch
-  and can be deleted once 4a is locked.
-- **Photo: yes.** The About block has a portrait slot (currently a "Drop your photo"
-  placeholder). Nick to provide a strong high-contrast portrait; also feed it into the
-  build-time OG/social cards (the face is the reach engine). Design must not block on it.
-- **Content model = newsletter-first, one body of writing.** Three content types:
-  **Takes** (short, frequent, billboard/social fuel — now **auto-generated and
-  auto-scheduled** from each approved essay by `content-repurposing`; see build progress
-  below), **Essays** (the substantive spine — *each essay IS the blog post AND the newsletter
-  issue, and it supplies the required Tuesday companion for the wider LinkedIn newsroom*; do not
-  run a separate blog and newsletter),
-  and **Pages** (About, Work-with-me, engineering archive). Every page's #1 job is to earn an
-  email signup. Open: how commercial the "Work with me" page is at launch (consultancy still
-  has no name/site).
-- **Home hero auto-tracks the latest live essay** (`featured: true` is an optional manual pin
-  that overrides). No per-issue upkeep — the hero advances on its own as issues publish. New
-  essays should set `heroTitleLead`/`heroTitleAccent`/`heroLede` so the hero reads punchy when
-  it advances to them.
-
-## Build progress
-
-- **2026-08-11 — Classic-template social-meme workflow added and tested on the
-  `second-deployment-is-smaller` LinkedIn batch.** The new
-  `.skills/social-meme-campaign/` skill now keeps 123 researched classic-template
-  contracts: **75 active**, 27 held for more evidence, and 21 explicitly rejected for
-  safety or fit. Every record has a meaning, AI writing guide, anti-patterns, ordered
-  slots, invariants, and a visually rendered operator example. The exact Memegen
-  backgrounds, source URLs, canonical examples, admission status, and hashes are local;
-  runtime validation and rendering accept only active IDs. The raw-first catalog audit
-  under `research/social-meme-template-catalog/` preserves Memegen's 210-row catalog,
-  Imgflip's 100 current popular templates, the 658-row MemeFact catalog with its
-  GPT-4o-generated visual/style descriptions, two template-semantics papers, and 78 of
-  79 linked cultural source pages. Open metadata and open-source renderer code still do
-  not clear third-party template art for publishing. The skill also provides a Memegen
-  draft renderer, JSONL campaign
-  ledgers, post-body drift detection, asset hashes, and fail-closed approval and rights
-  checks. The test batch now has twenty deliberately scrappy review options, five for
-  each underlying management mistake, plus labeled per-post contact sheets.
-  `personal-ai-exclusion.md` kept its existing evidence screenshot. Chosen review assets
-  are recorded separately in post frontmatter as `meme:` paths; asking to adjust an exact
-  option also selects it. Current choices are Pigeon for `personal-kinney-narrowed.md`,
-  Distracted Boyfriend for `personal-nine-thousand.md`, Panik Kalm Panik for
-  `personal-reversal-of-the-reversal.md`, and Pigeon for
-  `personal-what-is-a-resolution.md`. The post files now also declare those choices as
-  `media:`, carry explicit approval, and have `pushedAt` timestamps from 2026-08-11.
-  The meme campaign ledger was not advanced with that delivery: its rows still say
-  `review`/`attached:false` and the classic art still says `fair-use-review`. That
-  mismatch is unresolved historical state, not rights clearance or a production-ready
-  campaign.
-- **2026-07-09 — `/projects` page added.** Lists Nick's current project portfolio in
-  order: Every City in the USA, National Sites Guide, Sites That Get Calls,
-  TangoLango, Calculator Campus, VeilBoard, and SupplierSignal. Project rows use each
-  site's published `og:image` where available; SupplierSignal has no exposed OG image
-  yet, so the page uses a local fallback card. Every City in the USA includes Linktree,
-  Figma, Cal, and GitHub resources; Sites That Get Calls includes Figma, Cal, Linktree, and GitHub.
-  Footer now includes a small `/projects` link
-  and an Elsewhere column with Linktree, X, Instagram, LinkedIn, and GitHub.
-- **2026-07-01.** Home page live (direction 4a). **Publications structure done:**
-  `essays` + `takes` content collections, `/writing` (index + per-essay pages),
-  `/takes`, and `/rss.xml` (the feed Buttondown will consume). **Engineering archive
-  migrated:** all 20 old posts (5 home-lab-Kubernetes + 15 2018 dev tutorials) copied
-  from the archived Vercel site into an `engineering` collection, rendered at their
-  ORIGINAL `/posts/<date-slug>` URLs so old links/SEO keep working (`/uploads` images
-  came too; old `/posts` index 301s to `/engineering`). **Footer expanded** to three
-  columns (Writing / Elsewhere / Site); the Institute + Association links live here,
-  which is the firewall-safe home for org links (an ICP focus group showed a co-founder
-  credential in the bio read as contrived and lowered subscribe-intent, so it was pulled
-  from the About block). **Logo** (monogram mark `n-e`, red rounded tile + white N) and
-  favicon wired via the shared `Base` layout. **Bio** finalized through the Institute's
-  `writing-voice` skill + a 3-provider ICP focus group.
-- **2026-07-01 — content + workflow moved over from the Institute.** Three articles that
-  were really Nick's own opinionated takes (mis-published on the neutral Institute, whose
-  newsletter had 0 subscribers) were **relocated here as real essays**: *Build-versus-buy
-  broke, and AI broke it*, *Banning AI is the risk, not the safeguard* (the featured hero
-  essay), and *Fix the process first. The AI is the last step.* — rendering at
-  `/writing/<slug>/`, byline Nicholas Major, real publish dates. The three earlier design
-  stubs were replaced/removed. **Takes expanded to 14**, atomized from those essays and
-  spaced one per day (2026-06-18 → 07-01). The **personal-brand content-creation workflow was
-  copied from the Institute and adapted** to nmajor's personal, opinionated, commercial-pull
-  positioning (dropping the Institute's neutral/firewall framing): the `content-discovery`,
-  `content-builder`, `content-repurposing`, `writing-voice`, `hooks`, and `icp-focus-group`
-  skills in `.skills/`, their backing `research/` reports, and the **publishing pipeline**
-  (`app/scripts/`: newsletter send, scheduled-publish queue, LinkedIn scheduler; `npm test`
-  16/16 green). The LinkedIn atomizations for two of the essays came along in `app/linkedin/`.
-  Pipeline is in **shadow mode** and needs env wiring before it can send (see below).
-- **2026-07-02 — takes automation baked into the pipeline + hero made self-updating.**
-  The `takes` collection is now an auto-generated drip that hangs off each approved essay, so
-  the site keeps a steady pulse between weekly issues with zero manual work. `content-repurposing`
-  now writes 1-3 short takes per issue (atomized from the essay's real takeaways, every word on
-  `writing-voice`), **deduplicated against every past take by a canonical `idea` fingerprint** —
-  a reframing of an existing claim counts as a repeat, and an essay with nothing fresh generates
-  **zero** takes and picks the drip up on a later issue. Takes need **no approval** (the one
-  content type an agent writes and ships). Mechanics mirror LinkedIn exactly: a take couples to
-  its essay by `source` + `offsetDays` (never a date), starts `draft:true`, and
-  `scripts/schedule-takes.mjs` (new workflow step) stamps `pubDate = essay date + offset` and
-  flips `draft:false` when the essay goes live; the render now gates on `isLive` (not just
-  `!draft`) so each take reveals on its day via the daily build. Backed by `scripts/lib/takes.mjs`
-  + `takes-lint.mjs` + unit tests (`npm test` green), `npm run takes:lint`. The 14 existing takes
-  were backfilled with `source`/`idea` to seed the dedup ledger. Separately, the **home hero now
-  auto-tracks the latest live essay** (unpinned `banning-ai`'s `featured` flag; the flag stays as
-  an optional override), and the home page's essay/takes lists now use `isLive` too (which also
-  stops a pinned future-dated essay from leaking onto the home page before its date).
-- **2026-07-02 — LAUNCHED: DNS cutover off Vercel is done. nmajor.com is live on the
-  Cloudflare Worker.** The `nmajor` Worker (static Astro assets) is bound to **`nmajor.com`
-  and `www.nmajor.com`** as Cloudflare **Custom Domains**. The two Vercel records (apex
-  `A → 76.76.21.21`, `www CNAME → cname.vercel-dns.com`) were deleted and replaced; the zone
-  was already on Cloudflare nameservers, so this was a record-level swap, not an NS migration.
-  **Mail and newsletter DNS were deliberately left untouched** (5× Google MX; the newsletter
-  `pm-bounces`/`track`/DKIM/DMARC records; google-site-verification). Verified live: apex
-  redirects to www; www + `/writing` + `/takes` + `/rss.xml` + a per-essay page + a migrated
-  `/posts/...` K8s URL return 200 over HTTPS, `server: cloudflare`. The custom domains are managed outside
-  `wrangler deploy` (the deploy token lacks Workers Routes scope; see `app/wrangler.jsonc`).
-  **Follow-ups (non-blocking):** (1) optionally turn `workers_dev` off to drop the duplicate
-  `*.workers.dev` host; (2) the old Vercel project can be decommissioned now that no traffic
-  points to it; (3) the daily `publish.yml` cron is still paused — un-pausing it (with the
-  GitHub secrets) is what turns on automatic weekly publishing + newsletter send + LinkedIn/takes
-  scheduling.
-- **2026-07-02 — canonical host is now `www.nmajor.com`; naked `nmajor.com` 301s to www,
-  always.** The redirect lives in `app/worker.js` (apex → www, path + query preserved), mirroring
-  the Institute. Astro `site` flipped to `https://www.nmajor.com`, so every canonical tag, OG
-  image URL, and the RSS feed point at www and match the redirect target. The subscribe form only
-  ever loads on www after the redirect, so `/api/subscribe` posts stay same-origin (no POST is
-  redirected); the Turnstile widget already lists www. Verified: apex + `/subscribe` + `/writing/*`
-  + `/og/*` all 301 to the www equivalent, www serves 200, no redirect loop. (The `nmajor.com`
-  *domain* is still canonical vs other domains per the Decisions section; this is only the
-  www-vs-apex host choice for the website.)
-- **2026-07-02 — subscribe landing page + the newsletter form is now wired for real
-  (Turnstile-gated).** New conversion-focused landing page at **`/subscribe`**
-  (`app/src/pages/subscribe.astro`), the page Nick links from LinkedIn: value-prop hero,
-  "what you get" with real essay titles, who-it's-for (including who it isn't), credibility
-  (no fake subscriber counts, honest for an early list), sample essays, an expectations FAQ,
-  and a repeated CTA. Structure came from a Fable-5 research pass over real conversion-focused
-  newsletter pages (Ben Evans, Pragmatic Engineer, The Diff, Lenny, etc.); copy follows
-  `writing-voice`. **The form actually subscribes now, with real anti-spam:** a small Worker
-  endpoint **`POST /api/subscribe`** (`app/worker.js`, mirroring the Institute's blueprint)
-  verifies a **Cloudflare Turnstile** token *server-side* (secret
-  `PROJECTS_TURNSTILE_SECRET_KEY`), then
-  creates the subscriber in Buttondown's "Actual Intelligence" list (`BUTTONDOWN_API_KEY`, double
-  opt-in on). Both secrets are Worker secrets, never in the repo. Turnstile uses the
-  account-wide **Shared projects — website forms** managed widget (sitekey
-  `0x4AAAAAADwCt8xxNYgYoiEK`, public); the Worker enforces action
-  `nmajor_subscribe` and the exact request hostname.
-  wrangler.jsonc gained `main: worker.js` + a named `ASSETS` binding with `run_worker_first` so the
-  Worker sees `/api/subscribe` and everything else falls through to the static build. The **home
-  page subscribe form was also wired** to the same endpoint (it was a fake-success prototype
-  before), and nav/footer "Subscribe" now point to `/subscribe`. Verified: site still serves,
-  server-side gate rejects missing/invalid emails and bogus Turnstile tokens, and Buttondown accepts
-  the worker's exact payload (201, then cleaned up). The one step automation can't cover is a real
-  human solving the managed Turnstile challenge, so the final positive click-test is Nick's.
-- **2026-07-02 — real OG (social share) images, generated at build, on brand.** Every page
-  now has a proper 1200x630 OpenGraph/Twitter card instead of the old fallback photo. Built with
-  **satori + @resvg/resvg-js** as prerendered Astro endpoints under `app/src/pages/og/` (the
-  Institute's proven pattern; native resvg runs only at build, never in the Worker). Shared
-  renderer `app/src/og/card.ts`, direction-4a design: the red "N" mark, an Archivo Black title, a
-  vermillion IBM Plex Mono eyebrow + subtitle, and a `Nicholas Major / nmajor.com` footer. Two
-  themes: paper (brand + essays) and ink/black (the newsletter card, echoing the home black
-  block). Cards: `/og/default.png` (home + site-wide fallback, wired as the Base default),
-  `/og/subscribe.png` (ink), and per-essay `/og/writing/<slug>.png` (title + summary, gated on
-  `!draft` to match the essay page so no card is ever missing). Base emits `og:image` +
-  `og:image:width/height` + `twitter:image`. Fonts live in `app/src/og/fonts/` (ArchivoBlack +
-  IBMPlexMono; the variable Archivo was dropped because satori's parser can't read `fvar`).
-  Verified live: all cards serve 200 `image/png` and the right card is referenced per page. Note:
-  LinkedIn/Twitter cache OG images, so use their post inspectors to force a refresh on already-shared URLs.
-- **2026-09-22 — `/work-with-me` page and contact route added.** The nav and footer
-  now lead to a dedicated page instead of looping back to the footer. Its form posts
-  to the Worker at `POST /api/contact`, which validates the fields, verifies the
-  shared Cloudflare Turnstile widget server-side with the `nmajor_contact` action,
-  and sends the inquiry to Discord through the private
-  `DISCORD_CONTACT_WEBHOOK_URL` Worker secret. The webhook is never sent to the
-  browser. Successful inquiries also record a `work_inquiry` Rybbit event. Worker
-  version `a9f340a1-304b-43c3-b481-f2cd01bcdb0b` is live; the page returns 200 and
-  the production endpoint rejects missing or invalid Turnstile tokens.
-- **Still TODO:** `/about` page (where the co-founder credential gets real context)
-  and a future consultancy company-page integration for the currently-disabled
-  `business` LinkedIn channel. The personal LinkedIn channel is live in Postiz and
-  the daily `publish.yml` cron is active.
-
-## Plans
-
-Build order (reusing the Institute blueprint where it fits):
-
-1. **Brand + design direction.** A personal-brand identity that reads as a sibling to
-   the Institute/Association system but is distinctly Nick's (more personal, more
-   opinionated, a real face/voice). Decide palette/type relative to the shared system
-   (Newsreader + IBM Plex; navy ink). Use the `frontend-design` skill.
-2. **Scaffold the Astro app in `app/`.** Mirror the Institute's structure: `worker.js`,
-   `wrangler.jsonc`, posts content collection, RSS, Base layout, OG generation.
-3. **Content model.** Blog/hot-takes posts (the spine) + pages (About, the
-   engineering archive, a "what I do" / pointer-to-consultancy page). Migrate the 5 K8s
-   posts into the archive at their existing URLs.
-4. **Personal newsletter.** Its own Buttondown newsletter + Turnstile-gated subscribe
-   → Worker `/api/subscribe`, double opt-in, welcome email in Nick's voice. Separate
-   key from the Institute.
-5. **Commercial pull (not push).** Tasteful, honest pointers toward the consultancy
-   (this site is allowed CTAs, unlike the orgs). Calibrate once the consultancy
-   entity/name/site exists.
-6. **Publishing + distribution.** Optionally reuse the scheduled-publishing queue and
-   the LinkedIn `content-repurposing` pipeline so Nick's posts feed his personal
-   LinkedIn (the reach engine).
-7. **Cutover.** Point `nmajor.com` DNS from Vercel to the Cloudflare Worker once parity
-   is reached; add 301s for any dropped old paths.
+- **2026-10-09: Pivot shipped.** Old direction snapshotted and tagged
+  (`archive/actual-intelligence-2026-10`). Publish workflow, LinkedIn tree and config
+  (`enabled: false`), publishing scripts, and the content-pipeline skills
+  (content-builder, content-repurposing, content-discovery, social-meme-campaign,
+  meme-angle-selector, social-visual-system) moved to `archive/pivot-2026-10/`. Kept
+  skills: writing-voice, hooks, icp-focus-group, last30days. New B-style site built
+  and deployed with all legacy URLs 301ing into `/archive/`. Traffic evidence and the
+  archive plan: `research/site-pivot-2026-10/` (GSC showed 3 clicks in 16 months;
+  Rybbit's top old pages were the Farmers essay and the Talos post).
+- **Postiz:** two LinkedIn posts approved under the old pipeline were still queued in
+  Postiz for 2026-10-10 and 2026-10-12 at pivot time. Nick chose to leave them.
+- **No posts yet.** `/blog/` and `/experiments/` show an honest empty state with a
+  signup form.
 
 ## Open questions
 
-- **Consultancy name/site:** still TBD across the ecosystem. The commercial CTAs and
-  the "what I do" page on nmajor.com should be calibrated to whether the consultancy
-  has its own domain yet, or whether nmajor.com temporarily hosts a light "work with
-  me" page until it does. (We chose "personal brand pulls to a separate consultancy" as
-  the model; revisit the interim if the consultancy site isn't ready at cutover.)
-- **Voice/style (decided 2026-07-01):** nmajor.com runs its **own personal adaptation** of
-  the `writing-voice` skill (copied from the Institute and reframed): Nick's first-person,
-  more-opinionated voice with tasteful commercial pull, keeping the anti-hype core and the
-  blacklist. `voice-nick.md` (built from Nick's blog) is the target voice.
-- **Retire the content machinery on the Institute?** The personal-brand workflow (skills +
-  LinkedIn pipeline) was **copied** here, not deleted from the Institute. Open whether to now
-  strip it from the Institute or keep a neutral-research variant there. Also: the 3 removed
-  Institute URLs currently 404 — decide whether to 301 them to their new `nmajor.com/writing/`
-  homes (they had 0 subscribers and little/no external reach, so low urgency).
+- Buttondown list: rename vs. new list (see Infrastructure).
+- Whether to add a scheduled build so future-dated posts publish themselves.
 
 ## Notes
 
-- Follows workspace conventions in the root `CLAUDE.md` (`app/` = the site,
-  `research/` = raw-first research, `.skills/` shared between Claude Code and Codex).
-- **Cross-references:** Institute (`../appliedartificialintelligence.org/`),
-  Association (`../executiveaileadership.org/`), playbook
-  (`../../playbooks/institute-association-flywheel.md`).
-- **Firewall reminder:** the *orgs* never sell; nmajor.com (personal) and the
-  consultancy may. Keep that line clean — commercial CTAs belong here and on the
-  consultancy, never on the Institute or Association.
+- Follows workspace conventions in `CLAUDE.md` (`app/` = the site, `research/` =
+  raw-first research, `.skills/` shared between Claude Code and Codex).

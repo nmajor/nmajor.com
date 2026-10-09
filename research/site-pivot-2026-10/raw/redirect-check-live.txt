@@ -1,0 +1,51 @@
+OK 200  /
+FAIL 307  /about
+OK 301 -> 200  /building -> /archive/engineering/
+OK 301 -> 200  /building/ -> /archive/engineering/
+OK 301 -> 200  /engineering -> /archive/engineering/
+OK 301 -> 200  /posts -> /archive/engineering/
+OK 301 -> 200  /posts/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/ -> /archive/engineering/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/
+OK 301 -> 200  /posts/2018-02-14-deploying-a-node-js-app-on-azure-app-services/ -> /archive/engineering/2018-02-14-deploying-a-node-js-app-on-azure-app-services/
+OK 301 -> 200  /posts/2018-02-16-express-js-with-es6-and-babel/ -> /archive/engineering/2018-02-16-express-js-with-es6-and-babel/
+OK 301 -> 200  /posts/2018-03-21-get-a-facebook-page-access-token-that-never-expires/ -> /archive/engineering/2018-03-21-get-a-facebook-page-access-token-that-never-expires/
+OK 301 -> 200  /posts/2018-07-16-react-css-styled-components -> /archive/engineering/2018-07-16-react-css-styled-components/
+OK 301 -> 200  /posts/2018-07-16-react-css-styled-components/ -> /archive/engineering/2018-07-16-react-css-styled-components/
+OK 301 -> 200  /posts/2018-07-17-adding-eslint-to-your-project/ -> /archive/engineering/2018-07-17-adding-eslint-to-your-project/
+OK 301 -> 200  /posts/2018-07-25-making-redux-middleware-for-websockets/ -> /archive/engineering/2018-07-25-making-redux-middleware-for-websockets/
+OK 301 -> 200  /posts/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware/ -> /archive/engineering/2018-07-25-using-socket-io-with-redux-websocket-redux-middleware/
+OK 301 -> 200  /posts/2018-08-22-node-env-variables-solving-the-nightmare/ -> /archive/engineering/2018-08-22-node-env-variables-solving-the-nightmare/
+OK 301 -> 200  /posts/2018-08-23-access-and-refresh-token-handling-with-redux/ -> /archive/engineering/2018-08-23-access-and-refresh-token-handling-with-redux/
+OK 301 -> 200  /posts/2018-08-25-serverless-my-initial-setup-with-es6-testing-and-ci-deployment/ -> /archive/engineering/2018-08-25-serverless-my-initial-setup-with-es6-testing-and-ci-deployment/
+OK 301 -> 200  /posts/2018-08-28-serverless-framework-s3-file-uploads/ -> /archive/engineering/2018-08-28-serverless-framework-s3-file-uploads/
+OK 301 -> 200  /posts/2018-09-01-serverless-framework-executable-binaries-aws-lambda/ -> /archive/engineering/2018-09-01-serverless-framework-executable-binaries-aws-lambda/
+OK 301 -> 200  /posts/2018-09-20-simple-object-storage-in-redis-and-node/ -> /archive/engineering/2018-09-20-simple-object-storage-in-redis-and-node/
+OK 301 -> 200  /posts/2018-09-28-multi-tenancy-with-expressmongoose/ -> /archive/engineering/2018-09-28-multi-tenancy-with-expressmongoose/
+OK 301 -> 200  /posts/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions/ -> /archive/engineering/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions/
+OK 301 -> 200  /posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal/ -> /archive/engineering/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal/
+OK 301 -> 200  /posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd/ -> /archive/engineering/2025-04-15-home-lab-kubernetes-cluster-flux-cd/
+OK 301 -> 200  /posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage/ -> /archive/engineering/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage/
+OK 301 -> 200  /posts/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg/ -> /archive/engineering/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg/
+OK 301 -> 200  /posts/express-js-with-es6-and-babel -> /archive/engineering/2018-02-16-express-js-with-es6-and-babel/
+FAIL 307  /projects
+OK 200  /projects/
+FAIL 307  /subscribe
+OK 200  /subscribe/
+OK 301 -> 200  /takes -> /archive/takes/
+OK 301 -> 200  /takes/ -> /archive/takes/
+OK 301 -> 200  /work-with-me -> /about/
+OK 301 -> 200  /work-with-me/ -> /about/
+OK 301 -> 200  /writing -> /archive/ai/
+OK 301 -> 200  /writing/ -> /archive/ai/
+OK 301 -> 200  /writing/a-machine-cant-answer-for-it/ -> /archive/ai/a-machine-cant-answer-for-it/
+OK 301 -> 200  /writing/banning-ai-is-the-risk/ -> /archive/ai/banning-ai-is-the-risk/
+OK 301 -> 200  /writing/build-versus-buy-broke/ -> /archive/ai/build-versus-buy-broke/
+OK 301 -> 200  /writing/farmers-built-a-support-bot/ -> /archive/ai/farmers-built-a-support-bot/
+OK 301 -> 200  /writing/fix-the-process-first/ -> /archive/ai/fix-the-process-first/
+OK 301 -> 200  /writing/jpmorgan-ai-in-the-mailroom/ -> /archive/ai/jpmorgan-ai-in-the-mailroom/
+OK 301 -> 200  /writing/rockwell-knowledge-at-the-machine/ -> /archive/ai/rockwell-knowledge-at-the-machine/
+OK 301 -> 200  /writing/second-deployment-is-smaller/ -> /archive/ai/second-deployment-is-smaller/
+OK 301 -> 200  /writing/seven-days-to-close/ -> /archive/ai/seven-days-to-close/
+OK 301 -> 200  /writing/the-bottleneck-moved/ -> /archive/ai/the-bottleneck-moved/
+OK 301 -> 200  /writing/the-case-study-was-an-ad/ -> /archive/ai/the-case-study-was-an-ad/
+OK 301 -> 200  /writing/uber-measured-the-bill/ -> /archive/ai/uber-measured-the-bill/
+OK 301 -> 200  /writing/your-ai-made-an-offer/ -> /archive/ai/your-ai-made-an-offer/

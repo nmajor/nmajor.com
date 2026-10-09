@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getCollection } from 'astro:content';
+import { isLive } from '../../lib/publish.js';
+
+const posts = (await getCollection('posts', ({ data }) => isLive(data) && data.kind === 'experiment'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<Base
+  title="Experiments · Nick Major"
+  description="Every marketing and growth experiment Nick Major runs on his own products, with the results. Including the ones that flop."
+>
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Experiments</span>
+      <h1 class="phead__title">The experiment log</h1>
+      <p class="phead__sub">Every growth test I run on my own products: what I tried, what I expected, and what actually happened. The flops stay up too.</p>
+    </header>
+    <PostList posts={posts} empty="The first experiment write-up is on its way." />
+  </div>
+</Base>

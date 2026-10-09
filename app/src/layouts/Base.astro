@@ -1,15 +1,17 @@
 ---
-// Shared shell for every page: <head>, the nav lockup (logo mark + wordmark),
-// and the footer. Page content goes in the slot. Keeps the home page and the
-// publication pages on one visual system (styles in ../styles/site.css).
+// Shared shell for every page: <head>, the nav, and the footer. Page content goes
+// in the slot. Visual system lives in ../styles/site.css (direction B).
 import '../styles/site.css';
 
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  // Archived pages point canonical at themselves like any other page; this only
+  // exists so a page can opt out of indexing if it ever needs to.
+  noindex?: boolean;
 }
-const { title, description, ogImage = '/og/default.png' } = Astro.props;
+const { title, description, ogImage = '/og/default.png', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.nmajor.com');
 const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://www.nmajor.com');
 ---
@@ -21,10 +23,12 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://www.nmajor.com');
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
-    <meta name="theme-color" content="#faf9f5" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#fbf7f0" />
 
     <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/nicholas-major.jpg" />
+    <link rel="alternate" type="application/rss+xml" title="Nick Major" href="/rss.xml" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -33,32 +37,27 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://www.nmajor.com');
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@thenmajor" />
     <meta name="twitter:image" content={ogImageUrl.href} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Rybbit analytics (self-hosted, cookieless). Site id 17. -->
-    <script
-      is:inline
-      src="https://rybbit.nmajor.net/api/script.js"
-      data-site-id="17"
-      defer></script>
+    <script is:inline src="https://rybbit.nmajor.net/api/script.js" data-site-id="17" defer></script>
   </head>
   <body>
     <header class="nav">
-      <div class="nav__inner">
-        <a href="/" class="nav__mark">
-          <img class="nav__logo" src="/logo.svg" width="26" height="26" alt="" />
-          <span>Nicholas Major</span>
-        </a>
+      <div class="wrap nav__inner">
+        <a href="/" class="nav__mark">nick major<span>.</span></a>
         <nav class="nav__links" aria-label="Primary">
-          <a href="/writing" class="nlink">Writing</a>
-          <a href="/takes" class="nlink">Takes</a>
-          <a href="/#about" class="nlink">About</a>
-          <a href="/work-with-me" class="nlink nlink--muted">Work with me</a>
-          <a href="/subscribe" class="pill">Subscribe</a>
+          <a href="/experiments/">Experiments</a>
+          <a href="/blog/">Writing</a>
+          <a href="/projects/">Projects</a>
+          <a href="/tools/">Tools</a>
+          <a href="/about/">About</a>
+          <a href="/subscribe/" class="pill">Newsletter</a>
         </nav>
       </div>
     </header>
@@ -67,65 +66,37 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://www.nmajor.com');
       <slot />
     </main>
 
-    <footer id="work" class="foot">
-      <div class="foot__inner">
-        <div class="foot__top">
-          <div class="foot__brand">
-            <a href="/" class="foot__mark">
-              <img class="foot__marklogo" src="/logo.svg" width="26" height="26" alt="" />Nicholas Major
-            </a>
-            <div class="foot__cta">
-              <span class="foot__ctalabel">Work with me</span>
-              <p class="foot__ctatext">I help a few companies implement what I write about.</p>
-              <a href="/work-with-me" class="foot__ctalink">How I help <span class="foot__arr" aria-hidden="true">→</span></a>
-            </div>
+    <footer class="foot">
+      <div class="wrap foot__inner">
+        <div class="foot__brand">
+          <a href="/" class="nav__mark">nick major<span>.</span></a>
+          <p>Software engineer figuring out distribution.</p>
+        </div>
+        <nav class="foot__cols" aria-label="Footer">
+          <div class="foot__col">
+            <span class="foot__h">Site</span>
+            <a href="/experiments/">Experiments</a>
+            <a href="/blog/">Writing</a>
+            <a href="/projects/">Projects</a>
+            <a href="/tools/">Tools</a>
+            <a href="/about/">About</a>
           </div>
-
-          <nav class="foot__cols" aria-label="Footer">
-            <div class="foot__col">
-              <span class="foot__h">Read</span>
-              <a href="/writing">Writing</a>
-              <a href="/takes">Takes</a>
-              <a href="/building">Building</a>
-              <a href="/rss.xml">RSS</a>
-            </div>
-            <div class="foot__col">
-              <span class="foot__h">Related</span>
-              <a href="https://appliedartificialintelligence.org" class="foot__org">
-                <img class="foot__orglogo" src="/logos/institute.svg" width="18" height="18" alt="" />Institute of Applied AI ↗
-              </a>
-              <a href="https://executiveaileadership.org" class="foot__org">
-                <img class="foot__orglogo" src="/logos/association.svg" width="18" height="18" alt="" />Association for Executive AI Leadership ↗
-              </a>
-            </div>
-            <div class="foot__col">
-              <span class="foot__h">Site</span>
-              <a href="/#about">About</a>
-              <a href="/projects">Projects</a>
-              <a href="/work-with-me">Work with me</a>
-              <a href="/subscribe">Subscribe</a>
-            </div>
-            <div class="foot__col">
-              <span class="foot__h">Elsewhere</span>
-              <a href="https://linktr.ee/thenmajor" target="_blank" rel="me noopener">Linktree ↗</a>
-              <a href="https://x.com/thenmajor" target="_blank" rel="me noopener">X ↗</a>
-              <a href="https://www.instagram.com/thenmajor" target="_blank" rel="me noopener">Instagram ↗</a>
-              <a href="https://www.linkedin.com/in/nmajor" target="_blank" rel="me noopener">LinkedIn ↗</a>
-              <a href="https://github.com/nmajor" target="_blank" rel="me noopener">GitHub ↗</a>
-            </div>
-          </nav>
-        </div>
-
-        <div class="foot__bottom">
-          <span class="foot__meta">© 2026 Nicholas Major · Lisbon</span>
-        </div>
+          <div class="foot__col">
+            <span class="foot__h">Read</span>
+            <a href="/subscribe/">Deploy to Humans</a>
+            <a href="/rss.xml">RSS</a>
+            <a href="/archive/">Archive</a>
+          </div>
+          <div class="foot__col">
+            <span class="foot__h">Elsewhere</span>
+            <a href="https://x.com/thenmajor" target="_blank" rel="me noopener">X</a>
+            <a href="https://www.linkedin.com/in/nmajor" target="_blank" rel="me noopener">LinkedIn</a>
+            <a href="https://github.com/nmajor" target="_blank" rel="me noopener">GitHub</a>
+            <a href="https://www.instagram.com/thenmajor" target="_blank" rel="me noopener">Instagram</a>
+          </div>
+        </nav>
+        <span class="foot__meta">© 2026 Nick Major · Lisbon</span>
       </div>
     </footer>
   </body>
 </html>
-
-<style>
-  /* nav lockup: logo mark + wordmark */
-  .nav__mark { display: inline-flex; align-items: center; gap: 10px; }
-  .nav__logo { display: block; border-radius: 6px; flex: none; }
-</style>

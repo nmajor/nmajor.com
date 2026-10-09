@@ -1,7 +1,7 @@
 # Voice profile: Nicholas Major
 
 This is Nick's own voice on nmajor.com — apply it to everything bylined **Nicholas
-Major**, on top of the `writing-voice` core rules and the compact-for-busy-CEOs rule.
+Major**, on top of the `writing-voice` core rules and the compact-for-busy-readers rule.
 Built from 20 posts on his blog (nmajor.com); full analysis with evidence in
 `research/writing-style/report.md`. The core rules always win where they conflict; this
 tunes the personality inside them.

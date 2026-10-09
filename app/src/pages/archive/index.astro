@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isLive } from '../../lib/publish.js';
+
+const counts = {
+  ai: (await getCollection('essays', ({ data }) => isLive(data))).length,
+  takes: (await getCollection('takes', ({ data }) => isLive(data))).length,
+  eng: (await getCollection('building', ({ data }) => !data.draft)).length,
+};
+---
+<Base title="Archive · Nick Major" description="Older writing by Nick Major: 2026 applied-AI essays and takes, a 2025 home-lab Kubernetes series, and 2018 engineering tutorials.">
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Archive</span>
+      <h1 class="phead__title">The archive</h1>
+      <p class="phead__sub">Older writing from before this site was about building and distribution. It stays up so old links keep working.</p>
+    </header>
+    <div class="rows">
+      <a class="row" href="/archive/ai/"><span class="row__main"><span class="row__title">Applied-AI essays</span><span class="row__blurb">Actual Intelligence, my 2026 newsletter on AI in business.</span></span><span class="row__meta">{counts.ai} essays</span></a>
+      <a class="row" href="/archive/takes/"><span class="row__main"><span class="row__title">AI takes</span><span class="row__blurb">One-liners from the same period.</span></span><span class="row__meta">{counts.takes} takes</span></a>
+      <a class="row" href="/archive/engineering/"><span class="row__main"><span class="row__title">Engineering posts</span><span class="row__blurb">Home-lab Kubernetes (2025) and React, Node, and Serverless tutorials (2018).</span></span><span class="row__meta">{counts.eng} posts</span></a>
+    </div>
+  </div>
+</Base>

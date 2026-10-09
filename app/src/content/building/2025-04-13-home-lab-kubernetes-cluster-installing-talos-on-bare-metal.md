@@ -9,7 +9,7 @@ tags:
 hero: "/uploads/2025/04/talos-first-boot-monitor.jpg"
 ---
 
-This is the second post in my home lab Kubernetes series. In the [previous post](/posts/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions) I went over the project overview, hardware, and network planning. Now it's time to actually install an operating system on these machines.
+This is the second post in my home lab Kubernetes series. In the [previous post](/archive/engineering/2025-04-11-home-lab-kubernetes-cluster-project-overview-network-setup-and-naming-conventions/) I went over the project overview, hardware, and network planning. Now it's time to actually install an operating system on these machines.
 
 I went with [Talos Linux](https://www.talos.dev/) — a minimal, immutable, API-driven OS purpose-built for Kubernetes. One of the things that makes Talos interesting is that it's so API-driven that even the installation is done by pushing a configuration to it through the API. There's no SSH, no shell, no package manager. You configure everything through YAML and `talosctl`.
 
@@ -350,4 +350,4 @@ talosctl apply-config --talosconfig talosconfig --nodes 192.168.10.51 \
 
 ## What's Next
 
-With Talos installed on all six nodes, the cluster is running but it's basically empty. In the next post I'll cover setting up [Flux CD for GitOps](/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd), so we can manage the cluster state through a Git repository instead of running `kubectl` commands by hand.
+With Talos installed on all six nodes, the cluster is running but it's basically empty. In the next post I'll cover setting up [Flux CD for GitOps](/archive/engineering/2025-04-15-home-lab-kubernetes-cluster-flux-cd/), so we can manage the cluster state through a Git repository instead of running `kubectl` commands by hand.

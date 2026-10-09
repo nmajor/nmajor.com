@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getCollection } from 'astro:content';
+import { isLive } from '../../lib/publish.js';
+
+const posts = (await getCollection('posts', ({ data }) => isLive(data)))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<Base
+  title="Writing · Nick Major"
+  description="Long-form posts by Nick Major on building and shipping products, marketing them, and the experiments in between."
+>
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Writing</span>
+      <h1 class="phead__title">Writing</h1>
+      <p class="phead__sub">Longer posts on building and shipping products, marketing them as a developer, and what I learn from the experiments.</p>
+    </header>
+    <PostList posts={posts} empty="The first post is on its way." />
+  </div>
+</Base>

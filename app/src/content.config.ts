@@ -1,11 +1,32 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// Single source of truth for everything Nick publishes. Two kinds of writing:
-//   essays — the substantive spine. Each essay IS the blog post AND the newsletter
-//            issue AND the source for LinkedIn atomization. Markdown files below.
-//   takes  — short, frequent, opinionated one-liners. Billboard + social fuel.
-// We never author content anywhere but here.
+// Single source of truth for everything Nick publishes on nmajor.com.
+//
+//   posts    — the current writing (2026-10 pivot onward): long-form posts on
+//              building and shipping products, marketing experiments, and tools.
+//              Rendered at /blog/<slug>/; experiments also list at /experiments/.
+//
+// Archived (kept as-is, rendered under /archive/, old URLs 301 there via worker.js):
+//   essays   — the 2026 "Actual Intelligence" applied-AI essays -> /archive/ai/<slug>/
+//   takes    — one-line AI takes -> /archive/takes/
+//   building — 2018 dev tutorials + 2025 home-lab K8s posts -> /archive/engineering/<slug>/
+
+const posts = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+    // writing = essay/how-to, experiment = a growth test with a status, tools = stack/tool notes
+    kind: z.enum(['writing', 'experiment', 'tools']).default('writing'),
+    // Only meaningful for experiments.
+    status: z.enum(['running', 'worked', 'flopped', 'mixed']).optional(),
+    readingMinutes: z.number().optional(),
+  }),
+});
 
 const essays = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/essays' }),
@@ -78,4 +99,4 @@ const building = defineCollection({
   }),
 });
 
-export const collections = { essays, takes, building };
+export const collections = { posts, essays, takes, building };

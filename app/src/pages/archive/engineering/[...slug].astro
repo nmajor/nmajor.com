@@ -1,0 +1,27 @@
+---
+// Archived engineering posts (2018 dev tutorials, 2025 home-lab Kubernetes).
+// Old /posts/<slug> URLs 301 here (worker.js). Content is unchanged.
+import Base from '../../../layouts/Base.astro';
+import ArchivedNote from '../../../components/ArchivedNote.astro';
+import { getCollection, render } from 'astro:content';
+import { shortDate, readingMinutes } from '../../../lib/format';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('building', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const mins = readingMinutes(post.body);
+---
+<Base title={`${post.data.title} · Nick Major`} description={post.data.description ?? post.data.title} ogImage={post.data.hero ?? '/og/default.png'}>
+  <article class="article">
+    <ArchivedNote what={`an engineering post from ${post.data.date.getFullYear()}`} />
+    <p class="article__meta">{shortDate(post.data.date)} · {mins} min read</p>
+    <h1 class="article__title">{post.data.title}</h1>
+    {post.data.hero && <img class="article__hero" src={post.data.hero} alt="" loading="lazy" />}
+    <div class="prose"><Content /></div>
+    <a href="/archive/engineering/" class="article__back">← All engineering posts</a>
+  </article>
+</Base>

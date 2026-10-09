@@ -1,0 +1,6 @@
+---
+// Banner on every archived page so a visitor from an old link knows where they are.
+interface Props { what: string }
+const { what } = Astro.props;
+---
+<p class="archived">This is from my archive: {what}. These days I write about building products and getting them in front of people. <a href="/">See what I'm up to now</a>.</p>

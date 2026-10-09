@@ -1,0 +1,116 @@
+---
+// Newsletter signup form. Posts to the Worker's /api/subscribe (worker.js), which
+// verifies Turnstile server-side (action "nmajor_subscribe") and creates the
+// Buttondown subscriber (double opt-in). Any number of these can sit on one page:
+// the script below loads Turnstile once and wires every form.
+interface Props {
+  id: string;          // unique per page; also reported to Rybbit as `form`
+  source: string;      // Rybbit `source` prop, e.g. "homepage", "subscribe_page"
+  theme?: 'light' | 'dark';
+  button?: string;
+}
+const { id, source, theme = 'light', button = 'Subscribe' } = Astro.props;
+const TURNSTILE_SITEKEY = '0x4AAAAAADwCt8xxNYgYoiEK';
+---
+<form class={`sigform sigform--${theme}`} id={id} data-source={source} novalidate>
+  <div class="sigform__row">
+    <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" autocomplete="email" />
+    <button type="submit" class="btn">{button}</button>
+  </div>
+  <div id={`${id}-turnstile`} class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-action="nmajor_subscribe" data-theme={theme} data-size="flexible"></div>
+  <p class="sigform__msg" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  // Load Turnstile once; it auto-renders every .cf-turnstile on the page.
+  if (!document.querySelector('script[data-turnstile]')) {
+    const s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    s.async = true;
+    s.defer = true;
+    s.dataset.turnstile = '';
+    document.head.appendChild(s);
+  }
+
+  type Rybbit = { event?: (name: string, props: Record<string, string>) => void };
+  type Turnstile = { reset: (sel: string) => void };
+
+  document.querySelectorAll<HTMLFormElement>('form.sigform').forEach((form) => {
+    const msg = form.querySelector<HTMLElement>('.sigform__msg')!;
+    const emailEl = form.querySelector<HTMLInputElement>('input[type="email"]')!;
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const widget = form.querySelector<HTMLElement>('.cf-turnstile');
+    const reset = () => {
+      const ts = (window as unknown as { turnstile?: Turnstile }).turnstile;
+      if (ts && widget?.id) ts.reset('#' + widget.id);
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.className = 'sigform__msg';
+      msg.textContent = '';
+
+      const email = emailEl.value.trim();
+      if (!email) { msg.textContent = 'Please enter your email address.'; return; }
+      const token = form.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]')?.value ?? '';
+      if (!token) { msg.textContent = 'Please complete the anti-spam check, then try again.'; return; }
+
+      const label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email, 'cf-turnstile-response': token }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          const rybbit = (window as unknown as { rybbit?: Rybbit }).rybbit;
+          rybbit?.event?.('newsletter_subscribe', {
+            source: form.dataset.source || 'unknown',
+            form: form.id || 'unknown',
+            status: data.already ? 'already' : 'new',
+          });
+          form.classList.add('is-done');
+          msg.className = 'sigform__msg sigform__msg--ok';
+          msg.textContent = data.already
+            ? "You're already on the list. Good to have you."
+            : 'Almost there. Check your inbox for a confirmation link.';
+        } else {
+          msg.textContent = data.error || 'Something went wrong. Please try again.';
+          btn.disabled = false;
+          btn.textContent = label;
+          reset();
+        }
+      } catch {
+        msg.textContent = 'Network error. Please try again.';
+        btn.disabled = false;
+        btn.textContent = label;
+        reset();
+      }
+    });
+  });
+</script>
+
+<style>
+  .sigform { margin-top: 18px; }
+  .sigform__row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .sigform__row input {
+    flex: 1; min-width: 220px; padding: 13px 18px; border-radius: 999px; font: 15px 'Inter', sans-serif;
+    border: 2px solid var(--ink); background: #fff; color: var(--ink); outline: none;
+  }
+  .sigform--dark .sigform__row input { border-color: transparent; }
+  .sigform__row input:focus-visible { border-color: var(--accent); }
+  .cf-turnstile { margin-top: 12px; }
+  .sigform__msg { margin: 10px 0 0; font-size: 14.5px; font-weight: 600; color: var(--accent); }
+  .sigform__msg:empty { display: none; }
+  .sigform--dark .sigform__msg--ok { color: var(--mint); }
+  .sigform__msg--ok { color: #1f7a4d; }
+  .sigform.is-done .sigform__row,
+  .sigform.is-done .cf-turnstile { display: none; }
+  @media (max-width: 520px) {
+    .sigform__row { flex-direction: column; }
+    .sigform__row input { min-width: 0; }
+  }
+</style>

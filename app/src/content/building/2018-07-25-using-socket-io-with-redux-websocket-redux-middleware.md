@@ -10,7 +10,7 @@ tags:
 - socket.io
 hero: "/uploads/2018/07/25/Action Cable (1).png"
 ---
-This article uses socket.io as the websocket library. If you want to see a version of this article using Rails' ActionCable library, [click here](/posts/making-redux-middleware-for-websockets "/posts/making-redux-middleware-for-websockets")
+This article uses socket.io as the websocket library. If you want to see a version of this article using Rails' ActionCable library, [click here](/archive/engineering/2018-07-25-making-redux-middleware-for-websockets/ "/archive/engineering/2018-07-25-making-redux-middleware-for-websockets/")
 
 ***
 

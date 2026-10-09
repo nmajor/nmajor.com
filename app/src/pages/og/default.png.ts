@@ -5,10 +5,9 @@ import { renderOgPng, ogResponse } from '../../og/card';
 
 export const GET: APIRoute = async () => {
   const png = await renderOgPng({
-    eyebrow: 'Actual Intelligence',
-    title: 'Plain-English AI for people who run things',
-    subtitle: "Honest, hype-free writing on where AI actually fits in a business, and where it doesn't.",
-    theme: 'paper',
+    eyebrow: "Hey, I'm Nick",
+    title: 'Software engineer figuring out distribution',
+    subtitle: "Building with AI. Testing marketing and growth tactics. Sharing what works and what doesn't.",
   });
   return ogResponse(png);
 };

@@ -97,184 +97,52 @@ const projects = [
 ];
 ---
 <Base
-  title="Projects · Nicholas Major"
-  description="Current projects from Nicholas Major: small sites, tools, and products he is building or running now."
+  title="Projects · Nick Major"
+  description="Products Nick Major is building and running: small sites, tools, and the marketing experiments he runs on them."
 >
-  <header class="phead">
-    <div class="eyebrow">Projects</div>
-    <h1 class="phead__title">Projects</h1>
-    <p class="phead__sub">Small sites, tools, and products I'm building or running now.</p>
-  </header>
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Projects</span>
+      <h1 class="phead__title">Things I'm building</h1>
+      <p class="phead__sub">Small sites, tools, and products I'm building or running now. Each one doubles as a place to test a distribution idea.</p>
+    </header>
 
-  <section class="projects">
-    <div class="project-list">
+    <div class="plist">
       {projects.map((project) => (
-        <article class="project">
+        <article class="card project">
           <a class="project__imageLink" href={project.href} target="_blank" rel="noopener">
-            <img
-              class="project__image"
-              src={project.image}
-              width="420"
-              height="220"
-              loading="lazy"
-              decoding="async"
-              alt=""
-            />
+            <img class="project__image" src={project.image} width="420" height="220" loading="lazy" decoding="async" alt="" />
           </a>
-
           <div class="project__main">
-            <div class="project__top">
-              <h2 class="project__name">
-                <a href={project.href} target="_blank" rel="noopener">{project.name}</a>
-              </h2>
-              <a class="project__domain" href={project.href} target="_blank" rel="noopener">{project.domain} ↗</a>
-            </div>
-
+            <h2 class="project__name"><a href={project.href} target="_blank" rel="noopener">{project.name}</a></h2>
+            <a class="project__domain" href={project.href} target="_blank" rel="noopener">{project.domain} ↗</a>
             <p class="project__description">{project.description}</p>
-
             {project.resources && (
-              <div class="project__resources">
-                <h3 class="project__resourcesTitle">Resources</h3>
-                <ul class="project__resourceList">
-                  {project.resources.map((resource) => (
-                    <li>
-                      <a href={resource.href} target="_blank" rel="noopener">{resource.label} ↗</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul class="project__resources">
+                {project.resources.map((resource) => (
+                  <li><a href={resource.href} target="_blank" rel="noopener">{resource.label} ↗</a></li>
+                ))}
+              </ul>
             )}
           </div>
         </article>
       ))}
     </div>
-  </section>
+  </div>
 
   <style>
-    .projects {
-      max-width: var(--wrap);
-      margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 48px) clamp(56px, 7vw, 84px);
-    }
-
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid var(--line2);
-    }
-
-    .project {
-      display: grid;
-      grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
-      gap: clamp(20px, 4vw, 42px);
-      padding: clamp(26px, 4vw, 38px) 0;
-      border-bottom: 1px solid var(--line2);
-      align-items: start;
-    }
-
-    .project__imageLink {
-      display: block;
-      aspect-ratio: 1.91 / 1;
-      overflow: hidden;
-      border-radius: 8px;
-      border: 1px solid var(--line2);
-      background: #fff;
-      text-decoration: none;
-    }
-
-    .project__image {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .project__main {
-      min-width: 0;
-      padding-top: 2px;
-    }
-
-    .project__top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px 20px;
-      align-items: baseline;
-      flex-wrap: wrap;
-    }
-
-    .project__name {
-      margin: 0;
-      font-size: clamp(24px, 3vw, 34px);
-      line-height: 1.02;
-      letter-spacing: -.03em;
-      font-weight: 900;
-    }
-
-    .project__name a,
-    .project__domain,
-    .project__resourceList a {
-      text-decoration: none;
-    }
-
-    .project__name a:hover,
-    .project__domain:hover,
-    .project__resourceList a:hover {
-      color: var(--accent);
-    }
-
-    .project__domain {
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: 12px;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .project__description {
-      margin: 12px 0 0;
-      max-width: 62ch;
-      font-size: clamp(16px, 1.7vw, 18px);
-      line-height: 1.55;
-      color: var(--body);
-    }
-
-    .project__resources {
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-
-    .project__resourcesTitle {
-      margin: 0 0 10px;
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .project__resourceList {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .project__resourceList a {
-      color: var(--body);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    @media (max-width: 760px) {
-      .project {
-        grid-template-columns: 1fr;
-      }
-
-      .project__imageLink {
-        max-width: 420px;
-      }
-    }
+    .plist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .project { overflow: hidden; display: flex; flex-direction: column; }
+    .project__imageLink { display: block; aspect-ratio: 1.91 / 1; overflow: hidden; border-bottom: 2px solid var(--ink); background: #fff; }
+    .project__image { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .project__main { padding: 20px 22px 22px; }
+    .project__name { margin: 0; font-family: var(--display); font-size: 26px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+    .project__name a, .project__domain, .project__resources a { text-decoration: none; }
+    .project__name a:hover, .project__resources a:hover { color: var(--accent); }
+    .project__domain { display: inline-block; margin-top: 4px; font-size: 13px; color: var(--muted); }
+    .project__description { margin: 10px 0 0; font-size: 15.5px; color: var(--body); }
+    .project__resources { list-style: none; padding: 0; margin: 14px 0 0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .project__resources a { display: inline-block; border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 11px; font-size: 13px; font-weight: 600; }
+    @media (max-width: 760px) { .plist { grid-template-columns: 1fr; } }
   </style>
 </Base>

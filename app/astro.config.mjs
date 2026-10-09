@@ -24,51 +24,40 @@ const iso = (v) => (v ? new Date(v).toISOString() : undefined);
 const isLive = (d) => d.draft !== true && d.pubDate && new Date(d.pubDate) <= new Date();
 const maxIso = (xs) => xs.filter(Boolean).reduce((a, b) => (a > b ? a : b), undefined);
 
-// essays -> /writing/<slug>/ ; lastmod = updatedDate ?? pubDate (only live essays are built)
+// posts    -> /blog/<slug>/ (current writing); lastmod = updatedDate ?? pubDate
+// essays   -> /archive/ai/<slug>/ ; building -> /archive/engineering/<slug>/
+// takes    -> only the /archive/takes/ index page (no per-take URLs)
+const posts = readCollection('posts').filter((e) => isLive(e.data));
 const essays = readCollection('essays').filter((e) => isLive(e.data));
-// building -> /posts/<slug>/ ; lastmod = date (these have no pubDate; guard on draft only)
 const building = readCollection('building').filter((e) => e.data.draft !== true);
-// takes -> only the /takes/ index page ; lastmod = latest live take pubDate
-const takes = readCollection('takes').filter((e) => isLive(e.data));
 
+const postLastmod = new Map(posts.map((e) => [e.slug, iso(e.data.updatedDate ?? e.data.pubDate)]));
 const essayLastmod = new Map(essays.map((e) => [e.slug, iso(e.data.updatedDate ?? e.data.pubDate)]));
 const buildingLastmod = new Map(building.map((e) => [e.slug, iso(e.data.date)]));
-const latestEssay = maxIso(essays.map((e) => iso(e.data.pubDate)));
-const latestBuilding = maxIso(building.map((e) => iso(e.data.date)));
-const latestTake = maxIso(takes.map((e) => iso(e.data.pubDate)));
+const latestPost = maxIso(posts.map((e) => iso(e.data.pubDate)));
+const latestExperiment = maxIso(posts.filter((e) => e.data.kind === 'experiment').map((e) => iso(e.data.pubDate)));
 
 function lastmodFor(url) {
   const path = url.replace(SITE, '').replace(/\/$/, '') || '/';
   let m;
-  if ((m = path.match(/^\/writing\/(.+)$/))) return essayLastmod.get(m[1]);
-  if ((m = path.match(/^\/posts\/(.+)$/))) return buildingLastmod.get(m[1]);
-  if (path === '/writing') return latestEssay;
-  if (path === '/building') return latestBuilding;
-  if (path === '/takes') return latestTake;
-  if (path === '/') return latestEssay; // home hero features the latest essay
-  return undefined; // /subscribe and anything unknown: omit rather than fake a date
+  if ((m = path.match(/^\/blog\/(.+)$/))) return postLastmod.get(m[1]);
+  if ((m = path.match(/^\/archive\/ai\/(.+)$/))) return essayLastmod.get(m[1]);
+  if ((m = path.match(/^\/archive\/engineering\/(.+)$/))) return buildingLastmod.get(m[1]);
+  if (path === '/blog' || path === '/') return latestPost;
+  if (path === '/experiments') return latestExperiment;
+  return undefined; // anything else: omit rather than fake a date
 }
 
 // Static build (dist/) served by Cloudflare Workers static assets.
 // No localhost in this workspace — we iterate against the live Worker.
 export default defineConfig({
   site: SITE,
-  // The old site's article index lived at /posts; individual posts stay at their
-  // original /posts/<slug> URLs (handled by src/pages/posts/[...slug].astro). The
-  // section index lives at /building (the build-in-public log).
-  redirects: {
-    '/posts': '/building',
-    '/engineering': '/building',
-  },
+  // No Astro `redirects`: with static output they are meta-refresh pages, not real
+  // 301s. Every legacy URL is 301'd by worker.js (legacyRedirect) instead.
   integrations: [
     sitemap({
-      // Only canonical, indexable URLs belong in a sitemap. Drop the two redirect
-      // stubs (/posts, /engineering both 301 to /building) and non-HTML endpoints.
-      filter: (url) =>
-        url !== `${SITE}/posts/` &&
-        url !== `${SITE}/engineering/` &&
-        !url.includes('/og/') &&
-        !url.endsWith('.xml'),
+      // Only canonical, indexable HTML belongs in a sitemap.
+      filter: (url) => !url.includes('/og/') && !url.endsWith('.xml'),
       serialize(item) {
         const lastmod = lastmodFor(item.url);
         if (lastmod) item.lastmod = lastmod;

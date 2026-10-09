@@ -1,24 +1,18 @@
-// Per-essay OG card: the essay title, big, on brand. One PNG per essay,
-// prerendered to dist/og/writing/<slug>.png (served at /og/writing/<slug>.png).
-// Gating MUST match the essay page (src/pages/writing/[...slug].astro), which
-// builds on `!data.draft`, so every essay page has a matching card and never
-// references a missing image.
+// OG cards for the archived applied-AI essays, kept at their original
+// /og/writing/<slug>.png paths so existing social shares keep their images.
+// Gating MUST match src/pages/archive/ai/[...slug].astro.
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { isLive } from '../../../lib/publish.js';
 import { renderOgPng, ogResponse } from '../../../og/card';
 
 export async function getStaticPaths() {
-  const essays = await getCollection('essays', ({ data }) => !data.draft);
+  const essays = await getCollection('essays', ({ data }) => isLive(data));
   return essays.map((essay) => ({ params: { slug: essay.id }, props: { essay } }));
 }
 
 export const GET: APIRoute = async ({ props }) => {
   const { essay } = props as { essay: { data: { title: string; summary: string } } };
-  const png = await renderOgPng({
-    eyebrow: 'Actual Intelligence',
-    title: essay.data.title,
-    subtitle: essay.data.summary,
-    theme: 'paper',
-  });
+  const png = await renderOgPng({ eyebrow: 'Archive · Applied AI', title: essay.data.title, subtitle: essay.data.summary });
   return ogResponse(png);
 };

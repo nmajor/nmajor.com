@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import SubscribeForm from '../../components/SubscribeForm.astro';
+import { getCollection, render } from 'astro:content';
+import { isLive } from '../../lib/publish.js';
+import { shortDate, readingMinutes } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => isLive(data));
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const mins = readingMinutes(post.body, post.data.readingMinutes);
+const back = post.data.kind === 'experiment' ? { href: '/experiments/', label: 'All experiments' } : { href: '/blog/', label: 'All writing' };
+---
+<Base title={`${post.data.title} · Nick Major`} description={post.data.summary} ogImage={`/og/blog/${post.id}.png`}>
+  <article class="article">
+    {post.data.status && <span class={`chip chip--${post.data.status}`}>{post.data.status}</span>}
+    <p class="article__meta">{shortDate(post.data.pubDate)} · {mins} min read</p>
+    <h1 class="article__title">{post.data.title}</h1>
+    <div class="prose"><Content /></div>
+    <div class="card nlbox">
+      <strong>Get the next one by email.</strong>
+      <p>Deploy to Humans is my weekly newsletter: one experiment, what happened, and the tools I used.</p>
+      <SubscribeForm id="form-post" source="post" />
+    </div>
+    <a href={back.href} class="article__back">← {back.label}</a>
+  </article>
+  <style>
+    .nlbox { margin-top: 40px; padding: 24px; }
+    .nlbox strong { font-family: var(--display); font-size: 22px; }
+    .nlbox p { margin: 6px 0 0; color: var(--muted); }
+  </style>
+</Base>

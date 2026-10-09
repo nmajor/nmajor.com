@@ -25,7 +25,7 @@ And then we should be good to go.
 
 If you're not using the `serverless-webpack` plugin, then this is actually pretty easy.
 
-I like to just create a folder in my project called `bin` and put them all in there. I did this in my [Serverless Backend for React](http://nmajor.com/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture "http://nmajor.com/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture") post.
+I like to just create a folder in my project called `bin` and put them all in there. I did this in my [Serverless Backend for React](/archive/engineering/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/ "/archive/engineering/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/") post.
 
 After you put the executables in the `bin` folder, put this in your `serverless.yml` file:
 

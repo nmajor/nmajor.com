@@ -7,99 +7,31 @@ stale parts, add what's missing; never let it drift.
 `AGENTS.md` is a symlink to this file, so Claude Code and Codex share these
 instructions.
 
-## Publishing essays (the content pipeline)
+## Publishing (current)
 
-The repo is the **single source of truth** for all writing. Author essays ONLY here,
-never in Buttondown. An **essay is also the newsletter issue** ("Actual Intelligence, by
-Nicholas Major") **and the source for LinkedIn atomization** — the same body is what gets
-emailed and repurposed, so there is no separate "newsletter content."
+The repo is the single source of truth for all writing on nmajor.com. Current posts
+live in `app/src/content/posts/<slug>.md` and render at `/blog/<slug>/` (experiments
+also list at `/experiments/`). Follow the `writing-voice` skill for every
+reader-facing word. Deploy with `npm --prefix app run deploy`. Details, including how
+"live" is decided, are in `overview.md`.
 
-**Where essays live:** `app/src/content/essays/<slug>.md`. The filename is the URL slug
-(`/writing/<slug>/`). Schema is in `app/src/content.config.ts`. (`takes` and `building`
-are separate collections and do **not** go through this pipeline or the newsletter.)
+Everything from before the 2026-10-09 pivot (essays, takes, engineering posts) is
+archived under `/archive/`, and old URLs 301 there via `app/worker.js`. Don't edit
+archived content beyond link fixes. The old Actual Intelligence pipeline (publish
+queue, Buttondown send script, LinkedIn/Postiz scheduler, takes drip, and the skills
+that drove them) is in `archive/pivot-2026-10/` and is **not** wired up.
 
-**An essay is "live" only when `draft: false` AND `pubDate <= now`** (`src/lib/publish.js`
-`isLive`). A `draft: false` essay with a future `pubDate` is *scheduled* and stays hidden
-until its time — which makes every deploy safe.
+> **HARD RULES for agents (Claude Code, Codex):**
+> - **Never send email or schedule social posts without Nick's explicit, per-item
+>   approval in conversation.** Nothing in this repo sends automatically anymore; keep
+>   it that way unless Nick asks for automation.
+> - `BUTTONDOWN_API_KEY` in `.env` is scoped to Nick's own newsletter list. Never use
+>   it for any other list on the account.
+> - Postiz integrations post to Nick's real personal accounts. Treat any Postiz call as
+>   publishing.
 
-**The day-to-day flow (this is the whole loop Nick wants):**
-
-1. **Discover / brainstorm** with the `content-discovery` skill → Nick picks an idea.
-2. **Write** it with the `content-builder` skill as `app/src/content/essays/<slug>.md`,
-   `draft: true`, following the **`writing-voice` skill for every word**. Leave `pubDate`
-   as a placeholder.
-3. **Nick reviews, tweaks, and signs off** by adding `approved: "Nicholas Major <date>"`
-   and **adds the slug to `queue` in `app/publishing.config.json`** (order = publish order;
-   reorder anytime). `npm --prefix app run queue:lint` checks the queue is all finished,
-   approved drafts.
-4. **Once the newsletter story is settled, run `content-repurposing`.** It is the autonomous
-   weekly LinkedIn newsroom: one Tuesday issue companion plus up to six independently reported
-   applied-AI posts, with five as the target and fewer when quality is weak. Every retained post
-   gets a rendered meme-first visual recommendation. Nick may provide weekly direction, but the
-   generation run does not depend on it. Posts live under `app/linkedin/<slug>/`; Nick reviews and
-   **approves each exact post and visual** before either can schedule. Once the essay itself is
-   finalized, the same skill also writes **0-3 short takes** to `app/src/content/takes/`,
-   deduplicated against every past take and auto-scheduled with no approval.
-5. Each cadence slot (default **Tuesday 14:00 UTC**), the `.github/workflows/publish.yml`
-   workflow promotes the top of the queue: stamps `pubDate`, flips `draft: false`,
-   **builds + deploys the site** (the website updates with the new article),
-   **auto-sends the newsletter** via the Buttondown "Actual Intelligence" list,
-   **schedules that issue's approved LinkedIn posts** for the week, and **stamps the issue's
-   takes** (`scripts/schedule-takes.mjs`: pubDate = essay date + offset, `draft:false`) so the
-   daily build reveals them one by one over the following days — then commits the result back.
-
-To publish on a **specific date** instead of the queue: set a future `pubDate` +
-`draft: false` + `approved`, and leave it out of the queue. It goes live and emails on
-that date.
-
-> **HARD RULE for agents (Claude Code, Codex): approval requires Nick's explicit say-so,
-> per item.** `approved` (on an essay **or** a LinkedIn post) and the publish `queue` are
-> the human gate that makes fully-automatic sending safe. An agent may set them **only**
-> after Nick has explicitly approved **that specific item** in conversation. Once he has,
-> the agent should go ahead and set `approved` and add the slug to the queue — he does not
-> have to type the field himself.
->
-> What counts as explicit approval:
-> - It **names the item** (or is an unambiguous reference to the one item under discussion).
-> - It is **affirmative and unconditional** — "approved", "ship it", "yes, queue it". A
->   reaction to the content ("nice", "that's a good point"), a request for changes, or
->   silence is **not** approval.
-> - **It does not carry over.** Approving an essay does not approve its LinkedIn posts, and
->   approving one post in a batch does not approve the others. Each item needs its own.
-> - **If there is any doubt, ask.** Never infer approval to keep a deadline.
->
-> Record it as `approved: "Nicholas Major <date> (via chat)"` so the provenance is visible.
-> Never approve on your own judgement that a piece is ready, and never approve an item Nick
-> has not seen.
->
-> Unchanged: **never set or clear `emailedAt` (the send idempotency lock) or `pushedAt`
-> (the LinkedIn idempotency lock) by hand.** Those are machine state, not sign-off.
-
-**Buttondown:** the essay body is the email. `BUTTONDOWN_API_KEY` in `.env` is scoped to
-the **"Actual Intelligence"** newsletter — never the Institute's or any other list on the
-account. Sending is driven by `scripts/send-newsletter.mjs`; Buttondown's own
-RSS-to-email automation must stay **off** or it would double-send.
-
-**LinkedIn:** posts live in `app/linkedin/<slug>/<channel>-<angle>.md`, scheduled relative
-to the issue's real publish date. The pipeline is currently **live**
-(`app/linkedin.config.json` `enabled: true`) and has Postiz integrations for Nick's
-personal LinkedIn, Facebook, X, and Instagram accounts. The scheduler verifies each
-integration's expected identity before it pushes anything. The `business` channel remains
-disabled pending the future consultancy company page. Do not assume live mode means a post
-is authorized: every post still needs Nick's explicit per-item approval.
-
-**Takes:** short one-liners in the `takes` collection (`app/src/content/takes/<slug>.md`),
-the site's steady pulse between weekly essays. Auto-generated by `content-repurposing` from
-each approved essay and — unlike essays and LinkedIn posts — **they carry no `approved` gate
-and need none** (Nick's explicit call; this is the one content type an agent both writes and
-ships). A generated take couples to its essay by `source` and carries an `offsetDays`, never a
-date: it starts `draft: true` with a placeholder `pubDate`, and `scripts/schedule-takes.mjs`
-stamps the real date + flips `draft:false` when the essay goes live (the same offset trick as
-LinkedIn). Dedup is the hard rule — **never a repeat idea, and a reframing of an existing claim
-counts as a repeat**; if an essay yields nothing new, it generates **zero** takes and picks the
-drip back up on a later, fresher issue. Validate with `npm --prefix app run takes:lint`. Full
-spec in the `content-repurposing` skill. (Hand-authored takes are still fine — just omit
-`source`/`offsetDays`/`idea` and set a real `pubDate`.)
+The Deploy to Humans newsletter gets its own site at deploytohumans.com, built
+separately. Don't build its landing page inside this repo.
 
 ## Layout
 

@@ -1,0 +1,25 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { shortDate } from '../../../lib/format';
+
+const posts = (await getCollection('building', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Base title="Engineering posts (archive) · Nick Major" description="Archived engineering posts by Nick Major: a 2025 home-lab Kubernetes series and 2018 tutorials on React, Redux, Node, and Serverless.">
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Archive</span>
+      <h1 class="phead__title">Engineering posts</h1>
+      <p class="phead__sub">A 2025 series on building a home-lab Kubernetes cluster, and a batch of 2018 tutorials on React, Redux, Node, and Serverless. Some of the details have aged; the cluster series is still the most-read thing here.</p>
+    </header>
+    <div class="rows">
+      {posts.map((p) => (
+        <a class="row" href={`/archive/engineering/${p.id}/`}>
+          <span class="row__main"><span class="row__title">{p.data.title}</span></span>
+          <span class="row__meta">{shortDate(p.data.date)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

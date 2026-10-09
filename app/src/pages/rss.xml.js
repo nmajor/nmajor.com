@@ -2,27 +2,27 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import MarkdownIt from 'markdown-it';
+import { isLive } from '../lib/publish.js';
 
 const parser = new MarkdownIt();
 
-// The essays feed. This is the canonical source the newsletter (Buttondown) will
-// consume once wired up. Drafts are excluded.
+// Feed of current posts only. Archived essays and engineering posts are not in it.
 export async function GET(context) {
-  const essays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
+  const posts = (await getCollection('posts', ({ data }) => isLive(data))).sort(
     (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
   );
 
   return rss({
-    title: 'Nicholas Major',
-    description: "Plain-English AI for people who run things. Essays on where AI actually fits in a business, and where it doesn't.",
+    title: 'Nick Major',
+    description: "A software engineer figuring out distribution. Building with AI, testing marketing and growth tactics, and sharing what works and what doesn't.",
     site: context.site,
-    items: essays.map((essay) => ({
-      title: essay.data.title,
-      description: essay.data.summary,
-      pubDate: essay.data.pubDate,
-      link: `/writing/${essay.id}/`,
-      author: essay.data.author,
-      content: sanitizeHtml(parser.render(essay.body), {
+    items: posts.map((post) => ({
+      title: post.data.title,
+      description: post.data.summary,
+      pubDate: post.data.pubDate,
+      link: `/blog/${post.id}/`,
+      author: 'Nick Major',
+      content: sanitizeHtml(parser.render(post.body ?? ''), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
       }),
     })),

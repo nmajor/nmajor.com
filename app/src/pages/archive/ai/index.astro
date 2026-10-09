@@ -1,0 +1,26 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isLive } from '../../../lib/publish.js';
+import { shortDate } from '../../../lib/format';
+
+const essays = (await getCollection('essays', ({ data }) => isLive(data)))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<Base title="Applied-AI essays (archive) · Nick Major" description="Archived essays from Actual Intelligence, Nick Major's 2026 newsletter on where AI fits in a business.">
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Archive</span>
+      <h1 class="phead__title">Applied-AI essays</h1>
+      <p class="phead__sub">From Actual Intelligence, the newsletter I wrote in 2026 about where AI actually fits in a business. Mostly case studies of what real companies did and what the numbers did and didn't show.</p>
+    </header>
+    <div class="rows">
+      {essays.map((e) => (
+        <a class="row" href={`/archive/ai/${e.id}/`}>
+          <span class="row__main"><span class="row__title">{e.data.title}</span><span class="row__blurb">{e.data.summary}</span></span>
+          <span class="row__meta">{shortDate(e.data.pubDate)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

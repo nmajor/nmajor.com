@@ -1,0 +1,26 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isLive } from '../../../lib/publish.js';
+import { shortDate } from '../../../lib/format';
+
+const takes = (await getCollection('takes', ({ data }) => isLive(data)))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<Base title="AI takes (archive) · Nick Major" description="Archived one-line takes on putting AI to work in real companies, by Nick Major (2026).">
+  <div class="wrap">
+    <header class="phead">
+      <span class="eyebrow">Archive</span>
+      <h1 class="phead__title">AI takes</h1>
+      <p class="phead__sub">One-line takes I posted alongside the 2026 applied-AI essays.</p>
+    </header>
+    <div class="rows">
+      {takes.map((t) => (
+        <div class="row">
+          <span class="row__main"><span class="row__title">{t.data.text}</span></span>
+          <span class="row__meta">{shortDate(t.data.pubDate)}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</Base>

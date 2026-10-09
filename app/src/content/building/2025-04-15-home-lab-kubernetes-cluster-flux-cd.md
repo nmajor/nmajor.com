@@ -10,7 +10,7 @@ tags:
 hero: "/uploads/2025/04/hp-elitedesk-mini-cluster-stack.jpg"
 ---
 
-This is the third post in my home lab Kubernetes series. In the [previous post](/posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal) I got Talos Linux installed on all six nodes. Now I have a running cluster, but it's empty — and I don't want to manage it by running `kubectl apply` commands by hand every time I want to change something.
+This is the third post in my home lab Kubernetes series. In the [previous post](/archive/engineering/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal/) I got Talos Linux installed on all six nodes. Now I have a running cluster, but it's empty — and I don't want to manage it by running `kubectl apply` commands by hand every time I want to change something.
 
 Enter GitOps.
 
@@ -215,4 +215,4 @@ No more SSH-ing into machines. No more running `kubectl apply` and hoping you re
 
 ## What's Next
 
-With Flux CD in place, I can now manage my entire cluster through Git commits. In the [next post](/posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage) I'll cover setting up Longhorn for persistent storage — which turned out to be quite the adventure involving a detour through OpenEBS Mayastor and a humbling lesson about read-only filesystems in Talos.
+With Flux CD in place, I can now manage my entire cluster through Git commits. In the [next post](/archive/engineering/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage/) I'll cover setting up Longhorn for persistent storage — which turned out to be quite the adventure involving a detour through OpenEBS Mayastor and a humbling lesson about read-only filesystems in Talos.

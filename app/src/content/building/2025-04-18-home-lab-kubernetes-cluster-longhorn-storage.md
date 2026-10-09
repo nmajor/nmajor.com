@@ -11,7 +11,7 @@ tags:
 hero: "/uploads/2025/04/hp-elitedesk-mini-cluster-stack.jpg"
 ---
 
-This is the fourth post in my home lab Kubernetes series. With [Talos installed](/posts/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal) and [Flux CD managing the cluster](/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd), the next big piece is persistent storage. Without it, any data your apps create disappears when a pod restarts. Not great for databases.
+This is the fourth post in my home lab Kubernetes series. With [Talos installed](/archive/engineering/2025-04-13-home-lab-kubernetes-cluster-installing-talos-on-bare-metal/) and [Flux CD managing the cluster](/archive/engineering/2025-04-15-home-lab-kubernetes-cluster-flux-cd/), the next big piece is persistent storage. Without it, any data your apps create disappears when a pod restarts. Not great for databases.
 
 This post is a bit of a saga. I tried Longhorn, hit a wall, gave up, tried OpenEBS Mayastor, hit a different wall, realized my original problem was embarrassingly simple, and crawled back to Longhorn. If you want to skip the drama, jump to the [solution](#the-actual-fix). But I think the journey is worth sharing because debugging Kubernetes storage issues can feel like this sometimes.
 
@@ -254,4 +254,4 @@ I solved it by doing a clean slate — wiping the drives in BIOS and reinstallin
 
 ## What's Next
 
-With Longhorn providing persistent storage across the cluster, I can finally run stateful workloads. In the [next post](/posts/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg) I'll cover setting up CloudNativePG for managed PostgreSQL — including an interesting discovery about how Longhorn's replication interacts with database-level replication that was causing my data to be replicated 9 times.
+With Longhorn providing persistent storage across the cluster, I can finally run stateful workloads. In the [next post](/archive/engineering/2025-04-22-home-lab-kubernetes-cluster-cloudnativepg/) I'll cover setting up CloudNativePG for managed PostgreSQL — including an interesting discovery about how Longhorn's replication interacts with database-level replication that was causing my data to be replicated 9 times.

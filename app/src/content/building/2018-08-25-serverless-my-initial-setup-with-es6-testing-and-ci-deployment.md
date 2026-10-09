@@ -22,7 +22,7 @@ I hope this isn't too obscure of a topic, but I'm not actually going to cover ho
 
 I'm assuming you've at least tried using the serverless framework before. If you are new to serverless, I have an article that breaks it down from the beginning here:
 
-[Serverless Back-End for React - Your Introduction to Serverless Architecture](/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture "/posts/serverless-back-end-for-react-your-introduction-to-serverless-architecture")
+[Serverless Back-End for React - Your Introduction to Serverless Architecture](/archive/engineering/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/ "/archive/engineering/2018-01-29-serverless-back-end-for-react-your-introduction-to-serverless-architecture/")
 
 ### The Starter
 

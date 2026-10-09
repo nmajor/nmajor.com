@@ -10,13 +10,13 @@ tags:
 hero: "/uploads/2025/04/hp-elitedesk-mini-cluster-stack.jpg"
 ---
 
-This is the fifth post in my home lab Kubernetes series. With [Longhorn providing persistent storage](/posts/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage), I can finally run databases. And since pretty much every web app I build uses PostgreSQL, I wanted a solid way to run Postgres on the cluster.
+This is the fifth post in my home lab Kubernetes series. With [Longhorn providing persistent storage](/archive/engineering/2025-04-18-home-lab-kubernetes-cluster-longhorn-storage/), I can finally run databases. And since pretty much every web app I build uses PostgreSQL, I wanted a solid way to run Postgres on the cluster.
 
 Enter [CloudNativePG](https://cloudnative-pg.io/) — a Kubernetes operator that manages the full lifecycle of PostgreSQL clusters. It handles provisioning, high availability, failover, connection pooling, monitoring, and more. Instead of manually setting up Postgres in a container and hoping for the best, you just define a `Cluster` resource in YAML and the operator takes care of the rest.
 
 ## Installing the Operator
 
-Since I'm using [Flux CD](/posts/2025-04-15-home-lab-kubernetes-cluster-flux-cd) for GitOps, installing CloudNativePG is just adding some YAML files to the repo.
+Since I'm using [Flux CD](/archive/engineering/2025-04-15-home-lab-kubernetes-cluster-flux-cd/) for GitOps, installing CloudNativePG is just adding some YAML files to the repo.
 
 First, the Helm repository source:
 

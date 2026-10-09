@@ -24,27 +24,21 @@ const iso = (v) => (v ? new Date(v).toISOString() : undefined);
 const isLive = (d) => d.draft !== true && d.pubDate && new Date(d.pubDate) <= new Date();
 const maxIso = (xs) => xs.filter(Boolean).reduce((a, b) => (a > b ? a : b), undefined);
 
-// posts    -> /blog/<slug>/ (current writing); lastmod = updatedDate ?? pubDate
-// essays   -> /archive/ai/<slug>/ ; building -> /archive/engineering/<slug>/
-// takes    -> only the /archive/takes/ index page (no per-take URLs)
-const posts = readCollection('posts').filter((e) => isLive(e.data));
+// essays   -> /archive/ai/<slug>/ ; lastmod = updatedDate ?? pubDate
+// building -> /archive/engineering/<slug>/ ; lastmod = date
 const essays = readCollection('essays').filter((e) => isLive(e.data));
 const building = readCollection('building').filter((e) => e.data.draft !== true);
 
-const postLastmod = new Map(posts.map((e) => [e.slug, iso(e.data.updatedDate ?? e.data.pubDate)]));
 const essayLastmod = new Map(essays.map((e) => [e.slug, iso(e.data.updatedDate ?? e.data.pubDate)]));
 const buildingLastmod = new Map(building.map((e) => [e.slug, iso(e.data.date)]));
-const latestPost = maxIso(posts.map((e) => iso(e.data.pubDate)));
-const latestExperiment = maxIso(posts.filter((e) => e.data.kind === 'experiment').map((e) => iso(e.data.pubDate)));
+const latestEssay = maxIso(essays.map((e) => iso(e.data.pubDate)));
 
 function lastmodFor(url) {
   const path = url.replace(SITE, '').replace(/\/$/, '') || '/';
   let m;
-  if ((m = path.match(/^\/blog\/(.+)$/))) return postLastmod.get(m[1]);
   if ((m = path.match(/^\/archive\/ai\/(.+)$/))) return essayLastmod.get(m[1]);
   if ((m = path.match(/^\/archive\/engineering\/(.+)$/))) return buildingLastmod.get(m[1]);
-  if (path === '/blog' || path === '/') return latestPost;
-  if (path === '/experiments') return latestExperiment;
+  if (path === '/archive/ai') return latestEssay;
   return undefined; // anything else: omit rather than fake a date
 }
 

@@ -1,16 +1,7 @@
 ---
-// Home: direction B ("hub"). Intro + photo, then a tile grid into each section,
-// then the latest posts (hidden until the first real post exists).
+// Home: direction B ("hub"). Intro + photo, then a tile grid into each section.
 import Base from '../layouts/Base.astro';
 import SubscribeForm from '../components/SubscribeForm.astro';
-import { getCollection } from 'astro:content';
-import { isLive } from '../lib/publish.js';
-import { shortDate, readingMinutes } from '../lib/format';
-
-const latest = (await getCollection('posts', ({ data }) => isLive(data)))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 5);
-const kindLabel = { writing: 'Writing', experiment: 'Experiment', tools: 'Tools' } as const;
 ---
 <Base
   title="Nick Major · Software engineer figuring out distribution"
@@ -32,41 +23,23 @@ const kindLabel = { writing: 'Writing', experiment: 'Experiment', tools: 'Tools'
         <p>My weekly newsletter. Shipping is easy. Deploying to humans is the hard part. Each week: the experiment I ran, what happened, and the tools I used.</p>
         <SubscribeForm id="form-home" source="homepage" theme="dark" />
       </div>
-      <a class="tile tile--y" href="/experiments/">
-        <i class="tile__shape" aria-hidden="true"></i>
-        <div><div class="tile__n">Experiments</div><p>Every growth test I run, with the results. Including the flops.</p></div>
-        <span class="tile__go">See the log →</span>
-      </a>
-      <a class="tile tile--m" href="/blog/">
-        <i class="tile__shape" aria-hidden="true"></i>
-        <div><div class="tile__n">Writing</div><p>Longer posts on building and shipping products.</p></div>
-        <span class="tile__go">Read →</span>
-      </a>
       <a class="tile tile--p" href="/projects/">
         <i class="tile__shape" aria-hidden="true"></i>
-        <div><div class="tile__n">Things I'm building</div><p>The products I'm shipping, and the marketing tools I make for myself.</p></div>
+        <div><div class="tile__n">Things I'm building</div><p>The products I'm shipping right now.</p></div>
         <span class="tile__go">Projects →</span>
       </a>
-      <a class="tile tile--b" href="/tools/">
+      <a class="tile tile--m" href="/archive/">
         <i class="tile__shape" aria-hidden="true"></i>
-        <div><div class="tile__n">Tools I use</div><p>The stack behind every experiment, and why.</p></div>
-        <span class="tile__go">The stack →</span>
+        <div><div class="tile__n">Writing</div><p>Essays on applied AI from my last newsletter, plus older engineering posts.</p></div>
+        <span class="tile__go">Read →</span>
+      </a>
+      <a class="tile tile--b tile--wide" href="/about/">
+        <i class="tile__shape" aria-hidden="true"></i>
+        <div><div class="tile__n">About me</div><p>Fifteen years of building software, and why I'm working on the other half now.</p></div>
+        <span class="tile__go">About →</span>
       </a>
     </section>
 
-    {latest.length > 0 && (
-      <section>
-        <h2 class="h2">Latest</h2>
-        <div class="rows">
-          {latest.map((p) => (
-            <a class="row" href={`/blog/${p.id}/`}>
-              <span class="row__main"><span class="row__title"><span class="chip">{kindLabel[p.data.kind]}</span>{p.data.title}</span></span>
-              <span class="row__meta">{shortDate(p.data.pubDate)} · {readingMinutes(p.body, p.data.readingMinutes)} min</span>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
   </div>
 
   <style>
@@ -92,22 +65,20 @@ const kindLabel = { writing: 'Writing', experiment: 'Experiment', tools: 'Tools'
     .tile--nl .tile__n { font-size: 44px; padding-right: 0; }
     .tile--nl .tile__n span { color: var(--yellow); }
     .tile--nl p { padding-right: 0; max-width: 60ch; }
-    .tile--y { background: var(--yellow); }
+    .tile--wide { grid-column: span 2; }
     .tile--m { background: var(--mint); }
     .tile--p { background: var(--pink); }
     .tile--b { background: var(--blue); }
     @media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
 
-    .h2 { font-family: var(--display); font-size: 34px; font-weight: 800; letter-spacing: -.02em; margin: 72px 0 22px; }
 
     @media (max-width: 760px) {
       .intro { grid-template-columns: 1fr; gap: 24px; }
       .intro__face { width: 140px; height: 140px; order: -1; box-shadow: 7px 7px 0 var(--accent); }
       .tiles { grid-template-columns: 1fr; }
-      .tile--nl { grid-column: auto; }
+      .tile--nl, .tile--wide { grid-column: auto; }
       .tile--nl .tile__n { font-size: 34px; }
       .tile { min-height: 0; }
-      .row { flex-direction: column; align-items: flex-start; gap: 6px; }
     }
   </style>
 </Base>

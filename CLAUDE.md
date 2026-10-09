@@ -9,11 +9,11 @@ instructions.
 
 ## Publishing (current)
 
-The repo is the single source of truth for all writing on nmajor.com. Current posts
-live in `app/src/content/posts/<slug>.md` and render at `/blog/<slug>/` (experiments
-also list at `/experiments/`). Follow the `writing-voice` skill for every
-reader-facing word. Deploy with `npm --prefix app run deploy`. Details, including how
-"live" is decided, are in `overview.md`.
+The repo is the single source of truth for all writing on nmajor.com. There is no
+new-writing section yet; add one only when the first new post exists (see
+`overview.md`). **Don't build pages for things that don't exist yet.** Follow the
+`writing-voice` skill for every reader-facing word. Deploy with
+`npm --prefix app run deploy`.
 
 Everything from before the 2026-10-09 pivot (essays, takes, engineering posts) is
 archived under `/archive/`, and old URLs 301 there via `app/worker.js`. Don't edit

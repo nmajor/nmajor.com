@@ -16,6 +16,7 @@ test('section indexes map to their archive homes, with or without a slash', () =
     ['/takes', '/archive/takes/'], ['/takes/', '/archive/takes/'],
     ['/posts', '/archive/engineering/'], ['/building/', '/archive/engineering/'],
     ['/engineering', '/archive/engineering/'], ['/work-with-me', '/about/'],
+    ['/blog/', '/archive/'], ['/experiments', '/'], ['/tools/', '/'],
   ]) assert.equal(legacyRedirect(from), to, from);
 });
 
@@ -36,7 +37,7 @@ test('every engineering post maps from its dated /posts URL, and the 2018 undate
 });
 
 test('current pages are not redirected', () => {
-  for (const p of ['/', '/blog/', '/blog/some-post/', '/experiments/', '/projects/', '/projects', '/tools/', '/about/', '/subscribe/', '/subscribe', '/archive/', '/archive/ai/x/', '/rss.xml', '/og/writing/x.png']) {
+  for (const p of ['/', '/projects/', '/projects', '/about/', '/subscribe/', '/subscribe', '/archive/', '/archive/ai/x/', '/rss.xml', '/og/writing/x.png']) {
     assert.equal(legacyRedirect(p), null, p);
   }
 });
@@ -55,5 +56,5 @@ test('naked-domain legacy links reach the final URL in one hop', async () => {
 
 test('non-legacy GETs and HEADs fall through to assets', async () => {
   assert.equal((await get('https://www.nmajor.com/')).status, 200);
-  assert.equal((await get('https://www.nmajor.com/blog/', 'HEAD')).status, 200);
+  assert.equal((await get('https://www.nmajor.com/archive/', 'HEAD')).status, 200);
 });

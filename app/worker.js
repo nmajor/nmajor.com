@@ -75,6 +75,10 @@ export function legacyRedirect(pathname) {
     '/building': '/archive/engineering/',
     '/engineering': '/archive/engineering/',
     '/work-with-me': '/about/',
+    // Briefly live on 2026-10-09 as empty pages, then removed.
+    '/blog': '/archive/',
+    '/experiments': '/',
+    '/tools': '/',
   };
   if (exact[p]) return exact[p];
 

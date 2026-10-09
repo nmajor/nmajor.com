@@ -1,8 +1,13 @@
 ---
 // Newsletter signup form. Posts to the Worker's /api/subscribe (worker.js), which
 // verifies Turnstile server-side (action "nmajor_subscribe") and creates the
-// Buttondown subscriber (double opt-in). Any number of these can sit on one page:
-// the script below loads Turnstile once and wires every form.
+// Buttondown subscriber (double opt-in).
+//
+// Turnstile runs only when someone submits: nothing loads on page view. On the first
+// submit the script is fetched (explicit render), a widget is rendered with
+// execution "execute" + appearance "interaction-only" (invisible unless Cloudflare
+// needs a click), and its token goes to /api/subscribe. Any number of these forms
+// can sit on one page.
 interface Props {
   id: string;          // unique per page; also reported to Rybbit as `form`
   source: string;      // Rybbit `source` prop, e.g. "homepage", "subscribe_page"
@@ -12,52 +17,90 @@ interface Props {
 const { id, source, theme = 'light', button = 'Subscribe' } = Astro.props;
 const TURNSTILE_SITEKEY = '0x4AAAAAADwCt8xxNYgYoiEK';
 ---
-<form class={`sigform sigform--${theme}`} id={id} data-source={source} novalidate>
+<form class={`sigform sigform--${theme}`} id={id} data-source={source} data-theme={theme} data-sitekey={TURNSTILE_SITEKEY} novalidate>
   <div class="sigform__row">
     <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" autocomplete="email" />
     <button type="submit" class="btn">{button}</button>
   </div>
-  <div id={`${id}-turnstile`} class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-action="nmajor_subscribe" data-theme={theme} data-size="flexible"></div>
+  <div class="sigform__ts"></div>
   <p class="sigform__msg" role="status" aria-live="polite"></p>
 </form>
 
 <script>
-  // Load Turnstile once; it auto-renders every .cf-turnstile on the page.
-  if (!document.querySelector('script[data-turnstile]')) {
-    const s = document.createElement('script');
-    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-    s.async = true;
-    s.defer = true;
-    s.dataset.turnstile = '';
-    document.head.appendChild(s);
+  type Turnstile = {
+    render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+    execute: (el: HTMLElement | string) => void;
+    remove: (id: string) => void;
+  };
+  type Rybbit = { event?: (name: string, props: Record<string, string>) => void };
+  const w = window as unknown as { turnstile?: Turnstile; rybbit?: Rybbit; __nmTsLoaded?: () => void };
+
+  // Fetch the Turnstile script once, on demand.
+  let loading: Promise<Turnstile> | null = null;
+  function loadTurnstile(): Promise<Turnstile> {
+    if (w.turnstile) return Promise.resolve(w.turnstile);
+    loading ??= new Promise((resolve, reject) => {
+      w.__nmTsLoaded = () => resolve(w.turnstile!);
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__nmTsLoaded';
+      s.async = true;
+      s.onerror = () => { loading = null; reject(new Error('load')); };
+      document.head.appendChild(s);
+    });
+    return loading;
   }
 
-  type Rybbit = { event?: (name: string, props: Record<string, string>) => void };
-  type Turnstile = { reset: (sel: string) => void };
+  // Run one fresh challenge for this form and resolve with its token.
+  async function getToken(form: HTMLFormElement): Promise<string> {
+    const ts = await loadTurnstile();
+    const slot = form.querySelector<HTMLElement>('.sigform__ts')!;
+    const prev = form.dataset.widget;
+    if (prev) ts.remove(prev);
+    return new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('timeout')), 30000);
+      form.dataset.widget = ts.render(slot, {
+        sitekey: form.dataset.sitekey,
+        action: 'nmajor_subscribe',
+        theme: form.dataset.theme,
+        size: 'flexible',
+        appearance: 'interaction-only',
+        execution: 'execute',
+        callback: (token: string) => { clearTimeout(timer); resolve(token); },
+        'error-callback': () => { clearTimeout(timer); reject(new Error('challenge')); },
+      });
+      ts.execute(slot);
+    });
+  }
 
   document.querySelectorAll<HTMLFormElement>('form.sigform').forEach((form) => {
     const msg = form.querySelector<HTMLElement>('.sigform__msg')!;
     const emailEl = form.querySelector<HTMLInputElement>('input[type="email"]')!;
     const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
-    const widget = form.querySelector<HTMLElement>('.cf-turnstile');
-    const reset = () => {
-      const ts = (window as unknown as { turnstile?: Turnstile }).turnstile;
-      if (ts && widget?.id) ts.reset('#' + widget.id);
+    const label = btn.textContent;
+    const fail = (text: string) => {
+      msg.className = 'sigform__msg';
+      msg.textContent = text;
+      btn.disabled = false;
+      btn.textContent = label;
     };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      msg.className = 'sigform__msg';
       msg.textContent = '';
-
       const email = emailEl.value.trim();
-      if (!email) { msg.textContent = 'Please enter your email address.'; return; }
-      const token = form.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]')?.value ?? '';
-      if (!token) { msg.textContent = 'Please complete the anti-spam check, then try again.'; return; }
+      if (!email || !emailEl.checkValidity()) { fail('Please enter a valid email address.'); return; }
 
-      const label = btn.textContent;
       btn.disabled = true;
       btn.textContent = 'Subscribing...';
+
+      let token: string;
+      try {
+        token = await getToken(form);
+      } catch {
+        fail('The anti-spam check did not finish. Please try again.');
+        return;
+      }
+
       try {
         const res = await fetch('/api/subscribe', {
           method: 'POST',
@@ -65,29 +108,19 @@ const TURNSTILE_SITEKEY = '0x4AAAAAADwCt8xxNYgYoiEK';
           body: JSON.stringify({ email, 'cf-turnstile-response': token }),
         });
         const data = await res.json();
-        if (data.ok) {
-          const rybbit = (window as unknown as { rybbit?: Rybbit }).rybbit;
-          rybbit?.event?.('newsletter_subscribe', {
-            source: form.dataset.source || 'unknown',
-            form: form.id || 'unknown',
-            status: data.already ? 'already' : 'new',
-          });
-          form.classList.add('is-done');
-          msg.className = 'sigform__msg sigform__msg--ok';
-          msg.textContent = data.already
-            ? "You're already on the list. Good to have you."
-            : 'Almost there. Check your inbox for a confirmation link.';
-        } else {
-          msg.textContent = data.error || 'Something went wrong. Please try again.';
-          btn.disabled = false;
-          btn.textContent = label;
-          reset();
-        }
+        if (!data.ok) { fail(data.error || 'Something went wrong. Please try again.'); return; }
+        w.rybbit?.event?.('newsletter_subscribe', {
+          source: form.dataset.source || 'unknown',
+          form: form.id || 'unknown',
+          status: data.already ? 'already' : 'new',
+        });
+        form.classList.add('is-done');
+        msg.className = 'sigform__msg sigform__msg--ok';
+        msg.textContent = data.already
+          ? "You're already on the list. Good to have you."
+          : 'Almost there. Check your inbox for a confirmation link.';
       } catch {
-        msg.textContent = 'Network error. Please try again.';
-        btn.disabled = false;
-        btn.textContent = label;
-        reset();
+        fail('Network error. Please try again.');
       }
     });
   });
@@ -102,13 +135,13 @@ const TURNSTILE_SITEKEY = '0x4AAAAAADwCt8xxNYgYoiEK';
   }
   .sigform--dark .sigform__row input { border-color: transparent; }
   .sigform__row input:focus-visible { border-color: var(--accent); }
-  .cf-turnstile { margin-top: 12px; }
+  .sigform__ts:not(:empty) { margin-top: 12px; }
   .sigform__msg { margin: 10px 0 0; font-size: 14.5px; font-weight: 600; color: var(--accent); }
   .sigform__msg:empty { display: none; }
-  .sigform--dark .sigform__msg--ok { color: var(--mint); }
   .sigform__msg--ok { color: #1f7a4d; }
+  .sigform--dark .sigform__msg--ok { color: var(--mint); }
   .sigform.is-done .sigform__row,
-  .sigform.is-done .cf-turnstile { display: none; }
+  .sigform.is-done .sigform__ts { display: none; }
   @media (max-width: 520px) {
     .sigform__row { flex-direction: column; }
     .sigform__row input { min-width: 0; }

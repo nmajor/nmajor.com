@@ -28,8 +28,9 @@ tool partnerships worthwhile.
 
 ## The pieces
 
-- **nmajor.com (this repo):** personal hub. Experiments, long-form writing, projects,
-  tools, about. Design is direction B ("hub"), mockup at
+- **nmajor.com (this repo):** personal hub: newsletter signup, projects, writing, about.
+  Only things that exist get a page (Nick's rule: don't build empty sections for
+  future content). Design is direction B ("hub"), mockup at
   `research/site-pivot-2026-10/mockups/b-hub.html`.
 - **Deploy to Humans:** Nick's weekly newsletter ("Shipping is easy. Deploying to
   humans is the hard part."). Nick bought **deploytohumans.com**; it will get its own
@@ -44,39 +45,36 @@ tool partnerships worthwhile.
 
 | Path | What |
 |---|---|
-| `/` | Hub: intro + photo, tiles (newsletter signup, Experiments, Writing, Projects, Tools), Latest (hidden until a post exists) |
-| `/blog/`, `/blog/<slug>/` | Current long-form posts (`posts` collection) |
-| `/experiments/` | Posts with `kind: experiment`, with a status chip (running/worked/flopped/mixed) |
-| `/projects/`, `/tools/`, `/about/`, `/subscribe/` | Static pages |
-| `/archive/` | Index of everything from before the pivot |
+| `/` | Hub: intro + photo, tiles (Deploy to Humans signup, Projects, Writing, About) |
+| `/projects/`, `/about/`, `/subscribe/` | Static pages |
+| `/archive/` | "Writing" in the nav: index of everything published so far (all pre-pivot) |
 | `/archive/ai/<slug>/` | 13 archived Actual Intelligence essays (`essays` collection) |
 | `/archive/takes/` | 30 archived one-line AI takes (`takes` collection) |
 | `/archive/engineering/<slug>/` | 20 archived engineering posts, 2018 + 2025 (`building` collection) |
-| `/rss.xml` | Current posts only |
+| `/rss.xml` | The applied-AI essays (kept for existing feed subscribers) |
 
 **Legacy URLs 301 in one hop** via `legacyRedirect()` in `app/worker.js`:
 `/writing/*` → `/archive/ai/*`, `/posts/*` (dated and the 2018 undated form) →
 `/archive/engineering/*`, `/takes` → `/archive/takes/`, `/posts`, `/building`,
-`/engineering` → `/archive/engineering/`, `/work-with-me` → `/about/`. Archived
+`/engineering` → `/archive/engineering/`, `/work-with-me` → `/about/`, and the
+briefly-live `/blog` → `/archive/`, `/experiments` and `/tools` → `/`. Archived
 essays keep their OG images at `/og/writing/<slug>.png`. Covered by
 `app/test/worker.test.mjs`. Do not use Astro `redirects` (static output makes
 meta-refresh pages, not 301s).
 
-## How to publish a post
+## How to publish new writing
 
-1. Write `app/src/content/posts/<slug>.md` (schema in `app/src/content.config.ts`):
-   `title`, `summary`, `pubDate`, optional `kind` (`writing` | `experiment` | `tools`),
-   `status` (experiments), `draft`.
-2. Follow the `writing-voice` skill for every reader-facing word.
-3. Deploy: `npm --prefix app run deploy` (builds, then `wrangler deploy`).
+There is no new-writing collection or page yet, on purpose. When the first new post is
+ready, add a collection in `app/src/content.config.ts`, its page route, an OG card
+endpoint, and point the nav "Writing" link and `/rss.xml` at it. Follow the
+`writing-voice` skill. Deploy with `npm --prefix app run deploy`.
 
-A post is live when `draft: false` and `pubDate <= now` (`app/src/lib/publish.js`),
-evaluated **at build time**. The daily publish cron was retired with the old
-pipeline, so a future-dated post only appears after the next deploy past its date.
-If scheduled posts are wanted, add a small scheduled build-and-deploy workflow.
+`app/src/lib/publish.js` `isLive` (not a draft and `pubDate <= now`) is evaluated at
+build time. There is no scheduled build, so a future-dated post appears only after
+the next deploy past its date.
 
-Nothing auto-sends email or social posts anymore. The old queue, Buttondown send
-script, LinkedIn scheduler, and takes scheduler are archived in
+Nothing auto-sends email or social posts. The old queue, Buttondown send script,
+LinkedIn scheduler, and takes scheduler are archived in
 `archive/pivot-2026-10/app/scripts/`.
 
 ## Infrastructure (unchanged by the pivot)
@@ -85,16 +83,19 @@ script, LinkedIn scheduler, and takes scheduler are archived in
   Deploy with `app/deploy.sh` (creds from the gitignored root `.env`). `www.nmajor.com`
   is canonical; the naked domain 301s to www. Custom domains are managed in Cloudflare,
   not as `routes` (see `app/wrangler.jsonc`).
-- **Newsletter signup:** `POST /api/subscribe` → Turnstile verify (action
-  `nmajor_subscribe`, exact hostname) → Buttondown, double opt-in. It still posts to
+- **Newsletter signup:** `app/src/components/SubscribeForm.astro`. Turnstile loads
+  only when someone submits (explicit render, `execution: execute`,
+  `appearance: interaction-only`), never on page view. `POST /api/subscribe` →
+  Turnstile verify (action `nmajor_subscribe`, exact hostname) → Buttondown, double
+  opt-in. Headless browsers can't pass the real sitekey; test the flow with
+  Cloudflare's always-pass key `1x00000000000000000000AA` swapped in client-side. It still posts to
   the existing Buttondown list (the one created as "Actual Intelligence"). **Open:**
   rename that list to Deploy to Humans or create a new one before deploytohumans.com
   launches; both sites should feed the same list. `BUTTONDOWN_API_KEY` is scoped to
   that list only. Sending domain `newsletter.nmajor.com` (manual DNS in Cloudflare, no
   NS delegation to Buttondown).
 - **Analytics:** self-hosted Rybbit, site id 17 (`rybbit.nmajor.net`). Custom event
-  `newsletter_subscribe` with `source` (homepage, subscribe_page, post, about,
-  empty_state) and `form`.
+  `newsletter_subscribe` with `source` (homepage, subscribe_page, about) and `form`.
 - **Search:** `sc-domain:nmajor.com` in Google Search Console, managed with
   `scripts/gsc.py` (creds in gitignored `.env.gsc`). IndexNow key file
   `app/public/e70c55cfbfc05af0911a2af8cda5cc21.txt`.
@@ -114,13 +115,15 @@ script, LinkedIn scheduler, and takes scheduler are archived in
   Rybbit's top old pages were the Farmers essay and the Talos post).
 - **Postiz:** two LinkedIn posts approved under the old pipeline were still queued in
   Postiz for 2026-10-10 and 2026-10-12 at pivot time. Nick chose to leave them.
-- **No posts yet.** `/blog/` and `/experiments/` show an honest empty state with a
-  signup form.
+- **2026-10-09 follow-up:** at Nick's direction, removed the empty `/blog/`,
+  `/experiments/`, and `/tools/` pages (301'd), made the nav "Writing" link the
+  archive index, and moved Turnstile to run only on submit.
 
 ## Open questions
 
 - Buttondown list: rename vs. new list (see Infrastructure).
-- Whether to add a scheduled build so future-dated posts publish themselves.
+- Whether to add a scheduled build so future-dated posts publish themselves (once new
+  writing exists).
 
 ## Notes
 

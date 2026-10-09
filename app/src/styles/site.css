@@ -81,16 +81,8 @@ a { color: inherit; }
 .row__title { display: block; font-size: 18px; font-weight: 600; line-height: 1.35; }
 .row__blurb { display: block; margin-top: 4px; font-size: 15px; color: var(--muted); }
 .row__meta { flex: none; font-size: 13px; color: var(--muted); white-space: nowrap; }
-.chip { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; margin-right: 10px; border: 1.5px solid var(--ink); vertical-align: 2px; }
-.chip--running { background: var(--yellow); }
-.chip--worked { background: var(--mint); }
-.chip--flopped { background: var(--pink); }
-.chip--mixed { background: var(--blue); }
 @media (prefers-reduced-motion: reduce) { .row { transition: none; } }
 
-.empty { padding: 28px; }
-.empty h2 { margin: 0; font-family: var(--display); font-size: 26px; font-weight: 800; letter-spacing: -.02em; }
-.empty p { margin: 8px 0 0; color: var(--muted); }
 
 /* ---- archive banner ---- */
 .archived {
